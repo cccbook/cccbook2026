@@ -1,107 +1,90 @@
 # 1693 — Leibniz 行列式
 
 ## 案件摘要
-1693 年 4 月 28 日，Leibniz 在寫給 l'Hôpital 的信中，首次寫下二階與三階「行列式」的表達式：對聯立方程組 $a_1 + b_1x + c_1y = 0$、$a_2 + b_2x + c_2y = 0$，他提出係數的組合 $a_1b_2 - a_2b_1$ 等於零即兩式有公共解的條件，並以指標記號與符號規則記錄這類「resultant」。這是行列式概念與記號的雛形——比 Cramer 的正式發表早了半個多世紀，卻沉沒在手稿與信件中近一百五十年。
+1693 年 4 月 28 日，Gottfried Wilhelm Leibniz 在寫給法國數學家 l'Hôpital 的信中，首次寫下了形如 $a_1b_2 - a_2b_1$ 的數字排列計算——也就是今日所謂的二階行列式，並用一種「指數對」的巧妙記號推廣到 $n$ 個未知數的聯立方程組。這是行列式觀念在西方的第一次現身，比 Cramer 的一般法則早了半個多世紀。本案追查：這位微積分的共同發明人，為何會在解方程組時創造出這個後來席捲線性代數的物件？
 
 ## 前因 -- 為什麼會有這個案子
-- 兩千年前，《九章算術》已用消去法解聯立方程，但「把係數整體打包成一個數」的觀念尚未出現。
-- 17 世紀的代數學：Descartes、Viète 建立符號代數；Leibniz 本人是符號思考的大師，堅信「好的記號能讓計算自動進行」。
-- 實際動機：**消去理論（elimination theory）**。兩條方程有公共解的條件是什麼？三條呢？數學家需要一個「判別量」。
-- 1684 年起 Leibniz 已在研究兩曲線相交的條件——幾何交點問題，翻譯成代數就是聯立方程的相容性問題。
-- Cramer 前夜：當時還沒有「行列式」這個名詞，但土壤已經備好。
+- **解聯立方程的困境**：十七世紀的代數學家處理兩個、三個未知數的方程組時，靠的是逐一消元。消元本身不難，難的是：能不能直接從係數「讀出」方程組何時有解？解是什麼？
+- **Seki Takakazu 的平行案件**：幾乎同一時期（1683 年左右），日本數學家關孝和在《解伏題之法》中也獨立發展出行列式的概念，用來處理消元後的方程組——東西方在同一十年、互不知情的情況下撞出了同一個觀念。
+- **九章算術的遠古線索**：消去法早在中國漢代已經成熟；Leibniz 要解決的不是「如何消元」，而是「消元之後，解的公式長什麼樣」——他要的是一個封閉的顯式公式。
+- **與 l'Hôpital 的通信**：Leibniz 與這位法國年輕貴族通信多年，講授微積分。1693 年的這封信，是他向對方報告一個「新發明」——結果這個發明被歷史遺忘了近一百五十年，直到 1850 年前後 Leibniz 的手稿被整理出版，世人才知道他早就到過案發現場。
 
 ## 線索與推理 -- 數學式、程式、理論
 
-### 線索一：兩條方程的相容條件
-考慮兩條一次方程：
+### 線索一：二階行列式的誕生
+考慮二元一次方程組：
+$$\begin{cases}a_1x + b_1y = c_1\\a_2x + b_2y = c_2\end{cases}$$
+消去 $y$：第一式乘 $b_2$、第二式乘 $b_1$、相減，得
+$$(a_1b_2 - a_2b_1)x = c_1b_2 - c_2b_1 \quad\Rightarrow\quad x = \frac{c_1b_2 - c_2b_1}{a_1b_2 - a_2b_1}$$
+Leibniz 注意到：分子分母都是「交叉相乘再相減」的固定花樣。他給這個花樣起了名字——**resultant**（結式）：當 $a_1b_2 - a_2b_1 = 0$ 時方程組退化（無解或無限多解），係數的這個組合「決定了方程組的命運」。
 
-$$\begin{cases}a_1 + b_1x + c_1y = 0\\ a_2 + b_2x + c_2y = 0\end{cases}$$
+### 線索二：指數對記號——行列式記號的雛形
+為了推廣到 $n$ 個未知數，Leibniz 發明了一個極具前瞻性的記號：他把係數寫成 $10$、$21$、$32$ 這樣的「指數對」，第一個數字標記方程的編號（直行的位置），第二個數字標記未知數的編號（橫列的位置）。這正是**雙下標矩陣記號 $a_{ij}$** 的前身——比正式的矩陣記號早了兩百年。用這套記號，他寫下三元情形：
+$$\begin{vmatrix} a_{10} & a_{11} & a_{12} \\ a_{20} & a_{21} & a_{22} \\ a_{30} & a_{31} & a_{32} \end{vmatrix} = a_{10}a_{21}a_{32} + a_{11}a_{22}a_{30} + a_{12}a_{20}a_{31} - a_{12}a_{21}a_{30} - a_{10}a_{22}a_{31} - a_{11}a_{20}a_{32}$$
+六項，正好是 $3! = 6$ 個排列；正負號由排列的奇偶性決定。Leibniz 已經掌握了行列式的一般定義：**所有「每行每列各取一個」的乘積項之帶符號總和**。
 
-消去 $y$：第一式乘 $c_2$、第二式乘 $c_1$ 相減，得 $(a_1c_2 - a_2c_1) + (b_1c_2 - b_2c_1)x = 0$，故
+### 線索三：為什麼是這個花樣？——從消元的視角看
+$n$ 階行列式可以看成消元公式的封裝。用現代記號，對 $2\times2$ 矩陣 $A = \begin{pmatrix}a & b\\ c & d\end{pmatrix}$：
+$$\det A = ad - bc$$
+它的幾何意義（Leibniz 未察覺、後由 Gauss 時代補足）是列向量張成的平行四邊形面積；$\det A = 0$ 表示兩列共線、向量「塌陷」，方程組退化。行列式是「可解性」的偵測器：
+- $\det A \neq 0$：唯一解；
+- $\det A = 0$：無解或無限多解。
 
-$$x = \frac{a_2c_1 - a_1c_2}{b_1c_2 - b_2c_1}$$
+此外，Leibniz 在同期手稿中還嘗試把這套方法應用到**多項式的公共根**（兩個多項式何時有共同解）——resultant 一詞在今日代數學中正是「結式」：$\mathrm{Res}(f, g) = 0$ 若且唯若 $f$、$g$ 有公共根。從二元方程組的係數偵測，到多項式公共根的偵測，Leibniz 看到的是同一個結構：**「退化」總會在某個由係數組成的多項式歸零時現形**。這個思想在十九世紀由 Sylvester、Bézout 的結式理論正式完成，成為計算機代數系統中消去理論的核心。
 
-Leibniz 敏銳地注意到：分子、分母都是**同一種結構**——兩項相減，每項是取自不同行不同列的係數乘積。他稱這類量為 **resultant**（結式），並寫下相容性條件：
+### 線索四：與 Cramer 法則的前夜
+Leibniz 的信中已經隱含了「用兩個 resultants 之比表出未知數」的想法——正是五十七年後 Cramer 法則 $x_i = \det(A_i)/\det(A)$ 的雛形。但他只處理了小規模情形，也沒有系統性地展開 $n$ 個未知數的一般公式。歷史把「掛名」留給了 Cramer——這是科學史上著名的「發明者被遺忘」案件之一。
 
-$$b_1c_2 - b_2c_1 \neq 0$$
-
-這正是今日的二階行列式 $\begin{vmatrix} b_1 & c_1 \\ b_2 & c_2 \end{vmatrix}$。
-
-### 線索二：符號規則——Leibniz 的指標密碼
-在 1693 年的信與更早（1693 年前後）的手稿中，Leibniz 對三階情形提出：由 $\begin{vmatrix}1&2&3\end{vmatrix}$ 型指標排列，取三項乘積
-
-$$a_{12}b_{23}c_{31} - a_{13}b_{23}c_{21} + \cdots$$
-
-並以「偶排列取正、奇排列取負」的規則決定符號——這就是今日三階行列式的完全展開式：
-
-$$\det A = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31} - a_{12}a_{21}a_{33} - a_{11}a_{23}a_{32}$$
-
-Leibniz 甚至設計了一種指標記號：把下標寫成數字對 $(1,2)$、$(2,3)$……用排列的奇偶性自動產生符號。他寫道，這種記號使得「人們不必思考就能正確計算」——這是他一貫的符號哲學（與他發明微積分記號 $dx, dy$ 的思路如出一轍）。
-
-### 線索三：resultant 的推廣——多條方程的公共解
-Leibniz 更進一步：對三條二元一次方程
-
-$$a_i + b_ix + c_iy = 0 \quad (i = 1, 2, 3)$$
-
-有公共解（且 $x, y$ 非平凡）的條件，是三個二階 resultant 滿足
-
-$$(a_1b_2 - a_2b_1)(a_2c_3 - a_3c_2) + (a_2b_3 - a_3b_2)(a_1c_2 - a_2c_1) + \cdots = 0$$
-
-——這其實是三階行列式展開後的恆等式。他把方程組相容性問題轉化為「某個由係數構成的量為零」的判別問題，這是把**整個方程組壓縮成一個數**的革命性想法：矩陣與行列式的種子已然埋下。
-
-### 線索四：為什麼這案子會沉沒？
-Leibniz 的信寄出後，l'Hôpital 並未重視；Leibniz 本人也未將行列式理論系統化發表。他的相關思考散落於手稿，直到 19 世紀中葉（Gerhardt 編輯 Leibniz 數學手稿，1849 年起）才重見天日。數學史的偵探們後來發現：1684–1693 年間 Leibniz 已有約五十份手稿涉及這類記號，但他作為一個「公開發表控」卻在這件事上缺席，導致行列式的桂冠最後落在 Cramer 頭上。
-
-### 程式碼範例：Leibniz 2x2/3x3 行列式
+### 程式碼範例：Leibniz 2x2 行列式與 resultant 驗證
 ```python
 import numpy as np
-from itertools import permutations
 
-def leibniz_det(M):
-    n = len(M)
-    total = 0
-    for p in permutations(range(n)):      # 遍歷所有排列（Leibniz 指標）
-        term = M[i][p[i]] for_i... if False else np.prod([M[i][p[i]] for i in range(n)])
-        # 符號：偶排列 +1、奇排列 -1（Leibniz 符號規則）
-        sign = 1 if inversions(p) % 2 == 0 else -1
-        total += sign * term
-    return total
+def leibniz_det2(A):
+    (a, b), (c, d) = A
+    return a * d - b * c          # 交叉相乘相減
 
-def inversions(p):
-    return sum(1 for i in range(len(p)) for j in range(i+1, len(p)) if p[i] > p[j])
+def leibniz_det3(A):
+    # 按 Leibniz 的一般定義：3! = 6 個帶符號項
+    from itertools import permutations
+    s = 0
+    for p in permutations(range(3)):
+        term, sign = 1, 1
+        for row, col in enumerate(p):
+            term *= A[row][col]
+        sign = (-1) ** sum(1 for i in range(3) for j in range(i+1, 3) if p[i] > p[j])
+        s += sign * term
+    return s
 
-# 重寫乾淨版本
-def leibniz_det_clean(M):
-    n, total = len(M), 0
-    for p in permutations(range(n)):
-        term = np.prod([M[i][p[i]] for i in range(n)])
-        sign = 1 if inversions(p) % 2 == 0 else -1
-        total += sign * term
-    return total
+A = np.array([[3., 1.], [2., 3.]])
+print("Leibniz det2 =", leibniz_det2(A))            # 7
+print("numpy 驗證   =", np.linalg.det(A))           # 7.0
 
-A2 = [[2, 3], [1, 4]]                      # 2x2：應為 2*4-3*1 = 5
-A3 = [[3, 2, 1], [2, 3, 1], [1, 2, 3]]     # 九章第一題係數矩陣
+B = [[2, -1, 1], [1, 3, -2], [3, 1, 0]]
+print("Leibniz det3 =", leibniz_det3(B))            # 逐項 6 項展開
+print("numpy 驗證   =", np.linalg.det(np.array(B, float)))
 
-print(leibniz_det(A2), leibniz_det_clean(A2))   # 5 5
-print(leibniz_det_clean(A3), np.linalg.det(A3)) # 18.0 18.0
+# resultant = 0 的退化偵測：兩列共線
+D = np.array([[1., 2.], [2., 4.]])
+print("退化方程組 resultant =", leibniz_det2(D))     # 0 → 無唯一解
 ```
 
-2x2 情形給出 $a_1b_2 - a_2b_1 = 5$；3x3 情形（九章算術第一題的係數矩陣）給出 18，與 `numpy.linalg.det` 一致——Leibniz 的排列符號規則，就是現代行列式定義 $\det A = \sum_{\sigma} \mathrm{sgn}(\sigma)\prod_i a_{i,\sigma(i)}$。
+`leibniz_det3` 逐項驗證了六項帶符號展開與 `numpy.linalg.det` 完全一致；退化矩陣 $D$ 的 resultant 為零，正對應「兩列共線、方程組退化」的偵測結果。
 
 ## 結案 -- 後果與影響
-- Leibniz 的 resultant 思想是**消去理論**的起點：判定多條方程是否有公共解，日後發展為結式（Sylvester, 1840）與判別式理論。
-- 行列式記號的雛形（排列指標＋奇偶符號規則）在 19 世紀被 Cauchy（1812）、Jacobi 等人重新發現並系統化；「determinant」一詞由 Gauss（1801）首次使用、Cauchy（1812）賦予現代意義。
-- 行列式成為線性代數的第一件「獨立工具」：解方程組（Cramer 法則）、判別線性相依、求特徵值（特徵多項式 $\det(A - \lambda I) = 0$）。
-- 19 世紀中葉手稿出土後，數學史界公認：**Leibniz 是行列式概念的最早發明者**，只是他的破案筆錄晚了近 150 年才公開。
+- 1693 年的信是**行列式理論在西方的開端**：Leibniz 首次把「係數的帶符號組合」當成一個有名字、有用途的數學物件（resultant）。
+- 他的**雙下標「指數對」記號**預示了兩百年後的矩陣記號 $a_{ij}$。
+- 遺憾的是這封信長期未發表，影響力遲到：Cramer（1750）、Vandermonde（1772）、Laplace 等人是獨立重新發展的；直到 1850 年前後 Leibniz 手稿出版，偵探界才補記了這筆功勞。
+- 行列式從此走上獨立發展之路：Cramer 法則、Laplace 展開、Cayley 的矩陣理論，乃至特徵值 $\det(A - \lambda I) = 0$，全都源自這個 1693 年寫下的交叉相減花樣。
+- 東亞平行案件：關孝和 1683 年《解伏題之法》獨立發現行列式，是數學史上「多重獨立發現」的經典案例。
 
 ## 關鍵人物與文獻
 | 人物 | 角色 |
 |---|---|
-| Gottfried Wilhelm Leibniz | 1693 年信中首寫行列式與 resultant |
-| Guillaume de l'Hôpital | 收信人，未重視（破案筆錄沉沒的關鍵） |
-| Gabriel Cramer | 1750 年正式發表行列式解法 |
-| Augustin-Louis Cauchy | 1812 年系統化行列式理論 |
+| Gottfried Wilhelm Leibniz | 首次寫下行列式，發明指數對記號 |
+| Guillaume de l'Hôpital | 收信人，微積分的早期傳播者 |
+| Seki Takakazu（關孝和） | 1683 年獨立發現行列式（平行案件） |
+| Étienne Bézout / Alexandre-Théophile Vandermonde | 後續重新發展行列式理論 |
 
-- G. W. Leibniz, 寫給 l'Hôpital 的信，1693 年 4 月 28 日（Gerhardt 編《Leibniz 數學手稿》卷二，1849）。
-- A.-L. Cauchy, «Mémoire sur les fonctions qui ne peuvent obtenir que deux valeurs...», J. Éc. polytech. (1812)。
-- C. B. Boyer, "A History of Mathematics"（行列式史部分）。
+- G. W. Leibniz, 致 l'Hôpital 的信（1693 年 4 月 28 日），收入 *Leibnizens mathematische Schriften*（1850 年代出版）。
+- 關孝和《解伏題之法》（1683）。
+- T. Muir, *The Theory of Determinants in the Historical Order of Development*（1906）：行列式史的標準考據。

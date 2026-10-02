@@ -69,9 +69,9 @@ def td_learn(V, alpha=0.1, episodes=100, gamma=1.0):
 
 np.random.seed(0)
 V = np.zeros(6)
-mc_learn(V); print("MC 真值 [1/6..5/6]:", V[1:5].round(2))
+mc_learn(V); print("MC 真值 [1/6..4/6]:", V[1:5].round(2))
 V = np.zeros(6)
-td_learn(V); print("TD 真值 [1/6..5/6]:", V[1:5].round(2))
+td_learn(V); print("TD 真值 [1/6..4/6]:", V[1:5].round(2))
 ```
 輸出：
 ```

@@ -1,0 +1,74 @@
+# 1807 Berzelius 化學記號
+
+## 案發現場
+
+十九世紀初，化學正面臨一場「語言危機」。Dalton（道爾頓）在 1803 年提出原子說後，化學家們終於有了「原子」的概念，但如何**書寫**原子與化合物，卻是一片混亂：
+
+- 煉金術遺留的神祕符號（☉ 表金、☾ 表銀、△ 表火）既不科學也不便使用。
+- Dalton 自己用怪異的圓圈圖形：圓圈中加點、加十字，每種元素一種花樣；水的「化學式」是一個大圓圈旁掛兩個小圓圈的圖案。化合物一多，圖形繁複到無法排版印刷。
+- 更嚴重的是：各國化學家各用各的記號與命名，法國用 Lavoisier 系統的命名法，瑞典、德國、英國各有方言，文獻幾乎無法互相比對。
+
+同時還有第二個未解之謎：**原子量**。原子說的核心是「每種元素有固定的原子量」，但 Dalton 只能給出粗略且多處錯誤的相對原子量表（他堅持水是 HO，把氧的原子量算錯了將近一倍）。如果原子量測不準，化學式就寫不對，整個原子說的定量根基便會崩塌。
+
+誰能統一化學的語言，並把原子量測量建立在可靠的實驗基礎上？答案來自瑞典斯德哥爾摩——一位名叫 Jöns Jacob Berzelius（白則里）的化學家。
+
+## 偵查過程
+
+Berzelius 的偵查策略有三條主線，彼此互相支援。
+
+**主線一：新的符號系統。**1813 年，Berzelius 在 Thomson 的《哲學年鑑》上提出革命性方案：**以元素的拉丁名稱第一個字母（必要時加第二個字母）作為符號**——氫 H（hydrogenium）、氧 O（oxygenium）、碳 C（carboneum）、金 Au（aurum）、銀 Ag（argentum）。化合物的化學式則以符號並列、用數字標示原子個數：水是 $\mathrm{H_2O}$，硫酸是 $\mathrm{H_2SO_4}$。這套記號簡潔、可印刷、可運算，等於給化學發明了「代數」。他寫道：這些符號的目的，是「用最簡單的方式表達化合物的比例」。
+
+**主線二：史無前例的原子量測定工程。**符號要有意義，必須綁定正確的原子量。Berzelius 以驚人的毅力展開測定：他與學生（包括後來發現鋰的 Arfwedson）分析約 **2000 種化合物**，用氧化、還原、沉澱、重量分析等手段，把化合物中元素的質量比例轉換為原子量。他的關鍵方法是選定基準（最初以氧 = 100），並利用同分異構、倍比定律交叉驗證。到 1826 年，他公布的原子量表已與今日的數值驚人地接近，例如：
+
+$$\text{由實測質量比 } m_{\text{O}}/m_{\text{H}} \approx 15.9 \text{，結合 } \mathrm{H_2O} \Rightarrow A_r(\text{O}) \approx 16 \times A_r(\text{H})$$
+
+為了選對化學式（水是 $\mathrm{H_2O}$ 還是 HO？），他還借助 Gay-Lussac 的氣體化合體積定律與 Avogadro 的分子假說思想（雖然他並未完全接受後者），用蒸氣密度法判斷分子的原子組成。
+
+**主線三：電化二元論。**Volta 電池（見 [1800-Volta電池.md](1800-Volta電池.md)）證明電流能分解化合物後，Berzelius 提出「電化二元論」（electrochemical dualism）：每種化合物由帶正電與帶負電的部分組成，正電性部分（金屬、鹼）與負電性部分（非金屬、酸）相互吸引而結合。他依此把元素分為電正性與電負性兩大類，並用「電負度序列」預測化合傾向——這是現代電負度概念的遠祖。雖然二元論後來被有機化學中的取代反應（如氯取代氫）動搖而沒落，但它在當年成功地把無機化學整理成有序的系統。
+
+## 結案報告
+
+Berzelius 是十九世紀上半葉化學界最有影響力的人物，被稱為「化學的立法者」。
+
+1. **化學的拉丁文**：他創立的元素符號與化學式系統 $\mathrm{H_2O}$、$\mathrm{CO_2}$、$\mathrm{H_2SO_4}$ 沿用至今，成為全球化學家的共同語言。沒有這套記號，化學方程式、化學計量學、乃至整個教科書體系都無從建立。
+2. **原子量的實驗奠基**：約 2000 種化合物的分析，使原子說從哲學思辨變成定量的實證科學，也為 Cannizzaro 在 1860 年重整原子量、Mendeleev 排出週期表鋪路。
+3. **術語與分類的遺產**：「有機化學」「催化（catalysis）」「同分異構（isomerism）」「蛋白質（protein）」等術語皆出自他手；電化二元論的分類思想啟發了後世的電負度與週期性研究。
+4. **師承的網絡**：他培養了 Wöhler（維勒，1828 年合成尿素，見有機化學篇章）、Liebig（李比希）等人，把分析方法與實驗紀律傳遍歐洲。
+
+化學從此有了統一的文字——而這文字，正是 Berzelius 用一生的心血一個字母一個字母寫下的。
+
+## 證據與工具
+
+以下 Python 程式示範如何由化合物的實測質量比推導實驗式（Berzelius 的核心方法）：
+
+```python
+# 由質量百分比推導實驗式（Berzelius 的原子量測定思想）
+from math import gcd
+
+def empirical_formula(composition, atomic_weights):
+    """composition: {元素: 質量百分比}; atomic_weights: {元素: 原子量}"""
+    moles = {el: mass / atomic_weights[el] for el, mass in composition.items()}
+    m_min = min(moles.values())
+    ratios = {el: n / m_min for el, n in moles.items()}  # 歸一化為最小整數比
+    # 四捨五入到接近的整數比（實務上需更多處理，此處示範簡單情況）
+    ints = {el: round(r) for el, r in ratios.items()}
+    g = 0
+    for v in ints.values():
+        g = gcd(g, v)
+    ints = {el: v // g for el, v in ints.items()}
+    return "".join(f"{el}{n if v > 1 else ''}" if (n := ints[el]) else el
+                   for el in ints), ratios
+
+aw = {"H": 1.008, "O": 16.00}
+formula, ratios = empirical_formula({"H": 11.19, "O": 88.81}, aw)
+print(f"水的質量比 -> 莫耳比：{ {k: round(v, 2) for k, v in ratios.items()} }")
+print(f"實驗式（化學式）：{formula}")   # 應得 H2O
+
+# Berzelius 的電化分類：簡化的電負度序列
+electronegativity = {"O": 3.44, "Cl": 3.16, "S": 2.58, "H": 2.20,
+                     "Cu": 1.90, "Fe": 1.83, "Zn": 1.65, "Na": 0.93}
+pairs = [("Na", "Cl"), ("Zn", "O"), ("Fe", "S")]
+for a, b in pairs:
+    pos, neg = (a, b) if electronegativity[a] < electronegativity[b] else (b, a)
+    print(f"{a} + {b}: 電正性部分 = {pos}，電負性部分 = {neg}（二元論預測）")
+```

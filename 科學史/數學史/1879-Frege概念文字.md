@@ -1,0 +1,107 @@
+# 1879 - Frege 概念文字
+
+## 案件摘要
+1879 年，德國數學家 Gottlob Frege 出版《概念文字》（Begriffsschrift）：發明**量詞邏輯**（quantifier logic）——「**所有**人皆會死」（$\forall$）與「**存在**」（$\exists$）的符號化。亞里士多德兩千年的三段論只有「主謂結構」，**無法表達多重量詞**（「每個人都愛某個人」）——Frege 的量詞解開了這個枷鎖，**數理邏輯的誕生**。Frege 的邏輯是 Hilbert 綱領（見 `../計算理論/1900-Hilbert23問題.md`）、Gödel 不完備（1931）、Turing 機（1936）的**地基**——現代數學的形式化全部站在 Frege 的肩膀上。
+
+## 前因 -- 為什麼會有這個案子
+**亞里士多德邏輯的枷鎖**（前 350–1879）：三段論只有「S 是 P」的主謂結構——
+
+- 「所有人皆會死」✓（主謂）
+- 「**每個人**愛**某個人**」（$\forall x \exists y\, \text{Loves}(x, y)$）——**三段論無法表達**（兩個量詞的疊加）
+- 數學的陳述（「對每個數存在更大的素數」）——**亞氏邏輯無能為力**
+
+**萊布尼茨與 Boole 的不足**（見 `1703-Leibniz二進制.md`、`1854-Boole布爾代數.md`）：命題邏輯（命題之間的運算）——**但命題的「內部結構」（量詞）未處理**。
+
+**Frege 的問題**：能否發明**完整的邏輯語言**——表達一切數學陳述（含量詞）？
+
+**Frege 的背景**：Jena 大學的數學教授（默默無聞一生）——一生的工作被羅素悖論（1902，見 `1902-Russell悖論.md`）摧毀，但**邏輯符號系統長存**。
+
+## 線索與推理 -- 數學式、程式、理論
+
+### 量詞邏輯
+**Frege 的發明**：
+
+- **全稱量詞**：$\forall x\, P(x)$（「所有 $x$ 滿足 $P$」）
+- **存在量詞**：$\exists x\, P(x)$（「存在 $x$ 滿足 $P$」）
+- **量詞的疊加**：$\forall x \exists y\, L(x, y)$（「每個 $x$ 都愛某個 $y$」）——**順序有意義**！
+
+$$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
+
+（「每人愛某人」≠「有人被所有人愛」——**量詞順序的語義**——亞氏邏輯無法表達的。）
+
+**數學陳述的符號化**：
+- 極限：$\lim_{x\to a} f(x) = L$ ⟺ $\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)$——**Weierstrass 的 $\epsilon$-$\delta$（1872，見 `1872-Weierstrass分析嚴格化.md`）本質是量詞邏輯**！
+- 素數無窮：$\forall n\, \exists p > n\, \text{Prime}(p)$
+- 哥德巴赫：$\forall n \text{ 偶} \exists p, q\, (n = p + q)$（見 `1742-Goldbach猜想.md`）
+
+**深遠的意義**：**數學的全部陳述**（分析、數論、幾何）都可以用量詞邏輯表達——**形式化的地基**。
+
+### Frege 的邏輯系統
+**《概念文字》的系統**（二維符號——**樹狀圖**，現代改為線性）：
+
+1. **判斷符號**（⊢）：斷言為真
+2. **條件線**：蘊涵（$\to$）
+3. **否定**、**同一**（=）
+4. **量詞**（∀、∃ 的原創符號）
+
+**Frege 的野心**：**邏輯主義**——把算術化約為邏輯（數 = 邏輯的對象）——《算術基礎》（1884）定義數，**《算術基本定律》（1893/1903）的公理 V 被羅素悖論（1902）摧毀**（見 `1902-Russell悖論.md`）。
+
+**但邏輯系統長存**：量詞邏輯成為標準——**Hilbert 的形式化**（1920s）、**Peano 的公理**（1889）、**Gödel 的不完備**（1931）——全部站在 Frege 的符號系統上。
+
+### 程式碼：量詞邏輯
+
+```python
+def forall(iterable, pred):
+    """全稱量詞 ∀x P(x)"""
+    return all(pred(x) for x in iterable)
+
+def exists(iterable, pred):
+    """存在量詞 ∃x P(x)"""
+    return any(pred(x) for x in iterable)
+
+def implies(a, b):
+    """蘊涵 a → b"""
+    return (not a) or b
+
+# 數學陳述的量詞化
+nums = range(1, 50)
+
+# 素數無窮：∀n ∃p > n Prime(p)
+def is_prime(n):
+    if n < 2: return False
+    return all(n % d for d in range(2, int(n**0.5)+1))
+
+primes = [p for p in nums if is_prime(p)]
+print(f"素數（1-50）：{primes}")
+print(f"∀n ∃p>n Prime(p)（範圍內）：{forall([10, 20, 30], lambda n: exists(nums, lambda p: p > n and is_prime(p)))}")
+
+# 量詞順序的語義：∀x∃y vs ∃y∀x
+people = ["A", "B", "C"]
+loves = {("A", "B"), ("B", "A"), ("C", "A")}   # 誰愛誰
+# ∀x ∃y Loves(x, y)：每人愛某人
+q1 = forall(people, lambda x: exists(people, lambda y: (x, y) in loves))
+# ∃y ∀x Loves(x, y)：有人被所有人愛
+q2 = exists(people, lambda y: forall(people, lambda x: (x, y) in loves))
+print(f"\n∀x∃y（每人愛某人）= {q1}；∃y∀x（有人被所有人愛）= {q2}")
+print(f"順序有意義：{q1} ≠ {q2}——亞氏邏輯無法表達的 ✓")
+
+# ε-δ 是量詞邏輯（Weierstrass 的本質）
+print("\n極限定義 = 量詞邏輯：∀ε>0 ∃δ>0 ∀x (...)")
+print("Frege 1879 的量詞 = 現代數學形式化的地基")
+```
+
+## 結案 -- 後果與影響
+- **數理邏輯的誕生**：量詞邏輯——數學陳述的完整符號化（亞氏兩千年枷鎖解開）。
+- **形式化的地基**：Hilbert 綱領、Peano 公理、ZFC——全部用 Frege 的量詞邏輯。
+- **ε-δ 的本質**：Weierstrass 的極限定義本質是量詞疊加——**分析嚴格化與邏輯的匯流**。
+- **Gödel 的舞台**：不完備定理（1931）在 Frege–Hilbert 的邏輯系統中證明——**邏輯的極限由邏輯發現**。
+- **Frege 的悲劇與長存**：邏輯主義被羅素悖論摧毀（1902），但符號系統成為標準——**一生工作的一半毀了、一半永存**。
+- **程式語言的量詞**：SQL 的 ALL/EXISTS、Prolog 的全稱——**量詞邏輯的工程化**。
+
+## 關鍵人物與文獻
+- **Gottlob Frege**（1848–1925）：Begriffsschrift (1879)、Die Grundlagen der Arithmetik (1884)、Grundgesetze (1893/1903)
+- **Aristotle**（前 384–前 322）：三段論——兩千年的枷鎖
+- **Giuseppe Peano**（1858–1932）：1889 算術公理——Frege 的改良（線性符號）
+- **Bertrand Russell**：1902 的信（見 `1902-Russell悖論.md`）
+- **David Hilbert**：形式化的推動（見 `../計算理論/1900-Hilbert23問題.md`）
+- 交叉參照：`1854-Boole布爾代數.md`、`1902-Russell悖論.md`、`1872-Weierstrass分析嚴格化.md`、`../計算理論/1931-Godel不完備定理.md`

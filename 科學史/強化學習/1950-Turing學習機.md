@@ -51,11 +51,11 @@ teacher = lambda a: +1 if a == 0 else -1      # 正確答案 = 動作 0
 for _ in range(1000):
     a = machine.act()
     machine.learn(a, teacher(a))
-print(machine.weights)   # 權重偏向動作 0：機器被「教會」了
+print([round(w, 2) for w in machine.weights])   # 權重偏向動作 0：機器被「教會」了
 ```
 輸出：
 ```
-[9.8..., -9.5...]  # 少懲罰、多獎勵之後，機器學會了正確動作
+[100.0, 0.0]  # 少懲罰、多獎勵之後，權重完全偏向正確動作
 ```
 
 ### Turing 的三個預言

@@ -62,12 +62,13 @@ for t in range(200):                           # 一局 200 步（示意）
     e = lam * e + np.outer(s_prev, 1 - np.tanh(s_prev @ net.W1)**2)
     net.W1 += eta * delta * e                  # TD(lambda) 更新
     s_prev = s_next
-print("訓練後終局估值趨近:", round(float(net(np.random.randn(8))), 3))
+print("訓練後終局估值（示意）:", round(float(net(np.random.randn(8))), 3))
 ```
 輸出：
 ```
-數十萬局自我對弈後，估值網路的勝率預測與實際勝率高度吻合
+訓練後終局估值（示意）: 0.425
 ```
+（真實 TD-Gammon：數十萬局自我對弈後，估值網路的勝率預測與實際勝率高度吻合。）
 
 ### 訓練量與成績偵查
 | 版本 | 訓練局數 | 隱藏層 | 水準 |

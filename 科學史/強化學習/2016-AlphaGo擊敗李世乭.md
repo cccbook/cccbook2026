@@ -62,11 +62,12 @@ def value_net(s):                     # 價值網路（示範：勝率估計）
 
 def mcts(s, n_sims=200, c=5.0):
     root, children = Node(0), defaultdict(dict)
+    key = tuple(np.where(s != 0)[0])                 # 用 tuple 當局面鍵
     for _ in range(n_sims):
         node, path = root, [root]
         # 選擇：PUCT 公式
         while True:
-            kids = children[s] if s in children else {}
+            kids = children[key] if key in children else {}
             if not kids: break
             a = max(kids, key=lambda a: kids[a].Q + c * kids[a].prior *
                     math.sqrt(node.N) / (1 + kids[a].N))
@@ -74,7 +75,7 @@ def mcts(s, n_sims=200, c=5.0):
             break
         # 擴展 + 評估：策略網路給先驗，價值網路給勝率
         p = policy_net(s)
-        kids = children[s]
+        kids = children[key]
         for i in range(len(s)): kids[i] = Node(p[i])
         v = value_net(s)
         # 回傳：沿路徑反向更新
@@ -88,7 +89,7 @@ print(f"200 次模擬完成，根節點造訪數 = {visits}")
 ```
 輸出：
 ```
-200 次模擬完成，根節點造訪數 = 201
+200 次模擬完成，根節點造訪數 = 200
 ```
 （真實 AlphaGo：40 個 GPU、每步 2 秒、數百萬次模擬；自我對弈用了 1202 個 CPU + 176 個 GPU。）
 

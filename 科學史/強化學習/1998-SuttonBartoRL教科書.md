@@ -46,17 +46,17 @@ $$\pi^* = \arg\max_\pi \; V^\pi(s), \qquad V^\pi(s) = \mathbb{E}_\pi\Big[\sum_{t
 ```python
 import numpy as np
 
-S, A, gamma = 5, 2, 0.9
+S, A, gamma = 4, 2, 0.9                          # 狀態 0~3，終點 = 3
 P = np.zeros((S, A, S)); r = np.zeros((S, A))
-for s in range(S):
-    P[s,0,min(s+1,S-1)], P[s,1,max(s-1,0)] = 1, 1
-r[S-1,:] = 1.0
+for s in range(S-1):
+    P[s,0,s+1], P[s,1,max(s-1,0)] = 1, 1
+    r[s,0], r[s,1] = (1.0 if s+1 == S-1 else 0.0), 0.0
 
 def eps_greedy(Q, s, eps=0.2):
     return np.random.randint(A) if np.random.rand() < eps else Q[s].argmax()
 
-def sarsa(Q, eps=0.2, alpha=0.1, eps_n=3000):
-    for _ in range(eps_n):
+def sarsa(Q, eps=0.2, alpha=0.1, episodes=3000):
+    for _ in range(episodes):
         s, a = 0, eps_greedy(Q, 0, eps)
         while s < S-1:
             s2 = np.random.choice(S, p=P[s,a])
@@ -65,8 +65,8 @@ def sarsa(Q, eps=0.2, alpha=0.1, eps_n=3000):
             s, a = s2, a2
     return Q
 
-def qlearn(Q, eps=0.2, alpha=0.1, eps_n=3000):
-    for _ in range(eps_n):
+def qlearn(Q, eps=0.2, alpha=0.1, episodes=3000):
+    for _ in range(episodes):
         s = 0
         while s < S-1:
             a = eps_greedy(Q, s, eps)
@@ -77,13 +77,14 @@ def qlearn(Q, eps=0.2, alpha=0.1, eps_n=3000):
 
 np.random.seed(0)
 Q1 = sarsa(np.zeros((S, A))); Q2 = qlearn(np.zeros((S, A)))
-print("SARSA 評估其自身(含eps)策略：", round(sum(Q1[0]*[0.1,0.9]), 3))
-print("Q-learning 學到的最優估值：", Q2[0].round(3).tolist())
+print("SARSA 的 on-policy 評估（含探索風險）：",
+      [round(float(Q1[s].max()*(0.8) + Q1[s].min()*0.2), 3) for s in range(S-1)])
+print("Q-learning 學到的最優估值：", Q2[:S-1].max(axis=1).round(3).tolist())
 ```
 輸出：
 ```
-SARSA 收斂到「含探索風險」的策略價值（較保守）
-Q-learning 收斂到最優估值（不計探索成本）
+SARSA 的 on-policy 評估（含探索風險）： [0.751, 0.841, 0.951]
+Q-learning 學到的最優估值： [0.81, 0.9, 1.0]
 ```
 **SARSA 學「我會怎麼走」，Q-learning 學「最優該怎麼走」**——on/off-policy 的本質差異。
 
