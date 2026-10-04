@@ -18,6 +18,8 @@
 | 1970 | William Woods 發明 ATN（Augmented Transition Networks）：在有限狀態機上掛暫存器與遞迴，突破 Chomsky 對有限狀態模型的否定 | [1970-WoodsATN](1970-WoodsATN.md) |
 | 1972 | Roger Schank 提出「概念依存理論」（Conceptual Dependency）：語義表達的跨語言表示法，腳本（script）的先聲 | [1972-Schank概念依存](1972-Schank概念依存.md) |
 | 1975 | Gerald Salton 發表「向量空間模型」與 TF-IDF 加權：文件 = 向量、相似度 = 餘弦，資訊檢索（IR）的數學基礎——也是日後詞向量的先聲 | [1975-向量空間模型與TFIDF](1975-向量空間模型與TFIDF.md) |
+| 1990 | Elman 發表《Finding Structure in Time》：循環神經網路（RNN）讓時間進入神經網路，隱層聚類自動浮現語法類別——詞向量的先聲 | [1990-Elman循環神經網路](1990-Elman循環神經網路.md) |
+| 1997 | Hochreiter 與 Schmidhuber 發表 LSTM：細胞狀態＋三個門破解梯度消失，統治序列建模 20 年 | [1997-LSTM長短期記憶](1997-LSTM長短期記憶.md) |
 
 ## 第二幕：規則法黃金期的尾聲與統計革命的號角（1975–1990）
 
@@ -42,6 +44,7 @@
 |---|---|---|
 | 2003 | Yoshua Bengio 發表《A Neural Probabilistic Language Model》：用神經網路學詞向量與 n-gram 分佈，「詞 = 向量」的轉折點 | [2003-Bengio神經語言模型](2003-Bengio神經語言模型.md) |
 | 2013 | Mikolov 等人（Google）發表 Word2Vec：skip-gram 與 CBOW，word2vec 的向量算術（king - man + woman ≈ queen）讓「詞語義 = 向量空間幾何」爆紅 | [2013-Word2Vec](2013-Word2Vec.md) |
+| 2014 | Cho 等人發表 GRU（門控循環單元）與 RNN Encoder-Decoder：兩個門的輕量序列建模，NMT 的孿生起點 | [2014-GRU門控循環單元](2014-GRU門控循環單元.md) |
 | 2014 | Sutskever 等人發表 Seq2Seq、Bahdanau 等人發表注意力機制（attention）：編碼器-解碼器架構讓神經機器翻譯（NMT）一舉超車 SMT | [2014-Seq2Seq與注意力機制](2014-Seq2Seq與注意力機制.md) |
 | 2016 | Google 宣布 GNMT（神經機器翻譯）全面上線，翻譯錯誤率下降 60%——統計機器翻譯時代落幕 | [2016-GNMT神經機器翻譯上線](2016-GNMT神經機器翻譯上線.md) |
 
@@ -78,7 +81,10 @@
 - **Peter Brown / IBM 團隊**：統計機器翻譯、IBM Model 1-5
 - **John Lafferty**：CRF
 - **Kishore Papineni**：BLEU
-- **Yoshua Bengio**：神經語言模型
+- **Yoshua Bengio**：神經語言模型、注意力
+- **Jeffrey Elman**：RNN/循環神經網路
+- **Sepp Hochreiter / Jürgen Schmidhuber**：LSTM
+- **Kyunghyun Cho**：GRU、RNN Encoder-Decoder
 - **Tomas Mikolov**：Word2Vec
 - **Ilya Sutskever / Dzmitry Bahdanau**：Seq2Seq、注意力
 - **Ashish Vaswani**：Transformer

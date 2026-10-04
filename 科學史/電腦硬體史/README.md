@@ -21,9 +21,21 @@
 | 年份 | 事件 | 檔案 |
 |------|------|------|
 | 1936 | Turing 機——通用計算的抽象定義，軟體的原型 | [1936-Turing機.md](1936-Turing機.md) |
+| 1945 | von Neumann EDVAC 報告——儲存程式架構，所有現代電腦的原型 | [1945-vonNeumann架構.md](1945-vonNeumann架構.md) |
 | 1946 | ENIAC——第一台通用電子數位電腦，18000 顆電子管 | [1946-ENIAC電子計算機.md](1946-ENIAC電子計算機.md) |
 | 1947 | Bardeen、Brattain、Shockley 發明電晶體——電子時代的鑰匙 | [1947-電晶體.md](1947-電晶體.md) |
 | 1958 | Kilby 與 Noyce 各自發明積體電路——「單片電腦」的藍圖 | [1958-積體電路.md](1958-積體電路.md) |
+
+### 大型機與架構的年代（1962–1976）
+
+| 年份 | 事件 | 檔案 |
+|------|------|------|
+| 1962 | Manchester Atlas 虛擬記憶體與分頁——記憶體的抽象化 | [1962-虛擬記憶體.md](1962-虛擬記憶體.md) |
+| 1964 | IBM System/360——ISA 架構家族與相容性的誕生 | [1964-IBMSystem360.md](1964-IBMSystem360.md) |
+| 1964 | CDC 6600——第一台超級電腦，scoreboard 與亂序雛形 | [1964-CDC6600超級電腦.md](1964-CDC6600超級電腦.md) |
+| 1967 | Tomasulo 演算法——register renaming 與亂序執行 | [1967-Tomasulo演算法.md](1967-Tomasulo演算法.md) |
+| 1969 | IBM 360/85——第一台商用 cache 機器，記憶體階層誕生 | [1969-快取記憶體.md](1969-快取記憶體.md) |
+| 1976 | Cray-1 向量超級電腦——HPC 黃金年代 | [1976-Cray-1向量處理器.md](1976-Cray-1向量處理器.md) |
 
 ### 微處理器時代（1971–2007）
 
@@ -32,7 +44,10 @@
 | 1971 | Intel 4004——世界上第一顆商用微處理器 | [1971-Intel4004微處理器.md](1971-Intel4004微處理器.md) |
 | 1978 | Intel 8086——x86 架構誕生，PC 帝國的四十年 | [1978-Intel8086.md](1978-Intel8086.md) |
 | 1981 | CISC 與 RISC 之戰——兩條指令集哲學的對決 | [1981-CISC與RISC之戰.md](1981-CISC與RISC之戰.md) |
+| 1991 | 分支預測（Yeh/Patt）——推測執行的鑰匙 | [1991-分支預測.md](1991-分支預測.md) |
 | 1993 | NVIDIA 成立——GPU 從圖形走向通用計算 | [1993-GPU圖形處理器.md](1993-GPU圖形處理器.md) |
+| 2001 | VLIW 與 EPIC（Itanium）——編譯器排程的極端實驗 | [2001-VLIW與EPIC.md](2001-VLIW與EPIC.md) |
+| 2002 | SMT 同時多執行緒（Hyper-Threading）——一核兩線 | [2002-Simultaneous多執行緒.md](2002-Simultaneous多執行緒.md) |
 | 2007 | 多核心處理器——用「數量」取代「頻率」 | [2007-多核心CPU.md](2007-多核心CPU.md) |
 
 ### 奈米時代（2012–2020）
@@ -52,12 +67,22 @@
 | 1837 | Charles Babbage | 差分機 |
 | 1854 | George Boole | 邏輯代數 |
 | 1936 | Alan Turing | 圖靈機 |
+| 1945 | John von Neumann | 儲存程式架構 |
+| 1962 | Manchester（Kilburn 等） | 虛擬記憶體 |
+| 1964 | Fred Brooks / Gene Amdahl | IBM System/360、ISA |
+| 1964 | Seymour Cray | CDC 6600 超級電腦 |
+| 1967 | Robert Tomasulo | 亂序執行、register renaming |
+| 1969 | IBM | 快取記憶體 |
+| 1976 | Seymour Cray | Cray-1 向量處理器 |
 | 1946 | John Mauchly / Presper Eckert | ENIAC |
 | 1947 | Bardeen / Brattain / Shockley | 電晶體 |
 | 1958 | Jack Kilby / Robert Noyce | 積體電路 |
 | 1971 | Marcian Hoff / Federico Faggin / Ted Hoff | Intel 4004 |
 | 1978 | Marcian Hoff / Stephen Morse | Intel 8086、x86 |
 | 1981 | David Patterson / John Hennessy | RISC |
+| 1991 | Tse-Yu Yeh / Yale Patt | 分支預測 |
+| 2001 | Josh Fisher / Intel–HP | VLIW、EPIC |
+| 2002 | Intel | Hyper-Threading（SMT） |
 | 1993 | Jensen Huang 等 | NVIDIA GPU |
 | 2007 | Intel / AMD | 多核心處理器 |
 | 2012 | AlexNet 團隊 | GPU 深度學習 |
