@@ -48,36 +48,19 @@ $A_5$ 是**單群**（simple，無非平凡正規子群）且非交換——**�
 
 **四次為何可解**：$S_4 \triangleright A_4 \triangleright V_4 \triangleright C_2 \triangleright \{e\}$——鏈完整，商群全交換——**有根式解**（Ferrari 公式，見 `1545-Cardano三次方程.md`）。
 
-### 程式碼：Galois 群與可解性
+### 可解性的判準（表列）
+**Galois 的判準**套用到各次方程：
 
-```python
-import itertools, cmath, math
+| 次數 $n$ | Galois 群 | 子群鏈 | 商群全交換？ | 根式解 |
+|----------|-----------|--------|--------------|--------|
+| 2 | $S_2$ | $S_2 \triangleright \{e\}$ | ✓ | ✓ 花拉子米 |
+| 3 | $S_3$ | $S_3 \triangleright A_3 \triangleright \{e\}$ | ✓ | ✓ Cardano |
+| 4 | $S_4$ | $S_4 \triangleright A_4 \triangleright V_4 \triangleright C_2 \triangleright \{e\}$ | ✓ | ✓ Ferrari |
+| 5 | $S_5$ | $S_5 \triangleright A_5 \triangleright \{e\}$ | ✗（$A_5$ 單群且非交換） | ✗ Abel–Galois |
 
-def galois_group_check(roots, coeffs):
-    """概念：檢查哪些置換保持根的代數關係（範例用 x^3-2）"""
-    # x^3 - 2 = 0 的根：∛2, ω∛2, ω²∛2——循環群 C_3
-    w = cmath.exp(2j * math.pi / 3)
-    roots3 = [2**(1/3), w * 2**(1/3), w**2 * 2**(1/3)]
-    # 循環置換 (1,2,3) 保持結構；換位 (1,2) 破壞（√2 → ω√2 無理關係）
-    return "C_3（循環群，可解）→ 有根式解"
+**範例：$x^3 - 2 = 0$ 的 Galois 群**：三根 $\{\sqrt[3]{2},\ \omega\sqrt[3]{2},\ \omega^2\sqrt[3]{2}\}$（$\omega = e^{2\pi i/3}$）。循環置換（三根輪轉）保持所有代數關係（如三根之積 $= 2$），換位則破壞 $\sqrt[3]{2}$ 與 $\omega\sqrt[3]{2}$ 的無理關係——Galois 群是**循環群 $C_3$**，可解——**有根式解**。
 
-def solvable_chain_check(n):
-    """S_n 的可解性判準（Galois）"""
-    if n <= 4:
-        # S_4 ⊳ A_4 ⊳ V_4 ⊳ C_2 ⊳ {e}：鏈完整，商群交換
-        return f"S_{n} 可解 → 有根式解"
-    # S_5 ⊳ A_5 ⊳ {e}：A_5 是單群且非交換——鏈斷
-    return f"S_{n} 不可解（A_{n} 單群）→ 無根式解"
-
-for n in [2, 3, 4, 5]:
-    print(f"{n} 次：{solvable_chain_check(n)}")
-# 2,3,4 次：可解（花拉子米、Cardano、Ferrari 公式）
-# 5 次：不可解（Abel 1824 證明、Galois 1832 解釋為何）
-
-# 群論的誕生：對稱性的數學
-print("\nGalois 的遺產：群 = 對稱性的數學")
-print("方程可解性 ⟺ Galois 群可解（子群鏈 + 交換商群）")
-```
+**群論的誕生**：$G$ 捕捉的是「**對稱性**」——方程可解性 ⟺ Galois 群可解（子群鏈 + 交換商群）——從「解方程」到「研究對稱」的革命。
 
 ### 決鬥之夜的遺稿
 **5 月 29 日夜的信**（給 Chevalier）：三封信——政治、數學遺稿、「我沒有時間了」。數學遺稿包含：

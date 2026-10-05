@@ -40,37 +40,21 @@ $$C = B\log_2\!\left(1 + \frac{S}{N}\right) \quad \text{bits/s}.$$
   故在 $B\log_2(1+S/N)$ 固定下，$B/S/N$ 有最優化——**寬頻窄頻的取捨有了理論基礎**。
 - 現代 5G massive MIMO 與 OFDM，本質是在**逼近這個界**（見「2019-5G與Starlink星群.md」）。
 
-### Python：Shannon 容量界與逼近
+### 證據與工具：Shannon 容量的數值表
 
-```python
-import numpy as np
+Shannon 公式本身就是可計算的證據。固定頻寬 $B = 1\ \text{MHz}$，改變訊噪比 $S/N$：
 
-def shannon_capacity(B, S, N, nModes=6):
-    """AWGN 容量：理論上限；並掃 nModes 的星座圖逼近"""
-    S_list = np.linspace(0, 1, nModes)
-    best = 0
-    for m in S_list:
-        # 最佳 constellation：m 個等間隔點，逼近容量（高斯輸入則 = 容量）
-        # 簡化：每 mode 容量 = 0.5 log2(1 + S/N)
-        cap = 0.5*B*np.log2(1 + m*S/N)
-        best = max(best, cap)
-    return B*np.log2(1 + S/N)     # 理論上界（高斯輸入）
+| SNR（dB） | $S/N$（線性） | 容量 $C = B\log_2(1+S/N)$ |
+|---|---|---|
+| 0 | 1 | $1.00$ Mb/s |
+| 10 | 10 | $3.46$ Mb/s |
+| 20 | 100 | $6.66$ Mb/s |
+| 30 | 1000 | $9.97$ Mb/s |
 
-B, N = 1e6, 1e-3               # 1 MHz 頻寬，雜訊 -30 dBm
-for SNR_dB in [0, 10, 20, 30]:
-    S = N * 10**(SNR_dB/10)
-    C = shannon_capacity(B, S, N)
-    print(f"SNR={SNR_dB:2d} dB → 容量 {C/1e6:6.2f} Mb/s")
-print("→ 30 dB SNR 在 1 MHz 頻寬下最多 30 Mb/s（WiFi/LTE 都遠未達到）")
-```
-輸出：
-```
-SNR= 0 dB → 容量   1.00 Mb/s
-SNR=10 dB → 容量   3.46 Mb/s
-SNR=20 dB → 容量   6.66 Mb/s
-SNR=30 dB → 容量  30.00 Mb/s
-```
-（1 MHz 頻寬 30 dB SNR 的絕對上限 30 Mb/s——**所有現代無線都在此界之下**。）
+兩個立即浮現的工程事實：
+
+1. **對數增長**：SNR 每加 10 dB，容量只線性段性地增加——加大發射功率的邊際報酬遞減，逼工程師轉向頻寬與空間維度（MIMO）。
+2. **絕對上限**：1 MHz 頻寬、30 dB SNR 下最多約 10 Mb/s（高斯輸入的極限）——**任何調變與編碼都無法超越**，所有現代無線系統都在此界之下，設計目標變成「距離 Shannon 界多遠」。
 
 ### 第四條線索：誤碼率的第二定理
 給定容量 $R$，若 $R < C$ 則可達**任意小誤碼率**（編碼定理）；

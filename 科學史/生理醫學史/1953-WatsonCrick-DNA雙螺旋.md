@@ -37,34 +37,15 @@ $$5'-\text{A T G C}-3' \quad \Big\| \quad 3'-\text{T A C G}-5'.$$
 （1958 年 Meselson–Stahl 用 $^{15}$N 同位素實驗證實）。
 **這是分子生物學的中心法則的起點**：DNA → RNA → 蛋白質。
 
-### Python：互補配對與半保留複製的模擬
+### 互補配對的讀寫格式
 
-```python
-COMPLEMENT = {'A':'T', 'T':'A', 'G':'C', 'C':'G'}
+配對規則 $A\!\to\!T,\ T\!\to\!A,\ G\!\to\!C,\ C\!\to\!G$（$A$–$T$ 兩氫鍵、$G$–$C$ 三氫鍵），
+骨架反向平行。半保留複製時每股當模板，按配對規則合成新股：
 
-def replicate(dna):
-    # 半保留複製：每股當模板，按配對規則合成新股
-    return [''.join(COMPLEMENT[b] for b in dna),      # 新股 1（對舊股 1）
-            ''.join(COMPLEMENT[b] for b in dna[::-1])]  # 反向平行股
+$$5'\text{-A T G C C G T A A G}-3' \quad \Big\| \quad 3'\text{-T A C G G C A T T C}-5'.$$
 
-def gc_content(dna):
-    return (dna.count('G') + dna.count('C')) / len(dna)
-
-dna = "ATGCCGTAAGCTTACGGCATTACCGGT"
-new1, new2 = replicate(dna)
-print("原股 :", dna)
-print("新股1:", new1, "（互補）")
-print("GC 含量:", f"{gc_content(dna)*100:.1f}%")
-# 驗證：複製後的兩條雙螺旋與原版完全相同
-print("複製正確:", all(COMPLEMENT[a]==b for a,b in zip(dna,new1)))
-```
-輸出：
-```
-原股 : ATGCCGTAAGCTTACGGCATTACCGGT
-新股1: TACGGCATTCGAATGCCGTAATGGCCA（互補）
-GC 含量: 51.9%
-複製正確: True
-```
+**複製的必然性**：新舊兩股互補，故複製後的兩條雙螺旋與原版完全相同——
+**配對就是複製**（Crick 的最大洞見），1958 年由 Meselson–Stahl 用 $^{15}$N 同位素實驗證實。
 
 ### 雙螺旋的偵查證據鏈
 | 證據 | 提供者 | 推理 |

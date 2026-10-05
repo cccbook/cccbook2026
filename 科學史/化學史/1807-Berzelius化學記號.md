@@ -63,12 +63,14 @@ aw = {"H": 1.008, "O": 16.00}
 formula, ratios = empirical_formula({"H": 11.19, "O": 88.81}, aw)
 print(f"水的質量比 -> 莫耳比：{ {k: round(v, 2) for k, v in ratios.items()} }")
 print(f"實驗式（化學式）：{formula}")   # 應得 H2O
-
-# Berzelius 的電化分類：簡化的電負度序列
-electronegativity = {"O": 3.44, "Cl": 3.16, "S": 2.58, "H": 2.20,
-                     "Cu": 1.90, "Fe": 1.83, "Zn": 1.65, "Na": 0.93}
-pairs = [("Na", "Cl"), ("Zn", "O"), ("Fe", "S")]
-for a, b in pairs:
-    pos, neg = (a, b) if electronegativity[a] < electronegativity[b] else (b, a)
-    print(f"{a} + {b}: 電正性部分 = {pos}，電負性部分 = {neg}（二元論預測）")
 ```
+
+**二元論的電化分類。** Berzelius 認為一切化合物由「電正性部分＋電負性部分」組成，可依元素對電的親和力排序預測化合方式：
+
+| 結合 | 電正性部分（陽） | 電負性部分（陰） | 二元論寫法 |
+|---|---|---|---|
+| 鈉 + 氯 | Na | Cl | $\mathrm{Na^+Cl^-}$（食鹽） |
+| 鋅 + 氧 | Zn | O | $\mathrm{Zn^{2+}O^{2-}}$（氧化鋅） |
+| 鐵 + 硫 | Fe | S | $\mathrm{Fe^{2+}S^{2-}}$（硫化亞鐵） |
+
+（現代電負度參考值：O 3.44 > Cl 3.16 > S 2.58 > H 2.20 > Cu 1.90 > Fe 1.83 > Zn 1.65 > Na 0.93。）二元論對鹽類極為成功，並把化合物整理成「鹼基＋酸基」的系統；但它無法容納氫、氯等以分子形式存在的共價物質，最終在半世紀後讓位給價鍵理論——不過「正負部分組成化合物」的直覺，在離子化學中活到今天。

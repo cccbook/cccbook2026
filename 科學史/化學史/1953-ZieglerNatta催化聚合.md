@@ -46,49 +46,16 @@ $$\mathrm{Ti{-}R} + \mathrm{CH_2{=}CH_2} \rightarrow \mathrm{Ti{-}CH_2{-}CH_2{-}
 
 ## 證據與工具
 
-以下用 Python 模擬等規 vs 無規聚丙烯的結晶傾向差異，並以簡單模型示範 Cossee-Arlman 鏈增長的 Monte Carlo 過程。
+**立體規則性決定結晶：** 聚丙烯的性質完全由甲基的排列規則性決定——這是「結構決定性質」最直觀的示範：
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+| 類型 | 甲基排列 | 鏈構象 | 結晶能力 | 性質 |
+|---|---|---|---|---|
+| 等規 isotactic | 全在同一側 | 螺旋（每 3 個單體轉一圈） | 高 | 熔點約 165 °C，可作纖維與工程塑膠 |
+| 間規 syndiotactic | 規則交替兩側 | 鋸齒狀 | 高 | 熔點約 130 °C |
+| 無規 atactic | 隨機 | 無規線團 | 無定形 | 蠟狀軟膠，無強度 |
 
-# --- 模擬 1：立體規則性 vs 結晶傾向 ---
-# 用簡化模型：相鄰單體構型相同 → 可堆疊加分，不同 → 扣分
-def crystallinity(chain):
-    score = 0
-    for i in range(1, len(chain)):
-        score += 1 if chain[i] == chain[i-1] else -1
-    return max(score, 0) / (len(chain) - 1)
+**Cossee-Arlman 機理的立體控制：** 催化劑對單體取向的控制不是「機率性偏好」，而是手性位點的幾何強制：丙烯配位到鈦空位時，甲基必須避開晶格的擁擠側，故每次都以同一面接入、同一構型不斷複製：
 
-n = 200
-atactic   = np.random.choice([0, 1], size=n)                    # 無規：隨機
-isotactic = np.ones(n, dtype=int)                               # 等規：全同
-print(f"無規聚丙烯結晶傾向: {crystallinity(atactic):.2f}")
-print(f"等規聚丙烯結晶傾向: {crystallinity(isotactic):.2f}")
+$$\mathrm{Ti{-}CH_2{-}CH(CH_3){-}R} + \mathrm{CH_2{=}CH{-}CH_3} \rightarrow \mathrm{Ti{-}CH_2{-}CH(CH_3){-}CH_2{-}CH(CH_3){-}R}$$
 
-# --- 模擬 2：Cossee-Arlman 鏈增長 (Monte Carlo) ---
-# 活性中心每次插入一個丙烯，插入取向由催化劑立體環境決定(機率 p_same)
-def polymerize(n_units, p_same=0.98):
-    chain, inserts = [], 0
-    orientation = 1                      # 初始取向
-    for _ in range(n_units):
-        if np.random.rand() < p_same:    # 手性位點強迫同向插入
-            chain.append(orientation)
-        else:                            # 偶爾「出錯」
-            orientation *= -1
-            chain.append(orientation)
-        inserts += 1
-    return chain
-
-chain = polymerize(100, p_same=0.98)
-print(f"鏈長 100，等規度(連續同向比例): {crystallinity(chain):.2f}")
-
-# 不同 p_same 對等規度的影響
-ps = np.linspace(0.5, 1.0, 11)
-tacticity = [np.mean([crystallinity(polymerize(200, p)) for _ in range(20)]) for p in ps]
-plt.plot(ps, tacticity, 'o-')
-plt.xlabel('插入取向一致性機率 p_same')
-plt.ylabel('等規度')
-plt.title('催化劑立體環境決定聚合物立體規則性')
-plt.show()
-```
+每步插入都嚴格經過金屬中心（鏈完美線性、無分支），且以同一構型複製——Natta 的 $\mathrm{TiCl_3}$ 體系等規度可達 90% 以上，鏈採取規則螺旋緊密結晶，熔點與強度隨之躍升；1980 年代的單活性位金屬茂催化劑更把等規度推向 99% 以上。等規度與立體規則性由 X 射線繞射與 NMR 表徵確認——聚丙烯就此從蠟狀副產物變成泛用塑膠。

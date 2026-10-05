@@ -42,49 +42,23 @@ $$[\text{Co}(\text{NH}_3)_6]^{3+} \quad \text{（八面體構型）}$$
 
 ## 證據與工具
 
-```python
-# 用 Python 模擬維爾納的推理：八面體配位的異構物計數
-import itertools
+**八面體異構物的立體幾何計數：** 維爾納的推理是純幾何——把八面體的 6 個配位位置想成固定座位。以 $[\mathrm{MA_4B_2}]$ 為例，兩個 B 的取位方式共 $\binom{6}{2} = 15$ 種，但經八面體的旋轉對稱歸併後只剩兩類幾何等價類：B 相鄰的**順式（cis，紫色）**與 B 相對的**反式（trans，綠色）**。同理 $[\mathrm{MA_3B_3}]$ 也恰好歸併為**面式（fac）**與**經式（mer）**兩類：
 
-# 八面體有 6 個配位位置，用編號 0~5 表示
-# 0 與 5 相對（反位），1~4 圍成赤道平面
-octahedron_opposite = {0: 5, 1: 3, 2: 4, 3: 1, 4: 2, 5: 0}
+| 型別 | 取位方式 | 幾何等價類 | 維爾納的預言 |
+|---|---|---|---|
+| $[\mathrm{MA_4B_2}]$ | $\binom{6}{2} = 15$ | 2（順式、反式） | 應有 2 種異構物 ✓ |
+| $[\mathrm{MA_3B_3}]$ | $\binom{6}{3} = 20$ | 2（面式、經式） | 應有 2 種異構物 ✓ |
 
-def isomers_MA4B2():
-    """計算 [MA4B2] 八面體的異構物數目（維爾納預言：2 種）"""
-    seen = set()
-    unique = []
-    for pos_B in itertools.combinations(range(6), 2):
-        # 判斷順式（相鄰）還是反式（相對）
-        if octahedron_opposite[pos_B[0]] == pos_B[1]:
-            kind = "trans(反式,綠色)"
-        else:
-            kind = "cis(順式,紫色)"
-        if kind not in seen:
-            seen.add(kind)
-            unique.append((pos_B, kind))
-    return unique
+若配位是當時流行的鏈式結構（一維），$[\mathrm{MA_4B_2}]$ 根本不會有異構物——異構物的存在本身就是立體配位的證據。
 
-print("== [MA4B2] 八面體異構物 ==")
-for pos, kind in isomers_MA4B2():
-    print(f"B 佔據位置 {pos} -> {kind}")
-# 正好 2 種 —— 維爾納的立體幾何預言！
+**「氯的活性」之謎：內界氯 vs 外界氯。** AgNO₃ 只能沉澱自由的（外界）氯離子；維爾納主張內界氯被中心鈷原子抓住，故不沉澱。實驗結果正好支持配位結構式：
 
-# 驗證「氯的活性」之謎：內界氯 vs 外界氯
-compounds = {
-    "CoCl3·6NH3": "[Co(NH3)6]Cl3，3 個氯全在外界",
-    "CoCl3·5NH3": "[Co(NH3)5Cl]Cl2，2 個氯在外界",
-    "CoCl3·4NH3": "[Co(NH3)4Cl2]Cl，1 個氯在外界",
-}
-print("\n== AgNO3 沉澱試驗（可沉澱的 Cl 數）==")
-for formula, desc in compounds.items():
-    outer_cl = 3 - formula.count("·") - 0  # 外界氯數 = 3 - 內界氯數
-    inner_cl = formula.count("·")
-    print(f"{formula}: {desc} -> 沉澱出 {outer_cl} 個 Cl")
-# 同是氯，行為不同 —— 內界氯被鈷抓住，外界氯自由
+| 舊式寫法 | 維爾納結構式 | 可被 AgNO₃ 沉澱的 Cl⁻ 數 |
+|---|---|---|
+| CoCl₃·6NH₃ | $[\mathrm{Co(NH_3)_6}]\mathrm{Cl}_3$ | 3（全在外界） |
+| CoCl₃·5NH₃ | $[\mathrm{Co(NH_3)_5Cl}]\mathrm{Cl}_2$ | 2 |
+| CoCl₃·4NH₃ | $[\mathrm{Co(NH_3)_4Cl_2}]\mathrm{Cl}$ | 1 |
 
-# 光學異構檢驗：[Co(en)3]Cl3 的鏡像異構
-print("\n== [Co(en)3]3+ 的螺旋手性 ==")
-print("Δ（右旋）與 Λ（左旋）為鏡像，1911 年維爾納成功拆分")
-print("八面體三股螺旋排列 -> 無機化合物的光學活性誕生")
-```
+同是氯，行為不同——內界氯被鈷抓住，外界氯自由。
+
+**光學異構檢驗：** $[\mathrm{Co(en)_3}]^{3+}$ 的三股螯合配體排成螺旋，存在 $\Delta$（右旋）與 $\Lambda$（左旋）一對鏡像異構物。1911 年維爾納成功拆分——無機化合物的光學活性就此誕生。

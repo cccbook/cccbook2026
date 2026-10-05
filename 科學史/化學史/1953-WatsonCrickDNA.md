@@ -44,41 +44,27 @@ DNA 雙螺旋引發的分子生物學革命：
 
 ## 證據與工具
 
-```python
-# 驗證 Chargaff 規則與鹼基配對：氫鍵數與分子寬度
-import numpy as np
+**Chargaff 規則的實驗數據（1950）：** Chargaff 用層析分析不同物種的 DNA，發現不管物種為何，A 的量總等於 T、G 總等於 C，但各物種之間的比例（A+G）/（T+C）各不相同——這是隨機聚合不可能給出的規律：
 
-# 模擬一段隨機 DNA 序列，檢驗 Chargaff 規則（A=T, G=C）
-rng = np.random.default_rng(7)
-bases = list("ATGC")
-seq = "".join(rng.choice(bases, 10000))
-counts = {b: seq.count(b) for b in bases}
-print("Chargaff 規則檢驗（10000 個隨機鹼基）：")
-print(f"  A = {counts['A']}, T = {counts['T']}  → 相等？{counts['A']==counts['T']}")
-print(f"  G = {counts['G']}, C = {counts['C']}  → 相等？{counts['G']==counts['C']}")
+| 物種 | A (%) | T (%) | G (%) | C (%) |
+|---|---|---|---|---|
+| 人 | 30.9 | 29.4 | 19.9 | 19.8 |
+| 大腸桿菌 | 24.7 | 23.6 | 26.0 | 25.7 |
+| 酵母 | 31.3 | 32.9 | 18.7 | 17.1 |
 
-# 鹼基配對：互補配對函數（氫鍵數）
-complement = {"A": "T", "T": "A", "G": "C", "C": "G"}
-h_bonds = {"A": 2, "T": 2, "G": 3, "C": 3}
+（Chargaff 1950–52 的經典數據；小數偏差來自當時的測量精度。）A=T、G=C 正是互補配對的化學後果：A 配 T、G 配 C，雙股中一種鹼基多、另一種必定同樣多。
 
-def complement_strand(seq):
-    """產生反向平行的互補股"""
-    return "".join(complement[b] for b in reversed(seq))
+**鹼基配對的幾何與氫鍵：** 嘌呤（雙環，A/G）必須配嘧啶（單環，T/C），配對寬度才會恆定，雙螺旋的直徑才能維持 20 Å：
 
-demo = "ATGCGTA"
-print(f"\n範例序列      5'-{demo}-3'")
-print(f"互補股(反平行) 3'-{complement_strand(demo)}-5'")
+| 配對 | 類型 | 氫鍵數 | 配對寬度 |
+|---|---|---|---|
+| $\mathrm{A{=}T}$ | 嘌呤–嘧啶 | 2 | 恆定（與 G–C 相同） |
+| $\mathrm{G \equiv C}$ | 嘌呤–嘧啶 | 3 | 恆定（與 A–T 相同） |
+| A–G（假想） | 嘌呤–嘌呤 | — | 過寬，破壞螺旋 |
+| T–C（假想） | 嘧啶–嘧啶 | — | 過窄，破壞螺旋 |
 
-total = sum(h_bonds[b] for b in zip(demo, complement_strand(demo)[::-1]) 
-            for b in [b[0]])
-print(f"此段鹼基對氫鍵總數 = {sum(h_bonds[b] for b in demo)}")
+**反向平行與互補：** 兩股以 $5' \to 3'$ 與 $3' \to 5'$ 反向纏繞，互補性使任意序列都能塞進統一的雙螺旋：
 
-# 幾何驗證：嘌呤(A/G)配嘧啶(T/C) → 配對寬度恆定
-purines, pyrimidines = "AG", "TC"
-pairs = ["A-T", "G-C", "T-A", "C-G"]
-print("\n配對寬度檢驗（嘌呤-嘧啶 → 寬度恆定，螺旋直徑 20 Å 才能維持）：")
-for p in pairs:
-    a, b = p.split("-")
-    ok = (a in purines and b in pyrimidines) or (a in pyrimidines and b in purines)
-    print(f"  {p}: 嘌呤-嘧啶？{ok}，氫鍵數 {h_bonds[a]}")
-```
+$$5'\text{-ATGCGTA-3'} \quad \leftrightarrow \quad 3'\text{-TACGCAT-5'}$$
+
+（示範序列；每個 A–T 對貢獻 2 氫鍵、G–C 對貢獻 3 氫鍵，鹼基堆疊再提供額外穩定。）任意序列皆可配對——遺傳資訊才能以任意順序儲存，而複製時每股天然就是彼此的模板。

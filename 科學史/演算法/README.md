@@ -13,6 +13,8 @@
 | 1957 | Richard Bellman 出版《Dynamic Programming》：動態規劃（DP）的正式誕生，「最佳化原理」與重疊子問題 | [1957-Bellman動態規劃](1957-Bellman動態規劃.md) |
 | 1959 | Dijkstra 發明最短路徑演算法：20 分鐘構想的 O(n²) 貪婪法，GPS 導航的祖先 | [1959-Dijkstra最短路徑](1959-Dijkstra最短路徑.md) |
 | 1960 | Tony Hoare 發明快速排序（quicksort）：分治＋分割的實務王者 | [1960-快速排序](1960-快速排序.md) |
+| 1962 | Floyd-Warshall 全對最短路徑（DP）與 Ford-Fulkerson 最大流：max-flow min-cut 對偶性 | [1962-FloydWarshall與網路流](1962-FloydWarshall與網路流.md) |
+| 1963 | Luhn 提出雜湊思想、Knuth 系統分析雜湊表：O(1) 查找的誕生 | [1963-雜湊表與Knuth分析](1963-雜湊表與Knuth分析.md) |
 | 1964 | Williams 發明堆積排序、Floyd 改良堆積建構：完全二元樹的 O(n log n) 排序 | [1964-堆積排序與Floyd](1964-堆積排序與Floyd.md) |
 | 1965 | Jack Edmonds 發表《Paths, Trees, and Flowers》：提出「好演算法」（多項式時間）的正式定義， blossom 演算法證明匹配問題是 P | [1965-Edmonds與多項式時間](1965-Edmonds與多項式時間.md) |
 
@@ -27,12 +29,15 @@
 | 1972 | Karp 發表《Reducibility Among Combinatorial Problems》：21 個經典問題皆 NP-complete，歸約（reduction）成為標準武器 | [1972-Karp21題](1972-Karp21題.md) |
 | 1975 | Tarjan 分析並查集（union-find）：路徑壓縮＋按秩合併的攤還複雜度 O(α(n))——反 Ackermann 函數，攤還分析的誕生 | [1975-Tarjan並查集與攤還分析](1975-Tarjan並查集與攤還分析.md) |
 | 1977 | Knuth、Morris、Pratt 發表 KMP 字串匹配演算法：O(n+m) 的線性時間匹配，失配表的智慧 | [1977-KMP字串匹配](1977-KMP字串匹配.md) |
+| 1977 | Boyer 與 Moore 發表 Boyer-Moore 搜尋：從右往左＋壞字元規則，實務亞線性 | [1977-BoyerMoore](1977-BoyerMoore.md) |
 | 1979 | Khachiyan 發明椭球法（ellipsoid method）：線性規劃首次被證明是多項式時間可解，Klee-Minty 立方體的反擊 | [1979-椭球法與線性規劃](1979-椭球法與線性規劃.md) |
 
-## 第三幕：演算法進入工業與網路時代（1998–2010s）
+## 第三幕：演算法進入工業與網路時代（1973–2010s）
 
 | 年份 | 事件 | wiki |
 |---|---|---|
+| 1973 | Weiner 發明後綴樹：建一次索引、查任意次，生物資訊學的基石 | [1973-後綴樹](1973-後綴樹.md) |
+| 1985 | Sleator 與 Tarjan 發表 Splay Tree：自我調整二元搜尋樹，動態最優性猜想至今未解 | [1985-SplayTree與自我調整](1985-SplayTree與自我調整.md) |
 | 1998 | Brin 與 Page 發表 PageRank：以「隨機漫遊的平穩分佈」重寫網頁排序，Google 的數學心臟 | [1998-PageRank與Google](1998-PageRank與Google.md) |
 | 2014 | Kingma 與 Ba 發表 Adam 優化器：動量＋自適應學習率的隨機梯度優化，深度學習的引擎 | [2014-Adam與隨機梯度優化](2014-Adam與隨機梯度優化.md) |
 
@@ -63,3 +68,8 @@
 - **Leonid Khachiyan**：椭球法
 - **Larry Page / Sergey Brin**：PageRank
 - **Diederik Kingma / Jimmy Ba**：Adam
+- **Robert Floyd / Stephen Warshall**：全對最短路徑
+- **Hans Luhn**：雜湊思想
+- **Peter Weiner**：後綴樹
+- **Robert Boyer / J Strother Moore**：Boyer-Moore
+- **Daniel Sleator**：Splay Tree、link-cut tree

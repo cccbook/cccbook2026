@@ -37,31 +37,17 @@ Volta 電池（電堆）的問世，是電學與化學史的分水嶺。拿破�
 
 ## 證據與工具
 
-以下 Python 程式模擬 Volta 電堆的電壓疊加，並比較鋅銅電偶與多層電堆的輸出：
+**電堆電壓的疊加。** 單一鋅-銅電偶的電動勢由標準電極電位決定：
 
-```python
-# 模擬 Volta 電堆（voltaic pile）
-# 單一鋅-銅電偶的接觸電位差約 1.10 V（以標準電極電位估算）
-E_Cu = 0.34   # Cu2+/Cu 標準電極電位 (V)
-E_Zn = -0.76  # Zn2+/Zn 標準電極電位 (V)
-V_cell = E_Cu - E_Zn
-print(f"單一鋅銅電偶電壓：{V_cell:.2f} V")
+$$E_{\text{cell}} = E^{\circ}_{\mathrm{Cu^{2+}/Cu}} - E^{\circ}_{\mathrm{Zn^{2+}/Zn}} = 0.34 - (-0.76) = 1.10\ \text{V}$$
 
-# Volta 電堆：N 層疊加，電壓相加
-def pile_voltage(N):
-    return N * V_cell
+Volta 電堆將 N 組「鋅｜浸鹽液布片｜銅」單元層層疊加，各單元電壓近似相加：$V_N \approx N \times 1.10\ \text{V}$：
 
-for N in [1, 30, 60, 120]:
-    print(f"{N:>3} 層電堆總電壓：{pile_voltage(N):6.1f} V")
+| 電堆層數 $N$ | 總電壓 (V) | 備註 |
+|---|---|---|
+| 1 | 1.1 | 單一電偶 |
+| 2 | 2.2 | 已足以電解水 |
+| 30 | 33 | Volta 原始電堆的量級 |
+| 60 | 66 | 可產生明顯電火花 |
 
-# 水的電解需要約 1.23 V（理論值），實務上加上過電位約需 1.7 V
-E_water = 1.23
-overpotential = 0.5
-required = E_water + overpotential
-# 找出能分解水的最少層數
-N = 1
-while pile_voltage(N) < required:
-    N += 1
-print(f"分解水需約 {required:.2f} V，至少需要 {N} 層電堆")
-print("1800 年 Nicholson 與 Carlisle 正是用電堆首次電解了水！")
-```
+**為什麼能電解水。** 水的分解理論上需要 $E^{\circ} = 1.23$ V，加上電極過電位實務上約需 1.7 V——所以兩層電堆就跨過了門檻。1800 年 Nicholson 與 Carlisle 正是用 Volta 電堆首次電解了水（兩極分別冒出氫與氧），把「電流」與「化學變化」正式連結起來，電化學由此誕生。

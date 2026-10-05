@@ -54,50 +54,32 @@ $$\mathrm{NH_4OCN} \;\longrightarrow\; \mathrm{CO(NH_2)_2}$$
 
 ## 證據與工具
 
-```python
-# 用 Python 驗證 Wöhler 案件中的兩大證物：
-# (1) 氰酸銨與尿素組成相同 => (2) 但結構與性質不同（同分異構）
+**證物一：組成完全相同。** 氰酸銨與尿素的元素組成完全一致（皆為 $\mathrm{CH_4N_2O}$）。以現代精確原子量（C 12.011、H 1.008、N 14.007、O 15.999）計算，$M = 60.06$ g/mol，各元素質量百分比為：
 
-from collections import Counter
+$$\%\mathrm{C} = \frac{12.011}{60.06} \times 100 \approx 20.0\%, \quad \%\mathrm{H} = \frac{4 \times 1.008}{60.06} \times 100 \approx 6.7\%$$
 
-# --- 第一部分：組成分析（%C H N O）---
-# 當時的元素分析結果（現代精確值）
-species = {
-    "氰酸銨 NH4OCN": {"C": 1, "H": 4, "N": 2, "O": 1},
-    "尿素 CO(NH2)2": {"C": 1, "H": 4, "N": 2, "O": 1},
-}
-atomic_mass = {"C": 12.011, "H": 1.008, "N": 14.007, "O": 15.999}
+$$\%\mathrm{N} = \frac{2 \times 14.007}{60.06} \times 100 \approx 46.6\%, \quad \%\mathrm{O} = \frac{15.999}{60.06} \times 100 \approx 26.6\%$$
 
-def analysis(composition):
-    total = sum(atomic_mass[e] * n for e, n in composition.items())
-    pct = {e: atomic_mass[e] * n / total * 100 for e, n in composition.items()}
-    return total, pct
+| 物種 | C% | H% | N% | O% | 分子量 (g/mol) |
+|---|---|---|---|---|---|
+| 氰酸銨 $\mathrm{NH_4OCN}$ | 20.0 | 6.7 | 46.6 | 26.6 | 60.06 |
+| 尿素 $\mathrm{CO(NH_2)_2}$ | 20.0 | 6.7 | 46.6 | 26.6 | 60.06 |
 
-print("--- 元素組成分析 ---")
-for name, comp in species.items():
-    total, pct = analysis(comp)
-    print(f"{name}: M = {total:.2f} g/mol")
-    print("   " + "  ".join(f"{e}: {p:.2f}%" for e, p in pct.items()))
+組成百分比完全相同——道耳頓式的元素分析從此無法區分這兩種物質，這正是同分異構現象的起點。
 
-# 兩者組成百分比完全相同 => 道耳頓的分析化學無法區分它們
-print("\n結論：組成完全相同，元素分析無法區分！")
+**證物二：結構與性質不同。** 組成相同，性質卻迥異，差別在原子的「連接方式」：
 
-# --- 第二部分：結構不同 ---
-print("\n--- 結構差異（同分異構）---")
-print("氰酸銨：[NH4]+ [OCN]-  → 離子化合物，溶於水導電、加熱穩定前分解")
-print("尿  素：O=C(NH2)2     → 共價分子，熔點 133°C，遇硝酸產生特徵結晶")
-print("性質不同 => 原子的『連接方式』不同 => 結構決定性質")
+| 性質 | 氰酸銨 | 尿素 |
+|---|---|---|
+| 結構 | 離子化合物 $[\mathrm{NH_4}]^+[\mathrm{OCN}]^-$ | 共價分子 $\mathrm{O=C(NH_2)_2}$ |
+| 水溶液 | 導電 | 不導電 |
+| 熱安定性 | 加熱即分解 | 熔點 133°C |
+| 鑑識反應 | 與硝酸銀生成沉澱 | 與硝酸產生特徵結晶 |
 
-# --- 第三部分：反應的原子帳本（化學計量）---
-print("\n--- 反應帳本 ---")
-M_AgOCN, M_NH4Cl = 151.95, 53.49
-M_agc = 143.32   # AgCl
-M_urea = 60.06
-# AgOCN + NH4Cl -> NH4OCN(->尿素) + AgCl
-print(f"AgOCN({M_AgOCN}) + NH4Cl({M_NH4Cl}) -> 尿素({M_urea}) + AgCl({M_agc})")
-lhs = M_AgOCN + M_NH4Cl
-rhs = M_urea + M_agc
-print(f"左邊質量 {lhs:.2f} vs 右邊質量 {rhs:.2f}（差為 NH3 揮發等損耗的修正空間）")
-print("若從 10.0 g AgOCN 出發，理論尿素產量：",
-      f"{10.0/M_AgOCN*M_urea:.2f} g")
-```
+性質不同 ⇒ 原子的連接方式不同 ⇒ **結構決定性質**——Wöhler 合成的深層意義不只是打破「生命力」高牆，還逼出了結構理論。
+
+**反應的化學計量。** Wöhler 的路線是先由氰酸銀與氯化銨複分解得氰酸銨，再加熱使它異構化為尿素：
+
+$$\mathrm{AgOCN + NH_4Cl \to NH_4OCN \xrightarrow{\Delta} CO(NH_2)_2}$$
+
+由 10.0 g 氰酸銀（$M = 151.95$ g/mol）出發，理論尿素產量為 $\dfrac{10.0}{151.95} \times 60.06 \approx 3.95$ g；反應質量帳為 $151.95 + 53.49 = 205.44$ g 對 $60.06 + 143.32 = 203.38$ g，差額來自複分解時氨的揮發等實務損耗。

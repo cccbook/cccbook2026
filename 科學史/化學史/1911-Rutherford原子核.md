@@ -50,11 +50,10 @@ intensity = 1 / np.sin(theta / 2) ** 4
 print("角度(度)   瞄準距離b   相對強度(∝1/sin⁴)")
 for i in range(0, 50, 10):
     print(f"{theta_deg[i]:6.0f}     {b[i]:8.3f}    {intensity[i]:10.2f}")
-
-# --- 核與原子的大小比 ---
-r_atom = 1e-10   # 公尺（金原子半徑約 1.44e-10，取 1e-10 作數量級）
-r_nucleus = 1e-15  # 公尺（金核半徑約 7e-15，取 1e-15 作數量級）
-print(f"\n核/原子半徑比 ≈ {r_nucleus / r_atom:.0e}")
-print("若原子放大為一座棒球場（直徑100m），核只有約",
-      f"{100 * r_nucleus / r_atom * 1e2:.1f} mm")
 ```
+
+**核與原子的大小比（數量級核算）：** 金原子半徑約 $1.4\times10^{-10}$ m，金核半徑約 $7\times10^{-15}$ m：
+
+$$\frac{r_{\text{核}}}{r_{\text{原子}}} \approx \frac{7\times10^{-15}}{1.4\times10^{-10}} \approx 5\times10^{-5} \sim 10^{-5}$$
+
+若原子放大為直徑 100 m 的棒球場，核直徑僅約 $100\ \mathrm{m} \times 5\times10^{-5} \approx 5$ mm——一粒豌豆大小。α 粒子幾乎全數直穿，只有極少數正面撞上核才大角反彈，「八千分之一」正是這個數量級的量測結果。

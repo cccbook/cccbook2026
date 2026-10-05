@@ -33,38 +33,22 @@ $\alpha$-螺旋是分子生物學的第一塊基石：
 
 ## 證據與工具
 
-```python
-# 畫出 α-螺旋：每圈 3.6 殘基、螺距 5.4 Å 的幾何模擬
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D  # noqa
+**α-螺旋的幾何推理：** 鮑林與科里把肽鍵視為剛性平面（酰胺共振），在精確鍵長鍵角的限制下拼合分子模型：主鏈繞軸捲成螺旋，每個殘基沿軸上升 1.5 Å、旋轉 100°，故每圈 3.6 個殘基：
 
-# α-螺旋參數
-rise = 1.5          # 每殘基沿軸上升量 (Å)
-residues_per_turn = 3.6
-twist = 2*np.pi / residues_per_turn   # 每殘基旋轉角（100°）
-n_res = 30
+$$\text{每殘基旋轉角} = \frac{360^\circ}{3.6} = 100^\circ, \qquad \text{螺距} = 3.6 \times 1.5\ \text{Å} = 5.4\ \text{Å}$$
 
-t = np.arange(n_res)
-# 主鏈 Cα 原子座標：繞 z 軸的螺旋線，半徑約 2.3 Å
-r = 2.3
-x = r * np.cos(t * twist)
-y = r * np.sin(t * twist)
-z = t * rise
+**非整數的 3.6 是關鍵。** 若每圈是整數個殘基（如 Astbury 假設的 2 或 3 個），在平面肽鍵與鍵角的限制下，N–H 與 C=O 的指向無法一一對上；3.6 讓第 $i$ 殘基的 $\mathrm{N-H}$ 恰好指向第 $i+4$ 殘基的 $\mathrm{C=O}$，氫鍵幾乎與螺旋軸平行，整條主鏈由一串同向氫鍵鎖定：
 
-fig = plt.figure(figsize=(7, 6))
-ax = fig.add_subplot(111, projection="3d")
-ax.plot(x, y, z, "o-", lw=1, ms=3, label="主鏈 Cα 軌跡")
+$$\mathrm{C{=}O}_i \cdots \mathrm{H{-}N}_{i+4}$$
 
-# 氫鍵：殘基 i 的 N-H 與殘基 i+4 的 C=O 配對（近似用 Cα 連線示意）
-for i in range(n_res - 4):
-    ax.plot([x[i], x[i+4]], [y[i], y[i+4]], [z[i], z[i+4]],
-            "--", color="red", alpha=0.4)
-ax.set_xlabel("x (Å)"); ax.set_ylabel("y (Å)"); ax.set_zlabel("z (Å)")
-ax.set_title("α-螺旋模擬（紅虛線：i→i+4 氫鍵示意）")
-plt.show()
+**理論與實驗撞出的數字：**
 
-print(f"每圈殘基數 = {residues_per_turn}（非整數是關鍵！）")
-print(f"螺距 = {rise * residues_per_turn:.1f} Å（實驗值 5.4 Å，Perutz 繞射證實）")
-print(f"每殘基旋轉角 = {np.degrees(twist):.0f}°")
-```
+| 參數 | 模型值 | 來源／驗證 |
+|---|---|---|
+| 每殘基上升量 | 1.5 Å | Perutz 角蛋白繞射的 1.5 Å 子午線反射 |
+| 螺距 | 5.4 Å | 1951 年 Perutz 的馬毛角蛋白繞射出現 5.4 Å 強反射 |
+| 每圈殘基數 | $3.6 = 5.4/1.5$（非整數） | 兩個繞射值相除即得——模型自洽 |
+| 每殘基旋轉角 | $360^\circ/3.6 = 100^\circ$ | 幾何推論 |
+| 氫鍵模式 | $i \rightarrow i+4$ | N–H···O=C，與螺旋軸平行 |
+
+螺距恰為 $3.6 \times 1.5$ ——模型的兩個自由參數不是拼湊，而是被肽鍵幾何與繞射數據同時鎖死。α-螺旋是史上第一個由化學原理精確預言、隨即被繞射證實的生物巨分子結構。

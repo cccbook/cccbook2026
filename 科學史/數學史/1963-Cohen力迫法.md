@@ -54,29 +54,17 @@ $$\text{ZFC} \not\models \text{CH} \quad \text{且} \quad \text{ZFC} \not\models
 
 ### 程式碼：獨立性的概念
 
-```python
-# 獨立性：CH 既不能證明也不能否證
-# Gödel 1940：內模型 L（constructible universe）→ ZFC + CH 一致
-# Cohen 1963：力迫擴張 M[G] → ZFC + ¬CH 一致
+### CH 的獨立性（兩個模型）
+Gödel 1940 證明內模型 $\mathcal{L}$（constructible universe）滿足 ZFC + CH；Cohen 1963 用力迫構造模型 $\mathcal{M}[G]$ 滿足 ZFC + ¬CH——**兩個模型並存**：
 
-def independence_check():
-    """CH 獨立於 ZFC 的概念示範"""
-    models = {
-        "L（Gödel 內模型）": "CH 成立（2^ℵ0 = ℵ1）",
-        "M[G]（Cohen 力迫）": "¬CH 成立（2^ℵ0 ≥ ℵ2）",
-    }
-    for name, ch_status in models.items():
-        print(f"{name}：{ch_status}")
-    print("\n結論：兩個模型都滿足 ZFC，但 CH 答案不同——CH 獨立於 ZFC")
-    print("ZFC 對「無窮的大小」無能為力——公理系統的極限")
+| 模型 | 構造者 | CH 的地位 |
+|------|--------|-----------|
+| $\mathcal{L}$（可建構宇宙） | Gödel 1940 | CH 成立（$2^{\aleph_0} = \aleph_1$） |
+| $\mathcal{M}[G]$（力迫擴張） | Cohen 1963 | ¬CH 成立（$2^{\aleph_0} \ge \aleph_2$） |
 
-independence_check()
+兩個模型都滿足 ZFC，但 CH 的答案相反——**CH 獨立於 ZFC**：既不能證明也不能否證。**ZFC 對「無窮的大小」無能為力——公理系統的極限**。
 
-# 數學基礎的啟示
-print("\nGödel 1931：不完備（人工構造的命題）")
-print("Cohen 1963：獨立（最自然的問題 CH）")
-print("——公理系統的極限在核心，不在病態")
-```
+**Gödel 1931 的不完備**（人工構造的命題）vs **Cohen 1963 的獨立**（最自然的問題 CH）——**公理系統的極限在核心，不在病態**。
 
 ### 力迫法的帝國
 **Cohen 之後**：力迫法成為集合論的標準技術——

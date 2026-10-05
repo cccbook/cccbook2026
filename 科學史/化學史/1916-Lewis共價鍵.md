@@ -39,36 +39,21 @@ $$\mathrm{H \cdot + \cdot H \to H:H}$$
 
 ## 證據與工具
 
-```python
-# 路易斯結構式的自動生成與八隅體規則檢驗（以簡化規則示範）
-import numpy as np
+路易斯理論的核心是**八隅體規則**：每個原子（氫除外）藉共用電子對使外層電子數達到 8。共用電子對數即鍵級，故原子的外層電子數可寫成：
 
-valence = {"H": 1, "C": 4, "N": 5, "O": 6, "F": 7, "Cl": 7}
+$$N_{\text{外層}} = V_{\text{價電子}} + \sum_{\text{鍵}} \text{鍵級}$$
 
-def octet_check(molecule, bonds):
-    """檢驗每個原子是否滿足八隅體（氫為二隅體）
-    molecule: 原子列表, bonds: (原子i, 原子j, 鍵級) 列表"""
-    outer = {a: valence[a] for a in molecule}
-    for i, j, order in bonds:
-        outer[molecule[i]] += order   # 共享電子算進外層
-        outer[molecule[j]] += order
-    ok = all((outer[a] == 2 if molecule[a] == "H" else outer[a] == 8)
-             for a in molecule)
-    return ok, outer
+（共用的電子雙方都算進外層。）以幾個典型分子檢驗：
 
-cases = [
-    ("H2O（水）",     ["H", "O", "H"], [(0, 1, 1), (1, 2, 1)]),
-    ("CH4（甲烷）",   ["C", "H", "H", "H", "H"],
-     [(0, i, 1) for i in range(1, 5)]),
-    ("O2（氧，雙鍵）", ["O", "O"], [(0, 1, 2)]),
-    ("CO2（二氧化碳）", ["O", "C", "O"], [(0, 1, 2), (1, 2, 2)]),
-]
-for name, mol, bonds in cases:
-    ok, outer = octet_check(mol, bonds)
-    print(f"{name:<18} 八隅體滿足: {ok}   外層電子數: {outer}")
+| 分子 | 路易斯結構 | 各原子的外層電子數 | 八隅體滿足？ |
+|---|---|---|---|
+| $\mathrm{H_2O}$ | H–O–H | H：1+1=2（二隅體）、O：6+2=8 | ✓ |
+| $\mathrm{CH_4}$ | 四個 C–H 單鍵 | H：2、C：4+4=8 | ✓ |
+| $\mathrm{O_2}$ | O=O 雙鍵 | O：6+2=8 | ✓ |
+| $\mathrm{CO_2}$ | O=C=O | C：4+4=8、O：6+2=8 | ✓ |
 
-# 路易斯酸鹼配位：BF3（酸，缺電子）+ NH3（鹼，提供孤對）
-print("\nBF3 + NH3 -> F3B<-NH3（配位鍵）")
-print("B 外層 3+2=5（缺電子，路易斯酸）")
-print("N 外層 5+2=7 → 加上孤對共享成 8（路易斯鹼）")
-```
+**路易斯酸鹼配位：** $\mathrm{BF_3}$（B 外層僅 3+2=5，缺電子，為路易斯酸）可接受 $\mathrm{NH_3}$ 的孤對電子（N 外層 5+2=7→8，為路易斯鹼）：
+
+$$\mathrm{BF_3 + :NH_3 \rightarrow F_3B \leftarrow NH_3}$$
+
+配位鍵的生成使 B、N 皆達八隅體——這是八隅體規則超越共價鍵、擴展到配位化學的第一個範例。

@@ -45,60 +45,22 @@ CRISPR-Cas9 的遺產以驚人的速度展開：
 
 ## 證據與工具
 
-以下用 Python 模擬 gRNA 與目標 DNA 的鹼基配對辨識（含錯配計分），並示範 PAM 檢查與切割位點預測。
+**辨識的兩個檢查點：** Cas9 的靶點認證由兩個元素決定——PAM（SpCas9 為 5′-NGG-3′）與 gRNA 的 20 nt 互補配對。Cas9 先直接讀取 PAM（不經鹼基配對），認證後才解開雙鏈，讓 gRNA 與靶股形成 R 環：
 
-```python
-import numpy as np
+$$5' \text{-} \underbrace{N_{1}\,N_{2}\cdots N_{20}}_{\text{靶序列：與 gRNA 互補}}\ \underbrace{N\,G\,G}_{\text{PAM}} \text{-} 3'$$
 
-# --- 鹼基配對矩陣（化學鍵能量學的簡化） ---
-# A-T 兩條氫鍵, G-C 三條氫鍵 → G-C 配對更穩定
-pair = {'A':'T', 'T':'A', 'G':'C', 'C':'G'}
-h_bonds = {'AT': 2, 'TA': 2, 'GC': 3, 'CG': 3}
+配對的結合能來自氫鍵與鹼基堆疊：A–T 兩條氫鍵、G–C 三條；錯配會造成局部凸起並破壞堆疊，結合能大幅下降。
 
-# --- 模擬 1：gRNA 與目標 DNA 的配對辨識 ---
-def complement(dna):
-    return ''.join(pair[b] for b in dna)
+| 步驟 | 分子事件 | 失敗的後果 |
+|---|---|---|
+| 1. PAM 認證 | Cas9 直接讀取靶點緊鄰的 5′-NGG-3′ | 無 PAM → Cas9 不結合 |
+| 2. 解鏈配對 | PAM 上游 20 nt 與 gRNA 互補配對 | 種子區（近 PAM 端約 10–12 nt）錯配 → 辨識失效 |
+| 3. 切割 | HNH 結構域切靶股、RuvC 切非靶股 | 雙鏈斷裂位於 PAM 上游第 3 bp |
 
-def pairing_score(gRNA_20nt, target_20nt):
-    """錯配計分：完全配對 = 0, 每個錯配扣分"""
-    comp = complement(target_20nt)
-    mism = sum(a != b for a, b in zip(gRNA_20nt, comp))
-    return mism
+**設計範例：** 目標 20 nt 5′-GACCCCTGACCATCAAGTGG-3′ 緊鄰 PAM 5′-AGG-3′，gRNA 即其反向互補序列（RNA 版，T→U）5′-CCAGGACUGGUAGUUCACC-3′，雙鏈斷裂為平端、位於 PAM 上游第 3 bp：
 
-target_dna = "GACCCCTGACCATCAAGTGG"   # 目標 20nt
-gRNA       = "CCAGGACTGGTAGTTCACC"   # 設計的向導 RNA (與目標互補)
+$$5'\text{-GACCCCTGACCATCAA} \; \big\Vert \; \text{GTGG} \cdot \text{AGG-3'}$$
 
-print(f"目標 DNA : {target_dna}")
-print(f"gRNA     : {gRNA}")
-print(f"錯配數   : {pairing_score(gRNA, target_dna)}  → 可被 Cas9 識別切割")
+（$\big\Vert$ 為切割點；PAM 的 AGG 不被 gRNA 配對，是 Cas9 直接讀取的認證碼。）
 
-# --- 模擬 2：PAM 檢查與切割位點預測 ---
-def find_cut_sites(genome, gRNA_20nt):
-    """掃描基因體：找 NGG PAM + gRNA 配對的位置, 預測切割點(PAM上游3bp)"""
-    comp = complement(gRNA_20nt)
-    sites = []
-    for i in range(len(genome) - 23):
-        target, pam = genome[i:i+20], genome[i+20:i+23]
-        if pam[1:] == 'GG' and target == comp:   # 檢查點: PAM + 配對
-            cut = i + 17                          # 雙鏈斷裂位置
-            sites.append((i, cut))
-    return sites
-
-# 一段模擬基因體(含目標序列與 PAM)
-genome = ("TTTACGCGTAA" + gRNA + "AGG" + "GCTAGCTAGCGATCGATCG")
-sites = find_cut_sites(genome, gRNA)
-for start, cut in sites:
-    print(f"找到目標: 位置 {start}, PAM = {genome[start+20:start+23]}, "
-          f"切割點 = {cut}")
-    print(f"  ...{genome[start-4:start]}[{genome[start:cut]}|{genome[cut:start+23]}]...")
-
-# --- 模擬 3：錯配容忍度 (脫靶風險) ---
-def off_target_risk(gRNA_20nt, mutant_20nt):
-    mism = pairing_score(gRNA_20nt, mutant_20nt)
-    return "高風險(可能脫靶)" if mism <= 2 else "低風險"
-
-mutant = "CCAGGACTGGTAGTTCACG"   # 差一個鹼基的近親序列
-print(f"\n突變序列 {mutant} 錯配 {pairing_score(gRNA, mutant)} → "
-      f"{off_target_risk(gRNA, mutant)}")
-print("→ 鹼基配對的氫鍵能量學決定辨識精度，錯配越多結合越不穩定")
-```
+**脫靶風險：** 只差一個鹼基的近親序列，在遠離 PAM 端的錯配容忍度較高，仍可能被切割——這是 CRISPR 應用的最大風險，也是設計 gRNA 時必須以全基因體搜尋排雷的原因。鹼基配對的氫鍵能量學（錯配越多結合越不穩定）正是辨識精度的物理根源。

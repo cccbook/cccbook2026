@@ -41,6 +41,7 @@
 | 1832 | 伽羅瓦理論：群論與方程可解性的判準 | [1832-Galois群論.md](1832-Galois群論.md) |
 | 1837 | Dirichlet 算術級數：解析數論的誕生 | [1837-Dirichlet算術級數.md](1837-Dirichlet算術級數.md) |
 | 1843 | Hamilton 四元數：非交換代數的誕生 | [1843-Hamilton四元數.md](1843-Hamilton四元數.md) |
+| 1854 | Boole 布爾代數：邏輯的代數化，電腦邏輯的基礎 | [1854-Boole布爾代數.md](1854-Boole布爾代數.md) |
 | 1854 | 黎曼幾何：曲率與廣義空間 | [1854-Riemann幾何.md](1854-Riemann幾何.md) |
 | 1859 | 黎曼假設：素數分佈的中心懸案 | [1859-Riemann假設.md](1859-Riemann假設.md) |
 | 1872 | Weierstrass 分析嚴格化：處處不可微函數 | [1872-Weierstrass分析嚴格化.md](1872-Weierstrass分析嚴格化.md) |
@@ -70,6 +71,8 @@
 | 2000 | Clay 千禧年大獎：七大數學難題 | [2000-千禧年大獎.md](2000-千禧年大獎.md) |
 | 2003 | Perelman 證明龐加萊猜想：唯一放棄的百萬獎金 | [2003-Perelman龐加萊猜想.md](2003-Perelman龐加萊猜想.md) |
 | 2013 | 張益唐：素數間距的有界性突破 | [2013-ZhangYitang素數間距.md](2013-ZhangYitang素數間距.md) |
+| 1913 | Hardy–Ramanujan 相遇：直覺與嚴格的世紀合奏 | [1913-HardyRamanujan相遇.md](1913-HardyRamanujan相遇.md) |
+| 1918 | Noether 定理：對稱性 ⟺ 守恆律 | [1918-Noether定理.md](1918-Noether定理.md) |
 | 2016 | Viazovska：E8 與 Leech 格的最密堆積 | [2016-ViazovskaE8堆積.md](2016-ViazovskaE8堆積.md) |
 
 ### 社會與決策的數學（1928–1965）

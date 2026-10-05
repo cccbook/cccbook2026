@@ -54,37 +54,24 @@ $$V - E + F = 2$$
 
 **陳類的譜系**（陳省身 1944）：示性類（characteristic classes）——高維的拓撲不變量——**現代數學物理（規範場論）的基礎**。
 
-### 程式碼：多面體公式
+### 示性數的計算與打洞
+**打洞改變示性數**——虧格（genus，洞數）$g$ 的閉曲面：
 
-```python
-# 柏拉圖立體的驗證
-platonic = {
-    "四面體":   (4, 6, 4),
-    "立方體":   (8, 12, 6),
-    "八面體":   (6, 12, 8),
-    "十二面體": (20, 30, 12),
-    "二十面體": (12, 30, 20),
-}
-for name, (V, E, F) in platonic.items():
-    print(f"{name}：V-E+F = {V}-{E}+{F} = {V-E+F}")
+| 曲面 | 虧格 $g$ | $\chi = V - E + F$ |
+|------|----------|---------------------|
+| 球面 | 0 | $2 - 2 \cdot 0 = 2$ |
+| 環面（甜甜圈） | 1 | $2 - 2 \cdot 1 = 0$ |
+| 雙環面 | 2 | $2 - 2 \cdot 2 = -2$ |
 
-# 球面：全 = 2
-print(f"\n全部 = 2：球面的 Euler 示性數 χ = 2")
+$$\chi = 2 - 2g$$
 
-# 打洞：示性數改變
-def euler_char_holes(holes):
-    """χ = 2 - 2·holes：打洞改變示性數"""
-    return 2 - 2 * holes
+——**每打一個洞，$\chi$ 恆減 2**：洞是「本質的」，形狀不是。
 
-for holes in [0, 1, 2]:
-    print(f"{holes} 個洞（虧格 {holes}）：χ = {euler_char_holes(holes)}")
-# 球面 χ=2、環面 χ=0、雙環 χ=-2——洞是本質的
+**Gauss–Bonnet 的檢驗**（1848）：單位球的高斯曲率 $K = 1$，總曲率 $\int K\, dA = 4\pi$，故
 
-# Gauss–Bonnet：示性數 = 總曲率
-K_total = 4 * math.pi          # 單位球的總曲率
-print(f"\n單位球總曲率 = {K_total:.4f}，χ = K/2π = {K_total/(2*math.pi):.1f} ✓")
-print("Gauss–Bonnet：拓撲（χ）與幾何（K）的橋樑——1848")
-```
+$$\chi = \frac{1}{2\pi}\int K\, dA = \frac{4\pi}{2\pi} = 2 \; \checkmark$$
+
+**拓撲（$\chi$）與幾何（$K$）的橋樑**。
 
 ### 拓撲的誕生
 **深遠的意義**：

@@ -45,44 +45,27 @@ Pasteur 的分離實驗開啟了立體化學的大門。
 
 ## 證據與工具
 
-以下 Python 程式示範鏡像異構體的旋光加成與手性判定：
+**旋光的線性加成。** 對映異構體的比旋光度大小相等、方向相反。酒石酸鈉銨水溶液中，右旋體 $[\alpha] = +55^\circ$、左旋體 $[\alpha] = -55^\circ$（示意值）。混合物的觀測旋光是兩成分的加權和，$f$ 為左旋體的莫耳分率：
 
-```python
-# Pasteur 手性分離的定量模擬
-# 比旋光度 [α]（酒石酸鈉銨鹽水溶液，單位 °·dm⁻¹·(g/mL)⁻¹，示意值）
-alpha_R = +55.0   # 右旋酒石酸鈉銨
-alpha_S = -55.0   # 左旋酒石酸鈉銨（鏡像異構體，旋光度大小相同、方向相反）
+$$\alpha_{\text{mix}} = (1-f)\,[\alpha]_R + f\,[\alpha]_S = (1-2f) \times 55^\circ$$
 
-def observed_rotation(alpha_pure, ee):
-    """ee = enantiomeric excess（鏡像超額，-1 ~ +1）
-    觀測旋光 = 純對映體旋光 × ee"""
-    return alpha_pure * ee
+其中 $1-2f$ 正是鏡像超額（ee，enantiomeric excess）：
 
-# Pasteur 的分離結果
-cases = [
-    ("右手形晶體溶液（右旋純品）", 1.0),
-    ("左手形晶體溶液（左旋純品）", -1.0),
-    ("未分離的消旋混合物（等量）", 0.0),
-]
-for name, ee in cases:
-    print(f"{name}: α = {observed_rotation(alpha_R, ee):+6.1f}°")
+| 左旋體佔比 $f$ | 鏡像超額 ee | 觀測旋光 $\alpha_{\text{mix}}$ |
+|---|---|---|
+| 0（全右旋） | $+1$ | $+55^\circ$ |
+| 0.25 | $+0.5$ | $+27.5^\circ$ |
+| 0.5（消旋） | $0$ | $0^\circ$ |
+| 0.75 | $-0.5$ | $-27.5^\circ$ |
+| 1（全左旋） | $-1$ | $-55^\circ$ |
 
-# 混合比例與旋光呈線性關係（消旋酸 = 精確的 1:1 混合）
-print("\n混合比例掃描（左旋佔比 f）：")
-for f in [0.0, 0.25, 0.5, 0.75, 1.0]:
-    alpha_mix = (1 - f) * alpha_R + f * alpha_S
-    print(f"  f = {f:4.2f} -> α_mix = {alpha_mix:+6.1f}°")
+巴斯德手工挑出的兩種手形晶體，分別配成溶液後測得 $+55^\circ$ 與 $-55^\circ$——大小相等、方向相反，證實消旋酸是等量對映體的混合物。
 
-# 手性判定：旋光為零可能是「消旋混合物」或「非手性分子」
-# Pasteur 的洞見：必須結合晶體形貌觀察才能區分兩者
-def chirality_verdict(alpha, has_hemihedral_pairs):
-    if abs(alpha) < 1e-9 and has_hemihedral_pairs:
-        return "消旋混合物（racemic）— 兩種鏡像晶體等量共存"
-    elif abs(alpha) < 1e-9:
-        return "非手性分子（achiral）— 無鏡像晶體對"
-    else:
-        return "光學活性（手性）— 單一對映體或部分拆分"
+**旋光為零的兩種可能。** 觀測旋光為零時，可能是「消旋混合物」（兩種對映體等量共存），也可能是「非手性分子」（分子本身對稱）。單靠旋光儀無法區分，巴斯德的洞見是結合**晶體形貌**觀察：
 
-print(f"\n消旋酸鈉銨鹽（α=0，有兩種手形晶體）：{chirality_verdict(0, True)}")
-print(f"合成蘋果酸（α=0，無鏡像晶體對）　　：{chirality_verdict(0, False)}")
-```
+| 樣品 | 旋光 | 晶體形貌 | 判定 |
+|---|---|---|---|
+| 消旋酒石酸鈉銨 | $0^\circ$ | 有兩種半面鏡像晶體 | 消旋混合物（racemic） |
+| 合成蘋果酸 | $0^\circ$ | 無鏡像晶體對 | 非手性分子（achiral） |
+
+一雙鑷子加上一台旋光儀，就把「晶體的對稱」與「分子的手性」連了起來——這是 1848 年最輕巧也最深刻的一次定量判決。

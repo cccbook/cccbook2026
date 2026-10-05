@@ -52,42 +52,25 @@ $$R = \{x \mid x \notin x\}$$
 2. **公理化集合論（Zermelo 1908）**：**限制集合的構造**——分離公理（只能從既有集合「分離」子集，不能自由構造）：$R = \{x \in A \mid x \notin x\}$ 必須先有 $A$——**樸素構造被禁止**——**ZFC 的誕生**（見 `1874-Cantor集合論.md`）
 3. **Hilbert 綱領（1920s）**：**形式主義**——把數學形式化為符號遊戲，用**有限方法**證明一致性——**被 Gödel 的不完備（1931）終結**（見 `../計算理論/1931-Godel不完備定理.md`）
 
-### 程式碼：羅素悖論與類型論
+### 兩難的構造與三條出路
+**羅素悖論的兩難**（文字版）：
 
-```python
-# 羅素悖論：R = {x | x ∉ x}——兩難
-def russell_paradox():
-    """樸素集合論的 R：包含自己嗎？——兩難"""
-    # 假設 R ∈ R → 依定義 R ∉ R（矛盾）
-    # 假設 R ∉ R → 依定義 R ∈ R（矛盾）
-    # 兩難 → R 不可能存在（在樸素集合論中）
-    print("R = {x | x ∉ x}：")
-    print("  若 R ∈ R → 依定義 R ∉ R——矛盾")
-    print("  若 R ∉ R → 依定義 R ∈ R——矛盾")
-    print("  兩難 → 樸素集合論崩塌")
+| 假設 | 依 $R = \{x \mid x \notin x\}$ 的定義推導 | 結果 |
+|------|--------------------------------------------|------|
+| $R \in R$ | 成員必不包含自己 $\implies R \notin R$ | 矛盾 |
+| $R \notin R$ | 不包含自己者皆為成員 $\implies R \in R$ | 矛盾 |
 
-russell_paradox()
+兩邊皆矛盾——$R$ 在樸素集合論中**不可能存在**。$\blacksquare$
 
-# 出路一：公理化集合論（限制構造）
-def zfc_separation(A, pred):
-    """ZFC 分離公理：只能從既有集合 A 分離子集"""
-    return {x for x in A if pred(x)}     # 必須先有 A——禁止自由構造
+**出路一（ZFC 分離公理）**：只能從**既有集合**分離子集——$R = \{x \in A \mid x \notin x\}$ 必須先有 $A$——**自由構造被禁止**：
 
-A = [1, 2, 3, {4}, [{5}]]
-evens = zfc_separation(A, lambda x: isinstance(x, int) and x % 2 == 0)
-print(f"\nZFC 分離：{evens}——從既有集合分離，樸素構造被禁止")
+| 出路 | 核心策略 | 後果 |
+|------|----------|------|
+| 類型論（Russell–Whitehead 1910–13） | 集合分層，禁止跨層自我指涉 | 100 頁證 $1+1=2$；現代型別系統的祖先 |
+| 公理化集合論（Zermelo 1908） | 限制集合構造（分離公理） | ZFC 的誕生 |
+| Hilbert 綱領（1920s） | 形式化 + 有限方法證一致性 | 被 Gödel 不完備（1931）終結 |
 
-# 出路二：類型論（分層）
-def typed_members(layer):
-    """類型論：第 n 層的成員只能是第 n-1 層——禁止跨層"""
-    if layer == 0: return "元素"
-    return f"第 {layer-1} 層對象的集合（不可包含第 {layer} 層）"
-print(f"\n類型論：{typed_members(2)}——跨層自我指涉被禁止")
-
-# 出路三：形式主義（Hilbert）→ Gödel 不完備終結
-print("\nHilbert 綱領：形式化 + 有限證明一致性 → Gödel 1931 終結")
-print("對角線法（Cantor → Russell → Gödel → Turing）：同一招的自我指涉")
-```
+**對角線的本質**：$R$ 的定義就是「對角線謂詞」$\neg(x \in x)$——與 Cantor 對角線、Gödel 的 $G \leftrightarrow \neg\mathrm{Prov}(\ulcorner G\urcorner)$、Turing 的 $D(M) = \neg M(M)$ 同一招——**自我指涉 + 否定**。
 
 ### Frege 的回應
 **Frege 的回信（1902）**：「**你的發現不僅動搖了我的工作基石，也動搖了算術的基石**」——誠實的承認（與大多數數學家的防禦相反）。Frege 補了一個「注記」（嘗試修補，後被證明失敗），晚年放棄邏輯主義——**一生工作被一封信摧毀**（但他的邏輯符號系統仍是現代邏輯的基礎）。

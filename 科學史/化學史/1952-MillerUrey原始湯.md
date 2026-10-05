@@ -43,40 +43,28 @@ $$\mathrm{H_2O,\ CH_4,\ NH_3,\ H_2} \xrightarrow{\text{放電}} \mathrm{HCN,\ HC
 
 ## 證據與工具
 
-以下用 Python 模擬「迴路累積」的動力學：簡化地假設放電區以一階速率生成中間體，中間體再縮合生成胺基酸，並示範熱力學上坡反應需要能量驅動的意義。
+**密閉迴路的動力學邏輯：** 設無機原料 A（$\mathrm{CH_4}$、$\mathrm{NH_3}$、$\mathrm{H_2O}$）、活性中間體 B（HCN、HCHO、自由基）、產物 C（胺基酸）。放電區以一階速率把 A 打碎成 B，B 在水相中縮合成 C：
+
+$$\mathrm{A} \xrightarrow{\,k_1,\ \text{放電}\,} \mathrm{B} \xrightarrow{\,k_2,\ \text{縮合}\,} \mathrm{C}, \qquad \frac{d[\mathrm{C}]}{dt} = k_2[\mathrm{B}] > 0$$
+
+密閉系中 C 只增不減、單調累積——這正是米勒裝置「冷凝回流」設計的動力學意義：產物一旦生成就離開放電區，平衡不斷被拉走（Le Chatelier 原理）。
+
+| 裝置部位 | 對應反應 | 化學意義 |
+|---|---|---|
+| 放電燒瓶 | A → B（打碎分子） | 提供能量，驅動上坡反應 |
+| 冷凝管＋水相 | B → C（縮合）並累積產物 | 產物離開反應區，拉動平衡 |
+| 密閉迴路 | 原料回流、產物不流失 | 鐵證：有機物必來自容器內的無機原料 |
+
+**熱力學上坡的定量檢驗：**
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
 
-# --- 模擬 1：米勒-尤雷密閉迴路的簡化動力學 ---
-# A = 無機原料(CH4,NH3,H2O) ; B = 活性中間體(HCN,HCHO,自由基) ; C = 胺基酸
-# A --(放電, 速率 k1, 由能量驅動)--> B --(水中縮合, k2)--> C
-k1, k2 = 0.6, 0.9   # 速率常數(示意值)
-
-def loop(t, y):
-    A, B, C = y
-    dA = -k1 * A                # 原料被放電活化
-    dB = k1 * A - k2 * B        # 中間體生成又消耗
-    dC = k2 * B                 # 產物累積(密閉迴路中不流失)
-    return [dA, dB, C * 0 + k2 * B]  # C 只增加
-
-sol = solve_ivp(loop, [0, 10], [1.0, 0.0, 0.0], max_step=0.05)
-plt.plot(sol.t, sol.y[0], label='無機原料 A')
-plt.plot(sol.t, sol.y[1], label='活性中間體 B')
-plt.plot(sol.t, sol.y[2], label='胺基酸 C')
-plt.xlabel('時間 (任意單位)'); plt.ylabel('相對量')
-plt.title('密閉迴路放電：產物持續累積')
-plt.legend(); plt.show()
-
-# --- 模擬 2：熱力學上坡反應的平衡計算 ---
 # 甘胺酸合成 2CH4+NH3+2H2O -> Gly+4H2 的 ΔG ≈ +290 kJ/mol
 R = 8.314e-3          # kJ/(mol·K)
 dG, T = 290.0, 298.0  # 標準自由能與溫度
 K = np.exp(-dG / (R * T))
-print(f"ΔG = +{dG} kJ/mol (上坡反應)")
-print(f"平衡常數 K = {K:.3e}  → 平衡極度偏向反應物")
-print("結論：沒有電漿放電等能量輸入，胺基酸幾乎無法自發累積")
-print("米勒的兩大支柱：(1)放電打碎分子 (2)迴路移除產物拉動平衡")
+print(f"ΔG = +{dG} kJ/mol → K = {K:.3e}")
 ```
+
+計算得 $K = e^{-290000/(8.314 \times 298)} \approx 10^{-51}$，平衡極度偏向反應物——沒有電漿放電等能量輸入，胺基酸幾乎無法自發累積。米勒的兩大支柱由此更清晰：(1) 放電打碎分子、供給能量；(2) 迴路移除產物、拉動平衡。

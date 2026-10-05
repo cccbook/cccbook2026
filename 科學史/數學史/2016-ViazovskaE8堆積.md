@@ -47,40 +47,23 @@ $$f(x) \le 0 \text{（球外）}， \hat{f} \ge 0 \text{，} \frac{f(0)}{\hat{f}
 
 ### 程式碼：E8 格與密度
 
-```python
-import math
+### 密度的表列與 E8 的計數
+**各維度最密堆積密度**：
 
-# E8 格的密度：π⁴/384
-def e8_density():
-    """E8 格的堆積密度：π⁴/384 ≈ 0.2537"""
-    return math.pi**4 / 384
+| 維度 | 格 | 密度公式 | 數值 |
+|------|-----|----------|------|
+| 2 | 六角 | $\dfrac{\pi}{2\sqrt{3}}$ | 0.9069（90.69%） |
+| 3 | FCC | $\dfrac{\pi}{\sqrt{18}}$ | 0.7405（74.05%） |
+| 8 | E8 | $\dfrac{\pi^4}{384}$ | 0.2537（25.37%） |
+| 24 | Leech | $\dfrac{\pi^{12}}{12!}$ | $\approx 0.00193$ |
 
-# 對照：3 維 FCC、2 維六角
-print(f"2D 六角密度 = {math.pi/(2*math.sqrt(3)):.4f}（90.7%）")
-print(f"3D FCC 密度 = {math.pi/math.sqrt(18):.4f}（74.05%）")
-print(f"8D E8 密度 = {e8_density():.4f}（π⁴/384 = {e8_density()*100:.2f}%）")
-# 維度升高密度下降——但 E8 是 8 維的最優
+**E8 最小向量數的計數**（240 個）：兩類向量——
 
-# E8 格的構造（偶坐標、和為偶數）
-def e8_points_count():
-    """E8 格的最小向量數：240 個"""
-    # (±1, ±1) 的 16 種 + (±2, 0) 的 112 種 + 置換
-    type1 = 2**7          # (±1/2)^8 全部偶符號和
-    type2 = 8 * 7 * 2     # (±1, ±1) 在兩個座標
-    return type1 + type2
+$$240 = \underbrace{2^7}_{\text{半整數型 } \left(\pm\tfrac12\right)^8 \text{（符號和為偶）}} + \underbrace{8 \times 7 \times 2}_{\text{整數型 } (\pm1, \pm1, 0^6)} = 128 + 112$$
 
-print(f"\nE8 最小向量數 = {e8_points_count()}（240 個——最對稱的格）")
-print("E8：8 維李群 E₈ 的根格——「完美的格」")
+——**240 個最小向量**：8 維李群 $E_8$ 的根格，「最對稱的格」。**Leech 格**（24 維）有 $196560$ 個最小向量——**最均勻的分佈**。
 
-# Leech 格：24 維
-def leech_vectors():
-    """Leech 格：196560 個最小向量"""
-    return 196560
-
-print(f"Leech 格：24 維，{leech_vectors()} 個最小向量——最均勻的分佈")
-print("\nViazovska 2016：E8 與 Leech 的最密堆積——模形式的魔杖")
-print("Fields 2022：首位烏克蘭得主")
-```
+**Viazovska 2016**：E8 與 Leech 的最密堆積——**模形式的魔杖**（傅立葉係數編碼格的幾何）；Fields 2022——首位烏克蘭得主。
 
 ### 模形式的魔杖
 **模形式**（與 Riemann 假設同源，見 `1859-Riemann假設.md`）：上半平面的高度對稱函數——**Eisenstein 級數**、**theta 級數**——格的「特徵指紋」。

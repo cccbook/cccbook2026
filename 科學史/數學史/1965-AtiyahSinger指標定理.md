@@ -51,33 +51,26 @@ $$\text{ind}(D) = \lim_{t \to 0} \text{Tr}(e^{-tD^*D} - e^{-tDD^*}) = \text{拓�
 
 ### 程式碼：指標的數值直覺
 
-```python
-import math
+### 指標的計算（特例與表列）
+**Gauss–Bonnet 特例**：曲面的示性數即 Dirac 算子的指標——虧格 $g$ 的閉曲面：
 
-# 歐拉示性數 = Gauss–Bonnet（指標定理的特例）
-def euler_char_surface(genus):
-    """曲面的示性數：χ = 2 - 2g"""
-    return 2 - 2 * genus
+| 虧格 $g$ | $\chi = 2 - 2g$ | 拓撲指標 |
+|----------|------------------|----------|
+| 0（球面） | 2 | 2 |
+| 1（環面） | 0 | 0 |
+| 2 | $-2$ | $-2$ |
 
-# 球面（g=0）：χ = 2；環面（g=1）：χ = 0
-for g in [0, 1, 2]:
-    print(f"虧格 {g}：χ = {euler_char_surface(g)}")
+**指標的直覺**（Witten 的超對稱類比）：指標是「**加權的維數差**」——交替符號的求和：
 
-# 諧振子的指標（物理類比：費米子 vs 玻色子）
-def oscillator_index(N_levels=10):
-    """諧振子的指標：費米子數 - 玻色子數（supersymmetry 的直覺）"""
-    # 概念示範：交替符號的求和 = 指標
-    return sum((-1)**k for k in range(N_levels))   # 交替和
+$$\text{ind}(D) = \sum_k (-1)^k \dim V_k = n_{\text{fermion}} - n_{\text{boson}}$$
 
-print(f"\n交替和（指標的直覺）= {oscillator_index(10)}")
-# 指標 = 「加權的維數差」——supersymmetry 的數學
+如 $N$ 能階的交替和 $\sum_{k=0}^{N-1} (-1)^k$：$N$ 偶時得 $0$、$N$ 奇時得 $1$——**配對抵消後剩下的就是不變量**。
 
-# Witten 的證明（supersymmetry 的類比）
-print("\nAtiyah–Singer 指標定理（1963）：解析指標 = 拓撲指標")
-print("  ind(D) = dim ker D - dim coker D = ∫ Â(M)·ch(E)")
-print("  統一：Gauss–Bonnet、Dirac、黎曼–羅赫——分析與拓撲的統一")
-print("  Witten 1982：supersymmetry 的物理解釋——Fields 1990")
-```
+**Atiyah–Singer 指標定理（1963）**：
+
+$$\text{ind}(D) = \dim \ker D - \dim \operatorname{coker} D = \int_M \hat{A}(M) \cdot \operatorname{ch}(E)$$
+
+——統一 Gauss–Bonnet、Dirac、黎曼–羅赫——**分析與拓撲的統一**；Witten 1982 的超對稱解釋使其獲 Fields 1990。
 
 ### Witten 的物理解釋
 **Witten（1982）**：**超對稱（supersymmetry）**的類比——Dirac 算子的指標 = **費米子基態數 − 玻色子基態數**：

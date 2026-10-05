@@ -44,47 +44,12 @@ $$\text{線性分子鏈（遇熱滑動）} \;\longrightarrow\; \text{三維交�
 
 ## 證據與工具
 
-以下 Python 程式碼示範：硫化交聯密度與橡膠性質的模擬，並以 Monte Carlo 隨機過程視覺化交聯網路的形成。
+**硫化交聯密度與橡膠性質。** 硫化的本質是以 $-\mathrm{S}-\mathrm{S}-$ 交聯橋把天然橡膠的線性分子鏈織成三維網狀。橡膠的性質由硫用量（交聯密度）決定——硫比例太低時，交聯點稀疏、網路不連通，分子鏈仍可滑動，橡膠發黏；硫比例適中時，形成連通的三維網，鏈段只能在網結點之間回彈，成為彈性體；硫比例過高時，交聯過密，鏈段被完全鎖死，變成硬而脆的硬橡膠。以對照表呈現：
 
-```python
-# 硫化橡膠：交聯密度與材料性質的模擬
-import random
+| 硫比例（對橡膠質量） | 交聯網路狀態 | 材料性質 |
+|---|---|---|
+| 約 1–3% | 交聯稀疏，網路不連通 | 仍會發黏，彈性有限 |
+| 約 3–10% | 連通的三維網狀（適中交聯密度） | 彈性體——輪胎胎面的區間 |
+| 約 10% 以上 | 交聯過密，鏈段被鎖死 | 硬橡膠（ebonite），硬而脆 |
 
-def vulcanize(n_chains=50, chain_len=100, sulfur_ratio=0.05, seed=42):
-    """模擬硫化過程：以隨機機率在分子鏈之間架起 -S-S- 交聯橋。
-       回傳交聯點數與網路連通性（最大連通分量佔比）"""
-    random.seed(seed)
-    # 建立鏈上的可交聯點（雙鍵位置）
-    crosslinks = {}          # (chain_i, pos) -> (chain_j, pos)
-    points = [(c, p) for c in range(n_chains) for p in range(chain_len)
-              if random.random() < sulfur_ratio]
-    random.shuffle(points)
-    # 兩兩配對形成交聯橋
-    for i in range(0, len(points) - 1, 2):
-        a, b = points[i], points[i + 1]
-        crosslinks[a] = b
-        crosslinks[b] = a
-    # 用 union-find 檢查網路連通性
-    parent = list(range(n_chains))
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-    for (c1, _), (c2, _) in crosslinks.items():
-        parent[find(c1)] = find(c2)
-    from collections import Counter
-    comp = Counter(find(c) for c in range(n_chains))
-    largest = max(comp.values()) / n_chains
-    return len(crosslinks) // 2, largest
-
-print("硫比例   交聯數   最大網路佔比   材料性質推測")
-for ratio in [0.01, 0.03, 0.05, 0.08, 0.10, 0.20]:
-    links, net = vulcanize(sulfur_ratio=ratio)
-    if net < 0.6:   prop = "未交聯完全，仍會發黏"
-    elif net < 0.97: prop = "彈性體（輪胎胎面）"
-    else:            prop = "高交聯，硬橡膠（ebonite）"
-    print(f"{ratio:6.2f}   {links:5d}    {net:8.3f}     {prop}")
-```
-
-執行後可以看到：硫比例太低時，網路不連通，橡膠仍會發黏；硫比例適中時，形成連通的三維網狀，成為彈性體；硫比例過高時，交聯過密，變成硬而脆的硬橡膠。這正是古德伊爾在廚房爐邊用一輩子摸索出來的「加熱窗口」與「交聯密度」——一場意外，開啟了高分子材料科學的大門。
+古德伊爾實際用的硫比例約在 3–5%，正好落在彈性體的窗口。這是他廚房爐邊摸索出來的「加熱窗口」與「交聯密度」——一場意外，開啟了高分子材料科學的大門。

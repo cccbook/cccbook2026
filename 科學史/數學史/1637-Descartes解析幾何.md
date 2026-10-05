@@ -61,16 +61,15 @@ print(circle_line_intersections(5, 0, 3))    # 相交兩點
 print(circle_line_intersections(5, 0, 5))    # 相切
 print(circle_line_intersections(5, 0, 6))    # 不相交
 # 幾何問題 → 二次方程 → 判別式：代數取代幾何直覺
-
-# 距離（畢氏定理的代數化）
-def dist(p1, p2):
-    return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
-print(dist((0, 0), (3, 4)))              # 5.0
-
-# 高維：資料的座標化（機器學習）
-img = [[random.randint(0, 255) for _ in range(4)] for _ in range(4)]  # 16 維向量
-print(f"圖片 = 16 維向量：{img[0]}")
 ```
+
+**距離的代數化**：兩點 $p_1 = (x_1, y_1)$、$p_2 = (x_2, y_2)$ 的距離即畢氏定理：
+
+$$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
+
+如 $d((0,0), (3,4)) = \sqrt{9 + 16} = 5$。
+
+**高維的座標化**：一張圖片是 $1920 \times 1080$ 維向量、一段文字是 embedding 向量（見 `../隨機算法/1984-JohnsonLindenstrauss引理.md` 的降維）——**Descartes 的座標是 AI 的基礎設施**。
 
 ### 笛卡爾與費馬：優先權
 **費馬（Fermat）1629–36 年**私下寫了等價的座標幾何（未出版）——與 Descartes 的優先權之爭（比 Cardano–Tartaglia 溫和）。**兩人共同創造**，但 Descartes 先出版——與微積分的牛頓-萊布尼茨之爭（見 `1665-Newton微積分.md`）同為數學史的優先權案例。

@@ -58,48 +58,29 @@ $$2n^2 \quad (n=1 \to 2,\; n=2 \to 8,\; n=3 \to 18,\; n=4 \to 32)$$
 
 ## 證據與工具
 
-```python
-# 用 Python 驗證鮑利不相容原理：殼層容量為 2n^2
-def shell_capacity(n):
-    """第 n 層的電子座位數：軌域數 n^2 × 自旋 2 = 2n^2"""
-    orbitals = sum(2*ell + 1 for ell in range(n))  # Σ(2ℓ+1) = n^2
-    return orbitals * 2
+鮑利不相容原理說：沒有兩個電子的四個量子數 $(n, l, m_l, m_s)$ 完全相同。由它可直接推出**殼層容量**。第 $n$ 層有角動量量子數 $l = 0, 1, \dots, n-1$，每個 $l$ 有 $2l+1$ 個軌域，故
 
-print("== 殼層容量之謎 ==")
-for n in range(1, 6):
-    print(f"第 {n} 層: 軌域數 {shell_capacity(n)//2} × 自旋 2 = {shell_capacity(n)} 個電子")
-# 2, 8, 18, 32, 50 —— 與週期表完全吻合！
+$$\text{第 } n \text{ 層軌域數} = \sum_{l=0}^{n-1} (2l+1) = n^2, \qquad \text{容量} = 2n^2 \; (m_s = \pm \tfrac{1}{2} \Rightarrow \text{每軌域 2 電子})$$
 
-# 案件一：氦為何惰性？——第一層填滿
-def electron_configuration(Z):
-    """排出前 36 個元素的電子組態（遵守不相容原理）"""
-    subshells = [(1,0,2), (2,0,2), (2,1,6), (3,0,2), (3,1,6), (4,0,2), (3,2,10), (4,1,6)]
-    config, remaining = [], Z
-    for n, ell, cap in subshells:
-        if remaining <= 0: break
-        fill = min(remaining, cap)
-        config.append(f"{n}{'spdf'[ell]}{fill}")
-        remaining -= fill
-    return " ".join(config), remaining
+**殼層容量與週期表的吻合：**
 
-print("\n== 惰性氣體的座位表 ==")
-for name, Z in [("He 氦", 2), ("Ne 氖", 10), ("Ar 氬", 18)]:
-    cfg, _ = electron_configuration(Z)
-    print(f"{name} (Z={Z}): {cfg} -> 殼層填滿，化學惰性")
-# 沒有單身電子可鍵結 -> 拉姆賽的惰性之謎破解
+| 主殼層 $n$ | 軌域數 $n^2$ | 容量 $2n^2$ | 對應週期長度 |
+|---|---|---|---|
+| 1 | 1 | 2 | 2 |
+| 2 | 4 | 8 | 8 |
+| 3 | 9 | 18 | 18 |
+| 4 | 16 | 32 | 18/32 |
 
-# 案件二：不相容原理的「查座」機制
-def pauli_check(electrons):
-    """electrons: [(n, l, m_l, m_s)]，檢查是否有量子數完全相同的兩個電子"""
-    seats = set()
-    for e in electrons:
-        if e in seats:
-            return f"違反不相容原理！座位 {e} 重複"
-        seats.add(e)
-    return "合規：所有電子的座位互不相同"
+2, 8, 18, 32——與週期表各週期的元素數完全吻合。
 
-print("\n== 查座示範（n=1 殼層）==")
-print(pauli_check([(1, 0, 0, +0.5), (1, 0, 0, -0.5)]))  # 合規：2 個座位
-print(pauli_check([(1, 0, 0, +0.5), (1, 0, 0, +0.5)]))  # 違規：自旋相同不能共存
-# ms = ±1/2 —— 同一軌域最多 2 個電子，且自旋必相反
-```
+**惰性氣體為何惰性：** 依能量由低至高填充次殼層（$1s\,2s\,2p\,3s\,3p\,4s\,3d\,4p\cdots$），惰性氣體正好是殼層填滿的元素：
+
+| 元素 | $Z$ | 電子組態 | 惰性根源 |
+|---|---|---|---|
+| He 氦 | 2 | $1s^2$ | 第一層填滿 |
+| Ne 氖 | 10 | $1s^2\,2s^2\,2p^6$ | 最外層八隅體 |
+| Ar 氬 | 18 | $1s^2\,2s^2\,2p^6\,3s^2\,3p^6$ | 最外層八隅體 |
+
+沒有「單身電子」可形成鍵結——拉姆賽的惰性之謎就此破解。
+
+**「查座」機制：** 在同一軌域（如 $1s$，即 $(n,l,m_l)=(1,0,0)$）中，兩個電子若自旋相同（$m_s$ 皆 $+\tfrac{1}{2}$）即四個量子數全同，被原理禁止；自旋相反（$\pm\tfrac{1}{2}$）才合規。所以每個軌域最多容納 2 個電子，且自旋必相反。

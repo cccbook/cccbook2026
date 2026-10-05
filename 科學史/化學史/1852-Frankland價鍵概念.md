@@ -61,43 +61,25 @@ $$\sum_i v_i \cdot n_i = \sum_j v_j \cdot n_j \quad \text{（分子中各原子�
 
 ## 證據與工具
 
-```python
-# 用 Python 驗算 Frankland 的價鍵概念：
-# (1) 氫化物中氫的數目 = 價數 (2) 價鍵守恆檢驗
+**由氫化物讀出價數。** 一個原子能與幾個氫結合，就是它的價數。Frankland 從金屬有機化合物與氫化物歸納出：原子的結合能力有「定數」：
 
-valence = {"H": 1, "Cl": 1, "O": 2, "S": 2, "Zn": 2, "N": 3,
-           "P": 3, "As": 3, "C": 4, "Sn": 4}
+| 氫化物 | 中心原子 | 價數 |
+|---|---|---|
+| $\mathrm{HCl}$ | Cl | 1 |
+| $\mathrm{H_2O}$ | O | 2 |
+| $\mathrm{NH_3}$ | N | 3 |
+| $\mathrm{PH_3}$ | P | 3 |
+| $\mathrm{AsH_3}$ | As | 3 |
+| $\mathrm{CH_4}$ | C | 4 |
 
-# --- 第一部分：由氫化物判斷價數 ---
-print("--- 氫化物與價數 ---")
-hydrides = {"NH3": "N", "OH2(H2O)": "O", "PH3": "P", "AsH3": "As", "CH4": "C"}
-for formula, elem in hydrides.items():
-    n = sum(int(ch) if ch.isdigit() else 1 for ch in formula
-            if ch.isdigit() or ch.isupper())
-    print(f"{formula:10s} → {elem} 的價數 = {n}")
+**價鍵守恆的驗算。** 穩定分子中，各原子的價數必須兩兩配對——「手要兩兩相牽」，故總鍵數必為偶數。以 $\mathrm{H_2O}$ 為例：$2 \times 1 + 1 \times 2 = 4$，配平。逐一檢驗：
 
-# --- 第二部分：價鍵守恆檢驗器 ---
-def check_valence(formula_map):
-    """formula_map: {"H": 2, "O": 1} 表示 H2O"""
-    total_bonds = sum(valence[e] * n for e, n in formula_map.items())
-    return total_bonds % 2 == 0, total_bonds
+| 分子 | 價鍵總和 | 配平 |
+|---|---|---|
+| $\mathrm{H_2O}$ | $2 \times 1 + 1 \times 2 = 4$ | ✓ |
+| $\mathrm{NH_3}$ | $3 \times 1 + 1 \times 3 = 6$ | ✓ |
+| $\mathrm{CH_4}$ | $4 \times 1 + 1 \times 4 = 8$ | ✓ |
+| $\mathrm{CO_2}$ | $1 \times 4 + 2 \times 2 = 8$ | ✓ |
+| $\mathrm{Zn(C_2H_5)_2}$ | $1 \times 2 + 2 \times 4 + 10 \times 1 = 20$ | ✓ |
 
-print("\n--- 價鍵守恆檢驗（總鍵數必為偶數，手要兩兩相牽）---")
-molecules = {
-    "H2O": {"H": 2, "O": 1},
-    "NH3": {"H": 3, "N": 1},
-    "CH4": {"H": 4, "C": 1},
-    "CO2": {"C": 1, "O": 2},
-    "Zn(C2H5)2": {"Zn": 1, "C": 2, "H": 10},
-}
-for name, comp in molecules.items():
-    ok, bonds = check_valence(comp)
-    print(f"{name:12s}: 總鍵數 = {bonds}  → {'配平 ✓' if ok else '不配平 ✗'}")
-
-# --- 第三部分：預測未知化合物 ---
-print("\n--- 價鍵的預測力 ---")
-print("磷價數 3，氫價數 1 → 預測磷化氫為 PH3（實驗確認 ✓）")
-print("碳價數 4，氯價數 1 → 預測四氯化碳為 CCl4（實驗確認 ✓）")
-print("氧價數 2，氫價數 1 → 水是 H2O 而非 H4O 或 HO2")
-print("\nFrankland 的洞見：原子結合不是隨機的，而是有『定數』的")
-```
+**價鍵的預測力。** 有了價數就能預測化學式：磷（3 價）＋氫（1 價）→ $\mathrm{PH_3}$（實驗確認）；碳（4 價）＋氯（1 價）→ $\mathrm{CCl_4}$（實驗確認）；氧（2 價）＋氫（1 價）→ 水必為 $\mathrm{H_2O}$，而非 $\mathrm{H_4O}$ 或 $\mathrm{HO_2}$。原子結合不是隨機的，而是有「定數」的——這個規律為 Kekulé 的碳四價與結構理論鋪了路。

@@ -46,62 +46,24 @@ PTFE 的發現完全是偶然的，但它的影響是必然的深遠：
 
 ## 證據與工具
 
-以下用 Python 模擬 TFE 自發聚合的鏈增長過程，並比較 C–F 鍵與其他鍵的鍵能，示範 PTFE 化學惰性的根源。
+PTFE 的「偶然發現」可從鏈反應化學、鍵能與表面能三方面解讀。
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+**TFE 自發聚合的鏈增長：** 四氟乙烯 $\mathrm{CF_2{=}CF_2}$ 在鋼瓶內一旦被微量引發（如氧、過氧化物或金屬表面的微量雜質），鏈增長速率遠大於鏈終止速率，每個打開的自由基端都快速吞入單體：
 
-# --- 模擬 1：TFE 自發聚合的鏈增長 (Monte Carlo) ---
-# 單體 CF2=CF2 打開雙鍵逐個加到鏈上，直到鋼瓶內單體耗盡
-def polymerize_tfe(n_monomers=10000, p_init=1e-4, p_growth=0.98):
-    """簡化模擬：鏈引發機率 p_init，鏈增長機率 p_growth"""
-    chains = []                          # 記錄每條鏈的長度
-    active = 0                           # 活性鏈數
-    remaining = n_monomers
-    steps = 0
-    while remaining > 0:
-        steps += 1
-        if active == 0 and np.random.rand() < p_init:   # 鏈引發
-            active, remaining = 1, remaining - 1
-            chain_len = 1
-        elif active > 0 and remaining > 0:
-            if np.random.rand() < p_growth:             # 鏈增長
-                chain_len += 1
-                remaining -= 1
-            else:                                        # 鏈終止
-                chains.append(chain_len)
-                active = 0
-        if steps > 10**6: break
-    if active > 0: chains.append(chain_len)
-    return chains
+$$\mathrm{R{-}CF_2{-}CF_2^\bullet + n\,CF_2{=}CF_2 \rightarrow R{-}(CF_2{-}CF_2)_n{-}CF_2^\bullet}$$
 
-chains = polymerize_tfe()
-print(f"鋼瓶內 TFE 模擬: {len(chains)} 條鏈, "
-      f"平均鏈長 {np.mean(chains):.0f} 個單體")
-print("→ 微量引發即可把整瓶氣體聚合成固體粉末")
+**放熱（$\Delta H \approx -172$ kJ/mol）** 且鏈終止機率極低，這解釋了為何一瓶氣體會在密閉鋼瓶內自行聚合成固體粉末——普朗克特與雷博克遇到的「卡住的鋼瓶」其實是一場未被預期的鏈反應。
 
-# --- 模擬 2：鍵能比較 —— PTFE 惰性的根源 ---
-# C–F 鍵能極高(485 kJ/mol)，氟原子鞘保護碳骨架
-bonds = ['C–H', 'C–C', 'C–Cl', 'C–F', 'C=C']
-energies = [413, 348, 328, 485, 614]
-plt.figure(figsize=(8, 5))
-colors = ['#888' if b != 'C–F' else '#E8674C' for b in bonds]
-plt.bar(bonds, energies, color=colors)
-plt.ylabel('鍵能 (kJ/mol)')
-plt.title('C–F 鍵：單鍵中最強 → PTFE 化學惰性的根源')
-plt.annotate('485 kJ/mol', xy=(3, 485), xytext=(2.2, 520),
-             arrowprops=dict(arrowstyle='->'))
-plt.show()
+**鍵能比較——惰性的根源：** C–F 鍵是碳的單鍵中最強的（485 kJ/mol），且氟原子半徑小、電負度極高，在碳骨架外形成緻密的「氟原子鞘」，連 C–C 主鏈都被屏蔽：
 
-# --- 模擬 3：表面能與「不沾」的熱力學 ---
-# 液體在表面鋪展的條件: γ_表面 < γ_液體 (表面張力比較)
-# PTFE 表面張力約 18 mN/m（極低），水約 72 → 水無法鋪展成「沾附」
-surfaces = {'PTFE': 18, '聚乙烯': 31, '玻璃': 70, '水(參考)': 72}
-for name, gamma in surfaces.items():
-    wet = "可被水潤濕" if gamma > 72 else "不被水潤濕(不沾)"
-    print(f"{name}: 表面張力 {gamma} mN/m → {wet}")
+| 鍵 | C–H | C–C | C–Cl | C–F | C=C（參考） |
+|---|---|---|---|---|---|
+| 鍵能 (kJ/mol) | 413 | 348 | 328 | **485** | 614 |
 
-print("\n結論：最強的 C–F 鍵 + 最低的表面能 = 最惰性、最不沾的材料")
-print("教訓：鋼瓶「卡住」不是故障，是還沒被讀懂的新資訊")
-```
+**表面能與「不沾」的熱力學：** 液體能否潤濕表面取決於表面張力 $\gamma$——若液體的 $\gamma$ 高於固體表面能，鋪展在能量上不利。PTFE 的表面張力約 18 mN/m，是已知固體中最低的：
+
+| 材料 | PTFE | 聚乙烯 | 玻璃 | 水（參考） |
+|---|---|---|---|---|
+| 表面張力 $\gamma$ (mN/m) | 18 | 31 | 70 | 72 |
+
+水的 $\gamma \approx 72$ 遠高於 PTFE 的 18，故水滴在 PTFE 上成珠滾動而不鋪展。**結論：最強的 C–F 鍵 + 最低的表面能 = 最惰性、最不沾的材料。** 教訓：鋼瓶「卡住」不是故障，是還沒被讀懂的新資訊。

@@ -39,33 +39,23 @@
 - **IX.20 質數無窮**：假設質數有限 $p_1, \dots, p_n$，構造 $P = p_1 p_2 \cdots p_n + 1$——$P$ 不能被任何已知質數整除（餘 1），故有新質數——**反證法的經典**，對角線法的祖先
 - **V. 窮竭法的準備**：比例論（Eudoxus）——無理數的處理
 
-### 程式碼：質數無窮與平行公設
+### IX.20 的構造與非歐的檢驗
+**質數無窮的構造**：對前 $n$ 個質數 $p_1, \dots, p_n$，構造 $P = p_1 p_2 \cdots p_n + 1$——對每個 $p_i$，$P \equiv 1 \pmod{p_i}$，故 $P$ 的質因數都是新質數：
 
-```python
-def euclid_primes_infinite(limit_primes):
-    """IX.20：質數無窮——反證法"""
-    from math import prod, isqrt
-    ps = [2, 3, 5, 7][:limit_primes]
-    P = prod(ps) + 1                     # p1*p2*...*pn + 1
-    for p in ps:
-        if P % p == 0:
-            return False                 # 不可能：餘 1
-    return True                          # P 有新質數（或本身是質數）
+| 已知質數 | $P = p_1\cdots p_n + 1$ | 結果 |
+|----------|--------------------------|------|
+| $2$ | $3$ | 新質數 |
+| $2, 3$ | $7$ | 新質數 |
+| $2, 3, 5$ | $31$ | 新質數 |
+| $2, 3, 5, 7$ | $211$ | 新質數（質數） |
 
-print(euclid_primes_infinite(4))         # True：2*3*5*7+1 = 211 是質數
+**注意**：$P$ 本身不必是質數（如 $2\cdot3\cdot5\cdot7\cdot11\cdot13 + 1 = 30031 = 59 \times 509$）——但它的質因數必在清單之外——**反證完成**。
 
-# 第五公設的檢驗：三角形內角和
-def triangle_angle_sum(curvature=0):
-    """歐氏幾何：內角和 = 180°；球面（正曲率）> 180°；雙曲（負曲率）< 180°"""
-    import math
-    if curvature == 0:
-        return 180
-    # 球面三角形：內角和 = 180° + 面積 × 曲率（度）
-    return 180 + curvature  # 概念示範
+**三角形內角和的檢驗**（非歐幾何的判準）：曲率 $K$ 的曲面上，三角形（面積 $A$）的內角和：
 
-print(f"歐氏：{triangle_angle_sum(0)}°")
-print("非歐（Gauss/Bolyai/Lobachevsky 1829–32）：否定第五公設的自洽幾何")
-```
+$$\alpha + \beta + \gamma = \pi + K \cdot A$$
+
+$K = 0$（歐氏）得 $\pi$；$K > 0$（球面）超過 $\pi$；$K < 0$（雙曲）不足 $\pi$——**否定第五公設不導出矛盾，導出不同的幾何**（Gauss/Bolyai/Lobachevsky 1829–32）。
 
 ### 為什麼重要：公理化的帝國
 **偵探筆記**：歐幾里得的推理是「建築式」——先立地基（公理），再一層層蓋（定理）。這個方法的帝國：

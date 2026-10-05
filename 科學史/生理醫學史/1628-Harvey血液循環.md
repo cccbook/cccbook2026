@@ -35,27 +35,20 @@ Harvey 用繃帶綁住手臂：
 - **綁緊**（動靜脈都壓）：遠端蒼白——動脈血進不來
 - 沿靜脈**往心臟方向**推擠可以排空、反向推擠不行——**瓣膜只允許單向流動**
 
-### Python：Harvey 的計算復刻
+### 泵出量的數量級核算
 
-```python
-# Harvey 1628 的定量推理
-stroke_volume_ml = 57 * 0.02957 * 1000 / 100 * 1000 / 1000  # 2 英兩 ≈ 59 ml
-stroke_volume_ml = 59
-heart_rate = 72
-total_blood_L = 5.0
+以每跳泵出量 $V_{stroke} \approx 59 \text{ ml}$（2 英兩）、心跳每分鐘 $72$ 次計：
 
-per_hour = stroke_volume_ml * heart_rate * 60          # 每小時泵出 ml
-circulations = per_hour / (total_blood_L * 1000)       # 每小時循環次數
-print(f"每小時泵出 {per_hour/1000:.0f} 公升")
-print(f"每小時循環全身 {circulations:.0f} 次")
-print(f"每日泵出 {per_hour*24/1000:,.0f} 公升 = 一個小游泳池")
-```
-輸出：
-```
-每小時泵出 255 公升
-每小時循環全身 51 次
-每日泵出 6,117 公升 = 一個小游泳池
-```
+$$Q_{\text{小時}} = V_{stroke} \times 72 \times 60 \approx 255 \text{ 公升}, \qquad
+N_{\text{循環}} = \frac{Q_{\text{小時}}}{5 \text{ 公升}} \approx 51 \text{ 次/小時}.$$
+
+| 量 | 數值 |
+|----|------|
+| 每次心跳泵出 | ~59 ml（2 英兩） |
+| 每小時心跳數 | $72 \times 60 = 4320$ 次 |
+| 每小時泵出量 | $\approx 255$ 公升 |
+| 每小時循環全身 | $\approx 51$ 次 |
+| 每日泵出量 | $\approx 6{,}100$ 公升（一個小游泳池） |
 
 ### Harvey 的證據鏈
 | 證據 | 推翻的教條 |

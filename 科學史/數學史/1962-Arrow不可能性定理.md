@@ -87,16 +87,18 @@ for voters in [3, 9, 21, 99]:
                  if condorcet_winner(random_preferences(voters, options), options) == "循環！")
     print(f"{voters} 人：循環機率 = {cycles/2000:.3f}")
 # 循環是「常態」——多數決的傳遞性必然崩塌（無限域）
+```
 
-# 不可能性定理的結構（聯盟的分析）
-def arrow_demonstration():
-    """Arrow 不可能性：條件 1-3 ⟹ 獨裁"""
-    print("\nArrow 條件：無限制域、Pareto、IIA、無獨裁")
-    print("定理：前三者 ⟹ 獨裁（違反第四）——完美民主不可能")
-    print("證明：最小決定性聯盟的擴張 → 單人決定性 = 獨裁")
-    print("教訓：投票制度的缺陷是必然，不是偶然")
+**不可能性定理的結構**（證明骨架）：Arrow 的三條合理條件——**無限制域、Pareto、IIA（無關方案獨立性）**——蘊含**獨裁**（違反第四條「無獨裁」）：
 
-arrow_demonstration()
+| 條件 | 內容 |
+|------|------|
+| 無限制域 | 所有偏好排序都允許 |
+| Pareto | 所有人偏好 $x > y$ 時，社會亦 $x > y$ |
+| IIA | 對 $x, y$ 的社會排序只取決於個人對 $x, y$ 的排序 |
+| 無獨裁 | 不存在一人決定全社會 |
+
+**證明**：最小決定性聯盟的擴張論證 $\implies$ 單人決定性 = 獨裁——**完美民主不可能**。
 
 # Borda 計分：另一種制度（也違反 IIA）
 def borda_count(preferences, options):

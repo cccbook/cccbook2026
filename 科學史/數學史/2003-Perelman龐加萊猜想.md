@@ -72,15 +72,16 @@ roughness1 = sum(abs(a-b) for a, b in zip(u1[1:], u1[:-1]))
 print(f"粗糙度：初始 = {roughness0:.2f}，演化後 = {roughness1:.2f}（平滑化 ✓）")
 print("\nRicci 流 ∂g/∂t = -2R：曲率隨時間平滑——Hamilton 1982 的方法")
 print("Perelman 的手術：奇異點切開縫合，熵函數控制結構——幾何化猜想 ✓")
-
-# 單連通性的直覺：圈可收縮
-def simply_connected_check():
-    print("球面 S²：任何圈可收縮到一點（π₁ = 0）——單連通")
-    print("環面 T²：繞環的圈不可收縮——非單連通")
-    print("龐加萊猜想：閉 3-流形單連通 ⟹ 同胚於 S³（Perelman 2003）")
-
-simply_connected_check()
 ```
+
+**單連通性的直覺**：基本群 $\pi_1$ 是「圈可否收縮」的代數判準：
+
+| 空間 | $\pi_1$ | 圈的行為 |
+|------|---------|----------|
+| 球面 $S^2$ | $0$（平凡） | 任何圈可收縮到一點——單連通 |
+| 環面 $T^2$ | $\mathbb{Z}^2$ | 繞環的圈不可收縮——非單連通 |
+
+**龐加萊猜想**：閉 3-流形單連通（$\pi_1 = 0$）$\implies$ 同胚於 $S^3$（Perelman 2003）。
 
 ### 放棄一切：Perelman 的傳奇
 **榮譽的拒絕**：

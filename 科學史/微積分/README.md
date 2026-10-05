@@ -10,7 +10,7 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 前250 | Archimedes 以窮竭法求拋物線弓形面積與圓周率，積分思想的遠古原型 | [前250-Archimedes窮竭法.md](前250-Archimedes窮竭法.md) |
+| 前250 | Archimedes 以窮竭法求拋物線弓形面積與圓周率，積分思想的遠古原型 | [-0250-Archimedes窮竭法.md](-0250-Archimedes窮竭法.md) |
 | 1635 | Cavalieri 出版《不可分量的幾何》，提出 Cavalieri 原理與 $\int x^n dx$ 雛形 | [1635-Cavalieri不可分量法.md](1635-Cavalieri不可分量法.md) |
 | 1637 | Fermat 以「擬等法」求極值與切線，微分思想原型；Descartes 出版《幾何學》 | [1637-Fermat極大極小法.md](1637-Fermat極大極小法.md) |
 | 1655 | Wallis 出版《無窮算術》，以數列插值求 $4/\pi$、猜想廣義二項式 | [1655-Wallis無窮分析.md](1655-Wallis無窮分析.md) |

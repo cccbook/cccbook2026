@@ -44,53 +44,21 @@ $$\mathrm{2H_2 + O_2 \rightarrow 2H_2O}$$
 
 ## 證據與工具
 
-用 Python 重現卡文迪西的密度測量與水的合成計量：
+**可燃空氣的密度。** 同溫同壓下，氣體的密度比等於摩爾質量比：
 
-```python
-# 卡文迪西實驗重現：可燃空氣（H2）的密度測量
+$$\frac{\rho_{\mathrm{H_2}}}{\rho_{\text{空氣}}} = \frac{2.016}{28.97} \approx \frac{1}{14.4}$$
 
-M_H2 = 2.016       # g/mol
-M_air = 28.97      # g/mol（空氣平均摩爾質量）
+卡文迪西 1766 年實測「可燃空氣」與普通空氣的密度比約為 $1:14$，與現代值 $1/14.4$ 相符——他據此斷定這是一種比空氣輕得多的新「空氣」。製備的計量也很直接：$\mathrm{Zn + 2HCl \to ZnCl_2 + H_2}$，每 65.38 g 鋅產生 2.016 g 氫，即溶解 6.5 g 鋅可得約 0.20 g 氫，在同溫同壓下佔約 2.45 L（25°C、1 atm）。卡文迪西正是用「金屬溶解減重」的質量差法，為最輕的氣體稱重。
 
-def gas_density_ratio(M_gas, M_air=M_air):
-    """氣體密度比（同溫同壓下密度比 = 摩爾質量比）"""
-    return M_gas / M_air
+**水的合成：2:1 體積比與 1:8 質量比。** 卡文迪西 1784 年讓氫氧在量氣管中電火花化合，發現不論初始比例如何，化合的體積恆為：
 
-ratio = gas_density_ratio(M_H2)
-print(f"可燃空氣與普通空氣的密度比 = {ratio:.4f} ≈ 1/{1/ratio:.1f}")
-print("卡文迪西 1766 年實測約 1/14，與現代值 1/14.4 相符")
+$$\mathrm{2H_2 + O_2 \to 2H_2O}, \qquad V_{\mathrm{H_2}} : V_{\mathrm{O_2}} = 2:1$$
 
-# 質量差法：金屬 + 酸 -> H2，由溶液減重推算氣體質量
-M_Zn = 65.38
-def h2_from_zinc(mass_Zn):
-    """Zn + 2HCl -> ZnCl2 + H2，1 莫耳鋅產生 1 莫耳氫"""
-    n = mass_Zn / M_Zn
-    return n * M_H2
+| 實驗安排 | 化合的 H2 | 化合的 O2 | 剩餘氣體 |
+|---|---|---|---|
+| 2 體積 H2 + 1 體積 O2 | 2 | 1 | 無（完全化合） |
+| 4 體積 H2 + 1 體積 O2 | 2 | 1 | 剩 2 體積 H2 |
+| 2 體積 H2 + 2 體積 O2 | 2 | 1 | 剩 1 體積 O2 |
+| 10 體積 H2 + 5 體積 O2 | 10 | 5 | 無（完全化合） |
 
-print(f"\n溶解 6.5 g 鋅 -> 產生 H2 約 {h2_from_zinc(6.5):.3f} g")
-print(f"在同溫同壓下佔體積約 {h2_from_zinc(6.5)/M_H2*24.5:.2f} L（25°C, 1 atm）")
-```
-
-```python
-# 卡文迪西 1784 年水的合成實驗：2H2 + O2 -> 2H2O
-# 核心計量：體積比 2:1，質量比約 1:8
-
-def water_synthesis(vol_H2, vol_O2):
-    """給入氫氧體積，回傳(反應體積, 剩餘氣體)"""
-    n_H2, n_O2 = vol_H2, vol_O2        # 同溫同壓下體積比 = 莫耳比
-    reacted = min(n_H2, 2*n_O2)         # H2 需要 2 倍 O2 的量
-    used_O2 = reacted / 2
-    left_H2, left_O2 = n_H2 - reacted, n_O2 - used_O2
-    return reacted, left_H2, left_O2
-
-# 卡文迪西的關鍵比例：2 體積氫 + 1 體積氧 -> 完全化合
-for h2, o2 in [(2, 1), (4, 1), (2, 2), (10, 5)]:
-    r, lh, lo = water_synthesis(h2, o2)
-    print(f"H2 {h2} vol + O2 {o2} vol -> 反應 H2 {r} vol、O2 {r/2} vol，"
-          f"剩餘 H2 {lh}、O2 {lo}")
-
-# 質量比驗證：H2O 中 H:O = 2*2.016 : 16.00 ≈ 1:8
-print(f"\n水中氫氧質量比 = {2*2.016/16.0:.4f}（即 O 約為 H 的 8 倍）")
-# 這個恆定的 2:1 體積比與 1:8 質量比，
-# 後來成為 Proust 定比定律與 Gay-Lussac 氣體化合體積定律的基礎。
-```
+質量比可由摩爾質量直接算出：水中 $\dfrac{m_{\mathrm{H}}}{m_{\mathrm{O}}} = \dfrac{2 \times 1.008}{16.00} \approx \dfrac{1}{7.9}$，即氧的質量約為氫的 8 倍。這個恆定的 2:1 體積比與 1:8 質量比，後來成為 Proust 定比定律與 Gay-Lussac 氣體化合體積定律的實驗基礎。

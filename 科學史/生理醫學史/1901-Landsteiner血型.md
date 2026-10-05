@@ -41,48 +41,21 @@ $$I^AI^A, I^Ai \to A; \quad I^BI^B, I^Bi \to B; \quad I^AI^B \to AB; \quad ii \t
 **血型 = 第一個在人類中確認的孟德爾性狀**——法醫學（親子鑑定）與
 族群遺傳學（Hardy–Weinberg 平衡）的應用對象。
 
-### Python：血型相容性與親子鑑定的偵查
+### 血型遺傳與族群分佈（Hardy–Weinberg 平衡）
 
-```python
-import numpy as np
-from collections import Counter
+三個對偶基因 $I^A, I^B, i$ 的頻率 $p, q, r$（$p+q+r=1$）下，Hardy–Weinberg 平衡給出：
+$$P(A) = p^2 + 2pr, \qquad P(B) = q^2 + 2qr, \qquad P(AB) = 2pq, \qquad P(O) = r^2.$$
 
-GENOTYPES = {('A','A'):'A', ('A','O'):'A', ('O','A'):'A',
-             ('B','B'):'B', ('B','O'):'B', ('O','B'):'B',
-             ('A','B'):'AB', ('B','A'):'AB',
-             ('O','O'):'O'}
+**親子鑑定的邏輯**：$O \times O$ 的孩子只能是 $O$（$ii \times ii \to ii$）；
+$A \times B$ 的孩子四種血型都可能（$I^Ai \times I^Bi$）——
+**血型不符即排除親子關係，血型相符不能確認**。
 
-def child_blood(father, mother):
-    return GENOTYPES[(father, mother)]
-
-def compatible(donor, recipient):
-    CAN_DONATE = {'A': {'A','AB'}, 'B': {'B','AB'},
-                  'AB': {'AB'}, 'O': {'A','B','AB','O'}}
-    return recipient in CAN_DONATE[donor]
-
-print("O 型可捐給 AB 型：", compatible('O', 'AB'))   # True
-print("AB 型可捐給 O 型：", compatible('AB', 'O'))   # False
-
-# 親子鑑定：O 型父母不可能生 AB 型孩子
-print("O × O 的孩子：", child_blood('O','O'))         # 只能是 O
-print("A × B 的孩子：", {child_blood('A','B')})       # 可能 A/B/AB/O
-
-# Hardy-Weinberg 平衡：族群的血型分佈
-rng = np.random.default_rng(0)
-pA, pB, pO = 0.28, 0.13, 0.44                        # 台灣族群近似
-alleles = rng.choice(['A','B','O'], size=100000, p=[pA, pB, pO])
-bloods = Counter(GENOTYPES[(alleles[i], alleles[i+1])]
-                 for i in range(0, 100000, 2))
-print("\n模擬族群血型分佈:", {k: f"{v/50000*100:.1f}%" for k, v in sorted(bloods.items())})
-```
-輸出：
-```
-O 型可捐給 AB 型： True
-AB 型可捐給 O 型： False
-O × O 的孩子： O
-A × B 的孩子： {'O'}
-模擬族群血型分佈: {'A': '20.3%', 'AB': '7.3%', 'B': '13.9%', 'O': '58.5%'}
-```
+| 父母組合 | 可能的孩子血型 |
+|---------|--------------|
+| O × O | 只能 O |
+| A × A | A 或 O |
+| A × B | A、B、AB、O |
+| AB × O | A 或 B |
 
 ## 結案 -- 後果與影響
 - **輸血的革命**：血型表讓輸血從賭命變成常規——

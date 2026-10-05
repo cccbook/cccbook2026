@@ -48,47 +48,22 @@ $$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
 
 **但邏輯系統長存**：量詞邏輯成為標準——**Hilbert 的形式化**（1920s）、**Peano 的公理**（1889）、**Gödel 的不完備**（1931）——全部站在 Frege 的符號系統上。
 
-### 程式碼：量詞邏輯
+### 量詞順序的語義（示例）
+**量詞順序有意義**——以三人 $\{A, B, C\}$ 與「愛」關係 $L = \{(A,B), (B,A), (C,A)\}$ 為例：
 
-```python
-def forall(iterable, pred):
-    """全稱量詞 ∀x P(x)"""
-    return all(pred(x) for x in iterable)
+| 陳述 | 符號 | 檢驗 | 結果 |
+|------|------|------|------|
+| 每人愛某人 | $\forall x \exists y\, L(x, y)$ | $A$ 愛 $B$、$B$ 愛 $A$、$C$ 愛 $A$ | **真** |
+| 有人被所有人愛 | $\exists y \forall x\, L(x, y)$ | 無人被 $A, B, C$ 全部愛 | **假** |
 
-def exists(iterable, pred):
-    """存在量詞 ∃x P(x)"""
-    return any(pred(x) for x in iterable)
+$$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
 
-def implies(a, b):
-    """蘊涵 a → b"""
-    return (not a) or b
+——**亞里士多德的三段論無法表達的結構**（只有主謂結構，無多重量詞）。
 
-# 數學陳述的量詞化
-nums = range(1, 50)
-
-# 素數無窮：∀n ∃p > n Prime(p)
-def is_prime(n):
-    if n < 2: return False
-    return all(n % d for d in range(2, int(n**0.5)+1))
-
-primes = [p for p in nums if is_prime(p)]
-print(f"素數（1-50）：{primes}")
-print(f"∀n ∃p>n Prime(p)（範圍內）：{forall([10, 20, 30], lambda n: exists(nums, lambda p: p > n and is_prime(p)))}")
-
-# 量詞順序的語義：∀x∃y vs ∃y∀x
-people = ["A", "B", "C"]
-loves = {("A", "B"), ("B", "A"), ("C", "A")}   # 誰愛誰
-# ∀x ∃y Loves(x, y)：每人愛某人
-q1 = forall(people, lambda x: exists(people, lambda y: (x, y) in loves))
-# ∃y ∀x Loves(x, y)：有人被所有人愛
-q2 = exists(people, lambda y: forall(people, lambda x: (x, y) in loves))
-print(f"\n∀x∃y（每人愛某人）= {q1}；∃y∀x（有人被所有人愛）= {q2}")
-print(f"順序有意義：{q1} ≠ {q2}——亞氏邏輯無法表達的 ✓")
-
-# ε-δ 是量詞邏輯（Weierstrass 的本質）
-print("\n極限定義 = 量詞邏輯：∀ε>0 ∃δ>0 ∀x (...)")
-print("Frege 1879 的量詞 = 現代數學形式化的地基")
-```
+**數學陳述的量詞化**：
+- 極限：$\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)$——**Weierstrass 的 $\epsilon$-$\delta$ 本質是量詞邏輯**
+- 素數無窮：$\forall n\, \exists p > n\, \mathrm{Prime}(p)$
+- 哥德巴赫：$\forall n \text{ 偶} \exists p, q\, (n = p + q)$
 
 ## 結案 -- 後果與影響
 - **數理邏輯的誕生**：量詞邏輯——數學陳述的完整符號化（亞氏兩千年枷鎖解開）。
