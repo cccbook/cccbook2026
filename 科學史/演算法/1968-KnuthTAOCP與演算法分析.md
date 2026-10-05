@@ -99,8 +99,7 @@ for n in [500, 1000, 2000, 4000]:
 ## 結案 -- 後果與影響
 
 - 演算法分析成為一門學科：1974 年 Knuth 獲圖靈獎，表揚他「對演算法分析與程式設計語言設計的重大貢獻」。
-- TAOCP 至今未完：1973 年 Vol. 3（排序與搜尋）出版，2011 年 Vol. 4A（組合演算法）出版，全書規劃七卷。
-- KMP 字串匹配演算法（Knuth、Morris、Pratt）誕生於此計畫，Vol. 3 收錄其成果，1977 年正式發表。
+- TAOCP 至今未完：1973 年 Vol. 3（排序與搜尋）出版，2011 年 Vol. 4A（組合演算法）出版，全書規劃七卷；KMP 字串匹配演算法（Knuth、Morris、Pratt）誕生於此計畫，1977 年正式發表。
 - 文學編程（literate programming，1984）：Knuth 為寫作 TAOCP 而發展的程式撰寫哲學，主張程式應如文學作品般為人類而寫。
 - TeX 排版系統的副產品：Knuth 為了排出完美的 TAOCP 而發明 TeX，如今是學術排版的標準。
 - 「演算法是藝術」的哲學：美（優雅）與真（正確、高效）並重，影響了整個電腦科學的教育傳統。
@@ -108,8 +107,7 @@ for n in [500, 1000, 2000, 4000]:
 ## 關鍵人物與文獻
 
 - Donald E. Knuth：《The Art of Computer Programming》的作者，1974 年圖靈獎得主，史丹佛大學教授。
-- Paul Bachmann：大 O 記法的數學源頭（1894）。
-- Edmund Landau：將大 O 記法推廣於解析數論。
+- Paul Bachmann：大 O 記法的數學源頭（1894）；Edmund Landau 將其推廣於解析數論。
 - James Morris、Vaughan Pratt：KMP 演算法的合作者。
 
 主要文獻：

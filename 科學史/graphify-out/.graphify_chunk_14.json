@@ -1,0 +1,693 @@
+{
+ "nodes": [
+  {
+   "id": "_readme",
+   "label": "幾何學史 README（案件卷宗年表）",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_300_euclid_elements",
+   "label": "歐幾里得《幾何原本》：公理—定理演繹系統",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/前300-歐幾里得要素.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_250_archimedes_method",
+   "label": "阿基米德《方法論》：窮盡法與阿基米德螺旋線",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/前250-阿基米德方法.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1890_peano_curve",
+   "label": "Peano 曲線：連續曲線填滿正方形，維數論起點",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1890-皮亞諾曲線.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1899_hilbert_foundations",
+   "label": "Hilbert《幾何學的基礎》：現代公理化的最終一步",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1899-希爾伯特幾何基礎.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1900_hilbert_tenth_problem",
+   "label": "Hilbert 第十題：可計算性與不可計算性的分水嶺",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1900-希爾伯特第十題.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1908_minkowski_spacetime",
+   "label": "Minkowski 時空：相對論的四維幾何表述",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1908-閔考斯基時空.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1916_einstein_general_relativity",
+   "label": "Einstein 廣義相對論：黎曼幾何成為物理學",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1916-愛因斯坦廣義相對論.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1918_weyl_gauge_theory",
+   "label": "Weyl 規範理論：規範對稱成為物理核心原理",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1918-外爾規範理論.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1926_cartan_moving_frames",
+   "label": "Cartan 活動標架：統一 Klein 與 Riemann 幾何",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1926-嘉當活動標架.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1936_whitney_embedding_theorem",
+   "label": "Whitney 嵌入定理：流形可嵌入 R^2n",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1936-惠特尼嵌入定理.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1954_nash_embedding_theorem",
+   "label": "Nash 嵌入定理：黎曼流形的等距嵌入",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1954-納什嵌入定理.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1956_exotic_spheres",
+   "label": "Milnor 異質球面：同胚不等於微分同胚 (n=7)",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1956-異質球面.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1974_penrose_tiling",
+   "label": "Penrose 舖磚：非週期性準晶體",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1974-彭羅斯舖磚.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1976_four_color_theorem",
+   "label": "四色定理計算機證明：機器證明時代開啟",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1976-四色定理計算機證明.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1982_thurston_geometrization",
+   "label": "Thurston 幾何化猜想：三維流形的八種幾何",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1982-瑟斯頓幾何化猜想.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1987_gromov_hyperbolic_groups",
+   "label": "Gromov 雙曲群：幾何群論的誕生",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1987-格羅莫夫雙曲群.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_2003_perelman_poincare",
+   "label": "Perelman 證明龐加萊猜想：千禧年難題首殺",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/2003-佩雷爾曼龐加萊猜想.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_rl_readme",
+   "label": "強化學習史 README（案件卷宗年表）",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1950_turing_learning_machine",
+   "label": "Turing 學習機：孩童機器與獎懲學習思想",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1950-Turing學習機.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1953_bellman_dynamic_programming",
+   "label": "Bellman 動態規劃與 Bellman 方程",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1953-Bellman動態規劃.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1957_bellman_optimality_principle",
+   "label": "Bellman 最優性原理：V*、Q* 與壓縮映射收斂",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1957-Bellman最優性原理.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "_1959_samuel_checkers_program",
+   "label": "Samuel 跳棋自學程式：自我對弈與 TD 雛形",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1959-Samuel跳棋自學程式.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  }
+ ],
+ "edges": [
+  {
+   "source": "_300_euclid_elements",
+   "target": "_1899_hilbert_foundations",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/前300-歐幾里得要素.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1899_hilbert_foundations",
+   "target": "_300_euclid_elements",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1899-希爾伯特幾何基礎.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1890_peano_curve",
+   "target": "_1899_hilbert_foundations",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1890-皮亞諾曲線.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1900_hilbert_tenth_problem",
+   "target": "_1899_hilbert_foundations",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1900-希爾伯特第十題.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1908_minkowski_spacetime",
+   "target": "_1916_einstein_general_relativity",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1908-閔考斯基時空.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1918_weyl_gauge_theory",
+   "target": "_1916_einstein_general_relativity",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1918-外爾規範理論.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1926_cartan_moving_frames",
+   "target": "_1916_einstein_general_relativity",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1926-嘉當活動標架.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1936_whitney_embedding_theorem",
+   "target": "_1954_nash_embedding_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1936-惠特尼嵌入定理.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1954_nash_embedding_theorem",
+   "target": "_1936_whitney_embedding_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1954-納什嵌入定理.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1956_exotic_spheres",
+   "target": "_1936_whitney_embedding_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1956-異質球面.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1982_thurston_geometrization",
+   "target": "_2003_perelman_poincare",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1982-瑟斯頓幾何化猜想.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_2003_perelman_poincare",
+   "target": "_1982_thurston_geometrization",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/2003-佩雷爾曼龐加萊猜想.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1987_gromov_hyperbolic_groups",
+   "target": "_1982_thurston_geometrization",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1987-格羅莫夫雙曲群.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1974_penrose_tiling",
+   "target": "_1890_peano_curve",
+   "relation": "conceptually_related_to",
+   "confidence": "AMBIGUOUS",
+   "confidence_score": 0.3,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1974-彭羅斯舖磚.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_300_euclid_elements",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_250_archimedes_method",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1890_peano_curve",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1899_hilbert_foundations",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1900_hilbert_tenth_problem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1908_minkowski_spacetime",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1916_einstein_general_relativity",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1918_weyl_gauge_theory",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1926_cartan_moving_frames",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1936_whitney_embedding_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1954_nash_embedding_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1956_exotic_spheres",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1974_penrose_tiling",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1976_four_color_theorem",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1982_thurston_geometrization",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_1987_gromov_hyperbolic_groups",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_readme",
+   "target": "_2003_perelman_poincare",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_rl_readme",
+   "target": "_1950_turing_learning_machine",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_rl_readme",
+   "target": "_1953_bellman_dynamic_programming",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_rl_readme",
+   "target": "_1957_bellman_optimality_principle",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_rl_readme",
+   "target": "_1959_samuel_checkers_program",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1959_samuel_checkers_program",
+   "target": "_1950_turing_learning_machine",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1959-Samuel跳棋自學程式.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1953_bellman_dynamic_programming",
+   "target": "_1950_turing_learning_machine",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1953-Bellman動態規劃.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1957_bellman_optimality_principle",
+   "target": "_1953_bellman_dynamic_programming",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1957-Bellman最優性原理.md",
+   "source_location": null,
+   "weight": 1
+  },
+  {
+   "source": "_1959_samuel_checkers_program",
+   "target": "_1953_bellman_dynamic_programming",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1959-Samuel跳棋自學程式.md",
+   "source_location": null,
+   "weight": 1
+  }
+ ],
+ "hyperedges": [
+  {
+   "id": "rl_mathematical_lineage_1950_1959",
+   "label": "強化學習的數學血緣（學習機→動態規劃→最優性原理→自我對弈）",
+   "nodes": [
+    "_1950_turing_learning_machine",
+    "_1953_bellman_dynamic_programming",
+    "_1957_bellman_optimality_principle",
+    "_1959_samuel_checkers_program"
+   ],
+   "relation": "participate_in",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md"
+  },
+  {
+   "id": "embedding_theorems_line",
+   "label": "嵌入定理譜系（Whitney→Nash→異質球面）",
+   "nodes": [
+    "_1936_whitney_embedding_theorem",
+    "_1954_nash_embedding_theorem",
+    "_1956_exotic_spheres"
+   ],
+   "relation": "form",
+   "confidence": "EXTRACTED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/1936-惠特尼嵌入定理.md"
+  },
+  {
+   "id": "axiomatization_and_dimension",
+   "label": "公理化與維數直覺的崩潰（Euclid→Hilbert→Peano）",
+   "nodes": [
+    "_300_euclid_elements",
+    "_1899_hilbert_foundations",
+    "_1890_peano_curve"
+   ],
+   "relation": "participate_in",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/幾何學/README.md"
+  }
+ ],
+ "input_tokens": 31000,
+ "output_tokens": 2900
+}

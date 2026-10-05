@@ -74,49 +74,43 @@ from itertools import product
 CNF = [(1, -2), (2, 3), (-1, 3), (-2, -3)]   # 每個 tuple 是一個子句
 VARS = sorted({abs(l) for c in CNF for l in c})
 
-def verify(assign, cnf):          # 驗證：O(子句數)
+def verify(assign, cnf):          # 驗證：O(子句數)，多項式時間
     return all(any(assign[abs(l)] == (l > 0) for l in c) for c in cnf)
 
-def solve_bruteforce(cnf):        # 求解：O(2^n * 子句數)
-    for bits in product([False, True], repeat=len(VARS)):
-        assign = dict(zip(VARS, bits))
+def solve_bruteforce(cnf):        # 求解：最壞 O(2^n) 組賦值，指數時間
+    vars_ = sorted({abs(l) for c in cnf for l in c})
+    for tried, bits in enumerate(product([False, True], repeat=len(vars_))):
+        assign = dict(zip(vars_, bits))
         if verify(assign, cnf):
-            return assign
-    return None
+            return assign, tried + 1
+    return None, 2 ** len(vars_)
 
-sol = solve_bruteforce(CNF)
-print("variables:", VARS)
-print("satisfying assignment:", sol)
-print("verify(sol) =", verify(sol, CNF))
+sol, tried = solve_bruteforce(CNF)
+print("satisfying assignment:", sol, "| verify(sol) =", verify(sol, CNF))
+print(f"n={len(VARS)}: tried {tried} assignments")
 
-import time
-print(f"\n{'n':>4} {'solve(ms)':>12}")
-for n in [18, 20, 22, 24]:
-    c = [tuple(sorted({-(i % n + 1) if j == i else (i + j) % n + 1
-                       for j in range(min(n, i + 2))}))
-         for i in range(n)]
-    t0 = time.perf_counter()
-    solve_bruteforce(c)
-    print(f"{n:>4} {(time.perf_counter() - t0) * 1000:>12.2f}")
+print(f"\n{'n':>4} {'tried':>12}  (滿足賦值放在枚舉序列的最後 = 最壞情況)")
+for n in [10, 15, 20]:
+    cnf = [(i,) for i in range(1, n + 1)]    # 僅全 True 可滿足
+    _, t = solve_bruteforce(cnf)
+    print(f"{n:>4} {t:>12}")
 ```
 
-驗證一組賦值只需掃過子句一次（多項式）；求解卻要枚舉 $2^n$ 組賦值（指數）。n 加倍時求解時間暴漲——這正是 $P \neq NP$ 懷疑論者的實證直覺，也是 Cook-Levin 定理捕捉的不對稱。
+驗證一組賦值只需掃過子句一次（多項式）；求解最壞卻要枚舉 $2^n$ 組賦值（指數）——上表中 n 從 10 到 20，嘗試次數從 $10^3$ 暴漲到 $10^6$。這正是 $P \neq NP$ 懷疑論者的實證直覺，也是 Cook-Levin 定理捕捉的不對稱。
 
 ## 結案 -- 後果與影響
 
 - 1972 年 Karp 發表《Reducibility Among Combinatorial Problems》：用 Karp 歸約證明 21 個經典組合問題（頂點覆蓋、漢米頓路徑、子集和等）皆 NP-complete，掀起歸約浪潮。
 - P vs NP 成為千禧年七大數學難題之一（Clay 研究所，2000 年設百萬美元獎金），至今未解。
 - 密碼學的理論基礎：若 P=NP，則單向函數不存在，RSA 與所有公鑰密碼崩潰；現代密碼學建立在「NP 中存在困難問題」的假設上。
-- 計算複雜性理論誕生為學科：NP-complete、多項式層級、隨機化類別、近似困難度等，全部由此案延伸。
+- 計算複雜性理論誕生為學科：NP-complete、多項式層級、隨機化類別、近似困難度等，全部由此案延伸；SAT 求解器（DPLL、CDCL）與近似演算法則是對抗 NP 困難性的兩大工業。
 - Cook 獲 1982 年圖靈獎；Levin 後移民美國（波士頓大學），Cook-Levin 定理以兩人並列，成為「獨立發現」的科學史經典案例。
-- 啟發式與近似的務實回應：SAT 求解器（DPLL、CDCL）與近似演算法成為對抗 NP 困難性的兩大工業。
 
 ## 關鍵人物與文獻
 
 - Stephen Cook：多倫多大學教授，NP 完備性的發現者，1982 年圖靈獎得主。
 - Leonid Levin：蘇聯（Kolmogorov 學生）獨立發現者，後為波士頓大學教授。
-- Jack Edmonds：「好演算法 = 多項式時間」定義的提出者（1965）。
-- Richard Karp：1972 年 21 題歸約的作者，將 NP-complete 概念發揚光大。
+- Jack Edmonds：「好演算法 = 多項式時間」定義的提出者（1965）；Richard Karp 則以 1972 年 21 題歸約將 NP-complete 概念發揚光大。
 - Alan Turing：圖靈機（1936），一切複雜性類別的計算模型源頭。
 
 主要文獻：

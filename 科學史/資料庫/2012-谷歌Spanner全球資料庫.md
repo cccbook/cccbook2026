@@ -83,7 +83,7 @@ def commit_wait(tt, physical_ms):
     """提交時間戳取區間上界 t_late，並等待到物理時間超過它"""
     early, late = tt.now(physical_ms)
     wait = late - physical_ms       # 需等待的毫秒數
-    return s := late, wait
+    return late, wait
 
 tt = TrueTime(eps_ms=4)
 print("TrueTime 區間模擬（誤差界 ε = 4ms）：")

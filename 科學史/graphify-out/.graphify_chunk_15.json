@@ -1,0 +1,1259 @@
+{
+ "nodes": [
+  {
+   "id": "rl_1960_widrowhoff_lms",
+   "label": "1960 Widrow–Hoff LMS 最小均方",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1960-WidrowHoff-LMS最小均方.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_adaline",
+   "label": "ADALINE 自適應線性神經元",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1960-WidrowHoff-LMS最小均方.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_lms_delta_rule",
+   "label": "LMS delta rule（SGD 先驅：連續誤差驅動權重更新）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1960-WidrowHoff-LMS最小均方.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Bernard Widrow, Ted Hoff",
+   "contributor": null
+  },
+  {
+   "id": "rl_1961_michie_menace",
+   "label": "1961 Michie 的 MENACE 井字棋學習機",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1961-MichieMENACE井字棋.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_menace",
+   "label": "MENACE（Machine Educable Noughts And Crosses Engine）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1961-MichieMENACE井字棋.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Donald Michie",
+   "contributor": null
+  },
+  {
+   "id": "rl_thorndike_effect_law",
+   "label": "Thorndike 效果律的機械化",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1961-MichieMENACE井字棋.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Donald Michie",
+   "contributor": null
+  },
+  {
+   "id": "rl_1972_klopf",
+   "label": "1972 Klopf 獎懲塑造",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1972-Klopf獎懲塑造.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_hedonistic_neuron",
+   "label": "享樂主義神經元假說（hedonistic neuron）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1972-Klopf獎懲塑造.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "A. Harry Klopf",
+   "contributor": null
+  },
+  {
+   "id": "rl_prediction_error_signal",
+   "label": "預期誤差 = 學習訊號（δ = 實際 − 預期）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1972-Klopf獎懲塑造.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "A. Harry Klopf",
+   "contributor": null
+  },
+  {
+   "id": "rl_1988_sutton_td",
+   "label": "1988 Sutton TD 學習論文",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_td_learning",
+   "label": "TD 學習與 TD 誤差（強化學習的心臟）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Richard Sutton",
+   "contributor": null
+  },
+  {
+   "id": "rl_1989_watkins_qlearning",
+   "label": "1989 Watkins Q-learning 博士論文",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1989-WatkinsQ-learning.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_q_learning",
+   "label": "Q-learning（無模型 + off-policy + 必收斂到 Q*）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1989-WatkinsQ-learning.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Christopher Watkins",
+   "contributor": null
+  },
+  {
+   "id": "rl_1992_tesauro",
+   "label": "1992 Tesauro TD-Gammon",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_td_gammon",
+   "label": "TD-Gammon（自我對弈學成雙陸棋大師）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Gerald Tesauro",
+   "contributor": null
+  },
+  {
+   "id": "rl_self_play",
+   "label": "自我對弈訓練法",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_1998_sutton_barto",
+   "label": "1998 Sutton & Barto RL 教科書",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1998-SuttonBartoRL教科書.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_mdp_framework",
+   "label": "MDP 統一框架（RL 正式成為一門學科）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1998-SuttonBartoRL教科書.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Richard Sutton, Andrew Barto",
+   "contributor": null
+  },
+  {
+   "id": "rl_2013_dqn",
+   "label": "2013 DQN 打 Atari",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_dqn",
+   "label": "DQN（Deep Q-Network）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Volodymyr Mnih 等（DeepMind）",
+   "contributor": null
+  },
+  {
+   "id": "rl_experience_replay",
+   "label": "經驗回放（experience replay）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_target_network",
+   "label": "目標網路（target network）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_2016_alphago",
+   "label": "2016 AlphaGo 擊敗李世乭",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_alphago",
+   "label": "AlphaGo",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "David Silver, Demis Hassabis 等（DeepMind）",
+   "contributor": null
+  },
+  {
+   "id": "rl_mcts_policy_value_networks",
+   "label": "MCTS + 策略網路 + 價值網路架構",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_2017_alphazero",
+   "label": "2017 AlphaZero 自我對弈",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_alphazero",
+   "label": "AlphaZero（拋棄人類知識，三大棋通吃）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "David Silver 等（DeepMind）",
+   "contributor": null
+  },
+  {
+   "id": "rl_2022_chatgpt_rlhf",
+   "label": "2022 ChatGPT 與 RLHF",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2022-ChatGPT與RLHF.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_rlhf",
+   "label": "RLHF（Reinforcement Learning from Human Feedback）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2022-ChatGPT與RLHF.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Ouyang 等（OpenAI）",
+   "contributor": null
+  },
+  {
+   "id": "rl_reward_model_ppo",
+   "label": "SFT → 獎勵模型 → PPO 三步流水線",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2022-ChatGPT與RLHF.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "rl_readme",
+   "label": "強化學習史年表（AI 偵探風格 README）",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_1690_jacobbernoulli_tautochrone",
+   "label": "1690 Jacob Bernoulli 等時曲線",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1690-JacobBernoulli等時曲線.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_tautochrone",
+   "label": "等時曲線問題（tautochrone）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1690-JacobBernoulli等時曲線.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Jacob Bernoulli, Christiaan Huygens",
+   "contributor": null
+  },
+  {
+   "id": "de_1695_bernoulli_equation",
+   "label": "1695 Bernoulli 方程",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1695-Bernoulli方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_bernoulli_equation",
+   "label": "Bernoulli 方程（代換把非線性化為線性）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1695-Bernoulli方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Leibniz, Jacob Bernoulli",
+   "contributor": null
+  },
+  {
+   "id": "de_1696_brachistochrone",
+   "label": "1696 最速降線問題",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_brachistochrone",
+   "label": "最速降線問題（brachistochrone）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Johann Bernoulli",
+   "contributor": null
+  },
+  {
+   "id": "de_variation_calculus",
+   "label": "變分法的誕生（求函數本身的極值）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_1727_euler_ode",
+   "label": "1727 Euler 系統化常微分方程",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_integrating_factor",
+   "label": "積分因子與特徵根（Euler 系統化）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Leonhard Euler",
+   "contributor": null
+  },
+  {
+   "id": "de_1739_clairaut",
+   "label": "1739 Clairaut 隱式解與奇解",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1739-Clairaut隱式解與奇解.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_clairaut_singular_solution",
+   "label": "奇解與包絡線（envelope）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1739-Clairaut隱式解與奇解.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Alexis Claude Clairaut",
+   "contributor": null
+  },
+  {
+   "id": "de_1747_dalembert",
+   "label": "1747 達朗貝爾與波動方程",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1747-dAlembert波動方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_wave_equation",
+   "label": "波動方程（第一個非平凡 PDE 通解）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1747-dAlembert波動方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Jean le Rond d'Alembert",
+   "contributor": null
+  },
+  {
+   "id": "de_1755_euler_fluid",
+   "label": "1755 尤拉與流體力學方程",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1755-Euler流體力學方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_euler_equations_fluid",
+   "label": "Euler 流體力學方程組（歐拉觀點/場論）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1755-Euler流體力學方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Leonhard Euler",
+   "contributor": null
+  },
+  {
+   "id": "de_1763_trig_series_debate",
+   "label": "1763 三角級數大辯論",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1763-三角級數大辯論.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_function_concept_debate",
+   "label": "函數是什麼？（三角級數普適性之爭）",
+   "file_type": "rationale",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1763-三角級數大辯論.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Daniel Bernoulli, Euler, d'Alembert",
+   "contributor": null
+  },
+  {
+   "id": "de_1782_laplace",
+   "label": "1782 拉普拉斯與位勢方程",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1782-Laplace位勢方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_laplace_equation",
+   "label": "拉普拉斯方程與位勢函數",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1782-Laplace位勢方程.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Pierre-Simon Laplace",
+   "contributor": null
+  },
+  {
+   "id": "de_1788_lagrange",
+   "label": "1788 拉格朗日與分析力學",
+   "file_type": "document",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1788-Lagrange分析力學.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null
+  },
+  {
+   "id": "de_lagrange_mechanics",
+   "label": "拉格朗日分析力學（廣義座標統一方法論）",
+   "file_type": "concept",
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1788-Lagrange分析力學.md",
+   "source_location": null,
+   "source_url": null,
+   "captured_at": null,
+   "author": "Joseph-Louis Lagrange",
+   "contributor": null
+  }
+ ],
+ "edges": [
+  {
+   "source": "rl_1960_widrowhoff_lms",
+   "target": "rl_adaline",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1960-WidrowHoff-LMS最小均方.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1960_widrowhoff_lms",
+   "target": "rl_lms_delta_rule",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1960-WidrowHoff-LMS最小均方.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1961_michie_menace",
+   "target": "rl_menace",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1961-MichieMENACE井字棋.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1961_michie_menace",
+   "target": "rl_thorndike_effect_law",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1961-MichieMENACE井字棋.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1972_klopf",
+   "target": "rl_hedonistic_neuron",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1972-Klopf獎懲塑造.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1972_klopf",
+   "target": "rl_prediction_error_signal",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1972-Klopf獎懲塑造.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1988_sutton_td",
+   "target": "rl_td_learning",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1988_sutton_td",
+   "target": "rl_prediction_error_signal",
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1989_watkins_qlearning",
+   "target": "rl_q_learning",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1989-WatkinsQ-learning.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1992_tesauro",
+   "target": "rl_td_gammon",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1992_tesauro",
+   "target": "rl_self_play",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1992_tesauro",
+   "target": "rl_1988_sutton_td",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1992-TesauroTD-Gammon.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_1998_sutton_barto",
+   "target": "rl_mdp_framework",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1998-SuttonBartoRL教科書.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2013_dqn",
+   "target": "rl_dqn",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2013_dqn",
+   "target": "rl_experience_replay",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2013_dqn",
+   "target": "rl_target_network",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2016_alphago",
+   "target": "rl_alphago",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2016_alphago",
+   "target": "rl_mcts_policy_value_networks",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2016_alphago",
+   "target": "rl_2013_dqn",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2016_alphago",
+   "target": "rl_self_play",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2017_alphazero",
+   "target": "rl_alphazero",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2017_alphazero",
+   "target": "rl_2016_alphago",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2017_alphazero",
+   "target": "rl_mcts_policy_value_networks",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2017_alphazero",
+   "target": "rl_self_play",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2022_chatgpt_rlhf",
+   "target": "rl_rlhf",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2022-ChatGPT與RLHF.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_2022_chatgpt_rlhf",
+   "target": "rl_reward_model_ppo",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2022-ChatGPT與RLHF.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1960_widrowhoff_lms",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1961_michie_menace",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1972_klopf",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1988_sutton_td",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1989_watkins_qlearning",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1992_tesauro",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_1998_sutton_barto",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_2013_dqn",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_2016_alphago",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_2017_alphazero",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_readme",
+   "target": "rl_2022_chatgpt_rlhf",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1690_jacobbernoulli_tautochrone",
+   "target": "de_tautochrone",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1690-JacobBernoulli等時曲線.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1695_bernoulli_equation",
+   "target": "de_bernoulli_equation",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1695-Bernoulli方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1695_bernoulli_equation",
+   "target": "de_1690_jacobbernoulli_tautochrone",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1695-Bernoulli方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1696_brachistochrone",
+   "target": "de_brachistochrone",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1696_brachistochrone",
+   "target": "de_variation_calculus",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1727_euler_ode",
+   "target": "de_integrating_factor",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1727_euler_ode",
+   "target": "de_1690_jacobbernoulli_tautochrone",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1727_euler_ode",
+   "target": "de_1695_bernoulli_equation",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1727_euler_ode",
+   "target": "de_1696_brachistochrone",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1727-Euler常微分方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1739_clairaut",
+   "target": "de_clairaut_singular_solution",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1739-Clairaut隱式解與奇解.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1739_clairaut",
+   "target": "de_1727_euler_ode",
+   "relation": "cites",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1739-Clairaut隱式解與奇解.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1747_dalembert",
+   "target": "de_wave_equation",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1747-dAlembert波動方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1755_euler_fluid",
+   "target": "de_euler_equations_fluid",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1755-Euler流體力學方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1763_trig_series_debate",
+   "target": "de_function_concept_debate",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1763-三角級數大辯論.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1763_trig_series_debate",
+   "target": "de_wave_equation",
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1763-三角級數大辯論.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1782_laplace",
+   "target": "de_laplace_equation",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1782-Laplace位勢方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1788_lagrange",
+   "target": "de_lagrange_mechanics",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1788-Lagrange分析力學.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_1788_lagrange",
+   "target": "de_variation_calculus",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1788-Lagrange分析力學.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_euler_equations_fluid",
+   "target": "de_laplace_equation",
+   "relation": "conceptually_related_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1782-Laplace位勢方程.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_lms_delta_rule",
+   "target": "rl_td_learning",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_prediction_error_signal",
+   "target": "rl_td_learning",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.9,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1988-SuttonTD學習.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_menace",
+   "target": "rl_q_learning",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/1989-WatkinsQ-learning.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_td_gammon",
+   "target": "rl_alphago",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2016-AlphaGo擊敗李世乭.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_alphago",
+   "target": "rl_alphazero",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2017-AlphaZero自我對弈.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "rl_experience_replay",
+   "target": "rl_target_network",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.75,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/2013-DQN打Atari.md",
+   "source_location": null,
+   "weight": 1.0
+  },
+  {
+   "source": "de_tautochrone",
+   "target": "de_brachistochrone",
+   "relation": "semantically_similar_to",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/1696-最速降線問題.md",
+   "source_location": null,
+   "weight": 1.0
+  }
+ ],
+ "hyperedges": [
+  {
+   "id": "rl_lineage_td_to_rlhf",
+   "label": "強化學習發展主線（TD → Q-learning → TD-Gammon → DQN → AlphaGo → AlphaZero → RLHF）",
+   "nodes": [
+    "rl_td_learning",
+    "rl_q_learning",
+    "rl_td_gammon",
+    "rl_dqn",
+    "rl_alphago",
+    "rl_alphazero",
+    "rl_rlhf"
+   ],
+   "relation": "form",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/強化學習/README.md"
+  },
+  {
+   "id": "de_18c_ode_foundation",
+   "label": "十八世紀常微分方程的誕生與系統化（1690–1739）",
+   "nodes": [
+    "de_1690_jacobbernoulli_tautochrone",
+    "de_1695_bernoulli_equation",
+    "de_1696_brachistochrone",
+    "de_1727_euler_ode",
+    "de_1739_clairaut"
+   ],
+   "relation": "participate_in",
+   "confidence": "EXTRACTED",
+   "confidence_score": 0.9,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/README.md"
+  },
+  {
+   "id": "de_pde_mathematical_physics",
+   "label": "偏微分方程與數學物理（1747–1788）",
+   "nodes": [
+    "de_1747_dalembert",
+    "de_1755_euler_fluid",
+    "de_1763_trig_series_debate",
+    "de_1782_laplace",
+    "de_1788_lagrange"
+   ],
+   "relation": "participate_in",
+   "confidence": "EXTRACTED",
+   "confidence_score": 0.9,
+   "source_file": "/Users/Shared/ccc/115a/cccbook2026/科學史/微分方程/README.md"
+  }
+ ],
+ "input_tokens": 24800,
+ "output_tokens": 5900
+}
