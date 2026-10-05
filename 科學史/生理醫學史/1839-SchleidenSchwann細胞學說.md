@@ -39,37 +39,22 @@ $$\text{植物細胞} \cong \text{動物細胞} \Longrightarrow \text{一切生�
 正式宣告**自然發生說 (spontaneous generation) 死刑**——生命不會從無生命物質憑空冒出。
 （此案最終由 Pasteur 1864 年的天鵝頸實驗徹底偵破。）
 
-### Python：細胞生長的指數偵查
+### 理論與數學式：「細胞來自細胞」的數學後果
 
-```python
-# 細胞分裂：Omnis cellula e cellula 的數學後果
-import numpy as np
+若每個細胞每 $T$ 分鐘分裂一次（大腸桿菌 $T \approx 20$ 分鐘），
+「Omnis cellula e cellula」的數學後果是指數成長：
 
-def cell_growth(n0, dt, t_max, t_double=20):
-    # 每 20 分鐘分裂一次（大腸桿菌）的指數成長
-    t = np.arange(0, t_max + 1, dt)
-    N = n0 * 2 ** (t / t_double)
-    return t, N
+$$N(t) = N_0 \cdot 2^{t/T}.$$
 
-t, N = cell_growth(n0=1, dt=1, t_max=480, t_double=20)   # 8 小時
-print(f"1 個細胞，8 小時後 = {N[-1]:.2e} 個")
-print(f"24 小時後 = {1 * 2**(24*60/20):.2e} 個（幸好營養會耗盡）")
-# 邏輯成長：營養耗盡的修正（Verhulst 1838，同年！）
-def logistic(N0, K, r, t_max):
-    t = np.arange(0, t_max+1)
-    N = [N0]
-    for _ in t[1:]:
-        N.append(N[-1] + r*N[-1]*(1 - N[-1]/K))
-    return np.array(N)
-N = logistic(N0=1000, K=1e9, r=0.05, t_max=300)
-print(f"邏輯成長 300 期後 = {N[-1]:.2e}（逼近環境上限 K=10^9）")
-```
-輸出：
-```
-1 個細胞，8 小時後 = 1.68e+07 個
-24 小時後 = 4.72e+21 個（幸好營養會耗盡）
-邏輯成長 300 期後 = 7.07e+08（逼近環境上限 K=10^9）
-```
+1 個細胞 8 小時後 = $2^{24} \approx 1.7 \times 10^7$ 個；24 小時後 = $2^{72} \approx 4.7 \times 10^{21}$ 個——
+**指數成長不可能持續**，營養與空間必然耗盡。
+
+Verhulst（1838，與細胞學說同年！）的邏輯成長模型給出修正：
+
+$$\frac{dN}{dt} = r\,N\left(1 - \frac{N}{K}\right),$$
+
+其中 $K$ 是環境承載量。$N \ll K$ 時回到指數成長；$N \to K$ 時成長飽和——
+**細胞的增殖自由受環境上限約束**。這也是後來腫瘤生長動力學的原型。
 
 ### 同構推理的偵探史
 | 案件 | 表面不同的事物 | 共同積木 |

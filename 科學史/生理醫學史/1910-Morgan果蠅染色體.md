@@ -36,36 +36,29 @@ $$\text{圖距}(A, B) = \frac{\text{重組後代數}}{\text{總後代數}} \time
 1911 年，19 歲大學生 Sturtevant 聽完 Morgan 的討論，通宵畫出**第一張基因圖譜**——
 6 個基因在 X 染色體上的線性排序。**互換頻率 = 基因的尺。**
 
-### Python：連鎖與基因圖譜的模擬
+### 理論與數學式：從互換頻率到基因圖譜
 
-```python
-import numpy as np
+異型合子 $\mathrm{Ab}/\mathrm{aB}$ 與隱性純合子 $\mathrm{ab}/\mathrm{ab}$ 測交：
+親本型配子 $\mathrm{Ab},\ \mathrm{aB}$ 各佔 $\frac{1-r}{2}$，重組型配子 $\mathrm{AB},\ \mathrm{ab}$ 各佔 $\frac{r}{2}$
+（$r$ 為互換頻率）。重組率等於圖距：
 
-def cross(r_rate=0.1, n=10000):
-    # 異型合子 Ab/aB（反式連鎖）× 隱性純合 ab/ab
-    # 配子：親本型 Ab, aB 各 (1-r)/2；重組型 AB, ab 各 r/2
-    gametes = np.random.choice(['Ab','aB','AB','ab'],
-                               p=[(1-r_rate)/2,(1-r_rate)/2,r_rate/2,r_rate/2],
-                               size=n)
-    return gametes
+$$r = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}), \qquad r \le 50\%.$$
 
-np.random.seed(0)
-for r_rate in [0.0, 0.1, 0.5]:
-    g = cross(r_rate)
-    recombinant = np.isin(g, ['AB','ab']).mean()
-    print(f"圖距 {r_rate*100:.0f} cM → 重組率實測 {recombinant*100:.1f}%")
+$r = 50\%$ 時四種配子等機率——**等於自由組合**：兩基因視為獨立
+（分屬不同染色體，或相距極遠）。
 
-# 從互換頻率畫基因圖譜（Sturtevant 1911 的方法）
-dists = {('y','w'):1.0, ('w','v'):7.5, ('v','m'):30.0}  # 觀測的互換頻率
-print("X 染色體基因圖譜: y --1-- w --7.5-- v --30-- m")
-```
-輸出：
-```
-圖距 0 cM → 重組率實測 0.0%
-圖距 10 cM → 重組率實測 10.0%
-圖距 50 cM → 重組率實測 50.1%（50 cM 以上等於自由組合）
-X 染色體基因圖譜: y --1-- w --7.5-- v --30-- m
-```
+**Sturtevant（1911）的方法**：互換頻率近似可加——兩基因的圖距 ≈ 沿途區段之和，
+由此把基因排成一條線。他通宵算出的第一張 X 染色體圖譜：
+
+| 區段 | 圖距 (cM) |
+|------|----------|
+| y（黃體）— w（白眼） | 1.0 |
+| w — v（硃紅眼） | 7.5 |
+| v — m（小翅） | 30.0 |
+
+$$\text{y} \xrightarrow{\ 1.0\ } \text{w} \xrightarrow{\ 7.5\ } \text{v} \xrightarrow{\ 30\ } \text{m}$$
+
+**互換頻率就是基因的尺**——基因圖譜不是畫出來的，是算出來的。
 
 ### 果蠅實驗室的證據鏈
 | 證據 | 推翻的教條 |

@@ -41,36 +41,26 @@ $$\text{sgRNA (20 bp)} + \text{Cas9} \to \text{掃描基因組} \to \text{PAM �
 $$\text{剪斷 (sgRNA + Cas9)} + \text{修復 (NHEJ/HDR)} = \text{敲除或替換}.$$
 **CRISPR 只負責剪，寫入靠細胞自己的修復機制**——這是基因編輯的完整公式。
 
-### Python：CRISPR 標靶與脫靶率的偵查
+### 理論與數學式：標靶空間與脫靶率的組合數學
 
-```python
-import numpy as np
+20 bp 的嚮導 RNA 給出**天文數字的標靶空間**：
 
-# 可程式化性的數學：20 bp 嚮導 RNA 的目標空間
-n_targets = 4 ** 20                                # 理論上可指認的目標數
-pam_freq = 1 / 16                                  # PAM (5'-NGG-3') 的出現頻率
-print(f"20 bp sgRNA 的目標空間 = {n_targets:.1e}（理論上任何基因都可指認）")
-print(f"PAM (NGG) 每 {1/pam_freq:.0f} bp 出現一次——30 億基因組中有 ~2 億個剪點")
+$$4^{20} \approx 1.1 \times 10^{12},$$
 
-# 脫靶偵查：錯配容忍度 vs 潛在標靶數（組合數學）
-from math import comb
-def potential_off_targets(n_genome=3e9, L=20):
-    for max_mm in [0, 3, 6]:
-        # 隨機序列下，與 20bp 目標相差 ≤ max_mm 的機率
-        p_mm = sum(comb(L, k) * 3**k for k in range(max_mm+1)) / 4**L
-        n = n_genome * p_mm
-        print(f"容忍 ≤{max_mm} 錯配 → 30 億基因組中潛在標靶 ≈ {n:.1e} 個")
+遠大於人類基因組的 $3 \times 10^9$ bp——**理論上任何基因序列都能被唯一指認**。
+但 Cas9 剪斷還需要 PAM（$5'$-NGG-$3'$）：PAM 在隨機序列中每 $4^2 = 16$ bp 出現一次，
+故 30 億基因組中約有 $\frac{3\times10^9}{16} \approx 2$ 億個潛在剪點。
 
-potential_off_targets()
-```
-輸出：
-```
-20 bp sgRNA 的目標空間 = 1.1e+12（理論上任何基因都可指認）
-PAM (NGG) 每 16 bp 出現一次——30 億基因組中有 ~2 億個剪點
-容忍 ≤0 錯配 → 30 億基因組中潛在標靶 ≈ 2.7e-03 個
-容忍 ≤3 錯配 → 30 億基因組中潛在標靶 ≈ 8.9e+01 個
-容忍 ≤6 錯配 → 30 億基因組中潛在標靶 ≈ 8.9e+04 個
-```
+**脫靶率由錯配容忍度決定**。在隨機序列假設下，與目標相差 $\le k$ 個錯配的 20 bp 位點數為
+
+$$N(k) = 3\times10^9 \times \frac{\sum_{j=0}^{k} \binom{20}{j}\, 3^{j}}{4^{20}}.$$
+
+| 錯配容忍度 $k$ | 潛在脫靶位點 $N(k)$ | 意義 |
+|---------------|--------------------|------|
+| 0（完全比對） | $\approx 3\times10^{-3}$ | 幾乎唯一——理論上無脫靶 |
+| 3 | $\approx 89$ | 嚮導設計不良時的風險 |
+| 6 | $\approx 9\times10^{4}$ | 寬鬆比對 → 脫靶率暴增 |
+
 **脫靶 (off-target) 的偵查意義**：錯配容忍度從 0 放寬到 6，潛在標靶從千分之一個
 跳到近 9 萬個——**嚮導 RNA 的專一性設計是脫靶率的關鍵**
 （高保真 Cas9 變體 2018 年問世，見結案）。
