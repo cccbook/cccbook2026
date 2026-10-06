@@ -2,9 +2,9 @@
 
 領域  | 子領域
 -------------|-----------
-[數學史]  | [代數學] / [幾何學] / [微積分] / [機率統計] <br/> [線性代數] / [傅立葉轉換] / [微分方程]  / [非歐幾何] <br/>  [金融計算]
+[數學史]  | [代數學] / [幾何學] / [微積分] / [機率統計] <br/> [線性代數] / [傅立葉轉換] / [微分方程]  / [非歐幾何] <br/>  [金融計算] / [金融經濟史]
 [電腦史]  | [演算法] / [隨機算法] / [密碼學] / [計算理論] <br/>  [人工智慧] / [語言模型] / [影音模型] / [軟體工程] <br/>  [影音技術] / [程式語言] / [處理器] / [虛擬機] <br/>  [編譯器] / [作業系統] / [λ-Calculus與函數式編程]
-[電子電機]  | [電磁學] / [半導體IC] / [通訊網路] / [EDA] / [磁碟與儲存技術]
+[電子電機]  | [電磁學] / [半導體IC] / [半導體設備史] / [通訊網路] / [EDA] / [磁碟與儲存技術]
 [物理史]   | [相對論] / [量子力學] 
 [化學史]  | [生物化學]
 [生理醫學史]  | [藥物學]
@@ -19,6 +19,7 @@
 [微分方程]:https://share.gemini.google/hvCkfqcemaVE
 [非歐幾何]:https://share.gemini.google/hCNadgF0ITim
 [金融計算]:https://share.gemini.google/JWeZDUNk9uxC
+[金融經濟史]:./金融經濟史/README.md
 
 [電腦史]:https://share.gemini.google/4VVjaNwRv6jQ
 [演算法]:https://share.gemini.google/lzrt1qULDGpp
@@ -40,6 +41,7 @@
 [電子電機]:https://share.gemini.google/ctB6wsheqF70
 [電磁學]:https://share.gemini.google/7PB0r1GY6fyT
 [半導體IC]:https://share.gemini.google/7fD74ex197Lx
+[半導體設備史]:./半導體設備史/README.md
 [通訊網路]:https://share.gemini.google/BFqhucXsw4Me
 [EDA]:https://share.gemini.google/GfzTWGMzuNge
 [磁碟與儲存技術]:https://share.gemini.google/NuiaZUDAoeZP
