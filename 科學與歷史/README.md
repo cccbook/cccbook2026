@@ -1,57 +1,82 @@
 # 科學史 -- AI 偵探風格
 
+父領域  | 子領域
+-------------|-----------
+數學  | [數學史] / [代數學] / [幾何學] / [微積分] / [機率統計] <br/>  [線性代數] / [傅立葉轉換] / [微分方程] / [複變函數] <br/> [金融計算]
+電腦   | [電腦硬體史] / [資訊科學] / [演算法] / [隨機算法] / [資料庫] <br/> [計算理論] /  [人工智慧] / [軟體工程]  /  [密碼學] / [影音技術]<br/>  [程式語言] / [作業系統] / [虛擬機] / [編譯器] <br/> [λ演算] / [神經網路] / [強化學習] / [計算語言學]
+電機  | [電子電機] / [電磁學] / [半導體IC] / [半導體設備史] <br/> [通訊網路] / [EDA] / [機器史] / [影音技術]
+科學 | [科技發展史] / [物理史] / [化學史] / [生理醫學史] <br/> [相對論] / [量子力學]
+
+## 其他領域
+
 領域  | 子領域
 -------------|-----------
-[數學史]  | [代數學] / [幾何學] / [微積分] / [機率統計] <br/> [線性代數] / [傅立葉轉換] / [微分方程]  / [非歐幾何] <br/>  [金融計算] / [金融經濟史]
-[電腦史]  | [演算法] / [隨機算法] / [密碼學] / [計算理論] <br/>  [人工智慧] / [語言模型] / [影音模型] / [軟體工程] <br/>  [影音技術] / [程式語言] / [處理器] / [虛擬機] <br/>  [編譯器] / [作業系統] / [λ-Calculus與函數式編程]
-[電子電機]  | [電磁學] / [半導體IC] / [半導體設備史] / [通訊網路] / [EDA] / [磁碟與儲存技術]
-[物理史]   | [相對論] / [量子力學] 
-[化學史]  | [生物化學]
-[生理醫學史]  | [藥物學]
+歷史  | [世界史] / [世界發展史] / [東亞史] / [未來史]
+社會  | [宗教史] / [教育史] / [法律與制度史] / [社會結構史] <br/> [武器與戰法] /  [金融經濟史]
 
-[數學史]:https://share.gemini.google/TqPH8QNraqPP
-[代數學]:https://share.gemini.google/cqoE7y1bu1T3
-[幾何學]:https://share.gemini.google/mZXr8HI2myUE
-[微積分]:https://share.gemini.google/bvKY1k1nNKde
-[機率統計]:https://share.gemini.google/oDXsUMg2mpgI
-[線性代數]:https://share.gemini.google/p7h4qU8p0Pmt
-[傅立葉轉換]:https://share.gemini.google/R4YvvAMBfMTG
-[微分方程]:https://share.gemini.google/hvCkfqcemaVE
-[非歐幾何]:https://share.gemini.google/hCNadgF0ITim
-[金融計算]:https://share.gemini.google/JWeZDUNk9uxC
+[科技發展史]:./科技發展史/README.md
+[神經網路]:./神經網路/README.md
+[強化學習]:./強化學習/README.md
+[資訊科學]:./資訊科學/README.md
+[資料庫]:./資料庫/README.md
+[計算語言學]:./計算語言學/README.md
+
+[數學補充]:./複變函數/README.md
+[複變函數]:./複變函數/README.md
+
+[世界史]:./世界史/README.md
+[世界發展史]:./世界發展史/README.md
+[東亞史]:./東亞史/README.md
+
+
+[宗教史]:./宗教史/README.md
+[教育史]:./教育史/README.md
+[法律與制度史]:./法律與制度史/README.md
+[社會結構史]:./社會結構史/README.md
+[武器與戰法]:./武器與戰法/README.md
+
+[其他]:./機器史/README.md
+[機器史]:./機器史/README.md
+[未來史]:./未來史/README.md
+
+[數學史]:./數學史/README.md
+[代數學]:./代數學/README.md
+[幾何學]:./幾何學/README.md
+[微積分]:./微積分/README.md
+[機率統計]:./機率統計/README.md
+[線性代數]:./線性代數/README.md
+[傅立葉轉換]:./傅立葉轉換/README.md
+[微分方程]:./微分方程/README.md
+[金融計算]:./金融計算/README.md
 [金融經濟史]:./金融經濟史/README.md
 
-[電腦史]:https://share.gemini.google/4VVjaNwRv6jQ
-[演算法]:https://share.gemini.google/lzrt1qULDGpp
-[隨機算法]:https://share.gemini.google/QnG1p1WNiOxl
-[密碼學]:https://share.gemini.google/qn2JnXjg1QV5
-[計算理論]:https://share.gemini.google/OIeOpERaNjgO
-[人工智慧]:https://share.gemini.google/sqc4e3jfsWWv
-[語言模型]:https://share.gemini.google/BcKjs3X1z2ow
-[影音模型]:https://share.gemini.google/yEezHh4AH8GH
-[軟體工程]:https://share.gemini.google/NCDM9NwZsj2X
-[影音技術]:https://share.gemini.google/FPonfT7sW0pV
-[程式語言]:https://share.gemini.google/LeIq9fUYTiMd
-[虛擬機]:https://share.gemini.google/qF0QTfyNiV0S
-[編譯器]:https://share.gemini.google/Pj5Ge6ufjrhu
-[作業系統]:https://share.gemini.google/vUrZENOiRVRd
-[λ-Calculus與函數式編程]:https://share.gemini.google/V5MX4OeXPkHd
-[處理器]:https://share.gemini.google/fxVeK3g0PiAh
+[電腦硬體史]:./電腦硬體史/README.md
+[演算法]:./演算法/README.md
+[隨機算法]:./隨機算法/README.md
+[密碼學]:./密碼學/README.md
+[計算理論]:./計算理論/README.md
+[人工智慧]:./人工智慧/README.md
+[軟體工程]:./軟體工程/README.md
+[影音技術]:./影音技術/README.md
+[程式語言]:./程式語言/README.md
+[虛擬機]:./虛擬機/README.md
+[編譯器]:./編譯器/README.md
+[作業系統]:./作業系統/README.md
+[λ演算]:./λ演算/README.md
 
-[電子電機]:https://share.gemini.google/ctB6wsheqF70
-[電磁學]:https://share.gemini.google/7PB0r1GY6fyT
-[半導體IC]:https://share.gemini.google/7fD74ex197Lx
+[電子電機]:./電腦軟硬體/README.md
+[電磁學]:./電磁學/README.md
+[半導體IC]:./IC科技/README.md
 [半導體設備史]:./半導體設備史/README.md
-[通訊網路]:https://share.gemini.google/BFqhucXsw4Me
-[EDA]:https://share.gemini.google/GfzTWGMzuNge
-[磁碟與儲存技術]:https://share.gemini.google/NuiaZUDAoeZP
+[通訊網路]:./通訊技術/README.md
+[EDA]:./EDA算法史/README.md
+[影音技術]:./影音技術/README.md
 
-[物理史]:https://share.gemini.google/rPR3H3ww8HfF
-[相對論]:https://share.gemini.google/Z8GTVuI7agHc
-[量子力學]:https://share.gemini.google/XkxUw0YqPZjw
 
-[化學史]:https://share.gemini.google/Os0v6RCUHDCc
-[生物化學]:https://share.gemini.google/oPM18QaAvmM2
+[物理史]:./相對論/README.md
+[相對論]:./相對論/README.md
+[量子力學]:./量子力學/README.md
 
-[生理醫學史]:https://share.gemini.google/M6VeiYL652ir
-[藥物學]:https://share.gemini.google/uBTGyp0tv9Ex
+[化學史]:./化學史/README.md
+
+[生理醫學史]:./生理醫學史/README.md
