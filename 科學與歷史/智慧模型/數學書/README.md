@@ -5,12 +5,12 @@
 
 智慧模型的核心，是「學習」取代「編程」成為主角：
 
-- **邏輯神經元**：$y = \Theta\!\left(\sum_i w_i x_i\right)$，用數學模擬神經元。
-- **梯度學習**：$w \leftarrow w - \eta\, \nabla L(w)$，讓誤差自己教網路。
-- **能量與機率**：$P(x) \propto e^{-E(x)}$，把「智慧」寫成機率分布。
-- **注意力**：$\mathrm{Attention}(Q,K,V) = \mathrm{softmax}(QK^\top/\sqrt{d_k})V$，大模型的統一語言。
-- **決策**：貝爾曼方程 $V^\pi(s) = \mathbb{E}_\pi[r + \gamma V^\pi(s')]$，強化學習的核心。
-- **世界模型**：學出 $\hat s_{t+1} = f_\theta(s_t, a_t)$，在想像中規劃行動。
+- **邏輯神經元**： $y = \Theta\!\left(\sum_i w_i x_i\right)$ ，用數學模擬神經元。
+- **梯度學習**： $w \leftarrow w - \eta\, \nabla L(w)$ ，讓誤差自己教網路。
+- **能量與機率**： $P(x) \propto e^{-E(x)}$ ，把「智慧」寫成機率分布。
+- **注意力**： $\mathrm{Attention}(Q,K,V) = \mathrm{softmax}(QK^\top/\sqrt{d_k})V$ ，大模型的統一語言。
+- **決策**：貝爾曼方程 $V^\pi(s) = \mathbb{E}_\pi[r + \gamma V^\pi(s')]$ ，強化學習的核心。
+- **世界模型**：學出 $\hat s_{t+1} = f_\theta(s_t, a_t)$ ，在想像中規劃行動。
 
 ## 目錄
 
@@ -48,7 +48,7 @@
 | 節 | 標題 | 重點 |
 |----|------|------|
 | 05.1 | [CNN 與權重共享](05.1-CNN與權重共享.md) | 離散二維摺積、池化、平移等變性（群論觀點） |
-| 05.2 | [注意力機制與 Transformer](05.2-注意力機制與Transformer.md) | $QK^\top$、softmax 加權、動態權重圖 |
+| 05.2 | [注意力機制與 Transformer](05.2-注意力機制與Transformer.md) | $QK^\top$ 、softmax 加權、動態權重圖 |
 | 05.3 | [位置編碼與 RoPE](05.3-位置編碼與RoPE.md) | 旋轉矩陣、相對位置偏置 |
 
 ### 第 6 章：語言模型與生成模型
