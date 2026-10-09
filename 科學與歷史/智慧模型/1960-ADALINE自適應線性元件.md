@@ -100,3 +100,50 @@ ADALINE 不止於理論，它是 1960 年代最成功的神經網路工程：
 - Donald Hebb：赫布規則（1949），誤差調制的共同祖先
 - Rumelhart, Hinton & Williams：反向傳播（1986），delta rule 的多層推廣
 - 相關案件：1943-麥卡洛克皮茨邏輯神經元.md、1949-Hebb學習規則.md、1957-Perceptron感知器.md、1969-MinskyPapert批判（科學與歷史/人工智慧/1969-MinskyPapert批判.md）、1986-反向傳播演算法（科學與歷史/人工智慧/1986-反向傳播演算法.md）、2012-AlexNetImageNet革命（科學與歷史/人工智慧/2012-AlexNetImageNet革命.md）
+
+## 補充 -- 程式實作（python + numpy + pytorch）
+
+本案 LMS（delta rule）`Δw = η(t−w·x)x` 的最小可執行版本，見 `_code/1960-ADALINE.py`（已實測可跑）：
+
+```python
+# 1960 - ADALINE 自適應線性元件 (Widrow-Hoff, LMS / delta rule)
+# 公式: y = w·x (線性), Δw = η (t - w·x) x ; 收斂條件 0 < η < 2/λmax
+import numpy as np
+import torch
+
+
+def main():
+    X = np.array([[1, 1], [1, 2], [1, 3]], float)  # 含 bias 常數項
+    t = np.array([2.1, 3.9, 6.2])                   # 目標 ≈ 2x
+    R = X.T @ X
+    lmax = np.linalg.eigvalsh(R).max()
+    print(f"自相關矩陣最大特徵值 λmax={lmax:.2f}, 收斂要求 η < {2 / lmax:.3f}")
+
+    w = np.zeros(2)
+    eta = 0.1
+    for _ in range(30):
+        for xi, ti in zip(X, t):
+            w += eta * (ti - w @ xi) * xi   # LMS: delta rule (隨機梯度下降始祖)
+    E = np.sum((t - X @ w) ** 2) / 2
+    print("numpy LMS 30輪後: w =", np.round(w, 2), "E =", round(float(E), 4))
+
+    Xt = torch.tensor(X, dtype=torch.float32)
+    tt = torch.tensor(t, dtype=torch.float32)
+    closed = torch.linalg.lstsq(Xt, tt).solution
+    print("最小二乘閉式解:", torch.round(closed, decimals=2).tolist(),
+          "(LMS 逼近此解 = 在二次碗上滑到碗底)")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/1960-ADALINE.py`）：
+
+```
+自相關矩陣最大特徵值 λmax=16.64, 收斂要求 η < 0.120
+numpy LMS 30輪後: w = [0.14 2.02] E = 0.0412
+最小二乘閉式解: [-0.029999999329447746, 2.049999952316284] (LMS 逼近此解 = 在二次碗上滑到碗底)
+```
+
+程式解說：第一行先驗算本文第二條線索的收斂條件——`η=0.1 < 0.120`，故保證收斂；若把 `η` 調大超過上限，可親見分量發散振盪。30 輪 LMS 後權重 `w≈(0.14, 2.02)` 已貼近最小二乘閉式解 `(−0.03, 2.05)`，演示「學習＝在二次碗上滑動」。與感知器的關鍵差異也在此現形：誤差用的是連續值 `(t − w·x)` 而非離散的 `(t − y)`，這一步從階躍走向線性，正是 1986 年反向傳播能用鏈鎖律的先決條件。

@@ -94,3 +94,78 @@ $$\text{資料} \xrightarrow{\text{RBM}_1} h^{(1)} \xrightarrow{\text{RBM}_2} h^
 - Ackley, Hinton & Sejnowski, *A Learning Algorithm for Boltzmann Machines*, 1985。
 - Mohamed, Dahl & Hinton, *Deep Belief Networks for Phone Recognition*, 2009（語音應用）。
 - 相關案件：**1985-Boltzmann機器.md**、**1986-反向傳播演算法.md**、**2009-ImageNet資料集.md**、**2012-AlexNet影像革命.md**、**2017-Transformer.md**
+
+## 補充 -- 程式實作（python + numpy）
+
+本案 RBM 與 CD-1（`Δw = η(⟨vh⟩data − ⟨vh⟩₁)`）及貪婪逐層堆疊的最小可執行版本，見 `_code/2006-DBN.py`（已實測可跑）：
+
+```python
+# 2006 - 深度信念網路 DBN: RBM + 對比散度 CD-1 + 貪婪逐層堆疊
+import numpy as np
+
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+
+def train_rbm(X, nh, lr=0.5, epochs=30, seed=0, binary=True):
+    """CD-1 訓練單層 RBM, 回傳 (W, b, c, 重建誤差)."""
+    rng = np.random.default_rng(seed)
+    nv = X.shape[1]
+    W = rng.normal(0, 0.1, (nv, nh))
+    b, c = np.zeros(nv), np.zeros(nh)
+    for _ in range(epochs):
+        h_prob = sigmoid(X @ W + c)                       # <vh>_data
+        h = (rng.random(h_prob.shape) < h_prob).astype(float)
+        v1_prob = sigmoid(h @ W.T + b)                    # Gibbs 一步 (CD-1)
+        v1 = (rng.random(v1_prob.shape) < v1_prob).astype(float)
+        h1_prob = sigmoid(v1 @ W + c)                     # <vh>_1
+        W += lr * (X.T @ h_prob - v1.T @ h1_prob) / len(X)
+        b += lr * (X - v1).mean(0)
+        c += lr * (h_prob - h1_prob).mean(0)
+    recon_p = sigmoid(sigmoid(X @ W + c) @ W.T + b)
+    recon = (recon_p > 0.5).astype(float) if binary else recon_p
+    return W, b, c, float(((recon - X) ** 2).mean())
+
+
+def main():
+    rng = np.random.default_rng(0)
+    horiz = np.array([1, 1, 1, 0, 0, 0])
+    vert = np.array([0, 0, 0, 1, 1, 1])
+    X = np.array([(horiz if i % 2 == 0 else vert) ^ (rng.random(6) < 0.1)
+                  for i in range(400)]).astype(float)
+    W1, b1, c1, err1 = train_rbm(X, nh=4, seed=1)
+    print(f"第1層 RBM(6->4): 重建誤差={err1:.3f} (隨機猜≈0.5)")
+    print("學到的特徵 (W每列≈橫條/直條偵測器):\n", np.round(W1, 1))
+    H1 = sigmoid(X @ W1 + c1)          # 第1層隱藏表徵當新資料 -- 貪婪逐層
+    W2, b2, c2, err2 = train_rbm(H1, nh=2, seed=2, binary=False)
+    print(f"第2層 RBM(4->2): 重建誤差={err2:.3f} (在特徵空間再壓縮)")
+    H2 = sigmoid(H1 @ W2 + c2)
+    d_in = np.abs(H2[0::2] - H2[0]).mean() + np.abs(H2[1::2] - H2[1]).mean()
+    d_out = np.abs(H2[0::2].mean(0) - H2[1::2].mean(0)).mean()
+    print(f"頂層表徵: 類內散佈={d_in:.3f}, 類間距離={d_out:.3f} "
+          f"({'分開 -- 深層學到類別' if d_out > d_in else '未分開'})")
+    print("結論: 逐層預訓練把深網初值放在好位置 -- 2006 年深網第一次訓得動")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2006-DBN.py`，numpy 2.4.5）：
+
+```
+第1層 RBM(6->4): 重建誤差=0.108 (隨機猜≈0.5)
+學到的特徵 (W每列≈橫條/直條偵測器):
+ [[ 0.4  0.4 -0.2 -0.5]
+ [ 0.4  0.4 -0.2 -0.4]
+ [ 0.4  0.4 -0.2 -0.4]
+ [-0.4 -0.4  0.2  0.5]
+ [-0.4 -0.4  0.1  0.5]
+ [-0.4 -0.4  0.2  0.5]]
+第2層 RBM(4->2): 重建誤差=0.047 (在特徵空間再壓縮)
+頂層表徵: 類內散佈=0.007, 類間距離=0.016 (分開 -- 深層學到類別)
+結論: 逐層預訓練把深網初值放在好位置 -- 2006 年深網第一次訓得動
+```
+
+程式解說：`train_rbm` 即本文第二條線索的 CD-1 全文——資料分布的共現 `X.T@h_prob` 推高權重，只跑一步 Gibbs 的重建共現 `v1.T@h1_prob` 壓低權重；跑一步而非跑到收斂，正是「對比散度」省算力的偷天換日。第 1 層權重矩陣肉眼可讀：前兩列認橫條、後兩列認直條（正負號即是）。第 2 層把第 1 層的隱藏機率當新資料，頂層 2 維表徵類間距離已超類內散佈——深層「看到」了類別。此即 2006 年的歷史意義：深網第一次不靠標籤就找到好初值，梯度消失的陰影（見 **1986-反向傳播演算法.md**）首次被驅散。

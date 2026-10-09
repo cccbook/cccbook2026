@@ -98,3 +98,62 @@ Hopfield 網路與 Ising 模型的同構是本案最深的線索：
 - Hebb, *The Organization of Behavior*, 1949（Hebbian 儲存的源頭）
 - Hinton & Sejnowski, "Learning and Relearning in Boltzmann Machines", 1986（能量函數的隨機後繼）
 - 相關案件：1969-MinskyPapert批判.md、1974-Werbos反向傳播先驅.md、1980-Neocognitron視覺層級模型.md、1986-反向傳播演算法.md
+
+## 補充 -- 程式實作（python + numpy）
+
+本案兩條核心公式——Hebb 儲存 `wᵢⱼ = (1/N)Σ ξᵢξⱼ` 與能量 `E = −½Σwᵢⱼsᵢsⱼ`——最小可執行版本，見 `_code/1982-Hopfield.py`（已實測可跑）：
+
+```python
+# 1982 - Hopfield 網路能量函數
+# 公式: s_i <- sign(Σ_j w_ij s_j); E = -1/2 Σ w_ij s_i s_j (每次更新 ΔE ≤ 0)
+import numpy as np
+
+
+def energy(s, W, theta=0.0):
+    return -0.5 * s @ W @ s + theta * s.sum()
+
+
+def main():
+    rng = np.random.default_rng(0)
+    xi = np.array([[1, 1, 1, 1, -1, -1, -1, -1],      # 記憶 A
+                   [1, -1, 1, -1, 1, -1, 1, -1]], float)  # 記憶 B
+    N = xi.shape[1]
+    W = (xi.T @ xi) / N          # Hebb 儲存
+    np.fill_diagonal(W, 0)
+    cue = np.array([1, 1, -1, 1, -1, -1, -1, 1], float)  # 2 位錯的殘缺線索
+    print("記憶A:", xi[0].astype(int).tolist())
+    print("線索 :", cue.astype(int).tolist(), "(含2位錯誤)")
+    s = cue.copy()
+    E_prev = energy(s, W)
+    print(f"  t=0 E={E_prev:.3f} s={s.astype(int).tolist()}")
+    for t in range(1, 6):
+        order = rng.permutation(N)          # 非同步更新
+        for i in order:
+            s[i] = 1 if W[i] @ s >= 0 else -1
+        E = energy(s, W)
+        assert E <= E_prev + 1e-9, "能量必須不增!"
+        print(f"  t={t} E={E:.3f} s={s.astype(int).tolist()}")
+        E_prev = E
+    print("補全為記憶A:", bool(np.array_equal(s, xi[0])),
+          f"(容量上限 p_max≈{0.138 * N:.1f} 個模式, 此處存 2 個)")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/1982-Hopfield.py`，numpy 2.4.5）：
+
+```
+記憶A: [1, 1, 1, 1, -1, -1, -1, -1]
+線索 : [1, 1, -1, 1, -1, -1, -1, 1] (含2位錯誤)
+  t=0 E=-1.000 s=[1, 1, -1, 1, -1, -1, -1, 1]
+  t=1 E=-3.000 s=[1, 1, 1, 1, -1, -1, -1, -1]
+  t=2 E=-3.000 s=[1, 1, 1, 1, -1, -1, -1, -1]
+  t=3 E=-3.000 s=[1, 1, 1, 1, -1, -1, -1, -1]
+  t=4 E=-3.000 s=[1, 1, 1, 1, -1, -1, -1, -1]
+  t=5 E=-3.000 s=[1, 1, 1, 1, -1, -1, -1, -1]
+補全為記憶A: True (容量上限 p_max≈1.1 個模式, 此處存 2 個)
+```
+
+程式解說：`W = (xi.T @ xi)/N` 即本文第二條線索的 Hebb 儲存——1949 年規則的矩陣版在此直接現形。檢索時含 2 位錯誤的線索一步就滑到能量 `-3.000` 的谷底並穩定不動，程式內 `assert E <= E_prev` 逐輪驗證本文第一條線索的定理（能量不增、有限步收斂）。附帶一課：`N=8` 時理論容量 `0.138N≈1.1`，本程式存了 2 個模式已超載——實務上小網路常因模式彼此正交而僥倖成功，模式一多即出現偽吸引子，正是 Amit 等人統計力學計算的含義。

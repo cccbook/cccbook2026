@@ -93,3 +93,71 @@ Boltzmann 機器同時是記憶與補全模型：
 - Hopfield, *Neural networks and physical systems with emergent collective computational abilities*, PNAS, 1982。
 - Hinton, *Training Products of Experts by Minimizing Contrastive Divergence*, 2002（對比散度，遠祖的回聲）。
 - 相關案件：**1982-Hopfield網路能量函數.md**、**1986-反向傳播演算法.md**、**2006-Hinton深度信念網路.md**、**1969-MinskyPapert批判.md**（見「科學與歷史/神經網路/」）
+
+## 補充 -- 程式實作（python + numpy）
+
+本案兩條核心公式——隨機翻轉 `P(sᵢ=1) = 1/(1+e^(−ΔEᵢ/T))` 與學習法則 `Δw = η(⟨ss⟩data − ⟨ss⟩model)`——最小可執行版本，見 `_code/1985-BoltzmannMachine.py`（已實測可跑）：
+
+```python
+# 1985 - Boltzmann 機器
+# 公式: P(s_i=1) = 1/(1+exp(-ΔE_i/T)); Δw_ij = η(<s_i s_j>_data - <s_i s_j>_model)
+import numpy as np
+
+
+def sample_p(h):
+    return 1.0 / (1.0 + np.exp(-h))
+
+
+def gibbs_step(state, W, b, T):
+    for i in np.random.permutation(len(state)):
+        h = (W[i] @ state + b[i]) / T
+        state[i] = 1 if np.random.rand() < sample_p(h) else -1
+    return state
+
+
+def cooccur(samples):
+    return np.mean([np.outer(s, s) for s in samples], axis=0)
+
+
+def main():
+    rng = np.random.default_rng(0)
+    np.random.seed(0)
+    data = [np.array([1, 1, -1, -1]), np.array([-1, -1, 1, 1])] * 50
+    N = 4
+    W = np.zeros((N, N))
+    b = np.zeros(N)
+    eta, T = 0.1, 1.0
+    for epoch in range(60):
+        Cd = cooccur(data)                    # clamped (data) 統計
+        fantasies = []
+        for _ in range(50):
+            s = rng.choice([-1, 1], size=N).astype(float)
+            fantasies.append(gibbs_step(s, W, b, T).copy())
+        Cm = cooccur(fantasies)               # free-running (model) 統計
+        dW = eta * (Cd - Cm)                  # 核心: 資料共現推高, 幻想共現壓低
+        dW[np.diag_indices(N)] = 0
+        W += dW
+    print("學到的 W (符號):\n", np.sign(W).astype(int))
+    print("含義: (0,1) 與 (2,3) 內部正相關、兩群間負相關 = 記住兩個模式的共現結構")
+    print("T=10 時 P(翻轉|h=1):", round(float(sample_p(-1 / 10)), 3), "(近隨機亂走)")
+    print("T=0.1 時 P(翻轉|h=1):", round(float(sample_p(-1 / 0.1)), 5), "(近確定性=Hopfield)")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/1985-BoltzmannMachine.py`，numpy 2.4.5）：
+
+```
+學到的 W (符號):
+ [[ 0  1 -1 -1]
+  [ 1  0 -1 -1]
+  [-1 -1  0  1]
+  [-1 -1  1  0]]
+含義: (0,1) 與 (2,3) 內部正相關、兩群間負相關 = 記住兩個模式的共現結構
+T=10 時 P(翻轉|h=1): 0.475 (近隨機亂走)
+T=0.1 時 P(翻轉|h=1): 5e-05 (近確定性=Hopfield)
+```
+
+程式解說：`dW = η(Cd − Cm)` 即本文第二條線索的學習法則全文——資料中共現的單元對被推高權重，模型自由幻想中共現的被壓低，兩種統計角力至平衡時 `p_model ≈ p_data`，等價於極大化對數概似。學到的符號矩陣顯示網路確實刻出兩個模式的共現結構。末兩行演示溫度 `T` 的角色：高溫 `T=10` 翻轉機率近五成（逃離局部極小），低溫 `T=0.1` 機率近零（退化為確定性的 Hopfield）——模擬退火的精神全在這兩個數字裡。

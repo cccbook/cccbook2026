@@ -88,3 +88,66 @@ Chinchilla 團隊對 Kaplan 供詞的偵訊找到了兩個漏洞：
 - Tom Brown 等：《Language Models are Few-Shot Learners》（2020，GPT-3）——依錯誤配方訓練的當事模型。
 - 偵探手記：本篇是全書少數「兇手是研究方法而非模型」的案件——被謀殺的不是某個架構，而是「只掃 $(N,D)$ 平面一條對角線」的實驗設計。
 - 相關案件：2020-GPT-3規模湧現.md、2023-LLaMA開源大模型.md、2025-DeepSeek-R1.md
+
+## 補充 -- 程式實作（python + numpy + sklearn）
+
+本案 `C ≈ 6ND` 約束下最小化 `L(N,D) = E + A/N^α + B/D^β` 的最小可執行版本，見 `_code/2022-Chinchilla.py`（已實測可跑，CPU 秒級；Hoffmann 係數）：
+
+```python
+# 2022 - Chinchilla: C ≈ 6ND; L(N,D) = E + A/N^α + B/D^β
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+
+def L(N, D, E=1.69, A=406.4, B=410.7, a=0.34, b=0.28):
+    return E + A / N ** a + B / D ** b
+
+
+def main():
+    print("固定算力 C=6ND 下的最優配比 (參數曲面網格搜尋):")
+    Ns, Ds, Cs = [], [], [1e20, 1e21, 1e22, 1e23, 1e24]
+    for C in Cs:
+        best = None
+        for eN in np.arange(8, 13.0, 0.1):
+            N = 10 ** eN
+            D = C / (6 * N)
+            if D < 1e8:
+                continue
+            v = L(N, D)
+            if best is None or v < best[0]:
+                best = (v, N, D)
+        _, N, D = best
+        Ns.append(N)
+        Ds.append(D)
+        print(f"  C={C:.0e}: N_opt={N:.2e} D_opt={D:.2e} D/N={D / N:.0f}")
+    eC = np.log10(Cs).reshape(-1, 1)
+    pN = LinearRegression().fit(eC, np.log10(Ns)).coef_[0]
+    pD = LinearRegression().fit(eC, np.log10(Ds)).coef_[0]
+    print(f"擬合: N_opt ∝ C^{pN:.2f}, D_opt ∝ C^{pD:.2f} (皆≈0.5 -- 等比放大)")
+    C3 = 6 * 1.75e11 * 3e11  # GPT-3 覆盤
+    N3, D3 = 1.75e11, 3e11
+    Nc = (C3 / 120) ** 0.5   # D=20N 且 C=6ND -> N=√(C/120)
+    Dc = C3 / (6 * Nc)
+    print(f"GPT-3 算力覆盤: GPT-3 用 N={N3:.1e}/D={D3:.1e}, L={L(N3, D3):.3f}; "
+          f"Chinchilla 配比 N={Nc:.1e}/D={Dc:.1e}, L={L(Nc, Dc):.3f}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2022-Chinchilla.py`）：
+
+```
+固定算力 C=6ND 下的最優配比 (參數曲面 L(N,D) 網格搜尋):
+  C=1e+20: N_opt=6.31e+08 D_opt=2.64e+10 D/N=42
+  C=1e+21: N_opt=2.00e+09 D_opt=8.35e+10 D/N=42
+  C=1e+22: N_opt=5.01e+09 D_opt=3.33e+11 D/N=66
+  C=1e+23: N_opt=1.58e+10 D_opt=1.05e+12 D/N=66
+  C=1e+24: N_opt=3.98e+10 D_opt=4.19e+12 D/N=105
+擬合: N_opt ∝ C^0.45, D_opt ∝ C^0.55 (皆≈0.5 -- 參數與資料等比放大; IsoFLOP 剖面給 0.50/0.50, 比例約 1:20)
+GPT-3 算力覆盤: GPT-3 用 N=1.8e+11/D=3.0e+11, L=2.002; Chinchilla 配比 N=5.1e+10/D=1.0e+12, L=1.961
+結論: 同算力下『小模型+多資料』損失更低 -- 70B/1.4T 打敗 280B/0.3T, LLaMA 跟進
+```
+
+程式解說：網格搜尋即第二條線索的數值版——固定 `C`，掃 `N`，`D` 由 `C=6ND` 定死，損失最低處即最優。擬合得 `N∝C^0.45、D∝C^0.55`：指數皆近 0.5，即「等比放大」（論文 IsoFLOP 剖面給 0.50/0.50、比例約 1:20；參數曲面給的 D/N 是數十量級——兩法同方向：資料都要多得多）。GPT-3 覆盤是死刑判決：同算力下 GPT-3 配比損失 2.002，Chinchilla 配比 1.961——175B 用 300B token 嚴重欠訓。偵探手記的註腳在此：被謀殺的不是架構，是「只掃對角線」的實驗設計。

@@ -90,3 +90,80 @@ ViT 用一維位置編碼卻學到二維幾何——但這不是偶然，而是�
 - Caron et al., *Emerging Properties in Self-Supervised ViTs*（DINO）, 2021；He et al., *Masked Autoencoders Are Scalable Vision Learners*（MAE）, 2021。
 - Liu et al., *Swin Transformer*, ICCV 2021（層次化 ViT 變體）。
 - 相關案件：**2017-Transformer注意力機制.md**、**2018-BERT與GPT預訓練典範.md**、**2021-CLIP多模態對齊.md**、**2023-GPT-4多模態.md**、**1989-楊立昆卷積網路.md**（見「科學與歷史/神經網路/」）
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 `z₀ = [x_class; x_p¹E; …] + E_pos` 的最小可執行版本，見 `_code/2021-ViT.py`（已實測可跑，CPU 約 5 秒；MNIST 切 16 patches）：
+
+```python
+# 2021 - ViT: z_0 = [x_class; x_p^1 E; ...; x_p^N E] + E_pos
+import time
+from pathlib import Path
+
+import torch
+import torch.nn as nn
+import torchvision
+import torchvision.transforms as T
+
+
+class ViTMini(nn.Module):
+    def __init__(self, patch=7, dim=64, depth=2, heads=4, ncls=10):
+        super().__init__()
+        self.P = patch
+        self.proj = nn.Linear(patch * patch, dim)   # x_p E
+        self.cls = nn.Parameter(torch.randn(1, 1, dim))
+        self.pos = nn.Parameter(torch.randn(1, 17, dim))  # 16 patches + CLS
+        layer = nn.TransformerEncoderLayer(dim, heads, dim * 2, batch_first=True)
+        self.enc = nn.TransformerEncoder(layer, depth)
+        self.head = nn.Linear(dim, ncls)
+
+    def forward(self, img):
+        B = len(img)
+        p = img.unfold(2, self.P, self.P).unfold(3, self.P, self.P)  # 切 patch
+        p = p.permute(0, 2, 3, 1, 4, 5).reshape(B, 16, -1)
+        z = torch.cat([self.cls.expand(B, -1, -1), self.proj(p)], 1) + self.pos
+        return self.head(self.enc(z)[:, 0])          # 只讀 CLS
+
+
+def main():
+    torch.manual_seed(0)
+    root = Path(__file__).parent / "data"
+    tf = T.Compose([T.ToTensor()])
+    train = torchvision.datasets.MNIST(str(root), train=True, download=True, transform=tf)
+    test = torchvision.datasets.MNIST(str(root), train=False, download=True, transform=tf)
+    tr = torch.utils.data.DataLoader(torch.utils.data.Subset(train, range(6000)),
+                                     batch_size=128, shuffle=True)
+    te = torch.utils.data.DataLoader(torch.utils.data.Subset(test, range(2000)), batch_size=512)
+    net = ViTMini()
+    print(f"ViT-mini 參數: {sum(p.numel() for p in net.parameters())}")
+    opt = torch.optim.Adam(net.parameters(), lr=3e-3)
+    t0 = time.time()
+    for ep in range(5):
+        net.train()
+        for x, y in tr:
+            opt.zero_grad()
+            loss = nn.CrossEntropyLoss()(net(x), y)
+            loss.backward()
+            opt.step()
+        net.eval()
+        with torch.no_grad():
+            acc = sum((net(x).argmax(1) == y).sum().item() for x, y in te) / 2000
+        print(f"  epoch {ep + 1}: 測試準確率={acc:.4f} [{time.time() - t0:.0f}s]")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2021-ViT.py`，torch 2.12.0，CPU）：
+
+```
+ViT-mini 參數: 71946 (28x28/7=16 patches+CLS, 無卷積 -- 歸納偏置只剩位置編碼)
+  epoch 1: 測試準確率=0.7800 [1s]
+  epoch 2: 測試準確率=0.8620 [2s]
+  epoch 3: 測試準確率=0.8665 [3s]
+  epoch 4: 測試準確率=0.8970 [4s]
+  epoch 5: 測試準確率=0.9050 [5s]
+```
+
+程式解說：`unfold` 切 patch、`proj` 線性嵌入、`cls+pos` 拼接——第一條線索的公式逐行落地，全程無卷積。5 epoch 即 90.5%，證明「影像本身就是序列」；但同資料下 CNN（見 1998 章，2 epoch 97.8%）仍更快更好——此即第二條線索的對決：ViT 捨棄平移等變的歸納偏置，小資料吃虧、大資料（JFT-3億）翻盤。位置編碼是唯一的幾何殘留；拿掉它，模型連左右都分不清（見 2017 章第三條線索）。

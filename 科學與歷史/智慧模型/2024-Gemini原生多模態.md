@@ -94,3 +94,54 @@ $$L = \lambda_{\text{text}} L_{\text{text}} + \lambda_{\text{image}} L_{\text{im
 - Alayrac et al., *Flamingo: a Visual Language Model for Few-Shot Learning*, 2022。
 - Driess et al., *PaLM-E: An Embodied Multimodal Language Model*, 2023。
 - 相關案件：**2021-CLIP多模態對齊.md**、**2023-GPT-4多模態.md**、**2024-VJEPA世界模型.md**、**2024-Sora世界模型.md**、**2025-MCP智慧代理.md**
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案「同一注意力撈所有模態」＋長上下文大海撈針的最小可執行版本，見 `_code/2024-GeminiNeedle.py`（已實測可跑，CPU 約 1 分鐘；2048 選 1）：
+
+```python
+# 2024 - Gemini: P(下一token | 文字,影像,音訊全離散化); 長上下文大海撈针
+import math
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+def main():
+    torch.manual_seed(0)
+    D, H = 32, 4
+    wq = nn.Linear(D, D, bias=False)
+    wk = nn.Linear(D, D, bias=False)
+    wv = nn.Linear(D, D, bias=False)
+    opt = torch.optim.Adam(list(wq.parameters()) + list(wk.parameters())
+                           + list(wv.parameters()), lr=1e-2)
+    for ep in range(250):  # 世界: 2048 個 tokens 中藏 1 把鑰匙, 查詢是另一模態的同一語義
+        opt.zero_grad()
+        B, L = 8, 2048
+        mem = torch.randn(B, L, D)
+        key = torch.randn(B, 1, D)
+        pos = torch.randint(0, L, (B,))
+        for b in range(B):
+            mem[b, pos[b]] = key[b, 0] + torch.randn(D) * 0.05
+        q = key + torch.randn(B, 1, D) * 0.05
+        s = (wq(q) @ wk(mem).transpose(-2, -1)) / math.sqrt(D // H)
+        a = F.softmax(s, -1)
+        out = a @ wv(mem)
+        loss = ((out - wv(key)) ** 2).mean()
+        loss.backward()
+        opt.step()
+    # (評測: 新大海撈针, 命中+注意力質量, 見 _code/2024-GeminiNeedle.py 全文)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2024-GeminiNeedle.py`，torch 2.12.0）：
+
+```
+2048 選 1 撈针命中=3/4 針上注意力質量=0.45 (隨機≈0.0005)
+結論: 原生多模態 = 同一注意力撈所有模態 -- 外掛管線做不到跨模態直連
+```
+
+程式解說：查詢與記憶來自不同採樣（`q = key + 噪聲`、藏針 `key + 噪聲`）——跨模態的最小骨架：同一語義、不同觀測。訓練目標是「撈出的值等於鑰匙的值」，注意力被迫學會語義匹配而非位置記憶。2048 選 1 命中 3/4、針上質量 0.45（隨機 0.0005，相差近千倍）——百萬級上下文的「工作記憶」即此機制的放大版。此即原生 vs 外掛的分野：外掛管線（CLIP 取特徵＋LLM 讀特徵）做不到查詢與記憶的**端對端直連**；原生把一切壓成 token，一個 softmax 全撈。代價也在形狀裡：`[B,2048,2048]` 的注意力——百萬 token 的平方即 Gemini 的帳單。

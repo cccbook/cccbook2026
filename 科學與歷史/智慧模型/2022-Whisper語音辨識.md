@@ -88,3 +88,74 @@ $$\text{泛化誤差} \approx \text{訓練分布與測試分布的落差}$$
 - 偵探手記：本篇與「2020-GPT-3規模湧現.md」構成同一命題的兩份判決——文字域（GPT-3）與聲學域（Whisper）先後證明：弱監督 + 規模 > 精標 + 小資料。
 - Greg Brockman、Sam Altman：Whisper 發布決策（2022 年 9 月）——權重開源在 OpenAI 內部並非共識，卻成為其開源策略少數的成功先例。
 - 相關案件：2016-WaveNet語音合成.md、2011-Siri語音助理.md、2023-RT-2視覺語言動作模型.md、2023-GPT-4多模態.md
+
+## 補充 -- 程式實作（python + numpy + pytorch）
+
+本案管線（波形→log-mel→編解碼→文本＋坍縮解碼）的最小可執行版本，見 `_code/2022-Whisper.py`（已實測可跑，CPU 約 1 分鐘；四音調序列代替語音）：
+
+```python
+# 2022 - Whisper: log-mel + BiGRU 幀分類 + 坍縮解碼 (CTC 的精神縮影)
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+SR, TONE_LEN, GAP = 8000, 1600, 800
+FREQS = [440.0, 554.4, 659.3, 880.0]  # 四音調 = 四個「詞」
+
+
+def synth(seq, seed=0):  # 合成波形 (音調段+靜音間隙)
+    rng = np.random.default_rng(seed)
+    parts = []
+    for s in seq:
+        t = np.arange(TONE_LEN) / SR
+        parts.append(np.sin(2 * np.pi * FREQS[s] * t) * 0.8)
+        parts.append(np.zeros(GAP))
+    wav = np.concatenate(parts) + rng.normal(0, 0.02, sum(len(p) for p in parts))
+    return wav
+
+
+def logmel(wav, n_fft=512, hop=256, n_mels=16):  # STFT -> mel分桶 -> log
+    frames = [wav[i:i + n_fft] * np.hanning(n_fft)
+              for i in range(0, len(wav) - n_fft + 1, hop)]
+    spec = np.abs(np.fft.rfft(frames, axis=1)) ** 2
+    edges = np.logspace(np.log10(80), np.log10(4000), n_mels + 1)
+    freqs = np.fft.rfftfreq(n_fft, 1 / SR)
+    mel = np.array([[spec[:, (freqs >= edges[m]) & (freqs < edges[m + 1])].sum(1)]
+                    for m in range(n_mels)]).squeeze(1).T
+    return np.log(mel + 1e-6).astype(np.float32)
+
+
+def collapse(path, blank=4):  # 去重+去blank (CTC 解碼)
+    out = []
+    for p in path:
+        if p != blank and (not out or p != out[-1]):
+            out.append(p)
+    return out
+
+
+def main():
+    torch.manual_seed(0)
+    rng = np.random.default_rng(0)
+    seqs = []  # 無連續重複 (坍縮會吃掉重複 -- blank 存在的理由)
+    while len(seqs) < 120:
+        s = rng.integers(0, 4, 5).tolist()
+        if all(a != b for a, b in zip(s, s[1:])):
+            seqs.append(s)
+    feats = torch.stack([torch.tensor(logmel(synth(s, i))) for i, s in enumerate(seqs)])
+    # (幀標籤 / BiGRU 訓練 / 評估略, 見 _code/2022-Whisper.py 全文)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2022-Whisper.py`，torch 2.12.0）：
+
+```
+幀準確率=0.989 整句全對=120/120 (坍縮解碼 -- CTC 的精神)
+示範: 真值= [1, 3, 2, 0, 1] 解碼= [1, 3, 2, 0, 1]
+結論: 譜圖->編解碼->文本; 任務前綴+時間戳同一套輸出 -- 魯棒性來自規模與雜訊
+```
+
+程式解說：`logmel` 即 Whisper 輸入的全部秘密——STFT 能量譜按對數分桶再取對數，人耳的非線性（mel 尺度）被寫死在特徵裡，後面才輪到神經網路。`collapse` 是 CTC 解碼的最小骨架：去重＋去 blank，幀準確率 98.9% 經它一壓，120 句全對。實測附帶真課：連續重複音（如 `[3,2,2,1,1]`）會被坍縮吃成 `[3,2,1]`——這正是 CTC 需要 blank 符號的理由，玩具把理論的牙口咬出來了。真 Whisper 把同一套輸出格式套上 `[lang][transcribe|translate][時間戳]` 前綴（本文第二條線索），68 萬小時弱監督把雜訊變成正則化（第五條線索）。

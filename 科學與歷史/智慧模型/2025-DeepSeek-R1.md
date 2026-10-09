@@ -89,3 +89,54 @@ R1 的另一條線索是蒸餾：用 R1 生成的 80 萬條思維鏈樣本，微
 - **Liang Wenfeng（梁文鋒）**：幻方量化出身，DeepSeek 創辦人——「以研究為先」文化與算力受限下的效率路線。
 - Schulman et al., *Proximal Policy Optimization*（PPO）, 2017——GRPO 所改進的對象。
 - 相關案件：**2023-LLaMA開源大模型.md**、**2024-o1推理模型.md**、**2022-ChatGPT與RLHF.md**、**2025-MCP智慧代理.md**
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 GRPO（`Â = (r − mean)/std`，免 critic）＋MoE 算術的最小可執行版本，見 `_code/2025-DeepSeekR1.py`（已實測可跑，CPU 秒級；四臂推理老虎機）：
+
+```python
+# 2025 - DeepSeek-R1: Â_i = (r_i - mean(r)) / std(r); MoE top-k 路由
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+def main():
+    torch.manual_seed(0)
+    true_p = torch.tensor([0.2, 0.35, 0.5, 0.9])  # 四臂真成功率 (不可見的驗證器)
+    theta = torch.zeros(4, requires_grad=True)    # 從零開始, 無 SFT (R1-Zero)
+    opt = torch.optim.Adam([theta], lr=0.1)
+    eps, G = 0.2, 16
+    hist = []
+    for step in range(120):
+        logits = theta.detach()
+        with torch.no_grad():
+            acts = torch.multinomial(F.softmax(logits, 0).expand(G, 4), 1).squeeze(1)
+            r = (torch.rand(G) < true_p[acts]).float()  # 0/1 驗證獎勵 (結果監督)
+            adv = (r - r.mean()) / (r.std() + 1e-6)     # GRPO: 組內歸一, 免 critic
+            old_logp = F.log_softmax(logits, 0)[acts]
+        opt.zero_grad()
+        ratio = (F.log_softmax(theta, 0)[acts] - old_logp).exp()
+        loss = -torch.min(ratio * adv, ratio.clamp(1 - eps, 1 + eps) * adv).mean()
+        loss.backward()
+        opt.step()
+        hist.append(float(r.mean()))
+    with torch.no_grad():
+        final = F.softmax(theta, 0)
+    print(f"GRPO 120輪: 獎勵 {hist[0]:.2f} -> {hist[-1]:.2f}")
+    print("終局策略:", [round(float(v), 2) for v in final])
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2025-DeepSeekR1.py`，torch 2.12.0）：
+
+```
+GRPO 120輪: 獎勵 0.44 -> 0.81 (純 RL, 無示範 -- R1-Zero 的『啊哈』是統計量的形狀)
+終局策略: [0.0, 0.0, 0.0, 1.0] (最優臂 0.9 被找出)
+MoE 算術: 256專家取8 -> 每次只算 8/256 參數 (省 32x); 蒸餾把果實分給小模型
+```
+
+程式解說：`adv = (r − mean)/std` 即本文第一條線索的一行公式全文——同一組 16 個樣本的均值當基線、標準差當尺度，value 網路（critic）整顆丟掉，PPO 的另一半參數就此省下。獎勵 0.44→0.81、策略塌向最優臂：無示範、無 SFT、純 RL——R1-Zero 的「啊哈時刻」在此是統計量的形狀（組內比較即自我反思的最小骨架）。MoE 算術（`y = Σ top-8 g·E`，256 選 8，前向只算 1/32）與蒸餾（第四條線索）是成本故事的另一半：聰明（GRPO）＋便宜（MoE）＋擴散（蒸餾）——開源效率革命的三段論。

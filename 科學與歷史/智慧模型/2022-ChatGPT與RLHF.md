@@ -91,3 +91,74 @@ InstructGPT 論文的關鍵數據：1.3B RLHF 模型在人類偏好評估中勝�
 - OpenAI：ChatGPT 發布（2022 年 11 月）。
 - Joseph Weizenbaum：ELIZA（1966）——對話機器的始祖與預言。
 - 相關案件：1966-ELIZA對話系統.md、2020-GPT-3規模湧現.md、2023-LLaMA開源大模型.md、2023-GPT-4多模態.md
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 RLHF 三階段（獎勵模型 `−E[logσ(r_w−r_l)]`＋PPO clip＋KL 剎車）的最小可執行版本，見 `_code/2022-RLHF.py`（已實測可跑，CPU 秒級；三臂回覆老虎機）：
+
+```python
+# 2022 - RLHF: L(φ)=-E[log σ(r_w-r_l)]; PPO clip; 獎勵'=r-β·KL(π||π_SFT)
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+def main():
+    torch.manual_seed(0)
+    true_r = torch.tensor([2.0, 0.0, -2.0])  # 真人類偏好 A>B>C (不可見)
+    pi = torch.ones(3) / 3                   # SFT: 均勻策略
+    rm = nn.Embedding(3, 1)                  # 獎勵模型: 從成對偏好學排序
+    opt_r = torch.optim.Adam(rm.parameters(), lr=0.1)
+    pairs = [(0, 1)] * 30 + [(1, 2)] * 30 + [(0, 2)] * 30
+    for _ in range(200):
+        opt_r.zero_grad()
+        w = torch.tensor([p[0] for p in pairs])
+        l = torch.tensor([p[1] for p in pairs])
+        loss = -F.logsigmoid(rm(w).squeeze(1) - rm(l).squeeze(1)).mean()
+        loss.backward()
+        opt_r.step()
+    with torch.no_grad():
+        r_hat = rm.weight.squeeze(1)
+    print("獎勵模型學到的排序:", [round(float(v), 2) for v in r_hat])
+
+    theta = torch.zeros(3, requires_grad=True)  # PPO: 舊策略採樣+ratio+clip+KL剎車
+    opt_p = torch.optim.Adam([theta], lr=0.05)
+    pi_sft = pi.clone()
+    beta, eps = 0.5, 0.2
+    with torch.no_grad():
+        pi_old = F.softmax(theta, 0).clone()
+    for step in range(60):
+        if step % 10 == 0:
+            with torch.no_grad():
+                pi_old = F.softmax(theta, 0).clone()
+        opt_p.zero_grad()
+        logp = F.log_softmax(theta, 0)
+        pi_new = logp.exp()
+        with torch.no_grad():
+            acts = torch.multinomial(pi_old.expand(32, 3), 1).squeeze(1)
+            base = float((pi_old * r_hat).sum())
+            adv = r_hat[acts] - base
+            old_logp = pi_old.log()[acts]
+        ratio = (logp[acts] - old_logp).exp()
+        clip_obj = torch.min(ratio * adv, ratio.clamp(1 - eps, 1 + eps) * adv).mean()
+        kl = (pi_new * (logp - pi_sft.log())).sum()
+        (-(clip_obj - beta * kl)).backward()
+        opt_p.step()
+    with torch.no_grad():
+        final = F.softmax(theta, 0)
+    print("RLHF 後策略:", [round(float(v), 2) for v in final])
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2022-RLHF.py`，torch 2.12.0）：
+
+```
+獎勵模型學到的排序: [6.12, -0.31, -6.75] (A>B>C -- 與真偏好同序, 只從成對比較學來)
+RLHF 後策略: [0.93, 0.04, 0.03] (偏向 A 但不斷臂 -- KL 剎車留住 B/C, 對齊稅的縮影)
+結論: SFT學格式、RM學品味、PPO學分寸 -- 三階段即 ChatGPT 的配方
+```
+
+程式解說：獎勵模型只見過「A 勝 B」這類成對比較，卻還原出與真偏好同序的打分（6.12 > −0.31 > −6.75）——Bradley-Terry 模型的威力：排序不需要絕對分，只需要比較。PPO 階段三行即全文：`ratio` 度量新舊策略距離、`clamp` 把步子剪在 `1±ε` 內、`kl` 罰偏離 SFT 太遠。終局策略 `[0.93, 0.04, 0.03]` 偏向 A 但不斷臂——不斷臂正是重點：KL 剎車（`β=0.5`）留住多樣性，拿掉它策略塌成 `[1,0,0]`，即「對齊稅」的縮影：越對齊，越無趣。

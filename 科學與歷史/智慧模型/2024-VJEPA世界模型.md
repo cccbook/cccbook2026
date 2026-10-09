@@ -88,3 +88,57 @@ LeCun 的規劃是一個金字塔：
 - Grill et al., *Bootstrap Your Own Latent*（BYOL）, 2020——EMA 防坍縮的來源。
 - OpenAI, *Video generation models as world simulators*（Sora 技術報告）, 2024——論戰的對手。
 - 相關案件：**2024-Sora世界模型.md**、**2025-Genie3互動世界模型.md**、**1985-Boltzmann機器.md**、**1989-楊立昆卷積網路.md**
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 JEPA 目標（`L = ||enc_y(y) − pred(enc_x(x))||²`）＋EMA 目標編碼器＋方差防塌的最小可執行版本，見 `_code/2024-VJEPA.py`（已實測可跑，CPU 約 1 分鐘）：
+
+```python
+# 2024 - V-JEPA: L = ||enc_y(y) - pred(enc_x(x))||²; θ_y <- m·θ_y + (1-m)·θ_x
+import torch
+import torch.nn as nn
+
+
+def main():
+    torch.manual_seed(0)
+    T, N = 8, 400
+    V = torch.zeros(N, T, 16)  # 影片: 1D 亮點等速移動 (位置即全部物理)
+    for i in range(N):
+        x0 = torch.randint(0, 10, (1,)).item()
+        v = 1 if i % 2 == 0 else -1
+        for t in range(T):
+            V[i, t, min(max(x0 + v * t, 0), 15)] = 1.0
+    V = V + torch.randn_like(V) * 0.03
+    D = 32
+    enc_x = nn.Sequential(nn.Linear(16, 64), nn.ReLU(), nn.Linear(64, D))
+    enc_y = nn.Sequential(nn.Linear(16, 64), nn.ReLU(), nn.Linear(64, D))
+    enc_y.load_state_dict(enc_x.state_dict())
+    pred = nn.Sequential(nn.Linear(D, 64), nn.ReLU(), nn.Linear(64, D))
+    opt = torch.optim.Adam(list(enc_x.parameters()) + list(pred.parameters()), lr=5e-3)
+    m = 0.996
+    for ep in range(200):
+        opt.zero_grad()
+        hx = enc_x(V[:, :4].mean(1))    # 前半 -> 上下文表徵
+        with torch.no_grad():
+            hy = enc_y(V[:, 4:].mean(1))  # 後半 -> 目標表徵
+        loss = ((pred(hx) - hy) ** 2).mean() + 0.5 * max(0.0, 1.0 - pred(hx).std())
+        loss.backward()
+        opt.step()
+        with torch.no_grad():  # 目標編碼器慢動量跟隨 (防坍縮的錨)
+            for py, px in zip(enc_y.parameters(), enc_x.parameters()):
+                py.mul_(m).add_(px, alpha=1 - m)
+    # (評估略, 見 _code/2024-VJEPA.py 全文)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2024-VJEPA.py`，torch 2.12.0）：
+
+```
+掩碼潛預測 MSE=0.0631 表徵標準差=0.39 (無坍縮)
+結論: Sora 生成像素、V-JEPA 預測表徵 -- 不重建即不浪費容量在葉紋上; EMA 是防塌的錨
+```
+
+程式解說：`pred(hx)` 猜 `hy`——前半影片的表徵預測後半的表徵，全程沒有像素重建（本文第一條線索：預測該發生在表徵空間）。`max(0, 1−std)` 是第二條線索的防塌稅：不用它，表徵標準差塌到 0.15（全擠成一團，MSE 反而更低 0.0037——**坍縮的 MSE 最美**，偵探要看方差不要只看損失）；加上它，方差 0.39、MSE 0.063——用一點精度換整個表徵不死。`m=0.996` 的 EMA 是錨：目標編碼器慢半拍，預測器追一個「幾乎不動的靶」，這才訓得穩。Sora 與 V-JEPA 在此分岔：生成派花容量畫葉紋，表徵派把容量留給直覺物理。

@@ -97,3 +97,91 @@ $$
 | 第 5 局 | AlphaGo | 黑 161 | 終局 4:1，時代易主 |
 
 第四局暴露了 MCTS 混合評估的弱點：第 78 手挖是「兩步之後才顯現威力」的陷阱手，rollout 的淺層模擬與價值網路的統計評估都低估了它——機器的「棋感」仍有盲區。這條線索證明：AlphaGo 不是全知，它是在「直覺引導下搜尋」的機器，而直覺本身可以被欺騙。樊麾（2015 年 5:0 被擊敗的歐洲冠軍）事後的觀察最有偵探味：「我看它的棋，越看越像活的。」
+
+## 補充 -- 程式實作（python + numpy）
+
+本案 MCTS＋UCT（`UCT = Q + c√(lnN(s)/N(s,a))`）的最小可執行版本，見 `_code/2016-AlphaGo.py`（已實測可跑；以井字棋代替圍棋，rollout 以純隨機代替策略網路）：
+
+```python
+# 2016 - AlphaGo: 策略直覺 + MCTS 搜尋 (井字棋縮影)
+import numpy as np
+
+LINES = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6),
+         (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
+
+
+def winner(b):
+    for a, c, d in LINES:
+        if b[a] != 0 and b[a] == b[c] == b[d]:
+            return b[a]
+    return 0 if 0 in b else 3  # 3=和棋
+
+
+def legal(b):
+    return [i for i, v in enumerate(b) if v == 0]
+
+
+def mcts_move(board, player, sims=300, c=1.4, seed=0):
+    """以 player 視角做 MCTS: Q+UCT 選子, 隨機 rollout 評估."""
+    rng = np.random.default_rng(seed)
+    N = {a: 0 for a in legal(board)}
+    W = {a: 0.0 for a in legal(board)}
+    tot = 0
+    for _ in range(sims):
+        untried = [a for a in N if N[a] == 0]
+        a = rng.choice(untried) if untried else max(
+            N, key=lambda m: W[m] / N[m] + c * np.sqrt(np.log(tot) / N[m]))
+        b2 = board.copy()
+        b2[a] = player
+        turn = 3 - player
+        while winner(b2) == 0:  # rollout: 隨機下完 (淺層模擬的極簡版)
+            b2[rng.choice(legal(b2))] = turn
+            turn = 3 - turn
+        w = winner(b2)
+        r = 1.0 if w == player else (0.5 if w == 3 else 0.0)
+        N[a] += 1
+        W[a] += r
+        tot += 1
+    return max(N, key=lambda m: W[m] / N[m])
+
+
+def play(mcts_first=True, seed=0):
+    rng = np.random.default_rng(seed)
+    b = np.zeros(9, dtype=int)
+    turn, go_first = 1, mcts_first
+    while winner(b) == 0:
+        if go_first:
+            b[mcts_move(b, turn, seed=rng.integers(1e9))] = turn
+        else:
+            b[rng.choice(legal(b))] = turn
+        turn, go_first = 3 - turn, not go_first
+    return winner(b)
+
+
+def main():
+    mcts_wins = draws = rand_wins = 0
+    for i in range(40):  # MCTS 先後手各 20 局
+        w = play(mcts_first=(i % 2 == 0), seed=i)
+        mcts_side = 1 if i % 2 == 0 else 2
+        if w == 3:
+            draws += 1
+        elif w == mcts_side:
+            mcts_wins += 1
+        else:
+            rand_wins += 1
+    print(f"MCTS(300次模擬) vs 隨機走子 40局: 勝={mcts_wins} 和={draws} 負={rand_wins}")
+    print("結論: 搜尋即直覺的放大器 -- AlphaGo 把 rollout 換成策略/價值網路, 把井字棋換成圍棋")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2016-AlphaGo.py`，numpy 2.4.5）：
+
+```
+MCTS(300次模擬) vs 隨機走子 40局: 勝=36 和=4 負=0
+結論: 搜尋即直覺的放大器 -- AlphaGo 把 rollout 換成策略/價值網路, 把井字棋換成圍棋
+```
+
+程式解說：`mcts_move` 即 AlphaGo 搜尋心的最小骨架——UCT 的前項 `W/N` 是利用（走勝率高的子）、後項 `c√(lnN/N_a)` 是探索（沒試過的子加分），兩者相加即「直覺引導下搜尋」。36 勝 4 和 0 負說明：即使 rollout 是純隨機（AlphaGo 用策略網路 rollout＋價值網路評估，比這強得多），搜尋本身已是巨大的放大器。把井字棋換成圍棋、隨機 rollout 換成策略／價值網路、300 次換成上萬次——骨架不變，規模改寫結局；第 37 步肩衝、78 手挖，都是這同一個迴圈跑出來的。

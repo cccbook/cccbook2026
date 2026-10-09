@@ -92,3 +92,64 @@ Rosenblatt 的悲劇結局：1969 年 Minsky 的批判、1971 年 ONR 停止資�
 - Donald Hebb：赫布規則（1949），感知器學習規則的前身
 - Warren McCulloch & Walter Pitts：M-P 神經元（1943），感知器的計算骨架
 - 相關案件：1943-麥卡洛克皮茨邏輯神經元.md、1949-Hebb學習規則.md、1956-Dartmouth會議.md、1959-HubelWiesel視覺皮層.md、1960-ADALINE自適應線性元件.md、1969-MinskyPapert批判（科學與歷史/人工智慧/1969-MinskyPapert批判.md）、1986-反向傳播演算法（科學與歷史/人工智慧/1986-反向傳播演算法.md）
+
+## 補充 -- 程式實作（python + numpy + pytorch）
+
+本案公式 `Δw = η(t−y)x` 的最小可執行版本，見 `_code/1957-Perceptron.py`（已實測可跑）：
+
+```python
+# 1957 - Perceptron 感知器 (Rosenblatt)
+# 公式: y = H(w·x - θ), Δw = η (t - y) x
+import numpy as np
+import torch
+
+X_and = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], float)
+t_and = np.array([0, 0, 0, 1])
+X_xor = X_and
+t_xor = np.array([0, 1, 1, 0])
+
+
+def train_perceptron(X, t, eta=0.5, epochs=20):
+    w = np.zeros(X.shape[1])
+    b = 0.0
+    for ep in range(epochs):
+        err = 0
+        for xi, ti in zip(X, t):
+            y = 1 if w @ xi - b > 0 else 0
+            w += eta * (ti - y) * xi
+            b -= eta * (ti - y)
+            err += abs(ti - y)
+        if err == 0:
+            return w, b, ep + 1
+    return w, b, epochs
+
+
+def predict(X, w, b):
+    return np.array([1 if w @ xi - b > 0 else 0 for xi in X])
+
+
+def main():
+    np.random.seed(0)
+    torch.manual_seed(0)
+    for name, X, t in [("AND(線性可分)", X_and, t_and), ("XOR(線性不可分)", X_xor, t_xor)]:
+        w, b, ep = train_perceptron(X, t)
+        pred = predict(X, w, b)
+        print(f"{name}: 收斂於第 {ep} 輪, w={np.round(w,2)}, b={round(b,2)}, "
+              f"預測={pred.tolist()}, 正確={bool(np.array_equal(pred, t))}")
+    print("torch 驗證 AND 點積:", (torch.tensor([1.0, 1.0]) @ torch.tensor([1.0, 1.0])).item(),
+          "> 1.5 即激發 (M-P/感知器同源)")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/1957-Perceptron.py`，numpy 2.4.5／torch 2.12.0）：
+
+```
+AND(線性可分): 收斂於第 6 輪, w=[1.  0.5], b=1.0, 預測=[0, 0, 0, 1], 正確=True
+XOR(線性不可分): 收斂於第 20 輪, w=[-0.5  0. ], b=-0.5, 預測=[1, 1, 0, 0], 正確=False
+torch 驗證 AND 點積: 2.0 > 1.5 即激發 (M-P/感知器同源)
+```
+
+程式解說：AND 在第 6 輪誤差歸零——這就是收斂定理的活體演示：線性可分則有限步必收斂。XOR 跑滿 20 輪仍錯兩題，且任何超平面都註定如此（見 1943 章補充的窮舉），正是 Minsky–Papert 1969 年判處的死刑。對照本文第一條線索的表格：更新只發生在答錯時（`t−y = ±1`），答對時權重不動——「用教師訊號調制的赫布規則」在此一覽無遺。

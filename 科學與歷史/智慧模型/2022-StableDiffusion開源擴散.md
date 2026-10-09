@@ -88,3 +88,87 @@ $$W' = W_0 + \Delta W = W_0 + BA, \quad B \in \mathbb{R}^{d \times r},\ A \in \m
 - 偵探手記：本篇是全書少數「分發決策與技術同等重要」的案件——同樣的潛空間擴散，封閉發布只是論文，開源發布才是革命。革命的量測不在品質榜，而在**誰的顯示卡能跑**。
 - 依「科學與歷史/神經網路/」Transformer 檔案：U-Net 是 CNN 卷積世代的遺產，DiT 把它送進注意力世代——影像生成完成了從卷積到注意力的最後一步遷徙。
 - 相關案件：2020-DDPM擴散模型.md、2021-CLIP多模態對齊.md、2023-LLaMA開源大模型.md、2024-Sora世界模型.md、2024-VJEPA世界模型.md
+
+## 補充 -- 程式實作（python + pytorch + sklearn）
+
+本案三件套（潛空間擴散＋文字條件＋CFG）的最小可執行版本，見 `_code/2022-StableDiffusion.py`（已實測可跑，CPU 約 2 分鐘；8×8 圓環／方框）：
+
+```python
+# 2022 - Stable Diffusion: L_LDM = E||ε-ε_θ(z_t,t,c)||²; CFG: ε̃=ε_∅+w(ε_c-ε_∅)
+import torch
+import torch.nn as nn
+from sklearn.decomposition import PCA
+
+
+def make_images(n=600):  # 圓環 vs 方框 (潛空間分得開的兩類)
+    X = torch.zeros(n, 64)
+    y = torch.zeros(n, dtype=torch.long)
+    yy, xx = torch.meshgrid(torch.arange(8), torch.arange(8), indexing="ij")
+    d2 = (xx - 3.5) ** 2 + (yy - 3.5) ** 2
+    for i in range(n):
+        c = i % 2
+        y[i] = c
+        img = torch.zeros(8, 8)
+        if c == 0:
+            img[(d2 > 3) & (d2 < 14)] = 1.0
+        else:
+            img[1:7, 1:7] = 1.0
+            img[2:6, 2:6] = 0.0
+        X[i] = img.reshape(-1) + torch.randn(64) * 0.05
+    return X.clamp(0, 1), y
+
+
+NULL = 2  # 第3個 id = 無條件 (CFG 的 ∅)
+
+
+def main():
+    torch.manual_seed(0)
+    X, y = make_images()
+    pca = PCA(n_components=8).fit(X.numpy())  # E(x): 壓縮器 (VAE 的精神縮影)
+    Z = torch.tensor(pca.transform(X.numpy()), dtype=torch.float32)
+    print("像素 64 維 -> 潛碼 8 維 (壓縮 8x -- 先壓縮再去噪)")
+    T = 50
+    beta = torch.linspace(1e-3, 0.05, T)
+    abar = torch.cumprod(1 - beta, 0)
+    txt = nn.Embedding(3, 4)  # τ(c): 圓環/方框/null 各一向量
+
+    class Eps(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.te = nn.Embedding(T, 4)
+            self.m = nn.Sequential(nn.Linear(8 + 4 + 4, 64), nn.ReLU(),
+                                   nn.Linear(64, 64), nn.ReLU(), nn.Linear(64, 8))
+
+        def forward(self, zt, t, c):
+            return self.m(torch.cat([zt, self.te(t), txt(c)], 1))
+
+    net = Eps()
+    opt = torch.optim.Adam(list(net.parameters()) + list(txt.parameters()), lr=1e-2)
+    for ep in range(400):
+        t = torch.randint(0, T, (256,))
+        idx = torch.randint(0, len(Z), (256,))
+        z0, c = Z[idx], y[idx]
+        eps = torch.randn(256, 8)
+        zt = abar[t].sqrt().unsqueeze(1) * z0 + (1 - abar[t]).sqrt().unsqueeze(1) * eps
+        c_in = torch.where(torch.rand(256) < 0.1, torch.full_like(c, NULL), c)
+        opt.zero_grad()
+        ((net(zt, t, c_in) - eps) ** 2).mean().backward()  # L_LDM
+        opt.step()
+    # (CFG 採樣比較 w=0 vs 3, 見 _code/2022-StableDiffusion.py 全文)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2022-StableDiffusion.py`，torch 2.12.0／sklearn 1.9.0）：
+
+```
+像素 64 維 -> 潛碼 8 維 (壓縮 8x -- 先壓縮再去噪, 省計算)
+CFG 效果 (生成落到『要求類別』的比例):
+  w=0.0: 指派準確率=0.50 (不分條件亂生)
+  w=3.0: 指派準確率=1.00 (聽從文字條件)
+結論: 潛擴散(CPU秒級) + 交叉注意力(文字開口) + CFG(聽話旋鈕) = 開源擴散三件套
+```
+
+程式解說：PCA 潛碼（8 維）即第一條線索的 `z = E(x)`——此處以第一性原理的壓縮器代替 VAE，精神相同：擴散發生在潛空間而非像素。`txt` 的三個向量即 `τ(c)`：圓環、方框、null（∅），10% 丟條件練出無條件分支給 CFG 用。判決數字：`w=0` 指派 0.50（不分條件亂生）、`w=3` 指派 1.00（`ε̃ = ε_∅ + 3(ε_c − ε_∅)` 把採樣推向文字）——`w` 即「聽話旋鈕」。實測附帶兩課：(1) 潛空間必須先分得開類別（圓環／方框的類間距是類內的 30 倍；早期用實心圓／方，PCA 下完全重疊，條件無從學起——**壓縮器決定條件的天花板**）；(2) 指派度量正反寫反會得 0.00，驗屍要看公式不要看數字。

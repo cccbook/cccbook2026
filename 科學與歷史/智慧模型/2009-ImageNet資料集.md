@@ -89,3 +89,51 @@ $$\text{Error} \propto N^{-\alpha}, \qquad \alpha \approx 0.2\text{–}0.5 \text
 - Miller, *WordNet: A Lexical Database for English*, Communications of the ACM, 1985（骨架）。
 - Krizhevsky, Sutskever & Hinton, *ImageNet Classification with Deep Convolutional Neural Networks*, 2012（引爆點）。
 - 相關案件：**1989-LeCunCNN手寫辨識.md**、**2006-Hinton深度信念網路.md**、**2012-AlexNet影像革命.md**、**2017-Transformer.md**
+
+## 補充 -- 程式實作（python + numpy + sklearn + torchvision）
+
+本案兩條可執行線索——規模冪律 `Error ∝ N^(−α)` 與增廣管線——見 `_code/2009-ImageNet.py`（已實測可跑）：
+
+```python
+# 2009 - ImageNet 資料集: 規模法則 + 增廣管線
+import numpy as np
+import torch
+import torchvision.transforms as T
+from sklearn.linear_model import LinearRegression
+
+
+def main():
+    # (1) 冪律擬合: 誤差點 (N: 資料量, err: top-5錯誤率示意)
+    N = np.array([1e4, 1e5, 1e6, 1e7, 1.4e7])
+    err = np.array([0.62, 0.38, 0.22, 0.13, 0.10])
+    reg = LinearRegression().fit(np.log10(N).reshape(-1, 1), np.log10(err))
+    alpha = -reg.coef_[0]
+    print(f"擬合 log(err) = a - α·log(N): α={alpha:.2f} (書中 α≈0.2-0.5, 資料每增10倍誤差打 {10 ** -alpha:.1%} 折)")
+    print(f"  R²={reg.score(np.log10(N).reshape(-1, 1), np.log10(err)):.3f} (冪律在log-log下是直線)")
+
+    # (2) 增廣管線: AlexNet 靠它把 120萬張洗成等效數倍
+    aug = T.Compose([T.RandomResizedCrop(32, scale=(0.5, 1.0)),
+                     T.RandomHorizontalFlip(p=1.0),
+                     T.ColorJitter(0.4, 0.4, 0.4),
+                     T.ToTensor()])
+    from PIL import Image
+    img = Image.fromarray((np.random.default_rng(0).random((64, 64, 3)) * 255).astype("uint8"))
+    outs = torch.stack([aug(img) for _ in range(4)])
+    print(f"增廣輸出: {tuple(outs.shape)} (4個版本, 均值={outs.mean():.3f}, 標準差={outs.std():.3f})")
+    print("結論: 資料集×增廣 = 2012 年的燃料; 沒有 ImageNet 就沒有 AlexNet")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2009-ImageNet.py`）：
+
+```
+擬合 log(err) = a - α·log(N): α=0.24 (書中 α≈0.2-0.5, 資料每增10倍誤差打 57.2% 折)
+  R²=0.991 (冪律在log-log下是直線)
+增廣輸出: (4, 3, 32, 32) (4個版本, 均值=0.464, 標準差=0.121)
+結論: 資料集×增廣 = 2012 年的燃料; 沒有 ImageNet 就沒有 AlexNet
+```
+
+程式解說：(1) 用 sklearn 在 log-log 尺度做一元線性回歸，估出 `α=0.24`、R²=0.991——本文第二條線索的冪律在此是可算的數字：資料每增 10 倍，誤差約打六折；ImageNet 把資料從萬級推到千萬級（3 個數量級），誤差因而砍半再砍半。(2) 同一張圖走四遍增廣管線（裁剪＋翻轉＋抖色）得四個版本——AlexNet 論文的增廣把 120 萬張洗成等效 2048 倍，此即「資料也是架構」的含義。Dataset＋增廣＋GPU 三股線索在此交會，缺一不可。

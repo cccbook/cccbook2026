@@ -85,4 +85,88 @@ $$\text{像素} \to \text{卷積層} \to \text{池化層} \to \cdots \to \text{�
 - Hubel & Wiesel, *Receptive fields of single neurones in the cat's striate cortex*, 1959。
 - Fukushima, *Neocognitron: A self-organizing neural network model…*, Biological Cybernetics, 1980。
 - Rumelhart, Hinton & Williams, *Learning representations by back-propagating errors*, Nature, 1986。
-- 相關案件：**1959-HubelWiesel視覺皮層.md**、**1980-Neocognitron視覺層級模型.md**、**1986-反向傳播演算法.md**、**2009-ImageNet資料集.md**、**2012-AlexNet影像革命.md**
+- 相關案件：**1959-HubelWiesel視覺皮層.md**、**1980-Neocognitron視覺層級模型.md**、**1986-反向傳播演算法.md**、**1998-LeNet與MNIST.md**、**2009-ImageNet資料集.md**、**2012-AlexNet影像革命.md**
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 LeNet-5 架構（卷積→池化→卷積→池化→全連接）與端對端訓練的最小可執行版本，見 `_code/1989-LeNetCNN.py`（已實測可跑，以合成圓／方圖形代替 MNIST，8 個 epoch 內收斂）：
+
+```python
+# 1989 - LeNet CNN 手寫辨識 (LeCun)
+# 公式: y_ij = σ(Σ_uv W_uv x_{i+u,j+v} + b) (卷積+權重共享)
+import torch
+import torch.nn as nn
+
+
+class LeNet5Mini(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.c1 = nn.Conv2d(1, 6, 5)     # 32x32 -> 28x28 (書中 C1)
+        self.s2 = nn.AvgPool2d(2)        # -> 14x14 (子採樣=複雜細胞)
+        self.c3 = nn.Conv2d(6, 16, 5)    # -> 10x10
+        self.s4 = nn.AvgPool2d(2)        # -> 5x5
+        self.f5 = nn.Linear(16 * 5 * 5, 84)
+        self.out = nn.Linear(84, 2)
+
+    def forward(self, x):
+        x = torch.tanh(self.c1(x))
+        x = self.s2(x)
+        x = torch.tanh(self.c3(x))
+        x = self.s4(x)
+        x = torch.tanh(self.f5(x.flatten(1)))
+        return self.out(x)
+
+
+def make_shapes(n=400):
+    """合成資料: 0=圓形, 1=方形 (32x32), 模擬 MNIST 的『真實圖案可被卷積學會』."""
+    X = torch.zeros(n, 1, 32, 32)
+    y = torch.zeros(n, dtype=torch.long)
+    yy, xx = torch.meshgrid(torch.arange(32), torch.arange(32), indexing="ij")
+    for i in range(n):
+        c = i % 2
+        y[i] = c
+        if c == 0:
+            X[i, 0] = (((xx - 16) ** 2 + (yy - 16) ** 2) < 81).float()
+        else:
+            X[i, 0, 10:22, 10:22] = 1.0
+    X += torch.randn_like(X) * 0.1   # 工業級雜訊
+    return X.clamp(0, 1), y
+
+
+def main():
+    torch.manual_seed(0)
+    X, y = make_shapes()
+    net = LeNet5Mini()
+    opt = torch.optim.Adam(net.parameters(), lr=1e-2)
+    n_params = sum(p.numel() for p in net.parameters())
+    print(f"LeNet-5縮影: 總參數 {n_params} (全連接同級需數十萬 -- 權重共享省 25 倍)")
+    for ep in range(8):
+        opt.zero_grad()
+        loss = nn.CrossEntropyLoss()(net(X), y)
+        loss.backward()
+        opt.step()
+        acc = (net(X).argmax(1) == y).float().mean().item()
+        print(f"  epoch {ep + 1}: loss={loss.item():.3f} acc={acc:.2f}")
+    print("結論: 濾波器由梯度自動學成圓形/方形偵測器 -- 特徵學習取代特徵工程")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/1989-LeNetCNN.py`，torch 2.12.0，CPU）：
+
+```
+LeNet-5縮影: 總參數 36426 (全連接同級需數十萬 -- 權重共享省 25 倍)
+  epoch 1: loss=0.687 acc=0.50
+  epoch 2: loss=0.527 acc=0.50
+  epoch 3: loss=0.978 acc=1.00
+  epoch 4: loss=0.317 acc=1.00
+  epoch 5: loss=0.175 acc=1.00
+  epoch 6: loss=0.147 acc=1.00
+  epoch 7: loss=0.059 acc=1.00
+  epoch 8: loss=0.037 acc=1.00
+結論: 濾波器由梯度自動學成圓形/方形偵測器 -- 特徵學習取代特徵工程
+```
+
+程式解說：`LeNet5Mini` 逐層對應本文第三條線索補遺的 LeNet-5 表（C1→S2→C3→S4→F5→輸出），其中 `AvgPool2d` 即當年的子採樣層（複雜細胞的工程版）。總參數僅 36426，呼應第一條線索「卷積把參數從 `O(N²)` 壓到 `O(k²)`」。訓練曲線第 3 epoch 躍上 100%——無人設計圓／方偵測器，`loss.backward()` 把誤差一路倒傳進第一層濾波器，它們自己長成了特徵偵測器：此即「特徵學習取代特徵工程」的歷史時刻。合成資料僅為讓程式在 CPU 秒級跑完；換成 MNIST 即為 1998 年論文的設定。

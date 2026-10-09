@@ -91,3 +91,75 @@ GLUE 榜與代表性任務的成績（2018 年底）：
 - Howard & Ruder, *Universal Language Model Fine-tuning*（ULMFiT）, ACL 2018。
 - Mikolov et al., *Efficient Estimation of Word Representations*（word2vec）, 2013。
 - 相關案件：**2017-Transformer注意力機制.md**、**2019-GPT-2危險模型.md**、**2021-ViT視覺Transformer.md**、**2022-ChatGPT與RLHF.md**（見「科學與歷史/人工智慧/」）
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案雙目標（自回歸 `Σlog p(xᵢ|x_<i)`＋掩碼 `Σlog p(xᵢ|x_{\M})`）共用一具 Transformer 的最小可執行版本，見 `_code/2018-BERTGPT.py`（已實測可跑，CPU 約 1 分鐘；字元級 toy 語料）：
+
+```python
+# 2018 - BERT 與 GPT: 自回歸 LM + 掩碼 LM, 同一具 Transformer
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class MiniTransformer(nn.Module):
+    def __init__(self, V, d=32, h=4):
+        super().__init__()
+        self.emb = nn.Embedding(V, d)
+        self.pos = nn.Embedding(32, d)
+        self.attn = nn.MultiheadAttention(d, h, batch_first=True)
+        self.ffn = nn.Sequential(nn.Linear(d, 64), nn.ReLU(), nn.Linear(64, d))
+        self.n1 = nn.LayerNorm(d)
+        self.n2 = nn.LayerNorm(d)
+        self.head = nn.Linear(d, V)
+
+    def forward(self, ids, causal):
+        T = ids.size(1)
+        x = self.emb(ids) + self.pos(torch.arange(T))
+        m = torch.triu(torch.ones(T, T, dtype=torch.bool), 1) if causal else None
+        a, _ = self.attn(x, x, x, attn_mask=m, need_weights=False)
+        x = self.n1(x + a)          # Add & Norm (殘差配方)
+        x = self.n2(x + self.ffn(x))
+        return self.head(x)
+
+
+def main():
+    torch.manual_seed(0)
+    sents = ["cats eat fish", "dogs eat meat", "birds eat seeds",
+             "cats drink milk", "dogs drink water", "birds sing songs"]
+    vocab = ["<m>", "[CLS]"] + sorted({c for s in sents for c in s})
+    ci = {c: i for i, c in enumerate(vocab)}
+    V = len(vocab)
+    data = [[ci["[CLS]"]] + [ci[c] for c in s] for s in sents]
+    T = max(map(len, data))
+    X = torch.tensor([r + [ci["<m>"]] * (T - len(r)) for r in data])
+    net = MiniTransformer(V)
+    opt = torch.optim.Adam(net.parameters(), lr=1e-2)
+    for ep in range(300):
+        opt.zero_grad()
+        logits = net(X, causal=True)   # GPT 分支: 因果掩碼, 預測下一字元
+        lgpt = F.cross_entropy(logits[:, :-1].reshape(-1, V), X[:, 1:].reshape(-1))
+        mask = torch.rand_like(X.float()) < 0.15  # BERT 分支: 隨機掩碼, 雙向預測
+        mask[:, 0] = False
+        logits_b = net(torch.where(mask, ci["<m>"], X), causal=False)
+        lbert = F.cross_entropy(logits_b[mask], X[mask]) if mask.any() else 0
+        (lgpt + lbert).backward()
+        opt.step()
+    # (接龍 / 完形 / [CLS] 評估略, 見 _code/2018-BERTGPT.py 全文)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2018-BERTGPT.py`，torch 2.12.0）：
+
+```
+GPT自回歸損失=0.144 BERT掩碼損失=0.223 (同一具Transformer, 兩種目標)
+接龍 'cats '-> [('e', 0.55), ('d', 0.44), ('m', 0.0)]
+完形 'cats eat _' 填: 'f' (雙向上下文 -- BERT 的看家本領)
+[CLS]距離: 鳥句-貓狗句=5.15 vs 貓句-狗句=3.73 (語義分群)
+```
+
+程式解說：`causal=True/False` 是全文唯一的開關——因果掩碼（上三角 `-inf`）即 GPT，只能看過去；無掩碼即 BERT，雙向全看。接龍 `cats → e/d`（eat/drink 都合理，機率如實反映語料）、完形填 `f`（fish，右側無上下文、左側 `cats eat` 定生死——單向模型在此只能猜）。`[CLS]` 距離鳥句–貓狗 5.15 大於貓–狗 3.73：句向量按語義分群，正是第四條線索「理解任務的統一介面」。實測附帶一課：`[CLS]` 必須走**完整**網路（注意力＋FFN＋兩次 Norm）才分群，只走半截即驗屍失敗——表徵在深處，不在淺層。

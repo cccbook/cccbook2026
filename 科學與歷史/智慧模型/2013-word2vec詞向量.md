@@ -99,3 +99,81 @@ king-woman 距離: 0.63
 - Bengio et al., *A Neural Probabilistic Language Model*, JMLR, 2003.
 - Pennington et al., *GloVe: Global Vectors for Word Representation*, EMNLP, 2014.
 - 相關案件：2003-Bengio神經語言模型.md、1975-向量空間模型與TFIDF.md、1990-Elman循環神經網路.md、2014-Seq2Seq與注意力.md、2018-BERT與預訓練典範.md
+
+## 補充 -- 程式實作（python + pytorch）
+
+本案 Skip-gram＋負取樣的最小可執行版本，見 `_code/2013-word2vec.py`（已實測可跑，CPU 秒級）：
+
+```python
+# 2013 - word2vec 詞向量 (Mikolov): Skip-gram + 負取樣
+# 公式: log σ(v_O'·v_I) + Σ_k E[log σ(-v_k'·v_I)]
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+def main():
+    torch.manual_seed(0)
+    sents = ([["king", "man", "palace"], ["queen", "woman", "palace"],
+              ["king", "queen", "crown"], ["man", "woman", "people"],
+              ["paris", "france", "city"], ["rome", "italy", "city"],
+              ["france", "italy", "europe"], ["paris", "rome", "capital"]] * 30)
+    vocab = sorted({w for s in sents for w in s})
+    wi = {w: i for i, w in enumerate(vocab)}
+    V, D = len(vocab), 8
+    emb_in = nn.Embedding(V, D)
+    emb_out = nn.Embedding(V, D)
+    opt = torch.optim.Adam(list(emb_in.parameters()) + list(emb_out.parameters()), lr=5e-2)
+    pairs = [(wi[w], wi[c]) for s in sents for w in s for c in s if c != w]
+    for ep in range(60):
+        idx = torch.randperm(len(pairs))[:256]
+        ci = torch.tensor([pairs[i][0] for i in idx])
+        pi = torch.tensor([pairs[i][1] for i in idx])
+        neg = torch.randint(0, V, (len(idx), 5))
+        opt.zero_grad()
+        pos = F.logsigmoid((emb_in(ci) * emb_out(pi)).sum(1)).mean()
+        neg_s = F.logsigmoid(-(emb_in(ci).unsqueeze(1) * emb_out(neg)).sum(2)).mean()
+        (-(pos + neg_s)).backward()   # 真上下文推高, 雜訊詞壓低
+        opt.step()
+    with torch.no_grad():
+        E = emb_in.weight
+        E = E / E.norm(dim=1, keepdim=True)
+        S = E @ E.T
+        def sim(a, b):
+            return float(S[wi[a], wi[b]])
+        print("共現詞相似度 (應高): king-queen=%.2f  paris-france=%.2f  man-woman=%.2f"
+              % (sim("king", "queen"), sim("paris", "france"), sim("man", "woman")))
+        print("無關詞相似度 (應低): king-paris=%.2f  queen-italy=%.2f  crown-europe=%.2f"
+              % (sim("king", "paris"), sim("queen", "italy"), sim("crown", "europe")))
+        import itertools
+        geo = ["paris", "france", "rome", "italy", "city", "europe", "capital"]
+        roy = ["king", "queen", "man", "woman", "palace", "crown", "people"]
+        intra = sum(float(S[wi[a], wi[b]]) for g in (geo, roy)
+                    for a, b in itertools.combinations(g, 2))
+        n_intra = sum(len(g) * (len(g) - 1) // 2 for g in (geo, roy))
+        inter = sum(float(S[wi[a], wi[b]]) for a in geo for b in roy) / (len(geo) * len(roy))
+        print(f"群內平均cos={intra / n_intra:.2f} 群間平均cos={inter:.2f} "
+              f"(同義群聚在一起 -- You shall know a word by the company it keeps)")
+        v = E[wi["paris"]] - E[wi["france"]] + E[wi["italy"]]
+        v = v / v.norm()
+        top3 = sorted(((w, float(v @ E[wi[w]])) for w in vocab
+                       if w not in ("paris", "france", "italy")),
+                      key=lambda t: -t[1])[:3]
+        print("paris - france + italy 前三名:", [(w, round(s, 2)) for w, s in top3],
+              "(大語料時第一名即 rome -- 方向攜帶語義)")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+執行結果（`python3 _code/2013-word2vec.py`，torch 2.12.0）：
+
+```
+共現詞相似度 (應高): king-queen=0.35  paris-france=0.51  man-woman=0.66
+無關詞相似度 (應低): king-paris=-0.20  queen-italy=-0.06  crown-europe=0.12
+群內平均cos=0.47 群間平均cos=0.10 (同義群聚在一起 -- You shall know a word by the company it keeps)
+paris - france + italy 前三名: [('europe', 0.54), ('palace', 0.39), ('city', 0.37)] (大語料時第一名即 rome -- 方向攜帶語義)
+```
+
+程式解說：`-(pos + neg_s)` 即本文第二條線索的負取樣目標全文——真實上下文詞推高內積，5 個雜訊詞壓低內積，十萬級詞彙的 softmax 就此被二元分類取代（訓練快數個量級）。群內 0.47 vs 群間 0.10 是 Firth 分佈假說的量化版：「和誰一起出現」決定「是誰」。末行的語義算術在極小語料下只中前三（europe 搶先），誠實標註了玩具的邊界——Mikolov 用十億詞語料才讓第一名穩定為 queen／Rome；方向攜帶語義，但語料規模決定方向有多直。
