@@ -30,7 +30,7 @@
 [傅立葉轉換]:./傅立葉轉換/README.md
 [微分方程]:./微分方程/README.md
 [金融計算]:./金融計算/README.md
-[金融經濟史]:./金融經濟史/README.md
+
 
 [電腦硬體史]:./電腦硬體史/README.md
 [演算法]:./演算法/README.md
