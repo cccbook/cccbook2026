@@ -1,56 +1,48 @@
-# 1981：IBM PC 與 DOS — 藍色巨人的開放式賭局，與微軟的第二次幸運
+# 1981：IBM PC 與 DOS — 藍色巨人的開放式賭局與微軟的第二次幸運
 
 ## 案情
-
-1981 年 8 月 12 日，IBM 在紐約發表 IBM Personal Computer（Model 5150），搭載 Intel 8088 @ 4.77 MHz、16–256KB 記憶體，售價 1,565 美元起。作業系統是微軟提供的 MS-DOS 1.0（IBM 版稱 PC DOS）。這台機器在兩年內賣出逾百萬台，其「開放式規格」催生了 Compaq 等相容機產業，並讓 x86 + DOS/Windows 生態統治 PC 市場三十年以上。
+1981 年 8 月 12 日，IBM 在紐約發表 IBM Personal Computer（Model 5150）：Intel 8088 @ 4.77 MHz、16–256 KB RAM、兩個 5.25 吋軟碟槽、起售 1,565 美元。作業系統是 Microsoft 的 PC DOS 1.0——但微軟其實是從 Seattle Computer Products 買來 QDOS（86-DOS）改名後授權給 IBM。這台機器讓 IBM 一年內奪下個人電腦市場龍頭，也讓微軟從語言廠商蛻變為平台帝國。
 
 ## 前因
-
-- **Apple II 的羞辱**：1970 年代末，Apple II 以每年倍增的銷量蠶食市場，IBM 內部視之為威脅，決定「小部隊突襲」。
-- **Boca Raton 的跳脫程序**：IBM 主管 William Lowe 提出 12 個月出貨的計畫（打破 IBM 慣常的 4 年開發週期），獲董事會同意成立獨立的 Entry Systems Division，團隊約 12 人，地點在佛羅里達 Boca Raton。
-- **外部採購的決策**：團隊幾乎所有零件外購——CPU 用 Intel 8088、軟碟用 Tandon、作業系統外購、連 BIOS 之外的軟體（BASIC）都找微軟。這在「什麼都自己做」的 IBM 文化中是革命。
-- **Digital Research 的錯失**：IBM 原本屬意 Gary Kildall 的 CP/M-86。1980 年 11 月那次著名的會面中，Kildall 搭機出差（一說去飛行）、妻子 Dorothy McEwen 與律師在場，談判因保密協議與授權金額分歧而破裂；IBM 未能談成。
+- 1980 年 Apple II 與 Tandy TRS-80 已占據辦公室與家庭；IBM 高層看到自家幾個部門以「非正式管道」採購 Apple II，被迫正視。
+- IBM 在 Boca Raton 成立獨立專案組（Entry Systems Division），由 William Lowe 帶領，獲授權「一年內、跳脫 IBM 流程」。
+- IBM 選擇外購零件：Intel 8088、Tandon 軟碟機、EEPROM BIOS 自製——卻未對 BIOS 做法律保護。
+- 1980 年 7 月微軟原本只被請去談 BASIC；當 IBM 問及作業系統，蓋茲推薦了 Digital Research 的 CP/M，但 Gary Kildall 錯失會談，IBM 轉回微軟。
 
 ## 線索與推理
+偵探指出，本案的「案中案」有三層。
 
-微軟的「第二次幸運」是本案最精彩的推理橋段。IBM 找上微軟時，先問的是 BASIC（微軟的招牌），再問「那你們能提供作業系統嗎？」Gates 坦言不會寫，但答應去找。他們隨即以 75,000 美元向 Seattle Computer Products 的 Tim Paterson 買下 86-DOS（QDOS，Quick and Dirty Operating System，一個基於 CP/M 精神的 8086 作業系統，1980 年 7 月由 Paterson 完成），改寫成 PC DOS 授權給 IBM——關鍵條款是：微軟保留非 IBM 版本的銷售權（MS-DOS）。
+第一層：IBM 為何開放？PC 專案組被要求「一年出貨、用現成零件」，根本沒時間自研；而 IBM 法務發現 8088 在數家廠商都有授權生產，可避免單一供應商依賴。開放是緊迫與分散風險的副產品，不是策略遠見。
 
-這個條款是全案樞紐。IBM 以為自己只是「外購作業系統」，實際上把整個作業系統市場的產權讓渡了出去。CP/M 錯失 + 86-DOS 購入 + 保留授權權，三步構成微軟崛起的完整推理鏈。
+第二層：CP/M 為何錯失？1980 年 IBM 代表赴佛州找 Digital Research，其妻/律師 Dorothy McEwen 對保密協議有異議，Kildall 本人錯過關鍵會議；雙方授權條款（每位用戶 250 美元 vs 微軟一次買斷約 5 萬美元）談判破裂。偵探指出，微軟隨後以 75,000 美元（含專利權與改名權）向 Seattle Computer Products 買下 QDOS 全權——Tim Paterson 的 86-DOS 本就是 CP/M 的 8086 移植品，介面幾乎逐條對應。這是產業史上最著名的「第二次幸運」：第一次是 1975 年 Altair，第二次是 CP/M 的失約。
 
-第二條推理線是「開放式設計」的深層動機。IBM 為了 12 個月出貨，必須用現成零件、發布技術參考手冊、開放擴充槽——這是被時間壓力逼出來的開放，卻產生了災難級（對 IBM 而言）的副作用：任何人都可以合法複製「機器的架構」（唯 BIOS 有版權）。Compaq 於 1982 年用逆向工程乾淨重寫 BIOS（1984 年 Compaq Portable 問世並快速成功）， phoenix 與 Award 隨後賣出相容 BIOS，相容機產業全面爆發。IBM 自己養出的開放生態，最終反噬了自己的 PC 業務。
+第三層：BIOS 的疏漏。1984 年 Compaq 逆向工程 IBM BIOS（以乾淨室手法），推出 Compaq Portable；Phoenix Technologies 隨後賣「IBM 相容 BIOS」給任何廠商。相容機生態爆發，IBM 反而失去控制——到 1980 年代末，IBM PC 相容機市占超過 IBM 本尊。
 
 ## 理論
+PC DOS 1.0 的 API 核心是 int 21h 系統呼叫（來自 CP/M 的 BDOS 慣例），包含字元 I/O、檔案控制塊（FCB）讀寫等約 80 個功能號。CP/M 與 DOS 的對應：
 
-**IBM PC 規格**：
+| 功能 | CP/M (BDOS) | DOS (int 21h) |
+|---|---|---|
+| 讀一個字元 | 01h | 01h |
+| 顯示字元 | 02h | 02h |
+| 開檔 | 0Fh | 0Fh（FCB） |
+| 關檔 | 10h | 10h（FCB） |
 
-| 項目 | 規格 |
-|---|---|
-| CPU | Intel 8088 @ 4.77 MHz |
-| 記憶體 | 16KB 起，最大 256KB |
-| 顯示 | MDA（文字）或 CGA（4 色 320×200） |
-| 儲存 | 5.25" 軟碟 160KB（無硬碟） |
-| OS | PC DOS 1.0（微軟授權） |
-| 擴充 | 5 個 ISA 插槽 |
-| 售價 | 1,565 美元起（無軟碟版） |
+IBM PC 記憶體配置：
 
-**DOS 的本質**：一個薄殼的 CP/M 繼承者——檔案系統用 FAT12，系統呼叫介面（INT 21h）在語意上高度對應 CP/M 的 BDOS 呼叫，使 CP/M 軟體易於移植：
+$$\text{0x00000–0x9FFFF：RAM（640 KB）} \quad \text{0xA0000–0xFFFFF：BIOS/ROM/視訊（384 KB）}$$
 
-$$\text{CP/M BDOS 呼叫} \xrightarrow{\text{語意映射}} \text{DOS INT 21h}$$
+「640K 上限」成為十年間最著名的瓶頸，催生 EMS 擴充記憶體與 80286 保護模式的呼聲。
 
-**相容機經濟學**：IBM PC 的總體成本 = 整機售價 − 利潤率；相容機省去 IBM 的品牌溢價與研發攤提：
-
-$$P_{\text{clone}} = P_{\text{IBM}} - \epsilon, \quad \epsilon \gg 0 \Rightarrow \text{市占席捲}$$
+IBM PC Model 5150 關鍵規格：Intel 8088 @ 4.77 MHz、16–256 KB RAM、5 個擴充槽、Cassette 介面選配、首發 OS：PC DOS 1.0 與 CP/M-86（同年 12 月）。
 
 ## 後果
-
-- **1982–83 年的爆發**：PC 兩年內成為事實標準，Apple、Commodore 等競品節節敗退；1983 年 IBM PC/XT 加入硬碟。
-- **相容機產業**：Compaq（1982）、Dell（1984）、Acer、華碩等百家爭鳴；「PC」從 IBM 商標變成通用名詞。
-- **微軟的帝國基礎**：MS-DOS 靠相容機生態擴散，1985 年 Windows 1.0 登場，1990 年代 Windows 3.x 統治桌面，微軟成為 1990 年代市值之王。
-- **IBM 的教訓**：1987 年 IBM 企圖以專利微通道架構（MCA）與 OS/2 收回主導權，均告失敗；2005 年將 PC 部門售予聯想，正式退出。
-- **CP/M 的黃昏**：Kildall 的 Digital Research 在 1980 年代雖推出 DR-DOS 對抗，終究不敵微軟的生態鎖定，1991 年被 Novell 併購。
+- Wintel 聯盟成形：Intel 供 CPU、微軟供 OS，PC 產業的標準由這兩家而非 IBM 定義。
+- 微軟保留 DOS 非專屬授權權利，向 Compaq、AST 等所有相容機廠收授權費，1990 年代初年營收破十億美元。
+- Compaq、Dell、Gateway 等相容機崛起；IBM 於 1987 年推出封閉的 PS/2 與 OS/2 欲收復失土，失敗。
+- 1985 年 Windows 問世；1990 年代 IBM PC 業務逐漸邊緣化，2005 年售予 Lenovo——藍色巨人親手創造了讓自己失去個人電腦市場的標準。
 
 ## 冷案檔案
-
-- 時間：1981 年 8 月 12 日（發表）
-- 案由：IBM 為求快速進入市場採開放式設計與外部採購，意外促成相容機產業；微軟以 75,000 美元購入 86-DOS 並保留授權權
-- 歷史定位：PC 標準化的原點與「開放反而失去控制權」的經典教訓——x86 + DOS 生態自此統治資訊產業三十年
+- 時間：1981-08-12 發表；1982-08-13 Compaq Portable 相容機問世
+- 案由：開放式設計＋CP/M 錯失＋微軟買下 QDOS，三方決策共同造就 PC 標準
+- 歷史定位：產業史上影響最深遠的「無心插柳」——IBM 想快速趕進度，卻把整個 PC 時代的鑰匙交給了兩家小公司。
