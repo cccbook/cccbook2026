@@ -59,7 +59,7 @@
 [物理史]:./物理史/README.md
 [相對論]:./相對論/README.md
 [量子力學]:./量子力學/README.md
-[哈密頓物理學]::./哈密頓物理學/README.md
+[哈密頓物理學]:./哈密頓物理學/README.md
 
 [化學史]:./化學史/README.md
 
