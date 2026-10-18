@@ -26,17 +26,17 @@ $$P(\Omega) = 1, \quad P(A) \ge 0, \quad P(A \cup B) = P(A) + P(B) \text{（互�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 三條公理
-**Kolmogorov 公理**：樣本空間 $\Omega$、事件 σ-代數 $\mathcal{F}$、機率測度 $P: \mathcal{F} \to \mathbb{R}$：
+**Kolmogorov 公理**：樣本空間 $\Omega$ 、事件 σ-代數 $\mathcal{F}$ 、機率測度 $P: \mathcal{F} \to \mathbb{R}$ ：
 
-1. **非負性**：$P(A) \ge 0$
-2. **規範性**：$P(\Omega) = 1$
-3. **可數可加性**：互斥事件 $A_1, A_2, \dots$：
+1. **非負性**： $P(A) \ge 0$
+2. **規範性**： $P(\Omega) = 1$
+3. **可數可加性**：互斥事件 $A_1, A_2, \dots$ ：
 
 $$P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$$
 
 **就這三條**——全部機率論從三條公理演繹。
 
-**機率 = 測度**：$P$ 是測度（$\Omega$ 的總測度為 1）——**隨機變數 = 可測函數**、期望 = Lebesgue 積分：
+**機率 = 測度**： $P$ 是測度（ $\Omega$ 的總測度為 1）——**隨機變數 = 可測函數**、期望 = Lebesgue 積分：
 
 $$E[X] = \int_\Omega X \, dP$$
 

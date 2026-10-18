@@ -32,7 +32,7 @@ $$E[S_{t+\Delta t} - S_t] = 0$$
 
 $$dS_t = \sigma \, dW_t$$
 
-其中 $W_t$ 是標準布朗運動（他稱之為「機率輻射」radiation de probabilité），$\sigma$ 是波動率。
+其中 $W_t$ 是標準布朗運動（他稱之為「機率輻射」radiation de probabilité）， $\sigma$ 是波動率。
 
 **關鍵推導**：他推導出價格轉移機率密度滿足**擴散方程式（熱傳導方程）**：
 
@@ -50,7 +50,7 @@ Bachelier 甚至推出了歐式選擇權的定價公式（在零利率、算術�
 
 $$C(K) = (S_0 - K)\,\Phi\!\left(\frac{S_0 - K}{\sigma\sqrt{T}}\right) + \sigma\sqrt{T}\,\phi\!\left(\frac{S_0 - K}{\sigma\sqrt{T}}\right)$$
 
-其中 $\Phi$ 是常態 CDF，$\phi$ 是常態 PDF。這比 Black–Scholes 公式早了 **73 年**。
+其中 $\Phi$ 是常態 CDF， $\phi$ 是常態 PDF。這比 Black–Scholes 公式早了 **73 年**。
 
 ## 現代程式驗證：用 Python 模擬 Bachelier 的隨機漫步
 
@@ -89,7 +89,7 @@ print(np.mean(std_t / np.sqrt(t[1:])))   # 應接近 2.0
 
 - 動機：市場公平性 → 隨機性（後來的有效市場假說）
 - 工具：機率論 + 熱傳導方程
-- 遺產：$\sqrt{t}$ 擴散律、第一個選擇權公式
+- 遺產： $\sqrt{t}$ 擴散律、第一個選擇權公式
 - 盲點：算術布朗運動允許價格為負——這個漏洞要等 Samuelson（1965）與 Black–Scholes（1973）來修補。
 
 ## 參考資料

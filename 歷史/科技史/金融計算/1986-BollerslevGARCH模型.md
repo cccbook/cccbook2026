@@ -21,11 +21,11 @@ $$h_t = \omega + \sum_{i=1}^{q} \alpha_i \varepsilon_{t-i}^2 + \sum_{j=1}^{p} \b
 
 $$h_t = \omega + \alpha \varepsilon_{t-1}^2 + \beta h_{t-1}$$
 
-三個參數（$\omega, \alpha, \beta$）捕捉全部：
+三個參數（ $\omega, \alpha, \beta$ ）捕捉全部：
 
-- $\alpha$：**衝擊的反應強度**（news 今天的影響）
-- $\beta$：**記憶的持續性**（persistence）
-- $\alpha + \beta < 1$：平穩條件；$\alpha + \beta$ 越接近 1，波動率的記憶越長（實證上股票通常 $\approx 0.95–0.99$）
+- $\alpha$ ：**衝擊的反應強度**（news 今天的影響）
+- $\beta$ ：**記憶的持續性**（persistence）
+- $\alpha + \beta < 1$ ：平穩條件； $\alpha + \beta$ 越接近 1，波動率的記憶越長（實證上股票通常 $\approx 0.95–0.99$ ）
 
 ### 線索二：波動率的預測公式
 
@@ -37,7 +37,7 @@ $$E[h_{t+k}] = \sigma^2 + (\alpha+\beta)^{k-1}(h_{t+1} - \sigma^2)$$
 
 ### 線索三：條件厚尾
 
-即使標準化殘差 $z_t = \varepsilon_t/\sqrt{h_t}$ 是常態，$r_t$ 的**無條件分配**也是厚尾的（過度峰態）：
+即使標準化殘差 $z_t = \varepsilon_t/\sqrt{h_t}$ 是常態， $r_t$ 的**無條件分配**也是厚尾的（過度峰態）：
 
 $$\text{kurtosis} = 3 + \frac{2\alpha^2}{1 - (\alpha+\beta)^2 - 2\alpha^2} \times \frac{1}{1} > 3$$
 
@@ -72,7 +72,7 @@ print(forecast.variance.values[-1])
 
 ## 後果
 
-- **RiskMetrics（1994）**：J.P. Morgan 的 VaR 系統的波動率引擎就是指數加權的 GARCH 特例（$\alpha+\beta=1$ 的 IGARCH，見 [1994-RiskMetricsVaR.md](1994-RiskMetricsVaR.md)）。
+- **RiskMetrics（1994）**：J.P. Morgan 的 VaR 系統的波動率引擎就是指數加權的 GARCH 特例（ $\alpha+\beta=1$ 的 IGARCH，見 [1994-RiskMetricsVaR.md](1994-RiskMetricsVaR.md)）。
 - **計量經濟的工業標準**：GARCH 家族超過數百個變體（EGARCH、GJR、TGARCH、GARCH-M...），用於匯率、利率、商品、加密貨幣。
 - Engle 獲 2003 年諾貝爾獎——GARCH 是主要功臣之一。
 - **選擇權定價**：Duan（1995）的 GARCH 選擇權定價模型，把條件變異數帶進衍生品定價。

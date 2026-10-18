@@ -12,7 +12,7 @@
 ## 線索與推理 -- 數學式、程式、理論
 ### 線索一：Wozniak 的工程天才
 Wozniak 以極少晶片做出驚人功能：
-- **彩色圖形**：Apple II 用一顆 NTSC 視訊產生器，巧妙利用像素與色載波相位差產生彩色。若視訊頻率為 $f_{sc} \approx 3.579545\,\text{MHz}$（NTSC 色副載波），像素位移半個週期，色相偏移：
+- **彩色圖形**：Apple II 用一顆 NTSC 視訊產生器，巧妙利用像素與色載波相位差產生彩色。若視訊頻率為 $f_{sc} \approx 3.579545\,\text{MHz}$ （NTSC 色副載波），像素位移半個週期，色相偏移：
 
 $$\Delta\phi = 2\pi f_{sc} \cdot \Delta t$$
 
@@ -43,7 +43,7 @@ Apple II 的 Integer BASIC（後為 Applesoft BASIC，授權自 Microsoft）就�
 100 END
 ```
 
-前三行清螢幕、進入高解析度繪圖模式（$280 \times 160$ 像素）、設白色；畫出直線;最後列印問候語。用今天 Python 對照：
+前三行清螢幕、進入高解析度繪圖模式（ $280 \times 160$ 像素）、設白色；畫出直線;最後列印問候語。用今天 Python 對照：
 
 ```python
 # 同樣概念：畫直線 + 列印文字（Python, 2020s）

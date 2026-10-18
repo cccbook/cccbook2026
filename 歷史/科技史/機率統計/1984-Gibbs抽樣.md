@@ -30,7 +30,7 @@ $$
 \pi(\theta') = \int \pi(\theta) \, K(\theta' \mid \theta) \, d\theta
 $$
 
-（$K$ 為轉移核），則鏈收斂到 $\pi$。MCMC 的核心技巧：**設計一個轉移核 $K$，使它的平穩分布恰好是我們想抽的後驗 $p(\theta|x)$**。
+（ $K$ 為轉移核），則鏈收斂到 $\pi$ 。MCMC 的核心技巧：**設計一個轉移核 $K$ ，使它的平穩分布恰好是我們想抽的後驗 $p(\theta|x)$ **。
 
 **詳細平衡（detailed balance）**是充分條件：
 
@@ -39,31 +39,31 @@ $$
 $$
 
 ### Metropolis–Hastings 演算法
-1. 由提議分布 $q(\theta' \mid \theta^{(t)})$ 產生候選 $\theta'$。
+1. 由提議分布 $q(\theta' \mid \theta^{(t)})$ 產生候選 $\theta'$ 。
 2. 以機率 $\alpha$ 接受：
 
 $$
 \alpha = \min\left(1, \; \frac{p(\theta' \mid x) \, q(\theta^{(t)} \mid \theta')}{p(\theta^{(t)} \mid x) \, q(\theta' \mid \theta^{(t)})}\right)
 $$
 
-（注意：$\pi$ 的比例形式即可，分母 $p(x)$ 會消去——這正是繞過高維積分的關鍵！）
-3. 接受則 $\theta^{(t+1)} = \theta'$，否則 $\theta^{(t+1)} = \theta^{(t)}$。
+（注意： $\pi$ 的比例形式即可，分母 $p(x)$ 會消去——這正是繞過高維積分的關鍵！）
+3. 接受則 $\theta^{(t+1)} = \theta'$ ，否則 $\theta^{(t+1)} = \theta^{(t)}$ 。
 
 ### Gibbs 抽樣：逐條件抽樣
-Gibbs 是 MH 的特例（提議分布即條件分布、接受率恆為 1）。設 $\theta = (\theta_1, \dots, \theta_d)$，每一輪依序從**滿條件分布（full conditional）**抽樣：
+Gibbs 是 MH 的特例（提議分布即條件分布、接受率恆為 1）。設 $\theta = (\theta_1, \dots, \theta_d)$ ，每一輪依序從**滿條件分布（full conditional）**抽樣：
 
 $$
 \theta_i^{(t+1)} \sim p(\theta_i \mid \theta_{-i}^{(t)}, x),
 \quad \text{其中 } \theta_{-i} = (\theta_1, \dots, \theta_{i-1}, \theta_{i+1}, \dots, \theta_d)
 $$
 
-在貝葉斯模型中，$p(\theta_i \mid \theta_{-i}, x) \propto p(x \mid \theta)\, p(\theta_i \mid \theta_{-i})$，常是**標準分布**（如常態、Gamma）——這是 Gibbs 的魔法：把高維積分分解成一連串一維抽樣。
+在貝葉斯模型中， $p(\theta_i \mid \theta_{-i}, x) \propto p(x \mid \theta)\, p(\theta_i \mid \theta_{-i})$ ，常是**標準分布**（如常態、Gamma）——這是 Gibbs 的魔法：把高維積分分解成一連串一維抽樣。
 
 ### burn-in 與收斂診斷
 - **Burn-in**：丟棄前 $m$ 次迭代（鏈尚未收斂到平穩分布的階段）。
 - **Thinning**：每隔 $k$ 次取一個樣本，減少自相關。
 - **收斂診斷**：
-  - 多鏈不同初值，比較 $\hat R$（Gelman-Rubin statistic），$\hat R \approx 1$ 表示收斂。
+  - 多鏈不同初值，比較 $\hat R$ （Gelman-Rubin statistic）， $\hat R \approx 1$ 表示收斂。
   - 追蹤圖（trace plot）應像「毛毛蟲」而非漂移的波浪。
   - 有效樣本數 ESS 應足夠大（自相關會讓名義樣本數虛高）。
 
@@ -120,7 +120,7 @@ axes[2].plot(samples_mh[:2000, 0]);             axes[2].set_title("MH trace (x1)
 plt.tight_layout(); plt.show()
 ```
 
-執行後：兩種方法的樣本均值接近 $[0,0]$、變異數接近 1；散點圖呈現 $\rho=0.8$ 的橢圓相關結構；trace plot 顯示鏈已穩定混合。
+執行後：兩種方法的樣本均值接近 $[0,0]$ 、變異數接近 1；散點圖呈現 $\rho=0.8$ 的橢圓相關結構；trace plot 顯示鏈已穩定混合。
 
 ## 結案 -- 後果與影響
 - **貝葉斯計算的革命**：BUGS（1990s）與 Stan（2012，採用 HMC/NUTS）讓複雜貝葉斯模型只需描述模型即可自動推論。

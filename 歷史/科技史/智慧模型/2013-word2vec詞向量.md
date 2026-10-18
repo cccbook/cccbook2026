@@ -39,7 +39,7 @@ p(w_O \mid w_I) = \frac{\exp(\vec{v}'_{w_O}{}^{\top} \vec{v}_{w_I})}{\sum_{w=1}^
 $$
 
 ### 第二條線索：負取樣——殺死整表 softmax
-對十萬詞彙做 softmax，每個樣本要算十萬次指數。Mikolov 的偷天換日：把「多類分類」改成**二元分類**——真實上下文詞為正例，隨機抽 $k$ 個（$k\approx 5\text{–}20$）雜訊詞為負例：
+對十萬詞彙做 softmax，每個樣本要算十萬次指數。Mikolov 的偷天換日：把「多類分類」改成**二元分類**——真實上下文詞為正例，隨機抽 $k$ 個（ $k\approx 5\text{–}20$ ）雜訊詞為負例：
 
 $$
 \log \sigma(\vec{v}'_{w_O}{}^{\top}\vec{v}_{w_I}) + \sum_{i=1}^{k} \mathbb{E}_{w_i \sim P_n(w)} \log \sigma(-\vec{v}'_{w_i}{}^{\top}\vec{v}_{w_I})

@@ -30,9 +30,9 @@ $$\text{動作序列}_t = f(\text{card}_t), \qquad t=1,\ldots,N.$$
 ### 第二條線索：有限狀態機（循環控制）
 織機是一個循環執行的機械裝置：
 $$S_{t+1} = \delta(S_t, \text{input}_t), \qquad \text{output}_t = \lambda(S_t, \text{input}_t).$$
-- $S_t$：經線的提起狀態（warp harness）
-- $\text{input}_t = \text{card}_t$（打孔模式）
-- $\text{output}_t$：織出的紋路（一行 weft）
+- $S_t$ ：經線的提起狀態（warp harness）
+- $\text{input}_t = \text{card}_t$ （打孔模式）
+- $\text{output}_t$ ：織出的紋路（一行 weft）
 - **打孔卡序列 = 輸入序列 = 程式**。
 這是**有限狀態機（FSM）+ 外部輸入**的機械實現——先於 Turing 機（1936）的工程範例。
 

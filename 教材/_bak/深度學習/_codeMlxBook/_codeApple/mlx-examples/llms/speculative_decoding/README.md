@@ -49,8 +49,8 @@ are accepted by the larger model. That's more likely to happen if the models
 are trained on similar data.
 
 One way to increase the chance of accepting a draft token is with the parameter
-`--delta`. This parameter can be in the range $[0, 1]$. If it is $1$ then all
-the draft tokens will be accepted by the model. If it is $0$, then only draft
+`--delta`. This parameter can be in the range $[0, 1]$ . If it is $1$ then all
+the draft tokens will be accepted by the model. If it is $0$ , then only draft
 tokens that match the original acceptance criterion are kept.[^1] Values
 closer to $1$ increase the chance that a draft token is accepted.
 

@@ -11,7 +11,7 @@
 
 ## 線索與推理 -- 數學式、程式、理論
 ### 問題定義
-給定 $N = 2^n$ 個項與一個布林函數 $f$，恰有一個解 $w$ 使得 $f(w)=1$。Oracle 定義為
+給定 $N = 2^n$ 個項與一個布林函數 $f$ ，恰有一個解 $w$ 使得 $f(w)=1$ 。Oracle 定義為
 
 $$O_f|x\rangle = (-1)^{f(x)}|x\rangle$$
 
@@ -26,20 +26,20 @@ Grover 迭代 $G$ 由兩個算符組成：
 
 $$G = (2|s\rangle\langle s| - I)\, O_f$$
 
-其中 $D = 2|s\rangle\langle s| - I = \frac{2}{N}\sum_{x}\sum_{y}|x\rangle\langle y| - I$ 稱為 **diffusion 算符**（關於平均值的反轉，inversion about the mean）：對任意振幅 $a_i$，它將其映射為 $2\bar{a} - a_i$。
+其中 $D = 2|s\rangle\langle s| - I = \frac{2}{N}\sum_{x}\sum_{y}|x\rangle\langle y| - I$ 稱為 **diffusion 算符**（關於平均值的反轉，inversion about the mean）：對任意振幅 $a_i$ ，它將其映射為 $2\bar{a} - a_i$ 。
 
 ### 幾何直覺
 把狀態分解為「解平面」上的兩個分量：
 
 $$|s\rangle = \sin\theta\,|w\rangle + \cos\theta\,|r\rangle,\quad \sin\theta = \frac{1}{\sqrt{N}}$$
 
-其中 $|r\rangle$ 是所有非解態的歸一化疊加。每次迭代 $G$ 在 $\{|w\rangle, |r\rangle\}$ 平面上旋轉 $2\theta$ 角度，把振幅從 $|r\rangle$ 搬向 $|w\rangle$。經過 $k$ 次迭代：
+其中 $|r\rangle$ 是所有非解態的歸一化疊加。每次迭代 $G$ 在 $\{|w\rangle, |r\rangle\}$ 平面上旋轉 $2\theta$ 角度，把振幅從 $|r\rangle$ 搬向 $|w\rangle$ 。經過 $k$ 次迭代：
 
 $$\sin\big((2k+1)\theta\big) \approx \text{成功機率}$$
 
-取 $k \approx \frac{\pi}{4}\sqrt{N}$ 時成功機率接近 1，故查詢次數為 $O(\sqrt{N})$。
+取 $k \approx \frac{\pi}{4}\sqrt{N}$ 時成功機率接近 1，故查詢次數為 $O(\sqrt{N})$ 。
 
-例如 $N = 2^{20} \approx 10^6$：經典需約 $5\times 10^5$ 次查詢，Grover 只需約 $\frac{\pi}{4}\cdot 1024 \approx 805$ 次。
+例如 $N = 2^{20} \approx 10^6$ ：經典需約 $5\times 10^5$ 次查詢，Grover 只需約 $\frac{\pi}{4}\cdot 1024 \approx 805$ 次。
 
 ### 最優性證明
 Bennett–Bernstein–Brassard–Vazirani（BBBV, 1997）用混合態論證證明：任何量子演算法搜尋非結構化資料庫至少需要 $\Omega(\sqrt{N})$ 次 oracle 查詢。因此 Grover 是**漸近最優**的——加速最多是二次方，不可能更快。後續 Zalka（1999）更證明常數因子 $\pi/4$ 也是最優的。
@@ -84,7 +84,7 @@ print(result.get_counts()) # |1101> 出現機率 > 0.95
 
 ## 結案 -- 後果與影響
 - **振幅放大（amplitude amplification）成為通用量子技術**：Grover 迭代可推廣為 Brassard–Høyer–Mossard–Tapp 的振幅放大框架，用於量子計數、碰撞問題、NP 完全問題的平方加速。
-- 複雜度 $O(\sqrt{N})$ vs 經典 $O(N)$：對 hash 碰撞、 satisfiability 等問題提供實質（但非指數）加速。
+- 複雜度 $O(\sqrt{N})$ vs 經典 $O(N)$ ：對 hash 碰撞、 satisfiability 等問題提供實質（但非指數）加速。
 - 深遠影響：Grover 演算法迫使對稱式密碼學加倍金鑰長度（AES-128 在量子攻擊下安全度只剩約 64 bit），成為後量子密碼學討論的起點之一；今日所有量子雲端平台上的入門教材，幾乎都以 Grover 作為第二個示範電路。
 
 ## 關鍵人物與文獻

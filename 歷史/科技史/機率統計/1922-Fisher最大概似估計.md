@@ -19,10 +19,10 @@ Fisher 同時發現當時的統計學者（包括 Pearson）**混淆了母體與
 ### 線索一：母體 vs 樣本的觀念革命
 Fisher 嚴格區分：
 - **母體（population）**：一個無限大的假想集合，由參數 $\theta$ 的機率分佈 $f(x;\theta)$ 刻劃。
-- **樣本（sample）**：從母體抽出、可觀測的有限數據 $x_1,\dots,x_n$。
-- **統計量（statistic）**：樣本的函數 $T(x_1,\dots,x_n)$，不包含未知參數。
+- **樣本（sample）**：從母體抽出、可觀測的有限數據 $x_1,\dots,x_n$ 。
+- **統計量（statistic）**：樣本的函數 $T(x_1,\dots,x_n)$ ，不包含未知參數。
 
-統計推論的方向是**單向**的：$f(x;\theta) \Rightarrow$ 樣本 $\Rightarrow$ 統計量 $\Rightarrow$ 推斷 $\theta$。這個框架至今仍是現代統計學的骨架。
+統計推論的方向是**單向**的： $f(x;\theta) \Rightarrow$ 樣本 $\Rightarrow$ 統計量 $\Rightarrow$ 推斷 $\theta$ 。這個框架至今仍是現代統計學的骨架。
 
 ### 線索二：最大概似估計（MLE）
 定義**概似函數**（likelihood）：
@@ -37,19 +37,19 @@ $$\hat{\theta} = \arg\max_\theta L(\theta) = \arg\max_\theta \prod_{i=1}^n f(x_i
 
 $$\ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log f(x_i;\theta), \qquad \hat{\theta} = \arg\max_\theta \ell(\theta)$$
 
-求解條件：$\ell'(\hat{\theta}) = 0$（得分方程，score equation），其中 score 定義為
+求解條件： $\ell'(\hat{\theta}) = 0$ （得分方程，score equation），其中 score 定義為
 
 $$S(\theta) = \frac{\partial \ell}{\partial \theta}, \qquad I(\theta) = -E\!\left[\frac{\partial^2 \ell}{\partial \theta^2}\right] \;\;(\text{Fisher 資訊})$$
 
 ### 線索三：三大性質（Fisher 的證明）
 Fisher 證明 MLE 具有：
 
-1. **一致性（consistency）**：$\hat{\theta}_n \xrightarrow{p} \theta$，樣本越大估計越準。
+1. **一致性（consistency）**： $\hat{\theta}_n \xrightarrow{p} \theta$ ，樣本越大估計越準。
 2. **有效性（efficiency）**：漸近變異數達到 **Cramér–Rao 下界**：
 
    $$\text{Var}(\hat{\theta}) \ge \frac{1}{n I(\theta)}, \qquad \text{MLE 漸近達到} \;\; \text{Var}(\hat\theta_n) \approx \frac{1}{nI(\theta)}$$
 
-3. **充分性（sufficiency）**：當存在充分統計量 $T$ 時（如常態的 $\bar{X}, s^2$），MLE 是 $T$ 的函數，不損失資訊。
+3. **充分性（sufficiency）**：當存在充分統計量 $T$ 時（如常態的 $\bar{X}, s^2$ ），MLE 是 $T$ 的函數，不損失資訊。
 
 漸近常態性：
 

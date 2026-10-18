@@ -27,7 +27,7 @@ $$
 \text{RISC-V} = \underbrace{\text{RV32I / RV64I}}_{\text{基礎（整數）}} + \underbrace{M}_{\text{乘除}} + \underbrace{A}_{\text{原子操作}} + \underbrace{F}_{\text{單精度}} + \underbrace{D}_{\text{雙精度}} + \underbrace{C}_{\text{壓縮指令}}
 $$
 
-- 擴充指令集可自由組合（例如 RV32IMC、RV64G = RV64IMAFDZicsr_Zifencei），$n$ 個選配擴充有 $2^n$ 種組合——這是模組化的數學本質：
+- 擴充指令集可自由組合（例如 RV32IMC、RV64G = RV64IMAFDZicsr_Zifencei）， $n$ 個選配擴充有 $2^n$ 種組合——這是模組化的數學本質：
 
 $$
 N_{\text{組合}} = 2^{|\text{選配擴充}|} \quad\Longrightarrow\quad 6 \text{ 個選配} \Rightarrow 64 \text{ 種晶片變體}
@@ -56,7 +56,7 @@ $$
 S_{\text{speedup}} = \frac{1}{(1-s) + \dfrac{s}{E}}
 $$
 
-當客製指令覆蓋的熱點程式佔比 $s$ 接近 1、加速比 $E$ 放大，整體加速比就逼近 $E$——這是 RISC-V 客製化晶片（AIoT、NPU）的理論根據。
+當客製指令覆蓋的熱點程式佔比 $s$ 接近 1、加速比 $E$ 放大，整體加速比就逼近 $E$ ——這是 RISC-V 客製化晶片（AIoT、NPU）的理論根據。
 
 ### 3. 指令編碼的位元佈局
 

@@ -25,7 +25,7 @@
 
 $$W = \frac{\rho}{2(1-\rho)} \cdot \frac{1}{\mu}, \quad \rho = \frac{\lambda}{\mu}$$
 
-其中 $\lambda$ 為封包到達率，$\mu$ 為服務率。當 $\rho \to 1$ 時延遲爆炸，這解釋了早期網路塞車現象。
+其中 $\lambda$ 為封包到達率， $\mu$ 為服務率。當 $\rho \to 1$ 時延遲爆炸，這解釋了早期網路塞車現象。
 
 ### 那則「LO」訊息
 程式設計師 Charley Kline 嘗試從 UCLA 的 SDS Sigma 7 對 SRI 的 SDS 940 打字「LOGIN」。每打一個字元，SRI 端就回音確認。打到 G 時，SRI 的 IMP 傳輸緩衝區出錯當機。「LO」成為史上第一則透過分封交換網路傳遞的訊息——約一小時後系統修復，LOGIN 成功。

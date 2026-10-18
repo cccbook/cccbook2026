@@ -20,7 +20,7 @@ $$y' + P(x)y = Q(x)y^n$$
 
 ### 第一步：Leibniz 的觀察——除掉多餘的冪次
 
-Leibniz 的思路是：方程的「病灶」在於那個多餘的 $y^n$。要把它除掉，最直接的方法就是用 $y$ 的冪次做代換。1695 年 12 月，他在寫給 Johann Bernoulli 的信中提出：令
+Leibniz 的思路是：方程的「病灶」在於那個多餘的 $y^n$ 。要把它除掉，最直接的方法就是用 $y$ 的冪次做代換。1695 年 12 月，他在寫給 Johann Bernoulli 的信中提出：令
 
 $$v = y^{1-n}$$
 
@@ -28,15 +28,15 @@ $$v = y^{1-n}$$
 
 ### 第二步：逐步推導——化非線性為線性
 
-設 $v = y^{1-n}$，對 $x$ 求導（用鏈鎖法則）：
+設 $v = y^{1-n}$ ，對 $x$ 求導（用鏈鎖法則）：
 
 $$v' = (1-n)\, y^{-n}\, y' \quad\Rightarrow\quad y' = \frac{v'}{(1-n)\,y^{-n}} = \frac{y^n}{1-n}\, v'$$
 
-將原方程 $y' + Py = Qy^n$ 兩邊同除以 $y^n$：
+將原方程 $y' + Py = Qy^n$ 兩邊同除以 $y^n$ ：
 
 $$y^{-n} y' + P\, y^{1-n} = Q$$
 
-代入 $v' = (1-n)y^{-n}y'$ 與 $v = y^{1-n}$：
+代入 $v' = (1-n)y^{-n}y'$ 與 $v = y^{1-n}$ ：
 
 $$\frac{v'}{1-n} + P\, v = Q \quad\Rightarrow\quad v' + (1-n)\,P(x)\, v = (1-n)\,Q(x)$$
 
@@ -44,7 +44,7 @@ $$\frac{v'}{1-n} + P\, v = Q \quad\Rightarrow\quad v' + (1-n)\,P(x)\, v = (1-n)\
 
 ### 第三步：用 Leibniz 的線性方程方法收尾
 
-對線性方程 $v' + \tilde{P}v = \tilde{Q}$（其中 $\tilde{P} = (1-n)P$、$\tilde{Q} = (1-n)Q$），Leibniz 的方法是乘上積分因子：
+對線性方程 $v' + \tilde{P}v = \tilde{Q}$ （其中 $\tilde{P} = (1-n)P$ 、 $\tilde{Q} = (1-n)Q$ ），Leibniz 的方法是乘上積分因子：
 
 $$\mu(x) = e^{\int \tilde{P}\, dx} = e^{(1-n)\int P\, dx}$$
 
@@ -52,7 +52,7 @@ $$\mu(x) = e^{\int \tilde{P}\, dx} = e^{(1-n)\int P\, dx}$$
 
 $$\frac{d}{dx}\left(\mu\, v\right) = \mu\, \tilde{Q} \quad\Rightarrow\quad v = \frac{1}{\mu}\left(\int \mu\, \tilde{Q}\, dx + C\right)$$
 
-代回 $v = y^{1-n}$，得到通解：
+代回 $v = y^{1-n}$ ，得到通解：
 
 $$y^{1-n} = e^{-(1-n)\int P\, dx}\left((1-n)\int Q(x)\, e^{(1-n)\int P\, dx}\, dx + C\right)$$
 
@@ -60,7 +60,7 @@ $$y^{1-n} = e^{-(1-n)\int P\, dx}\left((1-n)\int Q(x)\, e^{(1-n)\int P\, dx}\, d
 
 Jacob Bernoulli 幾乎同時獨立地解出了這個方程，但他選擇了另一條路：把 $y$ 視為 $x$ 的函數，將方程改寫成 $x$ 對 $y$ 的形式並尋求 separable 化。1696 年，他在《Acta Eruditorum》上發表解法，並指出自己的方法更一般——可以處理某些 Bernoulli 方程推廣的類型。兩人的書信與論文中夾雜著互相挑剔、指正錯誤與暗自較勁的火藥味，Leibniz 甚至一度懷疑 Jacob 的解法有誤，事後不得不承認其正確性。
 
-值得一提的是，$n = 0$ 時方程退化為普通線性方程，$n = 1$ 時右邊變成 $Qy$、方程變成可分離變數；因此 Bernoulli 方程真正的「新大陸」在 $n \neq 0, 1$ 的區域。
+值得一提的是， $n = 0$ 時方程退化為普通線性方程， $n = 1$ 時右邊變成 $Qy$ 、方程變成可分離變數；因此 Bernoulli 方程真正的「新大陸」在 $n \neq 0, 1$ 的區域。
 
 ## 結案報告
 

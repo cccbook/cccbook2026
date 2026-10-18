@@ -27,15 +27,15 @@ $$V(s_t) \leftarrow V(s_t) + \alpha \big[ r_{t+1} + \gamma V(s_{t+1}) - V(s_t) \
 |------|---------|---------|------|--------|
 | Monte Carlo | 等到終局 | 實際回傳 $G_t = \sum_{k} \gamma^k r_{t+k}$ | 無偏 | 高（雜訊大） |
 | 動態規劃 | 立即 | Bellman 算子（需知道模型） | — | — |
-| **TD(0)** | **立即** | **$r + \gamma V(s')$（用估計代替模型）** | 有偏 | **低** |
+| **TD(0)** | **立即** | ** $r + \gamma V(s')$ （用估計代替模型）** | 有偏 | **低** |
 
-TD 的更新目標 $r + \gamma V(s')$ 本身含估計值 $V(s')$（**bootstrap**），故有偏；
+TD 的更新目標 $r + \gamma V(s')$ 本身含估計值 $V(s')$ （**bootstrap**），故有偏；
 但每步都更新、只依賴一步轉移，變異數小、樣本效率高、**可以在線學習**。
 $$\boxed{V(s_t) \leftarrow V(s_t) + \alpha\, \delta_t, \quad \delta_t = r_{t+1} + \gamma V(s_{t+1}) - V(s_t)}$$
 
 ### 收斂性偵查
-Sutton 證明：線性函數近似 $V(s) = w^\top \phi(s)$ 下，若 $\sum \alpha_t = \infty$、$\sum \alpha_t^2 < \infty$，
-則表格型 TD(0) 收斂到 $V$ 的最小均方解 $\Pi V^\pi$（投影到可表示空間）。
+Sutton 證明：線性函數近似 $V(s) = w^\top \phi(s)$ 下，若 $\sum \alpha_t = \infty$ 、 $\sum \alpha_t^2 < \infty$ ，
+則表格型 TD(0) 收斂到 $V$ 的最小均方解 $\Pi V^\pi$ （投影到可表示空間）。
 推廣 $TD(\lambda)$ 以指數衰減的資格跡 (eligibility trace) 混合所有步數：
 $$V(s) \leftarrow V(s) + \alpha\, \delta_t\, e_t(s), \quad e_t(s) = \gamma\lambda\, e_{t-1}(s) + \mathbb{1}[s = s_t].$$
 
@@ -82,7 +82,7 @@ TD 真值 [1/6..4/6]: [0.12 0.28 0.41 0.73]
 
 ### TD 誤差 = 多巴胺（後續偵查的橋）
 Sutton 的 $\delta_t$ 與 Schultz 1990 年代的多巴胺放電模式完全吻合：
-意外獎賞 → $\delta>0$ 放電；符合預期 → $\delta\approx 0$；預期落空 → $\delta<0$ 抑制。
+意外獎賞 → $\delta>0$ 放電；符合預期 → $\delta\approx 0$ ；預期落空 → $\delta<0$ 抑制。
 **1972 年 Klopf 的假說 + 1988 年 Sutton 的數學 + 1997 年 Schultz 的實驗 = 完整偵破。**
 
 ## 結案 -- 後果與影響

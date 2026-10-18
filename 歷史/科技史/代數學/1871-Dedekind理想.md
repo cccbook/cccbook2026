@@ -4,7 +4,7 @@
 1871 年，Dedekind 在《代數整數論》（《Dirichlet 數論講義》第二版附錄 X）中發明「理想」（ideal），修復了代數數域中「唯一分解」崩壞的案件。Kummer 的「理想數」是先聲，Dedekind 將其公理化為集合論意義下的理想——唯一分解在元素層面失效，卻在**素理想**層面復活，並最終通向 Grothendieck 的概形理論。
 
 ## 前因 -- 為什麼會有這個案子
-- 1840 年代，Kummer 為攻堅費馬最後定理（$x^n + y^n = z^n$），在分圓域 $\mathbb{Q}(\zeta_n)$ 中研究分解，發現**唯一分解在元素層面崩壞**。
+- 1840 年代，Kummer 為攻堅費馬最後定理（ $x^n + y^n = z^n$ ），在分圓域 $\mathbb{Q}(\zeta_n)$ 中研究分解，發現**唯一分解在元素層面崩壞**。
 - Kummer 的補救：引入「理想數」（ideale Zahlen）——看不見的「幽靈因子」，使分解重獲唯一性，證明了 $n$ 為正則素數時的費馬最後定理。
 - 但 Kummer 的理想數缺乏嚴格定義，是「具體計算」的產物。
 - Dedekind 的偵查目標：給理想數一個**集合論的、公理化的**定義，並把唯一分解定理重寫在新的框架下。
@@ -24,16 +24,16 @@ $$N(2) = 4,\quad N(3) = 9,\quad N(1\pm\sqrt{-5}) = 6$$
 Dedekind 的定義：數域 $K$ 的代數整數環 $\mathcal{O}_K$ 中的**理想** $I \subseteq \mathcal{O}_K$ 是一個加法子群，且對乘法封閉吸收：
 $$a \in \mathcal{O}_K,\ x \in I \Rightarrow ax \in I$$
 
-例如主理想 $(2) = 2\mathbb{Z}[\sqrt{-5}]$。理想之間可以定義乘法 $IJ$（由有限和 $ij$ 生成）與整除關係 $I \mid J \iff J \subseteq I$——「元素的世界」被整個搬到「理想的世界」。
+例如主理想 $(2) = 2\mathbb{Z}[\sqrt{-5}]$ 。理想之間可以定義乘法 $IJ$ （由有限和 $ij$ 生成）與整除關係 $I \mid J \iff J \subseteq I$ ——「元素的世界」被整個搬到「理想的世界」。
 
 ### 線索三：素理想唯一分解的修復
 Dedekind 的關鍵定理：
 
 > **Dedekind domain 的唯一分解定理**：若 $\mathcal{O}_K$ 是 Dedekind domain（Noether、一維、可逆理想皆可逆，等價地：每個非零理想可唯一分解為素理想之積），則
 > $$(6) = (2)(3) = \mathfrak{p}_2^{\,2}\,\overline{\mathfrak{p}_2}^{\,2}\,\mathfrak{p}_3\,\overline{\mathfrak{p}_3}$$
-> 其中 $\mathbb{Z}[\sqrt{-5}]$ 中 $(2) = \mathfrak{p}_2\,\overline{\mathfrak{p}_2}$，$\mathfrak{p}_2 = (2, 1+\sqrt{-5})$，而 $(3) = \mathfrak{p}_3\,\overline{\mathfrak{p}_3}$，$\mathfrak{p}_3 = (3, 1+\sqrt{-5})$。
+> 其中 $\mathbb{Z}[\sqrt{-5}]$ 中 $(2) = \mathfrak{p}_2\,\overline{\mathfrak{p}_2}$ ， $\mathfrak{p}_2 = (2, 1+\sqrt{-5})$ ，而 $(3) = \mathfrak{p}_3\,\overline{\mathfrak{p}_3}$ ， $\mathfrak{p}_3 = (3, 1+\sqrt{-5})$ 。
 
-兩條分解鏈在理想層面其實是**同一條**：$2$ 並非素元，它「分裂」為兩個素理想之積——崩壞的案件被修復，唯一性在素理想層面復活。
+兩條分解鏈在理想層面其實是**同一條**： $2$ 並非素元，它「分裂」為兩個素理想之積——崩壞的案件被修復，唯一性在素理想層面復活。
 
 ### 程式碼：Python 演示 $\mathbb{Z}[\sqrt{-5}]$ 的非唯一分解
 

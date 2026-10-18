@@ -10,7 +10,7 @@
 - **Lagrange 的先聲（1770）**：Lagrange 在《Réflexions sur la résolution algébrique des équations》中
   研究三次、四次方程時發現：方程的根在置換下形成的函數
   $$\phi(x_1, x_2, \dots, x_n) \mapsto \phi(x_{\sigma(1)}, \dots, x_{\sigma(n)})$$
-  其「可分辨的取值數」必整除 $n!$（後世稱 **Lagrange 定理的雛形**）。
+  其「可分辨的取值數」必整除 $n!$ （後世稱 **Lagrange 定理的雛形**）。
   例如三次方程中 $x_1^2 x_2 + x_2^2 x_3 + x_3^2 x_1 - x_1 x_2^2 - x_2 x_3^2 - x_3 x_1^2$
   在 $3! = 6$ 個置換下只取 2 個值。
 - Lagrange 自己認為這只是解方程的技巧，**沒有把置換本身當作研究主體**。
@@ -23,27 +23,27 @@
 ### 線索一：循環記法
 Cauchy 引入了沿用至今的**循環記法（cycle notation）**：
 $$\sigma = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{pmatrix} = (1\,2\,3)$$
-意即 $1 \mapsto 2,\ 2 \mapsto 3,\ 3 \mapsto 1$。任一置換都可分解成**互不相交循環的乘積**：
+意即 $1 \mapsto 2,\ 2 \mapsto 3,\ 3 \mapsto 1$ 。任一置換都可分解成**互不相交循環的乘積**：
 $$\sigma = (1\,3)(2\,4)(5)$$
 循環分解的唯一性（不計順序）是置換群的第一條「結構定理」，而
 $$\text{order}(\sigma) = \operatorname{lcm}(\text{各循環長度})$$
 這直接給出 Cauchy 定理在 $S_n$ 中的具體樣貌。
 
 ### 線索二：Cauchy 定理（1815）
-> **Cauchy 定理**：設 $G$ 為有限群，質數 $p \mid |G|$，則 $G$ 中存在階為 $p$ 的元素。
+> **Cauchy 定理**：設 $G$ 為有限群，質數 $p \mid |G|$ ，則 $G$ 中存在階為 $p$ 的元素。
 
-證明骨架（現代版本，考慮集合 $X = \{(a_1,\dots,a_p) \in G^p : a_1 a_2 \cdots a_p = e\}$）：
-- $|X| = |G|^{p-1}$，因為前 $p-1$ 個元素可任選，最後一個被乘積方程鎖定。
+證明骨架（現代版本，考慮集合 $X = \{(a_1,\dots,a_p) \in G^p : a_1 a_2 \cdots a_p = e\}$ ）：
+- $|X| = |G|^{p-1}$ ，因為前 $p-1$ 個元素可任選，最後一個被乘積方程鎖定。
 - 令循環群 $C_p = \langle \rho \rangle$ 作用在 $X$ 上（循環輪換各分量）。
 - 不動點個數由軌道公式給出：
   $$|X| = |\text{Fix}| + \sum_{\text{非平凡軌道}} p$$
-  故 $p \mid |\text{Fix}|$。而 $|\text{Fix}| \ge 1$（$(e,\dots,e)$ 是不動點），
-  且 $|\text{Fix}| \ne 1$（否則 $p \nmid 1$ 矛盾），所以存在 $a \ne e$ 使 $(a,\dots,a) \in X$，
-  即 $a^p = e$。$\blacksquare$
-- 推論：$\langle a \rangle$ 是 $G$ 的 $p$ 階子群。
+  故 $p \mid |\text{Fix}|$ 。而 $|\text{Fix}| \ge 1$ （ $(e,\dots,e)$ 是不動點），
+  且 $|\text{Fix}| \ne 1$ （否則 $p \nmid 1$ 矛盾），所以存在 $a \ne e$ 使 $(a,\dots,a) \in X$ ，
+  即 $a^p = e$ 。 $\blacksquare$
+- 推論： $\langle a \rangle$ 是 $G$ 的 $p$ 階子群。
 
 ### 線索三：置換群 = 群論的第一個實例
-Cauchy 證明了：$n$ 個文字的置換共有 $n!$ 個，在合成運算下封閉、有單位元、有反元素：
+Cauchy 證明了： $n$ 個文字的置換共有 $n!$ 個，在合成運算下封閉、有單位元、有反元素：
 $$(\sigma \circ \tau)(x) = \sigma(\tau(x)), \quad \sigma^{-1}\sigma = \mathrm{id}$$
 這正是 1854 年 Cayley 給出抽象群定義前的「具體模型」。
 Cauchy 在 1815–1845 年間寫下大量置換群論文，證明了如「兩個 3-循環的乘積類型」等大量結果，
@@ -103,8 +103,8 @@ assert any(order(p) == 3 for p in S3)
 ```
 
 ### 理論定義
-> **定義（置換群）**：$\mathrm{Sym}(X)$ 為集合 $X$ 上所有雙射在合成運算下的群；
-> 其子群稱為**置換群**。當 $X = \{1,\dots,n\}$ 時記 $S_n$，$|S_n| = n!$。
+> **定義（置換群）**： $\mathrm{Sym}(X)$ 為集合 $X$ 上所有雙射在合成運算下的群；
+> 其子群稱為**置換群**。當 $X = \{1,\dots,n\}$ 時記 $S_n$ ， $|S_n| = n!$ 。
 
 ## 結案 -- 後果與影響
 - 循環記法成為通用語言，至今每本群論教科書都在使用。

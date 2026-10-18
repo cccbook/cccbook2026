@@ -16,7 +16,7 @@ Chomsky 把語言按產生式規則的限制分為四層：
 
 | 層級 | 產生式形式 | 語言類型 | 辨識機器 |
 |---|---|---|---|
-| Type 0 | $\alpha \to \beta$（任意） | 遞迴可枚舉 | 圖靈機 |
+| Type 0 | $\alpha \to \beta$ （任意） | 遞迴可枚舉 | 圖靈機 |
 | Type 1 | $\alpha A \beta \to \alpha \gamma \beta$ | 上下文有關 | 線性有界自動機 |
 | Type 2 | $A \to \gamma$ | 上下文無關 | 下推自動機 |
 | Type 3 | $A \to aB$ 或 $A \to a$ | 正則語言 | 有限自動機 |

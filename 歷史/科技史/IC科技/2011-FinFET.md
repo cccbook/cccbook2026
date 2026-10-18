@@ -26,26 +26,26 @@ DIBL 的量化描述：
 
 $$\Delta V_{th} = -\lambda_{DIBL} \cdot V_{DS}$$
 
-$\lambda_{DIBL}$ 隨 $L$ 指數惡化（$\propto e^{-L/\lambda}$），這就是「越縮越漏」的數學根源。
+$\lambda_{DIBL}$ 隨 $L$ 指數惡化（ $\propto e^{-L/\lambda}$ ），這就是「越縮越漏」的數學根源。
 
 ### 2. 胡正明與 FinFET 的發明（1999）
 1999 年，UC Berkeley 胡正明（Chenming Hu）團隊（與 Tsu-Jae King、Jeffrey Bokor）提出兩種解法：
 - **FinFET**：通道是一片垂直的「鰭」（fin），閘極像鞍座般跨上去，從左右兩側＋頂面包夾通道。
 - **UTB-SOI（Ultra-Thin-Body SOI）**：超薄基板（<10nm），讓 $C_{dep}$ 趨近零。
 
-FinFET 的核心推理：讓「閘控的自然終止面」由結構決定——通道厚度即矽體厚度，$t_{Si} \lesssim L/3$ 時，DIBL 幾乎消失。等效地：
+FinFET 的核心推理：讓「閘控的自然終止面」由結構決定——通道厚度即矽體厚度， $t_{Si} \lesssim L/3$ 時，DIBL 幾乎消失。等效地：
 
 $$n = 1 + \frac{C_{dep}}{C_{ox}} \to 1 \quad\Rightarrow\quad SS \to 60 \,\text{mV/dec}$$
 
-閘控能力以「電容比」衡量：FinFET 使有效 $C_{ox}$ 增大（雙面通道），$g_m = \dfrac{\partial I_D}{\partial V_G}$ 提升，同電壓下驅動電流更強，或同電流下電壓更低、功耗更省。
+閘控能力以「電容比」衡量：FinFET 使有效 $C_{ox}$ 增大（雙面通道）， $g_m = \dfrac{\partial I_D}{\partial V_G}$ 提升，同電壓下驅動電流更強，或同電流下電壓更低、功耗更省。
 
 ### 3. 3D 閘極包覆與閘控能力
 | 面向 | 平面 MOSFET | FinFET |
 |------|-------------|--------|
 | 閘極包覆 | 單面（上方） | 三面（左右＋上） |
 | 通道方向 | 水平面內 | 垂直鰭片 |
-| 矽體厚度 | 由摻雜 junction 決定（不可控） | 由 fin 蝕刻決定（可控，$t_{Si}\sim$ 數 nm） |
-| DIBL | 嚴重（$L<30$nm） | 幾乎消除 |
+| 矽體厚度 | 由摻雜 junction 決定（不可控） | 由 fin 蝕刻決定（可控， $t_{Si}\sim$ 數 nm） |
+| DIBL | 嚴重（ $L<30$ nm） | 幾乎消除 |
 | $I_{off}$ | 指數暴增 | 低 1~2 個數量級以上 |
 | 驅動電流 | 單通道寬度 | 多 fin 並聯 $W_{eff} = 2H_{fin} + W_{fin}$ |
 | SS | $\geq 60$ mV/dec（難逼近） | 可達 ~65-70 mV/dec 實用量產 |

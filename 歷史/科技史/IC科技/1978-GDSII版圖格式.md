@@ -8,7 +8,7 @@ GDSII 在 1980 年代成為版圖交換的事實標準，至今仍是 tape-out �
 ## 前因 -- 為什麼會有這個案子
 - **版圖資料各說各話**：1970 年代的 CAD 系統（Calma、Applicon、Auto-trol）各有私有的內部格式，設計公司與 mask house 之間交換版圖得靠磁帶「翻譯」，錯一個座標就整批報廢。
 - **數位化儀器需要統一輸出**：Calma 的 GDS 數位化工作站（digitizer）把圖紙上的版圖轉成向量資料；要讓下游（製版機、光繪機、各家 CAD）讀得懂，必須有一個**中立、可串流（stream）**的格式——GDSII 由此誕生，「stream」意即資料以連續記錄（record）依序寫入磁帶。
-- **層次化是唯一的救星**：一顆晶片的版圖由大量重複的單元（cell）構成——RAM 位元、標準閘、IO pad。若每個 instance 都展開成實際幾何，檔案大小為 $O(\text{geometry})$；若用**層次引用（sref / array）**，只需 $O(\text{instances})$：
+- **層次化是唯一的救星**：一顆晶片的版圖由大量重複的單元（cell）構成——RAM 位元、標準閘、IO pad。若每個 instance 都展開成實際幾何，檔案大小為 $O(\text{geometry})$ ；若用**層次引用（sref / array）**，只需 $O(\text{instances})$ ：
 
 $$
 \text{壓縮率} = \frac{|\text{展開後幾何}|}{|\text{層次化描述}|} \approx \frac{N \cdot g}{N} = g \quad (g = \text{單元平均圖形數})
@@ -47,34 +47,34 @@ $$
 - **length**：含 4 位元組 header 在內的總長度（big-endian）。
 - **record type**：如 0x00 HEADER、0x01 BGNLIB、0x05 BGNSTR、0x08 BOUNDARY、0x0C SREF、0x11 TEXT。
 - **data type**：0x00 無資料、0x01 位元陣列、0x02 2-byte 整數、0x03 4-byte 整數、0x06 ASCII 字串、0x05 8-byte 實數。
-- **座標系**：GDSII 座標是有號整數，以 **database unit**（如 1 nm）為刻度；**user unit**（如 1 μm）透過 UNITS 記錄換算：$\text{座標值} = \text{物理長度} / \text{db unit}$。例如 1.5 μm 線寬、db unit = 1 nm，座標值即 1500。
+- **座標系**：GDSII 座標是有號整數，以 **database unit**（如 1 nm）為刻度；**user unit**（如 1 μm）透過 UNITS 記錄換算： $\text{座標值} = \text{物理長度} / \text{db unit}$ 。例如 1.5 μm 線寬、db unit = 1 nm，座標值即 1500。
 
 ### 3. 層次化壓縮率的數學
 
 設晶片含 $N$ 個 instance，每個 cell 平均 $g$ 個圖形（polygon）：
 
-- **展開式**（flatten）：檔案大小 $S_{\text{flat}} \approx N \cdot g \cdot s$，其中 $s$ 為單一圖形的描述成本（8 個座標 × 4 bytes ≈ 32 B）。
-- **層次化**（hierarchical）：$S_{\text{hier}} \approx (N + M \cdot g) \cdot s'$，其中 $M$ 為**不同** cell 的種類數、$s'$ 為含引用開銷的成本。當 $N \gg M$（重複率高）時：
+- **展開式**（flatten）：檔案大小 $S_{\text{flat}} \approx N \cdot g \cdot s$ ，其中 $s$ 為單一圖形的描述成本（8 個座標 × 4 bytes ≈ 32 B）。
+- **層次化**（hierarchical）： $S_{\text{hier}} \approx (N + M \cdot g) \cdot s'$ ，其中 $M$ 為**不同** cell 的種類數、 $s'$ 為含引用開銷的成本。當 $N \gg M$ （重複率高）時：
 
 $$
 \frac{S_{\text{flat}}}{S_{\text{hier}}} \approx \frac{N \cdot g}{N + M \cdot g} \xrightarrow{N \to \infty} \frac{g}{M \cdot g / N} \;\approx\; \frac{N}{M} \;\text{倍}
 $$
 
 DRAM、SRAM、快閃記憶體的 $N/M$ 比可達數千以上——這就是為什麼 GDSII 存得下整顆晶片。
-- **代價**：下游工具（DRC、mask writer）往往需要 flatten 後的幾何才能正確處理；flatten 之後檔案又爆回 $O(\text{geometry})$，於是 **quadtree / clip**（空間切割）登場。
+- **代價**：下游工具（DRC、mask writer）往往需要 flatten 後的幾何才能正確處理；flatten 之後檔案又爆回 $O(\text{geometry})$ ，於是 **quadtree / clip**（空間切割）登場。
 
 ### 4. Quadtree 與 clip：處理超大版圖
 
 先進製程的 flatten 版圖動輒數百 GB，記憶體裝不下。解法是把版圖切成 tile（瓷磚），每個 tile 建一棵 quadtree：
 
-- **quadtree**：把矩形遞迴四分，直到每個節點的圖形數低於門檻；查詢「點 $(x,y)$ 上有什麼圖形」為 $O(\log n)$，區域查詢為 $O(\sqrt{n} + k)$。
+- **quadtree**：把矩形遞迴四分，直到每個節點的圖形數低於門檻；查詢「點 $(x,y)$ 上有什麼圖形」為 $O(\log n)$ ，區域查詢為 $O(\sqrt{n} + k)$ 。
 - **clip**：把跨越多個 tile 的圖形在 tile 邊界切開（clipping），每個 tile 可獨立處理（平行化、分散式運算）——mask data preparation（MDP）的工具（如 fracturing、shot assignment）都建立在此架構上。
 - **層次化 DRC**：現代工具更進一步——不 flatten，直接在層次結構上做 DRC，只處理「每種 cell 一次」再複製結果；這是 1990s hierarchical verification 的核心思想。
 - **時間戳與可重現性**：每個 BGNLIB/BGNSTR 記錄都帶修改與存取時間；儘管沒有實際功能意義，卻讓「同一份版圖經過誰的手」有跡可循——EDA 偵探追溯 tape-out 歷史時的第一條線索。
 
 ### 5. GDSII 的 UNITS 記錄與精度換算
 
-GDSII 用 UNITS 記錄存兩個實數：$\text{db unit in user units}$ 與 $\text{db unit in meters}$，例如 $(0.001, 1\times10^{-9})$ 表示 1 user unit = 1 μm、1 db unit = 1 nm。所有座標都是有號整數乘以 db unit，因此精度由製程決定：0.35 μm 世代用 1 nm 足夠，EUV 世代圖形邊界需 0.1 nm 以下精度，UNITS 的選擇直接影響檔案大小與 mask writer 的解析成本。
+GDSII 用 UNITS 記錄存兩個實數： $\text{db unit in user units}$ 與 $\text{db unit in meters}$ ，例如 $(0.001, 1\times10^{-9})$ 表示 1 user unit = 1 μm、1 db unit = 1 nm。所有座標都是有號整數乘以 db unit，因此精度由製程決定：0.35 μm 世代用 1 nm 足夠，EUV 世代圖形邊界需 0.1 nm 以下精度，UNITS 的選擇直接影響檔案大小與 mask writer 的解析成本。
 
 ### 6. 事實標準的誕生與接班
 

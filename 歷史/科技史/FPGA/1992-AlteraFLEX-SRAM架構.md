@@ -5,7 +5,7 @@
 
 ## 前因 -- 為什麼會會有這個案子
 
-回顧 1980 年代的結案：Altera 以 CPLD（MAX 5000/7000）佔據了「確定延遲、非易失、千閘尺度」的市場，Xilinx 以 SRAM FPGA 佔據了「高容量、可重寫」的市場。但 1990 年代初期，情勢起了變化：半導體製程從 $1.0\,\mu\text{m}$ 快速推進到 $0.8$、$0.65\,\mu\text{m}$，晶片可容納的電晶體數呈指數成長。市場開始要求數萬閘以上的可程式邏輯——而 CPLD 的兩級 SOP 架構在這個尺度上失效了：乘積項陣列的面積隨輸入數二次方成長，PIA 的 fan-in 也逼近物理極限。
+回顧 1980 年代的結案：Altera 以 CPLD（MAX 5000/7000）佔據了「確定延遲、非易失、千閘尺度」的市場，Xilinx 以 SRAM FPGA 佔據了「高容量、可重寫」的市場。但 1990 年代初期，情勢起了變化：半導體製程從 $1.0\,\mu\text{m}$ 快速推進到 $0.8$ 、 $0.65\,\mu\text{m}$ ，晶片可容納的電晶體數呈指數成長。市場開始要求數萬閘以上的可程式邏輯——而 CPLD 的兩級 SOP 架構在這個尺度上失效了：乘積項陣列的面積隨輸入數二次方成長，PIA 的 fan-in 也逼近物理極限。
 
 更關鍵的是學理上的證據已經累積：Xilinx 的 William Carter 與 Ross Freeman 在 1980 年代提出的 LUT 概念，加上 Berkeley 的 ACT 研究計畫（1988-1992）對 LUT-based FPGA 的系統性驗證，證明 LUT 架構在容量成長上有更好的面積與延遲性質。Altera 面臨經典的「創新者兩難」：自己最賺錢的 CPLD 架構，恰好在成長市場中是錯的答案。
 
@@ -23,13 +23,13 @@ $$\mathbb{E}[|\text{SOP}|] \approx \frac{2^n}{n \ln 2} \cdot \text{（常數因�
 
 $$2^{16} = 65{,}536 \text{ 個乘積項}$$
 
-——物理上不可行。這就是 SOP 架構的數學死刑：它只能處理「淺而窄」的函數（$n \le 10 \sim 12$ 的少數項函數），超過就必須拆成多級，拆級意味着延遲成倍增加。
+——物理上不可行。這就是 SOP 架構的數學死刑：它只能處理「淺而窄」的函數（ $n \le 10 \sim 12$ 的少數項函數），超過就必須拆成多級，拆級意味着延遲成倍增加。
 
-LUT 架構的解法是**用記憶體換陣列**：一個 $k$-LUT 是 $2^k \times 1$ 位元的 SRAM，任何 $k$ 變數函數（共 $2^{2^k}$ 個）都能以「一表一函數」實現：
+LUT 架構的解法是**用記憶體換陣列**：一個 $k$ -LUT 是 $2^k \times 1$ 位元的 SRAM，任何 $k$ 變數函數（共 $2^{2^k}$ 個）都能以「一表一函數」實現：
 
 $$\text{$k$-LUT 面積} = 2^k \text{ bits SRAM + } 2^k{:}1 \text{ MUX} \propto 2^k$$
 
-面積雖然也隨 $k$ 指數成長，但 $k$ 是固定的架構參數（$k = 4$），於是任何函數（無論多複雜，只要 $\le k$ 變數）的實現深度都是**常數 1**：
+面積雖然也隨 $k$ 指數成長，但 $k$ 是固定的架構參數（ $k = 4$ ），於是任何函數（無論多複雜，只要 $\le k$ 變數）的實現深度都是**常數 1**：
 
 $$t_{pd} = t_{\text{LUT}} = \text{const}, \quad \text{與函數複雜度無關}$$
 
@@ -41,7 +41,7 @@ $$t_{pd} = L \cdot t_{\text{LUT}}, \quad L = \text{LUT 層數}$$
 
 | | 乘積項（CPLD） | LUT（FPGA） |
 |---|---|---|
-| 面積隨 $n$ | 陣列 $\propto n \times 2^n$（實作上 $n$ 受限） | $\propto 2^k$，$k$ 固定 |
+| 面積隨 $n$ | 陣列 $\propto n \times 2^n$ （實作上 $n$ 受限） | $\propto 2^k$ ， $k$ 固定 |
 | 單級可實現函數 | $\le m$ 個乘積項的 SOP | 任意 $k$ 變數函數 |
 | 延遲 | 淺層寬邏輯：極小 | 與 LUT 層數 $L$ 成正比 |
 | 複雜函數 | 需借項/拆級，不確定 | 均勻拆分，確定 |
@@ -68,21 +68,21 @@ $$t_{\text{net}}^{\text{FastTrack}} \approx t_{\text{local}} + t_{\text{row/col 
 
 SRAM 組態意味着 FLEX 8000 每次上電都必須載入 bitstream。標準流程（串列被動組態模式，配 Altera EPC 串列配置 PROM）：
 
-1. **上電復位**：$\text{nCONFIG}$ 拉低 → 內部復位，所有 I/O 三態；
-2. **釋放**：$\text{nCONFIG}$ 拉高 → FPGA 釋放 $\text{nSTATUS}$，輸出 $\text{DCLK}$ 時脈；
-3. **串列載入**：EPC PROM 在 DCLK 每個上升沿送出 1 位元資料（$\text{DATA}_0$）；
-4. **完成**：全部位元載入後 FPGA 拉高 $\text{CONF\_DONE}$，進入初始化；
+1. **上電復位**： $\text{nCONFIG}$ 拉低 → 內部復位，所有 I/O 三態；
+2. **釋放**： $\text{nCONFIG}$ 拉高 → FPGA 釋放 $\text{nSTATUS}$ ，輸出 $\text{DCLK}$ 時脈；
+3. **串列載入**：EPC PROM 在 DCLK 每個上升沿送出 1 位元資料（ $\text{DATA}_0$ ）；
+4. **完成**：全部位元載入後 FPGA 拉高 $\text{CONF\_DONE}$ ，進入初始化；
 5. **生效**：初始化完成，I/O 依組態啟用，邏輯開始工作。
 
 時序模型：
 
 $$t_{\text{config}} = \frac{N_{\text{bits}}}{f_{\text{DCLK}}} + t_{\text{init}}$$
 
-以 FLEX 81188（約 24,800 邏輯單元等級）為例，bitstream 約數 Mb 級，DCLK 典型 $4 \sim 10\,\text{MHz}$：
+以 FLEX 81188（約 24,800 邏輯單元等級）為例，bitstream 約數 Mb 級，DCLK 典型 $4 \sim 10\,\text{MHz}$ ：
 
 $$t_{\text{config}} \approx \frac{4 \times 10^6 \text{ bits}}{8\,\text{MHz}} + t_{\text{init}} \approx 500\,\text{ms} \sim \text{百 ms 級}$$
 
-這數百 ms 的「空白期」對系統設計的影響是深遠的：板子上必須有其他元件（CPLD、微控制器或復位晶片）在這段期間接管復位與匯流排控制。這正是本案續集——CPLD 與 FPGA 分工——的系統學基礎。$\text{CONF\_DONE}$ 之後、I/O 生效之前，還要滿足復位釋放時序：
+這數百 ms 的「空白期」對系統設計的影響是深遠的：板子上必須有其他元件（CPLD、微控制器或復位晶片）在這段期間接管復位與匯流排控制。這正是本案續集——CPLD 與 FPGA 分工——的系統學基礎。 $\text{CONF\_DONE}$ 之後、I/O 生效之前，還要滿足復位釋放時序：
 
 $$t_{\text{su}}(\text{reset release}) > t_{\text{init}} + t_{\text{skew}}$$
 
@@ -92,7 +92,7 @@ $$t_{\text{su}}(\text{reset release}) > t_{\text{init}} + t_{\text{skew}}$$
 
 $$t_{\text{RCA}}(n) = n \cdot t_{\text{carry}} + t_{\text{sum}}$$
 
-- **CPLD（MAX）**：32-bit 加法需要多級 SOP 拆分。每級只能處理少數位元的進位方程（因為乘積項陣列的 fan-in 受限），拆分層數 $L \approx 4 \sim 8$，且每級都需穿越 PIA：
+- **CPLD（MAX）**：32-bit 加法需要多級 SOP 拆分。每級只能處理少數位元的進位方程（因為乘積項陣列的 fan-in 受限），拆分層數 $L \approx 4 \sim 8$ ，且每級都需穿越 PIA：
 
 $$t_{\text{CPLD}} \approx L \cdot (t_{\text{macro}} + 2 t_{\text{PIA}}) \approx \text{數百 ns}$$
 
@@ -122,7 +122,7 @@ FLEX 8000 之後，Altera 全面轉向 SRAM LUT 路線（FLEX 10K 於 1995 年�
 ## 關鍵人物與文獻
 
 - Ross Freeman、William Carter —— Xilinx LUT 概念的提出者（1984-85），本案的學理源頭
-- Jonathan Rose 等 —— Berkeley ACT 計畫，"Architecture of Field-Programmable Gate Arrays"（Proc. IEEE, 1990），$k=4$ LUT 的學理最優性
+- Jonathan Rose 等 —— Berkeley ACT 計畫，"Architecture of Field-Programmable Gate Arrays"（Proc. IEEE, 1990）， $k=4$ LUT 的學理最優性
 - Altera, "FLEX 8000 Datasheet"（1992）—— LE/FastTrack/組態流程的第一手文獻
 - Lucent Technologies, "ORCA Series FPGAs"（1993）—— 跟進者
 - S. Brown, J. Rose, "Architecture of FPGAs and CPLDs: A Tutorial"（IEEE Design & Test, 1996）

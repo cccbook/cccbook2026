@@ -41,15 +41,15 @@ $$\text{多數派交集} + \text{兩階段協議} = \text{崩潰容錯的共識}
 
 ### 第一條線索：問題設定與三種角色
 Paxos 的戰場上有**三種角色**（同一台機器可兼任多角）：
-- **提議者（proposer）**：提出方案（編號 $n$，值 $v$），說服大家接受；
+- **提議者（proposer）**：提出方案（編號 $n$ ，值 $v$ ），說服大家接受；
 - **接受者（acceptor）**：投票，決定哪個方案定案；
 - **學習者（learner）**：得知定案結果。
 **目標（安全性）**：**最多只有一個值被定案**——即使一半的接受者同時崩溃。
 **目標（活躍性）**：只要多數派活著，**總能選出某個值**。
 
 ### 第二條線索：多數派 quorum 交集原理
-設接受者總數 $n$，容忍 $f$ 個崩溃，則 $2f + 1 \leq n$；
-**多數派** $Q$ 滿足 $|Q| \geq \lfloor n/2 \rfloor + 1$。
+設接受者總數 $n$ ，容忍 $f$ 個崩溃，則 $2f + 1 \leq n$ ；
+**多數派** $Q$ 滿足 $|Q| \geq \lfloor n/2 \rfloor + 1$ 。
 **核心武器：任意兩個多數派必交集**：
 $$\boxed{|Q_1 \cap Q_2| \geq 2\lfloor n/2 \rfloor + 2 - n \geq 1 \qquad\text{（兩個多數派必交集）}}$$
 - 兩個多數派各含 $\geq \lfloor n/2 \rfloor + 1$ 個節點；
@@ -58,7 +58,7 @@ $$\boxed{|Q_1 \cap Q_2| \geq 2\lfloor n/2 \rfloor + 2 - n \geq 1 \qquad\text{（
 
 ### 第三條線索：兩階段協議（Prepare/Promise + Accept/Accepted）
 **階段一（Prepare / Promise）**：
-1. 提議者選編號 $n$，向多數派發送 `prepare(n)`；
+1. 提議者選編號 $n$ ，向多數派發送 `prepare(n)`；
 2. 接受者若 $n$ 大於它見過的所有編號，回覆 `promise(n, 已接受的值)`，
    並**承諾不再接受編號 $< n$ 的提議**。
 $$\text{prepare}(n) \xrightarrow{\text{承諾}} \text{promise}(n, \text{已接受的值})$$
@@ -165,8 +165,8 @@ print(f"\n最終狀態：acceptor 1–3 的定案值 = "
 
 **偵探的註記**：`quorum_intersects` 用 `> n/2` 判斷交集**大於半數**——
 這是「單一多數派的大小」的條件，不是「兩派交集」的條件；
-兩派的正確表述是**交集非空**（$|Q_1 \cap Q_2| \geq 1$），
-配合每派**本身**滿足 $|Q| \geq \lfloor n/2 \rfloor + 1$，
+兩派的正確表述是**交集非空**（ $|Q_1 \cap Q_2| \geq 1$ ），
+配合每派**本身**滿足 $|Q| \geq \lfloor n/2 \rfloor + 1$ ，
 鴿籠原理就保證了交集必然非空——**安全性由此成立**。
 
 ## 結案 -- 後果與影響

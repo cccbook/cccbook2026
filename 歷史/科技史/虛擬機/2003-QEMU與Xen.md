@@ -28,7 +28,7 @@ $$
 T_{\text{TCG}} \;=\; n \cdot c \cdot t_{\text{exec}} + \frac{C_{\text{gen}}}{k}, \qquad c \approx 1.1\text{–}2 \;(\text{相對原生})
 $$
 
-其中 $c$ 為 code quality factor，$k$ 為 TB 重複執行次數。對比純直譯的 $c \approx 10$，TCG 快一個數量級。
+其中 $c$ 為 code quality factor， $k$ 為 TB 重複執行次數。對比純直譯的 $c \approx 10$ ，TCG 快一個數量級。
 
 ### 全系統模擬：跨 ISA 互模擬
 QEMU 的核心設計是**guest 與 host ISA 解耦**：CPU 狀態（暫存器、PC、flags）用架構無關的 `CPUState` 結構表示，TCG 把 guest ISA 翻成 host ISA：

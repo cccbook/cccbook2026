@@ -22,11 +22,11 @@ Pascal（1970 完成、1971 "The Programming Language Pascal" 發表於 *Acta In
 $$\text{use}(x) \Rightarrow x \in \text{symtab}(\text{scope}_{\text{use}(x)})$$
 
 ### 自舉：用 L 寫 L 的編譯器
-自舉（bootstrapping）的核心問題：編譯器 $C_L$ 把語言 $L$ 編譯到機器 $M$。**用 $L$ 自己寫 $C_L$**，之後：
+自舉（bootstrapping）的核心問題：編譯器 $C_L$ 把語言 $L$ 編譯到機器 $M$ 。**用 $L$ 自己寫 $C_L$ **，之後：
 
 $$C_L \xrightarrow{\ C_{L0}\ } M \text{ 碼的 } C_L$$
 
-先用已有編譯器 $C_{L0}$ 編譯新版（用 $L$ 寫的）$C_L$，得到能跑的 $C_L$；之後 $C_L$ 就能編譯自己，甚至改進自己：
+先用已有編譯器 $C_{L0}$ 編譯新版（用 $L$ 寫的） $C_L$ ，得到能跑的 $C_L$ ；之後 $C_L$ 就能編譯自己，甚至改進自己：
 
 $$C_L^{new} \xrightarrow{\ C_L^{old}\ } C_L^{new} \quad (\text{編譯器自我改進的飛輪})$$
 

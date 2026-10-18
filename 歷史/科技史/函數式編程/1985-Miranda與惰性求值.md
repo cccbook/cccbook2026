@@ -22,7 +22,7 @@
 
 $$\llbracket \lambda x. e \rrbracket \, \rho = \lambda v. \llbracket e \rrbracket \, \rho[x \mapsto v]$$
 
-嚴格求值要求 $v \neq \bot$ 才能進入函數體；非嚴格求值允許 $v = \bot$，只要 $x$ 不被用到。
+嚴格求值要求 $v \neq \bot$ 才能進入函數體；非嚴格求值允許 $v = \bot$ ，只要 $x$ 不被用到。
 
 ### 線索二：無窮資料結構
 
@@ -80,7 +80,7 @@ Turner（1979）的關鍵推理：與其在直譯器中反覆展開 λ 項，不
   $$\llbracket \lambda x. x \rrbracket = I, \quad \llbracket \lambda x. f \rrbracket = K\,f, \quad \llbracket \lambda x. f\,x \rrbracket = f$$
 - **Hughes 的 supercombinators（1982）**：不只用固定的 S、K、I，而是為每個函數找出「最大的自由組合子」作為編譯單位，減少中間規約步數。
 - **G-machine 執行**：程式被編譯成操作抽象機（圖堆疊機）的指令序列，規約即「在圖上找最外層 redex、替換為其結果」。
-- **嚴格性分析（strictness analysis）**：若能證明某參數「一定會被用到」，就前瞻地先求值它，把 thunk 開銷省掉。形式上，若 $f\,\bot = \bot$，則 $f$ 對第一參數是嚴格的，可安全地 eager 求值。
+- **嚴格性分析（strictness analysis）**：若能證明某參數「一定會被用到」，就前瞻地先求值它，把 thunk 開銷省掉。形式上，若 $f\,\bot = \bot$ ，則 $f$ 對第一參數是嚴格的，可安全地 eager 求值。
 
 ### 破案時刻
 

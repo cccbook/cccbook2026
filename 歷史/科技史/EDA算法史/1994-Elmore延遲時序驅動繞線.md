@@ -20,11 +20,11 @@ $$t_{ed}(i) = \sum_{j \in \text{子樹}(i)} R_{\text{shared}}(i, j)\, C_j$$
 
 $$t_{ed} = \int_0^\infty t\, h(t)\, dt$$
 
-Rubinstein-Penfield-Horowitz（1983）證明：對 RC 樹，Elmore 延遲是 50% 延遲的良好上/下界，且 $O(k)$（$k$ = 樹節點數）線性可算——閉式延遲估計就此進入 EDA。
+Rubinstein-Penfield-Horowitz（1983）證明：對 RC 樹，Elmore 延遲是 50% 延遲的良好上/下界，且 $O(k)$ （ $k$ = 樹節點數）線性可算——閉式延遲估計就此進入 EDA。
 
 ### 線索二：時序驅動 Steiner 樹
 有了延遲模型，樹的建構從「最短」升級為「最快」：
-- **Prim-Dijkstra 權衡**：Prim 式建樹偏短（delay 對源好）、Dijkstra 式偏淺（delay 對 sink 好）——混合權衡 $w = \alpha \cdot \text{edge} + (1-\alpha) \cdot \text{depth}$；
+- **Prim-Dijkstra 權衡**：Prim 式建樹偏短（delay 對源好）、Dijkstra 式偏淺（delay 對 sink 好）——混合權衡 $w = \alpha \cdot \text{edge} + (1-\alpha) \cdot \text{depth}$ ；
 - **AHHK/BST/DME 零偏斜**：時脈樹要求所有 sink 同時到達（偏斜 skew = 0），DME（Deferred Merge Embedding, Edahiro 1991 / Boese-Kahng 1992）兩階段演算法在拓撲固定的條件下**精確嵌入零偏斜**：
 
 $$\forall i, j:\ |t_{ed}(i) - t_{ed}(j)| \le \epsilon \quad (\text{skew 下界})$$

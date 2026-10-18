@@ -27,7 +27,7 @@
 | 年份 | 事件 | 檔案 |
 |------|------|------|
 | 1972 | Klopf 提出神經元的「獎懲性異質塑造」，動物心理學的 TD 思想流入 AI | [1972-Klopf獎懲塑造.md](1972-Klopf獎懲塑造.md) |
-| 1988 | Sutton 發表〈Learning to Predict by the Methods of Temporal Differences〉：$V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]$，TD 誤差成為學習的引擎 | [1988-SuttonTD學習.md](1988-SuttonTD學習.md) |
+| 1988 | Sutton 發表〈Learning to Predict by the Methods of Temporal Differences〉： $V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]$ ，TD 誤差成為學習的引擎 | [1988-SuttonTD學習.md](1988-SuttonTD學習.md) |
 | 1989 | Watkins 博士論文提出 Q-learning，證明在適當條件下無模型學習必收斂到 $Q^*$ | [1989-WatkinsQ-learning.md](1989-WatkinsQ-learning.md) |
 
 ### 數位革命：神經網路遇上 RL（1992–1998）

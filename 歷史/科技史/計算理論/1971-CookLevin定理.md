@@ -6,10 +6,10 @@
 ## 前因 -- 為什麼會有這個案子
 到 1971 年，證據鏈已齊備：
 
-- **Cobham–Edmonds (1965)**：多項式時間 = good algorithm，$\text{P}$ 是易處理類；
+- **Cobham–Edmonds (1965)**：多項式時間 = good algorithm， $\text{P}$ 是易處理類；
 - **Hartmanis–Stearns (1965)**：複雜度類有真包含，歸約與完備性概念存在；
 - **Cook (1967 報告)**：SAT 的驗證只需多項式，NP 類與 NP-complete 概念已成型；
-- 命題邏輯 SAT 的「窮舉需 $2^n$、驗證只需 $O(n)$」的不對稱始終無法解釋。
+- 命題邏輯 SAT 的「窮舉需 $2^n$ 、驗證只需 $O(n)$ 」的不對稱始終無法解釋。
 
 核心案件問題：
 
@@ -22,10 +22,10 @@
 
 $$\text{SAT is NP-complete}$$
 
-即：(1) $\text{SAT} \in \text{NP}$；(2) 對任意 $L \in \text{NP}$，有 $L \leq_p \text{SAT}$。
+即：(1) $\text{SAT} \in \text{NP}$ ；(2) 對任意 $L \in \text{NP}$ ，有 $L \leq_p \text{SAT}$ 。
 
 ### 線索二：證明核心——tableau 構造
-設 $L \in \text{NP}$，由驗證者觀點存在 NTM $M$ 在 $p(n)$ 步內判定 $L$。對輸入 $x$，構造 CNF 公式 $\varphi_x$，其可滿足 $\iff M$ 接受 $x$。
+設 $L \in \text{NP}$ ，由驗證者觀點存在 NTM $M$ 在 $p(n)$ 步內判定 $L$ 。對輸入 $x$ ，構造 CNF 公式 $\varphi_x$ ，其可滿足 $\iff M$ 接受 $x$ 。
 
 **Tableau 構造**：做一張 $(p(n)+1) \times p(n)$ 的表格，第 $t$ 列記錄 $M$ 在第 $t$ 步的**完整格局**（帶內容、狀態、讀寫頭位置）：
 
@@ -41,21 +41,21 @@ x_1 & q_1 & x_2 & \cdots & x_n \\
 \hline
 \end{array}$$
 
-引入布爾變元 $C_{i,j,s} = $「第 $t=i$ 步、帶格 $j$ 的符號/狀態是 $s$」。用四組子句編碼：
+引入布爾變元 $C_{i,j,s} =$ 「第 $t=i$ 步、帶格 $j$ 的符號/狀態是 $s$ 」。用四組子句編碼：
 
-1. **初始條件**：$\bigwedge_j C_{1,j,x_j} \wedge C_{1,1,q_0}$（第一列就是輸入 $x$ 加初始狀態）；
-2. **接受條件**：$\bigvee_{i,j} C_{i,j,q_{\text{acc}}}$（某處出現接受狀態）；
-3. **合法性（每格恰一符號）**：$\bigwedge_{i,j} \Big(\bigvee_s C_{i,j,s} \wedge \bigwedge_{s \neq s'} \neg(C_{i,j,s} \wedge C_{i,j,s'})\Big)$；
+1. **初始條件**： $\bigwedge_j C_{1,j,x_j} \wedge C_{1,1,q_0}$ （第一列就是輸入 $x$ 加初始狀態）；
+2. **接受條件**： $\bigvee_{i,j} C_{i,j,q_{\text{acc}}}$ （某處出現接受狀態）；
+3. **合法性（每格恰一符號）**： $\bigwedge_{i,j} \Big(\bigvee_s C_{i,j,s} \wedge \bigwedge_{s \neq s'} \neg(C_{i,j,s} \wedge C_{i,j,s'})\Big)$ ；
 4. **轉移合法性（每個 $2\times3$ 窗口合法）**：對每個窗口，若它不能是合法格局演化的局部影像，就禁止它：
 
 $$\bigwedge_{i,j} \neg\!\left(\text{不合法的窗口 }(i,j)\right)$$
 
 局部性是關鍵：圖靈機每步只改變讀寫頭附近一格，所以「第 $t+1$ 列是否合法」只取決於第 $t$ 列的 $2\times3$ 局部窗口——**這使編碼規模只有多項式**。
 
-**結論**：$\varphi_x$ 有 $O(p(n)^2)$ 個變元與子句，可在多項式時間內從 $x$ 構造；且 $M$ 接受 $x \iff \varphi_x$ 可滿足。$\blacksquare$
+**結論**： $\varphi_x$ 有 $O(p(n)^2)$ 個變元與子句，可在多項式時間內從 $x$ 構造；且 $M$ 接受 $x \iff \varphi_x$ 可滿足。 $\blacksquare$
 
 ### 線索三：歸約 $L \leq_p \text{SAT}$
-上述構造本身就是歸約函數 $f$：
+上述構造本身就是歸約函數 $f$ ：
 
 $$f(x) = \varphi_x, \qquad x \in L \iff f(x) \in \text{SAT}$$
 
@@ -100,14 +100,14 @@ print(len(clauses), "clauses")   # 多項式個子句
 真實證明需完整窗口條件（保證整列由上一列合法演化而來），原理相同。
 
 ### 線索五：NP-complete 的意義——一個問題解決全部解決
-若 SAT 有多項式演算法 $A$，則對任意 $L \in \text{NP}$：
+若 SAT 有多項式演算法 $A$ ，則對任意 $L \in \text{NP}$ ：
 
 $$x \xrightarrow{\ f\ \text{(poly)}\ } \varphi_x \xrightarrow{\ A\ \text{(poly)}\ } \text{答案}$$
 
-總時間 $O(p(n)^2) + O(q(n))$ 仍為多項式，故 $\text{NP} = \text{P}$。反之若 $\text{P} \neq \text{NP}$，則 SAT 無多項式演算法。**SAT 成為整個 NP 類的單點故障。**
+總時間 $O(p(n)^2) + O(q(n))$ 仍為多項式，故 $\text{NP} = \text{P}$ 。反之若 $\text{P} \neq \text{NP}$ ，則 SAT 無多項式演算法。**SAT 成為整個 NP 類的單點故障。**
 
 ## 結案 -- 後果與影響
-1. **第一個 NP-complete 問題誕生**，從此證明 NP-complete 只需「$\text{SAT} \leq_p X$」一步（Karp 1971 立即示範了 21 個）。
+1. **第一個 NP-complete 問題誕生**，從此證明 NP-complete 只需「 $\text{SAT} \leq_p X$ 」一步（Karp 1971 立即示範了 21 個）。
 2. $\text{P}$ vs $\text{NP}$ 問題被精確聚焦：成為千禧年七大數學難題之一（Clay 獎百萬美元）。
 3. Levin 的獨立發現（universal sequential search problem）顯示概念是時代必然；兩人合稱 Cook–Levin 定理。
 4. **tableau 構造**成為歸約技術的範本：之後所有 NP-complete 證明都是它的變奏（局部檢查 + 多項式編碼）。

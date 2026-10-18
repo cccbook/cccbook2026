@@ -17,7 +17,7 @@ $$T_{\text{開發}}^{\text{asm}} \gg T_{\text{開發}}^{\text{高階}}\ \text{�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 定義：編譯器與優化
-> 編譯器是一個函數 $\text{compile}: \text{Source} \to \text{Target}$，將進階語言程式轉換為機器碼。優化編譯器進一步要求
+> 編譯器是一個函數 $\text{compile}: \text{Source} \to \text{Target}$ ，將進階語言程式轉換為機器碼。優化編譯器進一步要求
 
 $$\forall P:\quad T_{\text{執行}}(\text{compile}(P)) \lesssim k \cdot T_{\text{執行}}^{\text{asm}}(P), \quad k \approx 1$$
 
@@ -29,7 +29,7 @@ Backus 團隊的目標是讓 $k$ 接近 1（宣稱平均效率達手寫碼的一
 
 $$\text{for } i = m \text{ to } n \text{ step } s:\quad \text{body}(i)$$
 
-- **IF 算術判斷**：`IF (X) 10, 20, 20` 依 $x < 0$、$x = 0$、$x > 0$ 三路跳轉。
+- **IF 算術判斷**：`IF (X) 10, 20, 20` 依 $x < 0$ 、 $x = 0$ 、 $x > 0$ 三路跳轉。
 - **格式化 I/O**：FORMAT 敘述，是科學報表的核心。
 
 ### 第一個優化編譯器

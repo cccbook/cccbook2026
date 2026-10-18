@@ -1,31 +1,31 @@
 # 1826 — Cauchy 留數定理
 
 ## 案件摘要
-1826 年，Cauchy 在《Exercices de mathématiques》系列中發表留數（résidu）理論：函數在孤立奇點 $a$ 處的「留數」$\operatorname{Res}_{z=a} f = \frac{1}{2\pi i}\oint f\,dz$，把圍道積分化為奇點處留數的加總。配合 Cauchy 積分公式 $\oint_\gamma \frac{f(z)}{z-a}dz = 2\pi i\, f(a)$，複積分從此變成一台計算機器：繞一圈，只需讀出奇點的「案底」。這是十九世紀分析學最有生產力的發明之一——積分計算、級數展開、實積分求值，全都由它驅動。
+1826 年，Cauchy 在《Exercices de mathématiques》系列中發表留數（résidu）理論：函數在孤立奇點 $a$ 處的「留數」 $\operatorname{Res}_{z=a} f = \frac{1}{2\pi i}\oint f\,dz$ ，把圍道積分化為奇點處留數的加總。配合 Cauchy 積分公式 $\oint_\gamma \frac{f(z)}{z-a}dz = 2\pi i\, f(a)$ ，複積分從此變成一台計算機器：繞一圈，只需讀出奇點的「案底」。這是十九世紀分析學最有生產力的發明之一——積分計算、級數展開、實積分求值，全都由它驅動。
 
 ## 前因 -- 為什麼會有這個案子
-- 1814/1825 年 Cauchy 積分定理已結案：解析函數的閉曲線積分為零，但 $1/z$ 繞原點一圈得 $2\pi i$——積分值完全由「奇點」決定。
+- 1814/1825 年 Cauchy 積分定理已結案：解析函數的閉曲線積分為零，但 $1/z$ 繞原點一圈得 $2\pi i$ ——積分值完全由「奇點」決定。
 - 奇點是路徑積分的唯一嫌疑人：同樣的區域，函數沒有奇點則積分為零，有奇點則不為零。**那奇點到底留下了什麼痕跡？**
 - Euler 早已用部分分式展開計算積分，Laurent 1843 年將發表奇點處的雙邊級數（實際上 Cauchy 1840 年代也獨立擁有），但 1826 年當時還沒有系統性的「奇點分類學」。
-- 實積分的計算困境：$\int_{-\infty}^{\infty} \frac{dx}{1+x^2}$ 這類積分，用實變方法需要巧妙的代換（$x = \tan\theta$）；更複雜的 $\int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}$ 則幾乎無計可施——這是案發現場。
+- 實積分的計算困境： $\int_{-\infty}^{\infty} \frac{dx}{1+x^2}$ 這類積分，用實變方法需要巧妙的代換（ $x = \tan\theta$ ）；更複雜的 $\int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}$ 則幾乎無計可施——這是案發現場。
 
 核心疑問：**奇點對圍道積分的貢獻能否被「量化」？**
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：Cauchy 積分公式——奇點的第一次筆錄
-由積分定理直接推論：$f$ 在 $\gamma$ 內及其上解析，$a$ 為 $\gamma$ 內一點，則
+由積分定理直接推論： $f$ 在 $\gamma$ 內及其上解析， $a$ 為 $\gamma$ 內一點，則
 
 $$f(a) = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z-a}\,dz, \qquad f^{(n)}(a) = \frac{n!}{2\pi i}\oint_\gamma \frac{f(z)}{(z-a)^{n+1}}\,dz$$
 
-這條公式驚人的地方：**函數在內點的值，由邊界上的積分完全決定**。證明手法：在 $a$ 附近縮小圓周，$\frac{f(z)}{z-a}$ 在挖去 $a$ 的區域解析，積分定理說大圓與小圓積分相等；小圓上 $f(z)\approx f(a)$，剩下 $\oint \frac{dz}{z-a} = 2\pi i$。一個「解析性 + 奇點」的完美合謀。
+這條公式驚人的地方：**函數在內點的值，由邊界上的積分完全決定**。證明手法：在 $a$ 附近縮小圓周， $\frac{f(z)}{z-a}$ 在挖去 $a$ 的區域解析，積分定理說大圓與小圓積分相等；小圓上 $f(z)\approx f(a)$ ，剩下 $\oint \frac{dz}{z-a} = 2\pi i$ 。一個「解析性 + 奇點」的完美合謀。
 
 ### 線索二：留數的定義——奇點的量化案底
-Cauchy 1826 年定義：$f$ 在孤立奇點 $a$ 附近（去心圓盤）解析，則積分
+Cauchy 1826 年定義： $f$ 在孤立奇點 $a$ 附近（去心圓盤）解析，則積分
 
 $$\operatorname{Res}_{z=a} f \;=\; \frac{1}{2\pi i}\oint_{|z-a|=\varepsilon} f(z)\,dz$$
 
-是一個良定義的常數（不依賴 $\varepsilon$，因為積分定理）。它就是函數在奇點處 $1/z$ 型行為的係數——$f$ 在 $a$ 附近展開時 $\frac{c_{-1}}{z-a}$ 項的係數 $c_{-1}$。**留數定理**：若 $f$ 在 $\gamma$ 內除有限個奇點 $a_1,\dots,a_n$ 外解析，則
+是一個良定義的常數（不依賴 $\varepsilon$ ，因為積分定理）。它就是函數在奇點處 $1/z$ 型行為的係數—— $f$ 在 $a$ 附近展開時 $\frac{c_{-1}}{z-a}$ 項的係數 $c_{-1}$ 。**留數定理**：若 $f$ 在 $\gamma$ 內除有限個奇點 $a_1,\dots,a_n$ 外解析，則
 
 $$\oint_\gamma f(z)\,dz = 2\pi i \sum_{k=1}^{n} \operatorname{Res}_{z=a_k} f$$
 
@@ -44,14 +44,14 @@ $m$ 階極點：
 
 $$\operatorname{Res}_{z=a} f = \frac{1}{(m-1)!}\lim_{z\to a}\frac{d^{m-1}}{dz^{m-1}}\left[(z-a)^m f(z)\right]$$
 
-單極點的幾何意義也在此現形：$\frac{f(z)}{z-a}$ 恰好是 Cauchy 積分公式的被積式，所以 $\oint_\gamma \frac{f(z)}{z-a}dz = 2\pi i f(a)$——積分公式不過是留數定理的特例。
+單極點的幾何意義也在此現形： $\frac{f(z)}{z-a}$ 恰好是 Cauchy 積分公式的被積式，所以 $\oint_\gamma \frac{f(z)}{z-a}dz = 2\pi i f(a)$ ——積分公式不過是留數定理的特例。
 
 ### 線索四：圍道積分算實積分——機器開動
-用留數定理計算實積分 $\displaystyle\int_{-\infty}^{\infty}\frac{dx}{1+x^2}$：取上半平面大半圓圍道 $C_R$（半徑 $R$、沿實軸 $-R\to R$ 再沿半圓回到 $-R$）。被積函數在上半平面僅 $z=i$ 一個奇點，留數 $\frac{1}{2i}$。半圓弧上的積分隨 $R\to\infty$ 消失（Jordan 引理，被積式 $\sim 1/R^2$、弧長 $\sim R$）。於是：
+用留數定理計算實積分 $\displaystyle\int_{-\infty}^{\infty}\frac{dx}{1+x^2}$ ：取上半平面大半圓圍道 $C_R$ （半徑 $R$ 、沿實軸 $-R\to R$ 再沿半圓回到 $-R$ ）。被積函數在上半平面僅 $z=i$ 一個奇點，留數 $\frac{1}{2i}$ 。半圓弧上的積分隨 $R\to\infty$ 消失（Jordan 引理，被積式 $\sim 1/R^2$ 、弧長 $\sim R$ ）。於是：
 
 $$\oint_{C_R}\frac{dz}{1+z^2} = \int_{-R}^{R}\frac{dx}{1+x^2} + \int_{\text{弧}} \;\xrightarrow{R\to\infty}\; \int_{-\infty}^{\infty}\frac{dx}{1+x^2} = 2\pi i\cdot\frac{1}{2i} = \pi$$
 
-與已知結果 $\arctan(\infty) - \arctan(-\infty) = \pi$ 完全吻合。這台機器同樣能算 $\int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}$（令 $z = e^{i\theta}$ 化為單位圓圍道）、三角級數和、甚至 $\sum_{n=1}^{\infty}\frac{1}{n^2}$（用 $\pi\cot\pi z$ 的留數）。
+與已知結果 $\arctan(\infty) - \arctan(-\infty) = \pi$ 完全吻合。這台機器同樣能算 $\int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}$ （令 $z = e^{i\theta}$ 化為單位圓圍道）、三角級數和、甚至 $\sum_{n=1}^{\infty}\frac{1}{n^2}$ （用 $\pi\cot\pi z$ 的留數）。
 
 ### 程式碼範例：Cauchy 積分公式與留數法的數值對照
 ```python
@@ -88,11 +88,11 @@ print("極限公式:", (1/(2*1j)), " 積分定義:", contour_integral(
     lambda z: 1/(1+z**2), 1j, 0.5) / (2*np.pi*1j))
 ```
 
-數值輸出顯示：積分公式還原 $f(a)$、單位圓積分為 $2\pi i\cdot\frac{1}{2i} = \pi i$、大半圓圍道逼近實積分收斂到 $\pi$——留數機器的每一個齒輪都被驗證。
+數值輸出顯示：積分公式還原 $f(a)$ 、單位圓積分為 $2\pi i\cdot\frac{1}{2i} = \pi i$ 、大半圓圍道逼近實積分收斂到 $\pi$ ——留數機器的每一個齒輪都被驗證。
 
 ## 結案 -- 後果與影響
 - **計算積分的強大機器**：實變方法無能為力的積分（廣義積分、三角積分、級數和）從此有了系統性算法，物理學與工程學受用至今。
-- Laurent 級數（Laurent 1843，Cauchy 1840 年代獨立擁有）：奇點處的雙邊冪級數 $f(z)=\sum_{n=-\infty}^{\infty}c_n(z-a)^n$，使奇點分類學（可去奇點、極點、本性奇點）正式誕生，留數即 $c_{-1}$。
+- Laurent 級數（Laurent 1843，Cauchy 1840 年代獨立擁有）：奇點處的雙邊冪級數 $f(z)=\sum_{n=-\infty}^{\infty}c_n(z-a)^n$ ，使奇點分類學（可去奇點、極點、本性奇點）正式誕生，留數即 $c_{-1}$ 。
 - Cauchy 積分公式成為解析函數論的核心恆等式：邊界決定內部、解析函數无穷可微、Taylor 展開、最大模原理皆由它推出。
 - 後續鏈條：Riemann 1851 年的幾何函數論、Weierstrass 的冪級數學派、1885 年 Runge 的多項式逼近、 twentieth 世紀的 Wiener–Hopf 方法與譜理論，皆以此案為基石。
 - 影響至今：量子場論的 Feynman 積分、訊號處理的 Laplace/Z 變換反演、電磁散射的圍道方法，本質上都是「讀奇點案底」。

@@ -5,7 +5,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 
-**Frobenius 的特徵標理論。** 1896–1907 年，Frobenius 建立了有限群的特徵標理論：定義群表示 $\rho: G \to GL(V)$ 的特徵標 $\chi(g) = \mathrm{tr}(\rho(g))$，證明不可約特徵標的正交關係：
+**Frobenius 的特徵標理論。** 1896–1907 年，Frobenius 建立了有限群的特徵標理論：定義群表示 $\rho: G \to GL(V)$ 的特徵標 $\chi(g) = \mathrm{tr}(\rho(g))$ ，證明不可約特徵標的正交關係：
 
 $$\frac{1}{|G|} \sum_{g \in G} \chi_i(g)\, \overline{\chi_j(g)} = \delta_{ij}.$$
 
@@ -19,17 +19,17 @@ Schur 進一步發展了表示論。但這套理論是「矩陣與計算」的�
 
 ### 群代數與半單性
 
-**定義（群代數）。** 對有限群 $G$ 與域 $k$，**群代數** $k[G]$ 是以 $G$ 為基底的向量空間，乘法由群運算線性擴張：
+**定義（群代數）。** 對有限群 $G$ 與域 $k$ ，**群代數** $k[G]$ 是以 $G$ 為基底的向量空間，乘法由群運算線性擴張：
 
 $$\left( \sum_g a_g\, g \right) \left( \sum_h b_g\, h \right) = \sum_{g,h} a_g b_h\, (gh).$$
 
-**Noether 的關鍵洞察。** $G$ 的 $k$-表示等價於 $k[G]$-模：
+**Noether 的關鍵洞察。** $G$ 的 $k$ -表示等價於 $k[G]$ -模：
 
 $$\rho: G \to GL(V) \iff V \text{ 是 } k[G]\text{-模（}\sum a_g g \text{ 作用為 } \sum a_g \rho(g)\text{）。}$$
 
-於是表示論的問題轉化為**環論問題**：$k[G]$ 的模如何分解？
+於是表示論的問題轉化為**環論問題**： $k[G]$ 的模如何分解？
 
-**定理（Maschke，以 Noether 語言重述）。** 若 $\mathrm{char}(k) \nmid |G|$，則 $k[G]$ 是**半單環**：每個 $k[G]$-模完全可約，即分解為不可約模的直和。
+**定理（Maschke，以 Noether 語言重述）。** 若 $\mathrm{char}(k) \nmid |G|$ ，則 $k[G]$ 是**半單環**：每個 $k[G]$ -模完全可約，即分解為不可約模的直和。
 
 ### Wedderburn–Artin 結構定理
 
@@ -37,12 +37,12 @@ $$\rho: G \to GL(V) \iff V \text{ 是 } k[G]\text{-模（}\sum a_g g \text{ 作�
 
 $$R \cong \prod_{i=1}^{r} M_{n_i}(D_i),$$
 
-其中 $D_i$ 是可除環。當 $k = \mathbb{C}$ 時 $D_i = \mathbb{C}$，故
+其中 $D_i$ 是可除環。當 $k = \mathbb{C}$ 時 $D_i = \mathbb{C}$ ，故
 
 $$\mathbb{C}[G] \cong \bigoplus_{i=1}^{r} M_{d_i}(\mathbb{C}), \qquad \sum_i d_i^2 = |G|.$$
 
 **推理（由此讀出表示論的全部結構）：**
-- 不可約表示的個數 $r$ = 共軛類個數（$\mathbb{C}[G]$ 的中心維數 $r$ 等於類和 $\sum_{g \in C} g$ 張成的空間維數）；
+- 不可約表示的個數 $r$ = 共軛類個數（ $\mathbb{C}[G]$ 的中心維數 $r$ 等於類和 $\sum_{g \in C} g$ 張成的空間維數）；
 - 不可約表示 $\rho_i$ 的次數 $d_i$ = $M_{d_i}(\mathbb{C})$ 的矩陣大小；
 - **正交關係**是矩陣代數直和分解的直接推論——不再需要 Frobenius 的精巧計算！
 - **正則表示** $\mathbb{C}[G]$ 自身的分解 $\bigoplus_i d_i \rho_i$ 對應 Wedderburn 分解。
@@ -52,12 +52,12 @@ $$\mathbb{C}[G] \cong \bigoplus_{i=1}^{r} M_{d_i}(\mathbb{C}), \qquad \sum_i d_i
 Noether 於 1927/1929 年的論文《Hyperkomplexe Größen und Darstellungstheorie》確立了三大方法論：
 
 1. **模語言的普及**：一切線性代數對象（向量空間、理想、表示）統一為環上的模；同態定理、直和分解、升鏈條件成為通用工具。
-2. **同構定理**：$\varphi(A) \cong A / \ker\varphi$、$(A+B)/B \cong A/(A\cap B)$ 等同構定理的系統化，使「商結構」成為日常語言。
-3. **由映射定義結構**：表示論不再問「矩陣是什麼」，而問「$k[G]$-模之間的映射如何分解」——這是範疇論思想的先聲。
+2. **同構定理**： $\varphi(A) \cong A / \ker\varphi$ 、 $(A+B)/B \cong A/(A\cap B)$ 等同構定理的系統化，使「商結構」成為日常語言。
+3. **由映射定義結構**：表示論不再問「矩陣是什麼」，而問「 $k[G]$ -模之間的映射如何分解」——這是範疇論思想的先聲。
 
-### Python sympy 實作：$S_3$ 的群代數與不可約分解
+### Python sympy 實作： $S_3$ 的群代數與不可約分解
 
-$S_3$ 有 3 個共軛類：$\{e\}, \{(12),(13),(23)\}, \{(123),(132)\}$，故 $\mathbb{C}[S_3] \cong M_1 \oplus M_1 \oplus M_2$，且 $1^2 + 1^2 + 2^2 = 6 = |S_3|$。以下程式驗證：
+$S_3$ 有 3 個共軛類： $\{e\}, \{(12),(13),(23)\}, \{(123),(132)\}$ ，故 $\mathbb{C}[S_3] \cong M_1 \oplus M_1 \oplus M_2$ ，且 $1^2 + 1^2 + 2^2 = 6 = |S_3|$ 。以下程式驗證：
 
 ```python
 import numpy as np

@@ -12,13 +12,13 @@
 
 ### 1. 案發現場：裝置設計
 密閉箱內依序串聯：
-1. **放射性原子**：一小時內衰變機率 50%（$\lambda$ = 衰變常數）。
+1. **放射性原子**：一小時內衰變機率 50%（ $\lambda$ = 衰變常數）。
 2. **蓋格計數器**：偵測衰變粒子，觸發錘子。
 3. **毒氣瓶**：錘子擊破，釋放氫氰酸。
 4. **貓**：毒氣釋放則死，否則活。
 
 ### 2. 疊加態的數學
-設一小時後原子態為 $|\text{decayed}\rangle$ 或 $|\text{intact}\rangle$，則箱內總態（依量子力學線性演化）：
+設一小時後原子態為 $|\text{decayed}\rangle$ 或 $|\text{intact}\rangle$ ，則箱內總態（依量子力學線性演化）：
 
 $$|\psi(t{=}1\mathrm{h})\rangle = \frac{1}{\sqrt{2}}\Big(|\text{decayed}\rangle\,|\text{dead}\rangle + |\text{intact}\rangle\,|\text{alive}\rangle\Big)$$
 
@@ -28,7 +28,7 @@ $$|\psi\rangle = \frac{1}{\sqrt{2}}\big(|\text{alive}\rangle + |\text{dead}\rang
 
 ### 3. 測量問題（Measurement Problem）
 三個互相糾結的疑點：
-1. **演化有兩套規則**：平時遵守么正演化 $i\hbar\,\dot{|\psi\rangle} = \hat{H}|\psi\rangle$（線性、決定論、可逆）；測量時遵守投影公設（非線性、隨機、不可逆）。兩者何時切換？
+1. **演化有兩套規則**：平時遵守么正演化 $i\hbar\,\dot{|\psi\rangle} = \hat{H}|\psi\rangle$ （線性、決定論、可逆）；測量時遵守投影公設（非線性、隨機、不可逆）。兩者何時切換？
 2. **切換的判準是什麼**：蓋格計數器算不算「測量」？還是要等「意識」？（Wigner 的朋友）
 3. **若沒有坍縮呢**：那貓真的又死又活，但為什麼沒人見過？
 
@@ -43,9 +43,9 @@ $$\big(\alpha|\text{alive}\rangle + \beta|\text{dead}\rangle\big)|E_0\rangle \;\
 
 $$\rho_{\text{cat}} = |\alpha|^2|\text{alive}\rangle\langle\text{alive}| + |\beta|^2|\text{dead}\rangle\langle\text{dead}| + \underbrace{\alpha\beta^*\,\langle E_{\text{dead}}|E_{\text{alive}}\rangle}_{\text{干涉項}} |\text{alive}\rangle\langle\text{dead}| + \cdots$$
 
-環境態近似正交：$\langle E_{\text{dead}}|E_{\text{alive}}\rangle \approx e^{-\Gamma t} \to 0$（宏觀系統 $\Gamma$ 極大，退相干時間可短至 $10^{-20}$ 秒）。**干涉項消失**，疊加在實務上「看不出來」——貓呈現經典的統計混合。
+環境態近似正交： $\langle E_{\text{dead}}|E_{\text{alive}}\rangle \approx e^{-\Gamma t} \to 0$ （宏觀系統 $\Gamma$ 極大，退相干時間可短至 $10^{-20}$ 秒）。**干涉項消失**，疊加在實務上「看不出來」——貓呈現經典的統計混合。
 
-> 理論定義（退相干時間）：相干性 $\rho_{ad}(t) = \rho_{ad}(0)\, e^{-t/T_2}$，$T_2$ 為退相干時間；宏觀疊加的 $T_2 \propto (\Delta x)^{-2}$，隨疊加尺度平方急劇縮短。
+> 理論定義（退相干時間）：相干性 $\rho_{ad}(t) = \rho_{ad}(0)\, e^{-t/T_2}$ ， $T_2$ 為退相干時間；宏觀疊加的 $T_2 \propto (\Delta x)^{-2}$ ，隨疊加尺度平方急劇縮短。
 
 但注意：退相干**只解釋「為何看不到疊加」**（干涉項消失），**不解决「為何出現這一個結果」**——機率詮釋仍需額外假設（Born 法則）。測量問題的部分仍在偵辦中。
 
@@ -54,7 +54,7 @@ $$\rho_{\text{cat}} = |\alpha|^2|\text{alive}\rangle\langle\text{alive}| + |\bet
 
 $$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \qquad |\alpha|^2 + |\beta|^2 = 1$$
 
-$|\alpha\rangle, |\beta\rangle$ 相當於「活/死」的微觀版本；n 個量子位元的疊加空間維度為 $2^n$，這是量子平行計算的來源。但退相干正是量子計算的最大敵人——量子位元的 $T_1/T_2$ 時間決定了可執行的電路深度，量子糾錯（surface code）是現代對策。
+$|\alpha\rangle, |\beta\rangle$ 相當於「活/死」的微觀版本；n 個量子位元的疊加空間維度為 $2^n$ ，這是量子平行計算的來源。但退相干正是量子計算的最大敵人——量子位元的 $T_1/T_2$ 時間決定了可執行的電路深度，量子糾錯（surface code）是現代對策。
 
 ### 6. Python 模擬：退相干過程
 ```python
@@ -86,7 +86,7 @@ for t in [0, 0.5, 2.0, 10.0]:
 - **仍未結案**：退相干不產生單一結果——「為何是這一次測量得到死？」仍需詮釋補充（Copenhagen、many-worlds、QBism、objective collapse/GRW 各執一詞）。
 - **深遠影響**：
   - 「貓態」（cat state）成為實驗物理的正式目標：SQUID 中的宏觀電流疊加（2000）、離子阱、光學腔中的貓態已逐一實現。
-  - 退相干理論直接催生量子資訊工程：量子位元相干時間 $T_1/T_2$、量子糾錯、退相干抑制都是它的工程化產物。
+  - 退相干理論直接催生量子資訊工程：量子位元相干時間 $T_1/T_2$ 、量子糾錯、退相干抑制都是它的工程化產物。
   - Schrödinger 的貓從「荒謬的反例」變成「量子與經典邊界的偵探藍圖」。
 
 ## 關鍵人物與文獻

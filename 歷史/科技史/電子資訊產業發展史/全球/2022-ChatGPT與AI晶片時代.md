@@ -15,13 +15,13 @@
 ## 理論
 Transformer 自注意力（self-attention）：
 $$\mathrm{Attention}(Q,K,V) = \mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
-其計算與記憶體搬移量隨序列長度 $n$ 成 $O(n^2)$，複雜度主要由 HBM 頻寬決定，故 HBM 堆疊與封裝成為效能核心。
+其計算與記憶體搬移量隨序列長度 $n$ 成 $O(n^2)$ ，複雜度主要由 HBM 頻寬決定，故 HBM 堆疊與封裝成為效能核心。
 
-GPU 需求成長分析：訓練所需 FLOPs 約為 $C \approx 6ND$（$N$ 為參數數、$D$ 為訓練 token 數，前向 2N＋反向 4N）。GPT-3 到 GPT-4 級模型算力需求成長數百倍，若訓練時限 $T$ 固定，需求 GPU 數
+GPU 需求成長分析：訓練所需 FLOPs 約為 $C \approx 6ND$ （ $N$ 為參數數、 $D$ 為訓練 token 數，前向 2N＋反向 4N）。GPT-3 到 GPT-4 級模型算力需求成長數百倍，若訓練時限 $T$ 固定，需求 GPU 數
 $$N_{GPU} = \frac{C}{\eta \cdot F \cdot T}$$
-（$F$ 為單卡有效算力、$\eta$ 為使用率），呈指數上揚。
+（ $F$ 為單卡有效算力、 $\eta$ 為使用率），呈指數上揚。
 
-封裝良率模型（Chiplet 的數學勝利）：單一大晶粒良率 $Y_1 = e^{-D_0 A}$（$D_0$ 為缺陷密度、$A$ 為面積）；切成 $n$ 顆小晶粒（每顆面積 $A/n$），則 $Y_{chiplet} = \left(e^{-D_0 A/n}\right)^n$——雖然數學上等值，但壞一顆只換一顆，實際有效良率 $Y_{eff} \approx Y_{chiplet} + (1-Y_{chiplet})\cdot\text{更換回收率}$，加上 KGD（已知良品）篩選，遠優於全押大晶粒。
+封裝良率模型（Chiplet 的數學勝利）：單一大晶粒良率 $Y_1 = e^{-D_0 A}$ （ $D_0$ 為缺陷密度、 $A$ 為面積）；切成 $n$ 顆小晶粒（每顆面積 $A/n$ ），則 $Y_{chiplet} = \left(e^{-D_0 A/n}\right)^n$ ——雖然數學上等值，但壞一顆只換一顆，實際有效良率 $Y_{eff} \approx Y_{chiplet} + (1-Y_{chiplet})\cdot\text{更換回收率}$ ，加上 KGD（已知良品）篩選，遠優於全押大晶粒。
 
 ## 後果
 1. NVIDIA 市值在 2023–2024 年突破數兆美元，成為 AI 時代的算力軍火商。

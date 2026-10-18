@@ -25,13 +25,13 @@ $$
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：Seq2Seq——兩個 LSTM 的接力
-編碼器讀完源句 $x_1,\dots,x_T$，把最後隱藏狀態 $c = h_T$ 作為「句意摘要」；解碼器從 $c$ 出發逐詞生成：
+編碼器讀完源句 $x_1,\dots,x_T$ ，把最後隱藏狀態 $c = h_T$ 作為「句意摘要」；解碼器從 $c$ 出發逐詞生成：
 
 | 階段 | 運算 | 內容 |
 |---|---|---|
 | 編碼 | $h_t = \mathrm{LSTM}_{\text{enc}}(x_t, h_{t-1})$ | 逐步讀入源句 |
 | 摘要 | $c = h_T$ | 整句壓成一個向量 |
-| 解碼 | $s_t = \mathrm{LSTM}_{\text{dec}}(y_{t-1}, s_{t-1})$，$p(y_t) = \mathrm{softmax}(W s_t + b)$ | 逐詞生成目標句 |
+| 解碼 | $s_t = \mathrm{LSTM}_{\text{dec}}(y_{t-1}, s_{t-1})$ ， $p(y_t) = \mathrm{softmax}(W s_t + b)$ | 逐詞生成目標句 |
 
 $$
 p(y) = \prod_{t=1}^{T'} p(y_t \mid y_{<t},\ c)
@@ -49,7 +49,7 @@ BLEU 隨源句長度的實測曲線（示意，Sutskever 論文圖）：
 | 20–30 | 25 | 明顯衰退 |
 | 40–50 | 18 | 長句崩潰 |
 
-原因：$c = h_T$ 是固定維度（如 1000 維），不管源句 5 個詞還是 50 個詞，都要壓進同一個向量——資訊瓶頸。
+原因： $c = h_T$ 是固定維度（如 1000 維），不管源句 5 個詞還是 50 個詞，都要壓進同一個向量——資訊瓶頸。
 
 ### 第三條線索：Bahdanau 注意力——每一步回頭看
 解法：解碼第 $t$ 個詞時，用當前解碼狀態 $s_{t-1}$ 與**所有**編碼狀態 $h_i$ 算相關度，再加權取出上下文：
@@ -64,10 +64,10 @@ $$
 
 注意力的偵探意義：
 - **解決瓶頸**：上下文隨步驟動態變化，長句不再崩潰。
-- **可視化對齊**：$\alpha_{t,i}$ 矩陣畫出來就是詞對齊圖——法語 "zone économique européenne" 對齊英語 "european economic area" 的對角線，與 1993-IBMModel15與EM演算法.md 的隱對齊遙相呼應，但這次它是**可微、可學、可視**的。
+- **可視化對齊**： $\alpha_{t,i}$ 矩陣畫出來就是詞對齊圖——法語 "zone économique européenne" 對齊英語 "european economic area" 的對角線，與 1993-IBMModel15與EM演算法.md 的隱對齊遙相呼應，但這次它是**可微、可學、可視**的。
 
 ### 第四條線索：注意力的簡化——從加性到縮放點積
-Bahdanau 的注意力是**加性**的（小神經網路算相關度）。後續偵探工作發現更簡的公式：2015 年 Luong 的**點積注意力** $\alpha_{t,i} = \mathrm{softmax}(s_t^\top h_i)$ 與縮放點積 $\mathrm{softmax}\!\left(\frac{q^\top k}{\sqrt{d}}\right)$——去掉循環結構、純矩陣運算。這條線索在 2017-Transformer注意力機制.md 的「Attention Is All You Need」中收網：**注意力就是一切**，LSTM 被謀殺——兇手不是更強的記憶，而是直連任意距離 + 完美並行。
+Bahdanau 的注意力是**加性**的（小神經網路算相關度）。後續偵探工作發現更簡的公式：2015 年 Luong 的**點積注意力** $\alpha_{t,i} = \mathrm{softmax}(s_t^\top h_i)$ 與縮放點積 $\mathrm{softmax}\!\left(\frac{q^\top k}{\sqrt{d}}\right)$ ——去掉循環結構、純矩陣運算。這條線索在 2017-Transformer注意力機制.md 的「Attention Is All You Need」中收網：**注意力就是一切**，LSTM 被謀殺——兇手不是更強的記憶，而是直連任意距離 + 完美並行。
 
 ## 結案 -- 後果與影響
 - **神經機器翻譯上線**：2016-GNMT神經機器翻譯上線.md 把 8 層 LSTM + 注意力的 GNMT 部署到 Google 翻譯，錯誤率相對下降 60%，片語式系統退場。

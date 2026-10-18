@@ -12,7 +12,7 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：愛迪生效應的原理——熱電子發射
-金屬中的自由電子要逸出表面，需克服功函數 $\phi$（work function）。溫度 $T$ 時，具有足夠能量的電子數服從 Richardson–Dushman 定律（1911 年 Richardson 完成理論）：
+金屬中的自由電子要逸出表面，需克服功函數 $\phi$ （work function）。溫度 $T$ 時，具有足夠能量的電子數服從 Richardson–Dushman 定律（1911 年 Richardson 完成理論）：
 
 $$J = A T^2 e^{-\phi/k_B T} \quad \left(A \approx 1.2\times10^6\ \mathrm{A\,m^{-2}K^{-2}}\right)$$
 

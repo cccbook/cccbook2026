@@ -21,7 +21,7 @@ $$\max \sum_{i=1}^d 10^{d-i} x_i, \quad 0 \le x_1 \le 100, \quad 0 \le x_i \le 1
 
 $$\mathrm{Smoothed}(A, n) = \max_{\bar{x} \in [0,1]^N} \mathrm{E}_{\substack{x = \bar{x} + g \\ g \sim N(0, \sigma^2)}} [\mathrm{cost}(A, x)]$$
 
-**白話**：對**每個**可能的「中心」$\bar{x}$（取最壞），加上標準差 $\sigma$ 的高斯擾動，問期望執行時間。
+**白話**：對**每個**可能的「中心」 $\bar{x}$ （取最壞），加上標準差 $\sigma$ 的高斯擾動，問期望執行時間。
 
 三種分析的對照：
 

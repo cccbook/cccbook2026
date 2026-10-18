@@ -24,7 +24,7 @@ $$
 R^{(k)}[i][j] = R^{(k-1)}[i][j] \lor \bigl(R^{(k-1)}[i][k] \land R^{(k-1)}[k][j]\bigr)
 $$
 
-Floyd-Warshall 還能處理負邊（只要沒有負環），偵測負環只需檢查對角線：若演算法結束時 $d[i][i] < 0$，表示存在經過 i 的負環。
+Floyd-Warshall 還能處理負邊（只要沒有負環），偵測負環只需檢查對角線：若演算法結束時 $d[i][i] < 0$ ，表示存在經過 i 的負環。
 
 ### 線索二：與 n 次 Dijkstra 的對照
 全對問題的另一條辦案路線是跑 n 次 Dijkstra。稠密圖上 Dijkstra 用鄰接矩陣是 O(n²)，n 次共 O(n³)，與 Floyd-Warshall 同階；但稀疏圖（m = O(n)）配二元堆是 O(n²m log n) 的漸近上界之外，還要注意 Dijkstra 不能處理負邊。因此：

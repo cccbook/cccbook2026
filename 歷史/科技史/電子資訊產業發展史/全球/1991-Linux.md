@@ -35,7 +35,7 @@ $$U_{dev} = \underbrace{u_{use}}_{\text{自用價值}} + \underbrace{r_{sig}}_{\
 
 **GPL 的賽局設計**：無 copyleft 時，企業可取碼閉源（搭便車、不回饋），均衡貢獻量低；GPLv2 使閉源衍生違約，回饋成為使用的前提條件，均衡跳到「人人貢獻」的動態。這是以授權條款實現的機制設計（mechanism design），與 Compaq 淨室、CERN 釋出 WWW 同屬「制度工程決定產業結構」的系列判例。
 
-**POSIX 與生態相容性**：Torvalds 以 POSIX 介面為目標，使 GNU 工具與 Unix 軟體可直接移植——相容策略讓 Linux 免費繼承數十年 Unix 應用資產，$V \propto n^2$ 的網路效應從第一版就存在。
+**POSIX 與生態相容性**：Torvalds 以 POSIX 介面為目標，使 GNU 工具與 Unix 軟體可直接移植——相容策略讓 Linux 免費繼承數十年 Unix 應用資產， $V \propto n^2$ 的網路效應從第一版就存在。
 
 ## 後果
 

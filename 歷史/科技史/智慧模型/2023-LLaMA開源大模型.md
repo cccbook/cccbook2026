@@ -6,7 +6,7 @@
 
 $$\text{LLaMA-65B} \approx \text{Chinchilla-70B} > \text{GPT-3-175B}, \qquad \text{零件：RMSNorm + SwiGLU + RoPE}$$
 
-其中旋轉位置編碼的角度為 $\theta_i = 10000^{-2i/d}$。兇手不是更大的模型，而是**「開源權重」這個分發決策**——LLaMA 是 Alpaca、Vicuna、Mistral、DeepSeek 等開源生態的源頭，改寫了大模型的權力結構。
+其中旋轉位置編碼的角度為 $\theta_i = 10000^{-2i/d}$ 。兇手不是更大的模型，而是**「開源權重」這個分發決策**——LLaMA 是 Alpaca、Vicuna、Mistral、DeepSeek 等開源生態的源頭，改寫了大模型的權力結構。
 
 ## 前因 -- 為什麼會有這個案子
 

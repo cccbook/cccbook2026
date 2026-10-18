@@ -14,7 +14,7 @@
 ## 偵查過程
 
 **第一步：廣義座標——把約束「藏」進座標裡。**
-拉格朗日的關鍵洞察：與其在直角座標 $(x, y, z)$ 中硬扛約束，不如**直接用描述系統形態的獨立參數**。單擺用擺角 $\theta$（一個數就夠了，繩長約束自動滿足）、平面雙擺用 $(\theta_1, \theta_2)$、$N$ 個自由度的系統用 $(q_1, \dots, q_N)$。直角座標是廣義座標的函數：
+拉格朗日的關鍵洞察：與其在直角座標 $(x, y, z)$ 中硬扛約束，不如**直接用描述系統形態的獨立參數**。單擺用擺角 $\theta$ （一個數就夠了，繩長約束自動滿足）、平面雙擺用 $(\theta_1, \theta_2)$ 、 $N$ 個自由度的系統用 $(q_1, \dots, q_N)$ 。直角座標是廣義座標的函數：
 
 $$
 \mathbf{r}_i = \mathbf{r}_i(q_1, \dots, q_N, t)
@@ -23,7 +23,7 @@ $$
 約束力從方程中**徹底消失**——它們被座標的選擇吸收了。
 
 **第二步：從虛功原理出發。**
-拉格朗日力學的公理基礎是**達朗貝爾-拉格朗日原理**（虛功原理的動力學推廣）：對任意虛位移 $\delta \mathbf{r}_i$（滿足約束的瞬時假想位移），
+拉格朗日力學的公理基礎是**達朗貝爾-拉格朗日原理**（虛功原理的動力學推廣）：對任意虛位移 $\delta \mathbf{r}_i$ （滿足約束的瞬時假想位移），
 
 $$
 \sum_i (\mathbf{F}_i - m_i \mathbf{a}_i) \cdot \delta \mathbf{r}_i = 0
@@ -32,7 +32,7 @@ $$
 理想約束下約束力的虛功為零，所以只剩主動力做功。這一步是達朗貝爾（1743）與拉格朗日的接力。
 
 **第三步：鏈鎖法則的代數推理——導出拉格朗日方程。**
-把虛位移用廣義座標表達：$\delta \mathbf{r}_i = \sum_j \dfrac{\partial \mathbf{r}_i}{\partial q_j}\delta q_j$，代入虛功原理。經過純代數的整理（這正是「無一圖」的精髓——每一步都是鏈鎖法則與指標運算），得到廣義力 $Q_j = \sum_i \mathbf{F}_i \cdot \frac{\partial \mathbf{r}_i}{\partial q_j}$ 滿足：
+把虛位移用廣義座標表達： $\delta \mathbf{r}_i = \sum_j \dfrac{\partial \mathbf{r}_i}{\partial q_j}\delta q_j$ ，代入虛功原理。經過純代數的整理（這正是「無一圖」的精髓——每一步都是鏈鎖法則與指標運算），得到廣義力 $Q_j = \sum_i \mathbf{F}_i \cdot \frac{\partial \mathbf{r}_i}{\partial q_j}$ 滿足：
 
 $$
 \sum_i m_i \mathbf{a}_i \cdot \frac{\partial \mathbf{r}_i}{\partial q_j} = \frac{d}{dt}\left( \sum_i m_i \dot{\mathbf{r}}_i \cdot \frac{\partial \mathbf{r}_i}{\partial q_j} \right) - \sum_i m_i \dot{\mathbf{r}}_i \cdot \frac{d}{dt}\frac{\partial \mathbf{r}_i}{\partial q_j}
@@ -45,14 +45,14 @@ $$
 \frac{d}{dt}\frac{\partial \mathbf{r}_i}{\partial q_j} = \frac{\partial \dot{\mathbf{r}}_i}{\partial q_j}
 $$
 
-於是引入**動能** $T = \frac{1}{2}\sum_i m_i |\dot{\mathbf{r}}_i|^2$，定義**拉格朗日函數** $L = T - V$（$V$ 為位能），上式化為一條對每個廣義座標成立的方程：
+於是引入**動能** $T = \frac{1}{2}\sum_i m_i |\dot{\mathbf{r}}_i|^2$ ，定義**拉格朗日函數** $L = T - V$ （ $V$ 為位能），上式化為一條對每個廣義座標成立的方程：
 
 $$
 \boxed{\,\frac{d}{dt}\frac{\partial L}{\partial \dot q_i} - \frac{\partial L}{\partial q_i} = 0, \qquad i = 1, \dots, N\,}
 $$
 
 **第四步：實戰驗證——單擺。**
-單擺：$q = \theta$，$x = l\sin\theta$，$y = -l\cos\theta$。動能與位能：
+單擺： $q = \theta$ ， $x = l\sin\theta$ ， $y = -l\cos\theta$ 。動能與位能：
 
 $$
 T = \frac{1}{2} m l^2 \dot\theta^2, \qquad V = -mgl\cos\theta \quad\Longrightarrow\quad L = \frac{1}{2} m l^2 \dot\theta^2 + mgl\cos\theta
@@ -67,13 +67,13 @@ $$
 **一個廣義座標、三行代數**，牛頓方法需要畫圖分析張力與向心力的幾何關係，這裡完全不需要。
 
 **第五步：守恆律的免費贈品。**
-拉格朗日方程還隱含守恆律：若 $L$ 不顯含某座標 $q_k$（循環座標），則 $\partial L / \partial \dot q_k$ 守恆——**對稱性對應守恆量**的思想在此萌芽，通往 Noether 定理（1918）。
+拉格朗日方程還隱含守恆律：若 $L$ 不顯含某座標 $q_k$ （循環座標），則 $\partial L / \partial \dot q_k$ 守恆——**對稱性對應守恆量**的思想在此萌芽，通往 Noether 定理（1918）。
 
 ## 結案報告
 
-《分析力學》解決了「力學缺乏統一方法論」的百年困境：從此任何力學系統，只要寫出 $L$，剩下的就是機械化的代數運算——「無一圖」不是傲慢，而是**方法論的成熟宣言**。其遺產：
+《分析力學》解決了「力學缺乏統一方法論」的百年困境：從此任何力學系統，只要寫出 $L$ ，剩下的就是機械化的代數運算——「無一圖」不是傲慢，而是**方法論的成熟宣言**。其遺產：
 
-1. **通往 Hamilton 力學（1834）**：哈密頓（William Rowan Hamilton）把 $q$ 與 $\dot q$ 換成 $(q, p)$（座標與動量），將拉格朗日方程改寫成對稱優美的**正則方程**：
+1. **通往 Hamilton 力學（1834）**：哈密頓（William Rowan Hamilton）把 $q$ 與 $\dot q$ 換成 $(q, p)$ （座標與動量），將拉格朗日方程改寫成對稱優美的**正則方程**：
 
 $$
 \dot q_i = \frac{\partial H}{\partial p_i}, \qquad \dot p_i = -\frac{\partial H}{\partial q_i}, \qquad H = T + V

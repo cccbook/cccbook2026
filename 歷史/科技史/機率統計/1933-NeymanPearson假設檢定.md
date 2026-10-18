@@ -14,23 +14,23 @@
 
 | 真實\判決 | 接受 $H_0$ | 拒絕 $H_0$ |
 |---|---|---|
-| $H_0$ 真 | ✓ | **Type I 錯誤**（機率 $\alpha$） |
-| $H_1$ 真 | **Type II 錯誤**（機率 $\beta$） | ✓ |
+| $H_0$ 真 | ✓ | **Type I 錯誤**（機率 $\alpha$ ） |
+| $H_1$ 真 | **Type II 錯誤**（機率 $\beta$ ） | ✓ |
 
-- 顯著水準：$\alpha = P(\text{拒絕 } H_0 \mid H_0 \text{ 真})$（誤判無辜）
-- 檢定力：$1 - \beta = P(\text{拒絕 } H_0 \mid H_1 \text{ 真})$（成功定罪）
-- 好的檢定：在固定 $\alpha$ 下，**最大化檢定力** $1-\beta$。
+- 顯著水準： $\alpha = P(\text{拒絕 } H_0 \mid H_0 \text{ 真})$ （誤判無辜）
+- 檢定力： $1 - \beta = P(\text{拒絕 } H_0 \mid H_1 \text{ 真})$ （成功定罪）
+- 好的檢定：在固定 $\alpha$ 下，**最大化檢定力** $1-\beta$ 。
 
 ### Neyman–Pearson 引理（最強力檢定）
-對簡單假說 $H_0: \theta=\theta_0$ vs $H_1: \theta=\theta_1$，最強力（MP）檢定為**概似比檢定**：給定顯著水準 $\alpha$，拒絕域為
+對簡單假說 $H_0: \theta=\theta_0$ vs $H_1: \theta=\theta_1$ ，最強力（MP）檢定為**概似比檢定**：給定顯著水準 $\alpha$ ，拒絕域為
 $$
 \Lambda(x) = \frac{L(\theta_0; x)}{L(\theta_1; x)} \leq k
 $$
-其中 $k$ 選擇使 $P_{\theta_0}(\Lambda(X) \leq k) = \alpha$。任何其他水準 $\leq \alpha$ 的檢定，其檢定力都不會超過此檢定。證明工具是 Markov 不等式的變形（Neyman–Pearson 不等式）。
+其中 $k$ 選擇使 $P_{\theta_0}(\Lambda(X) \leq k) = \alpha$ 。任何其他水準 $\leq \alpha$ 的檢定，其檢定力都不會超過此檢定。證明工具是 Markov 不等式的變形（Neyman–Pearson 不等式）。
 
 ### Fisher vs Neyman–Pearson 學派之爭
-- **Fisher**：p 值是資料對 $H_0$ 的「不合理程度」證據，反對事先設定 $\alpha$、反對接受/拒絕的機械式決策。
-- **Neyman–Pearson**：檢定是長期重複使用的行為準則，重點是控制錯誤率與檢定力，應事先選定 $\alpha$、$n$ 與對立假說。
+- **Fisher**：p 值是資料對 $H_0$ 的「不合理程度」證據，反對事先設定 $\alpha$ 、反對接受/拒絕的機械式決策。
+- **Neyman–Pearson**：檢定是長期重複使用的行為準則，重點是控制錯誤率與檢定力，應事先選定 $\alpha$ 、 $n$ 與對立假說。
 - 兩人長年激烈筆戰，但現代教科書實務上是**混合體**：以 NP 框架設計檢定，用 Fisher 式 p 值報告證據。
 
 ```python

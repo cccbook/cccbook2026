@@ -10,7 +10,7 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 1748 | Euler 發表尤拉公式 $e^{i\theta} = \cos\theta + i\sin\theta$，複指數成為萬用基底 | [1748-Euler公式.md](1748-Euler公式.md) |
+| 1748 | Euler 發表尤拉公式 $e^{i\theta} = \cos\theta + i\sin\theta$ ，複指數成為萬用基底 | [1748-Euler公式.md](1748-Euler公式.md) |
 | 1753 | Daniel Bernoulli 主張琴弦振動是無限多個簡正模的疊加 | [1753-Bernoulli疊加原理.md](1753-Bernoulli疊加原理.md) |
 | 1805 | 高斯在未發表的插值手稿中，暗中發明了 FFT 的核心思想 | [1805-高斯的隱藏FFT.md](1805-高斯的隱藏FFT.md) |
 
@@ -34,7 +34,7 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 1965 | Cooley 與 Tukey 發表 FFT 演算法，$O(N^2) \to O(N\log N)$，傅立葉分析走進所有電腦 | [1965-FFT快速傅立葉轉換.md](1965-FFT快速傅立葉轉換.md) |
+| 1965 | Cooley 與 Tukey 發表 FFT 演算法， $O(N^2) \to O(N\log N)$ ，傅立葉分析走進所有電腦 | [1965-FFT快速傅立葉轉換.md](1965-FFT快速傅立葉轉換.md) |
 | 1984 | Morlet 與 Grossmann 提出小波轉換，突破傅立葉的「全域頻率」限制 | [1984-Morlet小波轉換.md](1984-Morlet小波轉換.md) |
 | 1992 | JPEG 標準採用離散餘弦變換（DCT），傅立葉家族壓縮全世界影像 | [1992-JPEG離散餘弦變換.md](1992-JPEG離散餘弦變換.md) |
 

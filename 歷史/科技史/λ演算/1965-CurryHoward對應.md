@@ -9,9 +9,9 @@
 線索可以追溯到幾個源頭：
 
 1. **1934 年，Haskell Curry** 觀察到 Hilbert 系統的組合子公理與直覺邏輯公理的形狀相同：
-   - 組合子 $I = \lambda x.\, x$ 對應公理 $A \to A$；
-   - 組合子 $K = \lambda x.\, \lambda y.\, x$ 對應公理 $A \to (B \to A)$；
-   - 組合子 $S = \lambda x.\, \lambda y.\, \lambda z.\, x\ z\ (y\ z)$ 對應公理 $(A \to (B \to C)) \to ((A \to B) \to (A \to C))$。
+   - 組合子 $I = \lambda x.\, x$ 對應公理 $A \to A$ ；
+   - 組合子 $K = \lambda x.\, \lambda y.\, x$ 對應公理 $A \to (B \to A)$ ；
+   - 組合子 $S = \lambda x.\, \lambda y.\, \lambda z.\, x\ z\ (y\ z)$ 對應公理 $(A \to (B \to C)) \to ((A \to B) \to (A \to C))$ 。
 2. **1958 年，Curry 在 *Combinatory Logic*** 中進一步指出這是「公式即型別」的現象。
 3. **Gentzen 的自然演算（Natural Deduction, 1935）**：證明引入規則（introduction）與消去規則（elimination）成對出現，形狀酷似 λ 演算的建構與使用。
 
@@ -28,10 +28,10 @@ Howard 的推理是：**這不只是「形狀相似」，而是「同一件事�
 | 蘊含 $A \to B$ | 函數型別 $\tau_1 \to \tau_2$ |
 | 合取 $A \wedge B$ | 乘積型 $\tau_1 \times \tau_2$ |
 | 析取 $A \vee B$ | 和型（sum type） $\tau_1 + \tau_2$ |
-| 恆真 $\top$ | 單位型 $1$（unit） |
-| 恆假 $\bot$ | 空型 $0$（void） |
-| 引入規則（$\to$I） | $\lambda$ 抽象（建構函數） |
-| 消去規則（$\to$E） | 函數應用 |
+| 恆真 $\top$ | 單位型 $1$ （unit） |
+| 恆假 $\bot$ | 空型 $0$ （void） |
+| 引入規則（ $\to$ I） | $\lambda$ 抽象（建構函數） |
+| 消去規則（ $\to$ E） | 函數應用 |
 | 假設（assumption） | 變數（variable） |
 | 證明的正規化 | 程式的求值終止 |
 | 歸納/遞迴 | 原始遞迴 |
@@ -54,7 +54,7 @@ $$
 \frac{\Gamma \vdash f : \tau_1 \to \tau_2 \qquad \Gamma \vdash a : \tau_1}{\Gamma \vdash f\ a : \tau_2}
 $$
 
-柯里化（Currying）在此對應下自然湧現：$A \to (B \to C) \cong (A \wedge B) \to C$。
+柯里化（Currying）在此對應下自然湧現： $A \to (B \to C) \cong (A \wedge B) \to C$ 。
 
 ### 3. Nat 的消去 ↔ 歸納
 

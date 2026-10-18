@@ -31,7 +31,7 @@ Wadler 與 Stephen Blott 的破案提案（1989）：在型別上附加「約束
 
 $$\texttt{(==)} :: \forall a.\, \texttt{Eq}\, a \Rightarrow a \to a \to \texttt{Bool}$$
 
-讀作：對任意型別 $a$，只要 $a$ 屬於 $\texttt{Eq}$ 類別，`(==)` 的型別就是 $a \to a \to \texttt{Bool}$。約束 $\texttt{Eq}\,a$ 是型別層級的邏輯前提，解決了 overloading 與 HM 的矛盾，同時保持型別推論的自動化。
+讀作：對任意型別 $a$ ，只要 $a$ 屬於 $\texttt{Eq}$ 類別，`(==)` 的型別就是 $a \to a \to \texttt{Bool}$ 。約束 $\texttt{Eq}\,a$ 是型別層級的邏輯前提，解決了 overloading 與 HM 的矛盾，同時保持型別推論的自動化。
 
 ### 線索三：為什麼 HM 單獨不夠——程式示範
 

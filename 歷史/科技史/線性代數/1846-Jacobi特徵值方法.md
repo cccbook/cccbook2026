@@ -1,7 +1,7 @@
 # 1846 — Jacobi 特徵值方法
 
 ## 案件摘要
-1846 年，Carl Gustav Jacob Jacobi 在 Crelle's Journal 上發表〈Über ein leichtes Verfahren, die in der Theorie der Säcularstörungen vorkommenden Gleichungen numerisch aufzulösen〉，提出一套用「平面旋轉」逐次消去對稱矩陣非對角元素的數值方法：$A \to J^T A J$ 反覆施行，矩陣便收斂到對角陣，對角線上正是特徵值。這是歷史上**第一個**系統性的矩陣特徵值數值演算法——在「矩陣」這個名詞都還沒普及的年代，Jacobi 已經寫下了數值線性代數的開山案件。
+1846 年，Carl Gustav Jacob Jacobi 在 Crelle's Journal 上發表〈Über ein leichtes Verfahren, die in der Theorie der Säcularstörungen vorkommenden Gleichungen numerisch aufzulösen〉，提出一套用「平面旋轉」逐次消去對稱矩陣非對角元素的數值方法： $A \to J^T A J$ 反覆施行，矩陣便收斂到對角陣，對角線上正是特徵值。這是歷史上**第一個**系統性的矩陣特徵值數值演算法——在「矩陣」這個名詞都還沒普及的年代，Jacobi 已經寫下了數值線性代數的開山案件。
 
 ## 前因 -- 為什麼會有這個案子
 - **二次型主軸定理**：Cauchy 於 1815 年、1829 年證明實對稱矩陣的特徵值皆為實數，且二次型可透過正交變換化為 $\sum \lambda_i y_i^2$ 的平方和。理論上「對角化」早已存在，但那只是存在性證明——**怎麼算**出來，是另一樁懸案。
@@ -12,30 +12,30 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：平面旋轉消去一個非對角元素
-考慮實對稱矩陣 $A$，取一個只在 $(p,q)$ 平面上旋轉角度 $\theta$ 的正交矩陣 $J = J(p, q, \theta)$。作合同變換 $A' = J^T A J$，計算新的非對角元素：
+考慮實對稱矩陣 $A$ ，取一個只在 $(p,q)$ 平面上旋轉角度 $\theta$ 的正交矩陣 $J = J(p, q, \theta)$ 。作合同變換 $A' = J^T A J$ ，計算新的非對角元素：
 
 $$a'_{pq} = \frac{a_{qq} - a_{pp}}{2}\sin 2\theta + a_{pq}\cos 2\theta$$
 
-要讓 $a'_{pq} = 0$，只需令 $\tan 2\theta = \dfrac{2a_{pq}}{a_{pp} - a_{qq}}$，即取
+要讓 $a'_{pq} = 0$ ，只需令 $\tan 2\theta = \dfrac{2a_{pq}}{a_{pp} - a_{qq}}$ ，即取
 
 $$\theta = \frac{1}{2}\arctan\!\left(\frac{2a_{pq}}{a_{pp} - a_{qq}}\right)$$
 
-（當 $a_{pp} = a_{qq}$ 時取 $\theta = \pi/4$。）一次旋轉就精準殺掉一個非對角元素——這是兇器的核心構造。
+（當 $a_{pp} = a_{qq}$ 時取 $\theta = \pi/4$ 。）一次旋轉就精準殺掉一個非對角元素——這是兇器的核心構造。
 
 ### 線索二：為什麼會收斂
 關鍵不變量是 Frobenius 範數的平方。正交相似變換保持 Frobenius 範數：
 
 $$\|A'\|_F^2 = \|A\|_F^2 = \sum_i a_{ii}^2 + \sum_{i \neq j} a_{ij}^2 = \|D\|^2_{\text{diag}} + \|A\|^2_{\text{off}}$$
 
-而一次旋轉把「非對角平方和」減少 $2a_{pq}^2$：
+而一次旋轉把「非對角平方和」減少 $2a_{pq}^2$ ：
 
 $$\|A'\|^2_{\text{off}} = \|A\|^2_{\text{off}} - 2a_{pq}^2$$
 
-對角平方和則增加同樣的量。非對角的「血跡」不會消失（總範數不變），但每轉一次就往對角線轉移一點。Jacobi 的策略是**每次挑選絕對值最大的非對角元素**（經典 Jacobi），反覆執行；非對角元素單調遞減趨於零，$A$ 收斂到對角陣 $D = \mathrm{diag}(\lambda_1, \dots, \lambda_n)$，累積乘積 $V = J_1 J_2 J_3 \cdots$ 的行向量就是特徵向量。
+對角平方和則增加同樣的量。非對角的「血跡」不會消失（總範數不變），但每轉一次就往對角線轉移一點。Jacobi 的策略是**每次挑選絕對值最大的非對角元素**（經典 Jacobi），反覆執行；非對角元素單調遞減趨於零， $A$ 收斂到對角陣 $D = \mathrm{diag}(\lambda_1, \dots, \lambda_n)$ ，累積乘積 $V = J_1 J_2 J_3 \cdots$ 的行向量就是特徵向量。
 
 ### 線索三：正交性是保險箱
 整個過程只用正交矩陣，因此：
-1. 對稱性全程保持（$J^T A J$ 對稱）；
+1. 對稱性全程保持（ $J^T A J$ 對稱）；
 2. 特徵值全程為實數，不會跑出複數鬼影；
 3. 數值上良態——正交變換不放大誤差（條件數為 1）。
 

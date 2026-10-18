@@ -54,7 +54,7 @@ $$
 S\ K\ K\ x \to K\ x\ (K\ x) \to x
 $$
 
-所以 $I \equiv S\ K\ K$——恆等函數竟可由 S、K 組合而成。
+所以 $I \equiv S\ K\ K$ ——恆等函數竟可由 S、K 組合而成。
 
 Python 模擬：
 
@@ -69,7 +69,7 @@ assert K(1)(2) == 1  # K a b = a
 
 ### 變數消除原理（Bracket Abstraction）
 
-**Bracket abstraction** 是把 λ 項轉為組合子的演算法。對 $\lambda x.\, M$：
+**Bracket abstraction** 是把 λ 項轉為組合子的演算法。對 $\lambda x.\, M$ ：
 
 $$
 [x] M =
@@ -86,7 +86,7 @@ $$
 [x]\,(f\ x) = S\ ([x]\,f)\ ([x]\,x) = S\ (K\ f)\ I
 $$
 
-驗證：$S\ (K\ f)\ I\ x \to K\ f\ x\ (I\ x) \to f\ x$ ✓
+驗證： $S\ (K\ f)\ I\ x \to K\ f\ x\ (I\ x) \to f\ x$ ✓
 
 完整轉換（Python）：
 
@@ -148,7 +148,7 @@ assert curry(add)(3)(4) == 7      # add 3 4，組合子邏輯的呼叫方式
 ### Curry–Howard 對應中 Curry 的角色
 
 - 1934 年，Curry 觀察到：組合邏輯的型別與公理模式
-  $P \to P$、$P \to (Q \to P)$、$(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))$
+  $P \to P$ 、 $P \to (Q \to P)$ 、 $(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))$
   一一對應。
 - 1958 年《Combinatory Logic》中此觀察被系統化：**組合子 = 公理、
   應用 = modus ponens（肯定前件）**。
@@ -169,7 +169,7 @@ assert curry(add)(3)(4) == 7      # add 3 4，組合子邏輯的呼叫方式
 ### 與 λ 演算的等價性
 
 > **定理**：組合邏輯與 λ 演算在表達力上等價。
-> 由 bracket abstraction，每個 λ 項 $M$ 可轉為組合子項 $[M]$；
+> 由 bracket abstraction，每個 λ 項 $M$ 可轉為組合子項 $[M]$ ；
 > 反之每個組合子項都是 λ 項。
 
 $$

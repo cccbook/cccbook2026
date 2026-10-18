@@ -17,7 +17,7 @@ Haskell Curry 在 1941 年出版《A Formalization of Logic》（Harvard Univers
 
 ### 線索一：組合邏輯的形式系統
 
-Curry 的系統以 $\mathbf{B}$、$\mathbf{C}$、$\mathbf{K}$、$\mathbf{W}$ 為基底（S 可由它們合成）：
+Curry 的系統以 $\mathbf{B}$ 、 $\mathbf{C}$ 、 $\mathbf{K}$ 、 $\mathbf{W}$ 為基底（S 可由它們合成）：
 
 $$
 \begin{aligned}
@@ -60,7 +60,7 @@ print("currying 驗證通過")
 
 ### 線索三：bracket abstraction——λ 消除演算法
 
-Curry 的關鍵貢獻：一個把任意 λ 項翻譯成組合子項的機械演算法。定義翻譯 $[x]M$（把變數 $x$ 從 $M$ 中抽象出來）：
+Curry 的關鍵貢獻：一個把任意 λ 項翻譯成組合子項的機械演算法。定義翻譯 $[x]M$ （把變數 $x$ 從 $M$ 中抽象出來）：
 
 $$
 \begin{aligned}
@@ -70,7 +70,7 @@ $$
 \end{aligned}
 $$
 
-性質：$([x]M)\,x = M$（對任何 $x$）。任何 $\lambda x. M = [x]M$。用 $\mathbf{B}$、$\mathbf{C}$ 可優化：
+性質： $([x]M)\,x = M$ （對任何 $x$ ）。任何 $\lambda x. M = [x]M$ 。用 $\mathbf{B}$ 、 $\mathbf{C}$ 可優化：
 
 $$[x]\,M\,N = \mathbf{B}\,([x]\,M)\,N \;\;(x \notin FV(N)), \qquad [x]\,M\,N = \mathbf{C}\,M\,([x]\,N) \;\;(x \notin FV(M))$$
 
@@ -138,7 +138,7 @@ $$\llbracket \lambda x. M \rrbracket\,a = \llbracket M[x := a] \rrbracket$$
 
 ### 線索五：固定點組合子理論
 
-Curry 系統化了一切組合子的不動點理論：對任何組合子 $Y$，若 $Y\,f = f\,(Y\,f)$，則 $Y$ 是固定點組合子。Curry 的 $\mathbf{Y}$ 是 Church 的 $Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))(\lambda x.\,f\,(x\,x))$ 的組合子版本：
+Curry 系統化了一切組合子的不動點理論：對任何組合子 $Y$ ，若 $Y\,f = f\,(Y\,f)$ ，則 $Y$ 是固定點組合子。Curry 的 $\mathbf{Y}$ 是 Church 的 $Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))(\lambda x.\,f\,(x\,x))$ 的組合子版本：
 
 $$\mathbf{Y} = \mathbf{S}\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I}))\,(\mathbf{S}\,(\mathbf{S}\,(\mathbf{K}\,\mathbf{S})\,\mathbf{K})\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I})))$$
 

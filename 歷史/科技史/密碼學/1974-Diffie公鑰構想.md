@@ -44,7 +44,7 @@ $$\text{簽章：} \sigma = D_{S_K}(m) \quad \text{驗證：} E_{P_K}(\sigma) = 
 Diffie–Hellman 1976 年的論文《New Directions in Cryptography》沒有給出公鑰**加密**的完整實現（只有金鑰交換），並列出了單向陷門函數的候選問題——**這個懸案吊在 1977 年被 RSA（見 `1977-RSA.md`）用大數分解解決**。
 
 候選問題的譜系：
-- **大數分解**（RSA, 1977）：$n = pq$，容易乘、難分解
+- **大數分解**（RSA, 1977）： $n = pq$ ，容易乘、難分解
 - **離散對數**（Diffie–Hellman, 1976）：容易冪、難取對數
 - **背包問題**（Merkle–Hellman, 1978）：NP 完備問題的陷門化（後被破，見 `1979-MerkleHellman背包密碼.md`）
 

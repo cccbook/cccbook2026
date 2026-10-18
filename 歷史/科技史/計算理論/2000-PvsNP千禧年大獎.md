@@ -13,7 +13,7 @@
 
 ## 線索與推理 -- 數學式、程式、理論
 
-### 1. 問題敘述：$\text{P} \stackrel{?}{=} \text{NP}$
+### 1. 問題敘述： $\text{P} \stackrel{?}{=} \text{NP}$
 
 **定義（P）**：多項式時間可解的語言類：
 
@@ -35,7 +35,7 @@ $$\text{P} \stackrel{?}{=} \text{NP}$$
 
 ### 2. 多數學者相信 $\text{P} \neq \text{NP}$ 的理由
 
-**Sipser 民調**：2002 年 William Gasarch 對理論計算機科學家做了著名調查，2002 年約 61 位受訪者中 61%（Sipser 等多數學者）相信 $\text{P} \neq \text{NP}$；2019 年重做時比例更升至約 88%。30 年來無人找到任何 NP-完備問題的多項式演算法，這是「計算上的經驗證據」。
+**Sipser 民調**：2002 年 William Gasarch 對理論計算機科學家做了著名調查，2002 年約 61 位受訪者中 61%（Sipser 等多數學者）相信 $\text{P} \neq \text{NP}$ ；2019 年重做時比例更升至約 88%。30 年來無人找到任何 NP-完備問題的多項式演算法，這是「計算上的經驗證據」。
 
 **觀點補充**：Sipser 主張，若 P = NP，那麼「數學創造力」可被機械化——找證明與驗證證明一樣容易，這與數學家數十年經驗相悖。
 
@@ -44,7 +44,7 @@ $$\text{P} \stackrel{?}{=} \text{NP}$$
 即使動用最強的證明技術，也撞上三堵牆：
 
 **(a) 相對化障礙（Relativization, Baker–Gill–Solovay 1975）**
-存在oracle $A$ 使 $\text{P}^A = \text{NP}^A$，也存在 oracle $B$ 使 $\text{P}^B \neq \text{NP}^B$。因此任何「僅模擬計算、對 oracle 不敏感」的證明技術（相對化技術）都無法證明 P ≠ NP。
+存在oracle $A$ 使 $\text{P}^A = \text{NP}^A$ ，也存在 oracle $B$ 使 $\text{P}^B \neq \text{NP}^B$ 。因此任何「僅模擬計算、對 oracle 不敏感」的證明技術（相對化技術）都無法證明 P ≠ NP。
 
 **(b) 自然證明障礙（Natural Proofs, Razborov–Rudich 1994）**
 定義：對電路類 $\mathcal{C}$ 的下界證明若滿足「建設性」與「廣泛性」（natural），則可反過來破解偽隨機數產生器。在標準密碼學假設（單向函數存在）下，自然證明無法區分 $\text{P/poly}$ 中的真假隨機函數。Razborov 本人在 1985 年對單調電路的 clique 下界證明，正是自然證明的犧牲品。

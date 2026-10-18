@@ -15,9 +15,9 @@
 ### 1. 原始遞迴函數的定義
 原始遞迴函數由以下三條規則生成：
 
-1. **零函數**：$Z(x) = 0$
-2. **後繼函數**：$S(x) = x + 1$
-3. **投影函數**：$P_i^n(x_1, \dots, x_n) = x_i$
+1. **零函數**： $Z(x) = 0$
+2. **後繼函數**： $S(x) = x + 1$
+3. **投影函數**： $P_i^n(x_1, \dots, x_n) = x_i$
 4. **複合**（composition）：若 $g_1,\dots,g_m, h$ 是原始遞迴的，則
    $$
    f(x_1,\dots,x_n) = h(g_1(\vec{x}), \dots, g_m(\vec{x}))
@@ -38,7 +38,7 @@ $$
 
 ### 2. Church 數字（Church numerals）：把數字變成函數
 Kleene 面對的第一個難題：λ 演算裡沒有數字，怎麼算術？
-答案是**編碼**：自然數 $n$ 編碼為「把函數 $f$ 應用 $n$ 次到 $x$」：
+答案是**編碼**：自然數 $n$ 編碼為「把函數 $f$ 應用 $n$ 次到 $x$ 」：
 
 $$
 \bar{n} = \lambda f.\, \lambda x.\, f^n\ x
@@ -51,18 +51,18 @@ $$
 \bar{2} = \lambda f.\lambda x.\, f\ (f\ x), \quad \dots
 $$
 
-**Church 數字的妙處**：$\bar{n}$ 自帶「迭代 $n$ 次」的語義 —— 數字本身就是迭代器。
+**Church 數字的妙處**： $\bar{n}$ 自帶「迭代 $n$ 次」的語義 —— 數字本身就是迭代器。
 
 ### 3. 後繳函數的 λ 定義
-後繼函數 $S(n) = n+1$，在 λ 演算中：
+後繼函數 $S(n) = n+1$ ，在 λ 演算中：
 
 $$
 SUCC = \lambda n.\, \lambda f.\, \lambda x.\, f\ (n\ f\ x)
 $$
 
-**推理過程**：$n\ f\ x$ 是「把 $f$ 應用 $n$ 次到 $x$」的結果；再外面套一層 $f$，就是應用 $n+1$ 次。
+**推理過程**： $n\ f\ x$ 是「把 $f$ 應用 $n$ 次到 $x$ 」的結果；再外面套一層 $f$ ，就是應用 $n+1$ 次。
 
-驗證：$SUCC\ \bar{1}$
+驗證： $SUCC\ \bar{1}$
 $$
 \begin{aligned}
 SUCC\ \bar{1}
@@ -75,7 +75,7 @@ $$
 ### 4. 加法的 λ 定義
 有兩種等價寫法：
 
-**法一（迭代 SUCC）**：$add(m, n)$ 就是「對 $\bar{n}$ 迭代 $m$ 次 $SUCC$」：
+**法一（迭代 SUCC）**： $add(m, n)$ 就是「對 $\bar{n}$ 迭代 $m$ 次 $SUCC$ 」：
 $$
 ADD = \lambda m.\, \lambda n.\, m\ SUCC\ n
 $$
@@ -85,7 +85,7 @@ $$
 ADD = \lambda m.\, \lambda n.\, \lambda f.\, \lambda x.\, m\ f\ (n\ f\ x)
 $$
 
-驗證：$ADD\ \bar{2}\ \bar{3}$
+驗證： $ADD\ \bar{2}\ \bar{3}$
 $$
 ADD\ \bar{2}\ \bar{3}
 = \lambda f.\lambda x.\ \bar{2}\ f\ (\bar{3}\ f\ x)
@@ -98,7 +98,7 @@ $$
 MULT = \lambda m.\, \lambda n.\, \lambda f.\, m\ (n\ f)
 $$
 
-原始遞迴的一般模板：$f(n+1) = h(f(n))$ 在 λ 演算中就是把 $h$ 迭代 $n$ 次後從基底出發 —— 這正需要（受限的）迭代能力，而 Church 數字天生提供。
+原始遞迴的一般模板： $f(n+1) = h(f(n))$ 在 λ 演算中就是把 $h$ 迭代 $n$ 次後從基底出發 —— 這正需要（受限的）迭代能力，而 Church 數字天生提供。
 
 ### 6. Python 驗證
 ```python

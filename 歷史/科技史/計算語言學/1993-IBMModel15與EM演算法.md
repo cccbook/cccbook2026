@@ -17,10 +17,10 @@
 
 五個模型像推理劇的層層揭案，每一代修正前一模型的假設：
 
-- Model 1（均勻對齊）：每個英文詞等機率對齊每個法文詞，$P(a \mid e, f)$ 均勻。
-- Model 2（位置對齊）：對齊機率取決於位置，$P(a_j \mid j, l_e, l_f)$。
-- Model 3（fertility 發射次數 + NULL 詞）：引入 fertility $\phi(i)$——英文詞 i 產生幾個法文詞；加入虛構的 NULL 詞吸收插入的詞。
-- Model 4（相對位置扭曲 distortion）：對齊位置以「相對位移」建模，$P(a_j - a_{j-1})$ 取代絕對位置。
+- Model 1（均勻對齊）：每個英文詞等機率對齊每個法文詞， $P(a \mid e, f)$ 均勻。
+- Model 2（位置對齊）：對齊機率取決於位置， $P(a_j \mid j, l_e, l_f)$ 。
+- Model 3（fertility 發射次數 + NULL 詞）：引入 fertility $\phi(i)$ ——英文詞 i 產生幾個法文詞；加入虛構的 NULL 詞吸收插入的詞。
+- Model 4（相對位置扭曲 distortion）：對齊位置以「相對位移」建模， $P(a_j - a_{j-1})$ 取代絕對位置。
 - Model 5（避免重複佔位）：修正 Model 3-4 中多個詞佔同一位置的機率洩漏。
 
 翻譯機率的完整式（Model 3 簡化形式）：
@@ -53,7 +53,7 @@ $$
 \theta^{(t+1)} = \arg\max_\theta E\left[\log L(\theta) \,\middle|\, \theta^{(t)}\right] \implies L(\theta^{(t+1)}) \geq L(\theta^{(t)})
 $$
 
-證明骨架：$\log L(\theta) = Q(\theta \mid \theta^{(t)}) + H(\theta \mid \theta^{(t)})$，其中 $H \geq 0$ 由 Jensen 不等式保證；最大化 $Q$ 就抬高了下界，故概似單調上升。這個保證讓「看不見對齊也能學模型」從啟發式變成有理論根基的方法。GIZA++（Och 與 Ney 2003）將 Model 1-5 + HMM 的訓練流程實作成高效工具。
+證明骨架： $\log L(\theta) = Q(\theta \mid \theta^{(t)}) + H(\theta \mid \theta^{(t)})$ ，其中 $H \geq 0$ 由 Jensen 不等式保證；最大化 $Q$ 就抬高了下界，故概似單調上升。這個保證讓「看不見對齊也能學模型」從啟發式變成有理論根基的方法。GIZA++（Och 與 Ney 2003）將 Model 1-5 + HMM 的訓練流程實作成高效工具。
 
 ### Python 實作 IBM Model 1-3 的 EM 迭代
 

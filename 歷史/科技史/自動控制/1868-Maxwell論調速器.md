@@ -20,7 +20,7 @@
 ### 第 1 步：把調速器寫成微分方程
 
 Maxwell 的偵探手法：不畫機械圖，而是**直接寫方程組**。以三階簡化模型為例
-（飛球角 $\theta$、蒸汽機轉速 $\omega$、節流閥位移 $u$）：
+（飛球角 $\theta$ 、蒸汽機轉速 $\omega$ 、節流閥位移 $u$ ）：
 
 $$
 J\dot\omega = a\,u - b\,\omega, \qquad
@@ -42,9 +42,9 @@ $$
 x(t) = \sum_i c_i e^{\lambda_i t}
 $$
 
-- $\mathrm{Re}(\lambda_i) < 0$：$e^{\lambda_i t} \to 0$，擾動衰減——**穩定**。
-- $\mathrm{Re}(\lambda_i) > 0$：$e^{\lambda_i t} \to \infty$，擾動放大——**不穩定**。
-- $\mathrm{Re}(\lambda_i) = 0$（純虛數）：持續振盪——**hunting**！
+- $\mathrm{Re}(\lambda_i) < 0$ ： $e^{\lambda_i t} \to 0$ ，擾動衰減——**穩定**。
+- $\mathrm{Re}(\lambda_i) > 0$ ： $e^{\lambda_i t} \to \infty$ ，擾動放大——**不穩定**。
+- $\mathrm{Re}(\lambda_i) = 0$ （純虛數）：持續振盪——**hunting**！
 
 **謎題解開**：hunting 就是特徵根跑到虛軸上。蒸汽機 + 調速器的某些參數組合，
 讓系統恰好落在「穩定邊界」。

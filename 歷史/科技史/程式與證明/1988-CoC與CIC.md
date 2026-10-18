@@ -64,7 +64,7 @@ list(A) := nil \mid cons(a:A, l:list(A))
 $$
 
 並自動生成歸納原理與 $match$ 消去子。沒有它，
-自然數得用 Church 編碼 $ \lambda f. \lambda x. f^n(x)$ 苦撐，
+自然數得用 Church 編碼 $\lambda f. \lambda x. f^n(x)$ 苦撐，
 推理 painfully 間接；有了它， $induction$ 即 $match$ 加遞迴，
 程式與證明終於同形。
 

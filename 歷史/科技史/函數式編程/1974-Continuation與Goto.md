@@ -23,7 +23,7 @@ $$
 S : \text{Stmt} \to \text{State} \to \text{State}
 $$
 
-引入 continuation 後，每個敘述多收一個參數 $c$——「剩下的計算」：
+引入 continuation 後，每個敘述多收一個參數 $c$ ——「剩下的計算」：
 
 $$
 C : \text{Stmt} \to \text{Env} \to (\text{State} \to \text{Answer}) \to (\text{State} \to \text{Answer})
@@ -49,11 +49,11 @@ c\, s & \text{otherwise}
 \end{cases}
 $$
 
-if 則是把兩個分支各配一個 continuation。一切都組合起來了——除了 goto 需要環境裡有標籤的綁定，這由 label 敘述供給：`label L` 把 $(\lambda s.\, c\, s)$（「從這裡之後的計算」）綁入 $\rho$。
+if 則是把兩個分支各配一個 continuation。一切都組合起來了——除了 goto 需要環境裡有標籤的綁定，這由 label 敘述供給：`label L` 把 $(\lambda s.\, c\, s)$ （「從這裡之後的計算」）綁入 $\rho$ 。
 
 ### 線索三：CPS 轉換——每個函數多一個參數 k
 
-Continuation-Passing Style 轉換把每個函數 $f : A \to B$ 改寫成 $f' : A \to (B \to R) \to R$——原本的返回值改成「傳給 k」：
+Continuation-Passing Style 轉換把每個函數 $f : A \to B$ 改寫成 $f' : A \to (B \to R) \to R$ ——原本的返回值改成「傳給 k」：
 
 $$
 f(x) \;\;\rightsquigarrow\;\; f'(x, k) = k(f(x))
@@ -63,7 +63,7 @@ $$
 
 ### 線索四：continuation as first-class value
 
-一旦 continuation 顯式化為函數，它就是一個「值」——可以傳遞、儲存、多次叫用。Reynolds 與 Strachey-Wadsworth 的語義中，$\rho(L)$ 就是一等公民。這正是後來 Scheme `call/cc` 的理論根基：捕捉當前 continuation，就是「把 $\lambda s.\, c\, s$ 存下來」。exception（丟棄當前 continuation，改叫 handler 的 continuation）與 generator/async-await（保存與恢復 continuation）都是同一思想的後裔。
+一旦 continuation 顯式化為函數，它就是一個「值」——可以傳遞、儲存、多次叫用。Reynolds 與 Strachey-Wadsworth 的語義中， $\rho(L)$ 就是一等公民。這正是後來 Scheme `call/cc` 的理論根基：捕捉當前 continuation，就是「把 $\lambda s.\, c\, s$ 存下來」。exception（丟棄當前 continuation，改叫 handler 的 continuation）與 generator/async-await（保存與恢復 continuation）都是同一思想的後裔。
 
 ### 程式示範：Python CPS 直譯器，支援 label 與 goto
 

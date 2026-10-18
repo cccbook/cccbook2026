@@ -24,13 +24,13 @@ $$\text{每一個連續對稱性} \iff \text{一個守恆律}$$
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Noether 定理
-**陳述**：若作用量 $S = \int L\, dt$（拉格朗日量，見 `1697-Bernoulli最速降線.md`）在某連續變換下**不變**，則存在對應的**守恆量**。
+**陳述**：若作用量 $S = \int L\, dt$ （拉格朗日量，見 `1697-Bernoulli最速降線.md`）在某連續變換下**不變**，則存在對應的**守恆量**。
 
-**證明骨架**：變換 $q_i \to q_i + \epsilon \delta q_i$（$\epsilon$ 小），不變性：
+**證明骨架**：變換 $q_i \to q_i + \epsilon \delta q_i$ （ $\epsilon$ 小），不變性：
 
 $$\delta L = \sum_i \frac{\partial L}{\partial q_i}\delta q_i + \frac{\partial L}{\partial \dot{q}_i}\delta \dot{q}_i + \frac{\partial L}{\partial t}\delta t = \frac{d(\ldots)}{dt}$$
 
-**歐拉–拉格朗日方程**（$\frac{\partial L}{\partial q_i} = \frac{d}{dt}\frac{\partial L}{\partial \dot{q}_i}$）代入——守恆量的導數為零：
+**歐拉–拉格朗日方程**（ $\frac{\partial L}{\partial q_i} = \frac{d}{dt}\frac{\partial L}{\partial \dot{q}_i}$ ）代入——守恆量的導數為零：
 
 $$\frac{d}{dt}\left(\text{守恆量}\right) = 0 \quad \blacksquare$$
 
@@ -38,16 +38,16 @@ $$\frac{d}{dt}\left(\text{守恆量}\right) = 0 \quad \blacksquare$$
 
 | 對稱性 | 守恆量 |
 |--------|--------|
-| 時間平移（$t \to t + \epsilon$） | 能量 $E = \sum \dot{q}_i \frac{\partial L}{\partial \dot{q}_i} - L$ |
-| 空間平移（$x \to x + \epsilon$） | 動量 $p = \sum \frac{\partial L}{\partial \dot{q}_i}$ |
-| 旋轉（$\theta \to \theta + \epsilon$） | 角動量 $L_z = x p_y - y p_x$ |
+| 時間平移（ $t \to t + \epsilon$ ） | 能量 $E = \sum \dot{q}_i \frac{\partial L}{\partial \dot{q}_i} - L$ |
+| 空間平移（ $x \to x + \epsilon$ ） | 動量 $p = \sum \frac{\partial L}{\partial \dot{q}_i}$ |
+| 旋轉（ $\theta \to \theta + \epsilon$ ） | 角動量 $L_z = x p_y - y p_x$ |
 
 **深刻之處**：守恆律的**原因**是對稱性——**能量守恆是因為物理定律不隨時間改變**（昨天與今天的 $F = ma$ 相同）——**對稱性是「本質」，守恆律是「現象」**。
 
 ### 廣義相對論的能量
 **Noether 的第二定理**（同論文）：**規範對稱**（gauge symmetry，座標系的自由）⟺ **恆等式**（如 Bianchi 恆等式）——**廣義相對論的能量守恆的特殊結構**由此解釋——**Einstein 的疑難解決**。
 
-**規範場論的帝國**（Yang–Mills 1954、標準模型）：規範對稱（$U(1), SU(2), SU(3)$）⟺ 守恆荷（電荷、弱荷、色荷）——**粒子物理的全部結構源於 Noether**。
+**規範場論的帝國**（Yang–Mills 1954、標準模型）：規範對稱（ $U(1), SU(2), SU(3)$ ）⟺ 守恆荷（電荷、弱荷、色荷）——**粒子物理的全部結構源於 Noether**。
 
 ### 程式碼：對稱與守恆
 
@@ -117,7 +117,7 @@ print("  規範對稱 → 電荷守恆（規範場論）")
 
 ## 結案 -- 後果與影響
 - **物理學最深刻的原理**：對稱性 ⟺ 守恆律——能量、動量、角動量、電荷守恆的「原因」。
-- **規範場論的基礎**：Noether 第二定理——Yang–Mills（1954）、標準模型（$SU(3)\times SU(2)\times U(1)$）的結構源於對稱。
+- **規範場論的基礎**：Noether 第二定理——Yang–Mills（1954）、標準模型（ $SU(3)\times SU(2)\times U(1)$ ）的結構源於對稱。
 - **抽象代數的誕生**：環論與理想（1921）——Kummer 理想數的抽象化、代數幾何的基礎（Grothendieck 的概形，見 `1935-Bourbaki結構革命.md`）。
 - **廣義相對論的能量**：Noether 解決 Einstein 的疑難——**時空能量守恆的特殊結構**。
 - **婦女與數學**：Noether → Mirzakhani（Fields 2014）——**性別平等的數學史**。

@@ -20,23 +20,23 @@ Earley 的關鍵發明是「帶點的狀態項」（dotted rule / Earley item）
 
 $$[A \rightarrow \alpha \bullet \beta, \; i]$$
 
-dot 的語義：規則右側 $\alpha$ 的部分已經「被掃描或推導完成」，對應輸入從位置 $i$ 開始的部分；$\beta$ 是尚未處理的部分。整個剖析過程維護一組狀態集 $S_0, S_1, \dots, S_n$（n 為句子長度），$S_j$ 記錄「讀完第 j 個詞之後，所有可能的半成品」。若最終 $S_n$ 中出現 $[S' \rightarrow S \bullet, 0]$，句子即被辨識（recognize）。
+dot 的語義：規則右側 $\alpha$ 的部分已經「被掃描或推導完成」，對應輸入從位置 $i$ 開始的部分； $\beta$ 是尚未處理的部分。整個剖析過程維護一組狀態集 $S_0, S_1, \dots, S_n$ （n 為句子長度）， $S_j$ 記錄「讀完第 j 個詞之後，所有可能的半成品」。若最終 $S_n$ 中出現 $[S' \rightarrow S \bullet, 0]$ ，句子即被辨識（recognize）。
 
 ### 三個操作：推理的三步棋
 
 chart 上每個狀態集反覆執行三個操作，直到不動點：
 
-- **Predictor（預測）**：對 $[A \rightarrow \alpha \bullet B, i]$，為每條規則 $B \rightarrow \gamma$ 加入 $[B \rightarrow \bullet \gamma, j]$——「接下來應該出現 B，先預測它的所有展開方式」。
-- **Scanner（掃描）**：對 $[A \rightarrow \alpha \bullet a, i]$ 且第 j 個詞是 $a$，加入 $[A \rightarrow \alpha a \bullet, i]$ 到 $S_{j+1}$——「詞與預期相符，dot 前進」。
-- **Completer（完成）**：對 $[A \rightarrow \gamma \bullet, i]$（A 完成），回頭修改所有 $S_i$ 中形如 $[B \rightarrow \alpha \bullet A, k]$ 的項，將其升級為 $[B \rightarrow \alpha A \bullet, k]$——「一個半成品等到了它的組成部分」。
+- **Predictor（預測）**：對 $[A \rightarrow \alpha \bullet B, i]$ ，為每條規則 $B \rightarrow \gamma$ 加入 $[B \rightarrow \bullet \gamma, j]$ ——「接下來應該出現 B，先預測它的所有展開方式」。
+- **Scanner（掃描）**：對 $[A \rightarrow \alpha \bullet a, i]$ 且第 j 個詞是 $a$ ，加入 $[A \rightarrow \alpha a \bullet, i]$ 到 $S_{j+1}$ ——「詞與預期相符，dot 前進」。
+- **Completer（完成）**：對 $[A \rightarrow \gamma \bullet, i]$ （A 完成），回頭修改所有 $S_i$ 中形如 $[B \rightarrow \alpha \bullet A, k]$ 的項，將其升級為 $[B \rightarrow \alpha A \bullet, k]$ ——「一個半成品等到了它的組成部分」。
 
 ### 複雜度分析：破案的量尺
 
 設句子長度為 n，Earley 剖析器的複雜度取決於 Completer 的代價：
 
-- 一般 CFG：$O(n^3)$——與 CYK 相同，但不需 CNF 轉換。
-- 無歧義文法：$O(n^2)$——每個 item 只被完成一次。
-- 近似正則（regular）文法：$O(n)$——chart 上活躍的 item 數為常數。
+- 一般 CFG： $O(n^3)$ ——與 CYK 相同，但不需 CNF 轉換。
+- 無歧義文法： $O(n^2)$ ——每個 item 只被完成一次。
+- 近似正則（regular）文法： $O(n)$ ——chart 上活躍的 item 數為常數。
 
 這個「複雜度隨文法性質滑動」的特性，是 Earley 演算法優於固定 $O(n^3)$ 的 CYK 之處。
 

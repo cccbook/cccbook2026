@@ -25,7 +25,7 @@ $$
 
 這類積分方程的譜理論，並預見它將成為量子力學的數學骨架（後來確實如此，von Neumann 的 Hilbert 空間理論正是第 6 問精神的延續）。
 
-Hilbert 的推理方式是：幾何學之所以穩固，是因為 Euclid 以降的公理化方法把直覺轉成邏輯。力學的核心是微分方程 $\ddot x = F(x,t)$，若能把「質量、力、時間」的直覺也公理化，則物理定律的推導將如同幾何定理的證明一般嚴格。這條線索後來促成了 Courant–Hilbert《數學物理方法》與 Kolmogorov 機率論公理化（1933）。
+Hilbert 的推理方式是：幾何學之所以穩固，是因為 Euclid 以降的公理化方法把直覺轉成邏輯。力學的核心是微分方程 $\ddot x = F(x,t)$ ，若能把「質量、力、時間」的直覺也公理化，則物理定律的推導將如同幾何定理的證明一般嚴格。這條線索後來促成了 Courant–Hilbert《數學物理方法》與 Kolmogorov 機率論公理化（1933）。
 
 ### 線索二：第 16 問——極限環個數
 
@@ -57,7 +57,7 @@ $$
 \frac{d}{dx}\frac{\partial F}{\partial u'} - \frac{\partial F}{\partial u} = 0
 $$
 
-但 Weierstrass 的反例顯示極小化序列可能沒有極小解。Hilbert 的靈感是：**不假設解存在，而是取極小化序列 $u_1, u_2, \dots$，證明其收斂極限就是解**。他用 Dirichlet 原理示範了這個方法：對 Dirichlet 積分
+但 Weierstrass 的反例顯示極小化序列可能沒有極小解。Hilbert 的靈感是：**不假設解存在，而是取極小化序列 $u_1, u_2, \dots$ ，證明其收斂極限就是解**。他用 Dirichlet 原理示範了這個方法：對 Dirichlet 積分
 
 $$
 D[u] = \int_\Omega |\nabla u|^2\,dx
@@ -67,7 +67,7 @@ $$
 
 ### 線索四：第 21 問——Fuchs 型方程的單值化
 
-第 21 問（Riemann–Hilbert 問題）：給定 Riemann 球面上的奇點 $\{a_1, \dots, a_n\}$ 與每個奇點指定的單值矩陣（monodromy matrix）$M_k$，是否存在 Fuchs 型線性微分方程
+第 21 問（Riemann–Hilbert 問題）：給定 Riemann 球面上的奇點 $\{a_1, \dots, a_n\}$ 與每個奇點指定的單值矩陣（monodromy matrix） $M_k$ ，是否存在 Fuchs 型線性微分方程
 
 $$
 \frac{d^2 w}{dz^2} + p(z)\frac{dw}{dz} + q(z)w = 0
@@ -75,7 +75,7 @@ $$
 
 其解的單值表示恰好給定這些矩陣？
 
-這個問題源於 Riemann 對超幾何方程的研究：解沿奇點 $a_k$ 繞行一圈後，$w \mapsto M_k w$。Hilbert 問的是「反問題」：先給單值矩陣，反求方程。此問題的線性版本在 1908 年前後由 Hilbert 的學生 Plemelj 大致解決（但 1986 年 Kohn 發現其證明對一個退化情形有誤）。而非線性版本則催生了 Riemann–Hilbert 方法，成為現代可積系統、孤立子理論（見 [1812-Gauss與超幾何函數.md](1812-Gauss與超幾何函數.md)）與隨機矩陣理論的核心工具。
+這個問題源於 Riemann 對超幾何方程的研究：解沿奇點 $a_k$ 繞行一圈後， $w \mapsto M_k w$ 。Hilbert 問的是「反問題」：先給單值矩陣，反求方程。此問題的線性版本在 1908 年前後由 Hilbert 的學生 Plemelj 大致解決（但 1986 年 Kohn 發現其證明對一個退化情形有誤）。而非線性版本則催生了 Riemann–Hilbert 方法，成為現代可積系統、孤立子理論（見 [1812-Gauss與超幾何函數.md](1812-Gauss與超幾何函數.md)）與隨機矩陣理論的核心工具。
 
 ## 結案報告
 

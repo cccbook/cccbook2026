@@ -31,7 +31,7 @@ $$\text{一道製程一次破真空} \xrightarrow{\text{cluster tool（真空中
 
 ### 第二條線索：濺鍍物理（PVD 的引擎）
 磁控濺鍍：氬離子轟擊靶材（magnetron 加強游離）：
-- 濺鍍產率：$Y(E) \propto \frac{E}{E_{th}}$（離子能量超過閾值後線性成長）；
+- 濺鍍產率： $Y(E) \propto \frac{E}{E_{th}}$ （離子能量超過閾值後線性成長）；
 - **方向性濺鍍**：長投距（long-throw）、準直器（collimator）→
   更垂直的沉積——接觸孔底部覆蓋的關鍵。
 

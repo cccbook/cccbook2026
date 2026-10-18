@@ -21,16 +21,16 @@ Rothamsted 有長達 70 年的長期田間實驗數據（如 Broadbalk wheat exp
 Fisher 在書中正式推廣顯著性檢定流程：
 
 1. 設定 H0（如「處理無效應」）。
-2. 選擇檢定統計量 $T$。
+2. 選擇檢定統計量 $T$ 。
 3. 在 H0 下計算**p 值**：
 
    $$p = P_0(T \ge t_{obs})$$
 
 4. 若 $p$ 足夠小，則 H0「顯著不成立」，拒絕 H0。
 
-書中列出 $t$、$\chi^2$、$F$ 分佈的表格，使研究者能直接查表完成檢定——這是**統計方法平民化**的關鍵一步。
+書中列出 $t$ 、 $\chi^2$ 、 $F$ 分佈的表格，使研究者能直接查表完成檢定——這是**統計方法平民化**的關鍵一步。
 
-### 線索三：$p < 0.05$ 慣例的誕生
+### 線索三： $p < 0.05$ 慣例的誕生
 Fisher 在書中寫道（大意）：
 
 > "…we shall not often be astray if we draw a conventional line at 0.05."
@@ -50,7 +50,7 @@ $$\underbrace{\sum_i (y_i - \bar{y})^2}_{SS_{total}} = \underbrace{\sum_g n_g(\b
 
 $$F = \frac{SS_{between} / (k-1)}{SS_{within} / (N-k)} = \frac{MS_{between}}{MS_{within}} \;\sim\; F_{k-1,\,N-k} \;\;(\text{H0 下})$$
 
-其中 $k$ 為組數、$N$ 為總樣本數。這是 Gosset t 檢定的推廣：兩組時 $F = t^2$。
+其中 $k$ 為組數、 $N$ 為總樣本數。這是 Gosset t 檢定的推廣：兩組時 $F = t^2$ 。
 
 ### 線索五：實驗設計三原則
 Fisher 總結實驗設計的三大支柱：

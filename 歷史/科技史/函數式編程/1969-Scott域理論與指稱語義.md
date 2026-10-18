@@ -15,13 +15,13 @@
 
 ### 線索一：域（Domain）與 ⊥
 
-Scott 的第一個洞見：不要用「全函數集合」，改用帶偏序的完備集（CPO, complete partial order）。在域 $D$ 上定義偏序 $\sqsubseteq$，其中 $\bot$（bottom）代表「未定義值」，$\bot \sqsubseteq x$ 對所有 $x$ 成立。資訊越多的元素「越大」：
+Scott 的第一個洞見：不要用「全函數集合」，改用帶偏序的完備集（CPO, complete partial order）。在域 $D$ 上定義偏序 $\sqsubseteq$ ，其中 $\bot$ （bottom）代表「未定義值」， $\bot \sqsubseteq x$ 對所有 $x$ 成立。資訊越多的元素「越大」：
 
 $$\bot \sqsubseteq 0 \sqsubseteq 1 \sqsubseteq 2 \sqsubseteq \cdots \sqsubseteq \top$$
 
 ### 線索二：單調與連續函數
 
-域之間的函數必須是單調的（$x \sqsubseteq y \Rightarrow f(x) \sqsubseteq f(y)$），更好的是連續的（保序上確界）：
+域之間的函數必須是單調的（ $x \sqsubseteq y \Rightarrow f(x) \sqsubseteq f(y)$ ），更好的是連續的（保序上確界）：
 
 $$f\left(\bigsqcup_{n} x_n\right) = \bigsqcup_{n} f(x_n)$$
 
@@ -33,7 +33,7 @@ Kleene 不動點定理說：連續函數 $f: D \to D$ 在 CPO 上必有最小不
 
 $$\mathrm{fix}(f) = \bigsqcup_{n=0}^{\infty} f^n(\bot)$$
 
-從 $\bot$ 開始，反覆套用 $f$，逼近極限。這就是遞迴的語義：
+從 $\bot$ 開始，反覆套用 $f$ ，逼近極限。這就是遞迴的語義：
 
 $$\llbracket \mathrm{rec}\ f.\ e \rrbracket = \mathrm{fix}\left(\lambda d.\ \llbracket e \rrbracket[d/f]\right)$$
 
@@ -41,7 +41,7 @@ $$\llbracket \mathrm{rec}\ f.\ e \rrbracket = \mathrm{fix}\left(\lambda d.\ \llb
 
 ### 線索四：自指域 $D \cong [D \to D]$
 
-剩下Scott 自己過去的「不可能證明」怎麼辦？他發現：若放棄集合論的全函數空間，改用**連續函數的域**，則基數悖論消失。Scott 用投影（retraction）與反演極限（inverse limit）建構出一個與自身函數空間同構的域 $D \cong [D \to D]$。函數可以是自己的輸入——λ-Calculus 終於有了數學模型。
+剩下Scott 自己過去的「不可能證明」怎麼辦？他發現：若放棄集合論的全函數空間，改用**連續函數的域**，則基數悖論消失。Scott 用投影（retraction）與反演極限（inverse limit）建構出一個與自身函數空間同構的域 $D \cong [D \to D]$ 。函數可以是自己的輸入——λ-Calculus 終於有了數學模型。
 
 ### 程式驗證：最小不動點迭代
 

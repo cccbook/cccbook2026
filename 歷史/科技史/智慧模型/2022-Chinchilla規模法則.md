@@ -4,7 +4,7 @@
 
 2022 年，DeepMind 發表「Training Compute-Optimal Large Language Models」，提出 **Chinchilla 規模法則**：在固定計算預算下，模型大小與訓練資料量應該**等比例放大**，最佳比例約為**每個參數 20 個 token**。兇手不是更大的模型，而是「只顧加大模型、餓死資料」的規模化策略。
 
-Kaplan 學派（2020）主張 $L(N) \propto N^{-\alpha}$：加大參數是王道。Chinchilla 用 70B 參數 + 1.4T token 打敗了 280B 參數 + 300B token 的 Gopher——**同一筆錢，買對比例，買到更好的模型**。這樁案件改寫了此後所有大模型的訓練配方。
+Kaplan 學派（2020）主張 $L(N) \propto N^{-\alpha}$ ：加大參數是王道。Chinchilla 用 70B 參數 + 1.4T token 打敗了 280B 參數 + 300B token 的 Gopher——**同一筆錢，買對比例，買到更好的模型**。這樁案件改寫了此後所有大模型的訓練配方。
 
 ## 前因 -- 為什麼會有這個案子
 
@@ -25,7 +25,7 @@ Chinchilla 團隊比較三種回答「計算最優」的方法：
 | 方法 | 做法 | 結論 |
 |---|---|---|
 | 固定模型大小，掃描訓練量 | 找每個 $N$ 的最優 $D$ | 資料應隨模型等比放大 |
-| 固定計算預算 $C$，掃描 $(N,D)$ | 找每筆預算的最優組合 | $N \propto C^{0.50},\ D \propto C^{0.50}$ |
+| 固定計算預算 $C$ ，掃描 $(N,D)$ | 找每筆預算的最優組合 | $N \propto C^{0.50},\ D \propto C^{0.50}$ |
 | 參數化損失函數曲面 | 擬合 $L(N,D)$ 全域最小 | 同上，比例約 1:20 |
 
 三種方法**互相印證**：Kaplan 的「重參數」是錯的，真相是**等比放大**。
@@ -40,7 +40,7 @@ $$C \approx 6ND$$
 
 $$L(N, D) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}}$$
 
-其中擬合結果 $A=406.4,\ B=410.7,\ \alpha=0.34,\ \beta=0.28,\ E\approx1.69$。在 $C=6ND$ 約束下求極值，得到最優條件：
+其中擬合結果 $A=406.4,\ B=410.7,\ \alpha=0.34,\ \beta=0.28,\ E\approx1.69$ 。在 $C=6ND$ 約束下求極值，得到最優條件：
 
 $$D_{\text{opt}} \approx 20 \cdot N_{\text{opt}}, \qquad N_{\text{opt}} \propto C^{0.50}$$
 

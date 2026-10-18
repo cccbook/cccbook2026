@@ -23,13 +23,13 @@ $$\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：圖靈機的形式定義（七個元件）
-一台圖靈機 $M = (Q, \Gamma, \Sigma, \delta, q_0, q_{accept}, q_{reject})$：
-- $Q$：有限狀態集合（有限控制器）
-- $\Gamma$：帶子字母表（包含空白符 $B$）
-- $\Sigma \subseteq \Gamma \setminus \{B\}$：輸入字母表
-- $\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$：轉移函數（讀、寫、移動）
-- $q_0 \in Q$：初始狀態
-- $q_{accept}, q_{reject} \in Q$：接受/拒絕狀態（終止狀態）
+一台圖靈機 $M = (Q, \Gamma, \Sigma, \delta, q_0, q_{accept}, q_{reject})$ ：
+- $Q$ ：有限狀態集合（有限控制器）
+- $\Gamma$ ：帶子字母表（包含空白符 $B$ ）
+- $\Sigma \subseteq \Gamma \setminus \{B\}$ ：輸入字母表
+- $\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ ：轉移函數（讀、寫、移動）
+- $q_0 \in Q$ ：初始狀態
+- $q_{accept}, q_{reject} \in Q$ ：接受/拒絕狀態（終止狀態）
 
 **關鍵限制**：
 - **狀態集有限**（人腦有限步驟的規則）
@@ -37,7 +37,7 @@ $$\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制�
 - **每一步只看一個符號、只寫一個符號、只移動一步**——**原子動作（atomic operation）**。
 
 ### 第二條線索：通用圖靈機（Universal Turing Machine, UTM）
-Turing 的最強洞見：**存在一台機器 $U$，能模擬任何其他圖靈機 $M$ 在輸入 $w$ 上的運行**：
+Turing 的最強洞見：**存在一台機器 $U$ ，能模擬任何其他圖靈機 $M$ 在輸入 $w$ 上的運行**：
 $$U(\langle M, w \rangle) = M(w).$$
 其中 $\langle M,w \rangle$ 是 $M$ 的編碼（描述表）+ 輸入 $w$ 的二進位表示。
 $$\text{程式 = 資料} \quad \text{（stored-program 的數學起源）}.$$
@@ -45,15 +45,15 @@ $$\text{程式 = 資料} \quad \text{（stored-program 的數學起源）}.$$
 「記憶體同時儲存資料與指令」——這是通用計算的關鍵設計。
 
 ### 第三條線索：停機問題（Halting Problem）
-Turing 證明：不存在圖靈機 $H$，對任意 $\langle M,w \rangle$ 判定：
+Turing 證明：不存在圖靈機 $H$ ，對任意 $\langle M,w \rangle$ 判定：
 $$H(\langle M,w \rangle) = \begin{cases}
 \text{true}, & \text{若 } M(w) \text{ 終止（停機）},\\
 \text{false}, & \text{若 } M(w) \text{ 無限循環（不停機）}.
 \end{cases}$$
 **對角論證（diagonalization）**：
-假設 $H$ 存在，定義 $D(\langle M\rangle)$：
-- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{true}$（$M$ 對自身編碼停機），則 $D$ 進入無限循環。
-- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{false}$，則 $D$ 停機。
+假設 $H$ 存在，定義 $D(\langle M\rangle)$ ：
+- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{true}$ （ $M$ 對自身編碼停機），則 $D$ 進入無限循環。
+- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{false}$ ，則 $D$ 停機。
 套用 $D(\langle D\rangle)$ → 矛盾。**因此 $H$ 不存在**。
 $$\text{可判定（decidable）} \subsetneq \text{可計算（computable）}.$$
 

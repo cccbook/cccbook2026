@@ -11,14 +11,14 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 四類文法與對應自動機
-形式文法 $G = (V, \Sigma, P, S)$：非終結符 $V$、終結符 $\Sigma$、產生規則 $P$、起始符 $S$。依規則形式限制分四層：
+形式文法 $G = (V, \Sigma, P, S)$ ：非終結符 $V$ 、終結符 $\Sigma$ 、產生規則 $P$ 、起始符 $S$ 。依規則形式限制分四層：
 
 | 層級 | 文法名稱 | 規則形式限制 | 對應自動機 | 識別的語言 |
 |---|---|---|---|---|
-| **Type-3** | 正則文法 | $A \to aB$ 或 $A \to a$（右線性） | 有限狀態機 FSM | 正則語言 |
-| **Type-2** | 上下文無關文法 CFG | $A \to \alpha$（左邊必為單一非終結符） | 下推自動機 PDA | CFL |
-| **Type-1** | 上下文有關文法 CSG | $\alpha A \beta \to \alpha \gamma \beta$（$|\gamma| \geq |A|$，不縮短） | 線性有界自動機 LBA | CSL |
-| **Type-0** | 無限制文法 | $\alpha \to \beta$（任意） | 圖靈機 TM | 遞迴可枚舉語言 |
+| **Type-3** | 正則文法 | $A \to aB$ 或 $A \to a$ （右線性） | 有限狀態機 FSM | 正則語言 |
+| **Type-2** | 上下文無關文法 CFG | $A \to \alpha$ （左邊必為單一非終結符） | 下推自動機 PDA | CFL |
+| **Type-1** | 上下文有關文法 CSG | $\alpha A \beta \to \alpha \gamma \beta$ （ $|\gamma| \geq |A|$ ，不縮短） | 線性有界自動機 LBA | CSL |
+| **Type-0** | 無限制文法 | $\alpha \to \beta$ （任意） | 圖靈機 TM | 遞迴可枚舉語言 |
 
 ### 產生規則形式範例
 ```text

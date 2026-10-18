@@ -27,7 +27,7 @@ $$
 D_3 = \text{filter}(f_3, \ \text{map}(f_2, \ D_1))
 $$
 
-整條鏈本質上是一個純函數 $D_3 = (f_3 \circ f_2 \circ \cdots)(D_0)$。因為 $f_i$ 是純函數，對相同輸入必得相同輸出：$\forall x: f(x) = f(x) \Rightarrow \text{重算} = \text{原值}$。
+整條鏈本質上是一個純函數 $D_3 = (f_3 \circ f_2 \circ \cdots)(D_0)$ 。因為 $f_i$ 是純函數，對相同輸入必得相同輸出： $\forall x: f(x) = f(x) \Rightarrow \text{重算} = \text{原值}$ 。
 
 這就是容錯的數學基礎：不複製資料，故障時沿血緣重算即可（recompute from lineage），純函數可重試的冪等性（idempotence）取代備份。
 

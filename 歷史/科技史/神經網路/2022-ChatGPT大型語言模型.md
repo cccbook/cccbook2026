@@ -46,14 +46,14 @@ $$\text{GPT-3（2020）：能力} \xrightarrow{\text{RLHF（2022）：對齊}} \
 **第一階段：SFT（Supervised Fine-Tuning）**——
 人類標註員對每個指令寫出**示範回答**（約 13,000 筆），做監督微調：
 $$\max_{\theta} \; \mathbb{E}_{(x, y) \sim \mathcal{D}_{\text{SFT}}} \big[ \log \pi_\theta(y \mid x) \big]$$
-- $x$：指令、$y$：人類示範的回答、$\pi_\theta$：語言模型策略；
+- $x$ ：指令、 $y$ ：人類示範的回答、 $\pi_\theta$ ：語言模型策略；
 - **這是模仿**：模型學會「回答的格式」，但人類示範有限，品質有上限。
 
 **第二階段：獎勵模型（Reward Model）**——
 標註員對同一指令的多個回答**排序**（約 33,000 筆成對比較）：
 $$\boxed{L(\phi) = -\log \sigma\big(r_\phi(x, y_{\text{chosen}}) - r_\phi(x, y_{\text{rejected}})\big)}$$
-- $r_\phi(x, y)$：獎勵模型給「回答 $y$」的分數；
-- $\sigma$：sigmoid——**Bradley–Terry 模型**：勝率
+- $r_\phi(x, y)$ ：獎勵模型給「回答 $y$ 」的分數；
+- $\sigma$ ：sigmoid——**Bradley–Terry 模型**：勝率
   $$P(y_{\text{chosen}} \succ y_{\text{rejected}}) = \sigma(r_{\text{chosen}} - r_{\text{rejected}});$$
 - **為什麼用排序不用打分？** 人類打分不一致（有人給 7 分、有人給 8 分），
   但「**誰比較好**」的判斷穩定得多——**只學差值，不學絕對值**。
@@ -64,13 +64,13 @@ $$\max_{\theta} \; \mathbb{E}_{x \sim \mathcal{D}, \, y \sim \pi_\theta} \big[ r
 - **第一項**：生成的回答得分越高越好；
 - **第二項（KL 懲罰）**：**不要離 SFT 模型太遠**——防止
   「**獎勵駭客（reward hacking）**」（模型鑽評審的漏洞、生成評審愛但人類討厭的文字）；
-- $\beta$：KL 的力度。
+- $\beta$ ：KL 的力度。
 
 ### 第二條線索：Bradley–Terry 的梯度
-**對損失求導**：令 $d = r_{\text{chosen}} - r_{\text{rejected}}$、$p = \sigma(d)$：
+**對損失求導**：令 $d = r_{\text{chosen}} - r_{\text{rejected}}$ 、 $p = \sigma(d)$ ：
 $$\frac{\partial L}{\partial d} = \sigma(d) - 1 = p - 1$$
-- **直覺**：若 $p \approx 1$（模型已把好答案排對）→ 梯度 $\approx 0$（不用再學）；
-  若 $p \approx 0$（排錯了）→ 梯度 $\approx -1$（強力修正：**拉高 $r_{\text{chosen}}$、壓低 $r_{\text{rejected}}$**）；
+- **直覺**：若 $p \approx 1$ （模型已把好答案排對）→ 梯度 $\approx 0$ （不用再學）；
+  若 $p \approx 0$ （排錯了）→ 梯度 $\approx -1$ （強力修正：**拉高 $r_{\text{chosen}}$ 、壓低 $r_{\text{rejected}}$ **）；
 - **這就是「從錯誤中學習」的數學形式**——與感知器（1958）、
   logistic 迴歸（1958，Cox）一脈相承：
   $$\text{感知器（1958）} \to \text{logistic（1958）} \to \text{Bradley–Terry（1952，Bradley \& Terry）} \to \text{RLHF（2022）}.$$
@@ -83,7 +83,7 @@ $$\frac{\partial L}{\partial d} = \sigma(d) - 1 = p - 1$$
 **PPO（2017，Schulman）的解法**：**裁剪（clipping）**——
 限制新舊策略的機率比在 $[1-\epsilon, 1+\epsilon]$ 內：
 $$L^{\text{CLIP}}(\theta) = \mathbb{E} \Big[ \min\big( \rho(\theta) A, \; \mathrm{clip}(\rho(\theta), 1-\epsilon, 1+\epsilon) A \big) \Big], \quad \rho(\theta) = \frac{\pi_\theta(y \mid x)}{\pi_{\text{old}}(y \mid x)}$$
-- $A$：優勢（advantage）——這個回答比「平均」好多少；
+- $A$ ：優勢（advantage）——這個回答比「平均」好多少；
 - **直覺**：好的更新**慢慢走**，壞的更新**不許走**——
   $$\text{一步千里（崩壞）} \xrightarrow{\text{PPO 裁剪}} \text{小步穩走（收斂）}.$$
 - **在 RLHF 中**：PPO 讓語言模型在獎勵模型的引導下，

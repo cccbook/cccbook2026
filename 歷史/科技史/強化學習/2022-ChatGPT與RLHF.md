@@ -30,9 +30,9 @@ SFT → 獎勵模型 → PPO 強化學習。**強化學習從此走進語言模�
 $$\theta \leftarrow \arg\max_\theta \; \mathbb{E}_{(x, y_{demo})}\big[\log \pi_\theta(y_{demo}|x)\big].$$
 
 **Step 2 -- 獎勵模型 (Reward Model)**：人類對同一提示的多個回答**排序/比較**
-（不是打分——比較更一致），訓練獎勵模型 $r_\phi(x, y)$：
+（不是打分——比較更一致），訓練獎勵模型 $r_\phi(x, y)$ ：
 $$\phi \leftarrow \arg\min_\phi \; \mathbb{E}\big[-\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\big]$$
-其中 $y_w$ 是人類偏好的回答、$y_l$ 是被拒絕的回答。**Bradley–Terry 模型**的應用。
+其中 $y_w$ 是人類偏好的回答、 $y_l$ 是被拒絕的回答。**Bradley–Terry 模型**的應用。
 
 **Step 3 -- PPO 強化學習**：語言模型的生成是一個 RL 決策過程——
 每個 token 是一個動作、整段回答是一條軌跡、獎勵模型的分數是回報：
@@ -42,8 +42,8 @@ KL 懲罰項防止模型「為了討好獎勵模型而飄離語言能力」—�
 ### 核心推理二：PPO 為什麼穩定？
 普通策略梯度的更新步長大就崩潰。PPO 用**裁剪的目標函數**限制每次更新的幅度：
 $$L(\theta) = \mathbb{E}\Big[ \min\big( \rho(\theta) A, \; \text{clip}(\rho(\theta), 1-\epsilon, 1+\epsilon) A \big) \Big]$$
-其中 $\rho(\theta) = \pi_\theta(a|s) / \pi_{old}(a|s)$ 是機率比、$A$ 是優勢估計（GAE）。
-**每次更新機率比最多變 $1\pm 0.2$**——訓練從震盪變成平滑。
+其中 $\rho(\theta) = \pi_\theta(a|s) / \pi_{old}(a|s)$ 是機率比、 $A$ 是優勢估計（GAE）。
+**每次更新機率比最多變 $1\pm 0.2$ **——訓練從震盪變成平滑。
 
 ### Python：RLHF 三步的極簡骨架
 

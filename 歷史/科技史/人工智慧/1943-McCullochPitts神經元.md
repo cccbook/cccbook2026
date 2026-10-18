@@ -22,14 +22,14 @@ McCulloch 觀察神經元的行為特徵：
 
 ### 第二步：數學模型
 $$y = H\!\left(\sum_i w_i x_i - \theta\right), \qquad H(z) = \begin{cases}1 & z \ge 0 \\ 0 & z < 0\end{cases}$$
-$w_i$ 權重（興奮 $>0$、抑制 $<0$）、$\theta$ 閾值、$H$ 階梯函數。
+$w_i$ 權重（興奮 $>0$ 、抑制 $<0$ ）、 $\theta$ 閾值、 $H$ 階梯函數。
 
 ### 第三步：驚人的推論——邏輯閘的誕生
-適當選 $w_i$ 與 $\theta$，單一神經元就能實作所有基本邏輯閘：
-- **AND**：$w=(1,1), \theta=2$ → $y = x_1 \wedge x_2$
-- **OR**：$w=(1,1), \theta=1$ → $y = x_1 \vee x_2$
-- **NOT**：$w=(-1), \theta=0$ → $y = \neg x_1$
-- **NAND**：$w=(-1,-1), \theta=-1$ → $y = \neg(x_1 \wedge x_2)$
+適當選 $w_i$ 與 $\theta$ ，單一神經元就能實作所有基本邏輯閘：
+- **AND**： $w=(1,1), \theta=2$ → $y = x_1 \wedge x_2$
+- **OR**： $w=(1,1), \theta=1$ → $y = x_1 \vee x_2$
+- **NOT**： $w=(-1), \theta=0$ → $y = \neg x_1$
+- **NAND**： $w=(-1,-1), \theta=-1$ → $y = \neg(x_1 \wedge x_2)$
 
 而 NAND 閘是**萬能閘**——任何布林函數都能用 NAND 組合（Sheffer, 1913）。
 **推論**：神經元網路 = 布林電路 = Turing 機可計算的一切。McCulloch 與 Pitts 據此宣稱：大腦在原理上是一台圖靈機。

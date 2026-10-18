@@ -1,7 +1,7 @@
 # 2013 — Word2Vec 詞向量
 
 ## 案件摘要
-2013 年，Google 的 Tomáš Mikolov 等人發表 word2vec：把每個詞 $w$ 映射成一個向量 $v_w \in \mathbb{R}^d$（$d$ 約 100–600），用海量文本以淺層神經網路訓練，竟浮現出驚人的**線性代數結構**：
+2013 年，Google 的 Tomáš Mikolov 等人發表 word2vec：把每個詞 $w$ 映射成一個向量 $v_w \in \mathbb{R}^d$ （ $d$ 約 100–600），用海量文本以淺層神經網路訓練，竟浮現出驚人的**線性代數結構**：
 
 $$v_{king} - v_{man} + v_{woman} \approx v_{queen}$$
 
@@ -16,7 +16,7 @@ $$v_{king} - v_{man} + v_{woman} \approx v_{queen}$$
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：skip-gram 的目標函數
-給定中心詞 $w_t$，skip-gram 最大化其上下文詞 $w_{t+j}$ 的條件機率：
+給定中心詞 $w_t$ ，skip-gram 最大化其上下文詞 $w_{t+j}$ 的條件機率：
 
 $$\max_\theta \; \frac{1}{T}\sum_{t=1}^{T}\sum_{-c \leq j \leq c,\, j\neq 0} \log p(w_{t+j} \mid w_t; \theta), \qquad p(w_c \mid w) = \frac{\exp(v_{w_c}^\top v_w)}{\sum_{w'}\exp(v_{w'}^\top v_w)}$$
 
@@ -38,12 +38,12 @@ $$\text{sim}(u, v) = \cos\theta = \frac{u^\top v}{\|u\|\|v\|}$$
 
 $$v_{king} - v_{man} + v_{woman} \approx v_{queen}, \quad v_{Paris} - v_{France} + v_{Italy} \approx v_{Rome}$$
 
-Mikolov 用「3CosAdd」方法解類比題：固定 $v_{king}$、$v_{man}$、$v_{woman}$，在詞表中找使餘弦相似度最大的 $x$。理論解釋（Levy & Goldberg 2014、Arora et al. 2016）：skip-gram 目標隱含對 PMI 矩陣的隱式分解，而 PMI 的線性結構使關係向量近似平行。
+Mikolov 用「3CosAdd」方法解類比題：固定 $v_{king}$ 、 $v_{man}$ 、 $v_{woman}$ ，在詞表中找使餘弦相似度最大的 $x$ 。理論解釋（Levy & Goldberg 2014、Arora et al. 2016）：skip-gram 目標隱含對 PMI 矩陣的隱式分解，而 PMI 的線性結構使關係向量近似平行。
 
 ### 線索四：與 LSA 的對決
-LSA 對詞–文件矩陣做 SVD：$X = U\Sigma V^\top$，取 $U_k$ 當詞向量。LSA 是**全域**線性代數（一次分解），word2vec 是**局部**隨機梯度（逐對更新）。後者在語義類比、詞相似度任務上大幅勝出，且訓練可增量、可擴展到數十億詞——SVD 開了門，word2vec 把路走寬。
+LSA 對詞–文件矩陣做 SVD： $X = U\Sigma V^\top$ ，取 $U_k$ 當詞向量。LSA 是**全域**線性代數（一次分解），word2vec 是**局部**隨機梯度（逐對更新）。後者在語義類比、詞相似度任務上大幅勝出，且訓練可增量、可擴展到數十億詞——SVD 開了門，word2vec 把路走寬。
 
-## 程式碼範例：$v_{king} - v_{man} + v_{woman}$ 餘弦相似度
+## 程式碼範例： $v_{king} - v_{man} + v_{woman}$ 餘弦相似度
 ```python
 import numpy as np
 

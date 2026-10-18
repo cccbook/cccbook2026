@@ -20,11 +20,11 @@ $$\mathbf{z}_0 = [\,\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \m
 
 ### 第一條線索：patch 即 token——影像的序列化
 
-影像 $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ 被切成 $\frac{H}{P} \times \frac{W}{P}$ 個 patch（$P = 16$），每個 patch 攤平成一個向量，經線性投影 $\mathbf{E}$ 成 token：
+影像 $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ 被切成 $\frac{H}{P} \times \frac{W}{P}$ 個 patch（ $P = 16$ ），每個 patch 攤平成一個向量，經線性投影 $\mathbf{E}$ 成 token：
 
 $$N = \frac{H \cdot W}{P^2}, \qquad \mathbf{z}_0 = [\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \dots;\; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{pos}$$
 
-$224 \times 224$ 影像、$P=16$ → 196 個 token + 1 個分類 token——與 NLP 的序列長度相當。實作上，patch 投影就是一個 **stride = P 的卷積**（唯一的卷積殘跡）。`[CLS]` token 與位置編碼 $\mathbf{E}_{pos}$（一維可學式）直接沿用 BERT 的設計。
+$224 \times 224$ 影像、 $P=16$ → 196 個 token + 1 個分類 token——與 NLP 的序列長度相當。實作上，patch 投影就是一個 **stride = P 的卷積**（唯一的卷積殘跡）。`[CLS]` token 與位置編碼 $\mathbf{E}_{pos}$ （一維可學式）直接沿用 BERT 的設計。
 
 ### 第二條線索：歸納偏置的捨棄——兩個假說的對決
 

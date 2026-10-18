@@ -16,15 +16,15 @@ Jacob Bernoulli 的偵查思路可以概括為四步：把物理情境翻譯成�
 
 ### 第一步：把滑落時間寫成積分
 
-設珠子從曲線上高度為 $y$ 的位置（以最低點為原點，$y$ 向上為正）出發。由能量守恆，珠子滑到高度 $h$ 時的速度滿足：
+設珠子從曲線上高度為 $y$ 的位置（以最低點為原點， $y$ 向上為正）出發。由能量守恆，珠子滑到高度 $h$ 時的速度滿足：
 
 $$\frac{1}{2} m v^2 = m g (y - h) \quad\Rightarrow\quad v = \sqrt{2g(y-h)}$$
 
-沿曲線的弧長微元是 $ds = \sqrt{1 + (x')^2}\, dy$（把 $x$ 視為 $y$ 的函數），因此從 $y$ 滑到最低點所需的總時間為：
+沿曲線的弧長微元是 $ds = \sqrt{1 + (x')^2}\, dy$ （把 $x$ 視為 $y$ 的函數），因此從 $y$ 滑到最低點所需的總時間為：
 
 $$T(y) = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh$$
 
-等時的要求是：$T(y)$ 與出發點 $y$ **無關**，恆為常數 $T_0$。
+等時的要求是： $T(y)$ 與出發點 $y$ **無關**，恆為常數 $T_0$ 。
 
 ### 第二步：對時間式求導，誕生微分方程
 
@@ -32,7 +32,7 @@ Jacob 的關鍵靈感是：與其直接處理這個難看的積分，不如對�
 
 $$T_0 = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh$$
 
-經過變數代換與求導，可將其化為（以現代記號，令 $y$ 為縱座標、時間為參數）一個關於運動的二階微分方程。設珠子沿曲線運動，速度的鉛直分量為 $\dot{y}$，由能量守恆 $\dot{y}^2 \propto y$。再對時間求導：
+經過變數代換與求導，可將其化為（以現代記號，令 $y$ 為縱座標、時間為參數）一個關於運動的二階微分方程。設珠子沿曲線運動，速度的鉛直分量為 $\dot{y}$ ，由能量守恆 $\dot{y}^2 \propto y$ 。再對時間求導：
 
 $$\dot{y}^2 = 2g(y_0 - y) \cdot k \quad\Rightarrow\quad 2\dot{y}\ddot{y} = -2gk\,\dot{y} \quad\Rightarrow\quad \ddot{y} = -gk$$
 
@@ -44,7 +44,7 @@ $$\ddot{s} = -\omega^2 s$$
 
 ### 第三步：解微分方程，找出曲線
 
-現在問題反轉：什麼樣的曲線能讓沿線滑動的弧長 $s$ 服從 $\ddot{s} = -\omega^2 s$？Jacob 透過曲率的分析指出：曲線在每一點的曲率半徑 $\rho$ 必須滿足：
+現在問題反轉：什麼樣的曲線能讓沿線滑動的弧長 $s$ 服從 $\ddot{s} = -\omega^2 s$ ？Jacob 透過曲率的分析指出：曲線在每一點的曲率半徑 $\rho$ 必須滿足：
 
 $$\rho \propto \frac{ds}{dy} \cdot s \quad\Rightarrow\quad \rho \propto s$$
 
@@ -52,11 +52,11 @@ $$\rho \propto \frac{ds}{dy} \cdot s \quad\Rightarrow\quad \rho \propto s$$
 
 $$x = a(\theta - \sin\theta), \qquad y = a(1 - \cos\theta)$$
 
-驗證：對 $\theta$ 求導得 $dx = a(1-\cos\theta)d\theta$，$dy = a\sin\theta\, d\theta$，故
+驗證：對 $\theta$ 求導得 $dx = a(1-\cos\theta)d\theta$ ， $dy = a\sin\theta\, d\theta$ ，故
 
 $$ds = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = a\sqrt{2 - 2\cos\theta}\, d\theta = 2a\sin\frac{\theta}{2}\, d\theta$$
 
-積分得弧長 $s = 4a\left(1 - \cos\frac{\theta}{2}\right) = 2(y_0 - y)/1 \cdot (\cdots)$，代入運動方程後確實得到 $\ddot{s} = -\omega^2 s$，其中 $\omega^2 = g/(4a)$。
+積分得弧長 $s = 4a\left(1 - \cos\frac{\theta}{2}\right) = 2(y_0 - y)/1 \cdot (\cdots)$ ，代入運動方程後確實得到 $\ddot{s} = -\omega^2 s$ ，其中 $\omega^2 = g/(4a)$ 。
 
 ### 第四步：辦案結論——就是擺線
 
@@ -123,4 +123,4 @@ for theta0 in [0.2, 0.8, 1.6, 1.4*np.pi, 1.9*np.pi]:
 # 觀察：無論 theta0 為何，滑落時間都等於理論值 → 等時性成立
 ```
 
-執行後可見：不管珠子從擺線上哪一點出發，抵達最低點的時間都收斂到同一個值 $\pi\sqrt{a/g} \cdot (\text{修正因子})$——這正是 Jacob Bernoulli 在 1690 年用微分方程揭曉的答案。
+執行後可見：不管珠子從擺線上哪一點出發，抵達最低點的時間都收斂到同一個值 $\pi\sqrt{a/g} \cdot (\text{修正因子})$ ——這正是 Jacob Bernoulli 在 1690 年用微分方程揭曉的答案。

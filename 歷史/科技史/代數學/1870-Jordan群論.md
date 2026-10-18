@@ -46,7 +46,7 @@ Jordan 將「根式可解」精確翻譯成群的語言：方程 $f(x)=0$ 可用
 
 $$\{e\} = G_n \trianglelefteq G_{n-1} \trianglelefteq \cdots \trianglelefteq G_0, \qquad G_i/G_{i+1} \cong \mathbb{Z}_{p_i}$$
 
-五次以上一般方程的 Galois 群 $S_5$ 含單群 $A_5$（非循環），故不可解——Galois 的結論至此獲得清晰、可教的證明。
+五次以上一般方程的 Galois 群 $S_5$ 含單群 $A_5$ （非循環），故不可解——Galois 的結論至此獲得清晰、可教的證明。
 
 ### 4. 線性群與 Jordan 正規形式
 Jordan 在書中研究 $\mathrm{GL}(n,\mathbb{C})$ 的子群（今日稱「線性群」），並證明複數域上的矩陣在相似變換 $A \mapsto PAP^{-1}$ 下可化為 Jordan 標準形：

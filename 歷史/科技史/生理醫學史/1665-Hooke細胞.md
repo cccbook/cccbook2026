@@ -41,8 +41,8 @@ $$\text{1 平方英寸軟木} \approx 1{,}259{,}712{,}000 \text{ 個細胞} \app
 
 $$d = \frac{1.22\,\lambda}{\mathrm{NA}},$$
 
-其中 $\lambda$ 是光波長（可見光約 $550\,\mathrm{nm}$）、$\mathrm{NA}$ 是數值孔徑。
-Hooke 時代的顯微鏡 $\mathrm{NA} \approx 1$，故 $d \approx 0.67\,\mu\mathrm{m}$——
+其中 $\lambda$ 是光波長（可見光約 $550\,\mathrm{nm}$ ）、 $\mathrm{NA}$ 是數值孔徑。
+Hooke 時代的顯微鏡 $\mathrm{NA} \approx 1$ ，故 $d \approx 0.67\,\mu\mathrm{m}$ ——
 **任何小於此尺度的構造都無法用光學顯微鏡分辨**。
 
 | 觀察對象 | 典型尺度 | 與光學極限（~0.67 μm）的比值 | 所需工具 |

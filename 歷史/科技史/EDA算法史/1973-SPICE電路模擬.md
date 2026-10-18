@@ -21,16 +21,16 @@ MNA 的取捨：以**節點電壓**為主未知數，但把電流源、電感、
 ### 線索二：三大數值法合流
 | 問題 | 演算法 | 理論 |
 |------|--------|------|
-| 非線性元件 | Newton-Raphson | $x_{k+1} = x_k - J(x_k)^{-1} F(x_k)$，二次收斂，配 gmin/damping 防發散 |
+| 非線性元件 | Newton-Raphson | $x_{k+1} = x_k - J(x_k)^{-1} F(x_k)$ ，二次收斂，配 gmin/damping 防發散 |
 | 稀疏線性系統 | Sparse LU with Markowitz pivoting | Markowitz（1957）準則：先消非零元最少的行列，最小化填入（fill-in） |
-| 剛性微分方程 | Implicit trapezoidal / backward Euler | $x_{k+1} = x_k + \frac{h}{2}(f_{k+1} + f_k)$，A-穩定，大步長不炸 |
+| 剛性微分方程 | Implicit trapezoidal / backward Euler | $x_{k+1} = x_k + \frac{h}{2}(f_{k+1} + f_k)$ ，A-穩定，大步長不炸 |
 
 剛性（stiffness）是電路的本性：電晶體的時間常數橫跨皮秒到毫秒，顯式積分步長會被最快極限鎖死；隱式法無條件穩定，才讓瞬態分析可行。SPICE2（1975，Nagel 與 Rohrer）補齊稀疏矩陣與模型庫，成為工業版本。
 
 ### 線索三：收斂與精度的工程哲學
 - **牛頓法初值**：用直流工作點（DC operating point）掃描、源分步（source stepping）協助收斂；
-- **容差控制**：電壓電流相對容差 RELTOL 預設 $10^{-3}$——「夠準就停」的工程取捨；
-- **複雜度**：一次瞬態分析 ≈ $T/h$ 個時間點 × 每點數次牛頓迭代 × 每次迭代一個稀疏 LU（$O(n^{1.5})$ 級）——這條乘法鏈是後世 fast-SPICE（2000s）要拆解的目標。
+- **容差控制**：電壓電流相對容差 RELTOL 預設 $10^{-3}$ ——「夠準就停」的工程取捨；
+- **複雜度**：一次瞬態分析 ≈ $T/h$ 個時間點 × 每點數次牛頓迭代 × 每次迭代一個稀疏 LU（ $O(n^{1.5})$ 級）——這條乘法鏈是後世 fast-SPICE（2000s）要拆解的目標。
 
 ## 結案 -- 後果與影響
 - **事實標準五十年**：SPICE2/3 釋出碼被所有 EDA 廠商吸收；今日 Synopsys HSPICE、Cadence Spectre 皆其嫡系，元件級模擬仍以 SPICE 語法為通用語言。

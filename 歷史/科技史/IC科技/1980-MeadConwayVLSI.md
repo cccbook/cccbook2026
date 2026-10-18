@@ -13,8 +13,8 @@
 
 ### 結構化 VLSI 設計方法學
 Mead–Conway 的核心信念：**設計規則必須與製程參數解耦，並以比例常數 λ 表示**。
-- 全部尺寸以 $\lambda$（半個 MOS 製程線寬）的倍數表示：線寬、間距、接觸孔都寫成 $n\lambda$。
-- 製程升級（線寬縮小）時，只需改變一個常數 $\lambda$，整份版圖不用重畫。
+- 全部尺寸以 $\lambda$ （半個 MOS 製程線寬）的倍數表示：線寬、間距、接觸孔都寫成 $n\lambda$ 。
+- 製程升級（線寬縮小）時，只需改變一個常數 $\lambda$ ，整份版圖不用重畫。
 - 注意：此 $\lambda$ 是**幾何縮放常數**，與函數程式的 λ 演算（lambda calculus）完全無關——只是同名的記號巧合。
 
 ### 可擴縮設計規則（λ-based design rules）
@@ -29,7 +29,7 @@ Mead–Conway 的核心信念：**設計規則必須與製程參數解耦，並�
 | 接觸孔尺寸 | $2\lambda \times 2\lambda$ |
 | 電晶體最小寬度 | $2\lambda$ |
 
-Dennard 縮放的數學：尺寸 $\frac{1}{S}$、電壓 $\frac{1}{S}$、電流 $\frac{1}{S}$、延遲 $\frac{CV}{I} = \frac{1}{S}$、功耗密度不變、密度 $S^2$：
+Dennard 縮放的數學：尺寸 $\frac{1}{S}$ 、電壓 $\frac{1}{S}$ 、電流 $\frac{1}{S}$ 、延遲 $\frac{CV}{I} = \frac{1}{S}$ 、功耗密度不變、密度 $S^2$ ：
 $$I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{th})^2$$
 
 ### MPC79 計畫（多專案晶圓, Multi-Project Chip）

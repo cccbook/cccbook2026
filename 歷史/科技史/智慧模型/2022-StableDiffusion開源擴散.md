@@ -30,7 +30,7 @@ $$z = \mathcal{E}(x), \qquad z_t = \sqrt{\bar\alpha_t}\, z_0 + \sqrt{1-\bar\alph
 
 $$L_{\text{LDM}} = \mathbb{E}_{\mathcal{E}(x),\, \epsilon,\, t}\left[ \|\epsilon - \epsilon_\theta(z_t, t, c)\|^2 \right]$$
 
-生成時反覆去噪得到 $\hat z_0$，再解碼 $\hat x = \mathcal{D}(\hat z_0)$。**8 倍邊長壓縮 = 64 倍像素數下降**，主要算力消耗被砍掉一個數量級——這就是消費級 GPU 能跑得動的原因。
+生成時反覆去噪得到 $\hat z_0$ ，再解碼 $\hat x = \mathcal{D}(\hat z_0)$ 。**8 倍邊長壓縮 = 64 倍像素數下降**，主要算力消耗被砍掉一個數量級——這就是消費級 GPU 能跑得動的原因。
 
 ### 第二條線索：交叉注意力——文字如何開口說話
 
@@ -46,7 +46,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d}}\right
 
 $$\tilde\epsilon_\theta(z_t, t, c) = \epsilon_\theta(z_t, t, \varnothing) + w \cdot \big(\epsilon_\theta(z_t, t, c) - \epsilon_\theta(z_t, t, \varnothing)\big)$$
 
-引導強度 $w$（常取 5–15）控制「聽話程度」與「多樣性」的取捨：$w$ 越大越忠於提示、越可能失真。**一個標量旋鈕，讓使用者直接操控生成行為**——這在介面史上意義重大。
+引導強度 $w$ （常取 5–15）控制「聽話程度」與「多樣性」的取捨： $w$ 越大越忠於提示、越可能失真。**一個標量旋鈕，讓使用者直接操控生成行為**——這在介面史上意義重大。
 
 ### 第四條線索：開源權重——分發即革命
 

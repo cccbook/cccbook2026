@@ -10,7 +10,7 @@ $$\text{GPT: } P(x_t | x_{<t}) \qquad \text{BERT: } P(x_{\text{mask}} | x_{\text
 ## 前因 -- 為什麼會有這個案子
 - **NLP 的困境**：每個任務（分詞、NER、問答、翻譯）都要單獨的標註資料與模型——**標註昂貴、無法通用**。
 - **詞向量的先驅線索**：
-  - **Word2Vec（2013）**：用「上下文相似」學出詞向量，詞義可算——$v_{king} - v_{man} + v_{woman} \approx v_{queen}$。
+  - **Word2Vec（2013）**：用「上下文相似」學出詞向量，詞義可算—— $v_{king} - v_{man} + v_{woman} \approx v_{queen}$ 。
   - **ELMo（2018）**：雙向 LSTM 的上下文相關向量——但仍是 LSTM（無法並行）。
 - **Transformer 的到來（2017）**：架構就位（見「2017-Transformer注意力機制.md」）——只缺「怎麼用無標註資料訓練」。
 - **兩個陣營的分岔**：OpenAI 押注**自回歸**（預測下一詞，天然適合生成）；Google 押注**掩碼**（雙向理解，適合分類與理解）——兩條路線都成功，但日後 GPT 路線（生成）統治了世界。
@@ -20,7 +20,7 @@ $$\text{GPT: } P(x_t | x_{<t}) \qquad \text{BERT: } P(x_{\text{mask}} | x_{\text
 ### 第一條線索：GPT 的自回歸訓練
 Transformer 解碼器（帶因果遮罩），最大化下一詞的似然：
 $$L = -\sum_t \log P(x_t \mid x_{<t}; \theta).$$
-因果遮罩 (causal mask) 使位置 $t$ 只能看 $< t$——訓練與生成完全一致：
+因果遮罩 (causal mask) 使位置 $t$ 只能看 $< t$ ——訓練與生成完全一致：
 $$x_{<t} \xrightarrow{\text{Transformer}} \text{softmax} \xrightarrow{\text{取樣}} x_t.$$
 **「預測下一個詞」看似簡單，但要預測得好，必須學會語法、語義、事實、甚至推理**——這是大語言模型哲學的核心。
 

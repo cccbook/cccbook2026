@@ -12,13 +12,13 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Umdeutung 論文
-1925 年 7 月，*Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen*（論運動學與力學關係的量子理論重新詮釋）發表。核心思想：以「躍遷振幅」$X(n,m) \sim e^{i\omega_{nm} t}$ 取代經典座標 $x(t)$，其中
+1925 年 7 月，*Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen*（論運動學與力學關係的量子理論重新詮釋）發表。核心思想：以「躍遷振幅」 $X(n,m) \sim e^{i\omega_{nm} t}$ 取代經典座標 $x(t)$ ，其中
 
 $$
 \omega_{nm} = \frac{E_n - E_m}{\hbar}
 $$
 
-滿足頻率組合原則 $\omega_{nm} = \omega_{nk} + \omega_{km}$。
+滿足頻率組合原則 $\omega_{nm} = \omega_{nk} + \omega_{km}$ 。
 
 ### 乘法規則的發現
 經典中兩個量的乘積對應 Fourier 分量的乘積；量子版如何相乘？Heisenberg 提出：
@@ -32,25 +32,25 @@ $$
 ### Born–Jordan–Heisenberg 三人論文
 Max Born 意識到這是矩陣，與 Jordan、Heisenberg 於 1925 年底發表 *Zur Quantenmechanik II*，建立完整形式體系：
 
-- 座標與動量是無窮維矩陣 $Q, P$；
-- 運動方程 $i\hbar\dot{Q} = [Q, H]$，$i\hbar\dot{P} = [P, H]$（Heisenberg 運動方程）；
+- 座標與動量是無窮維矩陣 $Q, P$ ；
+- 運動方程 $i\hbar\dot{Q} = [Q, H]$ ， $i\hbar\dot{P} = [P, H]$ （Heisenberg 運動方程）；
 - 最深處的核心關係——**正則對易關係**：
 
 $$
 QP - PQ = i\hbar I
 $$
 
-矩陣乘法**不可交換**：$QP \neq PQ$。這是量子世界與經典世界最本質的差異，日後直接引出 Heisenberg 測不準原理 $\Delta x\,\Delta p \geq \hbar/2$。
+矩陣乘法**不可交換**： $QP \neq PQ$ 。這是量子世界與經典世界最本質的差異，日後直接引出 Heisenberg 測不準原理 $\Delta x\,\Delta p \geq \hbar/2$ 。
 
 ### 諧振子能階的矩陣力學解
-對諧振子 $H = \frac{P^2}{2m} + \frac{m\omega^2 Q^2}{2}$，定義升降算符（矩陣）：
+對諧振子 $H = \frac{P^2}{2m} + \frac{m\omega^2 Q^2}{2}$ ，定義升降算符（矩陣）：
 
 $$
 a = \sqrt{\frac{m\omega}{2\hbar}}\left(Q + \frac{i}{m\omega}P\right), \qquad
 a^\dagger = \sqrt{\frac{m\omega}{2\hbar}}\left(Q - \frac{i}{m\omega}P\right)
 $$
 
-由對易關係可推得 $[a, a^\dagger] = I$、$H = \hbar\omega\left(a^\dagger a + \frac{1}{2}\right)$，能階為
+由對易關係可推得 $[a, a^\dagger] = I$ 、 $H = \hbar\omega\left(a^\dagger a + \frac{1}{2}\right)$ ，能階為
 
 $$
 E_n = \hbar\omega\left(n + \frac{1}{2}\right)

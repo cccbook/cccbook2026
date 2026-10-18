@@ -41,7 +41,7 @@ class Eq a where
 sort :: Ord a => [a] -> [a]
 ```
 
-這在 λ 演算的型別系統中對應 **受限量詞（bounded quantification）** $\forall a <: Eq.\, [a] \to \ldots$——System F 的推廣（Cardelli-Wegner 1985）。
+這在 λ 演算的型別系統中對應 **受限量詞（bounded quantification）** $\forall a <: Eq.\, [a] \to \ldots$ ——System F 的推廣（Cardelli-Wegner 1985）。
 
 ### Monad（Wadler 1992 引入）
 Haskell 是**純函數式**語言——沒有副作用。但列印、狀態、例外、I/O 都需要副作用！Philip Wadler 於 1992 年將範疇論的 **monad** 引入 Haskell，以「型別化副作用」解決這個懸案：
@@ -61,7 +61,7 @@ m >>= return     ==  m             -- right identity
 (m >>= f) >>= g  ==  m >>= (\x -> f x >>= g)  -- associativity
 ```
 
-**關鍵推理**：副作用被「封裝」在 monad 型別中——`IO a` 表示「會產生型別為 `a` 的結果的動作」，型別系統強制所有副作用被明確標記。這在 λ 演算中對應 **Moggi 的 monadic metalanguage（1989）** $\lambda_{ml}$：計算型 $T A$ 與值型 $A$ 的分離。
+**關鍵推理**：副作用被「封裝」在 monad 型別中——`IO a` 表示「會產生型別為 `a` 的結果的動作」，型別系統強制所有副作用被明確標記。這在 λ 演算中對應 **Moggi 的 monadic metalanguage（1989）** $\lambda_{ml}$ ：計算型 $T A$ 與值型 $A$ 的分離。
 
 ### 一個 Haskell 範例（含 lambda 與 monad）
 ```haskell

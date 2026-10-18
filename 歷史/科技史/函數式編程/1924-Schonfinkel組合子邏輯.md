@@ -16,7 +16,7 @@
 
 ### 線索一：函數的「化約」——多元函數變單元函數
 
-Schönfinkel 觀察到，一個宣稱吃兩個參數的函數 $f(x, y)$，其實可以改寫為吃一個參數、回傳一個新函數：
+Schönfinkel 觀察到，一個宣稱吃兩個參數的函數 $f(x, y)$ ，其實可以改寫為吃一個參數、回傳一個新函數：
 
 $$f(x, y) \quad\Longrightarrow\quad (f(x))(y)$$
 
@@ -30,8 +30,8 @@ $$\mathbf{S}\,x\,y\,z = x\,z\,(y\,z)$$
 
 $$\mathbf{K}\,x\,y = x$$
 
-- $\mathbf{K}$ 的作用是「製造常數」：給它一個 $x$，它回傳一個永遠吐出 $x$ 的函數——它一手取代了變數代入中最基本的「保留」操作。
-- $\mathbf{S}$ 的作用是「分配」：它把 $z$ 同時餵給 $x$ 與 $y$，再組合結果——它取代了「共享同一變數」的操作。
+- $\mathbf{K}$ 的作用是「製造常數」：給它一個 $x$ ，它回傳一個永遠吐出 $x$ 的函數——它一手取代了變數代入中最基本的「保留」操作。
+- $\mathbf{S}$ 的作用是「分配」：它把 $z$ 同時餵給 $x$ 與 $y$ ，再組合結果——它取代了「共享同一變數」的操作。
 - 保留（K）+ 分享（S）正是代入規則所需的全部要素，因此任何含變數的運算式都能被翻譯成只用 S、K 的運算式。
 
 ### 線索三：消除束縛變數的證明
@@ -46,12 +46,12 @@ $$
 \end{aligned}
 $$
 
-這就是破案時刻：變數被證明是多餘的。整個邏輯只需要 $\mathbf{S}$、$\mathbf{K}$ 兩個「積木」。
+這就是破案時刻：變數被證明是多餘的。整個邏輯只需要 $\mathbf{S}$ 、 $\mathbf{K}$ 兩個「積木」。
 
 ### 線索四：布林值也能變成組合子
 
-- 定義 $\mathbf{TRUE} = \mathbf{K}$（$\mathbf{K}\,x\,y = x$，總是選第一個參數）
-- 定義 $\mathbf{FALSE} = \mathbf{K}\,\mathbf{I}$（$\mathbf{K}\,\mathbf{I}\,x\,y = \mathbf{I}\,y = y$，總是選第二個參數）；等價地也可用 $\mathbf{S}\,\mathbf{K}$ 的組合表達。Schönfinkel 在論文中展示了布林值如何以組合子編碼，使邏輯連接詞也能化約為積木運算。
+- 定義 $\mathbf{TRUE} = \mathbf{K}$ （ $\mathbf{K}\,x\,y = x$ ，總是選第一個參數）
+- 定義 $\mathbf{FALSE} = \mathbf{K}\,\mathbf{I}$ （ $\mathbf{K}\,\mathbf{I}\,x\,y = \mathbf{I}\,y = y$ ，總是選第二個參數）；等價地也可用 $\mathbf{S}\,\mathbf{K}$ 的組合表達。Schönfinkel 在論文中展示了布林值如何以組合子編碼，使邏輯連接詞也能化約為積木運算。
 
 Python 驗證如下：
 
@@ -87,7 +87,7 @@ print("S/K 組合子布林邏輯驗證通過")
 
 ### 線索五：還原（reduction）的機械性
 
-組合子邏輯的推演只有一種規則：把 $\mathbf{S}$、$\mathbf{K}$ 的定義當成改寫規則反覆套用。這使得證明檢驗變成純機械操作，正合 Hilbert 學派的胃口。
+組合子邏輯的推演只有一種規則：把 $\mathbf{S}$ 、 $\mathbf{K}$ 的定義當成改寫規則反覆套用。這使得證明檢驗變成純機械操作，正合 Hilbert 學派的胃口。
 
 ```python
 # SKI 還原示範（符號項，非 Python closure）
@@ -137,9 +137,9 @@ print(norm(t))                                   # 輸出: (f, (g, x))
 
 ## 結案 -- 後果與影響
 
-- 案件偵破：變數不是邏輯的必需品，$\mathbf{S}$ 與 $\mathbf{K}$ 兩個組合子即可建構整個邏輯系統。
+- 案件偵破：變數不是邏輯的必需品， $\mathbf{S}$ 與 $\mathbf{K}$ 兩個組合子即可建構整個邏輯系統。
 - Haskell Curry 於 1927 年在 Princeton 獨立發現了同樣的想法（看到 Schönfinkel 論文後大為震撼，赴 Göttingen 追隨 Hilbert 與 Behmann 深入研究），1930 年代將組合邏輯發展成完整的形式系統。
-- Curry 發現了 $\mathbf{B}$、$\mathbf{C}$、$\mathbf{W}$ 等更多組合子，並證明 $\mathbf{S}$、$\mathbf{K}$ 是完備基底。
+- Curry 發現了 $\mathbf{B}$ 、 $\mathbf{C}$ 、 $\mathbf{W}$ 等更多組合子，並證明 $\mathbf{S}$ 、 $\mathbf{K}$ 是完備基底。
 - 組合子成為函數式語言編譯器的中間表示：1970-80 年代 Turner 的 G-machine、supercombinators 都直接繼承這條血脈。
 - 悲劇結尾：Schönfinkel 本人在 1927 年論文發表時已因精神疾病住院，1929 年返回蘇聯後窮困潦倒，1942 年死於莫斯科街頭。先驅的名字差點被歷史遺忘。
 

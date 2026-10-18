@@ -37,7 +37,7 @@ $$
 \langle c \cdot \mathit{code},\ S,\ F \rangle \;\longrightarrow\; \langle \mathit{code}',\ S',\ F' \rangle
 $$
 
-其中 $S$ 為運算堆疊、$F$ 為框架（frame，含區域變數）。例如 `iconst_1` 的語義：
+其中 $S$ 為運算堆疊、 $F$ 為框架（frame，含區域變數）。例如 `iconst_1` 的語義：
 
 $$
 \langle \mathtt{iconst\_1} :: \mathit{code},\ S,\ F\rangle \to \langle \mathit{code},\ 1 :: S,\ F\rangle
@@ -50,7 +50,7 @@ $$
 \text{Java 原始碼} \xrightarrow{\text{javac}} \text{Bytecode} \xrightarrow{\text{各平台 JVM}} \text{原生機器碼}
 $$
 
-平台的差異被 JVM 吸收，位元組碼成為通用的「中介表示」（IR）。數學上，這是让編譯器的 $n \times m$ 問題（$n$ 種語言 × $m$ 種平台）降為 $n + m$ 問題。
+平台的差異被 JVM 吸收，位元組碼成為通用的「中介表示」（IR）。數學上，這是让編譯器的 $n \times m$ 問題（ $n$ 種語言 × $m$ 種平台）降為 $n + m$ 問題。
 
 ### Java Applet 與網頁時代
 1995 年 Netscape Navigator 1.1 內嵌 JVM，`<applet>` 標籤讓網頁能執行互動程式。Applet 伴隨**沙箱（sandbox）安全模型**：bytecode 經過 verifier 驗證（不可偽造指標、不可越權存取），才能執行。這是第一次，數百萬普通使用者在他們的電腦上執行「來自陌生伺服器」的程式。

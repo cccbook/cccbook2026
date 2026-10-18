@@ -14,8 +14,8 @@ Laplace 在 1812 年《Théorie analytique》中已處理過此問題，用二�
 
 同時期的線索：
 
-1. **de Moivre–Laplace**：二項分佈的常態近似（$n$ 大、$p$ 不太小）。
-2. 缺口：當 $n$ 大而 $p$ **很小**、$np$ 適中時（稀有事件），常態近似失效，需要新的極限分佈。
+1. **de Moivre–Laplace**：二項分佈的常態近似（ $n$ 大、 $p$ 不太小）。
+2. 缺口：當 $n$ 大而 $p$ **很小**、 $np$ 適中時（稀有事件），常態近似失效，需要新的極限分佈。
 3. 大數法則（Bernoulli 1713）只處理頻率收斂，Poisson 將其推廣到更一般的情形。
 
 ## 線索與推理 -- 數學式、程式、理論
@@ -30,27 +30,27 @@ $$E[X] = \lambda, \qquad \operatorname{Var}(X) = \lambda \quad (\text{期望 = �
 
 ### 二項分佈的極限（推導）
 
-設二項分佈 $X \sim B(n, p)$，取 $n \to \infty$、$p \to 0$、$np \to \lambda$：
+設二項分佈 $X \sim B(n, p)$ ，取 $n \to \infty$ 、 $p \to 0$ 、 $np \to \lambda$ ：
 
 $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} = \frac{n(n-1)\cdots(n-k+1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n} \left(1-\frac{\lambda}{n}\right)^{-k}$$
 
 逐項取極限：
 
 - $\frac{n(n-1)\cdots(n-k+1)}{n^k} \to 1$
-- $\left(\frac{\lambda}{n}\right)^k$ 中 $n^k$ 消去 $\to \frac{\lambda^k}{1}$（配對後）
-- $\left(1 - \frac{\lambda}{n}\right)^n \to e^{-\lambda}$（自然指數的定義）
+- $\left(\frac{\lambda}{n}\right)^k$ 中 $n^k$ 消去 $\to \frac{\lambda^k}{1}$ （配對後）
+- $\left(1 - \frac{\lambda}{n}\right)^n \to e^{-\lambda}$ （自然指數的定義）
 - $\left(1 - \frac{\lambda}{n}\right)^{-k} \to 1$
 
 $$\Rightarrow \quad \binom{n}{k}p^k(1-p)^{n-k} \;\longrightarrow\; \frac{\lambda^k e^{-\lambda}}{k!}$$
 
-直覺：稀有事件（$p$ 小）在大量機會（$n$ 大）中發生的次數，只依賴平均值 $\lambda = np$，不依賴 $n, p$ 個別大小。
+直覺：稀有事件（ $p$ 小）在大量機會（ $n$ 大）中發生的次數，只依賴平均值 $\lambda = np$ ，不依賴 $n, p$ 個別大小。
 
 ### Poisson 過程（現代形式）
 
-Poisson 分佈的隨機過程版本——單位時間到達次數 $N(t)$：
+Poisson 分佈的隨機過程版本——單位時間到達次數 $N(t)$ ：
 
 1. **獨立增量**：不相交時段的到達數互相獨立。
-2. **平穩增量**：$P(N(t+h) - N(t) = k) = \frac{(\lambda h)^k e^{-\lambda h}}{k!}$。
+2. **平穩增量**： $P(N(t+h) - N(t) = k) = \frac{(\lambda h)^k e^{-\lambda h}}{k!}$ 。
 3. **無瞬時多重到達**：短時間內最多一個事件。
 
 等價刻畫：事件間隔 $T_1, T_2, \dots$ 獨立同分佈，且
@@ -63,11 +63,11 @@ Poisson 在 1837 年書中推廣了 Bernoulli 的大數法則：即使每次試�
 
 $$\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i \;\xrightarrow{P}\; \frac{1}{n}\sum_{i=1}^{n} p_i = \bar{p}_n$$
 
-Bernoulli 版：$\bar{X}_n \to p$（同一個 $p$）；Poisson 版：$\bar{X}_n \to \bar{p}_n$（平均機率）。他稱之為「萬有的大數法則」（law of large numbers for universal phenomena）——司法、人口、自然現象皆適用。
+Bernoulli 版： $\bar{X}_n \to p$ （同一個 $p$ ）；Poisson 版： $\bar{X}_n \to \bar{p}_n$ （平均機率）。他稱之為「萬有的大數法則」（law of large numbers for universal phenomena）——司法、人口、自然現象皆適用。
 
 ### 司法判決的應用動機
 
-Poisson 的原始模型：設陪審員正確判決的機率為 $p$，$n$ 人陪審團以多數決判決，錯判機率為
+Poisson 的原始模型：設陪審員正確判決的機率為 $p$ ， $n$ 人陪審團以多數決判決，錯判機率為
 
 $$P(\text{錯判}) = \sum_{k > n/2} \binom{n}{k} p^k (1-p)^{n-k}$$
 

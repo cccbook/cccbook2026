@@ -12,14 +12,14 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：層 —— 「局部資訊的黏合手冊」
-拓撲空間 $X$ 上的一個**層** $\mathcal{F}$ 是一個資料結構：對每個開集 $U$ 給一個集合 $\mathcal{F}(U)$（「$U$ 上的函數/截面」），滿足**層公理**：
+拓撲空間 $X$ 上的一個**層** $\mathcal{F}$ 是一個資料結構：對每個開集 $U$ 給一個集合 $\mathcal{F}(U)$ （「 $U$ 上的函數/截面」），滿足**層公理**：
 
 $$U = \bigcup_i U_i,\ \ s_i \in \mathcal{F}(U_i),\ \ s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j} \implies \exists!\ s \in \mathcal{F}(U),\ s|_{U_i} = s_i$$
 
-（局部相容的截面可以唯一黏合成整體截面。）典型例子：$\mathcal{O}_X$（正則函數層）、$\mathcal{O}_X(D)$（除子相關的函數層）。
+（局部相容的截面可以唯一黏合成整體截面。）典型例子： $\mathcal{O}_X$ （正則函數層）、 $\mathcal{O}_X(D)$ （除子相關的函數層）。
 
 ### 線索二：凝聚層 —— 有限性的「品質認證」
-Serre 定義（在仿射簇上）**凝聚層**：$\mathcal{F}$ 是 $\mathcal{O}_X$-模層，且局部可由有限多個生成：
+Serre 定義（在仿射簇上）**凝聚層**： $\mathcal{F}$ 是 $\mathcal{O}_X$ -模層，且局部可由有限多個生成：
 
 $$\exists\ \mathcal{O}_X^m|_U \twoheadrightarrow \mathcal{F}|_U \quad \text{且核也有限生成}$$
 
@@ -30,22 +30,22 @@ $$X \text{ 仿射} \iff H^i(X, \mathcal{F}) = 0 \ \ \forall i \geq 1,\ \forall \
 這把「仿射」這個幾何性質，翻譯成上同調消失 —— 幾何與代數的橋樑架好了。
 
 ### 線索三：上同調 —— 從層算出整體不變量
-層上同調由**Cech 複形**或內射分解定義：對開覆蓋 $\mathfrak{U} = \{U_i\}$，
+層上同調由**Cech 複形**或內射分解定義：對開覆蓋 $\mathfrak{U} = \{U_i\}$ ，
 
 $$C^q(\mathfrak{U}, \mathcal{F}) = \prod_{i_0 < \cdots < i_q} \mathcal{F}(U_{i_0} \cap \cdots \cap U_{i_q}), \qquad H^q \xrightarrow{d} C^{q+1}, \quad H^i(X,\mathcal{F}) = \frac{\ker d_i}{\mathrm{im}\ d_{i-1}}$$
 
-**經典應用**：對射影空間 $\mathbb{P}^n$ 與扭轉層 $\mathcal{O}_{\mathbb{P}^n}(d)$，
+**經典應用**：對射影空間 $\mathbb{P}^n$ 與扭轉層 $\mathcal{O}_{\mathbb{P}^n}(d)$ ，
 
 $$H^0(\mathbb{P}^n, \mathcal{O}(d)) = \{ \text{次數 } d \text{ 的齊次多項式} \}, \qquad H^i(\mathbb{P}^n, \mathcal{O}(d)) = 0 \ (0 < i < n)$$
 
 上同調直接「算出」了幾何對象的函數空間。
 
 ### 線索四：Serre 對偶定理 —— 幾何的「鏡像恆等式」
-對光滑射影簇 $X$（維度 $n$）、典範層 $\omega_X = \Omega^n_X$（或 $\wedge^n \Omega$）：
+對光滑射影簇 $X$ （維度 $n$ ）、典範層 $\omega_X = \Omega^n_X$ （或 $\wedge^n \Omega$ ）：
 
 $$H^i(X, \mathcal{F}) \cong H^{n-i}(X, \mathcal{F}^\vee \otimes \omega_X)^*$$
 
-**特例（曲線 $n=1$）**：$\dim H^1(C, \mathcal{L}) = \dim H^0(C, \mathcal{L}^\vee \otimes \omega_C)$ —— 這正是經典的 **Riemann–Roch** 中「非常數項」的來源。對 $C$、除子 $D$：
+**特例（曲線 $n=1$ ）**： $\dim H^1(C, \mathcal{L}) = \dim H^0(C, \mathcal{L}^\vee \otimes \omega_C)$ —— 這正是經典的 **Riemann–Roch** 中「非常數項」的來源。對 $C$ 、除子 $D$ ：
 
 $$\ell(D) - \ell(K_C - D) = \deg D + 1 - g$$
 
@@ -82,7 +82,7 @@ print(f"dim H^0 = {H0}, dim H^1 = {H1}")
 ```
 
 ## 結案 -- 後果與影響
-- **上同調成為幾何工具**：$H^i(X, \mathcal{F})$ 從此是代數幾何的日常語言；代數曲線的分類（$g$、虧格）、Hodge 理論、Weil 猜想全部上同調化。
+- **上同調成為幾何工具**： $H^i(X, \mathcal{F})$ 從此是代數幾何的日常語言；代數曲線的分類（ $g$ 、虧格）、Hodge 理論、Weil 猜想全部上同調化。
 - **GAGA（1956）**：Serre 隨後證明代數幾何與解析幾何的範疇等價（FAC 的姊妹篇），凝聚層在兩個世界間自由穿梭。
 - **為 Grothendieck 鋪路**：Grothendieck（1957 Tohoku 論文）將層上同調公理化，1960 年代進一步建立**概形（scheme）**理論與 Étale 上同調（見 [1960-Grothendieck概形](./1960-Grothendieck概形.md) 交叉參照）—— FAC 是這場革命的直接前身。
 - **菲爾茲 + 阿貝爾**：Serre 因 FAC 時期的工作獲 1954 年菲爾茲獎（史上最年輕，28 歲），2000 年獲首屆沃爾夫獎，2003 年獲首屆阿貝爾獎 —— 三大獎全收。

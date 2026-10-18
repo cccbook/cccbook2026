@@ -20,9 +20,9 @@
 | 隔離強度 | 強（硬體邊界） | 中（kernel 邊界） |
 | 密度（單機實例數） | 十幾台 | 數百個 |
 
-理論上，容器省去每台 VM 的 OS 開銷 $M_{os}$，$n$ 個工作負載的總記憶體：
+理論上，容器省去每台 VM 的 OS 開銷 $M_{os}$ ， $n$ 個工作負載的總記憶體：
 $$M_{vm} = n(M_{os} + M_{app}), \qquad M_{container} = M_{os} + nM_{app}$$
-密度提升比 $\approx \dfrac{n(M_{os}+M_{app})}{M_{os}+nM_{app}}$，當 $M_{os} \gg M_{app}$ 時趨近 $n$ 倍以上。
+密度提升比 $\approx \dfrac{n(M_{os}+M_{app})}{M_{os}+nM_{app}}$ ，當 $M_{os} \gg M_{app}$ 時趨近 $n$ 倍以上。
 
 ### 線索 2：容器 = 隔離的行程群組
 容器不是「小型機器」，本質是**一組被 namespace 隔離、被 cgroups 限量的普通行程**。Docker 啟動容器約等於：

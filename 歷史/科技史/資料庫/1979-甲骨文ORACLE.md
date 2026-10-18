@@ -52,7 +52,7 @@ $$\text{IBM 的論文（公開）} \xrightarrow{\text{Ellison 讀論文創業}} 
 ### 第一條線索：關聯式資料庫的銷售賣點
 **Codd 的模型**：資料是**表**（關係），查詢是**關係代數**：
 $$\pi_{\text{name}, \text{city}}\left(\sigma_{\text{amount} > 10000}(\text{customers} \bowtie \text{orders})\right)$$
-- $\sigma$：選擇（WHERE）；$\pi$：投影（SELECT 欄位）；$\bowtie$：連接（JOIN）。
+- $\sigma$ ：選擇（WHERE）； $\pi$ ：投影（SELECT 欄位）； $\bowtie$ ：連接（JOIN）。
 **客戶不需要懂數學**——SQL 把代數包成人類可讀的語法：
 ```sql
 SELECT c.name, c.city FROM customers c JOIN orders o ON c.id = o.cust_id

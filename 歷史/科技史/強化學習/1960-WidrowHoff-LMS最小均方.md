@@ -28,7 +28,7 @@ $$\boxed{w_{k+1} = w_k + \eta \, (d_k - y_k)\, x_k}$$
 稱為 **delta rule**。當 $\eta$ 足夠小，期望值方向與 batch gradient 相同，必收斂到最小均方解。
 
 ### 幾何偵查：為什麼平方誤差必收斂？
-$E(w)$ 是 $w$ 的二次凸函數（碗狀），Hessian 為 $X^\top X \succeq 0$。
+$E(w)$ 是 $w$ 的二次凸函數（碗狀），Hessian 為 $X^\top X \succeq 0$ 。
 梯度永遠指向碗底，步長 $\eta < 2/\lambda_{\max}$ 時必收斂：
 $$\|w_k - w^*\| \le \max_i |1 - \eta \lambda_i|^k \, \|w_0 - w^*\|.$$
 **Perceptron 只能保證「可分時收斂」，LMS 保證「任何情況下收斂到最優線性解」。**
@@ -63,8 +63,8 @@ w = [0.333 0.333]  最終 MSE = 0.0833
 ### LMS 與 RL 的橋樑
 LMS 的更新項 $(d - y)$ 就是**誤差訊號**。強化學習中，這個誤差變成
 $$\delta = r + \gamma V(s') - V(s) \qquad \text{(TD 誤差)}$$
-權重更新 $w \leftarrow w + \eta\, \delta\, \phi(s)$。
-**LMS 是 TD 學習的特例**：當 $\gamma = 0$、$r = d - V(s)$ 時兩者完全相同。
+權重更新 $w \leftarrow w + \eta\, \delta\, \phi(s)$ 。
+**LMS 是 TD 學習的特例**：當 $\gamma = 0$ 、 $r = d - V(s)$ 時兩者完全相同。
 Widrow–Hoff 因此被 Sutton 稱為「RL 學習規則的直系祖先」。
 
 ## 結案 -- 後果與影響

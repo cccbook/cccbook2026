@@ -5,7 +5,7 @@
 
 哈密頓物理學的核心，是「能量」取代「力」成為主角：
 
-- **Newton**：$\vec F = m\vec a$，向量式、力學觀點。
+- **Newton**： $\vec F = m\vec a$ ，向量式、力學觀點。
 - **Lagrange**：以「廣義座標」與作用量 $L = T - V$ 描述系統，解析式觀點。
 - **Hamilton**：以「相空間」與正則方程 $\dot q = \partial H/\partial p,\ \dot p = -\partial H/\partial q$ 描述系統，幾何觀點。
 
@@ -17,7 +17,7 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 1687 | Newton《自然哲學的數學原理》發表，$\vec F = m\vec a$ 誕生 | [1687-Newton原理.md](1687-Newton原理.md) |
+| 1687 | Newton《自然哲學的數學原理》發表， $\vec F = m\vec a$ 誕生 | [1687-Newton原理.md](1687-Newton原理.md) |
 | 1736 | Euler 出版《力學》，以分析（微積分）方法重寫力學，並提出動量守恆的分析形式 | [1736-Euler力學.md](1736-Euler力學.md) |
 | 1744 | Maupertuis 提出最小作用量原理 $\delta \int p\,dq = 0$ | [1744-Maupertuis最小作用量.md](1744-Maupertuis最小作用量.md) |
 

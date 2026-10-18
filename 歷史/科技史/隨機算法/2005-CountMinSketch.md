@@ -11,32 +11,32 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Count-Min Sketch 的結構
-$d$ 個獨立雜湊函數 $h_1, \dots, h_d: U \to [1, w]$，維護 $d \times w$ 的計數矩陣 $C$。
+$d$ 個獨立雜湊函數 $h_1, \dots, h_d: U \to [1, w]$ ，維護 $d \times w$ 的計數矩陣 $C$ 。
 
 **更新**（元素 $e$ 出現）：每列計數加一：
 
 $$C[i][h_i(e)] \mathrel{+}= 1, \quad \forall i \in [1, d]$$
 
-**查詢**（$e$ 的計數）：取 $d$ 個計數的**最小值**：
+**查詢**（ $e$ 的計數）：取 $d$ 個計數的**最小值**：
 
 $$\hat{c}_e = \min_{i=1}^d C[i][h_i(e)]$$
 
-**保證**：$\hat{c}_e \ge c_e$（真實計數）——**只會多估，不會少估**。且以機率 $\ge 1 - \delta$：
+**保證**： $\hat{c}_e \ge c_e$ （真實計數）——**只會多估，不會少估**。且以機率 $\ge 1 - \delta$ ：
 
 $$\hat{c}_e \le c_e + \frac{\epsilon \cdot \|\text{counts}\|_1}{w} \cdot \ldots \quad \text{更精確：} \hat{c}_e \le c_e + \epsilon N$$
 
-其中 $N = \sum_e c_e$ 是串流總量，參數 $w = \lceil e/\epsilon \rceil$、$d = \lceil \ln(1/\delta) \rceil$。
+其中 $N = \sum_e c_e$ 是串流總量，參數 $w = \lceil e/\epsilon \rceil$ 、 $d = \lceil \ln(1/\delta) \rceil$ 。
 
 ### 誤差分析
 $e$ 的干擾（overestimate）來自「碰撞」：其他元素撞到同格。單列的期望干擾：
 
 $$E[\text{干擾}_i] = \sum_{e' \ne e} c_{e'} \cdot P(h_i(e') = h_i(e)) = \frac{N - c_e}{w} \le \frac{N}{w} \le \epsilon N$$
 
-由 Markov 不等式：$P(\text{干擾}_i > \epsilon N) \le 1/2$。$d$ 列獨立，取最小值全部干擾都大的機率：
+由 Markov 不等式： $P(\text{干擾}_i > \epsilon N) \le 1/2$ 。 $d$ 列獨立，取最小值全部干擾都大的機率：
 
 $$P(\hat{c}_e > c_e + \epsilon N) \le (1/2)^d \le \delta \quad \blacksquare$$
 
-**偵探筆記**：誤差分析的推理是「獨立冗餘」——單列有 1/2 機率被污染，$d$ 列獨立取最小值，污染機率指數衰減 $(1/2)^d$。**多個獨立視角 + 取最保守**——這個模式與 Miller–Rabin（見 `1980-Rabin質數檢驗.md`）的多數決、MinHash（見 `1997-BroderMinHash.md`）的多雜湊一脈相承。
+**偵探筆記**：誤差分析的推理是「獨立冗餘」——單列有 1/2 機率被污染， $d$ 列獨立取最小值，污染機率指數衰減 $(1/2)^d$ 。**多個獨立視角 + 取最保守**——這個模式與 Miller–Rabin（見 `1980-Rabin質數檢驗.md`）的多數決、MinHash（見 `1997-BroderMinHash.md`）的多雜湊一脈相承。
 
 ### 程式碼：Count-Min Sketch
 
@@ -77,7 +77,7 @@ for e in ["item0", "item1", "item2"]:
 ```
 
 ### 變體與擴展
-- **點查詢 vs 範圍查詢**：CMS 回答「$e$ 出現幾次」；dyadic intervals 擴展到範圍計數。
+- **點查詢 vs 範圍查詢**：CMS 回答「 $e$ 出現幾次」；dyadic intervals 擴展到範圍計數。
 - **重金屬（heavy hitters）**：Space-Saving、Sticky Sampling 找最熱門元素。
 - **Count-Min 的親戚**：Bloom Filter（1970，成員查詢）、Count Sketch（Charikar et al. 2002，無偏估計）。
 - **矩陣恢復**：頻率矩陣的 sketch（Liberty 2013 的 Frequent Directions）。

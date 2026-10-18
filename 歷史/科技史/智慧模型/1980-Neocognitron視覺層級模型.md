@@ -21,7 +21,7 @@ $$\text{S-cell（簡單細胞）}: \text{特徵偵測}，\quad \text{C-cell（�
 
 ### 第一條線索：S-cell / C-cell 交替層級——卷積架構的遠祖
 
-Neocognitron 的層級結構：$U_0 \to U_{S1} \to U_{C1} \to U_{S2} \to U_{C2} \to \cdots$，S 層與 C 層交替堆疊：
+Neocognitron 的層級結構： $U_0 \to U_{S1} \to U_{C1} \to U_{S2} \to U_{C2} \to \cdots$ ，S 層與 C 層交替堆疊：
 
 | 層 | 生物對應 | 功能 | 現代 CNN 對應 |
 |---|---|---|---|
@@ -33,7 +33,7 @@ S-cell 的輸入輸出關係是現代卷積層的雛形：
 
 $$u_{S}(x, k) = \phi\!\left( \sum_{k'} a_{k}(x, k')\, u_{C}(x + \delta, k') - \theta_k \right)，\quad \phi(z) = \begin{cases} \dfrac{z}{1+z} & z > 0 \\ 0 & z \le 0 \end{cases}$$
 
-其中 $a_k$ 是連接權重（**空間上共享**——同一特徵在不同位置使用同一組權重，這就是權重共享的起源），$\theta_k$ 是閾值，$\delta$ 遍歷局部接受野。
+其中 $a_k$ 是連接權重（**空間上共享**——同一特徵在不同位置使用同一組權重，這就是權重共享的起源）， $\theta_k$ 是閾值， $\delta$ 遍歷局部接受野。
 
 ### 第二條線索：平移不變性——C-cell 的數學
 

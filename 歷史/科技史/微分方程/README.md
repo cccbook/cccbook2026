@@ -11,7 +11,7 @@
 | 年份 | 事件 | Wiki |
 |------|------|------|
 | 1690 | Jacob Bernoulli 以微分方程解等時曲線，微積分首次用於力學問題 | [1690-JacobBernoulli等時曲線.md](1690-JacobBernoulli等時曲線.md) |
-| 1695 | Jacob Bernoulli 提出 Bernoulli 方程 $y' + P(x)y = Q(x)y^n$，並以變換化為線性 | [1695-Bernoulli方程.md](1695-Bernoulli方程.md) |
+| 1695 | Jacob Bernoulli 提出 Bernoulli 方程 $y' + P(x)y = Q(x)y^n$ ，並以變換化為線性 | [1695-Bernoulli方程.md](1695-Bernoulli方程.md) |
 | 1696 | Johann Bernoulli 提出「最速降線問題」挑戰全歐洲，催生變分法 | [1696-最速降線問題.md](1696-最速降線問題.md) |
 | 1727 | Euler 系統化常微分方程，建立積分因子與線性方程理論 | [1727-Euler常微分方程.md](1727-Euler常微分方程.md) |
 | 1739 | Clairaut 研究隱式解與奇解，發現「包絡線」現象 | [1739-Clairaut隱式解與奇解.md](1739-Clairaut隱式解與奇解.md) |
@@ -20,10 +20,10 @@
 
 | 年份 | 事件 | Wiki |
 |------|------|------|
-| 1747 | d'Alembert 導出波動方程 $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$，弦振動之謎 | [1747-dAlembert波動方程.md](1747-dAlembert波動方程.md) |
+| 1747 | d'Alembert 導出波動方程 $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$ ，弦振動之謎 | [1747-dAlembert波動方程.md](1747-dAlembert波動方程.md) |
 | 1755 | Euler 導出理想流體力學方程組 | [1755-Euler流體力學方程.md](1755-Euler流體力學方程.md) |
 | 1763 | d'Alembert、Euler、Daniel Bernoulli 關於三角級數能否代表任意函數的大辯論 | [1763-三角級數大辯論.md](1763-三角級數大辯論.md) |
-| 1782 | Laplace 提位勢方程 $\nabla^2 V = 0$，開啟位勢理論 | [1782-Laplace位勢方程.md](1782-Laplace位勢方程.md) |
+| 1782 | Laplace 提位勢方程 $\nabla^2 V = 0$ ，開啟位勢理論 | [1782-Laplace位勢方程.md](1782-Laplace位勢方程.md) |
 | 1788 | Lagrange《分析力學》以廣義座標與 Lagrange 方程重寫全部力學 | [1788-Lagrange分析力學.md](1788-Lagrange分析力學.md) |
 
 ### 第三幕：嚴格化與經典理論（1812–1890s）

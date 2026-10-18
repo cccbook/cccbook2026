@@ -7,11 +7,11 @@ SiO2 閘極氧化層被微縮到只剩 5 顆原子厚，隧道漏電失控——
 本檔案追查這場「換材料不換定律」的偵查，以及它如何為 2011 年的 FinFET 革命鋪路。
 
 ## 前因 -- 為什麼會有這個案子
-- **SiO2 的終局**：從 1970 年代起，閘極氧化層每個世代縮 0.7 倍，到 65nm 時 $t_{ox} \approx 1.2\,\text{nm}$（不到 5 層 SiO2 分子）；再縮下去漏電與良率一起崩盤。
-- **隧道漏電爆衝**：閘極氧化層薄到 2nm 以下，電子開始**直接穿隧**（direct tunneling）穿過氧化層，漏電流隨厚度**指數**上升（$I_{leak} \propto e^{-d}$）。90nm→65nm 世代，閘極漏電功耗逼近甚至超過動態功耗，筆電電池被閘極「偷電」。
+- **SiO2 的終局**：從 1970 年代起，閘極氧化層每個世代縮 0.7 倍，到 65nm 時 $t_{ox} \approx 1.2\,\text{nm}$ （不到 5 層 SiO2 分子）；再縮下去漏電與良率一起崩盤。
+- **隧道漏電爆衝**：閘極氧化層薄到 2nm 以下，電子開始**直接穿隧**（direct tunneling）穿過氧化層，漏電流隨厚度**指數**上升（ $I_{leak} \propto e^{-d}$ ）。90nm→65nm 世代，閘極漏電功耗逼近甚至超過動態功耗，筆電電池被閘極「偷電」。
 - **poly depletion 的內憂**：多晶矽閘極自身有一層耗盡層（約 0.5-1nm），等於在 $t_{ox}$ 之外再加一段串聯電容，讓有效閘控能力再縮水。
 - **傳統對策失效**：氮化氧化層（SiON）只能延緩一個世代；再往下，物理上已無路可走。
-- **關鍵推理**：閘控能力由電容 $C = \kappa \epsilon_0 A / t_{phys}$ 決定——要同樣的 $C$，可以縮 $t_{phys}$，也可以**放大 $\kappa$**。找一種 $\kappa$ 比 SiO2（3.9）大 6 倍以上的材料，物理厚度就能厚 6 倍以上，隧道漏電指數下降。這正是 high-k 的推理核心。
+- **關鍵推理**：閘控能力由電容 $C = \kappa \epsilon_0 A / t_{phys}$ 決定——要同樣的 $C$ ，可以縮 $t_{phys}$ ，也可以**放大 $\kappa$ **。找一種 $\kappa$ 比 SiO2（3.9）大 6 倍以上的材料，物理厚度就能厚 6 倍以上，隧道漏電指數下降。這正是 high-k 的推理核心。
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -19,7 +19,7 @@ SiO2 閘極氧化層被微縮到只剩 5 顆原子厚，隧道漏電失控——
 
 $$\text{EOT} = t_{phys} \cdot \frac{\kappa_{SiO_2}}{\kappa_{high-k}} = t_{phys} \cdot \frac{3.9}{\kappa}$$
 
-- 45nm 世代的目標：EOT $\approx 1.0\,\text{nm}$。若用 HfO2（$\kappa \approx 25$），物理厚度可達：
+- 45nm 世代的目標：EOT $\approx 1.0\,\text{nm}$ 。若用 HfO2（ $\kappa \approx 25$ ），物理厚度可達：
 
 $$t_{phys} = 1.0 \times \frac{25}{3.9} \approx 6.4\,\text{nm} \quad(\approx 15\ \text{層 HfO2}）$$
 
@@ -31,18 +31,18 @@ $$t_{phys} = 1.0 \times \frac{25}{3.9} \approx 6.4\,\text{nm} \quad(\approx 15\ 
 
 $$I_{leak} \propto e^{-A \sqrt{\phi_m}\, d}$$
 
-其中 $\phi_m$ 為障壁高度（電子親合力差，SiO2 $\approx 3.1\,\text{eV}$、HfO2 $\approx 1.5\,\text{eV}$）、$d$ 為物理厚度、$A = \dfrac{2\sqrt{2m^*q}}{\hbar}$。
-- SiO2 1.2nm：$\sqrt{\phi_m} d \approx \sqrt{3.1} \times 1.2 \approx 2.1$ → 漏電巨大。
-- HfO2 6.4nm：$\sqrt{\phi_m} d \approx \sqrt{1.5} \times 6.4 \approx 7.8$ → 指數衰減快 3.7 倍，漏電**下降數個數量級**。
-- 偵查重點：**比的不是 $\kappa$，也不是厚度，而是 $\sqrt{\phi_m} \times d$ 的乘積**——這也是為什麼 $\phi_m$ 偏低的 HfO2 依然能大幅救漏電：厚度贏的比障壁輸的多太多。
+其中 $\phi_m$ 為障壁高度（電子親合力差，SiO2 $\approx 3.1\,\text{eV}$ 、HfO2 $\approx 1.5\,\text{eV}$ ）、 $d$ 為物理厚度、 $A = \dfrac{2\sqrt{2m^*q}}{\hbar}$ 。
+- SiO2 1.2nm： $\sqrt{\phi_m} d \approx \sqrt{3.1} \times 1.2 \approx 2.1$ → 漏電巨大。
+- HfO2 6.4nm： $\sqrt{\phi_m} d \approx \sqrt{1.5} \times 6.4 \approx 7.8$ → 指數衰減快 3.7 倍，漏電**下降數個數量級**。
+- 偵查重點：**比的不是 $\kappa$ ，也不是厚度，而是 $\sqrt{\phi_m} \times d$ 的乘積**——這也是為什麼 $\phi_m$ 偏低的 HfO2 依然能大幅救漏電：厚度贏的比障壁輸的多太多。
 
 ### 3. 金屬閘極：解 poly depletion 與功函數調變
-- **取代 poly depletion**：金屬閘極沒有耗盡層，$C_{gate} = \kappa\epsilon_0 A / t_{high-k}$ 直接成立，等效又多省 0.5-1nm EOT。
+- **取代 poly depletion**：金屬閘極沒有耗盡層， $C_{gate} = \kappa\epsilon_0 A / t_{high-k}$ 直接成立，等效又多省 0.5-1nm EOT。
 - **功函數調變**：CMOS 需要 NMOS（低功函數）與 PMOS（高功函數）兩種閘極。HfO2 上的金屬功函數會被 **Fermi-level pinning** 拉向中間（N-type 靠 TiN/Hf、P-type 靠 AlN/W 的配方對抗），這是 45nm 研發最大的戰場之一。
 - **CMOS 雙金屬閘**：Intel 45nm 用 NMOS/PMOS 兩種不同金屬（成分保密至今），加上 HfO2 介電層，合計 3 種新材料、超過 100 道新工序。
 
 ### 4. 閘極漏電 vs 通道遷移率的取捨
-- HfO2 與 Si 介面的聲子散射會拉低**通道遷移率**（effective mobility 下降 20-30%）；對策：在 HfO2 與 Si 之間夾一層超薄 SiO2 介面層（interfacial layer，$\sim$0.5-1nm）——最終結構是「SiO2 界面層 + HfO2 + 金屬閘」的三明治。
+- HfO2 與 Si 介面的聲子散射會拉低**通道遷移率**（effective mobility 下降 20-30%）；對策：在 HfO2 與 Si 之間夾一層超薄 SiO2 介面層（interfacial layer， $\sim$ 0.5-1nm）——最終結構是「SiO2 界面層 + HfO2 + 金屬閘」的三明治。
 - **Vth roll-off**：金屬閘極與 HfO2 的固定電荷使 $V_{th}$ 隨尺寸漂移，需靠 halo/閘極間距設計壓制。
 - 取捨的結論：漏電降 1-2 個數量級，遷移率損失 10-20%，驅動電流不降反升（金屬閘多出的 EOT 紅利），淨效益為正。
 
@@ -80,7 +80,7 @@ $$I_{leak} \propto e^{-A \sqrt{\phi_m}\, d}$$
 | 22nm/16nm | 2011~2014 | EOT ~0.8 | 金屬 | HKMG + FinFET |
 | 7nm~3nm | 2018~ | EOT ~0.5 | 金屬 | HKMG + FinFET/GAA |
 
-時間軸的偵查結論：2007 年是「微縮 $t_{ox}$」路線的終點、與「放大 $\kappa$」路線的起點——材料取代尺寸，正是 EOT 公式 $\text{EOT} = t_{phys} \cdot 3.9/\kappa$ 的直接推論。
+時間軸的偵查結論：2007 年是「微縮 $t_{ox}$ 」路線的終點、與「放大 $\kappa$ 」路線的起點——材料取代尺寸，正是 EOT 公式 $\text{EOT} = t_{phys} \cdot 3.9/\kappa$ 的直接推論。
 
 ### 8. Python 實作：EOT 與漏電計算
 

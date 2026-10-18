@@ -6,7 +6,7 @@
 （Adaptive Linear Neuron，自適應線性神經元）：
 $$\boxed{\text{對「連續輸出」的誤差學習——delta 規則（LMS 最小均方）}}$$
 **ADALINE** 與感知機的關鍵差別：
-- 感知機用**階梯函數後**的離散誤差 $(t - o)$；
+- 感知機用**階梯函數後**的離散誤差 $(t - o)$ ；
 - ADALINE 用**階梯函數前**的連續誤差：
 $$E = \frac{1}{2}(t - y)^2, \quad y = w \cdot x$$
 **delta 規則（LMS）**——對誤差 $E$ 做梯度下降：
@@ -19,7 +19,7 @@ $$\text{神經網路} \xrightarrow{\text{ADALINE（1960）}} \text{第一次走�
 
 ## 前因 -- 為什麼會有這個案子
 - **Rosenblatt 感知機的缺陷（1958）**：
-  感知機的學習用**階梯輸出**的誤差 $(t - o) \in \{-1, 0, 1\}$——
+  感知機的學習用**階梯輸出**的誤差 $(t - o) \in \{-1, 0, 1\}$ ——
   **錯很多只知「錯了」**：誤差訊號粗、收斂慢、對雜訊敏感。
   $$\boxed{\text{「能不能用連續的誤差大小，而不是只有對錯？」}}$$
   Widrow 的回答：**對連續誤差做梯度下降**——delta 規則。
@@ -57,11 +57,11 @@ $$\frac{\partial E}{\partial w_i} = (t - y) \cdot \frac{\partial y}{\partial w_i
 **梯度下降**（往誤差下降最快的方向走）：
 $$\boxed{\Delta w_i = -\eta \frac{\partial E}{\partial w_i} = \eta \, (t - y) \, x_i}$$
 **這是 delta 規則（LMS, least mean squares）**——
-- 感知機：誤差 $(t - o)$ 只有 $\{-1, 0, +1\}$（階梯後）；
+- 感知機：誤差 $(t - o)$ 只有 $\{-1, 0, +1\}$ （階梯後）；
 - ADALINE：誤差 $(t - y)$ 是**連續實數**（階梯前）——
   **錯得越多，推得越用力**——
   $$\text{感知機（1958）：}(t - o) \in \{-1,0,1\} \xrightarrow{\text{ADALINE（1960）}} (t - y) \in \mathbb{R}.$$
-- **收斂性**：當 $\eta$ 足夠小（$\eta < 2/\lambda_{\max}$，$\lambda_{\max}$ 是輸入相關矩陣的最大特徵值），
+- **收斂性**：當 $\eta$ 足夠小（ $\eta < 2/\lambda_{\max}$ ， $\lambda_{\max}$ 是輸入相關矩陣的最大特徵值），
   LMS **必收斂到誤差面的最低點**——比感知機的行為更可控。
 
 ### 第三條線索：LMS = 最小平方法的線上版

@@ -7,7 +7,7 @@ $$
 \nabla_\theta J = \mathbb{E}\big[\nabla_\theta \log p_\theta(a \mid s)\, R\big]
 $$
 
-價值網路則用回歸逼近 $v_\theta(s) \approx \mathbb{E}[\text{win} \mid s]$。這樁案件的偵探意義：深藍靠 $2\times10^8$ 步/秒的暴力，AlphaGo 靠 $10^3$ 步/秒的**直覺 + 評估**——機器第一次展現了被稱為「棋感」的東西。
+價值網路則用回歸逼近 $v_\theta(s) \approx \mathbb{E}[\text{win} \mid s]$ 。這樁案件的偵探意義：深藍靠 $2\times10^8$ 步/秒的暴力，AlphaGo 靠 $10^3$ 步/秒的**直覺 + 評估**——機器第一次展現了被稱為「棋感」的東西。
 
 ## 前因 -- 為什麼會有這個案子
 - **圍棋的不可搜尋性**：西洋棋 branching factor ~35，深藍硬搜可解；圍棋 branching factor ~250，且形勢判斷（厚薄、地盤）難以用手工評估函數刻畫——1997-DeepBlue擊敗棋王.md 之後，圍棋成為「AI 的聖杯」，人類冠軍宣稱機器至少還要十年。
@@ -47,19 +47,19 @@ AlphaGo 在比賽時把三個網路塞進蒙特卡洛樹搜尋：
 
 | MCTS 階段 | 運算 | 使用的網路 |
 |---|---|---|
-| 選擇（Selection） | $a^* = \arg\max_a \big(Q(s,a) + u(s,a)\big)$，$u \propto p_\sigma(a\mid s)/N(s,a)$ | 策略網路（先驗） |
+| 選擇（Selection） | $a^* = \arg\max_a \big(Q(s,a) + u(s,a)\big)$ ， $u \propto p_\sigma(a\mid s)/N(s,a)$ | 策略網路（先驗） |
 | 擴展（Expansion） | 葉節點展開，算先驗機率 | 策略網路 |
 | 評估（Evaluation） | $v_\theta(s)$ 與 rollout 混合 | 價值網路 + 快速策略 |
-| 回傳（Backup） | $N \mathrel{+}= 1$，$Q \mathrel{+}= \frac{1}{n}(v - Q)$ | — |
+| 回傳（Backup） | $N \mathrel{+}= 1$ ， $Q \mathrel{+}= \frac{1}{n}(v - Q)$ | — |
 
-搜索量：單機 40 個 CPU + 8 GPU 約 $10^3$ 步/秒（分佈式版 $10^4$），對深藍的 $2\times10^8$——**少了五個數量級，卻贏了五個子**。搜尋不再是暴力，而是「直覺引導的深度思考」。
+搜索量：單機 40 個 CPU + 8 GPU 約 $10^3$ 步/秒（分佈式版 $10^4$ ），對深藍的 $2\times10^8$ ——**少了五個數量級，卻贏了五個子**。搜尋不再是暴力，而是「直覺引導的深度思考」。
 
 訓練的三階段管線也值得記錄：先在 KGS 人類棋譜上做監督學習（SL policy net）→ 用自我對弈做策略梯度強化（RL policy net）→ 用自我對弈局面做價值回歸（value net）。三個網路共用 CNN 架構但獨立訓練——2017-AlphaZero自我對弈.md 之後會把三網合一，拋棄人類棋譜與 rollout。
 
 ### 第四條線索：第 37 手——超越人類的證據
 第二局第 37 手，AlphaGo 於第五路落子（人類絕不會下的位置，人類頂尖選手的估計勝率僅萬分之一）。李世乭愣了十七分鐘；解說的職業棋士起初都認為是失誤。最終 AlphaGo 以 4:1 獲勝（第四局李世乭以「神之一手」第 78 手扳回一城——人類尊嚴的最後一勝）。第 37 手證明了：**機器不只是在模仿人類，它發現了人類棋譜之外的下法**。
 
-勝率的數學語言：AlphaGo 內部對每個候選手維護兩個量——平均勝率 $Q(s,a)$ 與探索加成 $u(s,a)$：
+勝率的數學語言：AlphaGo 內部對每個候選手維護兩個量——平均勝率 $Q(s,a)$ 與探索加成 $u(s,a)$ ：
 
 $$
 a^* = \arg\max_a \left(Q(s,a) + \frac{c_p\, p_\sigma(a \mid s)}{1 + N(s,a)}\right)

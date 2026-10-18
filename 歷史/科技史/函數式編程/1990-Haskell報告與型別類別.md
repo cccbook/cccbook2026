@@ -7,7 +7,7 @@
 ## 前因 -- 為什麼會有這個案子
 
 - 委員會成立後的整合工作：Miranda、SASL、Hope、Orwell 等語言的優點需要熔於一爐，報告是唯一的裁判。
-- 純函數式語言的「副作用難題」：引用透明要求 $e \equiv v$，但 `print` 的本質就是改變外部世界——程式要嘛無法印出 Hello World，要嘛違反純潔性。
+- 純函數式語言的「副作用難題」：引用透明要求 $e \equiv v$ ，但 `print` 的本質就是改變外部世界——程式要嘛無法印出 Hello World，要嘛違反純潔性。
 - Overloading 與 Hindley-Milner 的矛盾：`(==)`、`(+)` 在不同型別上語義不同，HM 的單態推論無法容納，需要 Wadler-Blott 的 type class 補強。
 - I/O 的舊方案（stream-based I/O、continuation-passing）在真實程式上難以組合，需要更強的抽象。
 
@@ -48,11 +48,11 @@ elem x (y:ys)   = x == y || elem x ys
 
 ### 線索二：Moggi 的 monad 理論
 
-Moggi（1991）的關鍵洞察：計算（computation）與值（value）是兩個範疇。一個 monad 是範疇論上的三元組 $(T, \eta, \mu)$，作用在範疇 $\mathcal{C}$ 上：
+Moggi（1991）的關鍵洞察：計算（computation）與值（value）是兩個範疇。一個 monad 是範疇論上的三元組 $(T, \eta, \mu)$ ，作用在範疇 $\mathcal{C}$ 上：
 
-- 單位 $\eta : \text{Id} \Rightarrow T$——把值包裝成計算；
-- 乘法 $\mu : T^2 \Rightarrow T$——把「計算的計算」壓平成計算；
-- 滿足結合律與單位律：$\mu \circ T\eta = \mu \circ \eta T = \text{id}$，$\mu \circ T\mu = \mu \circ \mu T$。
+- 單位 $\eta : \text{Id} \Rightarrow T$ ——把值包裝成計算；
+- 乘法 $\mu : T^2 \Rightarrow T$ ——把「計算的計算」壓平成計算；
+- 滿足結合律與單位律： $\mu \circ T\eta = \mu \circ \eta T = \text{id}$ ， $\mu \circ T\mu = \mu \circ \mu T$ 。
 
 Kleisli 延伸（即 bind）是程式設計師實際使用的操作：
 

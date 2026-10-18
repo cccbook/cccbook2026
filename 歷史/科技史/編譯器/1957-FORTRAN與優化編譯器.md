@@ -14,7 +14,7 @@
 ### 案件的核心推理：編譯器可以比人更聰明
 Backus 團隊的洞見是：人類程式師做優化時，其實是在做「局部模式匹配 + 代數化簡」——這正是機器最擅長的事。若把這些優化規則形式化，機器可以在所有地方套用它們，而人類只在少數地方想到。
 
-優化的數學描述：若原始程式為 $P$，編譯後程式為 $C(P)$，優化的目標是：
+優化的數學描述：若原始程式為 $P$ ，編譯後程式為 $C(P)$ ，優化的目標是：
 
 $$\forall x: \; \llbracket P \rrbracket(x) = \llbracket C(P) \rrbracket(x), \qquad \text{cost}(C(P)) \le \text{cost}(P)$$
 
@@ -67,7 +67,7 @@ print("語意等價 ✓，圈內乘法次數從 3n 降為 2n+2")
 
 $$\text{cost}_{\text{before}} = 3n, \qquad \text{cost}_{\text{after}} = n + 2 \approx n$$
 
-當 $n = 10^6$，這是近 3 倍的加速——Backus 的賭注贏在這些細節上。
+當 $n = 10^6$ ，這是近 3 倍的加速——Backus 的賭注贏在這些細節上。
 
 ### 優化三：暫存器分配（Register Allocation）
 704 有 3 個索引暫存器，分配策略直接決定效率。這是 NP-hard 問題（圖著色），Backus 團隊用貪婪法與局部啟發式解決——後來 Chaitin（1981）把完整理論化為圖著色：

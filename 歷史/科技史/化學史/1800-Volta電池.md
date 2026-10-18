@@ -41,7 +41,7 @@ Volta 電池（電堆）的問世，是電學與化學史的分水嶺。拿破�
 
 $$E_{\text{cell}} = E^{\circ}_{\mathrm{Cu^{2+}/Cu}} - E^{\circ}_{\mathrm{Zn^{2+}/Zn}} = 0.34 - (-0.76) = 1.10\ \text{V}$$
 
-Volta 電堆將 N 組「鋅｜浸鹽液布片｜銅」單元層層疊加，各單元電壓近似相加：$V_N \approx N \times 1.10\ \text{V}$：
+Volta 電堆將 N 組「鋅｜浸鹽液布片｜銅」單元層層疊加，各單元電壓近似相加： $V_N \approx N \times 1.10\ \text{V}$ ：
 
 | 電堆層數 $N$ | 總電壓 (V) | 備註 |
 |---|---|---|

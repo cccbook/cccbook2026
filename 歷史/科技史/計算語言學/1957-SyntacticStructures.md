@@ -16,7 +16,7 @@
 
 ### 短語結構文法的生成式定義
 
-語法 $G = (N, \Sigma, P, S)$，其中 $N$ 是非終端符號（S、NP、VP…），$\Sigma$ 是詞彙，$P$ 是生成規則，$S$ 是起始符號。書中分析英語的核心規則包括：
+語法 $G = (N, \Sigma, P, S)$ ，其中 $N$ 是非終端符號（S、NP、VP…）， $\Sigma$ 是詞彙， $P$ 是生成規則， $S$ 是起始符號。書中分析英語的核心規則包括：
 
 $$S \to NP + VP, \quad VP \to V + NP, \quad NP \to T + N$$
 
@@ -28,7 +28,7 @@ $$L(G) = \{ w \in \Sigma^* \mid S \Rightarrow^* w \}$$
 
 ### 轉換規則：被動式的數學
 
-短語結構文法無法優雅處理主動/被動的關係（兩句要各寫一套規則）。Chomsky 引入轉換規則（transformational rules）：作用於整個句法結構上的映射。被動轉換 $T_{\text{passive}}$：
+短語結構文法無法優雅處理主動/被動的關係（兩句要各寫一套規則）。Chomsky 引入轉換規則（transformational rules）：作用於整個句法結構上的映射。被動轉換 $T_{\text{passive}}$ ：
 
 $$NP_1 + V + NP_2 \Rightarrow NP_2 + be + V + en + by + NP_1$$
 

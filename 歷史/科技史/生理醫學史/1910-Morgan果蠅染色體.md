@@ -39,8 +39,8 @@ $$\text{圖距}(A, B) = \frac{\text{重組後代數}}{\text{總後代數}} \time
 ### 理論與數學式：從互換頻率到基因圖譜
 
 異型合子 $\mathrm{Ab}/\mathrm{aB}$ 與隱性純合子 $\mathrm{ab}/\mathrm{ab}$ 測交：
-親本型配子 $\mathrm{Ab},\ \mathrm{aB}$ 各佔 $\frac{1-r}{2}$，重組型配子 $\mathrm{AB},\ \mathrm{ab}$ 各佔 $\frac{r}{2}$
-（$r$ 為互換頻率）。重組率等於圖距：
+親本型配子 $\mathrm{Ab},\ \mathrm{aB}$ 各佔 $\frac{1-r}{2}$ ，重組型配子 $\mathrm{AB},\ \mathrm{ab}$ 各佔 $\frac{r}{2}$
+（ $r$ 為互換頻率）。重組率等於圖距：
 
 $$r = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}), \qquad r \le 50\%.$$
 

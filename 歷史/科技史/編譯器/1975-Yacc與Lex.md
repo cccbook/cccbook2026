@@ -49,7 +49,7 @@ Lesk 的 Lex 用正則表示式描述詞彙（token）模式，自動產生掃�
 [-+*/()]    { return yytext[0]; }                    /* 運算子 */
 ```
 
-正則到自動機的理論：Thompson 建構法（1968）先把正則 $r$ 轉成 NFA $\epsilon$-NFA，再以 **subset construction** 轉成 DFA：
+正則到自動機的理論：Thompson 建構法（1968）先把正則 $r$ 轉成 NFA $\epsilon$ -NFA，再以 **subset construction** 轉成 DFA：
 
 $$\text{NFA 狀態數} = \mathcal{O}(|r|), \qquad \text{DFA 狀態數} \le 2^{\mathcal{O}(|r|)} \text{（最壞），實務通常線性}$$
 

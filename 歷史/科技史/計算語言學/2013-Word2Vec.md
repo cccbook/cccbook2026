@@ -6,7 +6,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 
-- Bengio 等人 2003 年的神經語言模型（NNLM）已經證明「詞的連續向量表示」有用，但 softmax 必須對整個詞彙表 $V$（數十萬詞）計算機率，成為致命 bottleneck，訓練一個模型要數週。
+- Bengio 等人 2003 年的神經語言模型（NNLM）已經證明「詞的連續向量表示」有用，但 softmax 必須對整個詞彙表 $V$ （數十萬詞）計算機率，成為致命 bottleneck，訓練一個模型要數週。
 - 語言學家 Zellig Harris 1954 年早已提出分佈假說（distributional hypothesis）：出現在相似語境的詞，語義相似。傳統的 PMI 矩陣 + SVD 分解是這個假說的線性代數實現，但同樣難以擴展到超大語料。
 - 深度學習浪潮興起（2012 年 AlexNet 之後），大家相信「大資料 + 快硬體 + 簡單模型」可以打敗精緻的傳統方法。
 - Mikolov 先前以 RNN 語言模型成名，但他心中真正想要的，是一個「快而好」、能被工業界大量使用的詞向量工具——目標不是語言模型本身，而是詞向量這個副產品。
@@ -20,7 +20,7 @@ Word2Vec 的第一個推理線索：把「用整句預測下一詞」的語言�
 - CBOW（Continuous Bag of Words）：用中心詞周圍的語境詞預測中心詞，語境詞的向量直接平均（bag = 不考慮順序）。
 - Skip-gram：反過來，用中心詞預測周圍的每個語境詞。對小語料、罕見詞，skip-gram 品質更好。
 
-skip-gram 的目標函數（給定中心詞 $w_c$，最大化其語境詞 $w_o$ 的條件機率）：
+skip-gram 的目標函數（給定中心詞 $w_c$ ，最大化其語境詞 $w_o$ 的條件機率）：
 
 $$
 \max_\theta \; \frac{1}{T} \sum_{t=1}^{T} \sum_{-m \le j \le m, \, j \ne 0} \log P(w_{t+j} \mid w_t ; \theta)
@@ -40,17 +40,17 @@ $$
 \log \sigma(v_c \cdot v_w) + \sum_{i=1}^{k} \mathbb{E}_{w_i \sim P_n} \log \sigma(-v_c \cdot v_{w_i})
 $$
 
-其中 $\sigma(x) = 1/(1+e^{-x})$ 是 sigmoid 函數，$P_n$ 是噪音分佈（實務上取一元詞頻的 3/4 次方）。每次更新的成本從 $O(V)$ 降到 $O(k)$，$k$ 通常只是 5-20。對照組層次 softmax（hierarchical softmax）則用 Huffman 編碼樹把 $O(V)$ 降到 $O(\log V)$，但負採樣更簡單，成為實務首選。
+其中 $\sigma(x) = 1/(1+e^{-x})$ 是 sigmoid 函數， $P_n$ 是噪音分佈（實務上取一元詞頻的 3/4 次方）。每次更新的成本從 $O(V)$ 降到 $O(k)$ ， $k$ 通常只是 5-20。對照組層次 softmax（hierarchical softmax）則用 Huffman 編碼樹把 $O(V)$ 降到 $O(\log V)$ ，但負採樣更簡單，成為實務首選。
 
 ### 向量算術的幾何解釋
 
-第三個線索是那個著名的示例：$v_{king} - v_{man} + v_{woman} \approx v_{queen}$。
+第三個線索是那個著名的示例： $v_{king} - v_{man} + v_{woman} \approx v_{queen}$ 。
 
 幾何解釋：如果「性別」是一個方向向量，那麼所有詞在這個方向上的位移是近似線性的。skip-gram 的目標函數只用到內積（線性運算），語義關係因此在訓練後收斂成向量空間中的平行方向。詞類比任務（a - b + c ≈ d）成了評估詞向量品質的標準測試。
 
 ### 與 PMI/SVD 的數學等價性
 
-第四個線索由 Levy 與 Goldberg（2014）指出：skip-gram + 負採樣其實是在隱式地分解移位後的 PMI 矩陣。若把內積拆成 $w_c^\top w_o + b_c + b_o$，其最優解滿足：
+第四個線索由 Levy 與 Goldberg（2014）指出：skip-gram + 負採樣其實是在隱式地分解移位後的 PMI 矩陣。若把內積拆成 $w_c^\top w_o + b_c + b_o$ ，其最優解滿足：
 
 $$
 w_c^\top w_o + b_c + b_o = \log \frac{P(w_o, w_c)}{P(w_o) P(w_c) \cdot k} = \text{PMI}(w_o, w_c) - \log k

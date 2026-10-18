@@ -25,7 +25,7 @@ a10-後量子密碼遷移
 
 ## 傳導與理論
 
-Shor 演算法的複雜度斷崖（$N$ 為密鑰位元數）：
+Shor 演算法的複雜度斷崖（ $N$ 為密鑰位元數）：
 
 $$T_{\text{古典}} \approx e^{O(N^{1/3})} \quad \text{vs} \quad T_{\text{量子}} \approx O(N^3)$$
 

@@ -4,14 +4,14 @@
 1829 年，雅可比（Carl Gustav Jacobi）出版《橢圓函數理論新基礎》（Fundamenta nova theoriae functionum ellipticarum）。他與阿貝爾（Abel）這對「雙子星」幾乎同時發現：橢圓積分的反函數是**雙週期**的。一個新的函數宇宙就此誕生。
 
 ## 前因 -- 為什麼會有這個案子
-- 橢圓積分 $\int_0^x \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}$ 自 17 世紀起出現在單擺週期、橢圓弧長中，Fagnano、歐拉發現其**加法公式**（橢圓積分版的 $\sin(a+b)$），卻無法把它「積出來」。
+- 橢圓積分 $\int_0^x \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}$ 自 17 世紀起出現在單擺週期、橢圓弧長中，Fagnano、歐拉發現其**加法公式**（橢圓積分版的 $\sin(a+b)$ ），卻無法把它「積出來」。
 - Abel 的關鍵洞見：積不出來，就**反轉它**——把積分視為新函數的自變數。1827 年 Abel 與 Jacobi 幾乎同時發表反演理論。
 - 高斯更早（約 1798 年）私下已有同樣發現但未發表，死後遺稿證實。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：反演 —— 橢圓積分的反函數
-定義第一類橢圓積分（模數 $k$）：
+定義第一類橢圓積分（模數 $k$ ）：
 
 $$u = F(\phi, k) = \int_0^{\sin\phi} \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}$$
 
@@ -23,14 +23,14 @@ $$\mathrm{sn}(u) = \sin\phi, \qquad \mathrm{cn}(u) = \cos\phi, \qquad \mathrm{dn
 
 $$\mathrm{sn}^2(u) + \mathrm{cn}^2(u) = 1, \qquad \mathrm{dn}^2(u) + k^2\,\mathrm{sn}^2(u) = 1$$
 
-當 $k \to 0$：$\mathrm{sn} \to \sin$、$\mathrm{cn} \to \cos$、$\mathrm{dn} \to 1$，退化回三角函數。
+當 $k \to 0$ ： $\mathrm{sn} \to \sin$ 、 $\mathrm{cn} \to \cos$ 、 $\mathrm{dn} \to 1$ ，退化回三角函數。
 
 ### 線索二：雙週期性 —— 最大的意外
 $\sin(z + 2\pi) = \sin(z)$ 只有一個（複）週期；而橢圓函數有**兩個**：
 
 $$\mathrm{sn}(z + 4K) = \mathrm{sn}(z), \qquad \mathrm{sn}(z + 2iK') = \mathrm{sn}(z)$$
 
-其中 $K = F(\pi/2, k)$ 是完全橢圓積分，$K' = F(\pi/2, \sqrt{1-k^2})$。一般地，所有橢圓函數都是某個格 $\Lambda = 2\omega_1\mathbb{Z} + 2\omega_2\mathbb{Z}$ 的雙週期亞純函數（這正是 Weierstrass $\wp$ 函數的定義性質）。
+其中 $K = F(\pi/2, k)$ 是完全橢圓積分， $K' = F(\pi/2, \sqrt{1-k^2})$ 。一般地，所有橢圓函數都是某個格 $\Lambda = 2\omega_1\mathbb{Z} + 2\omega_2\mathbb{Z}$ 的雙週期亞純函數（這正是 Weierstrass $\wp$ 函數的定義性質）。
 
 ### 線索三：theta 函數
 Jacobi 用四個 theta 函數把 sn/cn/dn 表示為**商**：
@@ -68,11 +68,11 @@ plt.legend(); plt.title(f'Jacobi 橢圓函數 (k={k}) 的實週期性')
 plt.xlabel('u'); plt.grid(True); plt.savefig('jacobi_sn_cn_dn.png', dpi=120)
 ```
 
-曲線像「壓縮過的正弦」——單擺大角度擺動的解正是 $\sin\phi(t) = \mathrm{sn}(u_0 + \omega t)$，橢圓函數第一次讓非線性振盪有了閉式解。
+曲線像「壓縮過的正弦」——單擺大角度擺動的解正是 $\sin\phi(t) = \mathrm{sn}(u_0 + \omega t)$ ，橢圓函數第一次讓非線性振盪有了閉式解。
 
 ### 線索四：通往費馬最後定理與朗蘭茲
-- 橢圓曲線 $y^2 = x^3 + ax + b$ 的積分就是橢圓積分；每一條橢圓曲線配上其週期格 $\Lambda \cong \mathbb{C}/\Lambda$，是 Wiles 證明**費馬最後定理**（1995）的舞台——FLT 歸結為谷山–志村猜想：「每條半穩定橢圓曲線都是模形式」。
-- 橢圓曲線的 $L$ 函數滿足 $\Lambda$-函數方程，是**朗蘭茲綱領**中 Galois 表示 ↔ 自守形式的頭號範例；而這一切的源頭正是 1829 年的雙週期函數。
+- 橢圓曲線 $y^2 = x^3 + ax + b$ 的積分就是橢圓積分；每一條橢圓曲線配上其週期格 $\Lambda \cong \mathbb{C}/\Lambda$ ，是 Wiles 證明**費馬最後定理**（1995）的舞台——FLT 歸結為谷山–志村猜想：「每條半穩定橢圓曲線都是模形式」。
+- 橢圓曲線的 $L$ 函數滿足 $\Lambda$ -函數方程，是**朗蘭茲綱領**中 Galois 表示 ↔ 自守形式的頭號範例；而這一切的源頭正是 1829 年的雙週期函數。
 
 ## 結案 -- 後果與影響
 - 代數函數積分的「不可能性」被轉化為新函數的誕生：**反轉困難**成為數學的經典策略。

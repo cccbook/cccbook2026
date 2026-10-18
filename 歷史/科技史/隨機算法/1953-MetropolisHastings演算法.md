@@ -1,10 +1,10 @@
 # 1953 - Metropolis–Hastings 演算法
 
 ## 案件摘要
-1953 年，Metropolis、Rosenbluth 夫婦、Teller 夫婦（Ulam 也有貢獻）在 Los Alamos 發表《Equation of State Calculations by Fast Computing Machines》：要從一個無法直接取樣的機率分佈 $\pi(x)$ 中抽樣，就設計一條**隨機漫步**，其平穩分佈恰好是 $\pi$。這是 Markov Chain Monte Carlo（MCMC）的誕生——後來 Hastings (1970) 一般化它，成為整個貝葉斯統計與計算物理的引擎。
+1953 年，Metropolis、Rosenbluth 夫婦、Teller 夫婦（Ulam 也有貢獻）在 Los Alamos 發表《Equation of State Calculations by Fast Computing Machines》：要從一個無法直接取樣的機率分佈 $\pi(x)$ 中抽樣，就設計一條**隨機漫步**，其平穩分佈恰好是 $\pi$ 。這是 Markov Chain Monte Carlo（MCMC）的誕生——後來 Hastings (1970) 一般化它，成為整個貝葉斯統計與計算物理的引擎。
 
 ## 前因 -- 為什麼會有這個案子
-統計力學的核心需求：給定能量函數 $E(x)$（$x$ 是 $10^{23}$ 個粒子的組態），要計算配分函數與各種期望值：
+統計力學的核心需求：給定能量函數 $E(x)$ （ $x$ 是 $10^{23}$ 個粒子的組態），要計算配分函數與各種期望值：
 
 $$Z = \sum_x e^{-E(x)/kT}, \qquad \langle f \rangle = \frac{1}{Z}\sum_x f(x) e^{-E(x)/kT}$$
 
@@ -13,25 +13,25 @@ $$Z = \sum_x e^{-E(x)/kT}, \qquad \langle f \rangle = \frac{1}{Z}\sum_x f(x) e^{
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Metropolis 演算法
-目標分佈 $\pi(x) \propto e^{-E(x)/kT}$（只需知道到常數倍比例！）。從當前狀態 $x$：
+目標分佈 $\pi(x) \propto e^{-E(x)/kT}$ （只需知道到常數倍比例！）。從當前狀態 $x$ ：
 
-1. 提議新狀態 $x'$（對稱提議：$q(x'|x) = q(x|x')$）
+1. 提議新狀態 $x'$ （對稱提議： $q(x'|x) = q(x|x')$ ）
 2. 計算接受機率
 
 $$A(x \to x') = \min\left(1, \frac{\pi(x')}{\pi(x)}\right) = \min\left(1, e^{-(E(x')-E(x))/kT}\right)$$
 
-3. 以機率 $A$ 移動到 $x'$，否則留在 $x$
+3. 以機率 $A$ 移動到 $x'$ ，否則留在 $x$
 
-**神來之筆**：$\pi$ 的歸一化常數 $Z$ 在比值中**抵消了**——不用算 $Z$！這解開了統計力學的死結（$Z$ 本身就是最難算的量）。
+**神來之筆**： $\pi$ 的歸一化常數 $Z$ 在比值中**抵消了**——不用算 $Z$ ！這解開了統計力學的死結（ $Z$ 本身就是最難算的量）。
 
 ### 為什麼平穩分佈是 π：細緻平衡
 鏈的轉移機率 $P(x \to x') = q(x'|x) A(x \to x')$ 滿足**細緻平衡**（detailed balance）：
 
 $$\pi(x) P(x \to x') = \pi(x') P(x' \to x)$$
 
-驗證：$\pi(x) q(x'|x) \min(1, \pi(x')/\pi(x)) = \min(\pi(x)q(x'|x), \pi(x')q(x'|x))$，對稱成立。$\blacksquare$
+驗證： $\pi(x) q(x'|x) \min(1, \pi(x')/\pi(x)) = \min(\pi(x)q(x'|x), \pi(x')q(x'|x))$ ，對稱成立。 $\blacksquare$
 
-由馬可夫鏈理論：若鏈不可約且非週期，細緻平衡 $\implies$ $\pi$ 是平穩分佈 $\implies$ 分佈收斂到 $\pi$。**於是長期漫步的統計就是目標分佈**。
+由馬可夫鏈理論：若鏈不可約且非週期，細緻平衡 $\implies$ $\pi$ 是平穩分佈 $\implies$ 分佈收斂到 $\pi$ 。**於是長期漫步的統計就是目標分佈**。
 
 ### Hastings 一般化 (1970)
 Hastings 放寬對稱提議的限制，接受機率改為：
@@ -68,9 +68,9 @@ print(f"mean={mean:.3f} var={var:.3f} 接受率={rate:.2f}")
 ```
 
 ### 二維 Ising 模型
-磁性系統：格點上自旋 $\sigma_i = \pm 1$，能量 $E = -J\sum_{\langle i,j\rangle} \sigma_i\sigma_j$。Metropolis 步驟：隨機翻轉一個自旋，若 $\Delta E \le 0$ 接受，否則以 $e^{-\Delta E/kT}$ 機率接受。模擬顯示相變：低溫磁化、高溫失磁——**統計力學最深刻的現象，用擲骰子看見**。
+磁性系統：格點上自旋 $\sigma_i = \pm 1$ ，能量 $E = -J\sum_{\langle i,j\rangle} \sigma_i\sigma_j$ 。Metropolis 步驟：隨機翻轉一個自旋，若 $\Delta E \le 0$ 接受，否則以 $e^{-\Delta E/kT}$ 機率接受。模擬顯示相變：低溫磁化、高溫失磁——**統計力學最深刻的現象，用擲骰子看見**。
 
-**偵探筆記**：整個方法的推理鏈是「逆向工程」——先確定想要的平穩分佈 $\pi$，反推轉移規則使其滿足細緻平衡。**設計收斂到目標的隨機過程**，這個模式後來出現在 PageRank、2-SAT 隨機算法、混合時間理論中。
+**偵探筆記**：整個方法的推理鏈是「逆向工程」——先確定想要的平穩分佈 $\pi$ ，反推轉移規則使其滿足細緻平衡。**設計收斂到目標的隨機過程**，這個模式後來出現在 PageRank、2-SAT 隨機算法、混合時間理論中。
 
 ## 結案 -- 後果與影響
 - **計算物理**：Ising 模型、量子蒙地卡羅、格點 QCD——統計力學全面數值化。

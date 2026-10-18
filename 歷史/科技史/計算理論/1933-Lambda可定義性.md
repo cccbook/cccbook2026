@@ -13,14 +13,14 @@ Hilbert 的判定問題（見 `1900-Hilbert23問題.md`）要求「機械程序�
 
 $$M ::= x \mid \lambda x.\, M \mid M\, N$$
 
-三種構造：變數 $x$、函數抽象 $\lambda x. M$、函數應用 $M\, N$。歸約規則（β 歸約）：
+三種構造：變數 $x$ 、函數抽象 $\lambda x. M$ 、函數應用 $M\, N$ 。歸約規則（β 歸約）：
 
 $$(\lambda x.\, M)\, N \to_\beta M[x := N]$$
 
-（把 $M$ 中的自由 $x$ 代換為 $N$。）另有 α 變換（重新命名約束變數）與 η 歸約。
+（把 $M$ 中的自由 $x$ 代換為 $N$ 。）另有 α 變換（重新命名約束變數）與 η 歸約。
 
 ### Church 數字
-Church 用純 λ 項編碼自然數 $n$ 為「$n$ 次應用」：
+Church 用純 λ 項編碼自然數 $n$ 為「 $n$ 次應用」：
 
 $$\ulcorner n \urcorner \equiv \lambda f.\, \lambda x.\, f^n(x)$$
 
@@ -31,7 +31,7 @@ $$\ulcorner n \urcorner \equiv \lambda f.\, \lambda x.\, f^n(x)$$
 - $\ulcorner 3 \urcorner = \lambda f.\, \lambda x.\, f(f(f(x)))$
 
 ### 算術運算的 λ 定義
-加法：$m + n$ 就是「把 $m$ 疊在 $n$ 上」：
+加法： $m + n$ 就是「把 $m$ 疊在 $n$ 上」：
 
 $$\mathrm{ADD} \equiv \lambda m.\, \lambda n.\, \lambda f.\, \lambda x.\, m\, f\, (n\, f\, x)$$
 
@@ -44,7 +44,7 @@ $$\mathrm{MUL} \equiv \lambda m.\, \lambda n.\, \lambda f.\, m\, (n\, f)$$
 $$\mathrm{PRED} \equiv \lambda n.\, \lambda f.\, \lambda x.\, n\, (\lambda g.\, \lambda h.\, h\, (g\, f))\, (\lambda u.\, x)\, (\lambda u.\, u)$$
 
 布爾值與條件：
-- $\mathrm{TRUE} \equiv \lambda a.\, \lambda b.\, a$，$\mathrm{FALSE} \equiv \lambda a.\, \lambda b.\, b$
+- $\mathrm{TRUE} \equiv \lambda a.\, \lambda b.\, a$ ， $\mathrm{FALSE} \equiv \lambda a.\, \lambda b.\, b$
 - $\mathrm{IF} \equiv \lambda c.\, \lambda t.\, \lambda e.\, c\, t\, e$
 
 布爾值本質上是「選擇器」，條件分支就是直接應用——**資料與程式碼的界線在 λ 演算中消失了**。
@@ -53,8 +53,8 @@ $$\mathrm{PRED} \equiv \lambda n.\, \lambda f.\, \lambda x.\, n\, (\lambda g.\, 
 Kleene (1936) 證明：每個**原始遞迴函數**都是 λ 可定義的。
 
 **原始遞迴函數**的定義：
-1. **基底**：零函數 $Z(x)=0$、後繼 $S(x)=x+1$、投影 $P_i^n(x_1,\dots,x_n)=x_i$
-2. **合成**：$f(\vec{x}) = g(h_1(\vec{x}), \dots, h_m(\vec{x}))$
+1. **基底**：零函數 $Z(x)=0$ 、後繼 $S(x)=x+1$ 、投影 $P_i^n(x_1,\dots,x_n)=x_i$
+2. **合成**： $f(\vec{x}) = g(h_1(\vec{x}), \dots, h_m(\vec{x}))$
 3. **原始遞迴**：
 $$f(0, \vec{x}) = g(\vec{x}), \quad f(n+1, \vec{x}) = h(n, f(n, \vec{x}), \vec{x})$$
 

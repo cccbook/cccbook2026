@@ -45,7 +45,7 @@ $$
 (\text{state}) \mapsto (\text{state}')
 $$
 
-表達式 $e$ 求值為值 $v$ 寫作 $s, e \Rightarrow s', v$。這套寫法成為之後所有語言規格的教科書典範。
+表達式 $e$ 求值為值 $v$ 寫作 $s, e \Rightarrow s', v$ 。這套寫法成為之後所有語言規格的教科書典範。
 
 ### 線索三：value restriction -- 可變參照下的多型危機
 

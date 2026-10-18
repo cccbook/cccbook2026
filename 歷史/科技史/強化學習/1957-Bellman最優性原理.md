@@ -1,4 +1,4 @@
-# 1957 - Bellman 最優性原理（$V^*, Q^*$ 的誕生與心理學的匯流）
+# 1957 - Bellman 最優性原理（ $V^*, Q^*$ 的誕生與心理學的匯流）
 
 ## 案件摘要
 1957 年，Bellman 出版《Dynamic Programming》專書，把 1953 年的報告正式定名為
@@ -13,18 +13,18 @@
 - **心理學的百年懸案**：Thorndike 1911 年提出**效果律 (Law of Effect)**——
   「帶來滿意的行為更容易被重複」。貓的迷籠實驗證實了它，但沒人能把效果律寫成數學。
 - **Bellman 的偵探直覺**：他把最優性原理從「啟發式直覺」升格為「可證明定理」，
-  並引入 $V$（狀態價值）與後續的 $Q$（動作價值）函數，為效果律的數學化鋪路。
+  並引入 $V$ （狀態價值）與後續的 $Q$ （動作價值）函數，為效果律的數學化鋪路。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理：壓縮映射證收斂
 Bellman 算子定義為
 $$(T V)(s) = \max_a \Big[ r(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s') \Big].$$
-關鍵引理：$T$ 是**壓縮映射 (contraction)**：
+關鍵引理： $T$ 是**壓縮映射 (contraction)**：
 $$\|T V_1 - T V_2\|_\infty \le \gamma \|V_1 - V_2\|_\infty, \qquad \gamma < 1.$$
-證明只需一行：$\max_a [x_a + c] - \max_a [y_a + c] = \max_a[x_a] - \max_a[y_a]$，
+證明只需一行： $\max_a [x_a + c] - \max_a [y_a + c] = \max_a[x_a] - \max_a[y_a]$ ，
 而 $\gamma$ 的折扣吸收了狀態差異。
-由 Banach 不動點定理（見微積分史），$T$ 有唯一不動點 $V^*$，且
+由 Banach 不動點定理（見微積分史）， $T$ 有唯一不動點 $V^*$ ，且
 $$V_k = T^k V_0 \Longrightarrow \|V_k - V^*\|_\infty \le \gamma^k \|V_0 - V^*\|_\infty.$$
 **收斂速度是指數級的**——誤差每輪縮小 $(1-\gamma)$ 倍。
 
@@ -34,7 +34,7 @@ $$V_k = T^k V_0 \Longrightarrow \|V_k - V^*\|_\infty \le \gamma^k \|V_0 - V^*\|_
 | 刺激情境 | 狀態 $s \in \mathcal{S}$ |
 | 行為反應 | 動作 $a \in \mathcal{A}$ |
 | 滿意/厭惡 | 獎勵 $r \in \mathbb{R}$ |
-| 效果律（重複帶來滿意的行為） | $\pi(a|s) \propto \exp(Q(s,a)/\tau)$ 或 $\epsilon$-greedy |
+| 效果律（重複帶來滿意的行為） | $\pi(a|s) \propto \exp(Q(s,a)/\tau)$ 或 $\epsilon$ -greedy |
 | 增強 (reinforcement) | $Q(s,a) \leftarrow Q(s,a) + \alpha\, \delta$ |
 
 ### Python：壓縮映射的指數收斂偵查
@@ -65,12 +65,12 @@ print("比值 :", [f"{errs[i+1]/errs[i]:.3f}" for i in range(5)])
 比值 : ['0.874', '0.895', '0.899', '0.900', '0.900']
 ```
 **誤差比值收斂到恰好 0.900**——壓縮映射的 $\gamma$ 界不是鬆界，而是**極限的精確值**
-（誤差漸近衰減率 = Bellman 算子的主特徵值 $= \gamma$）。
+（誤差漸近衰減率 = Bellman 算子的主特徵值 $= \gamma$ ）。
 
 ## 結案 -- 後果與影響
 - **收斂性成為標準配備**：之後每個 RL 演算法（TD 1988、Q-learning 1989）都必須回答
   「會不會收斂」——證明手法全部源自 Bellman 的壓縮映射框架。
-- **$Q$ 函數的伏筆**：Bellman 定義了 $V^*(s)$；Watkins 1989 年將「狀態-動作」對的價值
+- ** $Q$ 函數的伏筆**：Bellman 定義了 $V^*(s)$ ；Watkins 1989 年將「狀態-動作」對的價值
   $Q^*(s,a)$ 提升為主角，成為無模型學習的基石。
 - **心理學與數學的匯流**：Skinner 的行為主義在 1957 年達到頂峰卻隨即被喬姆斯基批判（1959），
   行為主義在心理學死亡，但它的數學幽靈在工程中重生為 RL。

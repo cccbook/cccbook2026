@@ -25,7 +25,7 @@ Gauss 的破案策略反其道而行：**先假設一個誤差分佈，再由估
 
 ### Gauss 的反推推理
 
-Gauss 設誤差密度為 $\phi(x)$，採用「最大概似」原則：給定觀測 $x_1, \dots, x_n$，選擇位置參數使
+Gauss 設誤差密度為 $\phi(x)$ ，採用「最大概似」原則：給定觀測 $x_1, \dots, x_n$ ，選擇位置參數使
 
 $$L(\theta) = \prod_{i=1}^{n} \phi(x_i - \theta) \quad \text{最大}$$
 
@@ -33,13 +33,13 @@ Gauss 要求此原則對**任何樣本**都給出算術平均 $\bar{x}$ 作為�
 
 $$\boxed{f(x) = \frac{1}{\sigma\sqrt{2\pi}}\; e^{-\frac{(x-\mu)^2}{2\sigma^2}}}$$
 
-證明梗概：令 $g = \ln \phi$，最大概似條件為 $\sum g'(x_i - \theta) = 0$；取 $\theta = \bar{x}$ 時恆成立，意味 $g'(x)/x$ 必為常數 $c$，故 $g(x) = \frac{c}{2}x^2 + b$，即 $\phi$ 為指數二次型。再由 $\int \phi = 1$ 與 $\sigma^2 = \int x^2\phi(x)dx$ 定出常數，得 $c = -1/\sigma^2$。
+證明梗概：令 $g = \ln \phi$ ，最大概似條件為 $\sum g'(x_i - \theta) = 0$ ；取 $\theta = \bar{x}$ 時恆成立，意味 $g'(x)/x$ 必為常數 $c$ ，故 $g(x) = \frac{c}{2}x^2 + b$ ，即 $\phi$ 為指數二次型。再由 $\int \phi = 1$ 與 $\sigma^2 = \int x^2\phi(x)dx$ 定出常數，得 $c = -1/\sigma^2$ 。
 
 ### 誤差理論
 
 Gauss 的完整體系：
 
-1. **誤差分佈**：觀測誤差 $\varepsilon \sim N(0, \sigma^2)$，$\sigma$ 稱為「平均誤差」的尺度參數。
+1. **誤差分佈**：觀測誤差 $\varepsilon \sim N(0, \sigma^2)$ ， $\sigma$ 稱為「平均誤差」的尺度參數。
 2. **最小平方 = 最大概似**：常態誤差下，
 $$\max_\beta \prod_i \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(y_i - X_i\beta)^2}{2\sigma^2}} \iff \min_\beta \sum_i (y_i - X_i\beta)^2$$
    Legendre 的計算原則獲得了機率基礎。

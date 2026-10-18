@@ -11,7 +11,7 @@
 
 ## 線索與推理 -- 數學式、程式、理論
 
-### 1. 一切皆物件：$obj\ message$
+### 1. 一切皆物件： $obj\ message$
 Smalltalk-80 中唯一的計算原語是「訊息傳遞」：
 
 $$\text{receiver}\ \text{selector}\ \text{args} \Rightarrow \text{lookup(selector)}\ \text{in}\ \text{class(receiver)}$$
@@ -45,7 +45,7 @@ L. Peter Deutsch 與 Allan Schiffman 在 ParcPlace 實作 *Efficient Implementat
 
 $$\text{speedup} = \frac{t_{interp}}{t_{JIT}} \approx 4\text{--}10\times$$
 
-inline cache 把方法查找從 $O(\text{depth})$ 降為 $O(1)$（假設 receiver 型別不變）。這是 JVM HotSpot、V8、PyPy 全部 JIT 引擎的直系祖先。
+inline cache 把方法查找從 $O(\text{depth})$ 降為 $O(1)$ （假設 receiver 型別不變）。這是 JVM HotSpot、V8、PyPy 全部 JIT 引擎的直系祖先。
 
 ### 5. Python 實作：簡單物件訊息傳遞 VM
 

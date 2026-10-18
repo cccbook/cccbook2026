@@ -17,25 +17,25 @@ $$\text{Boole（1854）} \xrightarrow{\text{Shannon 1938}} \text{開關代數} \
   **但 1843 年還沒有這樣的代數**——這是 Boole 補上的缺口。
 - **Boole 的偵探直覺（化繁為簡的哲學）**：把邏輯思維看成「集合運算」：
   - 「A 且 B」= A ∩ B（交集）→ **乘積**（用 0/1 表示集合成員）
-  - 「A 或 B」= A ∪ B（聯集）→ **加法**（$x+y-xy$ 去重）
-  - 「非 A」= A 的補集 → **減法**（$1-x$）
+  - 「A 或 B」= A ∪ B（聯集）→ **加法**（ $x+y-xy$ 去重）
+  - 「非 A」= A 的補集 → **減法**（ $1-x$ ）
   布爾在 *laws of thought* 中寫道：「邏輯的推理形式就是代數運算的形式」。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：布爾代數的四條基本律
 布爾代數 $(\{0,1\},\ \lor,\ \land,\ \neg,\ 0,\ 1)$ 滿足：
-1. **交換律**：$x\lor y = y\lor x,\ \ x\land y = y\land x$
-2. **結合律**：$(x\lor y)\lor z = x\lor(y\lor z)$
-3. **分配律**：$x\land(y\lor z) = (x\land y)\lor(x\land z)$
-4. **吸收律**：$x\lor(x\land y) = x$
-5. **互補律**：$x\lor\neg x = 1,\ \ x\land\neg x = 0$
-6. **冪等律**：$x\land x = x,\ \ x\lor x = x$
+1. **交換律**： $x\lor y = y\lor x,\ \ x\land y = y\land x$
+2. **結合律**： $(x\lor y)\lor z = x\lor(y\lor z)$
+3. **分配律**： $x\land(y\lor z) = (x\land y)\lor(x\land z)$
+4. **吸收律**： $x\lor(x\land y) = x$
+5. **互補律**： $x\lor\neg x = 1,\ \ x\land\neg x = 0$
+6. **冪等律**： $x\land x = x,\ \ x\lor x = x$
 
 只需 0、1 兩個元素，就能完整表示邏輯。**代數結構定義了邏輯計算**。
 
 ### 第二條線索：布爾代數中的環（GF(2)）
-若把 $\lor$ 視為 **XOR**（模 2 加法），則布爾代數就是 $\mathbb{F}_2 = \mathbb{Z}/2\mathbb{Z}$：
+若把 $\lor$ 視為 **XOR**（模 2 加法），則布爾代數就是 $\mathbb{F}_2 = \mathbb{Z}/2\mathbb{Z}$ ：
 $$x \oplus y = (x+y) \bmod 2, \qquad x \land y = x\cdot y.$$
 - 這就是 **GF(2)（二進位有限域）**——今日 Galois Field 數位訊號處理的基礎。
 - **XOR 門是算術的靈魂**：加法器的進位 = XOR，檢錯碼 = XOR 校驗。

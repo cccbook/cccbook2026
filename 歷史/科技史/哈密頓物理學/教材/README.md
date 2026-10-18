@@ -5,9 +5,9 @@
 
 哈密頓物理學的核心，是「能量」取代「力」成為主角：
 
-- **Newton**：$\vec F = m\vec a$，向量式、力學觀點。
-- **Lagrange**：廣義座標與作用量 $L = T - V$，解析式觀點。
-- **Hamilton**：相空間與正則方程 $\dot q = \partial H/\partial p,\ \dot p = -\partial H/\partial q$，幾何觀點。
+- **Newton**： $\vec F = m\vec a$ ，向量式、力學觀點。
+- **Lagrange**：廣義座標與作用量 $L = T - V$ ，解析式觀點。
+- **Hamilton**：相空間與正則方程 $\dot q = \partial H/\partial p,\ \dot p = -\partial H/\partial q$ ，幾何觀點。
 
 ## 目錄
 
@@ -30,7 +30,7 @@
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 03.1 | [最小作用量原理](03.1-最小作用量原理.md) | $\delta S = 0$、Euler–Lagrange 方程推導 |
+| 03.1 | [最小作用量原理](03.1-最小作用量原理.md) | $\delta S = 0$ 、Euler–Lagrange 方程推導 |
 | 03.2 | [Euler–Lagrange 方程的更多應用](03.2-EulerLagrange方程的更多應用.md) | 循環座標、守恆量、消去約束力 |
 
 ### 第 4 章：守恆與對稱

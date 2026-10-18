@@ -4,36 +4,36 @@
 1928 年 1 月，Dirac 尋求一個**相對論性且線性**於時間導數的波動方程，以解決 Klein–Gordon 方程的負機率問題。方程的平方根線性化技巧意外地強迫自旋湧現、預言負能量解，進而導致 1932 年正電子的發現——反物質從此進入物理學。
 
 ## 前因 -- 為什麼會有這個案子
-- Schrödinger 方程**非相對論**（不含 $c$），不適用高能電子；Bohr 與 Sommerfeld 的精細結構理論只能半經典地處理。
+- Schrödinger 方程**非相對論**（不含 $c$ ），不適用高能電子；Bohr 與 Sommerfeld 的精細結構理論只能半經典地處理。
 - 1926 年 Klein–Gordon 方程（將 $E^2 = p^2c^2 + m^2c^4$ 直接量子化）問世，但有致命缺陷：機率密度可為**負**，且無法解釋自旋。
 - Dirac 當時 25 歲，追求「美」的數學結構——他要一階時間導數（像 Schrödinger 方程那樣 $\psi$ 演化）加相對論協變。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：Klein–Gordon 方程的問題（負機率）
-對相對論能量關係 $E^2 = p^2c^2 + m^2c^4$ 直接代入 $E \to i\hbar\partial_t$、$p \to -i\hbar\nabla$：
+對相對論能量關係 $E^2 = p^2c^2 + m^2c^4$ 直接代入 $E \to i\hbar\partial_t$ 、 $p \to -i\hbar\nabla$ ：
 
 $$\left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2 + \frac{m^2c^2}{\hbar^2}\right)\psi = 0$$
 
-這是二階時間導數方程，其「機率密度」$\rho \propto \psi^*\partial_t\psi - \psi\,\partial_t\psi^*$ **可正可負**——違反 Born 的 $P = |\psi|^2 \geq 0$。此外它是純量方程，自旋 1/2 無處安放。
+這是二階時間導數方程，其「機率密度」 $\rho \propto \psi^*\partial_t\psi - \psi\,\partial_t\psi^*$ **可正可負**——違反 Born 的 $P = |\psi|^2 \geq 0$ 。此外它是純量方程，自旋 1/2 無處安放。
 
 ### 線索二：Dirac 的平方根線性化技巧
 Dirac 的想法：對 $E^2 = p^2c^2 + m^2c^4$ **開平方並線性化**，設
 
 $$E = \beta mc^2 + c\,\boldsymbol{\alpha}\cdot\mathbf{p}$$
 
-即要求方程 $(\beta mc^2 + c\,\boldsymbol{\alpha}\cdot\mathbf{p})\psi = E\psi$。自乘後仍須還原能量關係，迫使係數滿足**反對易關係**：
+即要求方程 $(\beta mc^2 + c\,\boldsymbol{\alpha}\cdot\mathbf{p})\psi = E\psi$ 。自乘後仍須還原能量關係，迫使係數滿足**反對易關係**：
 
 $$\alpha_i\alpha_j + \alpha_j\alpha_i = 2\delta_{ij}, \qquad \alpha_i\beta + \beta\alpha_i = 0, \qquad \beta^2 = 1$$
 
-純量（數）不可能滿足 $\alpha_i\beta = -\beta\alpha_i$ 且 $\alpha_i^2 = \beta^2 = 1$（除非零）——**它們必須是矩陣**。最小維度為 **4×4**。得到的方程（協變形式）：
+純量（數）不可能滿足 $\alpha_i\beta = -\beta\alpha_i$ 且 $\alpha_i^2 = \beta^2 = 1$ （除非零）——**它們必須是矩陣**。最小維度為 **4×4**。得到的方程（協變形式）：
 
 $$\left(i\hbar c\,\gamma^\mu\partial_\mu - mc^2\right)\psi = 0, \qquad \{\gamma^\mu, \gamma^\nu\} = 2g^{\mu\nu}$$
 
-這就是**Dirac 方程**，$\gamma^\mu$（$\mu = 0,1,2,3$）即狄拉克矩陣。
+這就是**Dirac 方程**， $\gamma^\mu$ （ $\mu = 0,1,2,3$ ）即狄拉克矩陣。
 
 ### 線索三：電子自旋自然湧現
-Pauli 1927 為解釋自旋曾**手動**在 Schrödinger 方程中加入 2×2 Pauli 矩陣與二階自旋-軌道耦合。而 Dirac 方程中，$\boldsymbol{\alpha}$ 矩陣的結構**自動**給出：
+Pauli 1927 為解釋自旋曾**手動**在 Schrödinger 方程中加入 2×2 Pauli 矩陣與二階自旋-軌道耦合。而 Dirac 方程中， $\boldsymbol{\alpha}$ 矩陣的結構**自動**給出：
 
 - $\psi$ 有 4 個分量 → 自旋 1/2 的兩個分量 + 負能量態兩個分量。
 - 自旋-軌道耦合 $\frac{1}{2m^2c^2}\frac{1}{r}\frac{dV}{dr}\,\mathbf{L}\cdot\mathbf{S}$ 在展開中**自然出現**，其係數精確解釋氫原子精細結構（Sommerfeld 精細結構常數 $\alpha \approx 1/137$ 的角色）。
@@ -41,7 +41,7 @@ Pauli 1927 為解釋自旋曾**手動**在 Schrödinger 方程中加入 2×2 Pau
 
 $$\boldsymbol{\alpha} = \begin{pmatrix} 0 & \boldsymbol{\sigma} \\ \boldsymbol{\sigma} & 0 \end{pmatrix}, \qquad \beta = \begin{pmatrix} I & 0 \\ 0 & -I \end{pmatrix}$$
 
-### 線索四：$E^2 = p^2c^2 + m^2c^4$ 的負能量解與正電子預言
+### 線索四： $E^2 = p^2c^2 + m^2c^4$ 的負能量解與正電子預言
 Dirac 方程的能量本徵值：
 
 $$E = \pm\sqrt{p^2c^2 + m^2c^4}$$

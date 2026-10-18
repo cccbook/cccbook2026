@@ -21,12 +21,12 @@
 ### 核心推理一：CNN 取代 Q 表
 DQN 用卷積神經網路 $Q_\theta(s, a)$ 直接從像素估動作價值：
 $$Q_\theta(s, a) \approx Q^*(s, a), \qquad s = \text{最近 4 幀的灰階像素}.$$
-決策：$\epsilon$-greedy，$a^* = \arg\max_a Q_\theta(s, a)$。
+決策： $\epsilon$ -greedy， $a^* = \arg\max_a Q_\theta(s, a)$ 。
 **特徵自動學出**——CNN 自己發現「球的位置」「擋板的速度」這些特徵，
 不需要任何人類設計。
 
 ### 核心推理二：兩項工程破解不穩定
-**經驗回放 (experience replay)**：把轉移 $(s, a, r, s')$ 存進一個大緩衝池（$10^6$ 筆），
+**經驗回放 (experience replay)**：把轉移 $(s, a, r, s')$ 存進一個大緩衝池（ $10^6$ 筆），
 訓練時**隨機抽樣**——打散時間相關性，且每筆資料可重複使用（樣本效率）。
 $$\mathcal{D} = \{(s_i, a_i, r_i, s'_i)\}_{i=1}^{N}, \qquad \text{mini-batch} \sim \text{Uniform}(\mathcal{D}).$$
 

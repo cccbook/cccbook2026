@@ -32,7 +32,7 @@ Li 的模型：違約時間 $\tau_i$ 的邊際用風險中立下的生存函數�
 
 $$\tau_i = \Phi^{-1}\left(F_i(\tau_i)\right) = a_i Z + \sqrt{1-a_i^2}\, \varepsilon_i, \quad Z, \varepsilon_i \sim N(0,1)$$
 
-其中 $Z$ 是共同因子（經濟體質）、$\varepsilon_i$ 是個別風險、$a_i$ 是相關係數。
+其中 $Z$ 是共同因子（經濟體質）、 $\varepsilon_i$ 是個別風險、 $a_i$ 是相關係數。
 
 **實務簡潔性**：整個 CDO 的分層定價只需要**一個相關係數**——業界很快把「base correlation」變成標準報價。一個數字決定數兆美元的定價。
 

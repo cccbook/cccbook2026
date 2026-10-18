@@ -16,7 +16,7 @@ C 語言從此成為系統軟體的通用語言。
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：可移植性的數學
-設移植成本：組合語言版 = $c_{\text{asm}}$（幾乎等於重寫），C 版 = $c_{\text{port}}$（只改機器相依部分）：
+設移植成本：組合語言版 = $c_{\text{asm}}$ （幾乎等於重寫），C 版 = $c_{\text{port}}$ （只改機器相依部分）：
 $$c_{\text{port}} = c_{\text{machine-dependent}} \ll c_{\text{asm}}.$$
 核心的機器相依部分被隔離到極少數檔案（組合語言起動碼、MMU 設定）——**其餘 95% 不用動**：
 $$N \text{ 台機器: } c_{\text{asm}} \times N \quad \text{vs} \quad c_{\text{port}} \times N + c_{\text{port}}.$$

@@ -24,10 +24,10 @@ $$
 
 | 階層 | 速度（每秒 cycles） | 能見度 | 典型用途 |
 |------|--------------------|--------|----------|
-| 軟體 event-driven simulator | $10^3$–$10^4$ | 100%（每個訊號每刻） | 單元/RTL 驗證、debug |
-| Simulation acceleration | $10^4$–$10^5$ | 100%（可切換 trace） | testbench 加速、迴歸 |
-| Hardware emulation | $10^6$（MHz 級） | 選擇性 trace | boot OS、軟硬體協同 |
-| FPGA prototyping | $10^7$–$10^8$ | 有限（需加邏輯分析儀） | 驅動程式開發、系統展示 |
+| 軟體 event-driven simulator | $10^3$ – $10^4$ | 100%（每個訊號每刻） | 單元/RTL 驗證、debug |
+| Simulation acceleration | $10^4$ – $10^5$ | 100%（可切換 trace） | testbench 加速、迴歸 |
+| Hardware emulation | $10^6$ （MHz 級） | 選擇性 trace | boot OS、軟硬體協同 |
+| FPGA prototyping | $10^7$ – $10^8$ | 有限（需加邏輯分析儀） | 驅動程式開發、系統展示 |
 
 模擬時間估算：一顆 $10^7$ 閘的 SoC 要 boot Linux 約 $10^9$ cycle，event-driven simulator 以 $10^3$ cycles/s 計需 $10^6$ 秒 ≈ **12 天**；emulation 以 $10^6$ cycles/s 計只需 **17 分鐘**。
 
@@ -49,12 +49,12 @@ $$
 $$
 
 跨 FPGA 的每一條 cut 邊都會吃掉兩個 I/O pin 並增加延遲，因此目標是**最小割（min-cut）**。**Kernighan–Lin 演算法（1970）**是兩路分割的經典啟發式：
-1. 對每個節點計算 $D_v = E_{\text{ext}}(v) - E_{\text{int}}(v)$（外部連接 − 內部連接）。
-2. 嘗試所有 $(a, b)$ 對調，計算增益 $g = D_a + D_b - 2\,c(a,b)$。
+1. 對每個節點計算 $D_v = E_{\text{ext}}(v) - E_{\text{int}}(v)$ （外部連接 − 內部連接）。
+2. 嘗試所有 $(a, b)$ 對調，計算增益 $g = D_a + D_b - 2\,c(a,b)$ 。
 3. 選最大增益的對調，鎖定該兩節點，重複直到全部鎖定。
 4. 取過程中最大的累積增益 $\max_k \sum_{i \le k} g_i$ 作為最終分割，重複整輪直到不再改進。
 
-複雜度每輪 $O(n^3)$（Fiduccia–Mattheyses 1982 改進為 $O(|E|)$）。I/O pin 約束是 emulation 特有的難點：就算 LUT 夠，pin 不夠就放不下，因此實務工具必須同時最佳化兩種資源。
+複雜度每輪 $O(n^3)$ （Fiduccia–Mattheyses 1982 改進為 $O(|E|)$ ）。I/O pin 約束是 emulation 特有的難點：就算 LUT 夠，pin 不夠就放不下，因此實務工具必須同時最佳化兩種資源。
 
 ### 4. 跨 FPGA 接線 overhead：分區的代價
 
@@ -66,7 +66,7 @@ $$
 
 每條 cut 邊經過 FPGA I/O、PCB 走線、對方 FPGA I/O，延遲約 5–20 ns——比矽晶片內部慢 10–50 倍，這就是 emulation 只有 MHz 級速度的根本原因。實務解法：
 - **Min-cut partitioning + 管線化**：把跨 FPGA 路徑切成多級 pipeline，用「多拍」換「單拍快」。
-- **時序模型預測**：在分割階段就用延遲模型估 $T_{\text{emul}}$，把熱點（高 cut 密度）重新分配。
+- **時序模型預測**：在分割階段就用延遲模型估 $T_{\text{emul}}$ ，把熱點（高 cut 密度）重新分配。
 - **多條 scan chain 互通**：emulator 也借用 DFT 的 scan 技術做 debug，重現某個 cycle 的完整狀態。
 
 ### 5. Co-simulation：快慢混合的偵探團隊

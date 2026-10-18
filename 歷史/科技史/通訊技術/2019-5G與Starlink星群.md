@@ -7,7 +7,7 @@ $$\text{5G: massive MIMO} \xrightarrow{} \text{容量躍升 10×};\quad \text{St
 今日全球 $5\times10^8$ 個 5G 連線 + 約 6,000 顆低軌衛星在運作——**地球被通訊網包圍兩層**。
 
 ## 前因 -- 為什麼會有這個案子
-- **4G 的容量天花板（2018）**：LTE 頻譜效率接近 **Shannon 界**（$6\ \text{bps/Hz}$ 已達 LTE 上限，見「2009-4GLTE.md」）——
+- **4G 的容量天花板（2018）**：LTE 頻譜效率接近 **Shannon 界**（ $6\ \text{bps/Hz}$ 已達 LTE 上限，見「2009-4GLTE.md」）——
   **要再提升容量，只能用新頻段 + 空間多工**。
 - **三大應用需求的兇手（2015–2018）**：
   1. **虛擬實境 AR/VR**：延遲需 **< 1 ms**（4G 20–50 ms）——**eMBB（增強型移動寬頻）不足以支撐 AR**。
@@ -21,16 +21,16 @@ $$\text{5G: massive MIMO} \xrightarrow{} \text{容量躍升 10×};\quad \text{St
 ### 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：massive MIMO 與波束賦形
-LTE MIMO：$N_t \leq 4$ 天線。5G massive MIMO：**$N_t = 64\text{–}256$ 天線**：
+LTE MIMO： $N_t \leq 4$ 天線。5G massive MIMO：** $N_t = 64\text{–}256$ 天線**：
 $$\text{容量} \sim \log\det\!\left(I + \frac{\rho}{N_t}\mathbf{H}\mathbf{H}^\dagger\right) \sim N_t \log_2(1+\rho).$$
 - **天線數 = 空間多工的通道數** → 容量隨天線數近線性增長。
-- **窄波束賦形**：$N_t = 64$ 的天線可產生數十個窄波束，**同時服務數十用戶**（massive MIMO）→ 頻譜效率躍升 3–10 倍。
+- **窄波束賦形**： $N_t = 64$ 的天線可產生數十個窄波束，**同時服務數十用戶**（massive MIMO）→ 頻譜效率躍升 3–10 倍。
 
 ### 第二條線索：OFDM 家族的極致（SC-FDMA → OFDMA → Numerology）
 5G 引入 **可擴展 OFDM 參數集 (numerology)**：
 $$\Delta f = 15\ \text{kHz} \times 2^{\mu}.$$
-- $\mu=0$：15 kHz（標準手機，蜂窩式覆蓋，見「1991-GSM數位行動通訊.md」）。
-- $\mu=5$：480 kHz（mmWave 短距離，邊緣伺服器，極低延遲）。
+- $\mu=0$ ：15 kHz（標準手機，蜂窩式覆蓋，見「1991-GSM數位行動通訊.md」）。
+- $\mu=5$ ：480 kHz（mmWave 短距離，邊緣伺服器，極低延遲）。
 **同一種 OFDM 家族，不同的參數化**——無線技術的模組化長期一貫。
 
 ### 第三條線索：Network Slicing（切片）
@@ -40,7 +40,7 @@ $$\text{同一 5G 核心網} = \text{自駕切片 (uRLLC)} + \text{智慧家庭�
 
 ### 第四條線索：LEO 衛星與 Starlink
 LEO 星鏈的幾何與鏈路：
-- **Starlink 軌道**：550 km（VLEO），每星可見地面圓半徑 ~1000 km → 需數千顆覆蓋全球（$O(N)$ 擴展）：
+- **Starlink 軌道**：550 km（VLEO），每星可見地面圓半徑 ~1000 km → 需數千顆覆蓋全球（ $O(N)$ 擴展）：
   $$N_{\text{needed}} \approx 4\pi R^2_{\text{earth}} \times \frac{\theta_{\text{coverage}}}{\text{area/plane}}\ \text{（量級 } 10^3\text{–}10^4 \text{顆）}.$$
 - **極低延遲**：550 km 高度，propagation 延遲：
   $$t = \frac{d}{c} = \frac{550 \times 10^3}{3\times10^8} \approx 1.8\ \text{ms} \quad (\text{單程})\quad +\text{天線波束對準、調制} \approx 5\ \text{ms 總延遲}.$$

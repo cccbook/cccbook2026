@@ -1,7 +1,7 @@
 # 1997 - Broder MinHash
 
 ## 案件摘要
-1997 年，Andrei Broder 在 AltaVista 搜尋引擎工作時發表《Syntactic Clustering of the Web》：要估計兩個大文件（或集合）的相似度，不必比對全部元素——**用隨機雜湊函數 $h$，兩集合的 MinHash（最小雜湊值）相等的機率恰好等於 Jaccard 相似度**：
+1997 年，Andrei Broder 在 AltaVista 搜尋引擎工作時發表《Syntactic Clustering of the Web》：要估計兩個大文件（或集合）的相似度，不必比對全部元素——**用隨機雜湊函數 $h$ ，兩集合的 MinHash（最小雜湊值）相等的機率恰好等於 Jaccard 相似度**：
 
 $$P(\min_{a \in A} h(a) = \min_{b \in B} h(b)) = \frac{|A \cap B|}{|A \cup B|}$$
 
@@ -12,12 +12,12 @@ $$P(\min_{a \in A} h(a) = \min_{b \in B} h(b)) = \frac{|A \cap B|}{|A \cup B|}$$
 
 $$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
 
-（$A, B$ 是文件的 shingle 集合——連續 $k$ 個字元的片段。）直接計算需要 $O(|A| + |B|)$ 記憶體與時間，億級集合不可行。Broder 的問題：**能否用遠小的「概要」（sketch）估計 $J$？**
+（ $A, B$ 是文件的 shingle 集合——連續 $k$ 個字元的片段。）直接計算需要 $O(|A| + |B|)$ 記憶體與時間，億級集合不可行。Broder 的問題：**能否用遠小的「概要」（sketch）估計 $J$ ？**
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### MinHash 的數學
-取全域隨機雜湊函數 $h: U \to [0, 1]$（視為連續均勻；離散時用大值域隨機排列近似）。$A$ 的 MinHash：
+取全域隨機雜湊函數 $h: U \to [0, 1]$ （視為連續均勻；離散時用大值域隨機排列近似）。 $A$ 的 MinHash：
 
 $$\min_h(A) = \arg\min_{a \in A} h(a)$$
 
@@ -25,14 +25,14 @@ $$\min_h(A) = \arg\min_{a \in A} h(a)$$
 
 $$P(\min_h(A) = \min_h(B)) = \frac{|A \cap B|}{|A \cup B|} = J(A, B)$$
 
-**證明**：並集 $A \cup B$ 中，$h$ 的最小值等機率地落在任一元素上（$h$ 均勻隨機）。最小值落在交集元素上 ⟺ 兩集合的 argmin 相同：
+**證明**：並集 $A \cup B$ 中， $h$ 的最小值等機率地落在任一元素上（ $h$ 均勻隨機）。最小值落在交集元素上 ⟺ 兩集合的 argmin 相同：
 
 $$P = \frac{|A \cap B|}{|A \cup B|} \quad \blacksquare$$
 
 **偵探筆記**：這個證明的美在「對稱」——並集中每個元素地位平等，最小值落在交集的機率就是交集佔比。**把集合相似度變成「一次擲骰子的機率」**。
 
 ### 估計與誤差
-取 $k$ 個獨立雜湊函數 $h_1, \dots, h_k$，估計
+取 $k$ 個獨立雜湊函數 $h_1, \dots, h_k$ ，估計
 
 $$\hat{J} = \frac{1}{k}\sum_{i=1}^k [\min_{h_i}(A) = \min_{h_i}(B)]$$
 
@@ -40,7 +40,7 @@ $$\hat{J} = \frac{1}{k}\sum_{i=1}^k [\min_{h_i}(A) = \min_{h_i}(B)]$$
 
 $$k = O\left(\frac{1}{\epsilon^2}\right)$$
 
-$\epsilon = 0.05$ 只需 $k \approx 400$ 個 MinHash——**與集合大小無關**！每個 MinHash 只存一個雜湊值，概要大小 $O(k)$。
+$\epsilon = 0.05$ 只需 $k \approx 400$ 個 MinHash——**與集合大小無關**！每個 MinHash 只存一個雜湊值，概要大小 $O(k)$ 。
 
 ### 程式碼：MinHash
 

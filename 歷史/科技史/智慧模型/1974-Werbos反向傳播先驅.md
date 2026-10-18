@@ -21,7 +21,7 @@ $$\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial y_j} \cdot \fr
 
 ### 第一條線索：鏈鎖法則——誤差沿計算圖反流
 
-任何前饋網路都是一張有向無環圖：節點 $j$ 接收輸入 $u_j = \sum_i w_{ij} y_i$，經激活函數 $f$ 產生輸出 $y_j = f(u_j)$。目標是最小化誤差 $E$。鏈鎖法則說，誤差對上游權重的梯度可由下游誤差信號 $\delta_j = \partial E / \partial u_j$ 逐層回傳：
+任何前饋網路都是一張有向無環圖：節點 $j$ 接收輸入 $u_j = \sum_i w_{ij} y_i$ ，經激活函數 $f$ 產生輸出 $y_j = f(u_j)$ 。目標是最小化誤差 $E$ 。鏈鎖法則說，誤差對上游權重的梯度可由下游誤差信號 $\delta_j = \partial E / \partial u_j$ 逐層回傳：
 
 $$\delta_j = f'(u_j) \sum_k w_{jk} \delta_k，\qquad \frac{\partial E}{\partial w_{ij}} = \delta_j \, y_i$$
 

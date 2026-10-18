@@ -12,7 +12,7 @@
 ## 線索與推理 -- 數學式、程式、理論
 ### 線索一：Xerox Alto 與 PARC 的 GUI 發明
 Alto（1973）已具備 GUI 的全部要素：
-- **WYSIWYG**（What You See Is What You Get）：螢幕上的文件就是列印結果。位元映射顯示器（bitmapped display）是前提：解析度 $W \times H$ 的螢幕需要 $W \times H$ 位元的顯示記憶體，Alto 為 $606 \times 808 \approx 490\,\text{Kb}$。
+- **WYSIWYG**（What You See Is What You Get）：螢幕上的文件就是列印結果。位元映射顯示器（bitmapped display）是前提：解析度 $W \times H$ 的螢幕需要 $W \times H$ 位元的顯示記憶體，Alto 為 $606 \times 808 \approx 490\,\text{Kb}$ 。
 - **滑鼠**：Engelbart 1964 年發明，PARC 改良為三鍵光學滑鼠。
 - **重疊視窗（overlapping windows）與下拉選單**：Alan Kay 的 Smalltalk 環境首創。
 - PARC 還發明了乙太網路與雷射印表機——整座金山卻沒人開採。
@@ -22,7 +22,7 @@ Jobs 看到圖形介面的第一反應是：「你們坐在一座金礦上！」
 
 $$\text{價值} = \text{發明} \times \text{整合} \times \text{量產}$$
 
-Xerox 有發明（$\times 1$），蘋果補上後兩項（$\times 1$），因此 $V_{Apple} \gg V_{Xerox}$。
+Xerox 有發明（ $\times 1$ ），蘋果補上後兩項（ $\times 1$ ），因此 $V_{Apple} \gg V_{Xerox}$ 。
 
 ### 線索三：Macintosh 的設計
 - **CPU**：Motorola 68000，32-bit 內部架構（16-bit 匯流排），7.83 MHz。

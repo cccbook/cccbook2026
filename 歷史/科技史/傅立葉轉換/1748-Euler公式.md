@@ -7,17 +7,17 @@ $$e^{i\theta} = \cos\theta + i\sin\theta.$$
 **複指數 $e^{i\omega t}$ 是線性系統的本徵函數**。傅立葉轉換偵探案的「兇器」在此提前出土。
 
 ## 前因 -- 為什麼會有這個案子
-- **級數的黃金時代**：Newton 與 Leibniz 之後，數學家熱衷把函數展開為冪級數 $\sin\theta = \theta - \theta^3/3! + \cdots$。
+- **級數的黃金時代**：Newton 與 Leibniz 之後，數學家熱衷把函數展開為冪級數 $\sin\theta = \theta - \theta^3/3! + \cdots$ 。
 - **複數的地位曖昧**：複數被視為「想像的」計算工具，缺乏幾何與分析的正當性。
 - **Euler 的偵探直覺**：他在求冪級數時大膽對比兩個級數：
   $$e^{ix} = 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \cdots,\qquad \cos x + i\sin x = \left(1-\frac{x^2}{2!}+\cdots\right) + i\left(x - \frac{x^3}{3!}+\cdots\right)$$
-  兩式逐項相同——兇手現形：$e^{ix} = \cos x + i\sin x$。
+  兩式逐項相同——兇手現形： $e^{ix} = \cos x + i\sin x$ 。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 幾何偵查：單位圓
-令 $\theta$ 為實角，$e^{i\theta}$ 的實部是 $\cos\theta$、虛部是 $\sin\theta$——它是單位圓上以角速度 $\theta$ 旋轉的點。
-令 $\theta = \pi$：
+令 $\theta$ 為實角， $e^{i\theta}$ 的實部是 $\cos\theta$ 、虛部是 $\sin\theta$ ——它是單位圓上以角速度 $\theta$ 旋轉的點。
+令 $\theta = \pi$ ：
 $$e^{i\pi} = -1 \quad\Longrightarrow\quad e^{i\pi} + 1 = 0,$$
 五個最重要的常數在一行式中會合。
 
@@ -48,7 +48,7 @@ print(e_series, np.cos(x) + 1j*np.sin(x))   # 兩者一致
 ```
 
 ## 結案 -- 後果與影響
-- 複數取得分析上的正當性，日後成為電路學（相量 $V = V_0 e^{i\omega t}$）、量子力學（$\psi = e^{-iEt/\hbar}$）的通用語言。
+- 複數取得分析上的正當性，日後成為電路學（相量 $V = V_0 e^{i\omega t}$ ）、量子力學（ $\psi = e^{-iEt/\hbar}$ ）的通用語言。
 - Euler 公式使三角級數可以改寫成複指數級數：
   $$f(t) = \sum_{n=-\infty}^{\infty} c_n e^{in\omega_0 t},\qquad c_n = \frac{1}{T}\int_0^T f(t)e^{-in\omega_0 t}\,dt.$$
   這正是現代形式的傅立葉級數——1753 年 Bernoulli 的疊加主張（見「1753-Bernoulli疊加原理」）將獲得最強的數學武器。

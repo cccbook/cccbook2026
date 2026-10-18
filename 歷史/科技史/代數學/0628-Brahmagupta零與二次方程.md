@@ -15,7 +15,7 @@
 
 $$a + 0 = a, \quad a \times 0 = 0, \quad a - 0 = a, \quad 0/0 = 0 \text{（此條有誤，卻是史上首次嘗試）}$$
 
-負數記為上方加點（如 $\dot{a} = -a$），並給出符號法則：
+負數記為上方加點（如 $\dot{a} = -a$ ），並給出符號法則：
 
 $$(-a) \times (+b) = -ab, \quad (-a) \times (-b) = +ab$$
 
@@ -33,7 +33,7 @@ assert 7 + 0 == 7          # 零是加法單位元
 
 $$x = \frac{\sqrt{4q + p^2} - p}{2}$$
 
-用現代語言，對 $ax^2 + bx + c = 0$：
+用現代語言，對 $ax^2 + bx + c = 0$ ：
 
 $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 
@@ -59,7 +59,7 @@ print(solve_quadratic(1, -1, -1))  # 黃金比例相關根 (1.618..., -0.618...)
 
 $$(a^2 + nb^2)(c^2 + nd^2) = (ac - nbd)^2 + n(ad + bc)^2$$
 
-（對稱形式亦取 $ac + nbd$ 與 $ad - bc$。）這條恆等式說明「形如 $a^2 + nb^2$ 的數在乘法下封閉」，是後來二次域、Pell 方程 chakravala（輪轉）算法、乃至高斯複數乘法 $(a^2+b^2)(c^2+d^2)=(ac-bd)^2+(ad+bc)^2$ 的原型。
+（對稱形式亦取 $ac + nbd$ 與 $ad - bc$ 。）這條恆等式說明「形如 $a^2 + nb^2$ 的數在乘法下封閉」，是後來二次域、Pell 方程 chakravala（輪轉）算法、乃至高斯複數乘法 $(a^2+b^2)(c^2+d^2)=(ac-bd)^2+(ad+bc)^2$ 的原型。
 
 ```python
 def brahmagupta_identity(a, b, c, d, n):

@@ -9,24 +9,24 @@ Hilbert 的判定問題（Entscheidungsproblem）懸而未決：「是否存在�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 圖靈機的定義
-一個圖靈機是七元組 $M = (Q, \Gamma, \Sigma, \delta, q_0, \sqcup, F)$：
+一個圖靈機是七元組 $M = (Q, \Gamma, \Sigma, \delta, q_0, \sqcup, F)$ ：
 
-- $Q$：有限狀態集
-- $\Gamma$：紙帶字母集（含空白符 $\sqcup$）
-- $\Sigma \subseteq \Gamma$：輸入字母集
-- $\delta$：轉移函數，這是機器的「程式」：
+- $Q$ ：有限狀態集
+- $\Gamma$ ：紙帶字母集（含空白符 $\sqcup$ ）
+- $\Sigma \subseteq \Gamma$ ：輸入字母集
+- $\delta$ ：轉移函數，這是機器的「程式」：
 $$\delta(q, a) = (q', b, D)$$
-（在狀態 $q$ 讀到符號 $a$ 時：寫入 $b$、轉到狀態 $q'$、讀寫頭移動 $D \in \{L, R\}$）
-- $q_0 \in Q$：起始狀態；$F \subseteq Q$：接受狀態集
+（在狀態 $q$ 讀到符號 $a$ 時：寫入 $b$ 、轉到狀態 $q'$ 、讀寫頭移動 $D \in \{L, R\}$ ）
+- $q_0 \in Q$ ：起始狀態； $F \subseteq Q$ ：接受狀態集
 
 無限紙帶 + 有限控制 + 機械規則 = 一切「有效計算」的極限模型。
 
 ### 通用圖靈機（Universal Turing Machine）
-Turing 的神來之筆：圖靈機的「程式」$\delta$ 本身可以被編碼為一個字串（Gödel 編碼，見 `1931-Godel不完備定理.md`），於是可以造一台**模擬任何圖靈機**的機器：
+Turing 的神來之筆：圖靈機的「程式」 $\delta$ 本身可以被編碼為一個字串（Gödel 編碼，見 `1931-Godel不完備定理.md`），於是可以造一台**模擬任何圖靈機**的機器：
 
 $$U(\ulcorner M \urcorner, x) = M(x)$$
 
-$U$ 讀入「機器 $M$ 的編碼」與「輸入 $x$」，就照 $M$ 的規則在紙帶上模擬執行。**這就是現代電腦的理論原型**——軟體（$\ulcorner M \urcorner$）與硬體（$U$）分離，一台機器跑所有程式。
+$U$ 讀入「機器 $M$ 的編碼」與「輸入 $x$ 」，就照 $M$ 的規則在紙帶上模擬執行。**這就是現代電腦的理論原型**——軟體（ $\ulcorner M \urcorner$ ）與硬體（ $U$ ）分離，一台機器跑所有程式。
 
 ### 停機問題不可判定
 **定義**：停機問題是集合
@@ -35,21 +35,21 @@ $$\mathrm{HALT} = \{ (\ulcorner M \urcorner, x) \mid M(x) \text{ 在有限步內
 
 **定理**：HALT 不可判定（不存在圖靈機判定所有輸入是否停機）。
 
-**對角線證明**（反證法）：假設存在判定機 $H$，使得 $H(M, x) = \text{true}$ 當且僅當 $M(x)$ 停機。構造對角機：
+**對角線證明**（反證法）：假設存在判定機 $H$ ，使得 $H(M, x) = \text{true}$ 當且僅當 $M(x)$ 停機。構造對角機：
 
 $$D(M) = \begin{cases} \text{不停機} & \text{若 } H(M, M) = \text{true（即 } M(M) \text{ 停機）} \\ \text{停機} & \text{若 } H(M, M) = \text{false} \end{cases}$$
 
-一言以蔽之：$D(M) = \neg M(M, x)$——**與自己對著幹**。現在問：$D(D)$ 停機嗎？
+一言以蔽之： $D(M) = \neg M(M, x)$ ——**與自己對著幹**。現在問： $D(D)$ 停機嗎？
 
-- 若 $D(D)$ 停機，依 $D$ 的定義需 $H(D, D) = \text{false}$，即 $D(D)$ **不**停機 → 矛盾。
-- 若 $D(D)$ 不停機，依定義需 $H(D, D) = \text{true}$，即 $D(D)$ 停機 → 矛盾。
+- 若 $D(D)$ 停機，依 $D$ 的定義需 $H(D, D) = \text{false}$ ，即 $D(D)$ **不**停機 → 矛盾。
+- 若 $D(D)$ 不停機，依定義需 $H(D, D) = \text{true}$ ，即 $D(D)$ 停機 → 矛盾。
 
-兩難。故 $H$ 不存在，HALT 不可判定。$\blacksquare$
+兩難。故 $H$ 不存在，HALT 不可判定。 $\blacksquare$
 
 **偵探筆記**：這與 Gödel 的 $G \leftrightarrow \neg\mathrm{Prov}(\ulcorner G\urcorner)$ 是同一招——**對角線自我指涉**。Gödel 讓句子否定自己的可證明性，Turing 讓程式否定自己的可判定性。
 
 ### 判定問題的解決
-由停機問題歸約到判定問題：給定一階公式 $\varphi$，可以機械地構造一個圖靈機 $M_\varphi$ 搜索 $\varphi$ 的反例模型（利用 Löwenheim–Skolem 定理，只需搜可數模型，見 `1913-LowenheimSkolem定理.md`）：
+由停機問題歸約到判定問題：給定一階公式 $\varphi$ ，可以機械地構造一個圖靈機 $M_\varphi$ 搜索 $\varphi$ 的反例模型（利用 Löwenheim–Skolem 定理，只需搜可數模型，見 `1913-LowenheimSkolem定理.md`）：
 
 $$\models \varphi \iff M_\varphi \text{ 不停機}$$
 

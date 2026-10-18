@@ -15,10 +15,10 @@ Gates 的策略可用平台理論寫成不等式。設平台的價值為：
 
 $$V_{\text{platform}} = V \cdot N^2 \quad (\text{Metcalfe 定律：價值與節點數平方成正比})$$
 
-- Mac 路線：$N$ 小（僅蘋果硬體），$V$ 高（整合體驗佳）。
-- Windows 路線：$N$ 巨大（所有 PC 相容機），$V$ 低（體驗粗糙）。
+- Mac 路線： $N$ 小（僅蘋果硬體）， $V$ 高（整合體驗佳）。
+- Windows 路線： $N$ 巨大（所有 PC 相容機）， $V$ 低（體驗粗糙）。
 
-當 clone 產業讓 $N_{\text{Win}} \gg N_{\text{Mac}}$，即使 $V_{\text{Win}} < V_{\text{Mac}}$，仍可使 $V_{\text{platform,Win}} \gg V_{\text{platform,Mac}}$。**以量取勝、以生態鎖定**——這是 Gates 一貫的棋譜。
+當 clone 產業讓 $N_{\text{Win}} \gg N_{\text{Mac}}$ ，即使 $V_{\text{Win}} < V_{\text{Mac}}$ ，仍可使 $V_{\text{platform,Win}} \gg V_{\text{platform,Mac}}$ 。**以量取勝、以生態鎖定**——這是 Gates 一貫的棋譜。
 
 ### 線索二：Windows 1.0 的侷限
 1985 年的 Windows 1.0 三大硬傷：

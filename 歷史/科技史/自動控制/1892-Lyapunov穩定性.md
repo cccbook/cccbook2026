@@ -11,7 +11,7 @@ Lyapunov 的偵探手法：借鑑 Dirichlet 的能量論證，定義**廣義能�
 
 ## 前因
 
-- **Routh–Hurwitz 的限制**：只適用線性定常系統；真實系統（蒸汽機、離心調速器的非線性飽和、飛球的 $\sin\theta$）處處非線性。
+- **Routh–Hurwitz 的限制**：只適用線性定常系統；真實系統（蒸汽機、離心調速器的非線性飽和、飛球的 $\sin\theta$ ）處處非線性。
 - **Dirichlet 的能量論證**：力學中，若位能 $V$ 在平衡點取極小，則平衡穩定（能量像山谷，球滾不出去）。
 - **Poincaré 的動力系統研究**（1881–1890）：軌道的定性理論、極限環——非線性動力學的語言剛成形。
 
@@ -19,17 +19,17 @@ Lyapunov 的偵探手法：借鑑 Dirichlet 的能量論證，定義**廣義能�
 
 ### 第 1 步：穩定性的精確定義
 
-給定系統 $\dot x = f(x)$，平衡點 $x^* = 0$。Lyapunov 定義三層穩定性：
+給定系統 $\dot x = f(x)$ ，平衡點 $x^* = 0$ 。Lyapunov 定義三層穩定性：
 
 | 概念 | 定義 |
 |------|------|
-| 穩定（stable） | 給定 $\epsilon$，存在 $\delta$：初始偏差 $\|\delta x\| < \delta$ ⇒ 軌跡永遠留在 $\|x\| < \epsilon$ 內 |
+| 穩定（stable） | 給定 $\epsilon$ ，存在 $\delta$ ：初始偏差 $\|\delta x\| < \delta$ ⇒ 軌跡永遠留在 $\|x\| < \epsilon$ 內 |
 | 漸近穩定（asymptotically stable） | 穩定，且 $\|x(t)\| \to 0$ |
 | 指數穩定（exponentially stable） | $\|x(t)\| \le c\,e^{-\alpha t}\|x(0)\|$ |
 
 ### 第 2 步：Lyapunov 函數
 
-Lyapunov 的核心想法：找一個「廣義能量」函數 $V(x)$，滿足
+Lyapunov 的核心想法：找一個「廣義能量」函數 $V(x)$ ，滿足
 
 $$
 V(0) = 0, \qquad V(x) > 0 \ (x \neq 0)
@@ -50,8 +50,8 @@ $$
 ### 第 3 步：為什麼這是推廣？
 
 Routh–Hurwitz 需要線性系統；Lyapunov 第二法對**任何** $\dot x = f(x)$ 都適用——
-唯一的困難是「找到 $V$」。對力學系統，總能量 $V = T + V_{pot}$ 常常就是候選：
-若系統有阻尼，$\dot V = -(\text{耗散功率}) < 0$，自動漸近穩定。
+唯一的困難是「找到 $V$ 」。對力學系統，總能量 $V = T + V_{pot}$ 常常就是候選：
+若系統有阻尼， $\dot V = -(\text{耗散功率}) < 0$ ，自動漸近穩定。
 
 ### 範例：阻尼單擺的穩定性
 
@@ -61,7 +61,7 @@ $$
 m\ell^2\ddot\theta + b\dot\theta + mg\ell\sin\theta = 0
 $$
 
-寫成狀態方程 $x = (\theta, \dot\theta)$。取能量函數：
+寫成狀態方程 $x = (\theta, \dot\theta)$ 。取能量函數：
 
 $$
 V(x) = \frac{1}{2}m\ell^2\dot\theta^2 + mg\ell(1 - \cos\theta)
@@ -74,11 +74,11 @@ $$
 = \dot\theta\,(m\ell^2\ddot\theta + mg\ell\sin\theta) = -b\dot\theta^2 \le 0
 $$
 
-**動能與位能的交換項相消，只剩耗散項** $-b\dot\theta^2$——能量單調減少。
-用 LaSalle 不變集原理（$\dot V = 0$ 的集合是 $\dot\theta = 0$，
-軌跡只能停在 $\theta = 0$）：系統**漸近穩定到碗底**。
+**動能與位能的交換項相消，只剩耗散項** $-b\dot\theta^2$ ——能量單調減少。
+用 LaSalle 不變集原理（ $\dot V = 0$ 的集合是 $\dot\theta = 0$ ，
+軌跡只能停在 $\theta = 0$ ）：系統**漸近穩定到碗底**。
 
-這個計算是 Lyapunov 方法的第一範例：**不需要解非線性方程** $\ddot\theta = -\frac{g}{\ell}\sin\theta$（它沒有初等解！），就能證明穩定。
+這個計算是 Lyapunov 方法的第一範例：**不需要解非線性方程** $\ddot\theta = -\frac{g}{\ell}\sin\theta$ （它沒有初等解！），就能證明穩定。
 
 ### 為什麼「不解方程」是關鍵？
 

@@ -21,7 +21,7 @@ $$P(s) = \frac{e^{-E(s)/T}}{\sum_{u} e^{-E(u)/T}}, \qquad E(s) = -\sum_{i<j} w_{
 
 ### 第一條線索：從確定到隨機——溫度 $T$ 的引入
 
-Hopfield 網路每個神經元確定性地取 $\mathrm{sign}(\sum_j w_{ij} s_j)$，能量只能下降，容易卡在局部極小。Boltzmann 機器讓神經元以機率翻轉：
+Hopfield 網路每個神經元確定性地取 $\mathrm{sign}(\sum_j w_{ij} s_j)$ ，能量只能下降，容易卡在局部極小。Boltzmann 機器讓神經元以機率翻轉：
 
 $$P(s_i = 1) = \frac{1}{1 + e^{-\Delta E_i / T}}$$
 
@@ -29,7 +29,7 @@ $$P(s_i = 1) = \frac{1}{1 + e^{-\Delta E_i / T}}$$
 
 ### 第二條線索：學習法則——兩種「統計」的角力
 
-網路在兩種模式下運行：**夾住（clamped）可見單元**（資料 $P_{\text{data}}$）與**自由運行**（模型 $P_{\text{model}}$）。學習法則驚人地簡單對稱：
+網路在兩種模式下運行：**夾住（clamped）可見單元**（資料 $P_{\text{data}}$ ）與**自由運行**（模型 $P_{\text{model}}$ ）。學習法則驚人地簡單對稱：
 
 $$\Delta w_{ij} = \eta \left( \langle s_i s_j \rangle_{\text{data}} - \langle s_i s_j \rangle_{\text{model}} \right)$$
 
@@ -38,7 +38,7 @@ $$\Delta w_{ij} = \eta \left( \langle s_i s_j \rangle_{\text{data}} - \langle s_
 | $+\langle s_i s_j \rangle_{\text{data}}$ | 資料中兩單元共同激活的頻率 | 推高權重，讓模型喜歡資料 |
 | $-\langle s_i s_j \rangle_{\text{model}}$ | 模型自由幻想時的共現頻率 | 壓低權重，抑制幻覺 |
 
-這條法則等價於極大化資料的對數概似 $\log P(v)$，其梯度恰是上式。推理至此清晰：**歸因問題被隨機共現統計解決**——隱藏單元與可見單元的相關性，自動分配了功勞。
+這條法則等價於極大化資料的對數概似 $\log P(v)$ ，其梯度恰是上式。推理至此清晰：**歸因問題被隨機共現統計解決**——隱藏單元與可見單元的相關性，自動分配了功勞。
 
 ### 第二條線索補遺：與 Hopfield 的關鍵差異
 

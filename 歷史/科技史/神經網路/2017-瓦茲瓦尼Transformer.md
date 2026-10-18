@@ -6,9 +6,9 @@
 $$\boxed{\text{捨棄遞迴與卷積——只用注意力（self-attention）}}$$
 **核心公式**是縮放點積注意力（scaled dot-product attention）：
 $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
-- $Q$（query，查詢）、$K$（key，鍵）、$V$（value，值）——全部從**同一個序列**來（self-attention）；
-- 除以 $\sqrt{d_k}$：防止點積過大、softmax 飽和、梯度消失；
-- **多頭注意力**：$h$ 組平行的注意力，各自看不同的「子空間」：
+- $Q$ （query，查詢）、 $K$ （key，鍵）、 $V$ （value，值）——全部從**同一個序列**來（self-attention）；
+- 除以 $\sqrt{d_k}$ ：防止點積過大、softmax 飽和、梯度消失；
+- **多頭注意力**： $h$ 組平行的注意力，各自看不同的「子空間」：
   $$\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O.$$
 - **位置編碼**：因為捨棄遞迴，序列的「順序」必須額外注入：
   $$PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{model}}), \quad PE_{(pos, 2i+1)} = \cos(pos/10000^{2i/d_{model}}).$$
@@ -19,13 +19,13 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\righ
 - **LSTM 的瓶頸（1997–2016）**：
   **1997 年 LSTM**（見 `1997-長短期記憶LSTM.md`）用**門控記憶**處理長序列，
   是 2016 年之前機器翻譯、語音辨識的主流。
-  但 LSTM 是**遞迴**的：$h_t = f(h_{t-1}, x_t)$——
+  但 LSTM 是**遞迴**的： $h_t = f(h_{t-1}, x_t)$ ——
   **第 $t$ 步必須等第 $t-1$ 步**，無法平行計算：
   $$\text{LSTM：序列依賴} \xrightarrow{\text{GPU 時代的痛}} \text{訓練慢、長依賴仍會遺忘}.$$
-  而且任意兩個遠距離 token 的資訊必須**一步步傳遞**（路徑長度 $O(n)$）。
+  而且任意兩個遠距離 token 的資訊必須**一步步傳遞**（路徑長度 $O(n)$ ）。
 - **詞向量的地基（2013）**：
   **2013 年 word2vec**（見 `2013-米科洛夫詞向量.md`）把詞變成向量
-  （$king - man + woman \approx queen$），讓 NLP 有了**可計算的語義空間**——
+  （ $king - man + woman \approx queen$ ），讓 NLP 有了**可計算的語義空間**——
   但 word2vec 是**靜態**的：一個詞只有一個向量，無視上下文
   （「蘋果」在「吃蘋果」與「蘋果手機」中意義不同）。
   $$\text{word2vec：靜態詞向量} \xrightarrow{\text{Transformer：動態上下文}} \text{語義的革命}.$$
@@ -44,19 +44,19 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\righ
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：self-attention 的縮放點積
-**單頭注意力**：給定序列的 $Q, K, V \in \mathbb{R}^{n \times d_k}$：
+**單頭注意力**：給定序列的 $Q, K, V \in \mathbb{R}^{n \times d_k}$ ：
 $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 **逐步拆解**：
-1. **相容度**：$e_{ij} = q_i \cdot k_j / \sqrt{d_k}$——token $i$ 對 token $j$ 的「關注程度」；
-2. **歸一化**：$\alpha_{ij} = \text{softmax}(e_{i\cdot})_j = \frac{e^{e_{ij}}}{\sum_j e^{e_{ij}}}$——注意力權重（每列和為 1）；
-3. **加權求和**：$\text{output}_i = \sum_j \alpha_{ij} v_j$——token $i$ 的新表示。
+1. **相容度**： $e_{ij} = q_i \cdot k_j / \sqrt{d_k}$ ——token $i$ 對 token $j$ 的「關注程度」；
+2. **歸一化**： $\alpha_{ij} = \text{softmax}(e_{i\cdot})_j = \frac{e^{e_{ij}}}{\sum_j e^{e_{ij}}}$ ——注意力權重（每列和為 1）；
+3. **加權求和**： $\text{output}_i = \sum_j \alpha_{ij} v_j$ ——token $i$ 的新表示。
 $$\boxed{\text{每個 token 的新表示 = 全序列的加權平均（權重由內容決定）}}$$
-**為什麼除以 $\sqrt{d_k}$**：若 $q, k$ 的分量是均值 0、變異數 1 的隨機變數，
-則 $q \cdot k$ 的變異數是 $d_k$——$d_k$ 大時 softmax 飽和、梯度消失。
+**為什麼除以 $\sqrt{d_k}$ **：若 $q, k$ 的分量是均值 0、變異數 1 的隨機變數，
+則 $q \cdot k$ 的變異數是 $d_k$ —— $d_k$ 大時 softmax 飽和、梯度消失。
 $$\text{Var}(q \cdot k) = d_k \quad\Longrightarrow\quad \text{除以 } \sqrt{d_k} \text{ 使變異數回到 } 1.$$
 
 ### 第二條線索：多頭注意力與位置編碼
-**多頭**：$h$ 組獨立的 $W_i^Q, W_i^K, W_i^V$（投影到較低維 $d_k = d_{model}/h$）：
+**多頭**： $h$ 組獨立的 $W_i^Q, W_i^K, W_i^V$ （投影到較低維 $d_k = d_{model}/h$ ）：
 $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V), \quad \text{MultiHead} = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O.$$
 - **每頭看不同的關係**：有的頭看語法（主詞-動詞）、有的看語義（指代）——
   **注意力的「分工合作」**。

@@ -19,27 +19,27 @@ $$\dim \mathfrak{m}_P / \mathfrak{m}_P^2 \neq \dim \mathcal{O}_{X,P}$$
 （切空間維數大於簇維數）。經典例子：尖點曲線 $y^2 = x^3$ 在原點處有一個尖點（cusp）——原點處切空間是整個平面（維數 2），但曲線維數只有 1。
 
 ### 線索二：雙有理變換與 blow-up
-**Blow-up（爆脹）**：把一點 $P \in X$ 「放大」成整個射影空間 $\mathbb{P}^{n-1}$（該點所有切方向的集合）：
+**Blow-up（爆脹）**：把一點 $P \in X$ 「放大」成整個射影空間 $\mathbb{P}^{n-1}$ （該點所有切方向的集合）：
 
 $$Bl_P X = \overline{\{(Q, \ell) : Q \in X \setminus P,\ \ell \text{ 為過 } Q \text{ 且過 } P \text{ 的直線}\}} \subset X \times \mathbb{P}^{n-1}$$
 
-映射 $\pi: Bl_P X \to X$ 是雙有理的（同構於 $X \setminus P$，且 $X$ 與 $Bl_P X$ 的函數域相同）。爆脹在原點拉出一條**例外除子** $E = \mathbb{P}^{n-1}$，把奇點「攤開」到除子上；反覆爆脹 + 嚴格變換（strict transform），可望消除奇點。
+映射 $\pi: Bl_P X \to X$ 是雙有理的（同構於 $X \setminus P$ ，且 $X$ 與 $Bl_P X$ 的函數域相同）。爆脹在原點拉出一條**例外除子** $E = \mathbb{P}^{n-1}$ ，把奇點「攤開」到除子上；反覆爆脹 + 嚴格變換（strict transform），可望消除奇點。
 
 ### 線索三：奇點解消定理（1964）
-**Hironaka 定理**：設 $k$ 為特徵 0 域，$X$ 為 $k$ 上任意代數簇。則存在 $X'$ 光滑，且存在一列閉嵌入
+**Hironaka 定理**：設 $k$ 為特徵 0 域， $X$ 為 $k$ 上任意代數簇。則存在 $X'$ 光滑，且存在一列閉嵌入
 
 $$X' = X_n \xhookrightarrow{\pi_n} X_{n-1} \xhookrightarrow{} \cdots \xhookrightarrow{\pi_1} X_0 = X$$
 
-每個 $\pi_i$ 是沿光滑中心（不在光滑軌跡上）的 blow-up，且 $\pi: X' \to X$ 是真（proper）雙有理映射，$\pi^{-1}(X_{\text{sing}})$ 是簡單法交交叉除子。
+每個 $\pi_i$ 是沿光滑中心（不在光滑軌跡上）的 blow-up，且 $\pi: X' \to X$ 是真（proper）雙有理映射， $\pi^{-1}(X_{\text{sing}})$ 是簡單法交交叉除子。
 
-**核心發明——不變量 $\nu$ 與遞降策略**：對奇點 $P$ 定義**階數（order）** $\nu_P(f) = $ 局部方程 $f$ 在 $P$ 的 Taylor 展開首非零項次數。Hironaka 的策略：
-1. 構造上半連續函數 $P \mapsto \nu_P(f)$，在奇點處極大；
-2. 每次沿「最大階點集」的 blow-up 後，證明 $\nu$ **嚴格不增**，且不會永久停在 $>0$；
+**核心發明——不變量 $\nu$ 與遞降策略**：對奇點 $P$ 定義**階數（order）** $\nu_P(f) =$ 局部方程 $f$ 在 $P$ 的 Taylor 展開首非零項次數。Hironaka 的策略：
+1. 構造上半連續函數 $P \mapsto \nu_P(f)$ ，在奇點處極大；
+2. 每次沿「最大階點集」的 blow-up 後，證明 $\nu$ **嚴格不增**，且不會永久停在 $>0$ ；
 3. 歸納地 $\max \nu \to 0$ ⇒ 簇變光滑。
 
-這個「測量—吹脹—監控不變量」的架構，被後人稱為 **Hironaka 遊戲**，其證明長達 200+ 頁（*Annals of Math.* 1964），數十年間被 Bierstone–Milman、Encinas–Villamayar 等大幅簡化，如今有構造性演算法（可程式化！）。特徵 $p > 0$ 的情形至今仍是懸案（僅 $n \le 3$，由 Abhyankar 解決）。
+這個「測量—吹脹—監控不變量」的架構，被後人稱為 **Hironaka 遊戲**，其證明長達 200+ 頁（*Annals of Math.* 1964），數十年間被 Bierstone–Milman、Encinas–Villamayar 等大幅簡化，如今有構造性演算法（可程式化！）。特徵 $p > 0$ 的情形至今仍是懸案（僅 $n \le 3$ ，由 Abhyankar 解決）。
 
-### 程式碼：Python sympy 畫出奇點曲線 $y^2 = x^3$（尖點）並演示 blow-up 概念
+### 程式碼：Python sympy 畫出奇點曲線 $y^2 = x^3$ （尖點）並演示 blow-up 概念
 
 ```python
 import sympy as sp
@@ -95,11 +95,11 @@ print("已儲存圖 hironaka_blowup.png")
 - 特徵 0 的代數幾何從此**原則上可局部化到光滑情形**：一切維數論證（維數、切空間、微分形式）皆可先用解消再套微積分。
 - 補全 **Grothendieck 綱領**：Hironaka 的 proper 雙有理映射是導出範疇、相對對偶化、消沒理論（Kawamata–Viehwag）的技術基礎；奇點解消也是極小模型綱領（MMP，Mori 1990 菲爾茲獎）的前置工具。
 - 啟發**構造性代數**：Bierstone–Milman（1997）的演算法化證明，使解消可寫成程式。
-- 特徵 $p > 0$：$n \ge 4$ 至今未解——Hironaka 遊戲仍是活躍研究前沿（相關工具：$F$-奇異性、de Jong 的交變（2000））。
+- 特徵 $p > 0$ ： $n \ge 4$ 至今未解——Hironaka 遊戲仍是活躍研究前沿（相關工具： $F$ -奇異性、de Jong 的交變（2000））。
 
 ## 關鍵人物與文獻
 - **Oscar Zariski**：曲線/曲面解消（1926–1940s）；廣中的博士導師。
 - **Heisuke Hironaka（廣中平祐）**：*On the resolution of singularities of algebraic varieties over fields of characteristic zero*（Annals of Math. 79, 1964）；1970 年菲爾茲獎（首位日本得主）。
-- **Shreeram Abhyankar**：特徵 $p$、$n \le 3$ 的解消（1956–66）。
+- **Shreeram Abhyankar**：特徵 $p$ 、 $n \le 3$ 的解消（1956–66）。
 - **Edward Bierstone & Pierre Milman**：構造性解消演算法（1997）。
 - **Aise Johan de Jong**：交變（alteration）方法，特徵 $p$ 的替代路線（1996）。

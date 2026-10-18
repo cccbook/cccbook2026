@@ -12,7 +12,7 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：超定方程組與殘差
-設模型為線性：$A\mathbf{x} \approx \mathbf{b}$，$A$ 是 $m \times n$ 矩陣（$m > n$），$\mathbf{b}$ 是觀測向量。因方程多於未知數，精確解一般不存在；定義**殘差**（誤差）向量：
+設模型為線性： $A\mathbf{x} \approx \mathbf{b}$ ， $A$ 是 $m \times n$ 矩陣（ $m > n$ ）， $\mathbf{b}$ 是觀測向量。因方程多於未知數，精確解一般不存在；定義**殘差**（誤差）向量：
 $$\mathbf{r} = \mathbf{b} - A\mathbf{x}, \qquad S(\mathbf{x}) = \|\mathbf{r}\|^2 = \sum_{i=1}^m (b_i - \textstyle\sum_j a_{ij}x_j)^2$$
 最小平方法的目標：找 $\hat{x}$ 使 $S(\hat{x})$ 最小——「平方和最小」而非「誤差總和最小」，因為平方消除正負抵消、且處處可微。
 
@@ -21,14 +21,14 @@ $$\mathbf{r} = \mathbf{b} - A\mathbf{x}, \qquad S(\mathbf{x}) = \|\mathbf{r}\|^2
 $$S(\mathbf{x}) = \mathbf{b}^T\mathbf{b} - 2\mathbf{x}^TA^T\mathbf{b} + \mathbf{x}^TA^TA\mathbf{x}$$
 令梯度為零：
 $$\nabla S = -2A^T\mathbf{b} + 2A^TA\mathbf{x} = 0 \quad\Rightarrow\quad \boxed{A^TA\,\hat{x} = A^T\mathbf{b}}$$
-這就是**正規方程**（normal equations）：$n$ 條方程、$n$ 個未知數。當 $A$ 各列線性獨立（$\mathrm{rank}\,A = n$）時，$A^TA$ 可逆，解唯一：
+這就是**正規方程**（normal equations）： $n$ 條方程、 $n$ 個未知數。當 $A$ 各列線性獨立（ $\mathrm{rank}\,A = n$ ）時， $A^TA$ 可逆，解唯一：
 $$\hat{x} = (A^TA)^{-1}A^T\mathbf{b}$$
-幾何解釋：$A\hat{x}$ 是 $\mathbf{b}$ 在 $A$ 的列空間上的**正交投影**；殘差 $\mathbf{b} - A\hat{x}$ 與列空間垂直（$A^T\mathbf{r} = 0$ 正是垂直條件）。
+幾何解釋： $A\hat{x}$ 是 $\mathbf{b}$ 在 $A$ 的列空間上的**正交投影**；殘差 $\mathbf{b} - A\hat{x}$ 與列空間垂直（ $A^T\mathbf{r} = 0$ 正是垂直條件）。
 
 ### 線索三：誤差的常態分布——最大概似的統一
-Gauss 1809 年的關鍵推理：假設誤差獨立同分布、密度為 $\varphi(\varepsilon)$，且「算術平均是最可能的值」對任意樣本成立，則可推出 $\varphi$ 必須是
+Gauss 1809 年的關鍵推理：假設誤差獨立同分布、密度為 $\varphi(\varepsilon)$ ，且「算術平均是最可能的值」對任意樣本成立，則可推出 $\varphi$ 必須是
 $$\varphi(\varepsilon) = \frac{1}{\sigma\sqrt{2\pi}}\,e^{-\varepsilon^2/2\sigma^2}$$
-——**常態分布**。反過來：在常態誤差假設下，最小平方法恰是**最大概似估計**（maximize $\prod_i \varphi(b_i - (A\mathbf{x})_i)$，取對數後正是最小化 $\|\mathbf{r}\|^2$）。幾何最小平方與統計最大概似，在常態假設下合而為一。
+——**常態分布**。反過來：在常態誤差假設下，最小平方法恰是**最大概似估計**（maximize $\prod_i \varphi(b_i - (A\mathbf{x})_i)$ ，取對數後正是最小化 $\|\mathbf{r}\|^2$ ）。幾何最小平方與統計最大概似，在常態假設下合而為一。
 
 ### 線索四：Ceres 案件的偵破
 1801 年 1 月 1 日，Piazzi 發現 Ceres，觀測 24 次後失蹤。多數天文學家無法從這麼短的弧段算出可靠軌道；Gauss 用自己的最小平方法處理這組超定數據，預測 Ceres 於 1801 年 12 月 7 日（Zach 觀測到）重新出現在天球上的預測位置附近。這是科學史上最著名的「數據破案」——最小平方法一戰成名，Gauss 聲譽鵲起。
@@ -62,7 +62,7 @@ for dx in [np.zeros(3), np.array([0.1, -0.1, 0.1])]:
     print("S =", np.sum((b - A @ (x_normal + dx))**2).round(4), "(偏移)", dx)
 ```
 
-輸出顯示：正規方程解與 `lstsq` 的投影解完全一致，$A^T\mathbf{r} \approx \mathbf{0}$ 驗證殘差正交於列空間，且任何偏移都使平方和變大——$\hat{x}$ 確實是極小點。
+輸出顯示：正規方程解與 `lstsq` 的投影解完全一致， $A^T\mathbf{r} \approx \mathbf{0}$ 驗證殘差正交於列空間，且任何偏移都使平方和變大—— $\hat{x}$ 確實是極小點。
 
 ## 結案 -- 後果與影響
 - **統計學的基石**：最小平方法 + 誤差常態分布，成為迴歸分析的起點；「Gauss–Markov 定理」（1821，Gauss 證明最小平方估計在線性無偏估計中方差最小）奠定其理論地位。常態分布因此被稱為「Gauss 分布」。

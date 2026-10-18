@@ -10,10 +10,10 @@ $$
 \frac{d}{dt}\frac{\partial L}{\partial \dot q_i} - \frac{\partial L}{\partial q_i} = 0,
 $$
 
-其中 $L = T - V$ 是 Lagrangian（動能減位能），$q_i$ 是廣義座標。這套方程很美，但有兩個「瑕疵」：
+其中 $L = T - V$ 是 Lagrangian（動能減位能）， $q_i$ 是廣義座標。這套方程很美，但有兩個「瑕疵」：
 
 1. 它是 $n$ 個**二階** ODE——二階方程不如一階方程好處理、好理解；
-2. 方程同時混雜了 $q$ 與 $\dot q$，兩者地位不對稱，幾何圖像模糊。
+2. 方程同時混雜了 $q$ 與 $\dot q$ ，兩者地位不對稱，幾何圖像模糊。
 
 當時還有一個更深層的謎：**光線的傳播與行星的運動，為什麼看起來這麼像？** 光有 Fermat 原理（光走時間最短的路徑），力學有 Maupertuis 原理（粒子走「作用量」最小的路徑）。兩者都是「極值原理」，形式上驚人地相似。這是巧合，還是有更深的統一？
 
@@ -23,7 +23,7 @@ Hamilton 從年輕時就迷上了這個謎。他 1827 年以 22 歲之齡提出�
 
 ### 第一步：從 Lagrangian 出發——Legendre 變換
 
-Hamilton 的第一個靈感：**換變數**。Lagrange 方程裡 $q$ 與 $\dot q$ 的地位不對稱，原因在於 Lagrangian 是 $\dot q$ 的函數而非動量的函數。Hamilton 提議把速度 $\dot q$ 換成**動量** $p$：
+Hamilton 的第一個靈感：**換變數**。Lagrange 方程裡 $q$ 與 $\dot q$ 的地位不對稱，原因在於 Lagrangian 是 $\dot q$ 的函數而非動量的函數。Hamilton 提議把速度 $\dot q$ 換成**動量** $p$ ：
 
 $$
 p_i = \frac{\partial L}{\partial \dot q_i}.
@@ -35,19 +35,19 @@ $$
 H(q, p) = \sum_i p_i \dot q_i - L(q, \dot q),
 $$
 
-其中 $\dot q$ 要用 $p$ 反解出來（由 $p = \partial L/\partial \dot q$）。這個新函數 $H$ 就是**Hamiltonian**。對最常見的情形，動能是速度的二次型，此時 $H = T + V$——**動能加位能，即總能量**。
+其中 $\dot q$ 要用 $p$ 反解出來（由 $p = \partial L/\partial \dot q$ ）。這個新函數 $H$ 就是**Hamiltonian**。對最常見的情形，動能是速度的二次型，此時 $H = T + V$ ——**動能加位能，即總能量**。
 
-驗證一下最簡單的例子：一維自由粒子，$L = \frac{1}{2}m\dot q^2$。動量 $p = m\dot q$，反解 $\dot q = p/m$，於是
+驗證一下最簡單的例子：一維自由粒子， $L = \frac{1}{2}m\dot q^2$ 。動量 $p = m\dot q$ ，反解 $\dot q = p/m$ ，於是
 
 $$
 H = p\cdot\frac{p}{m} - \frac{1}{2}m\left(\frac{p}{m}\right)^2 = \frac{p^2}{m} - \frac{p^2}{2m} = \frac{p^2}{2m}.
 $$
 
-正是 $\frac{1}{2}mv^2$（以 $p$ 表示），即動能。✓
+正是 $\frac{1}{2}mv^2$ （以 $p$ 表示），即動能。✓
 
 ### 第二步：推導正則方程
 
-現在把 Lagrange 方程翻譯到新變數 $(q, p)$。設 $H(q, p)$ 由 Legendre 變換而來，對 $p_i$ 求偏導：
+現在把 Lagrange 方程翻譯到新變數 $(q, p)$ 。設 $H(q, p)$ 由 Legendre 變換而來，對 $p_i$ 求偏導：
 
 $$
 \frac{\partial H}{\partial p_i} = \dot q_i + \sum_j p_j\frac{\partial \dot q_j}{\partial p_i} - \sum_j \frac{\partial L}{\partial \dot q_j}\frac{\partial \dot q_j}{\partial p_i}.
@@ -59,13 +59,13 @@ $$
 \frac{\partial H}{\partial p_i} = \dot q_i. \qquad \text{（第一條正則方程）}
 $$
 
-再對 $q_i$ 求偏導（固定 $p$，即 $\dot q$ 隨 $q$ 變化的部分也相消）：
+再對 $q_i$ 求偏導（固定 $p$ ，即 $\dot q$ 隨 $q$ 變化的部分也相消）：
 
 $$
 \frac{\partial H}{\partial q_i} = -\frac{\partial L}{\partial q_i}.
 $$
 
-而 Lagrange 方程說 $\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot q_i} = \dfrac{\partial L}{\partial q_i}$，即 $\dot p_i = \dfrac{\partial L}{\partial q_i}$。代入得
+而 Lagrange 方程說 $\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot q_i} = \dfrac{\partial L}{\partial q_i}$ ，即 $\dot p_i = \dfrac{\partial L}{\partial q_i}$ 。代入得
 
 $$
 \frac{\partial H}{\partial q_i} = -\dot p_i. \qquad \text{（第二條正則方程）}
@@ -77,32 +77,32 @@ $$
 \dot q_i = \frac{\partial H}{\partial p_i}, \qquad \dot p_i = -\frac{\partial H}{\partial q_i}.
 $$
 
-$n$ 個二階方程搖身一變，成了 $2n$ 個**一階**方程——而且形式完美對稱：$q$ 往 $H$ 對 $p$ 的方向走，$p$ 往 $H$ 對 $q$ 的反方向走。
+$n$ 個二階方程搖身一變，成了 $2n$ 個**一階**方程——而且形式完美對稱： $q$ 往 $H$ 對 $p$ 的方向走， $p$ 往 $H$ 對 $q$ 的反方向走。
 
 ### 第三步：驗證——諧振子
 
-一維諧振子：$H = \dfrac{p^2}{2m} + \dfrac{1}{2}kq^2$。正則方程：
+一維諧振子： $H = \dfrac{p^2}{2m} + \dfrac{1}{2}kq^2$ 。正則方程：
 
 $$
 \dot q = \frac{p}{m}, \qquad \dot p = -kq.
 $$
 
-兩式組合：$\ddot q = \dot p / m = -\dfrac{k}{m}q$，回到熟悉的 $\ddot q + \omega^2 q = 0$（$\omega^2 = k/m$），解為 $q = A\cos(\omega t) + B\sin(\omega t)$。✓ 與 Lagrange、牛頓力學完全一致。
+兩式組合： $\ddot q = \dot p / m = -\dfrac{k}{m}q$ ，回到熟悉的 $\ddot q + \omega^2 q = 0$ （ $\omega^2 = k/m$ ），解為 $q = A\cos(\omega t) + B\sin(\omega t)$ 。✓ 與 Lagrange、牛頓力學完全一致。
 
 ### 第四步：相空間與守恆量
 
-正則方程的幾何革命：$(q, p)$ 組成的 $2n$ 維空間稱為**相空間**（phase space）。系統的演化是相空間中的一條曲線（相軌道）。而能量守恆在此變得顯而易見：沿解計算 $H$ 對時間的全導數，
+正則方程的幾何革命： $(q, p)$ 組成的 $2n$ 維空間稱為**相空間**（phase space）。系統的演化是相空間中的一條曲線（相軌道）。而能量守恆在此變得顯而易見：沿解計算 $H$ 對時間的全導數，
 
 $$
 \frac{dH}{dt} = \sum_i\left(\frac{\partial H}{\partial q_i}\dot q_i + \frac{\partial H}{\partial p_i}\dot p_i\right)
 = \sum_i\left(\frac{\partial H}{\partial q_i}\frac{\partial H}{\partial p_i} - \frac{\partial H}{\partial p_i}\frac{\partial H}{\partial q_i}\right) = 0.
 $$
 
-兩項恰好相消——**$H$ 沿軌道恆定**。若 $H = T + V$，這正是能量守恆。守恆律不再是物理觀察，而是方程結構的直接推論。
+兩項恰好相消——** $H$ 沿軌道恆定**。若 $H = T + V$ ，這正是能量守恆。守恆律不再是物理觀察，而是方程結構的直接推論。
 
 ### 第五步：光學與力學的統一
 
-Hamilton 更深層的偵查成果：他在光學中定義的「特徵函數」$S$（光程），在力學中也有對應物。Fermat 原理說光走 $\delta\int n\,ds = 0$ 的路徑；Maupertuis 原理說粒子走 $\delta\int p\,ds = 0$ 的路徑。兩者的數學結構完全相同——只是把折射率 $n$ 換成動量 $p$。這個統一最終導出 Hamilton-Jacobi 方程（參見 [1838-Jacobi與Hamilton-Jacobi方程.md](1838-Jacobi與Hamilton-Jacobi方程.md)），而在一百年後，它更成為量子力學（Schrödinger 方程與 WKB 近似）的先聲。
+Hamilton 更深層的偵查成果：他在光學中定義的「特徵函數」 $S$ （光程），在力學中也有對應物。Fermat 原理說光走 $\delta\int n\,ds = 0$ 的路徑；Maupertuis 原理說粒子走 $\delta\int p\,ds = 0$ 的路徑。兩者的數學結構完全相同——只是把折射率 $n$ 換成動量 $p$ 。這個統一最終導出 Hamilton-Jacobi 方程（參見 [1838-Jacobi與Hamilton-Jacobi方程.md](1838-Jacobi與Hamilton-Jacobi方程.md)），而在一百年後，它更成為量子力學（Schrödinger 方程與 WKB 近似）的先聲。
 
 ## 結案報告
 
@@ -114,7 +114,7 @@ Hamilton 解開了光學與力學的統一之謎：兩者都是「變分原理 +
 2. **Hamilton-Jacobi 理論**：Jacobi 完善的 HJ 方程是可積系統與量子力學的橋樑。
 3. **混沌理論**：Poincaré 研究三體問題時用的正是正則方程與相空間幾何（參見 [1886-Poincare三體問題.md](1886-Poincare三體問題.md)）；Hamilton 系統的保守性導致了 KAM 定理與混沌的研究。
 4. **辛幾何**：正則方程背後的幾何結構（辛形式）在二十世紀發展成辛幾何，成為現代數學的重要分支。
-5. **量子力學**：正則量子化就是「把 $q, p$ 換成算符並保持對易關係 $[q,p] = i\hbar$」，直接繼承了 Hamilton 的框架。
+5. **量子力學**：正則量子化就是「把 $q, p$ 換成算符並保持對易關係 $[q,p] = i\hbar$ 」，直接繼承了 Hamilton 的框架。
 
 ## 證據與工具
 

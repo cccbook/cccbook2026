@@ -21,7 +21,7 @@ $$E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i，\quad s_i \
 
 ### 第一條線索：能量函數——物理學的武器被搬進神經網路
 
-Hopfield 網路是全連接循環網路：每個單元 $s_i \in \{-1,+1\}$ 與所有其他單元相連，權重對稱 $w_{ij} = w_{ji}$ 且 $w_{ii}=0$。單元依非同步規則更新：
+Hopfield 網路是全連接循環網路：每個單元 $s_i \in \{-1,+1\}$ 與所有其他單元相連，權重對稱 $w_{ij} = w_{ji}$ 且 $w_{ii}=0$ 。單元依非同步規則更新：
 
 $$s_i \leftarrow \mathrm{sign}\!\left( \sum_j w_{ij} s_j - \theta_i \right)$$
 
@@ -29,9 +29,9 @@ $$s_i \leftarrow \mathrm{sign}\!\left( \sum_j w_{ij} s_j - \theta_i \right)$$
 
 $$\Delta E = -\Delta s_i \left( \sum_j w_{ij} s_j - \theta_i \right) = -\Delta s_i \cdot h_i$$
 
-若 $h_i > 0$ 則 $s_i$ 翻為 $+1$（$\Delta s_i \ge 0$），故 $\Delta E \le 0$；$h_i < 0$ 同理。$\blacksquare$
+若 $h_i > 0$ 則 $s_i$ 翻為 $+1$ （ $\Delta s_i \ge 0$ ），故 $\Delta E \le 0$ ； $h_i < 0$ 同理。 $\blacksquare$
 
-由於狀態空間有限（$2^N$），網路必在有限步內收斂到能量極小值——**動力學 = 下降到記憶谷底**。
+由於狀態空間有限（ $2^N$ ），網路必在有限步內收斂到能量極小值——**動力學 = 下降到記憶谷底**。
 
 ### 第二條線索：Hebbian 儲存——把記憶刻進能量地形
 
@@ -39,19 +39,19 @@ $$\Delta E = -\Delta s_i \left( \sum_j w_{ij} s_j - \theta_i \right) = -\Delta s
 
 $$w_{ij} = \frac{1}{N} \sum_{\mu=1}^{p} \xi_i^{\mu} \xi_j^{\mu}$$
 
-儲存後，每個記憶 $\xi^{\mu}$ 變成能量地形的一個極小值。檢驗：代入 $s = \xi^{\mu}$，
+儲存後，每個記憶 $\xi^{\mu}$ 變成能量地形的一個極小值。檢驗：代入 $s = \xi^{\mu}$ ，
 
 $$E(\xi^{\mu}) = -\frac{N}{2} + \frac{1}{N}\sum_{\nu \ne \mu} \left( \xi^{\mu} \cdot \xi^{\nu} \right)^2 \cdot \frac{N}{2} \approx -\frac{N}{2}$$
 
-當記憶數 $p$ 不超過容量上限 $p_{\max} \approx 0.138\,N$（$\alpha = p/N \approx 0.138$，由統計力學方法算出），各記憶之間的交叉項足夠小，$\xi^{\mu}$ 保持為穩定極小值——記憶成功儲存。
+當記憶數 $p$ 不超過容量上限 $p_{\max} \approx 0.138\,N$ （ $\alpha = p/N \approx 0.138$ ，由統計力學方法算出），各記憶之間的交叉項足夠小， $\xi^{\mu}$ 保持為穩定極小值——記憶成功儲存。
 
 ### 第三條線索：聯想記憶的動力學——殘缺線索補全整段記憶
 
-檢索時輸入殘缺或帶噪的線索 $s(0)$，網路沿能量下降演化：
+檢索時輸入殘缺或帶噪的線索 $s(0)$ ，網路沿能量下降演化：
 
 $$s(t+1) = \mathrm{sign}\!\big( W s(t) \big) \quad \Rightarrow \quad s(\infty) \approx \text{最近的記憶極小值 } \xi^{\mu^*}$$
 
-以 $N=8$、儲存兩個記憶為例（Python 縮影，闡明用）：
+以 $N=8$ 、儲存兩個記憶為例（Python 縮影，闡明用）：
 
 ```python
 import numpy as np

@@ -37,7 +37,7 @@ Harvey 用繃帶綁住手臂：
 
 ### 泵出量的數量級核算
 
-以每跳泵出量 $V_{stroke} \approx 59 \text{ ml}$（2 英兩）、心跳每分鐘 $72$ 次計：
+以每跳泵出量 $V_{stroke} \approx 59 \text{ ml}$ （2 英兩）、心跳每分鐘 $72$ 次計：
 
 $$Q_{\text{小時}} = V_{stroke} \times 72 \times 60 \approx 255 \text{ 公升}, \qquad
 N_{\text{循環}} = \frac{Q_{\text{小時}}}{5 \text{ 公升}} \approx 51 \text{ 次/小時}.$$

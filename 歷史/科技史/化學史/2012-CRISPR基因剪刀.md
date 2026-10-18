@@ -61,6 +61,6 @@ $$5' \text{-} \underbrace{N_{1}\,N_{2}\cdots N_{20}}_{\text{靶序列：與 gRNA
 
 $$5'\text{-GACCCCTGACCATCAA} \; \big\Vert \; \text{GTGG} \cdot \text{AGG-3'}$$
 
-（$\big\Vert$ 為切割點；PAM 的 AGG 不被 gRNA 配對，是 Cas9 直接讀取的認證碼。）
+（ $\big\Vert$ 為切割點；PAM 的 AGG 不被 gRNA 配對，是 Cas9 直接讀取的認證碼。）
 
 **脫靶風險：** 只差一個鹼基的近親序列，在遠離 PAM 端的錯配容忍度較高，仍可能被切割——這是 CRISPR 應用的最大風險，也是設計 gRNA 時必須以全基因體搜尋排雷的原因。鹼基配對的氫鍵能量學（錯配越多結合越不穩定）正是辨識精度的物理根源。

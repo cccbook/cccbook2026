@@ -74,7 +74,7 @@
 ### 第八章：量子化與哈密頓算符（Quantization & Hamiltonian Operators）
 
 8.1 狄拉克正則量子化（Canonical Quantization）原理
-8.2 泊松括號到對易子（Commutator）的映射：$\{A, B\} \to \frac{1}{i\hbar}[\hat{A}, \hat{B}]$
+8.2 泊松括號到對易子（Commutator）的映射： $\{A, B\} \to \frac{1}{i\hbar}[\hat{A}, \hat{B}]$
 8.3 薛丁格方程式與哈密頓算符的譜分解
 8.4 海森堡繪景與哈密頓運動方程式的量子對應
 

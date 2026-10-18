@@ -77,7 +77,7 @@ $$\text{120 萬張} \xrightarrow{\text{增廣}} \text{等效上千萬張} \Right
 ### 第四條線索：GPU 並行——卷積的快車道
 卷積本質是**大量獨立的乘加**：
 $$(I * K)_{ij} = \sum_{u}\sum_{v} I_{i+u,\,j+v}\, K_{uv}$$
-這正是 GPU 的強項——**數千核心同時算不同的 $(i,j)$**。
+這正是 GPU 的強項——**數千核心同時算不同的 $(i,j)$ **。
 Krizhevsky 把網路拆成**兩半**，分給兩張 GTX 580（當時記憶體只有 3GB）：
 $$\text{兩張 GPU 並行} \Rightarrow \text{訓練 } 120 \text{ 萬張圖約一週} \quad\text{（CPU 需要一個月以上）}.$$
 

@@ -21,7 +21,7 @@ VaR 從此成為全球銀行業的通用風險語言，並被巴塞爾委員會�
 
 ### 線索一：VaR 的統計定義
 
-對組合報酬 $R$、信賴水準 $\alpha$（如 95%）、期間 $\Delta t$（如 1 日）：
+對組合報酬 $R$ 、信賴水準 $\alpha$ （如 95%）、期間 $\Delta t$ （如 1 日）：
 
 $$P(R_{\Delta t} < -\mathrm{VaR}_\alpha) = 1 - \alpha$$
 
@@ -29,7 +29,7 @@ $$P(R_{\Delta t} < -\mathrm{VaR}_\alpha) = 1 - \alpha$$
 
 $$\mathrm{VaR}_\alpha = z_\alpha \, \sigma_p \, V$$
 
-其中 $z_{0.95} = 1.645$、$V$ 是組合價值、$\sigma_p$ 是組合波動率。**風險從「名目曝險」變成「機率加權的潛在虧損」**。
+其中 $z_{0.95} = 1.645$ 、 $V$ 是組合價值、 $\sigma_p$ 是組合波動率。**風險從「名目曝險」變成「機率加權的潛在虧損」**。
 
 ### 線索二：共變異數法（Variance-Covariance Method）
 
@@ -42,8 +42,8 @@ $$\sigma_t^2 = \lambda \sigma_{t-1}^2 + (1-\lambda) r_{t-1}^2, \quad \lambda = 0
 
 （這是 $\alpha + \beta = 1$ 的 GARCH 特例——RiskMetrics 用實證把 $\lambda$ 定為 0.94，見 [1986-BollerslevGARCH模型.md](1986-BollerslevGARCH模型.md)。）
 
-3. 組合波動率：$\sigma_p = \sqrt{\mathbf{w}^T \Sigma \mathbf{w}}$（Markowitz 的數學，見 [1952-Markowitz投資組合理論.md](1952-Markowitz投資組合理論.md)）。
-4. VaR $= 1.645 \, \sigma_p \, V$。
+3. 組合波動率： $\sigma_p = \sqrt{\mathbf{w}^T \Sigma \mathbf{w}}$ （Markowitz 的數學，見 [1952-Markowitz投資組合理論.md](1952-Markowitz投資組合理論.md)）。
+4. VaR $= 1.645 \, \sigma_p \, V$ 。
 
 **巧妙之處**：VaR 把 Markowitz 的組合數學、GARCH 的波動率預測、Black–Scholes 的敏感度（greeks）全部整合成「一個數字」。
 

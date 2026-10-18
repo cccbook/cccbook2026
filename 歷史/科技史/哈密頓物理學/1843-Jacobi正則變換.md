@@ -3,7 +3,7 @@
 ## 案件摘要
 1843 年前後，Jacobi 在動力學講義中系統化**正則變換**（canonical transformation）理論：
 哪些變換 $(q, p) \to (Q, P)$ 能保持正則方程的形式不變？
-答案是：保持「正則 2-形式」$dq \wedge dp$ 不變的變換——
+答案是：保持「正則 2-形式」 $dq \wedge dp$ 不變的變換——
 $$\sum_i dq_i \wedge dp_i = \sum_i dQ_i \wedge dP_i$$
 這是**辛幾何**（symplectic geometry）的誕生時刻：相空間不是普通歐氏空間，而是帶辛結構的空間。
 Jacobi 還發明「最後乘子」(last multiplier) 方法，處理非正則變換的修正因子。
@@ -12,17 +12,17 @@ Jacobi 還發明「最後乘子」(last multiplier) 方法，處理非正則變�
 ## 前因
 - **Hamilton 正則方程（1834）**：形式優美，但只有在「正則座標」下才成立——換座標後形式會破壞嗎？（見 [1834-Hamilton正則方程.md](1834-Hamilton正則方程.md)）
 - **Hamilton–Jacobi 理論（1837）**：Jacobi 已用 $S$ 作為生成函數做變換（見 [1837-HamiltonJacobi方程.md](1837-HamiltonJacobi方程.md)），需要一般化理論。
-- **生成函數的樣本**：$F_1(q, Q)$ 型生成函數已出現，$p = \partial F_1/\partial q$、$P = -\partial F_1/\partial Q$。
+- **生成函數的樣本**： $F_1(q, Q)$ 型生成函數已出現， $p = \partial F_1/\partial q$ 、 $P = -\partial F_1/\partial Q$ 。
 - **Jacobi 的問題意識**：變換的自由度有多大？哪些量在變換下不變？
 
 ## 線索與推理
 
 ### 正則變換的判據
-變換 $(q,p) \to (Q,P)$ 是正則的 ⇔ 對任意封閉曲線 $C$：
+變換 $(q,p) \to (Q,P)$ 是正則的 ⇔ 對任意封閉曲線 $C$ ：
 $$\oint_C \sum_i p_i\,dq_i = \oint_C \sum_i P_i\,dQ_i \quad\Longleftrightarrow\quad \sum dq_i \wedge dp_i = \sum dQ_i \wedge dP_i$$
-以矩陣語言：$M = \dfrac{\partial(Q,P)}{\partial(q,p)}$ 是正則的 ⇔
+以矩陣語言： $M = \dfrac{\partial(Q,P)}{\partial(q,p)}$ 是正則的 ⇔
 $$M^T J M = J, \qquad J = \begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix}$$
-滿足此條件的矩陣構成群——**辛群** $Sp(2n, \mathbb{R})$。
+滿足此條件的矩陣構成群——**辛群** $Sp(2n, \mathbb{R})$ 。
 
 ### 不變量清單
 | 不變量 | 表述 | 意義 |
@@ -40,10 +40,10 @@ $$M^T J M = J, \qquad J = \begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix}$$
 | $F_3(p, Q)$ | 舊動量、新位置 | $q = -\partial F_3/\partial p,\ P = -\partial F_3/\partial Q$ |
 | $F_4(p, P)$ | 舊動量、新動量 | $q = -\partial F_4/\partial p,\ Q = \partial F_4/\partial P$ |
 
-Hamilton–Jacobi 方程的 $S(q, \alpha, t)$ 正是 $F_2$ 型：新動量 $P = \alpha$、新 Hamiltonian $H' = H + \partial S/\partial t = 0$。
+Hamilton–Jacobi 方程的 $S(q, \alpha, t)$ 正是 $F_2$ 型：新動量 $P = \alpha$ 、新 Hamiltonian $H' = H + \partial S/\partial t = 0$ 。
 
 ### 最後乘子（last multiplier）
-若變換 $q \to Q$ 不是正則的，新方程 $\dot Q = M \dot q$ 中會出現修正因子 $\mu$：
+若變換 $q \to Q$ 不是正則的，新方程 $\dot Q = M \dot q$ 中會出現修正因子 $\mu$ ：
 $$\mu = \frac{\partial(Q)}{\partial(q)}\ \text{的倒數相關量}$$
 Jacobi 證明 $\mu$ 可由一條一階線性 PDE 求出。這是「非正則變換的補救手術」——
 日後成為劉維爾方程與測度論觀點的先聲。

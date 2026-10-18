@@ -11,10 +11,10 @@ Feynman 說「用量子系統模擬量子系統」，但那只是模擬器。198
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 量子圖靈機
-Deutsch 將圖靈機量子化：計算帶狀態、讀寫頭、內部狀態全部由么正演化 $U$ 取代經典轉移函數。並證明存在**通用量子圖靈機** $U_T$，可模擬任何量子圖靈機——量子計算有了嚴格的計算模型。
+Deutsch 將圖靈機量子化：計算帶狀態、讀寫頭、內部狀態全部由么正演化 $U$ 取代經典轉移函數。並證明存在**通用量子圖靈機** $U_T$ ，可模擬任何量子圖靈機——量子計算有了嚴格的計算模型。
 
 ### 量子閘模型（電路模型，今日的標準形式）
-計算在 $n$ 個量子位元的 Hilbert 空間（$\dim = 2^n$）中，由一系列么正閘完成：
+計算在 $n$ 個量子位元的 Hilbert 空間（ $\dim = 2^n$ ）中，由一系列么正閘完成：
 
 **Hadamard 閘**（製備疊加）：
 
@@ -24,7 +24,7 @@ $$H = \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix}, \quad H|0\rangle 
 
 $$\text{CNOT} = \begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\end{pmatrix}, \quad |x,y\rangle \to |x, y \oplus x\rangle$$
 
-**相位閘**（$S, T$ 閘，控制複數相位）：
+**相位閘**（ $S, T$ 閘，控制複數相位）：
 
 $$S = \begin{pmatrix}1&0\\0&i\end{pmatrix}, \quad T = \begin{pmatrix}1&0\\0&e^{i\pi/4}\end{pmatrix}$$
 
@@ -47,7 +47,7 @@ print(qc)
 - 經典：最壞要查 $2^{n-1}+1$ 次。
 - 量子：**只查 1 次**。流程：
   1. $|0\rangle^{\otimes n}|1\rangle \xrightarrow{H^{\otimes n} \otimes H} \frac{1}{\sqrt{2^n}}\sum_x |x\rangle \cdot \frac{|0\rangle-|1\rangle}{\sqrt2}$
-  2. 一次 oracle 呼叫：$|x\rangle \to (-1)^{f(x)}|x\rangle$（相位反轉）
+  2. 一次 oracle 呼叫： $|x\rangle \to (-1)^{f(x)}|x\rangle$ （相位反轉）
   3. $H^{\otimes n}$ 干涉
   4. 測量：全 0 ⟹ 常數，否則 ⟹ 平衡
 

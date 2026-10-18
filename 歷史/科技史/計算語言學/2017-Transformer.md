@@ -6,7 +6,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 
-- RNN/LSTM 的隱狀態 $h_t$ 依賴 $h_{t-1}$，計算本質上順序執行，GPU 大量時間在等待，無法用資料平行換取規模。
+- RNN/LSTM 的隱狀態 $h_t$ 依賴 $h_{t-1}$ ，計算本質上順序執行，GPU 大量時間在等待，無法用資料平行換取規模。
 - ConvS2S（Gehring 等，2017）用卷積實現可平行訓練，但長距離依賴需要堆疊多層才能讓兩個遠距詞「相見」，路徑長度 O(log n)。
 - Self-Attention 已嶄露頭角：Cheng 等（2016）與 Parikh 等（2016）證明注意力本身可承擔表示任務、不需 RNN。
 - Jakob Uszkoreit 提出用自注意力取代整個遞迴的想法，團隊目標是證明「注意力就夠了」。
@@ -15,7 +15,7 @@
 
 ### 線索一：Scaled Dot-Product Attention
 
-查詢 $Q$、鍵 $K$、值 $V$ 皆為矩陣。注意力是「用 $Q$ 去比對 $K$、再按相似度加權 $V$」：
+查詢 $Q$ 、鍵 $K$ 、值 $V$ 皆為矩陣。注意力是「用 $Q$ 去比對 $K$ 、再按相似度加權 $V$ 」：
 
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
@@ -39,7 +39,7 @@ $$
 \text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h) W^O, \quad \text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
 $$
 
-Transformer 用 $h=8$、$d_k = d_v = d_{\text{model}}/h = 64$：每個頭在不同子空間學不同的語義關係（語法依賴、指代、鄰近性），是子空間的平行語義。
+Transformer 用 $h=8$ 、 $d_k = d_v = d_{\text{model}}/h = 64$ ：每個頭在不同子空間學不同的語義關係（語法依賴、指代、鄰近性），是子空間的平行語義。
 
 ### 線索四：Sinusoidal 位置編碼
 
@@ -69,7 +69,7 @@ $$
 | ConvS2S | $O(knd + nd^2)$ | $O(1)$ | $O(\log_k n)$ |
 | Self-Attention | $O(n^2 d)$ | $O(1)$ | $O(1)$ |
 
-Self-Attention 每層計量 $O(n^2 d)$ 較 RNN 貴，但順序操作為 $O(1)$——所有位置同時計算，GPU 全程滿載。任何兩個詞一層即相見，長距離依賴直接破解。「可平行性 = 可擴展性」成為工程哲學。
+Self-Attention 每層計量 $O(n^2 d)$ 較 RNN 貴，但順序操作為 $O(1)$ ——所有位置同時計算，GPU 全程滿載。任何兩個詞一層即相見，長距離依賴直接破解。「可平行性 = 可擴展性」成為工程哲學。
 
 ### 程式碼：numpy 手刻 mini self-attention（含多頭拼接）
 
@@ -101,7 +101,7 @@ np.set_printoptions(precision=2, suppress=True)
 print(mats[0])
 ```
 
-輸出與輸入同形，代表可以無限堆疊殘差層；每個頭的注意力矩陣各自捕捉不同的詞-詞關係，這正是 multi-head 的意義。Big 模型（6 層、$d_{\text{model}}=512$、8 頭）在 WMT14 英德達 BLEU 28.4，超過所有先前最佳系統（含集成模型），且訓練 3.5 天中最後 12 小時的算力即超過前紀錄系統的全部訓練量；英法 41.8 亦為單模型新紀錄。
+輸出與輸入同形，代表可以無限堆疊殘差層；每個頭的注意力矩陣各自捕捉不同的詞-詞關係，這正是 multi-head 的意義。Big 模型（6 層、 $d_{\text{model}}=512$ 、8 頭）在 WMT14 英德達 BLEU 28.4，超過所有先前最佳系統（含集成模型），且訓練 3.5 天中最後 12 小時的算力即超過前紀錄系統的全部訓練量；英法 41.8 亦為單模型新紀錄。
 
 ## 結案 -- 後果與影響
 

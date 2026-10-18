@@ -82,7 +82,7 @@
 | 1927 | Heitler-London 量子力學處理氫分子，量子化學誕生 | [1927-HeitlerLondon氫分子.md](1927-HeitlerLondon氫分子.md) |
 | 1931 | Pauling 價鍵理論與雜化軌域 | [1931-Pauling價鍵理論.md](1931-Pauling價鍵理論.md) |
 | 1931 | Hückel 分子軌域法與芳香性規則 $4n+2$ | [1931-Huckel分子軌域法.md](1931-Huckel分子軌域法.md) |
-| 1951 | Pauling 蛋白質 $\alpha$-螺旋結構 | [1951-Pauling螺旋結構.md](1951-Pauling螺旋結構.md) |
+| 1951 | Pauling 蛋白質 $\alpha$ -螺旋結構 | [1951-Pauling螺旋結構.md](1951-Pauling螺旋結構.md) |
 | 1953 | Watson-Crick 解開 DNA 雙螺旋之謎 | [1953-WatsonCrickDNA.md](1953-WatsonCrickDNA.md) |
 | 1964 | Hohenberg-Kohn 定理與密度泛函理論（DFT） | [1964-密度泛函理論.md](1964-密度泛函理論.md) |
 | 1965 | Woodward-Hoffmann 規則：軌域對稱性決定反應路徑 | [1965-WoodwardHoffmann規則.md](1965-WoodwardHoffmann規則.md) |

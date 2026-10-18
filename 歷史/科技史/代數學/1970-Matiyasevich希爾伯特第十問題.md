@@ -13,7 +13,7 @@ $$x^n + y^n = z^n, \; n \geq 3 \quad (\text{費馬最後定理：無解})$$
 
 1900 年，希爾伯特在巴黎演講中提出 23 個問題，第十問題最為樸素：
 
-> 給定一個整係數多項式 $P(x_1, \ldots, x_n)$，設計一個「根據有限步運算即可判定」的程序，判定方程 $P(x_1, \ldots, x_n) = 0$ 是否有整數解。
+> 給定一個整係數多項式 $P(x_1, \ldots, x_n)$ ，設計一個「根據有限步運算即可判定」的程序，判定方程 $P(x_1, \ldots, x_n) = 0$ 是否有整數解。
 
 當時沒有人想到「程序」這個概念需要嚴格定義。1936 年 Turing 定義了圖靈機與**停機問題**（halting problem）——證明存在不可判定的問題。這為第十問題的「不可解」結局埋下了伏筆：也許希爾伯特要的程序根本寫不出來。
 
@@ -47,13 +47,13 @@ $$e \in \text{停機集合} \iff \exists x : P_H(e, x) = 0$$
 
 ### 線索三：Fibonacci 數列是丟番圖的（最後一塊拼圖）
 
-Davis 與 Putnam 證明：只要「指數關係」$b = a^c$ 是丟番圖的，定理就成立。Julia Robinson 奮鬥二十年未竟。1970 年 Matiyasevich 用 **Pell 方程**補上了這一步：Fibonacci 數列 $F_n$ 的成長是丟番圖的。
+Davis 與 Putnam 證明：只要「指數關係」 $b = a^c$ 是丟番圖的，定理就成立。Julia Robinson 奮鬥二十年未竟。1970 年 Matiyasevich 用 **Pell 方程**補上了這一步：Fibonacci 數列 $F_n$ 的成長是丟番圖的。
 
 關鍵在於 Pell 方程
 
 $$x^2 - a y^2 = 1$$
 
-的解 $x + y\sqrt{a} = (x_1 + y_1 \sqrt{a})^n$ **指數增長**，而 $F_n$ 恰可透過 $F_n \approx \varphi^n / \sqrt{5}$（$\varphi = \frac{1+\sqrt{5}}{2}$）嵌入這類關係。Matiyasevich 證明：
+的解 $x + y\sqrt{a} = (x_1 + y_1 \sqrt{a})^n$ **指數增長**，而 $F_n$ 恰可透過 $F_n \approx \varphi^n / \sqrt{5}$ （ $\varphi = \frac{1+\sqrt{5}}{2}$ ）嵌入這類關係。Matiyasevich 證明：
 
 $$b = F_{2c} \; (c \geq 0) \text{ 是丟番圖關係}$$
 
@@ -95,7 +95,7 @@ if len(sols) >= 2:
 - **希爾伯特第十問題宣告不可解**，成為 20 世紀繼哥德爾不完備定理、Turing 停機問題之後第三座「不可知」的里程碑。
 - 開創了**丟番圖可計算性理論**：許多著名問題被證明等價於丟番圖方程可解性（如 Riemann 猜想的某些形式化版本）。
 - 哲學意涵：整數的多項式世界，已經蘊含了計算機的一切能力與極限。
-- Hilbert's tenth over $\mathbb{Q}$（有理數）至今仍是懸案；2016 年後 Koenigsmann 等證明 $\mathbb{Z}$ 在 $\mathbb{Q}$ 中是一階可定義的，使問題傾向不可解。
+- Hilbert's tenth over $\mathbb{Q}$ （有理數）至今仍是懸案；2016 年後 Koenigsmann 等證明 $\mathbb{Z}$ 在 $\mathbb{Q}$ 中是一階可定義的，使問題傾向不可解。
 
 ## 關鍵人物與文獻
 

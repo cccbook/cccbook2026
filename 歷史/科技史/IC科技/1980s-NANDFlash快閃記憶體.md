@@ -10,7 +10,7 @@
 - **EPROM 罩門**：Dov Frohman-Bentchkowsky（Intel, 1971）發明浮閘電晶體 EPROM，但**抹除要拆下來用紫外線照十幾分鐘**，無法在系統內電性擦除。
 - **EEPROM 太貴**：電性可抹除的 EEPROM 每個 cell 要兩顆電晶體（select + storage），位元成本高。
 - **硬碟是機械的**：磁碟靠馬達與磁頭，體積大、怕震、延遲在毫秒級——行動裝置時代需要固態的非揮發性儲存。
-- **關鍵推理**：舛岡注意到 EEPROM 的兩顆電晶體中，select 電晶體的功能其實可以**串聯在陣列裡互相分擔**——一整個位元線串共用一顆地選擇閘，cell 數從 $O(\text{contact})$ 降為 $O(\text{bits})$，密度優勢就此出現。
+- **關鍵推理**：舛岡注意到 EEPROM 的兩顆電晶體中，select 電晶體的功能其實可以**串聯在陣列裡互相分擔**——一整個位元線串共用一顆地選擇閘，cell 數從 $O(\text{contact})$ 降為 $O(\text{bits})$ ，密度優勢就此出現。
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -30,7 +30,7 @@
     Si 通道（源極 S ─ 洩極 D）
 ```
 
-- 浮閘上**有無電荷**改變通道的臨界電壓 $V_T$：無電荷 → $V_{T,\text{low}}$（讀為 1），有電荷 → $V_{T,\text{high}}$（讀為 0）。寫入/抹除的門檻位移：
+- 浮閘上**有無電荷**改變通道的臨界電壓 $V_T$ ：無電荷 → $V_{T,\text{low}}$ （讀為 1），有電荷 → $V_{T,\text{high}}$ （讀為 0）。寫入/抹除的門檻位移：
 $$\Delta V_T = \frac{Q_{FG}}{C_{PP}} = \frac{Q_{FG}}{\varepsilon_{ox}/t_{ONO}}$$
 - 電荷被絕緣層困住，室溫下可保持 **10 年以上**——這就是「非揮發」的物理根據。
 
@@ -39,7 +39,7 @@ $$\Delta V_T = \frac{Q_{FG}}{C_{PP}} = \frac{Q_{FG}}{\varepsilon_{ox}/t_{ONO}}$$
 - **熱電子注入（CHE, channel hot electron）**：寫 NOR 時把漏極電壓拉高，電子在通道獲得高動能，翻越約 $3.2\ \text{eV}$ 的氧化層勢壘跳上浮閘。快（微秒級）但耗電，且只能逐 bit 寫。
 - **Fowler–Nordheim 隧穿（FN tunneling）**：在閘極加強電場，電子直接**量子穿隧**通過氧化層。FN 電流密度：
 $$J_{FN} = A E^2 e^{-B/E}, \qquad E = \frac{V_{gate}}{t_{ox}}$$
-  其中 $A, B$ 為與氧化層材料相關的常數（$B \approx 2.4\times10^8\ \text{V/cm}$，SiO₂）。FN 隧穿電流雖小，但**可以在系統內集體操作**——一整個區塊（block）同時抹除，這正是「Flash」名稱的由來。NAND 的寫入與抹除**都靠 FN 隧穿**。
+  其中 $A, B$ 為與氧化層材料相關的常數（ $B \approx 2.4\times10^8\ \text{V/cm}$ ，SiO₂）。FN 隧穿電流雖小，但**可以在系統內集體操作**——一整個區塊（block）同時抹除，這正是「Flash」名稱的由來。NAND 的寫入與抹除**都靠 FN 隧穿**。
 
 ### 3. NOR vs NAND：兩種陣列拓撲
 
@@ -79,7 +79,7 @@ $$\text{margin} \propto \frac{\Delta V_T}{2^b} \;\Rightarrow\; b \uparrow \;\Rig
 
 $$\text{容量} \propto \text{layers} \times \text{bits/cell} = O(\text{layers})$$
 
-- 3D NAND 用**垂直通道**（channel hole 貫穿所有層），cell 圍繞在孔壁上，尺寸可以放回 50 nm 級，$V_T$ 分佈餘裕恢復，MLC/TLC/QLC 才能穩定量產。
+- 3D NAND 用**垂直通道**（channel hole 貫穿所有層），cell 圍繞在孔壁上，尺寸可以放回 50 nm 級， $V_T$ 分佈餘裕恢復，MLC/TLC/QLC 才能穩定量產。
 - 堆疊是**疊代式的**：一批 24 層蝕刻完、疊上另一批，層數從 24 → 32 → 64 → 96 → 128 → 176 → 232，成長如摩天大樓。
 
 ### 6. NAND 的管理層：ECC、wear leveling 與壞塊

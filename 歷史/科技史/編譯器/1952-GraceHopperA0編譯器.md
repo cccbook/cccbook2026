@@ -63,7 +63,7 @@ $$\text{Compiler} : \{\text{Subroutine}_1, \dots, \text{Subroutine}_n\} \times \
 這個定義與現代「編譯器 = 語言到語言的翻譯器」不同——真正的語言翻譯，要等到 1951 年 Böhm 的博士論文。
 
 ### 同案的另兩位兇手
-- **Corrado Böhm（1951）**：瑞士 ETH 的博士論文，設計了一門語言 $\mathcal{L}$，並**用 $\mathcal{L}$ 自己**寫出 $\mathcal{L}$ 的編譯器——史上第一個「自舉」（self-compiling）的編譯器，這個概念後來成為所有編譯器理論的基石。
+- **Corrado Böhm（1951）**：瑞士 ETH 的博士論文，設計了一門語言 $\mathcal{L}$ ，並**用 $\mathcal{L}$ 自己**寫出 $\mathcal{L}$ 的編譯器——史上第一個「自舉」（self-compiling）的編譯器，這個概念後來成為所有編譯器理論的基石。
 - **Heinz Rutishauser（1950-1952）**：在 Z4 上提出「B0 自動編碼」——用數學式記號描述公式，讓機器展開為機器碼。他是 ALGOL 的前身思想。
 
 ### 三案對照

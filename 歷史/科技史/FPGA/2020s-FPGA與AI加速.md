@@ -20,11 +20,11 @@ FPGA 的傳統架構（LUT + BRAM + DSP）在這三個需求上有天然優勢�
 
 $$y[o][i][j] = \sum_{c}\sum_{m}\sum_{n} W[o][c][m][n] \cdot x[c][i+m][j+n]$$
 
-其中 $x$ 是輸入特徵圖、$W$ 是卷積核、$y$ 是輸出。FPGA 上有兩種主要實作策略：
+其中 $x$ 是輸入特徵圖、 $W$ 是卷積核、 $y$ 是輸出。FPGA 上有兩種主要實作策略：
 
-**策略 A：im2col + GEMM（矩陣乘法化）**。把卷積「攤平」成矩陣乘法：把每個感受野（receptive field）展開成一行，得到矩陣 $X'$，則卷積變成 $Y = W' \times X'$ 的矩陣乘法，可以復用高效 GEMM 引擎。GPU/TPU 都採用此法。缺點是 im2col 會把資料膨脹 $K \times K$ 倍（$K$ 為核大小，如 $3\times3$ 膨脹 9 倍），記憶體頻寬與快取壓力大。
+**策略 A：im2col + GEMM（矩陣乘法化）**。把卷積「攤平」成矩陣乘法：把每個感受野（receptive field）展開成一行，得到矩陣 $X'$ ，則卷積變成 $Y = W' \times X'$ 的矩陣乘法，可以復用高效 GEMM 引擎。GPU/TPU 都採用此法。缺點是 im2col 會把資料膨脹 $K \times K$ 倍（ $K$ 為核大小，如 $3\times3$ 膨脹 9 倍），記憶體頻寬與快取壓力大。
 
-**策略 B：空間架構（spatial architecture，直接資料流）**。不攤平，直接在 FPGA 上織出一個二維 PE 陣列，每個 PE 負責一個輸出通道的部分和，資料在 PE 間流動。採用 **weight-stationary（權重固定）** 資料流：權重 $W[o][c][m][n]$ 預先載入 PE 的暫存器並「固定不動」，輸入特徵圖流過 PE，部分和在 PE 內累加。每次載入權重可重用於整個特徵圖，權重的記憶體存取次數從 $O(H \times W \times C)$ 降到 $O(C \times K \times K)$。
+**策略 B：空間架構（spatial architecture，直接資料流）**。不攤平，直接在 FPGA 上織出一個二維 PE 陣列，每個 PE 負責一個輸出通道的部分和，資料在 PE 間流動。採用 **weight-stationary（權重固定）** 資料流：權重 $W[o][c][m][n]$ 預先載入 PE 的暫存器並「固定不動」，輸入特徵圖流過 PE，部分和在 PE 內累加。每次載入權重可重用於整個特徵圖，權重的記憶體存取次數從 $O(H \times W \times C)$ 降到 $O(C \times K \times K)$ 。
 
 兩者對比：
 
@@ -44,7 +44,7 @@ $$T_{\text{total}} = \sum_{l} T_l \quad \text{(GPU，序列)} \qquad T_{\text{to
 
 ### 線索二：INT8 量化的定點數理論
 
-量化的數學：把 FP32 張量 $x \in [x_{\min}, x_{\max}]$ 映射到 $n$-bit 整數。**對稱量化**（symmetric，常用於權重）：
+量化的數學：把 FP32 張量 $x \in [x_{\min}, x_{\max}]$ 映射到 $n$ -bit 整數。**對稱量化**（symmetric，常用於權重）：
 
 $$Q(x) = \mathrm{round}\left(\frac{x}{s}\right), \quad s = \frac{\max|x|}{2^{n-1}-1}$$
 
@@ -52,7 +52,7 @@ $$Q(x) = \mathrm{round}\left(\frac{x}{s}\right), \quad s = \frac{\max|x|}{2^{n-1
 
 $$Q(x) = \mathrm{round}\left(\frac{x}{s}\right) + z, \quad s = \frac{x_{\max} - x_{\min}}{2^n - 1}, \quad z = -\mathrm{round}\left(\frac{x_{\min}}{s}\right)$$
 
-其中 $s$ 是 scale（步長）、$z$ 是 zero-point（零點）。反量化為 $\hat{x} = s \cdot (Q(x) - z)$。
+其中 $s$ 是 scale（步長）、 $z$ 是 zero-point（零點）。反量化為 $\hat{x} = s \cdot (Q(x) - z)$ 。
 
 量化誤差分析：round 操作引入的誤差在 $[-s/2, s/2]$ 內近似均勻分布，故量化雜訊的方差為：
 
@@ -62,9 +62,9 @@ $$\sigma_q^2 = \frac{s^2}{12}$$
 
 $$\mathrm{SQNR} \approx 6.02 \cdot n + 1.76 \text{ dB}$$
 
-INT8（$n=8$）約 49.9 dB，INT4（$n=4$）約 25.8 dB。關鍵推理：神經網路對量化雜訊有容忍性，因為推論任務（分類、偵測）的決策邊界有一定餘裕；經驗上 INT8 量化的精度損失通常在 1% 以內（配合 calibration 校正），INT4 則需要量化感知訓練（QAT）。
+INT8（ $n=8$ ）約 49.9 dB，INT4（ $n=4$ ）約 25.8 dB。關鍵推理：神經網路對量化雜訊有容忍性，因為推論任務（分類、偵測）的決策邊界有一定餘裕；經驗上 INT8 量化的精度損失通常在 1% 以內（配合 calibration 校正），INT4 則需要量化感知訓練（QAT）。
 
-量化為何對 FPGA 特別有利？因為 FPGA 的 DSP48 單元原生支援 INT8/INT16 乘法：一個 DSP48E2（UltraScale+）可做一個 $27\times18$-bit 乘法，或打包成 **2 個 INT8 乘法**（用位元操作技巧把兩個 INT8 打包進一個乘法器）。這使 INT8 模式的算力直接翻倍；某些架構甚至可做 INT4 的 4 倍打包。而 GPU 的 FP16/FP32 單元在 INT8 上的打包效率不如 FPGA 的彈性位寬。
+量化為何對 FPGA 特別有利？因為 FPGA 的 DSP48 單元原生支援 INT8/INT16 乘法：一個 DSP48E2（UltraScale+）可做一個 $27\times18$ -bit 乘法，或打包成 **2 個 INT8 乘法**（用位元操作技巧把兩個 INT8 打包進一個乘法器）。這使 INT8 模式的算力直接翻倍；某些架構甚至可做 INT4 的 4 倍打包。而 GPU 的 FP16/FP32 單元在 INT8 上的打包效率不如 FPGA 的彈性位寬。
 
 ### 線索三：FPGA vs GPU 推理延遲與能效對比
 

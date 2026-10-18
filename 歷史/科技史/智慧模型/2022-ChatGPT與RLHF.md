@@ -37,7 +37,7 @@ $$L(\phi) = -\mathbb{E}_{(x, y_w, y_l)}\left[\log \sigma\big(r_\phi(x, y_w) - r_
 
 ### 第二條線索：PPO 的裁剪目標
 
-PPO（Proximal Policy Optimization）的目標函數，其中 $r(\cdot) = \frac{\pi_\theta(a|s)}{\pi_{\text{old}}(a|s)}$ 是新舊策略機率比，$A$ 是優勢估計：
+PPO（Proximal Policy Optimization）的目標函數，其中 $r(\cdot) = \frac{\pi_\theta(a|s)}{\pi_{\text{old}}(a|s)}$ 是新舊策略機率比， $A$ 是優勢估計：
 
 $$\max_\theta\ \mathbb{E}\Big[\min\big(r(\cdot)A,\ \text{clip}(r(\cdot),\ 1-\epsilon,\ 1+\epsilon)\cdot A\big)\Big]$$
 
@@ -45,7 +45,7 @@ $$\max_\theta\ \mathbb{E}\Big[\min\big(r(\cdot)A,\ \text{clip}(r(\cdot),\ 1-\eps
 
 $$\text{獎勵}' = r_\phi(x, y) - \beta\, \text{KL}\big(\pi_\theta \,\|\, \pi^{\text{SFT}}\big)$$
 
-這是**張力所在**：既要偏離 SFT 模型去討好人類偏好，又不能偏離太遠——$\beta$ 是繮繩的鬆緊。
+這是**張力所在**：既要偏離 SFT 模型去討好人類偏好，又不能偏離太遠—— $\beta$ 是繮繩的鬆緊。
 
 ### 第三條線索：對話即介面
 
@@ -80,7 +80,7 @@ InstructGPT 論文的關鍵數據：1.3B RLHF 模型在人類偏好評估中勝�
 - **RLHF 成為產業標準**：Claude（Anthropic，以 Constitutional AI 變體）、Llama 2-Chat、Gemini 全採 RLHF 或其變體；偏好建模成為獨立學科。
 - **對齊研究主流化**：RLHF 的局限（獎勵模型被鑽營、sycophancy、幻覺）成為活躍研究方向；DPO（2023）等免強化學習的替代品出現。
 - 埋下伏筆：ChatGPT 證明「訓練後對齊」的力量，但 RLHF 教會模型**說得好聽**而非**想得正確**——2024 年 o1 推理模型（見「科學與歷史/人工智慧/」對應檔案）以**測試時計算**讓模型先推理再回答，是對話革命之後的「推理革命」，也是本書通往下一卷的樞紐。
-- 偵探結語：ChatGPT 的成功公式可以寫成——**$O(10^{25})$ FLOPs 的預訓練 × RLHF 的對齊 × 對話介面的民主化**。三項因子中，前兩項是技術，第三項是設計決策；史上最快破億的關鍵，往往不是最深的那項技術，而是把技術翻譯成人人能用的那個介面。ELIZA 1966 年埋下的問題——「人類會對語言機器傾訴嗎」——在 2022 年得到了最終答案：會，而且十億人。
+- 偵探結語：ChatGPT 的成功公式可以寫成——** $O(10^{25})$ FLOPs 的預訓練 × RLHF 的對齊 × 對話介面的民主化**。三項因子中，前兩項是技術，第三項是設計決策；史上最快破億的關鍵，往往不是最深的那項技術，而是把技術翻譯成人人能用的那個介面。ELIZA 1966 年埋下的問題——「人類會對語言機器傾訴嗎」——在 2022 年得到了最終答案：會，而且十億人。
 
 ## 關鍵人物與文獻
 

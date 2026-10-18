@@ -10,7 +10,7 @@
 ## 線索與推理
 
 ### 線索一：取樣定理
-帶限信號 $x(t)$（最高頻率 $B$，即 $X(f)=0,\ |f|>B$），若取樣率
+帶限信號 $x(t)$ （最高頻率 $B$ ，即 $X(f)=0,\ |f|>B$ ），若取樣率
 
 $$f_s > 2B$$
 
@@ -18,10 +18,10 @@ $$f_s > 2B$$
 
 $$x(t) = \sum_{n=-\infty}^{\infty} x\!\left(\frac{n}{f_s}\right) \mathrm{sinc}\!\left(\pi(f_s t - n)\right)$$
 
-其中 $\mathrm{sinc}(x) = \sin(x)/x$。臨界取樣率 $f_s = 2B$ 稱為 Nyquist 率。
+其中 $\mathrm{sinc}(x) = \sin(x)/x$ 。臨界取樣率 $f_s = 2B$ 稱為 Nyquist 率。
 
 ### 線索二：混疊（Aliasing）
-若 $f_s < 2B$，高頻成分會「摺疊」成低頻假信號：
+若 $f_s < 2B$ ，高頻成分會「摺疊」成低頻假信號：
 
 $$f_{alias} = |f_s - f|$$
 

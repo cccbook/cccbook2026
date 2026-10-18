@@ -1,11 +1,11 @@
 # 1954 — Yang–Mills 規範場論
 
 ## 案件摘要
-1954 年，楊振寧與 Robert Mills 發表 "Conservation of Isotopic Spin and Isotopic Gauge Invariance"，把電磁學的 U(1) 規範對稱推廣到非阿貝爾群 SU(2)，開創非阿貝爾規範場論。這座大廈起初因「規範玻色子必須無質量」而處處碰壁，直到 1960s–70s 自發對稱破缺（Higgs 機制）與漸近自由現身，才組裝成粒子物理的標準模型 $SU(3)\times SU(2)\times U(1)$。
+1954 年，楊振寧與 Robert Mills 發表 "Conservation of Isotopic Spin and Isotopic Gauge Invariance"，把電磁學的 U(1) 規範對稱推廣到非阿貝爾群 SU(2)，開創非阿貝爾規範場論。這座大廈起初因「規範玻色子必須無質量」而處處碰壁，直到 1960s–70s 自發對稱破缺（Higgs 機制）與漸近自由現身，才組裝成粒子物理的標準模型 $SU(3)\times SU(2)\times U(1)$ 。
 
 ## 前因 -- 為什麼會有這個案子
 - **電磁學的成功**：Maxwell 方程隱含 U(1) 規範對稱；Weyl 1929 年確立「規範不變性 ⟹ 電荷守恆」的架構。
-- **同位旋之謎**：1932 年 Heisenberg 發現質子與中子在強交互作用中幾乎等同（$n$–$p$ 質量差僅 0.14%），可視為同一粒子（核子）的「同位旋」二重態，強作用近似 SU(2) 對稱。
+- **同位旋之謎**：1932 年 Heisenberg 發現質子與中子在強交互作用中幾乎等同（ $n$ – $p$ 質量差僅 0.14%），可視為同一粒子（核子）的「同位旋」二重態，強作用近似 SU(2) 對稱。
 - **守恆律與對稱**：Noether 定理說每個連續對稱對應一個守恆量；楊振寧問：**同位旋守恆能否像電荷守恆一樣，來自一個局域規範對稱？**
 - 楊振寧在 Brookhaven 訪問時與研究生 Mills 合作，把 U(1) 推廣到 SU(2)。
 
@@ -23,11 +23,11 @@ $$D_\mu = \partial_\mu + \frac{iq}{\hbar} A_\mu, \qquad A_\mu \to A_\mu + \parti
 $A_\mu$ 即電磁四維勢。因 U(1) 是阿貝爾群（元素可交換），變換規則是線性相加，場強 $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ 是規範不變的。
 
 ### 2. SU(2) 非阿貝爾推廣（Yang–Mills 的核心）
-同位旋二重態 $\psi = (\psi_p, \psi_n)^T$，局域 SU(2) 變換：
+同位旋二重態 $\psi = (\psi_p, \psi_n)^T$ ，局域 SU(2) 變換：
 
 $$\psi \to U(x)\, \psi, \qquad U(x) = e^{i\alpha^a(x)\, \tau^a/2}$$
 
-其中 $\tau^a$ 為 Pauli 矩陣。**關鍵難點**：$U(x_1)$ 與 $U(x_2)$ 不對易（$[\tau^a, \tau^b] = i\epsilon^{abc}\tau^c \neq 0$），普通的 $A_\mu \to A_\mu + \partial_\mu\chi$ 規則失效。楊與 Mills 發現必須引入**三個**規範場 $A_\mu^a$（$a=1,2,3$），以矩陣形式組合：
+其中 $\tau^a$ 為 Pauli 矩陣。**關鍵難點**： $U(x_1)$ 與 $U(x_2)$ 不對易（ $[\tau^a, \tau^b] = i\epsilon^{abc}\tau^c \neq 0$ ），普通的 $A_\mu \to A_\mu + \partial_\mu\chi$ 規則失效。楊與 Mills 發現必須引入**三個**規範場 $A_\mu^a$ （ $a=1,2,3$ ），以矩陣形式組合：
 
 $$A_\mu = A_\mu^a \frac{\tau^a}{2}$$
 
@@ -44,7 +44,7 @@ $$A_\mu \to U A_\mu U^{-1} + \frac{i}{g} U \partial_\mu U^{-1}$$
 
 $$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + ig[A_\mu, A_\nu] = F_{\mu\nu}^a \frac{\tau^a}{2}$$
 
-比電磁學多出對易子項 $ig[A_\mu, A_\nu]$——這是**規範玻色子自我交互作用**的來源（光子不與光子作用，但 Yang–Mills 玻色子會）。拉氏量：
+比電磁學多出對易子項 $ig[A_\mu, A_\nu]$ ——這是**規範玻色子自我交互作用**的來源（光子不與光子作用，但 Yang–Mills 玻色子會）。拉氏量：
 
 $$\mathcal{L}_{\text{YM}} = -\frac{1}{4} F_{\mu\nu}^a F^{a\mu\nu} + \bar{\psi}(i\gamma^\mu D_\mu - m)\psi$$
 
@@ -53,7 +53,7 @@ Noether 定理保證同位旋守恆；規範不變性完全決定交互作用的
 ### 4. 質量缺口難題（mass gap）
 Yang–Mills 拉氏量中規範玻色子無質量項（質量項 $m^2 A_\mu^a A^{a\mu}$ 破壞規範不變性）。但實驗上：
 - 強作用的媒介（膠子、介子）有明顯質量尺度；
-- 若規範玻色子無質量，強作用應是長程力，實際卻是短程（$\sim 10^{-15}$ m）。
+- 若規範玻色子無質量，強作用應是長程力，實際卻是短程（ $\sim 10^{-15}$ m）。
 
 「質量從哪來？」成為 Yang–Mills 理論的第一樁懸案，1954 年 Pauli 在研討會上當場以此質疑楊振寧。
 
@@ -62,7 +62,7 @@ Yang–Mills 拉氏量中規範玻色子無質量項（質量項 $m^2 A_\mu^a A^
 
 $$\langle \phi \rangle = v/\sqrt{2}, \qquad \mathcal{L} \supset -\mu^2 \phi^\dagger\phi - \lambda(\phi^\dagger\phi)^2 \;(\mu^2 < 0)$$
 
-  Goldstone 玻色子被規範玻色子「吃掉」，後者獲得質量 $m_W = gv/2$——**規範不變性未破壞，玻色子卻有質量**。
+  Goldstone 玻色子被規範玻色子「吃掉」，後者獲得質量 $m_W = gv/2$ ——**規範不變性未破壞，玻色子卻有質量**。
 - **漸近自由**（1973，Gross–Wilczek、Politzer）：非阿貝爾對易子項使耦合常數隨能量降低：
 
 $$\beta(g) = -\frac{g^3}{16\pi^2}\Big(\frac{11}{3}C_2 - \frac{2}{3}T_R N_f\Big) < 0 \implies \alpha_s(Q^2) \to 0 \text{ 當 } Q^2 \to \infty$$
@@ -114,7 +114,7 @@ print("兩個不同方向的 A 對易子項非零:", not np.allclose(1j*(G[0]@G[
 - **實驗驗證**：W/Z 玻色子（1983）、漸近自由（1970s DIS）、Higgs 玻色子（2012, LHC）——2013 年 Englert、Higgs 獲 Nobel 物理獎。
 - **深遠影響**：
   - 標準模型成為人類對物質結構的最佳描述；所有已知基本交互作用（除重力）皆由規範場論描述。
-  - **Yang–Mills 存在性與質量缺口**是 Clay 數學研究所列的**千禧年大獎問題**之一（懸賞 100 萬美元）：證明 4 維 Yang–Mills 理論存在嚴格的量子定義且具有質量缺口 $\Delta > 0$。本案的「數學嚴格性」部分至今懸而未決。
+  - **Yang–Mills 存在性與質量缺口**是 Clay 數學研究所列的**千禧年大獎問題**之一（懸賞 100 萬美元）：證明 4 維 Yang–Mills 理論存在嚴格的量子定義且具有質量缺口 $\Delta > 0$ 。本案的「數學嚴格性」部分至今懸而未決。
   - 規範理論的思想滲透到數學：Donaldson 理論、Seiberg–Witten 方程、鏡像對稱——物理與幾何在 Yang–Mills 上再度交會。
   - 楊振寧因此獲 1957 年 Nobel 物理獎（因宇稱不守恆，非 Yang–Mills）；Mills 則終身在學界推廣此理論。
 

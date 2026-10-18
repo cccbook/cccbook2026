@@ -21,7 +21,7 @@ GNU 工具鏈（見「1983-GNU計畫.md」）+ Linux 核心 = **GNU/Linux**—�
 Torvalds 的取捨（與 Tanenbaum 相反，見「1987-MINIX微核心.md」）：
 $$\text{宏核心（性能）} + \text{386 分頁保護} \quad \text{vs} \quad \text{微核心（隔離但慢）}.$$
 386 的關鍵硬體：
-- **分頁**（$4\text{KB}$ 頁）：虛擬記憶體的硬體基礎。
+- **分頁**（ $4\text{KB}$ 頁）：虛擬記憶體的硬體基礎。
 - **保護環**：Ring 0（核心）/ Ring 3（用戶）——特權隔離。
 
 ### 第二條線索：GPL + 網路 = 協作的數學

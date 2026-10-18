@@ -13,7 +13,7 @@
 Kolmogorov 的關鍵洞察：**機率只是一種特殊的測度**，隨機試驗就是一個測度空間。
 
 ### 公理體系
-1. **樣本空間與 σ-代數**：給定樣本空間 $\Omega$ 與其上的 σ-代數 $\mathcal{F}$（對補集與可數聯集封閉的事件集合），$(\Omega, \mathcal{F})$ 描述「有哪些事件」。
+1. **樣本空間與 σ-代數**：給定樣本空間 $\Omega$ 與其上的 σ-代數 $\mathcal{F}$ （對補集與可數聯集封閉的事件集合）， $(\Omega, \mathcal{F})$ 描述「有哪些事件」。
 2. **三條機率公理**：機率 $P: \mathcal{F} \to [0,1]$ 滿足
    $$
    \text{(K1) 非負性：} \quad P(A) \geq 0, \quad \forall A \in \mathcal{F}
@@ -31,18 +31,18 @@ P(A^c) = 1 - P(A), \quad P(\emptyset) = 0, \quad P(A \cup B) = P(A) + P(B) - P(A
 $$
 
 ### 隨機變數與分佈函數
-隨機變數是可測函數 $X: \Omega \to \mathbb{R}$，其機率行為完全由**分佈函數**刻劃：
+隨機變數是可測函數 $X: \Omega \to \mathbb{R}$ ，其機率行為完全由**分佈函數**刻劃：
 $$
 F(x) = P(X \leq x)
 $$
-期望值則定義為 Lebesgue 積分 $E[X] = \int_{\Omega} X \, dP$。這使「機率論 = 測度論 + 額外公理 $P(\Omega)=1$」。
+期望值則定義為 Lebesgue 積分 $E[X] = \int_{\Omega} X \, dP$ 。這使「機率論 = 測度論 + 額外公理 $P(\Omega)=1$ 」。
 
 ### 嚴格證明大數法則與重對數法則
-在此架構下，Kolmogorov 證明了**強大數法則（SLLN）**：若 $X_i$ 獨立且 $\sum_i \frac{\mathrm{Var}(X_i)}{i^2} < \infty$，則
+在此架構下，Kolmogorov 證明了**強大數法則（SLLN）**：若 $X_i$ 獨立且 $\sum_i \frac{\mathrm{Var}(X_i)}{i^2} < \infty$ ，則
 $$
 \frac{S_n - E[S_n]}{n} \xrightarrow{a.s.} 0, \quad S_n = \sum_{i=1}^n X_i
 $$
-以及**重對數法則（LIL）**：對 iid、零均值、變異數 $\sigma^2$ 的 $X_i$，
+以及**重對數法則（LIL）**：對 iid、零均值、變異數 $\sigma^2$ 的 $X_i$ ，
 $$
 \limsup_{n \to \infty} \frac{S_n}{\sigma \sqrt{2 n \log\log n}} = 1 \ \text{a.s.}
 $$

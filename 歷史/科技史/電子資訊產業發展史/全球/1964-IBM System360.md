@@ -22,7 +22,7 @@
 
 $$V_{stay} = v_{hardware} + S - C_{switch}, \quad C_{switch} = \alpha \cdot \text{(程式資產)}$$
 
-$S$ 為生態網絡價值（隨同 ISA 的程式、人才、維護體系成長，$S \propto n$，$n$ 為使用戶數）。當 $S$ 隨用戶數上升，平台形成正回饋：
+$S$ 為生態網絡價值（隨同 ISA 的程式、人才、維護體系成長， $S \propto n$ ， $n$ 為使用戶數）。當 $S$ 隨用戶數上升，平台形成正回饋：
 
 $$\dot{n} = \beta n (N - n)$$
 

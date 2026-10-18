@@ -28,7 +28,7 @@ memory[addr] ← word     ; 搬回去
 
 ### 線索二：FP 系統 -- 無變數無賦值
 
-Backus 的解法：FP 系統中程式只由**combining forms**（組合形式）建構——如 $\circ$（組合）、$[f, g]$（tuple）、$\alpha f$（apply-to-all，即 map）、$/f$（insert，即 reduce）。沒有變數、沒有賦值：
+Backus 的解法：FP 系統中程式只由**combining forms**（組合形式）建構——如 $\circ$ （組合）、 $[f, g]$ （tuple）、 $\alpha f$ （apply-to-all，即 map）、 $/f$ （insert，即 reduce）。沒有變數、沒有賦值：
 
 $$\text{wordcount} = \text{length} \circ \text{tokens}$$
 
@@ -60,7 +60,7 @@ $$(f \circ g) \circ h = f \circ (g \circ h) \qquad \text{（結合律）}$$
 
 $$\alpha f \circ \alpha g = \alpha (f \circ g) \qquad \text{（map 融合律）}$$
 
-融合律說：先 map $g$ 再 map $f$，等於一次 map 完 $f \circ g$。這意味著中間結構可以被消滅——Deforest（stream fusion）的先聲。
+融合律說：先 map $g$ 再 map $f$ ，等於一次 map 完 $f \circ g$ 。這意味著中間結構可以被消滅——Deforest（stream fusion）的先聲。
 
 ### 線索四：融合優化實作 -- 破案時刻
 

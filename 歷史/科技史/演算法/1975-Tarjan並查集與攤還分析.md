@@ -2,11 +2,11 @@
 
 ## 案件摘要
 
-並查集（union-find）資料結構自 Galler 與 Fischer 1964 年提出後，實務上快得出奇，卻沒有人能證明它到底有多快。Robert Tarjan 在 1975 年發表《Efficiency of a Good But Not Linear Set Union Algorithm》，證明路徑壓縮加按秩合併的並查集，m 次操作的總成本是 $O(m\,\alpha(n))$——反 Ackermann 函數，對一切實用的 n 小於 5，實質上是常數。更深的破案在於：單次操作可能很慢，但「攤還」（amortized）之後卻近乎完美。這是攤還分析正式登場的歷史時刻。
+並查集（union-find）資料結構自 Galler 與 Fischer 1964 年提出後，實務上快得出奇，卻沒有人能證明它到底有多快。Robert Tarjan 在 1975 年發表《Efficiency of a Good But Not Linear Set Union Algorithm》，證明路徑壓縮加按秩合併的並查集，m 次操作的總成本是 $O(m\,\alpha(n))$ ——反 Ackermann 函數，對一切實用的 n 小於 5，實質上是常數。更深的破案在於：單次操作可能很慢，但「攤還」（amortized）之後卻近乎完美。這是攤還分析正式登場的歷史時刻。
 
 ## 前因 -- 為什麼會有這個案子
 
-- Galler 與 Fischer 1964 年提出並查集的樸素實現：直覺很快，但最壞情況下樹可退化成一條長鏈，find 是 $O(n)$。
+- Galler 與 Fischer 1964 年提出並查集的樸素實現：直覺很快，但最壞情況下樹可退化成一條長鏈，find 是 $O(n)$ 。
 - Kruskal 1956 年的最小生成樹演算法需要高效判環：反覆查詢「兩端點是否已連通」，正是並查集的用武之地，但樸素版會拖垮整體複雜度。
 - 路徑壓縮與按秩合併兩個加速技巧先後被提出（Hopcroft-Ulman 1973 也分析了類似組合），但精確的上界始終是懸案。
 - Tarjan 的問題意識：「大家都說這演算法好，但『好』到底是多好？是否存在更好的下界？」
@@ -27,13 +27,13 @@
 
 $$x \to p(x) \to \cdots \to r \quad \Longrightarrow \quad x \to r,\ p(x) \to r,\ \ldots$$
 
-**按秩合併（union by rank）**：維護每棵樹的秩（高度上界），矮樹掛高樹，保證樹高為 $O(\log n)$：
+**按秩合併（union by rank）**：維護每棵樹的秩（高度上界），矮樹掛高樹，保證樹高為 $O(\log n)$ ：
 
 $$\text{rank}(r_1) < \text{rank}(r_2) \ \Rightarrow\ r_1 \text{ 接到 } r_2 \text{ 之下}$$
 
 ### 攤還分析與反 Ackermann 函數
 
-Tarjan 證明的核心定理：n 個元素、m 次操作（$m \geq n$），路徑壓縮 + 按秩合併的總成本為
+Tarjan 證明的核心定理：n 個元素、m 次操作（ $m \geq n$ ），路徑壓縮 + 按秩合併的總成本為
 
 $$T(m, n) = O\big(m\,\alpha(m, n)\big) \approx O(m\,\alpha(n))$$
 
@@ -41,14 +41,14 @@ $$T(m, n) = O\big(m\,\alpha(m, n)\big) \approx O(m\,\alpha(n))$$
 
 $$A(1,n) = 2n, \quad A(2,n) = 2^n, \quad A(3,n) = 2^{2^{\cdot^{\cdot^{2}}}}\ (\text{塔狀指數}), \quad A(4,4) = 2^{2^{2^{65536}}}$$
 
-$A(4,4)$ 遠超宇宙中原子數。因此對一切實用的 n，$\alpha(n) \leq 4$——這是「實質常數」的教科書案例。同時 Tarjan 證明對應下界：任何此類演算法都無法做到 $\omega(m\,\alpha(n))$，即上界緊緻（但不是線性，標題「Not Linear」由此而來）。
+$A(4,4)$ 遠超宇宙中原子數。因此對一切實用的 n， $\alpha(n) \leq 4$ ——這是「實質常數」的教科書案例。同時 Tarjan 證明對應下界：任何此類演算法都無法做到 $\omega(m\,\alpha(n))$ ，即上界緊緻（但不是線性，標題「Not Linear」由此而來）。
 
 ### 攤還分析的誕生
 
 攤還分析的哲學：不看單次操作的最壞成本，而看一串操作的總成本除以次數。兩大技術隨之成型：
 
-- **聚合法（aggregate method）**：直接計算 m 次操作的總成本 $T(m)$，攤還成本 $T(m)/m$。
-- **勢能法（potential method）**：定義資料結構的勢能函數 $\Phi(D)$，令第 i 次操作的攤還成本為
+- **聚合法（aggregate method）**：直接計算 m 次操作的總成本 $T(m)$ ，攤還成本 $T(m)/m$ 。
+- **勢能法（potential method）**：定義資料結構的勢能函數 $\Phi(D)$ ，令第 i 次操作的攤還成本為
 
 $$\hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1})$$
 
@@ -104,7 +104,7 @@ print(f"攤還步數/操作 = {d.steps / (2*m):.3f}，log2(n) = {math.log2(n):.1
 print(f"alpha(n) 實用上界 = 4")
 ```
 
-輸出顯示第二輪 find 的攤還步數遠小於 $\log_2 n$——近乎常數，正是 $O(\alpha(n))$ 的實測證據。
+輸出顯示第二輪 find 的攤還步數遠小於 $\log_2 n$ ——近乎常數，正是 $O(\alpha(n))$ 的實測證據。
 
 ## 結案 -- 後果與影響
 

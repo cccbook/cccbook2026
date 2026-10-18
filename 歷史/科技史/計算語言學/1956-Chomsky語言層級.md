@@ -20,9 +20,9 @@ Chomsky 依生成規則的形式限制，把文法分為四層，生成能力嚴
 
 $$\text{Type-3} \subset \text{Type-2} \subset \text{Type-1} \subset \text{Type-0}$$
 
-- Type-3（正規文法，regular）：規則形如 $A \to aB$ 或 $A \to a$，對應有限狀態自動機。
-- Type-2（上下文無關文法，context-free）：規則形如 $A \to \alpha$，對應下推自動機。
-- Type-1（上下文有關文法，context-sensitive）：規則形如 $\alpha A \beta \to \alpha\gamma\beta$。
+- Type-3（正規文法，regular）：規則形如 $A \to aB$ 或 $A \to a$ ，對應有限狀態自動機。
+- Type-2（上下文無關文法，context-free）：規則形如 $A \to \alpha$ ，對應下推自動機。
+- Type-1（上下文有關文法，context-sensitive）：規則形如 $\alpha A \beta \to \alpha\gamma\beta$ 。
 - Type-0（無限制文法）：任意改寫規則，等價於圖靈機。
 
 各層級的判定（recognition）複雜度差異巨大：
@@ -35,16 +35,16 @@ $$\text{regular: } O(n), \quad \text{CFL: } O(n^3), \quad \text{CSL: PSPACE}, \q
 
 Chomsky 的偵探式論證：若英語是正規語言，則所有英語句子構成的集合可被有限狀態機接受。但他給出兩類反例。
 
-1. **長距離依賴**：條件句 "if $S_1$, then $S_2$" 中，if 與 then 的配對距離可以任意長——有限狀態機沒有記憶，無法追蹤。
+1. **長距離依賴**：條件句 "if $S_1$ , then $S_2$ " 中，if 與 then 的配對距離可以任意長——有限狀態機沒有記憶，無法追蹤。
 2. **中心嵌入（center embedding）**：
 
 $$\text{The rat the cat the dog chased killed ate the malt.}$$
 
-結構是 $a^n b^n$ 型的嵌套：名詞短語逐層嵌入，開頭的 the...the...the 必須與結尾的動詞鏈反向配對。形式化：語言 $\{a^n b^n \mid n \geq 0\}$ 不是正規的，可用 pumping lemma 證明——正規語言的足夠長句子必可切分為 $uvwxy$，其中 $vx$ 可任意重複而不離開語言；但 $a^n b^n$ 重複中間片段後 $a$ 與 $b$ 數量失衡，離開語言。
+結構是 $a^n b^n$ 型的嵌套：名詞短語逐層嵌入，開頭的 the...the...the 必須與結尾的動詞鏈反向配對。形式化：語言 $\{a^n b^n \mid n \geq 0\}$ 不是正規的，可用 pumping lemma 證明——正規語言的足夠長句子必可切分為 $uvwxy$ ，其中 $vx$ 可任意重複而不離開語言；但 $a^n b^n$ 重複中間片段後 $a$ 與 $b$ 數量失衡，離開語言。
 
 ### 馬可夫過程 vs 轉換文法
 
-- 馬可夫模型：$P(w_i \mid w_{i-1})$ 只看前一狀態，無法表達任意深的嵌套。
+- 馬可夫模型： $P(w_i \mid w_{i-1})$ 只看前一狀態，無法表達任意深的嵌套。
 - 短語結構文法（CFG）：可以用遞迴規則生成中心嵌入，但無法處理被動式等轉換現象。
 - 轉換文法：CFG 加上轉換規則，是 Chomsky 認為描述英語所需的第三層模型。
 - 這個三層比較直接預告了次年《Syntactic Structures》的完整理論。

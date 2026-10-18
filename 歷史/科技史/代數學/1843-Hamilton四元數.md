@@ -9,9 +9,9 @@ $$i^2 = j^2 = k^2 = ijk = -1$$
 ## 前因 -- 為什麼會有這個案子
 - **複數的代數地位**：1830 年代複數 $\mathbb{C}$ 已被接受為平面上的點（Argand 圖示），
   $$z = a + bi, \quad i^2 = -1$$
-  乘法 $z w$ 對應平面上的旋轉＋縮放：$(a+bi)(c+di) = (ac - bd) + (ad + bc)i$。
+  乘法 $z w$ 對應平面上的旋轉＋縮放： $(a+bi)(c+di) = (ac - bd) + (ad + bc)i$ 。
 - **十五年失敗（1828–1843）**：Hamilton 试图把複數推廣到**三維空間**——
-  他想做「三元數」$q = a + bi + cj$，要求乘法保持模長（賦范可除代數）：
+  他想做「三元數」 $q = a + bi + cj$ ，要求乘法保持模長（賦范可除代數）：
   $$|q_1 q_2| = |q_1| \, |q_2|$$
   但三元組合始終湊不出這條性質——**三維的旋轉沒有與之相容的交換乘法**。
 - 他給兒子的家書：「我每天清晨坐在書桌前，努力幾小時，卻一無所獲。」
@@ -28,20 +28,20 @@ $$i^2 = j^2 = k^2 = ijk = -1$$
 由基本關係式可推出完整的乘法表：
 $$ij = k, \quad jk = i, \quad ki = j$$
 $$ji = -k, \quad kj = -i, \quad ik = -j$$
-**$ij = k$ 但 $ji = -k$** —— 交換律被犧牲了。
+** $ij = k$ 但 $ji = -k$ ** —— 交換律被犧牲了。
 四元數定義：
 $$q = a + bi + cj + dk, \quad a, b, c, d \in \mathbb{R}$$
-- 共軛：$\bar{q} = a - bi - cj - dk$，模長：$|q| = \sqrt{a^2 + b^2 + c^2 + d^2}$
-- **賦范可除性成立**：$q \bar{q} = |q|^2$，故 $q^{-1} = \bar{q}/|q|^2$。
+- 共軛： $\bar{q} = a - bi - cj - dk$ ，模長： $|q| = \sqrt{a^2 + b^2 + c^2 + d^2}$
+- **賦范可除性成立**： $q \bar{q} = |q|^2$ ，故 $q^{-1} = \bar{q}/|q|^2$ 。
 - 這就是 Frobenius 定理（1877）的第一個案例：
   $\mathbb{R}$ 上有限維**結合可除代數**只有 $\mathbb{R}, \mathbb{C}, \mathbb{H}$ 三種。
 
 ### 線索三：旋轉表示——純四元數的共軛運算
-單位四元數 $u = \cos\frac{\theta}{2} + \mathbf{v}\sin\frac{\theta}{2}$（$\mathbf{v}$ 為純虛單位向量）
+單位四元數 $u = \cos\frac{\theta}{2} + \mathbf{v}\sin\frac{\theta}{2}$ （ $\mathbf{v}$ 為純虛單位向量）
 作用在純四元數 $p = (0, \mathbf{x})$ 上：
 $$p' = u \, p \, u^{-1} = u \, p \, \bar{u}$$
-即三維空間繞軸 $\mathbf{v}$ 旋轉角 $\theta$。
-對應關係：單位四元數 $S^3 \twoheadrightarrow SO(3)$（二對一，$u$ 與 $-u$ 同一旋轉），
+即三維空間繞軸 $\mathbf{v}$ 旋轉角 $\theta$ 。
+對應關係：單位四元數 $S^3 \twoheadrightarrow SO(3)$ （二對一， $u$ 與 $-u$ 同一旋轉），
 這是**李群覆蓋理論**的最早實例之一。
 
 ### Python 實作：numpy 四元數旋轉
@@ -96,18 +96,18 @@ print("四元數旋轉與模長律驗證通過")
 ```
 
 ### 理論定義
-> **定義（四元數體 $\mathbb{H}$）**：$\mathbb{H} = \{a + bi + cj + dk\}$，
-> 基本關係 $i^2 = j^2 = k^2 = ijk = -1$，加法逐項、乘法由分配律與上式決定。
-> $\mathbb{H}$ 是結合可除代數，但**非交換**：$\mathbb{H}^\times$ 是非交換群。
+> **定義（四元數體 $\mathbb{H}$ ）**： $\mathbb{H} = \{a + bi + cj + dk\}$ ，
+> 基本關係 $i^2 = j^2 = k^2 = ijk = -1$ ，加法逐項、乘法由分配律與上式決定。
+> $\mathbb{H}$ 是結合可除代數，但**非交換**： $\mathbb{H}^\times$ 是非交換群。
 
 ## 結案 -- 後果與影響
 - 結案陳詞：**放棄交換律，才能換到三維的對稱性**——這是代數學史上第一次「違反常識的革命」。
 - **向量分析的誕生**：Gibbs 與 Heaviside 從四元數中抽出純虛部分
-  （$\mathbf{v} = bi + cj + dk$ 的向量觀念），發展成現代向量分析
-  （點積 $\mathbf{a}\cdot\mathbf{b}$、叉積 $\mathbf{a}\times\mathbf{b}$ 皆源於 $q_1 q_2$ 的實部與虛部）。
+  （ $\mathbf{v} = bi + cj + dk$ 的向量觀念），發展成現代向量分析
+  （點積 $\mathbf{a}\cdot\mathbf{b}$ 、叉積 $\mathbf{a}\times\mathbf{b}$ 皆源於 $q_1 q_2$ 的實部與虛部）。
   Maxwell 方程組的原始形式就是用四元數寫的。
-- Frobenius 定理（1877）：$\mathbb{R}, \mathbb{C}, \mathbb{H}$ 是僅有的結合可除代數；
-  再放棄結合律還有 Cayley 八元數 $\mathbb{O}$（1845）。
+- Frobenius 定理（1877）： $\mathbb{R}, \mathbb{C}, \mathbb{H}$ 是僅有的結合可除代數；
+  再放棄結合律還有 Cayley 八元數 $\mathbb{O}$ （1845）。
 - **深遠影響**：
   - 李群 $S^3 \to SO(3)$ 覆蓋、旋量（spinor）理論。
   - **現代應用**：3D 電腦圖學、遊戲引擎（Unity/Unreal）、太空飛行器姿態控制、

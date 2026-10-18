@@ -4,8 +4,8 @@
 1637 年 Fermat 在頁邊寫下「我有一個絕妙的證明，可惜這裡空白太小寫不下」，留下 $x^n + y^n = z^n$ 對 $n \geq 3$ 無正整數解的 358 年懸案。1994 年 9 月 Andrew Wiles 補上最後一塊拼圖，1995 年論文發表於 Annals of Mathematics，本案結案——但證明的附帶效應（模性定理）開啟了新紀元。
 
 ## 前因 -- 為什麼會有這個案子
-- **1637 年**：Fermat 在 Diophantus《算術》頁邊寫下命題，去世後由其子整理出版。$n=4$ 由 Fermat 自己（無窮遞降法）解決，$n=3$ 由 Euler（1753），$n=5$ 由 Dirichlet 與 Legendre（1825），$n=7$ 由 Lamé（1839）——但一般情形始終無解。
-- **Kummer 理論**（1847）：在分圓域 $\mathbb{Q}(\zeta_n)$ 中嘗試分解 $x^n + y^n$，遭遇非唯一因子分解；理想類數與正則質數 $p$（$p \nmid h_{\mathbb{Q}(\zeta_p)}$）處理了大量 $n$，卻無法窮盡。
+- **1637 年**：Fermat 在 Diophantus《算術》頁邊寫下命題，去世後由其子整理出版。 $n=4$ 由 Fermat 自己（無窮遞降法）解決， $n=3$ 由 Euler（1753）， $n=5$ 由 Dirichlet 與 Legendre（1825）， $n=7$ 由 Lamé（1839）——但一般情形始終無解。
+- **Kummer 理論**（1847）：在分圓域 $\mathbb{Q}(\zeta_n)$ 中嘗試分解 $x^n + y^n$ ，遭遇非唯一因子分解；理想類數與正則質數 $p$ （ $p \nmid h_{\mathbb{Q}(\zeta_p)}$ ）處理了大量 $n$ ，卻無法窮盡。
 - **現代轉折**：1984 年 Frey 提出：若 $a^n + b^n = c^n$ 有解，則橢圓曲線
   $$y^2 = x(x - a^n)(x + b^n)$$
   （Frey 曲線）會是「病態」的——Ribet（1986）證明它違反 **Taniyama–Shimura 猜想**（半穩定情形）。於是：證明半穩定橢圓曲線的模性 $\Rightarrow$ FLT 成立。
@@ -14,14 +14,14 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 命題
-**費馬最後定理（FLT）**：對 $n \geq 3$，
+**費馬最後定理（FLT）**：對 $n \geq 3$ ，
 
 $$x^n + y^n = z^n \quad \text{無正整數解}$$
 
-只需考慮 $n$ 為質數 $p \geq 3$（若 $n = km$，則 $(x^k)^m + (y^k)^m = (z^k)^m$ 歸約到質數指數；$n=4$ 已由 Fermat 解決）。
+只需考慮 $n$ 為質數 $p \geq 3$ （若 $n = km$ ，則 $(x^k)^m + (y^k)^m = (z^k)^m$ 歸約到質數指數； $n=4$ 已由 Fermat 解決）。
 
 ### 2. 橢圓曲線 ↔ 模形式：Taniyama–Shimura 猜想
-橢圓曲線 $E/\mathbb{Q}$：
+橢圓曲線 $E/\mathbb{Q}$ ：
 
 $$E: y^2 = x^3 + ax + b, \qquad \Delta = -16(4a^3 + 27b^2) \neq 0$$
 
@@ -29,7 +29,7 @@ $$E: y^2 = x^3 + ax + b, \qquad \Delta = -16(4a^3 + 27b^2) \neq 0$$
 
 $$f(q) = \sum_{n \geq 1} a_n q^n = q + \sum_{n \geq 2} a_n q^n \in S_2(\Gamma_0(N))$$
 
-使得對幾乎所有質數 $p$：
+使得對幾乎所有質數 $p$ ：
 
 $$a_p = p + 1 - \#E(\mathbb{F}_p)$$
 
@@ -37,18 +37,18 @@ $$a_p = p + 1 - \#E(\mathbb{F}_p)$$
 
 $$\rho_{f, \ell} : G_{\mathbb{Q}} \to GL_2(\mathbb{Z}_\ell)$$
 
-而橢圓曲線給出 $\rho_{E, \ell} : G_{\mathbb{Q}} \to GL_2(\mathbb{Z}_\ell)$（作用在 $\ell$-進 Tate 模 $T_\ell(E)$ 上）。猜想即：$\rho_{E,\ell} \sim \rho_{f,\ell}$。
+而橢圓曲線給出 $\rho_{E, \ell} : G_{\mathbb{Q}} \to GL_2(\mathbb{Z}_\ell)$ （作用在 $\ell$ -進 Tate 模 $T_\ell(E)$ 上）。猜想即： $\rho_{E,\ell} \sim \rho_{f,\ell}$ 。
 
 ### 3. Wiles 的武器：形變理論與 $R = \mathbb{T}$
-**形變問題**：固定 mod $\ell$ 的表示 $\bar{\rho} : G_{\mathbb{Q}} \to GL_2(\mathbb{F}_\ell)$，問它能否提升（lift）到特徵 $\ell$ 的表示 $\rho : G_{\mathbb{Q}} \to GL_2(\mathbb{Z}_\ell)$？Mazur 的形變理論說：所有形變由萬有形變環 $R$ 參數化：
+**形變問題**：固定 mod $\ell$ 的表示 $\bar{\rho} : G_{\mathbb{Q}} \to GL_2(\mathbb{F}_\ell)$ ，問它能否提升（lift）到特徵 $\ell$ 的表示 $\rho : G_{\mathbb{Q}} \to GL_2(\mathbb{Z}_\ell)$ ？Mazur 的形變理論說：所有形變由萬有形變環 $R$ 參數化：
 
 $$\text{Def}(\bar{\rho}) \cong \text{Hom}(R, \mathbb{Z}_\ell\text{-代數})$$
 
-**Hecke 代數** $\mathbb{T}$：級 $N$、權 2 的模形式在 Hecke 算符作用下生成的代數，編碼「哪些 mod $\ell$ 表示可被模形式提升」。
+**Hecke 代數** $\mathbb{T}$ ：級 $N$ 、權 2 的模形式在 Hecke 算符作用下生成的代數，編碼「哪些 mod $\ell$ 表示可被模形式提升」。
 
 Wiles 的策略：
-1. 選 $\bar{\rho}_{E,3}$（mod 3 的 Galois 表示），用 Langlands–Tunnell 定理證明它是模的（因 $GL_2(\mathbb{F}_3)$ 可解）；
-2. 證明：若 $\bar{\rho}$ 是模的且局部條件良好，則 $\bar{\rho}$ 的形變環 $R$ 等於 Hecke 代數 $\mathbb{T}$：
+1. 選 $\bar{\rho}_{E,3}$ （mod 3 的 Galois 表示），用 Langlands–Tunnell 定理證明它是模的（因 $GL_2(\mathbb{F}_3)$ 可解）；
+2. 證明：若 $\bar{\rho}$ 是模的且局部條件良好，則 $\bar{\rho}$ 的形變環 $R$ 等於 Hecke 代數 $\mathbb{T}$ ：
 
    $$\boxed{R \cong \mathbb{T}}$$
 
@@ -118,12 +118,12 @@ print("Hasse 定理驗證通過")
 - 審稿人（包括 Katz、Faltings）經數月逐行驗證後確認正確。
 
 ## 結案 -- 後果與影響
-- **358 年懸案結案**：$x^n + y^n = z^n$ 對 $n \geq 3$ 無正整數解，正式成為定理。
+- **358 年懸案結案**： $x^n + y^n = z^n$ 對 $n \geq 3$ 無正整數解，正式成為定理。
 - **模性定理**：Wiles 實際證明的是半穩定橢圓曲線的模性；2001 年 Breuil–Conrad–Diamond–Taylor 補完一般情形（稱為 **Modularity Theorem** 或 Taniyama–Shimura–Weil 定理）。
 - **開啟新紀元**：
   - **Fermat–Catalan 猜想**、**abc 猜想**、**BSD 猜想**的研究方法全部升級；
-  - **形變理論 + $R = \mathbb{T}$** 成為處理 Galois 表示模性的標準工具，直接鋪向 **Langlands 綱領**的算術面；
-  - 2016 年 Scholze 等人的 **perfectoid 空間**繼續推進 $p$-進表示的模性。
+  - **形變理論 + $R = \mathbb{T}$ ** 成為處理 Galois 表示模性的標準工具，直接鋪向 **Langlands 綱領**的算術面；
+  - 2016 年 Scholze 等人的 **perfectoid 空間**繼續推進 $p$ -進表示的模性。
 - **文化影響**：Wiles 獲 2016 Abel 獎（Fields Medal 因超齡未頒），FLT 成為「數學的聖杯」被攻克的象徵，也是抽象理論（Galois 表示、形變、岩澤理論）戰勝初等技巧的典範。
 
 ## 關鍵人物與文獻

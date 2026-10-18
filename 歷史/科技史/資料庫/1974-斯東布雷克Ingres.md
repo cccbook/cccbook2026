@@ -49,16 +49,16 @@ retrieve (e.name) where e.salary > 50000
 對應元組演算：
 $$\{e.\text{name} \mid e \in \text{emp} \wedge e.\text{salary} > 50000\}$$
 - `range of e is emp`：宣告變數 $e$ 的範圍（存在量詞的顯式化）；
-- `retrieve ... where`：集合建構式 $\{t \mid \varphi(t)\}$；
+- `retrieve ... where`：集合建構式 $\{t \mid \varphi(t)\}$ ；
   $$\boxed{\text{QUEL = 關聯演算的直接實現（比 SQL 更「數學」）}}$$
 
 ### 第二條線索：代數等價變換——查詢最佳化的雛形
 同一個查詢有**多種代數寫法**，結果相同但**成本天差地遠**：
 $$\pi_{name}\big(\sigma_{sal>50000}(\text{emp}) \Join \text{dept}\big) \;=\; \pi_{name}\big((\sigma_{sal>50000}\text{emp}) \Join \text{dept}\big)$$
-**選擇下推（$\sigma \downarrow$）**：把選擇**盡量往樹的下方推**——
+**選擇下推（ $\sigma \downarrow$ ）**：把選擇**盡量往樹的下方推**——
 $$\sigma_{\theta}(A \Join B) \;\xrightarrow{\ \sigma \downarrow\ }\; (\sigma_{\theta_A} A) \Join (\sigma_{\theta_B} B)$$
 **為什麼更快？**
-- 假設 $|A| = m$、$|B| = n$、選擇條件留下比例 $f$：
+- 假設 $|A| = m$ 、 $|B| = n$ 、選擇條件留下比例 $f$ ：
   - 先連接再選擇：中間結果 $m \times n$ 行；
   - 先選擇再連接：中結果 $f \cdot m \times f \cdot n$ 行——
   $$\boxed{f^2 \cdot mn \;\ll\; mn \quad\text{（選擇比例越小，省得越多）}}$$

@@ -20,29 +20,29 @@ $$\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = 0
 
 $$J[y] = \int_a^b F(x, y, y')\,dx$$
 
-把 $[a,b]$ 分成 $n$ 段，折線的節點值 $y_1, y_2, \dots, y_{n-1}$ 是有限個自由變數（端點固定 $y(a)=A, y(b)=B$）。於是 $J$ 變成普通的多元函數，對每個 $y_i$ 求偏導並令其為零：
+把 $[a,b]$ 分成 $n$ 段，折線的節點值 $y_1, y_2, \dots, y_{n-1}$ 是有限個自由變數（端點固定 $y(a)=A, y(b)=B$ ）。於是 $J$ 變成普通的多元函數，對每個 $y_i$ 求偏導並令其為零：
 
 $$\frac{\partial J}{\partial y_i} = \frac{\partial F}{\partial y}(x_i, y_i, y'_i)\,h - \left[\frac{\partial F}{\partial y'}(x_{i+1}, y_{i+1}, y'_{i+1}) - \frac{\partial F}{\partial y'}(x_i, y_i, y'_i)\right] = 0$$
 
-令 $n \to \infty$，方括號除以 $h$ 收斂到導數，得到：
+令 $n \to \infty$ ，方括號除以 $h$ 收斂到導數，得到：
 
 $$\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = 0$$
 
 **極值曲線必須滿足這條二階常微分方程**。Euler 用這個方法重解了最速降線、等周問題等已知案例，全部命中——方法通過了驗證。
 
 ### 線索二：重審最速降線
-最速降線問題的泛函（能量守恆 $v = \sqrt{2gy}$，時間是路徑積分）：
+最速降線問題的泛函（能量守恆 $v = \sqrt{2gy}$ ，時間是路徑積分）：
 
 $$T[y] = \int_0^B \sqrt{\frac{1 + y'^2}{2gy}}\,dx$$
 
-代入 Euler 方程。被積函數 $F$ 不顯含 $x$，存在首次積分（Beltrami 恆等式的特例）：
+代入 Euler 方程。被積函數 $F$ 不顯含 $x$ ，存在首次積分（Beltrami 恆等式的特例）：
 
 $$F - y'\frac{\partial F}{\partial y'} = \frac{1}{\sqrt{2gy(1+y'^2)}} = \text{常數}$$
 
-解出 $y(1 + y'^2) = C$，這正是**擺線**的微分方程——與 1696 年挑戰賽的答案完全一致。個案變成了定理。
+解出 $y(1 + y'^2) = C$ ，這正是**擺線**的微分方程——與 1696 年挑戰賽的答案完全一致。個案變成了定理。
 
 ### 線索三：Lagrange 的改進——從幾何到解析
-1755 年，年僅 19 歲的 Lagrange 寫信給 Euler，提出用純解析的方法（不用折線）處理變分：對曲線做虛擾動 $y(x) + \epsilon\,\eta(x)$（端點 $\eta(a)=\eta(b)=0$），計算泛函的一階變化：
+1755 年，年僅 19 歲的 Lagrange 寫信給 Euler，提出用純解析的方法（不用折線）處理變分：對曲線做虛擾動 $y(x) + \epsilon\,\eta(x)$ （端點 $\eta(a)=\eta(b)=0$ ），計算泛函的一階變化：
 
 $$\delta J = \int_a^b \left(\frac{\partial F}{\partial y}\eta + \frac{\partial F}{\partial y'}\eta'\right) dx = \int_a^b \left(\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'}\right)\eta\, dx + \left[\frac{\partial F}{\partial y'}\eta\right]_a^b$$
 

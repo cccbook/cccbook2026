@@ -13,23 +13,23 @@
 
 ### 線索一：楔積 $\wedge$ 與反交換性
 
-設 $V$ 是佈於域 $K$ 的向量空間。外代數 $\bigwedge V = \bigoplus_{k=0}^{\infty} \bigwedge^k V$，其中 $\bigwedge^k V$ 是 $k$-向量（$k$-form 空間）。楔積滿足：
+設 $V$ 是佈於域 $K$ 的向量空間。外代數 $\bigwedge V = \bigoplus_{k=0}^{\infty} \bigwedge^k V$ ，其中 $\bigwedge^k V$ 是 $k$ -向量（ $k$ -form 空間）。楔積滿足：
 
-- **結合律**：$(u \wedge v) \wedge w = u \wedge (v \wedge w)$
-- **反交換性**：$u \wedge v = -\,v \wedge u$，因此 $u \wedge u = 0$
+- **結合律**： $(u \wedge v) \wedge w = u \wedge (v \wedge w)$
+- **反交換性**： $u \wedge v = -\,v \wedge u$ ，因此 $u \wedge u = 0$
 - **雙線性**：對每個變元線性
 
-**理論定義**：$\bigwedge^k V$ 是「$k$ 個向量的反對稱張量積」：
+**理論定義**： $\bigwedge^k V$ 是「 $k$ 個向量的反對稱張量積」：
 
 $$\bigwedge^k V = \frac{V^{\otimes k}}{\mathrm{span}\{v_1 \otimes \cdots \otimes v_k : v_i = v_j \text{ 對某 } i \neq j\}}$$
 
-若 $\dim V = n$，則 $\dim \bigwedge^k V = \binom{n}{k}$，特別地 $\dim \bigwedge^n V = 1$——最高階只有一維，這就是「有向體積」的代數化身。
+若 $\dim V = n$ ，則 $\dim \bigwedge^k V = \binom{n}{k}$ ，特別地 $\dim \bigwedge^n V = 1$ ——最高階只有一維，這就是「有向體積」的代數化身。
 
-**推理核心**：為什麼要 $u \wedge u = 0$？因為面積為零！一條線段自己與自己張不成面積。反交換性不是任意規定，而是**幾何事實的代數反映**：交換兩個向量會翻轉有向面積的符號。
+**推理核心**：為什麼要 $u \wedge u = 0$ ？因為面積為零！一條線段自己與自己張不成面積。反交換性不是任意規定，而是**幾何事實的代數反映**：交換兩個向量會翻轉有向面積的符號。
 
 ### 線索二：幾何意義——面積與體積
 
-在 $\mathbb{R}^3$ 中，設 $u = u_1 e_1 + u_2 e_2 + u_3 e_3$，$v = v_1 e_1 + v_2 e_2 + v_3 e_3$：
+在 $\mathbb{R}^3$ 中，設 $u = u_1 e_1 + u_2 e_2 + u_3 e_3$ ， $v = v_1 e_1 + v_2 e_2 + v_3 e_3$ ：
 
 $$u \wedge v = (u_2 v_3 - u_3 v_2)\, e_2 \wedge e_3 + (u_3 v_1 - u_1 v_3)\, e_3 \wedge e_1 + (u_1 v_2 - u_2 v_1)\, e_1 \wedge e_2$$
 
@@ -47,7 +47,7 @@ Grassmann 的符號直接孕育了**微分形式**：
 
 $$dx \wedge dy = -\,dy \wedge dx, \qquad dx \wedge dx = 0$$
 
-於是二重積分的面積元自然寫成 $\iint_D f\, dx \wedge dy$，而變數變換的 Jacobian：
+於是二重積分的面積元自然寫成 $\iint_D f\, dx \wedge dy$ ，而變數變換的 Jacobian：
 
 $$dx \wedge dy = \frac{\partial(x,y)}{\partial(u,v)}\, du \wedge dv = (\det J)\, du \wedge dv$$
 
@@ -106,7 +106,7 @@ print("a||b||sinθ =", np.linalg.norm(a) * np.linalg.norm(b) * math.sqrt(1 - cos
 - **當時的悲劇**：1844 年初版僅數百本，Möbius 拒審、Gauss 未回應。Grassmann 1862 年出版徹底改寫的第二版，仍無人理解。他在 1878 年給 Sturm 的信中痛苦地寫道：「我完全確信，即使再過五十年，這本書也不會有人跟進。」——諷刺的是，這封信寄出後不久他就去世了，而 Gibbs 當年正好讀到了 Grassmann。
 - **1880 年代**：Gibbs 與 Heaviside 發展向量分析時，明確採用了 Grassmann 的體系（而非 Hamilton 的四元數），引發著名的「向量戰爭」。
 - **1899 年 Poincaré、1920 年代 Élie Cartan**：外微分與微分形式理論誕生，Grassmann 代數成為微分幾何的標準語言。
-- **物理**：量子力學中費米子的反對稱波函數 $\Psi(x_1, \ldots, x_n)$（Pauli 不相容原理）本質上是外代數；現代規範場論、超對稱（Grassmann 變數 $\theta\eta = -\eta\theta$）、外爾旋量，全是 Grassmann 遺產。
+- **物理**：量子力學中費米子的反對稱波函數 $\Psi(x_1, \ldots, x_n)$ （Pauli 不相容原理）本質上是外代數；現代規範場論、超對稱（Grassmann 變數 $\theta\eta = -\eta\theta$ ）、外爾旋量，全是 Grassmann 遺產。
 - **計算數學**：計算機圖學中的外積代數（PGA）、幾何代數（Clifford 代數的推廣）用於剛體運動學。
 
 ## 關鍵人物與文獻

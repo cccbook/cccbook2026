@@ -12,9 +12,9 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：位移電流——Missing Piece
-Maxwell 注意到 Ampère 定律 $\nabla\times\mathbf{B} = \mu_0\mathbf{J}$ 與電荷守恆矛盾：取散度得 $\nabla\cdot\mathbf{J}=0$，但電荷守恆要求 $\nabla\cdot\mathbf{J} = -\partial_t\rho$。
+Maxwell 注意到 Ampère 定律 $\nabla\times\mathbf{B} = \mu_0\mathbf{J}$ 與電荷守恆矛盾：取散度得 $\nabla\cdot\mathbf{J}=0$ ，但電荷守恆要求 $\nabla\cdot\mathbf{J} = -\partial_t\rho$ 。
 
-**推理**：若在磁場旋度中加入一項 $\epsilon_0\partial_t\mathbf{E}$，利用 $\nabla\cdot\mathbf{E}=\rho/\epsilon_0$（Gauss 定律），矛盾自動消解：
+**推理**：若在磁場旋度中加入一項 $\epsilon_0\partial_t\mathbf{E}$ ，利用 $\nabla\cdot\mathbf{E}=\rho/\epsilon_0$ （Gauss 定律），矛盾自動消解：
 
 $$\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}$$
 
@@ -29,14 +29,14 @@ $$\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathb
 | Faraday | $\nabla\times\mathbf{E} = -\dfrac{\partial\mathbf{B}}{\partial t}$ | 變化磁場生電場 |
 | Ampère–Maxwell | $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\dfrac{\partial\mathbf{E}}{\partial t}$ | 電流與變化電場生磁場 |
 
-（介質中則為 $\nabla\cdot\mathbf{D}=\rho_f$、$\nabla\times\mathbf{H}=\mathbf{J}_f+\partial_t\mathbf{D}$ 等形式；Heaviside 於 1880 年代將 Maxwell 的 20 個分量方程化簡為今日的 4 條向量方程。）
+（介質中則為 $\nabla\cdot\mathbf{D}=\rho_f$ 、 $\nabla\times\mathbf{H}=\mathbf{J}_f+\partial_t\mathbf{D}$ 等形式；Heaviside 於 1880 年代將 Maxwell 的 20 個分量方程化簡為今日的 4 條向量方程。）
 
 ### 線索三：波動方程與光速
-在真空（$\rho=0,\ \mathbf{J}=0$）中，對 $\mathbf{E}$ 的旋度再取旋度：
+在真空（ $\rho=0,\ \mathbf{J}=0$ ）中，對 $\mathbf{E}$ 的旋度再取旋度：
 
 $$\nabla\times(\nabla\times\mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E} = -\nabla^2\mathbf{E}$$
 
-另一邊 $= -\partial_t(\nabla\times\mathbf{B}) = -\mu_0\epsilon_0\,\partial_t^2\mathbf{E}$，故得**波動方程**：
+另一邊 $= -\partial_t(\nabla\times\mathbf{B}) = -\mu_0\epsilon_0\,\partial_t^2\mathbf{E}$ ，故得**波動方程**：
 
 $$\boxed{\ \nabla^2\mathbf{E} = \mu_0\epsilon_0\frac{\partial^2\mathbf{E}}{\partial t^2}\ }$$
 
@@ -44,13 +44,13 @@ $$\boxed{\ \nabla^2\mathbf{E} = \mu_0\epsilon_0\frac{\partial^2\mathbf{E}}{\part
 
 $$\boxed{\ c = \frac{1}{\sqrt{\mu_0\epsilon_0}}\ }$$
 
-代入 $\mu_0 = 4\pi\times10^{-7}\ \mathrm{H/m}$、$\epsilon_0 = 8.854\times10^{-12}\ \mathrm{F/m}$，得 $c \approx 3\times10^8\ \mathrm{m/s}$——**與 Fizeau 1849 年測得的光速 $3.15\times10^8$ m/s 驚人地吻合**。Maxwell 的推理結論：「我們幾乎無法避免推論：光是同一介質中橫向波動的體現。」
+代入 $\mu_0 = 4\pi\times10^{-7}\ \mathrm{H/m}$ 、 $\epsilon_0 = 8.854\times10^{-12}\ \mathrm{F/m}$ ，得 $c \approx 3\times10^8\ \mathrm{m/s}$ ——**與 Fizeau 1849 年測得的光速 $3.15\times10^8$ m/s 驚人地吻合**。Maxwell 的推理結論：「我們幾乎無法避免推論：光是同一介質中橫向波動的體現。」
 
 ### 線索四：電磁譜的預言
 波動方程是線性的，且不含任何「特性長度」——若電磁波存在，任何頻率 $\omega = ck$ 的波都該存在。Maxwell 因此隱含預言了可見光之外還有無限寬廣的**電磁譜**（無線電、微波、紅外、紫外、X 射線……），等待後人逐一發現。
 
 ### 程式驗證：numpy 數值模擬電磁波傳播
-以 FDTD（有限差分時域法）在 1D 真空中驗證波速 $c = 1/\sqrt{\mu_0\epsilon_0}$：
+以 FDTD（有限差分時域法）在 1D 真空中驗證波速 $c = 1/\sqrt{\mu_0\epsilon_0}$ ：
 
 ```python
 import numpy as np

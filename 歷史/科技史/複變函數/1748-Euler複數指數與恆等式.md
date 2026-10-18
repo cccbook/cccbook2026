@@ -5,16 +5,16 @@
 
 $$e^{i\theta} = \cos\theta + i\sin\theta$$
 
-令 $\theta = \pi$，即得著名的 Euler 恆等式 $e^{i\pi} + 1 = 0$——分析學的五個基本常數 $e,\, i,\, \pi,\, 1,\, 0$ 在一行式中相遇。這條公式不是靈感乍現，而是 Euler 從級數與對數的長年偵查中**推理**出來的：虛數從此不再是代數方程的幽靈，而是分析學的正式公民。
+令 $\theta = \pi$ ，即得著名的 Euler 恆等式 $e^{i\pi} + 1 = 0$ ——分析學的五個基本常數 $e,\, i,\, \pi,\, 1,\, 0$ 在一行式中相遇。這條公式不是靈感乍現，而是 Euler 從級數與對數的長年偵查中**推理**出來的：虛數從此不再是代數方程的幽靈，而是分析學的正式公民。
 
 ## 前因 -- 為什麼會有這個案子
-- **1614 年 Napier 發明對數**：把乘法化為加法，成為計算利器；但對數的底數 $e$（$e = \lim_{n\to\infty}(1+1/n)^n$）要到 Euler 手中才被命名並系統研究。
-- **1665–1676 年 Newton 與 Leibniz 的微積分**：冪級數 $e^x = \sum x^n/n!$、$\sin x$、$\cos x$ 的展開式在 17 世紀已為人知。
+- **1614 年 Napier 發明對數**：把乘法化為加法，成為計算利器；但對數的底數 $e$ （ $e = \lim_{n\to\infty}(1+1/n)^n$ ）要到 Euler 手中才被命名並系統研究。
+- **1665–1676 年 Newton 與 Leibniz 的微積分**：冪級數 $e^x = \sum x^n/n!$ 、 $\sin x$ 、 $\cos x$ 的展開式在 17 世紀已為人知。
 - **1676 年 Leibniz 手稿**：已寫下 $i = \sqrt{-1}$ 與虛數的形式運算，但視其為「介於存在與不存在之間的兩棲動物」。
-- **1707 年 De Moivre 公式**：$(\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)$（$n$ 為整數），暗示複數的乘冪與三角函數之間有深層聯繫，但 De Moivre 未寫成指數形式。
-- **1712–1740 年代對數的爭議**：負數與虛數的對數是否存在？Leibniz 與 Bernoulli 筆戰多年：Bernoulli 主張 $\ln(-x) = \ln x$（因 $(-x)^2 = x^2$），Leibniz 反對。爭議懸而未決。
+- **1707 年 De Moivre 公式**： $(\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)$ （ $n$ 為整數），暗示複數的乘冪與三角函數之間有深層聯繫，但 De Moivre 未寫成指數形式。
+- **1712–1740 年代對數的爭議**：負數與虛數的對數是否存在？Leibniz 與 Bernoulli 筆戰多年：Bernoulli 主張 $\ln(-x) = \ln x$ （因 $(-x)^2 = x^2$ ），Leibniz 反對。爭議懸而未決。
 
-案子就在對數與級數的交叉點上成形：$e^x$ 的級數裡若允許 $x = i\theta$，會出現什麼？
+案子就在對數與級數的交叉點上成形： $e^x$ 的級數裡若允許 $x = i\theta$ ，會出現什麼？
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -25,11 +25,11 @@ $$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots$$
 
 $$\cos\theta = 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \cdots, \qquad \sin\theta = \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots$$
 
-把 $x = i\theta$ 代入 $e^x$ 的級數，注意 $i^2 = -1$、$i^3 = -i$、$i^4 = 1$（四項一循環）：
+把 $x = i\theta$ 代入 $e^x$ 的級數，注意 $i^2 = -1$ 、 $i^3 = -i$ 、 $i^4 = 1$ （四項一循環）：
 
 $$e^{i\theta} = \left(1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \cdots\right) + i\left(\theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots\right) = \cos\theta + i\sin\theta$$
 
-實部自動收斂成 $\cos\theta$，虛部自動收斂成 $\sin\theta$——級數的結構本身洩露了天機。
+實部自動收斂成 $\cos\theta$ ，虛部自動收斂成 $\sin\theta$ ——級數的結構本身洩露了天機。
 
 ### 線索二：De Moivre 公式的指數化
 De Moivre 公式 $(\cos\theta+i\sin\theta)^n = \cos n\theta + i\sin n\theta$ 在 Euler 的公式下變得顯而易見：
@@ -40,18 +40,18 @@ De Moivre 的「魔術」原來只是**指數律**：複數乘冪就是角度乘
 
 $$z = r(\cos\theta + i\sin\theta) = re^{i\theta}$$
 
-複數乘法 $z_1 z_2 = r_1 r_2\, e^{i(\theta_1+\theta_2)}$——長度相乘、角度相加，幾何與代數在此合流。
+複數乘法 $z_1 z_2 = r_1 r_2\, e^{i(\theta_1+\theta_2)}$ ——長度相乘、角度相加，幾何與代數在此合流。
 
 ### 線索三：Euler 恆等式與複對數
-令 $\theta = \pi$：$e^{i\pi} = -1$，即
+令 $\theta = \pi$ ： $e^{i\pi} = -1$ ，即
 
 $$e^{i\pi} + 1 = 0$$
 
-這條恆等式把五個常數 $e$（分析）、$i$（代數）、$\pi$（幾何）、$1$ 與 $0$（算術）連成一線。Euler 還解決了複對數懸案：由 $e^{i\theta} = \cos\theta+i\sin\theta$ 取對數得
+這條恆等式把五個常數 $e$ （分析）、 $i$ （代數）、 $\pi$ （幾何）、 $1$ 與 $0$ （算術）連成一線。Euler 還解決了複對數懸案：由 $e^{i\theta} = \cos\theta+i\sin\theta$ 取對數得
 
 $$\ln(\cos\theta + i\sin\theta) = i\theta \quad\Rightarrow\quad \ln(-1) = i\pi \neq \ln(1) = 0$$
 
-Bernoulli 錯了：$\ln(-x) \neq \ln x$。而且 Euler 指出複對數是**多值的**：$e^{i(\theta+2k\pi)} = e^{i\theta}$ 對所有整數 $k$ 成立，故
+Bernoulli 錯了： $\ln(-x) \neq \ln x$ 。而且 Euler 指出複對數是**多值的**： $e^{i(\theta+2k\pi)} = e^{i\theta}$ 對所有整數 $k$ 成立，故
 
 $$\ln z = \ln|z| + i(\theta + 2k\pi), \quad k \in \mathbb{Z}$$
 
@@ -100,12 +100,12 @@ plt.gca().set_aspect('equal'); plt.legend(); plt.title('e^{iθ} traces the unit 
 plt.show()
 ```
 
-數值輸出：級數部分和隨項數增加收斂至 $e^{i\theta}$；$(e^{i\theta})^n$ 與 $e^{in\theta}$ 在所有 $n$ 下完全相等（De Moivre 是指數律）；$e^{i\pi}+1 \approx 0$（浮點誤差 $10^{-16}$ 量級）；單位圓圖像顯示 $e^{i\theta}$ 就是複數平面上的逆時針旋轉。
+數值輸出：級數部分和隨項數增加收斂至 $e^{i\theta}$ ； $(e^{i\theta})^n$ 與 $e^{in\theta}$ 在所有 $n$ 下完全相等（De Moivre 是指數律）； $e^{i\pi}+1 \approx 0$ （浮點誤差 $10^{-16}$ 量級）；單位圓圖像顯示 $e^{i\theta}$ 就是複數平面上的逆時針旋轉。
 
 ## 結案 -- 後果與影響
-- 虛數從代數的「幽靈」升格為**分析學的公民**：$e^{i\theta}$ 把複數與微積分、級數、微分方程連成一體。
-- 三角學被「降維」：一切三角恆等式化為指數律；今日電機工程中的**相量（phasor）**分析直接源於 $e^{i\omega t}$。
-- 複對數的**多值性**被發現，是 Riemann 面與分支切割理論的遠祖；$e^z$ 的週期性（$2\pi i$）成為複變函數論的基礎事實。
+- 虛數從代數的「幽靈」升格為**分析學的公民**： $e^{i\theta}$ 把複數與微積分、級數、微分方程連成一體。
+- 三角學被「降維」：一切三角恆等式化為指數律；今日電機工程中的**相量（phasor）**分析直接源於 $e^{i\omega t}$ 。
+- 複對數的**多值性**被發現，是 Riemann 面與分支切割理論的遠祖； $e^z$ 的週期性（ $2\pi i$ ）成為複變函數論的基礎事實。
 - Euler 公式是 Fourier 分析（1807）的語言基礎：Fourier 級數 $f(t)=\sum c_n e^{in\omega t}$ 正是用複指數寫的。
 - 為 1799 年 Gauss 代數基本定理與 1851 年 Riemann 複變函數論鋪路——本案是「複變函數論」這門學科的直接起點。
 - $e^{i\pi}+1=0$ 被譽為「最美數學公式」，它見證了：數學的分支（代數、幾何、分析）本是一體。
@@ -116,7 +116,7 @@ plt.show()
 | Leonhard Euler | 《Introductio》寫下 $e^{i\theta}=\cos\theta+i\sin\theta$ |
 | Abraham de Moivre | $(\cos\theta+i\sin\theta)^n$ 公式的先驅 |
 | John Napier | 對數的發明者 |
-| Johann Bernoulli | 複對數爭議中主張 $\ln(-x)=\ln x$（Euler 證其誤） |
+| Johann Bernoulli | 複對數爭議中主張 $\ln(-x)=\ln x$ （Euler 證其誤） |
 
-- L. Euler, *Introductio in analysin infinitorum*, Lausanne: Bousquet (1748)，第七章：$e^{i\theta}$ 公式與複對數。
+- L. Euler, *Introductio in analysin infinitorum*, Lausanne: Bousquet (1748)，第七章： $e^{i\theta}$ 公式與複對數。
 - L. Euler, *De la controverse entre Mrs. Leibniz et Bernoulli sur les logarithmes des nombres négatifs et imaginaires* (1749)：複對數多值性的系統論述。

@@ -22,20 +22,20 @@
 
 ### Turing 機器的定義
 
-一個 Turing 機器是七元組 $M = (Q, \Gamma, \Sigma, \delta, q_0, B, F)$：
+一個 Turing 機器是七元組 $M = (Q, \Gamma, \Sigma, \delta, q_0, B, F)$ ：
 
-- $Q$：有限狀態集合；$q_0 \in Q$ 起始狀態；$F \subseteq Q$ 接受狀態
-- $\Gamma$：紙帶符號集（含空白符 $B$）；$\Sigma \subseteq \Gamma \setminus \{B\}$ 輸入符號
+- $Q$ ：有限狀態集合； $q_0 \in Q$ 起始狀態； $F \subseteq Q$ 接受狀態
+- $\Gamma$ ：紙帶符號集（含空白符 $B$ ）； $\Sigma \subseteq \Gamma \setminus \{B\}$ 輸入符號
 - 轉移函數 $\delta : Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$
 
-組態（瞬時描述）記為 $\alpha q \beta$，其中 $\alpha\beta$ 是紙帶內容，
+組態（瞬時描述）記為 $\alpha q \beta$ ，其中 $\alpha\beta$ 是紙帶內容，
 $q$ 是當前狀態，讀寫頭停在 $q$ 右側第一格。計算即組態序列：
 
 $$
 C_0 \vdash_M C_1 \vdash_M C_2 \vdash_M \cdots
 $$
 
-機器 $M$ 計算函數 $f$：起始紙帶為 $n$ 的一進制編碼（如 $1^{n+1}$），
+機器 $M$ 計算函數 $f$ ：起始紙帶為 $n$ 的一進制編碼（如 $1^{n+1}$ ），
 若最終停機且紙帶為 $f(n)$ 的編碼，則 $f(n)$ 有定義。
 
 ### 方向一：λ → TM（Church 的模擬）
@@ -63,7 +63,7 @@ $$
 $$
 
 利用 Church 數字與前驅函數（predecessor）、條件式等 λ 可定義工具，
-可以構造「單步模擬器」$\mathrm{Step}$，使得
+可以構造「單步模擬器」 $\mathrm{Step}$ ，使得
 
 $$
 \mathrm{Step}\ \ulcorner C \urcorner = \ulcorner C' \urcorner \quad \text{其中 } C \vdash_M C'
@@ -99,7 +99,7 @@ Kleene 的遞迴函數、Post 的 Post 機器後來也證明等價——四路�
 
 - Hilbert 的 **Entscheidungsproblem（判定問題）** 被證明無解：不存在演算法
   判定任意一階邏輯語句是否可證。Church 與 Turing 各自獨立發表此結果。
-- 「通用機器」$U$（模擬任意 TM）的觀念誕生——這是現代電腦的理論藍圖。
+- 「通用機器」 $U$ （模擬任意 TM）的觀念誕生——這是現代電腦的理論藍圖。
 - 可計算性理論成為數理邏輯與理論計算機科的基石。
 - 1937 年 Turing 赴普林斯頓隨 Church 讀博士（1938 年獲博士學位），
   兩位「凶手獵人」正式會師。

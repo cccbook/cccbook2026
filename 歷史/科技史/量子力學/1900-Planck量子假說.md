@@ -1,7 +1,7 @@
 # 1900 - Planck 量子假說
 
 ## 案件摘要
-1900 年 12 月 14 日，Planck 在德國物理學會報告中提出能量量子化假說 $E = h\nu$，以一個「絕望之舉」破解了黑體輻射的紫外災難。這一天被視為量子力學的誕生日。
+1900 年 12 月 14 日，Planck 在德國物理學會報告中提出能量量子化假說 $E = h\nu$ ，以一個「絕望之舉」破解了黑體輻射的紫外災難。這一天被視為量子力學的誕生日。
 
 ## 前因 -- 為什麼會有這個案子
 19 世紀末，黑體輻射譜已有精確測量，但理論完全跟不上：
@@ -21,7 +21,7 @@ $$
 u_\nu^{RJ}(T) = \frac{8\pi \nu^2}{c^3}\, kT
 $$
 
-問題：$\nu \to \infty$ 時 $u_\nu \to \infty$。積分總能量 $\int_0^\infty u_\nu\, d\nu = \infty$——物理上荒謬：打開烤箱就會被無限紫外線照射。
+問題： $\nu \to \infty$ 時 $u_\nu \to \infty$ 。積分總能量 $\int_0^\infty u_\nu\, d\nu = \infty$ ——物理上荒謬：打開烤箱就會被無限紫外線照射。
 
 ### 線索二：Wien 公式
 Wien 由熱力學 + 假設「輻射像理想氣體分子」得到
@@ -30,7 +30,7 @@ $$
 u_\nu^{W}(T) = a\, \nu^3\, e^{-b\nu/T}
 $$
 
-高頻段與實驗吻合，但低頻段偏離：當 $\nu \to 0$ 時 $u_\nu^W \to 0$ 太快，實驗顯示應 $\propto \nu^2 T$。
+高頻段與實驗吻合，但低頻段偏離：當 $\nu \to 0$ 時 $u_\nu^W \to 0$ 太快，實驗顯示應 $\propto \nu^2 T$ 。
 
 ### 推理一：Planck 的內插
 Planck 的策略是「數學插值」：在 RJ 的 $\nu^2 T$ 行為與 Wien 的高頻行為之間取折衷。他猜測能量密度的另一種形式：
@@ -40,8 +40,8 @@ u_\nu(T) = \frac{8\pi h \nu^3}{c^3}\, \frac{1}{e^{h\nu/kT} - 1}
 $$
 
 檢查極限：
-- $\nu \to 0$（$h\nu \ll kT$）：$e^{h\nu/kT}-1 \approx h\nu/kT$，得 $u \approx \frac{8\pi \nu^2}{c^3} kT$，正是 Rayleigh–Jeans！
-- $\nu \to \infty$（$h\nu \gg kT$）：$u \approx \frac{8\pi h\nu^3}{c^3} e^{-h\nu/kT}$，正是 Wien（$a = 8\pi h/c^3$，$b = h/k$）！
+- $\nu \to 0$ （ $h\nu \ll kT$ ）： $e^{h\nu/kT}-1 \approx h\nu/kT$ ，得 $u \approx \frac{8\pi \nu^2}{c^3} kT$ ，正是 Rayleigh–Jeans！
+- $\nu \to \infty$ （ $h\nu \gg kT$ ）： $u \approx \frac{8\pi h\nu^3}{c^3} e^{-h\nu/kT}$ ，正是 Wien（ $a = 8\pi h/c^3$ ， $b = h/k$ ）！
 
 對應黑體光譜輻射亮度（單位面積單位立體角）：
 
@@ -56,14 +56,14 @@ $$
 E_n = n h \nu, \quad n = 0, 1, 2, \dots
 $$
 
-並用 Boltzmann 統計計算平均能量（取代連續的 $kT$）：
+並用 Boltzmann 統計計算平均能量（取代連續的 $kT$ ）：
 
 $$
 \bar{E} = \frac{\sum_n n h\nu\, e^{-n h\nu/kT}}{\sum_n e^{-n h\nu/kT}}
 = \frac{h\nu}{e^{h\nu/kT} - 1}
 $$
 
-推導：令 $x = e^{-h\nu/kT}$，分子 $= h\nu \sum n x^n = h\nu \frac{x}{(1-x)^2}$，分母 $= \frac{1}{1-x}$，相除即得。這一步讓 $\nu$ 大的模式因 $h\nu \gg kT$ 而「凍結」，總能量積分收斂——紫外災難消失。
+推導：令 $x = e^{-h\nu/kT}$ ，分子 $= h\nu \sum n x^n = h\nu \frac{x}{(1-x)^2}$ ，分母 $= \frac{1}{1-x}$ ，相除即得。這一步讓 $\nu$ 大的模式因 $h\nu \gg kT$ 而「凍結」，總能量積分收斂——紫外災難消失。
 
 Planck 當時視量子化為數學手段，自己也說是「絕望之舉」（an act of desperation）——他不知道自己開啟了一場物理革命。
 

@@ -20,13 +20,13 @@
 
 Backus 提出的解方是 **FP 系統**——一個沒有變數、沒有賦值、只有函數與組合子（combinators）的語言。他的設計推理如下：
 
-**第一步：程式即運算式。** FP 程式是運算式 $e$，作用於單一參數 $x$（可以是任意物件），寫作 $e : x$。沒有命名、沒有狀態，程式就是資料到資料的映射。
+**第一步：程式即運算式。** FP 程式是運算式 $e$ ，作用於單一參數 $x$ （可以是任意物件），寫作 $e : x$ 。沒有命名、沒有狀態，程式就是資料到資料的映射。
 
 **第二步：組合子的代數。** FP 提供一組固定的組合子，它們是「吃函數、吐函數」的高階函數：
 
-- 組合 $f \circ g$：$(f \circ g) : x = f : (g : x)$
-- 構造 $[f, g]$：$[f, g] : x = \langle f : x,\ g : x \rangle$
-- 條件 $\bar{p} \rightarrow f ; g$：若 $p : x$ 為真則 $f : x$ 否則 $g : x$
+- 組合 $f \circ g$ ： $(f \circ g) : x = f : (g : x)$
+- 構造 $[f, g]$ ： $[f, g] : x = \langle f : x,\ g : x \rangle$
+- 條件 $\bar{p} \rightarrow f ; g$ ：若 $p : x$ 為真則 $f : x$ 否則 $g : x$
 
 關鍵在於**組合子滿足代數律**。例如：
 
@@ -40,7 +40,7 @@ $$[f, g] \circ [h, k] = [f \circ h,\ g \circ k]$$
 
 $$innerproduct : \langle x, y \rangle = /+\ \circ\ \alpha \times \circ\ transpose : \langle x, y \rangle$$
 
-拆解：$transpose$ 轉置矩陣，$\alpha \times$ 對每對元素做乘法（map），$/+$ 做歸約（reduce）。整個定義是「三個組合子的一行串接」，沒有迴圈、沒有索引、沒有暫存變數。對比 FORTRAN 的十行 DO 迴圈，Backus 問：**哪一個更容易證明正確？**
+拆解： $transpose$ 轉置矩陣， $\alpha \times$ 對每對元素做乘法（map）， $/+$ 做歸約（reduce）。整個定義是「三個組合子的一行串接」，沒有迴圈、沒有索引、沒有暫存變數。對比 FORTRAN 的十行 DO 迴圈，Backus 問：**哪一個更容易證明正確？**
 
 **第四步：更進一步的 FFP 與 λ 演算。** Backus 還提出 FFP（Formal FP），允許使用者自訂函數並帶有名字；並承認現代的 λ 演算（如 ISWIM）也可以是函數式語言的基礎——只要去掉賦值。這為後來的 Scheme、ML、Haskell 鋪了路。
 

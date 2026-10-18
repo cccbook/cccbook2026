@@ -130,7 +130,7 @@ $$\text{信用擴張} \to \text{資產膨脹} \to \text{Minsky 時刻} \to \text
 | 1776 | 看不見的手、分工 | Adam Smith | 市場價格 vs 自然價格 |
 | 1873 | 最後貸款人 | Bagehot | 高利率 + 好擔保 + 自由放款 |
 | 1933 | 債務通縮 | Fisher | $PV \uparrow \to \text{實債務} \uparrow \to \text{通縮螺旋}$ |
-| 1936 | 一般理論 | Keynes | 乘數 $k=\frac{1}{1-MPC}$、流動性陷阱 |
+| 1936 | 一般理論 | Keynes | 乘數 $k=\frac{1}{1-MPC}$ 、流動性陷阱 |
 | 1952 | 投資組合選擇 | Markowitz | $\sigma_p^2 = w^\top\Sigma w$ |
 | 1956 | 超通膨模型 | Cagan | 貨幣需求與鑄幣稅 |
 | 1963 | 存款保險理論（Diamond–Dybvig 1983） | Diamond/Dybvig | 銀行擠兌的雙重均衡 |

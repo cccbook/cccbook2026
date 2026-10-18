@@ -33,7 +33,7 @@ $$V_t = \max\left(f(S_t),\; e^{-r\Delta t} E[V_{t+\Delta t} \mid S_t]\right)$$
 
 $$Y_m = \sum_k \beta_k \, \phi_k(S_t^{(m)}) + \eta_m$$
 
-其中 $Y_m$ 是第 $m$ 條路徑「未來支付的折現值」、$\phi_k$ 是基底函數（多項式、Laguerre 多項式等）。迴歸擬合值就是「繼續價值」的估計。
+其中 $Y_m$ 是第 $m$ 條路徑「未來支付的折現值」、 $\phi_k$ 是基底函數（多項式、Laguerre 多項式等）。迴歸擬合值就是「繼續價值」的估計。
 
 ### 線索二：演算法的三步驟
 

@@ -22,8 +22,8 @@ $$
 M ::= x \mid \lambda x.\,M \mid M\,N
 $$
 
-- $x$：變數；$\lambda x. M$：抽象（建立函數）；$M\,N$：應用（把 $N$ 餵給 $M$）。
-- 應用左結合：$M\,N\,P = (M\,N)\,P$；λ 的管轄範圍向右延伸到盡頭。
+- $x$ ：變數； $\lambda x. M$ ：抽象（建立函數）； $M\,N$ ：應用（把 $N$ 餵給 $M$ ）。
+- 應用左結合： $M\,N\,P = (M\,N)\,P$ ；λ 的管轄範圍向右延伸到盡頭。
 
 ### 線索二：三條改寫規則
 
@@ -43,7 +43,7 @@ $$\lambda x.\,f\,x \;\equiv\; f \quad (x \notin FV(f))$$
 
 ### 線索三：Church-Rosser 定理——合流性
 
-Church 與 Rosser 於 1936 年證明：若項 $M$ 可以歸約到 $N_1$ 也可以歸約到 $N_2$，則必存在 $N_3$ 使 $N_1 \to N_3$ 且 $N_2 \to N_3$：
+Church 與 Rosser 於 1936 年證明：若項 $M$ 可以歸約到 $N_1$ 也可以歸約到 $N_2$ ，則必存在 $N_3$ 使 $N_1 \to N_3$ 且 $N_2 \to N_3$ ：
 
 $$
 M \twoheadrightarrow N_1,\; M \twoheadrightarrow N_2 \;\Longrightarrow\; \exists N_3.\; N_1 \twoheadrightarrow N_3 \wedge N_2 \twoheadrightarrow N_3

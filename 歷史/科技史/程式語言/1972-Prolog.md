@@ -7,7 +7,7 @@
 兩個不同地區的人同時遇到了同一個謎題：
 
 - 在法國馬賽，Alain Colmerauer 正研究自然語言理解，需要一種能表達文法規則並自動推導句子結構的工具。
-- 在英國愛丁堡，Robert Kowalski 從事定理證明研究，提出了「演算法 = 邏輯 + 控制」的著名公式：$A = L + C$。
+- 在英國愛丁堡，Robert Kowalski 從事定理證明研究，提出了「演算法 = 邏輯 + 控制」的著名公式： $A = L + C$ 。
 
 未解之謎是：**如果程式設計師只寫邏輯（事實與規則），讓機器自己找出控制流程（搜尋與回溯），程式設計會變成什麼樣子？**
 
@@ -29,11 +29,11 @@ parent(bob, ann).
 grandparent(X, Z) :- parent(X, Y), parent(Y, Z).   % 規則
 ```
 
-**第二步：合一（unification）。** 要判斷查詢 `grandparent(tom, Z)` 是否成立，系統必須讓查詢項與子句頭匹配。合一演算法在兩個項之間尋找最一般的變數代入（most general unifier, MGU）。例如合一 $grandparent(tom, Z)$ 與 $grandparent(X, Z')$：
+**第二步：合一（unification）。** 要判斷查詢 `grandparent(tom, Z)` 是否成立，系統必須讓查詢項與子句頭匹配。合一演算法在兩個項之間尋找最一般的變數代入（most general unifier, MGU）。例如合一 $grandparent(tom, Z)$ 與 $grandparent(X, Z')$ ：
 
 $$\sigma = \{X \mapsto tom,\ Z' \mapsto Z\}$$
 
-合一的核心遞迴規則是：$\theta$ 是 $f(s_1,\ldots,s_n)$ 與 $f(t_1,\ldots,t_n)$ 的合一器，當且僅當 $\theta$ 同時是所有 $s_i$ 與 $t_i$ 的合一器。
+合一的核心遞迴規則是： $\theta$ 是 $f(s_1,\ldots,s_n)$ 與 $f(t_1,\ldots,t_n)$ 的合一器，當且僅當 $\theta$ 同時是所有 $s_i$ 與 $t_i$ 的合一器。
 
 **第三步：SLD 解析與回溯。** Prolog 採用 Selective Linear Definite clause resolution：從目標堆疊中依序選取最左目標，由上而下掃描子句尋找可合一者，代入後將子句體展開為新目標。若目標堆疊清空則成功；若無子句可匹配，則**回溯**（backtrack）到最近的選擇點，嘗試下一條子句。這就是深度優先搜尋：
 

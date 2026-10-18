@@ -49,16 +49,16 @@ $$\boxed{\text{夠用的功能} \times \text{極致的速度} \times \text{零�
 
 ### 第二條線索：B+樹索引——速度的祕密
 MySQL（MyISAM/InnoDB 引擎）用 **B+ 樹**做索引：
-- **B+ 樹**：$m$ 階的平衡樹，**資料全在葉節點**，葉節點串成鏈表；
-- 查詢複雜度：$O(\log_m N)$，且 $m$ 很大（數百），
-  所以**樹高極小**：$N = 10^9$ 筆資料只需 **3–4 層**。
+- **B+ 樹**： $m$ 階的平衡樹，**資料全在葉節點**，葉節點串成鏈表；
+- 查詢複雜度： $O(\log_m N)$ ，且 $m$ 很大（數百），
+  所以**樹高極小**： $N = 10^9$ 筆資料只需 **3–4 層**。
 $$h \approx \lceil \log_m N \rceil \quad\text{（} m = 500,\ N = 10^9 \Rightarrow h = 4 \text{）}$$
 **每次查詢只需 3–4 次磁碟 I/O**——這就是 MySQL「快」的數學基礎。
 
 ### 第三條線索：LAMP 的組合爆炸經濟學
 **LAMP 全部免費**：
 $$\text{成本}_{\text{LAMP}} = 0 \quad\text{vs.}\quad \text{成本}_{\text{商業堆疊}} \approx \text{數萬美元/伺服器}.$$
-對一個要部署 **$n$ 台伺服器**的新創公司：
+對一個要部署 ** $n$ 台伺服器**的新創公司：
 $$\text{省下} = n \times (\text{作業系統} + \text{伺服器} + \text{資料庫}) \approx n \times \$50{,}000.$$
 **Web 2.0 世代（Facebook 2004、YouTube 2005、WordPress 2003）
 全部從 LAMP 起家**——零成本堆疊讓**車庫創業**成為可能。
