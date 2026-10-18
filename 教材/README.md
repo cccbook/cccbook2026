@@ -13,58 +13,105 @@
 
 ## 人工智慧
 
-* [神經網路](./人工智慧/神經網路/README.md)
-* [強化學習](./人工智慧/強化學習/README.md)
-* [智慧模型](./人工智慧/智慧模型/README.md)
-* [Agent技術](./人工智慧/Agent技術/README.md)
-* [傳統AI技術](./人工智慧/_傳統AI技術/README.md)
+* [神經網路]
+* [強化學習]
+* [智慧模型]
+* [Agent技術]
+* [傳統AI技術]
 
 ## 演算法
 
-* [演算法基礎](./演算法/演算法書/README.md)
-* [資料結構](./演算法/資料結構書/README.md)
-* [計算理論](./演算法/計算理論/README.md)
-* [不動點](./演算法/不動點書/README.md)
-* [蒙地卡羅](./演算法/蒙地卡羅書/README.md)
-* [函數式程式語言](./演算法/函數式程式語言/README.md)
-* [量子電腦](./演算法/量子電腦書/README.md)
-* [迭代法](./演算法/迭代法書/README.md)
-* [NP問題](./演算法/NP問題書/README.md)
-* [數學演算法](./演算法/數學演算法書/README.md)
-* [EDA演算法](./演算法/EDA演算法書/README.md)
-* [密碼學](./演算法/密碼學書/README.md)
-* [文字演算法](./演算法/文字演算法書/README.md)
-* [影像演算法](./演算法/影像演算法書/README.md)
-* [聲音演算法](./演算法/聲音演算法書/README.md)
-* [量子電腦演算法](./演算法/量子電腦演算法書/README.md)
-* [磁碟資料結構演算法](./演算法/磁碟資料結構演算法書/README.md)
+* [演算法基礎]
+* [資料結構]
+* [計算理論]
+* [不動點]
+* [蒙地卡羅]
+* [函數式程式語言]
+* [量子電腦]
+* [迭代法]
+* [NP問題]
+* [數學演算法]
+* [EDA演算法]
+* [密碼學]
+* [文字演算法]
+* [影像演算法]
+* [聲音演算法]
+* [量子電腦演算法]
+* [磁碟資料結構演算法]
 
 ## 系統程式
 
-* [作業系統](./系統程式/作業系統/README.md)
-* [編譯器](./系統程式/編譯器/README.md)
-* [虛擬機](./系統程式/虛擬機/README.md)
-* [用rust學Linux系統程式](./系統程式/用rust學Linux系統程式/README.md)
-* [用rust學系統軟體設計](./系統程式/用rust學系統軟體設計/README.md)
+* [作業系統]
+* [編譯器]
+* [虛擬機]
+* [用rust學Linux系統程式]
+* [用rust學系統軟體設計]
 
 ## 網站設計
 
-* [網站設計基礎知識](./網站設計/網站設計基礎知識/README.md)
-* [用Rust+React設計網站](./網站設計/用Rust+React設計網站/README.md)
-* [網站安全與防駭](./網站設計/網站安全與防駭/README.md)
+* [網站設計基礎知識]
+* [用Rust+React設計網站]
+* [網站安全與防駭]
 
 ## 計算機結構
 
-* [計算機結構入門](./計算機結構/計算機結構入門/README.md)
-* [用Verilog學計算機結構](./計算機結構/用Verilog學計算機結構/README.md)
-* [高等計算機結構](./計算機結構/高等計算機結構/README.md)
+* [計算機結構入門]
+* [用Verilog學計算機結構]
+* [高等計算機結構]
 
 ## 軟體工程
 
-* [現代軟體工程](./軟體工程/現代軟體工程/README.md)
-* [rust極簡書](./軟體工程/rust極簡書/README.md)
-* [node.js極簡書](./軟體工程/node.js極簡書/README.md)
-* [docker極簡書](./軟體工程/docker極簡書/README.md)
-* [playwright極簡書](./軟體工程/playwright極簡書/README.md)
-* [git-github-極簡講義](./軟體工程/git-github-極簡講義/README.md)
-* [向淘寶學習網站架構演進](./軟體工程/向淘寶學習網站架構演進/README.md)
+* [現代軟體工程]
+* [rust極簡書]
+* [node.js極簡書]
+* [docker極簡書]
+* [playwright極簡書]
+* [git-github-極簡講義]
+* [向淘寶學習網站架構演進]
+
+[神經網路]:./人工智慧/神經網路/README.md
+[強化學習]:./人工智慧/強化學習/README.md
+[智慧模型]:./人工智慧/智慧模型/README.md
+[Agent技術]:./人工智慧/Agent技術/README.md
+[傳統AI技術]:./人工智慧/_傳統AI技術/README.md
+
+[演算法基礎]:./演算法/演算法書/README.md
+[資料結構]:./演算法/資料結構書/README.md
+[計算理論]:./演算法/計算理論/README.md
+[不動點]:./演算法/不動點書/README.md
+[蒙地卡羅]:./演算法/蒙地卡羅書/README.md
+[函數式程式語言]:./演算法/函數式程式語言/README.md
+[量子電腦]:./演算法/量子電腦書/README.md
+[迭代法]:./演算法/迭代法書/README.md
+[NP問題]:./演算法/NP問題書/README.md
+[數學演算法]:./演算法/數學演算法書/README.md
+[EDA演算法]:./演算法/EDA演算法書/README.md
+[密碼學]:./演算法/密碼學書/README.md
+[文字演算法]:./演算法/文字演算法書/README.md
+[影像演算法]:./演算法/影像演算法書/README.md
+[聲音演算法]:./演算法/聲音演算法書/README.md
+[量子電腦演算法]:./演算法/量子電腦演算法書/README.md
+[磁碟資料結構演算法]:./演算法/磁碟資料結構演算法書/README.md
+
+[作業系統]:./系統程式/作業系統/README.md
+[編譯器]:./系統程式/編譯器/README.md
+[虛擬機]:./系統程式/虛擬機/README.md
+[用rust學Linux系統程式]:./系統程式/用rust學Linux系統程式/README.md
+[用rust學系統軟體設計]:./系統程式/用rust學系統軟體設計/README.md
+
+[網站設計基礎知識]:./網站設計/網站設計基礎知識/README.md
+[用Rust+React設計網站]:./網站設計/用Rust+React設計網站/README.md
+[網站安全與防駭]:./網站設計/網站安全與防駭/README.md
+
+[計算機結構入門]:./計算機結構/計算機結構入門/README.md
+[用Verilog學計算機結構]:./計算機結構/用Verilog學計算機結構/README.md
+[高等計算機結構]:./計算機結構/高等計算機結構/README.md
+
+[現代軟體工程]:./軟體工程/現代軟體工程/README.md
+[rust極簡書]:./軟體工程/rust極簡書/README.md
+[node.js極簡書]:./軟體工程/node.js極簡書/README.md
+[docker極簡書]:./軟體工程/docker極簡書/README.md
+[playwright極簡書]:./軟體工程/playwright極簡書/README.md
+[git-github-極簡講義]:./軟體工程/git-github-極簡講義/README.md
+[向淘寶學習網站架構演進]:./軟體工程/向淘寶學習網站架構演進/README.md
+
