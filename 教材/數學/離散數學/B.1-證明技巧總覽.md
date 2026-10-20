@@ -6,25 +6,25 @@
 
 從前提出發，用定義與已知定理逐步推到結論。
 
-**範例（第 7 章）**：若 $a \equiv b \pmod n$ 且 $c \equiv d \pmod n$，則 $a+c \equiv b+d \pmod n$。
-證明：$a-b = kn$，$c-d = \ell n$，相加得 $(a+c)-(b+d) = (k+\ell)n$。$\blacksquare$
+**範例（第 7 章）**：若 $a \equiv b \pmod n$ 且 $c \equiv d \pmod n$ ，則 $a+c \equiv b+d \pmod n$ 。
+證明： $a-b = kn$ ， $c-d = \ell n$ ，相加得 $(a+c)-(b+d) = (k+\ell)n$ 。 $\blacksquare$
 
 ## B.2 反證法（Proof by Contradiction）
 
 假設結論為假，推出矛盾。適用於「不存在性」與「不可數性」。
 
-**範例（第 2 章）**：$\mathbb R$ 不可數——Cantor 1891 對角線法：假設可列出所有實數 $r_1, r_2, \dots$，構造 $x$ 使第 $n$ 位與 $r_n$ 第 $n$ 位不同，$x$ 不在列表中，矛盾。$\blacksquare$
+**範例（第 2 章）**： $\mathbb R$ 不可數——Cantor 1891 對角線法：假設可列出所有實數 $r_1, r_2, \dots$ ，構造 $x$ 使第 $n$ 位與 $r_n$ 第 $n$ 位不同， $x$ 不在列表中，矛盾。 $\blacksquare$
 
-**範例（第 7 章）**：質數有無窮多個（Euclid 約 300 BC）：假設 $p_1,\dots,p_k$ 是全部，令 $N = p_1\cdots p_k + 1$，$N$ 除以任何 $p_i$ 餘 1，故有新質數。$\blacksquare$
+**範例（第 7 章）**：質數有無窮多個（Euclid 約 300 BC）：假設 $p_1,\dots,p_k$ 是全部，令 $N = p_1\cdots p_k + 1$ ， $N$ 除以任何 $p_i$ 餘 1，故有新質數。 $\blacksquare$
 
 ## B.3 數學歸納法（Mathematical Induction）
 
-1. **基底**：證 $P(1)$。
-2. **歸納步**：由 $P(k)$ 推 $P(k+1)$。
+1. **基底**：證 $P(1)$ 。
+2. **歸納步**：由 $P(k)$ 推 $P(k+1)$ 。
 
-**範例（第 4 章）**：漢諾塔需 $2^n - 1$ 步。基底 $n=1$ 顯然；歸納步：先移 $n-1$ 個（$2^{n-1}-1$ 步）、移最大盤（1 步）、再移 $n-1$ 個（$2^{n-1}-1$ 步），合計 $2^n - 1$。$\blacksquare$
+**範例（第 4 章）**：漢諾塔需 $2^n - 1$ 步。基底 $n=1$ 顯然；歸納步：先移 $n-1$ 個（ $2^{n-1}-1$ 步）、移最大盤（1 步）、再移 $n-1$ 個（ $2^{n-1}-1$ 步），合計 $2^n - 1$ 。 $\blacksquare$
 
-**強歸納（Strong Induction）**：由所有 $P(1),\dots,P(k)$ 推 $P(k+1)$，用於 Fibonacci、質因數分解等「分解成任意小件」的場合。
+**強歸納（Strong Induction）**：由所有 $P(1),\dots,P(k)$ 推 $P(k+1)$ ，用於 Fibonacci、質因數分解等「分解成任意小件」的場合。
 
 ## B.4 若且唯若的雙向證明
 
@@ -48,7 +48,7 @@
 
 在無限列表上「沿對角線取反」， Cantor 1891 原創，後被 Gödel 1931（不完備定理）與 Turing 1936（停機問題）繼承。
 
-**範例（第 8 章）**：停機問題不可判定：假設有判定器 $H$，構造程式 $Q$：「若 $H$ 說 $Q$ 會停，就無限迴圈；反之停機」，$H$ 對 $Q$ 必答錯。$\blacksquare$
+**範例（第 8 章）**：停機問題不可判定：假設有判定器 $H$ ，構造程式 $Q$ ：「若 $H$ 說 $Q$ 會停，就無限迴圈；反之停機」， $H$ 對 $Q$ 必答錯。 $\blacksquare$
 
 ## B.8 分類證明（Proof by Cases / Exhaustion）
 

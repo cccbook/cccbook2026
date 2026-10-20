@@ -23,7 +23,7 @@
 | 規範群 $G$ | 結構群（李群） |
 | 規範變換 | 叢自同構 |
 | 磁荷 | 第一陳類 $\int F/2\pi \in \mathbb{Z}$ |
-| 瞬子 | 自對偶聯絡（$c_2 = k$） |
+| 瞬子 | 自對偶聯絡（ $c_2 = k$ ） |
 | 全電荷/全磁荷 | 對偶群 $\check G$ 的權格 |
 | 額外維緊化 | Calabi–Yau 流形 |
 
@@ -62,7 +62,7 @@
 | 對偶 | 兩端 |
 |---|---|
 | 波粒二象性 | 波動力學 ↔ 矩陣力學 |
-| 電磁 S-對偶 | $G \leftrightarrow \check G$，$g \leftrightarrow 4\pi/g$ |
+| 電磁 S-對偶 | $G \leftrightarrow \check G$ ， $g \leftrightarrow 4\pi/g$ |
 | 鏡像對稱 | A-模型（辛）↔ B-模型（複） |
 | AdS/CFT | 重力（體）↔ 場論（邊界） |
 | 弦論對偶網 | 五大弦論 ↔ M 理論 |

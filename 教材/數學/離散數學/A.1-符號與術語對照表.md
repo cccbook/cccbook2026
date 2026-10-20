@@ -66,7 +66,7 @@
 | 符號 | 意義 | 英文 |
 |---|---|---|
 | $\Sigma$ | 字母集 | alphabet |
-| $\Sigma^*$ | 所有字串（含空字串 $\epsilon$） | Kleene star |
+| $\Sigma^*$ | 所有字串（含空字串 $\epsilon$ ） | Kleene star |
 | $L(M)$ | 機器 $M$ 接受的語言 | language accepted |
 | $O(f),\ \Theta(f)$ | 複雜度上界、緊界 | big-O, big-Theta |
 | $\mathcal P,\ \mathcal{NP}$ | 多項式時間類 | complexity classes |

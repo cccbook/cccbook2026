@@ -17,16 +17,16 @@ graph TD
     F --> G
 ```
 
-層級越高越準確、越昂貴：MM（$10^3$ 原子以上）→ 半經驗（$10^2$）→ DFT（$10^2$）→ CCSD(T)（$10$）。
+層級越高越準確、越昂貴：MM（ $10^3$ 原子以上）→ 半經驗（ $10^2$ ）→ DFT（ $10^2$ ）→ CCSD(T)（ $10$ ）。
 
 ## C.2 自洽場（SCF）迭代
 
 Hartree-Fock 是「雞生蛋」問題：軌域決定 Fock 矩陣，Fock 矩陣又決定軌域。解法是迭代：
 
-1. 猜初始密度 $P^{(0)}$（常用疊加原子密度）。
-2. 組 Fock 矩陣 $F^{(k)} = H + G(P^{(k)})$。
-3. 解廣義本徵值問題 $F C = S C \varepsilon$。
-4. 更新密度 $P^{(k+1)}$，檢查收斂 $\|P^{(k+1)}-P^{(k)}\| < \epsilon$。
+1. 猜初始密度 $P^{(0)}$ （常用疊加原子密度）。
+2. 組 Fock 矩陣 $F^{(k)} = H + G(P^{(k)})$ 。
+3. 解廣義本徵值問題 $F C = S C \varepsilon$ 。
+4. 更新密度 $P^{(k+1)}$ ，檢查收斂 $\|P^{(k+1)}-P^{(k)}\| < \epsilon$ 。
 5. 未收斂則回 2（常用 DIIS 外插加速）。
 
 數學核心：**迭代不動點 + 廣義本徵值分解**，正是 4.3 節矩陣對角化的工業版。
@@ -39,11 +39,11 @@ $$
 (\mu\nu|\lambda\sigma) = \iint \frac{\chi_\mu(1)\chi_\nu(1)\chi_\lambda(2)\chi_\sigma(2)}{r_{12}}\,d\tau_1 d\tau_2
 $$
 
-若基函數是高斯型 $e^{-\alpha r^2}$，兩高斯乘積仍是高斯（Gauss 乘積定理），四中心積分可解析計算——這正是名為 Gaussian 的軟體的命名由來，也是 Boys (1950) 選擇高斯基底（犧牲波函數在核處的正確尖峰）換取計算可行性的歷史決策。
+若基函數是高斯型 $e^{-\alpha r^2}$ ，兩高斯乘積仍是高斯（Gauss 乘積定理），四中心積分可解析計算——這正是名為 Gaussian 的軟體的命名由來，也是 Boys (1950) 選擇高斯基底（犧牲波函數在核處的正確尖峰）換取計算可行性的歷史決策。
 
 ## C.4 DFT 與數值格點
 
-Kohn-Sham 方程（1965）形式上與 HF 相同，但交換相關項 $v_{xc}[\rho]$ 依賴密度 $\rho(\mathbf r)$，需在 3D 格點上數值積分：
+Kohn-Sham 方程（1965）形式上與 HF 相同，但交換相關項 $v_{xc}[\rho]$ 依賴密度 $\rho(\mathbf r)$ ，需在 3D 格點上數值積分：
 
 $$
 E_{xc} = \int v_{xc}(\mathbf r)\,\rho(\mathbf r)\,d\mathbf r \approx \sum_g w_g\, v_{xc}(\mathbf r_g)\,\rho(\mathbf r_g)
@@ -53,15 +53,15 @@ $$
 
 ## C.5 幾何優化：多元微積分的應用
 
-找能量極小值 = 解 $\nabla E = 0$：
+找能量極小值 = 解 $\nabla E = 0$ ：
 
-* **梯度** $\mathbf g = \partial E/\partial \mathbf R$：解析可得（Hellmann–Feynman 定理）。
-* **Hessian** $\mathbf H = \partial^2 E/\partial R_i\partial R_j$：判斷極小（全正）或過渡態（恰一負特徵值）。
+* **梯度** $\mathbf g = \partial E/\partial \mathbf R$ ：解析可得（Hellmann–Feynman 定理）。
+* **Hessian** $\mathbf H = \partial^2 E/\partial R_i\partial R_j$ ：判斷極小（全正）或過渡態（恰一負特徵值）。
 * 演算法：牛頓法、BFGS 準牛頓法——這正是第 7 章動態系統穩定性分析（Jacobian 特徵值）的化學對應。
 
 ## C.6 平行化與複雜度
 
-| 方法 | 標度（電子數 $N$） | 加速技巧 |
+| 方法 | 標度（電子數 $N$ ） | 加速技巧 |
 |---|---|---|
 | HF / DFT | $O(N^3) \sim O(N^4)$ | 密度擬合（DF）、線性標度分區 |
 | MP2 | $O(N^5)$ | 局域相關 |
@@ -73,7 +73,7 @@ $$
 (\mu\nu|\lambda\sigma) \approx \sum_{ab}(\mu\nu|a)\,V^{-1}_{ab}\,(b|\lambda\sigma)
 $$
 
-把 $O(N^4)$ 降為 $O(N^3)$——典型的「以線性代數換指數痛」。
+把 $O(N^4)$ 降為 $O(N^3)$ ——典型的「以線性代數換指數痛」。
 
 ## C.7 開源實作建議
 

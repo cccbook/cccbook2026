@@ -79,7 +79,7 @@
 
 ## 附錄
 
-* [附錄 A：從數學符號到程式碼語法對照表](A.1-從數學符號到程式碼語法對照表.md)（$\forall, \exists, \to, \times, +$ 與 Haskell/Lean 語法）
+* [附錄 A：從數學符號到程式碼語法對照表](A.1-從數學符號到程式碼語法對照表.md)（ $\forall, \exists, \to, \times, +$ 與 Haskell/Lean 語法）
 * [附錄 B：範疇論名詞在泛函編程中的中英對照字典](B.1-範疇論名詞在泛函編程中的中英對照字典.md)
 * [附錄 C：Lean / Haskell 基礎小範例速查](C.1-Lean與Haskell基礎小範例速查.md)
 

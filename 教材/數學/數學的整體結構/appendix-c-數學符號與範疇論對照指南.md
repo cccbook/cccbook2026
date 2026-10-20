@@ -57,9 +57,9 @@
 
 ## C.4 常用恆等式速查
 
-- Cauchy–Schwarz：$|\langle x,y\rangle|^2 \le \|x\|^2\|y\|^2$（5.3）
-- Stokes：$\int_M d\omega = \int_{\partial M}\omega$（7.3）
-- $d^2 = 0 = \partial^2$（2.3, 7.2）
-- Weyl 律：$N(\Lambda) \sim \frac{\mathrm{vol}}{(4\pi)^{n/2}\Gamma(n/2+1)}\Lambda^{n/2}$（11.1）
-- 指標公式：$\mathrm{ind}(D) = \int_M \hat A \mathrm{ch}(E)$（11.2）
-- 交比不變性（8.2）；Dirac 量子化 $\int F \in 2\pi\mathbb{Z}$（8.4）
+- Cauchy–Schwarz： $|\langle x,y\rangle|^2 \le \|x\|^2\|y\|^2$ （5.3）
+- Stokes： $\int_M d\omega = \int_{\partial M}\omega$ （7.3）
+- $d^2 = 0 = \partial^2$ （2.3, 7.2）
+- Weyl 律： $N(\Lambda) \sim \frac{\mathrm{vol}}{(4\pi)^{n/2}\Gamma(n/2+1)}\Lambda^{n/2}$ （11.1）
+- 指標公式： $\mathrm{ind}(D) = \int_M \hat A \mathrm{ch}(E)$ （11.2）
+- 交比不變性（8.2）；Dirac 量子化 $\int F \in 2\pi\mathbb{Z}$ （8.4）

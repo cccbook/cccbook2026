@@ -53,7 +53,7 @@ $$
 | $\lambda x. x$ | `\x -> x` | `lambda x: x` |
 | $(\lambda x. t)\ u$ | `(\x -> t) u` | `(lambda x: t)(u)` |
 | $\text{let}\ x = u\ \text{in}\ t$ | `let x = u in t` | `x = u`（再使用） |
-| $\mu f. f$（遞迴） | `fix f = f (fix f)` | 需明確命名 |
+| $\mu f. f$ （遞迴） | `fix f = f (fix f)` | 需明確命名 |
 
 ## A.1.5 量詞與依賴型別
 
