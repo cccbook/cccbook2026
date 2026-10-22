@@ -22,7 +22,7 @@ $$
 
 **有了 LLVM 這台引擎，設計一門新語言的成本從「十年造船」降到「幾年裝帆」。** 這是 Swift 誕生的工程前提，也是本篇最關鍵的推導。Lattner 的推理可拆解如下：
 
-**推理一：Optional 型別 $\mathtt{T?}$ ——消滅空指標之謎。** 這是 Swift 對「十億美元錯誤」的正面回擊，靈感來自 Haskell 的 Maybe 與 Rust 的 Option。核心推導：**把「可能不存在」變成型別的一部分，讓編譯器強迫你處理它。**
+**推理一：Optional 型別 $`\mathtt{T?}`$ ——消滅空指標之謎。** 這是 Swift 對「十億美元錯誤」的正面回擊，靈感來自 Haskell 的 Maybe 與 Rust 的 Option。核心推導：**把「可能不存在」變成型別的一部分，讓編譯器強迫你處理它。**
 
 $$
 \texttt{Optional<T>} = \texttt{none} \;|\; \texttt{some(T)}

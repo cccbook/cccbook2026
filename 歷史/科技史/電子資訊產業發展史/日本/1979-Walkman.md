@@ -26,7 +26,9 @@
 
 ## 理論：需求創造（Demand Creation）
 
-$$\text{新需求} = f(\text{新情境} \times \text{個人化} \times \text{身份符號})$$
+$$
+\text{新需求} = f(\text{新情境} \times \text{個人化} \times \text{身份符號})
+$$
 
 Walkman 同時滿足三項：移動情境、個人化（一個人聽）、年輕人的時尚符號。**它賣的不是產品，是「身份」**。
 

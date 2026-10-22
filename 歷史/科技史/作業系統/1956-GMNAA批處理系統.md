@@ -18,12 +18,24 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：批處理的數學
-設每個作業 (job) 的 CPU 時間 $t_i$ 、人工設定時間 $s$ 。手工模式下：
-$$T_{\text{手工}} = \sum_i (t_i + s) \quad \text{（每個作業都浪費 } s\text{）}.$$
+設每個作業 (job) 的 CPU 時間 $`t_i`$ 、人工設定時間 $`s`$ 。手工模式下：
+
+$$
+T_{\text{手工}} = \sum_i (t_i + s) \quad \text{（每個作業都浪費 } s\text{）}.
+$$
+
 批處理模式下，設定只發生一次（或由監督程式自動完成）：
-$$T_{\text{批處理}} \approx \sum_i t_i + s.$$
+
+$$
+T_{\text{批處理}} \approx \sum_i t_i + s.
+$$
+
 CPU 利用率：
-$$U = \frac{\sum t_i}{\sum t_i + n\,s} \quad \longrightarrow \quad n \text{ 越大越接近 } 1.$$
+
+$$
+U = \frac{\sum t_i}{\sum t_i + n\,s} \quad \longrightarrow \quad n \text{ 越大越接近 } 1.
+$$
+
 **吞吐量 (throughput) 的第一次工程最佳化**。
 
 ### 第二條線索：監督程式 (monitor)
@@ -31,7 +43,11 @@ GM-NAA I/O 的核心是一個常駐記憶體的**監督程式**：
 - 自動載入下一個作業（卡片→磁帶批次）。
 - 提供共用 I/O 常式（函式庫的雛形）。
 - 作業結束後自動清理、轉交控制權。
-$$\text{監督程式常駐} + \text{作業自動接力} = \text{CPU 永不等人}.$$
+
+$$
+\text{監督程式常駐} + \text{作業自動接力} = \text{CPU 永不等人}.
+$$
+
 **監督程式 = 作業系統的祖先**——「常駐記憶體、管理其他程式」的架構思想沿用至今（今日的核心 kernel 正是它的後裔）。
 
 ### Python：批處理 vs 手工的利用率模擬

@@ -17,20 +17,32 @@ Top-5 錯誤率 **15.3%**，比第二名（26.2%）低了近 11 個百分點—�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：ReLU——梯度暢通的活化函數
-Sigmoid 導數 $\sigma'(z) = \sigma(1-\sigma) \le 0.25$ ，深層連乘指數衰減（梯度消失）。
+Sigmoid 導數 $`\sigma'(z) = \sigma(1-\sigma) \le 0.25`$ ，深層連乘指數衰減（梯度消失）。
 **ReLU**：
-$$\mathrm{ReLU}(z) = \max(0, z), \qquad \mathrm{ReLU}'(z) = \mathbb{1}[z > 0].$$
+
+$$
+\mathrm{ReLU}(z) = \max(0, z), \qquad \mathrm{ReLU}'(z) = \mathbb{1}[z > 0].
+$$
+
 正區導數恆為 1——梯度直通，深層網路可訓練。AlexNet 的 8 層 + ReLU 訓練速度快 6 倍。
 
 ### 第二條線索：GPU 並行
 卷積 = 大量小矩陣乘法，天然並行：
-$$\text{前向傳播} = \text{矩陣乘法} \quad \Longrightarrow \quad \text{GPU 上的 CUDA 核心}.$$
+
+$$
+\text{前向傳播} = \text{矩陣乘法} \quad \Longrightarrow \quad \text{GPU 上的 CUDA 核心}.
+$$
+
 AlexNet 用 2 張 GPU 分割神經元（各半），訓練 120 萬張影像 5–6 天——CPU 需數月。
 
 ### 第三條線索：Dropout——隨機求取平均
 訓練時隨機丟棄神經元（機率 0.5）：
-$$\tilde{h} = m \odot h, \qquad m_i \sim \mathrm{Bernoulli}(0.5).$$
-等同於訓練 $2^n$ 個子網路的**集成平均**——過擬合被抑制。AlexNet 的全連接層（6000 萬參數中的大頭）靠 Dropout 存活。
+
+$$
+\tilde{h} = m \odot h, \qquad m_i \sim \mathrm{Bernoulli}(0.5).
+$$
+
+等同於訓練 $`2^n`$ 個子網路的**集成平均**——過擬合被抑制。AlexNet 的全連接層（6000 萬參數中的大頭）靠 Dropout 存活。
 
 ### 第四條線索：資料增廣
 平移、翻轉、顏色抖動——120 萬張變成「無限多張」，過擬合再被壓制。

@@ -1,53 +1,63 @@
 # 1954 — Givens 旋轉
 
 ## 案件摘要
-1954 年，美國阿貢國家實驗室的 Wallace Givens 在一場會議報告中提出：用一連串「平面旋轉矩陣」 $G(i,j,\theta)$ ，可以逐一、精準地把矩陣中的某個元素消成零。這個看似簡單的想法，成為數值線性代數中最優雅的兇器之一——QR 分解、對稱矩陣三對角化、特徵值計算背後的共通手法。
+1954 年，美國阿貢國家實驗室的 Wallace Givens 在一場會議報告中提出：用一連串「平面旋轉矩陣」 $`G(i,j,\theta)`$ ，可以逐一、精準地把矩陣中的某個元素消成零。這個看似簡單的想法，成為數值線性代數中最優雅的兇器之一——QR 分解、對稱矩陣三對角化、特徵值計算背後的共通手法。
 
 ## 前因 -- 為什麼會有這個案子
-- 1846 年 Jacobi 提出對稱矩陣特徵值方法：反覆做平面旋轉 $A \leftarrow J^T A J$ ，把非對角元素「磨」到趨近於零，最後對角線就是特徵值。但 Jacobi 法收斂慢，且在手工計算時代極為繁重。
+- 1846 年 Jacobi 提出對稱矩陣特徵值方法：反覆做平面旋轉 $`A \leftarrow J^T A J`$ ，把非對角元素「磨」到趨近於零，最後對角線就是特徵值。但 Jacobi 法收斂慢，且在手工計算時代極為繁重。
 - 1940 年代末，電子計算機誕生（ENIAC 1945、EDVAC）。問題來了：怎麼讓機器「算特徵值」？
-- Jacobi 法每一步要掃整個矩陣找最大的非對角元素， $O(n^2)$ 的搜尋成本在早期機器上很貴。
+- Jacobi 法每一步要掃整個矩陣找最大的非對角元素， $`O(n^2)`$ 的搜尋成本在早期機器上很貴。
 - Givens 的洞察：不必「挑最大的」再磨，而是**按順序、有計畫地**用平面旋轉逐個消去元素，直接把矩陣打成三對角形或上三角——這是一場從「游擊戰」到「正規軍」的戰術升級。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：Givens 旋轉矩陣的長相
-Givens 旋轉是作用在第 $i,j$ 兩個座標軸張成的平面上的旋轉，其餘維度不動：
+Givens 旋轉是作用在第 $`i,j`$ 兩個座標軸張成的平面上的旋轉，其餘維度不動：
 
-$$G(i,j,\theta)_{kk} = 1 \ (k \neq i,j), \qquad \begin{pmatrix} g_{ii} & g_{ij} \\ g_{ji} & g_{jj} \end{pmatrix} = \begin{pmatrix} c & s \\ -s & c \end{pmatrix}, \quad c = \cos\theta,\ s = \sin\theta$$
+$$
+G(i,j,\theta)_{kk} = 1 \ (k \neq i,j), \qquad \begin{pmatrix} g_{ii} & g_{ij} \\ g_{ji} & g_{jj} \end{pmatrix} = \begin{pmatrix} c & s \\ -s & c \end{pmatrix}, \quad c = \cos\theta,\ s = \sin\theta
+$$
 
-它是**正交矩陣**： $G^T G = I$ ，因此左乘 $G^T A$ 不改變矩陣的譜範數、不改變特徵值——犯罪現場的「指紋」完全保留。
+它是**正交矩陣**： $`G^T G = I`$ ，因此左乘 $`G^T A`$ 不改變矩陣的譜範數、不改變特徵值——犯罪現場的「指紋」完全保留。
 
 ### 線索二：消去一個元素
-要消去向量 $(a, b)^T$ 的第二個元素，選
+要消去向量 $`(a, b)^T`$ 的第二個元素，選
 
-$$c = \frac{a}{\sqrt{a^2+b^2}}, \qquad s = \frac{b}{\sqrt{a^2+b^2}}$$
+$$
+c = \frac{a}{\sqrt{a^2+b^2}}, \qquad s = \frac{b}{\sqrt{a^2+b^2}}
+$$
 
 則
 
-$$\begin{pmatrix} c & s \\ -s & c \end{pmatrix}\begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} \sqrt{a^2+b^2} \\ 0 \end{pmatrix}$$
+$$
+\begin{pmatrix} c & s \\ -s & c \end{pmatrix}\begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} \sqrt{a^2+b^2} \\ 0 \end{pmatrix}
+$$
 
-一次旋轉，只動兩列（或兩行），其餘元素分毫不動——成本僅 $O(n)$ ，且天然保持稀疏結構。
+一次旋轉，只動兩列（或兩行），其餘元素分毫不動——成本僅 $`O(n)`$ ，且天然保持稀疏結構。
 
 ### 線索三：對稱矩陣的三對角化
-對對稱矩陣 $A$ ，依序用 $G(n-1,n), G(n-2,n), \dots, G(2,3)$ 把 $A$ 第一列（行）中三對角以外的元素全部消去，再處理第二列……最終：
+對對稱矩陣 $`A`$ ，依序用 $`G(n-1,n), G(n-2,n), \dots, G(2,3)`$ 把 $`A`$ 第一列（行）中三對角以外的元素全部消去，再處理第二列……最終：
 
-$$Q^T A Q = T, \qquad T \text{ 為三對角矩陣},\ Q = G_1 G_2 \cdots G_k$$
+$$
+Q^T A Q = T, \qquad T \text{ 為三對角矩陣},\ Q = G_1 G_2 \cdots G_k
+$$
 
 三對角矩陣的特徵值可用二分法、QL/QR 迭代或 Sturm 序列高效求解——Givens 旋轉就是整條流水線的第一道工序。
 
 ### 線索四：與 Householder 的對決
-1958 年 Householder 提出反射變換：一次鏡射消去**整列**元素，總操作量約 $\frac{4}{3}n^3$ ，比 Givens 逐步旋轉（約 $2n^3$ ）省。一般稠密矩陣用 Householder；但 Givens 旋轉：
+1958 年 Householder 提出反射變換：一次鏡射消去**整列**元素，總操作量約 $`\frac{4}{3}n^3`$ ，比 Givens 逐步旋轉（約 $`2n^3`$ ）省。一般稠密矩陣用 Householder；但 Givens 旋轉：
 - **稀疏矩陣友善**：只動兩列，不改變其他零元素的位置；
-- **增量更新**：QR 分解後新增一列/一行，可用 $O(n)$ 次 Givens 旋轉更新，不必重算；
-- **天然並行**：互不重疊的 $(i,j)$ 對可同時旋轉，適合 GPU/脈動陣列。
+- **增量更新**：QR 分解後新增一列/一行，可用 $`O(n)`$ 次 Givens 旋轉更新，不必重算；
+- **天然並行**：互不重疊的 $`(i,j)`$ 對可同時旋轉，適合 GPU/脈動陣列。
 
 ### 線索五：偵探筆記——θ 的計算與陷阱
-實際計算中不真的算 $\theta$ ，直接由 $(a,b)$ 算 $c, s$ ；但若 $a, b$ 都接近零（病態情況）， $\sqrt{a^2+b^2}$ 會下溢——處理方式是先除以較大者：
+實際計算中不真的算 $`\theta`$ ，直接由 $`(a,b)`$ 算 $`c, s`$ ；但若 $`a, b`$ 都接近零（病態情況）， $`\sqrt{a^2+b^2}`$ 會下溢——處理方式是先除以較大者：
 
-$$r = \mathrm{sign}(a)\sqrt{(|a|/\tau)^2 + (|b|/\tau)^2}\cdot\tau, \qquad \tau = \max(|a|, |b|)$$
+$$
+r = \mathrm{sign}(a)\sqrt{(|a|/\tau)^2 + (|b|/\tau)^2}\cdot\tau, \qquad \tau = \max(|a|, |b|)
+$$
 
-若 $b = 0$ 則直接跳過（無事可辦）；若 $a = 0$ 則取 $c=0, s=1$ （純換位）。這些「小機關」決定了數值函式庫的成敗——LAPACK 的 `dlartg` 就是這道工序的工業級版本。
+若 $`b = 0`$ 則直接跳過（無事可辦）；若 $`a = 0`$ 則取 $`c=0, s=1`$ （純換位）。這些「小機關」決定了數值函式庫的成敗——LAPACK 的 `dlartg` 就是這道工序的工業級版本。
 
 ## 程式碼範例：Givens 旋轉消去元素與對稱 QR 三對角化
 ```python
@@ -89,7 +99,7 @@ print("特徵值保持 ?", np.allclose(sorted(np.linalg.eigvalsh(T)),
                                   sorted(np.linalg.eigvalsh(A))))  # True
 ```
 
-輸出顯示： $Q^T A = R$ 、 $Q$ 正交，且三對角化前後特徵值完全一致——Givens 旋轉「殺人（消零）不毀證據（譜）」。
+輸出顯示： $`Q^T A = R`$ 、 $`Q`$ 正交，且三對角化前後特徵值完全一致——Givens 旋轉「殺人（消零）不毀證據（譜）」。
 
 ## 結案 -- 後果與影響
 - QR 分解家族成形：Householder（稠密）、Givens（稀疏、增量）、Gram–Schmidt（數值穩定性較差但可修正）。

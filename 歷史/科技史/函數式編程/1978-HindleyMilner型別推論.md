@@ -7,7 +7,7 @@
 ## 前因 -- 為什麼會有這個案子
 
 - 1973 年 ML 誕生時的承諾：使用者完全不寫型別，系統卻全程型別安全。這需要理論證明，不只是實作技巧。
-- 無型 λ-Calculus 太自由：可以 apply 任何東西—— $\lambda x. x\ x$ 合法但無型別意義，會導致 Russell 悖論式的發散。要型別安全，必須先確定「誰能套用誰」。
+- 無型 λ-Calculus 太自由：可以 apply 任何東西—— $`\lambda x. x\ x`$ 合法但無型別意義，會導致 Russell 悖論式的發散。要型別安全，必須先確定「誰能套用誰」。
 - Hindley 1969 年已在組合邏輯中提出類似演算法：組合邏輯中的物件有「principal type scheme」——最一般的型別，且唯一。這來自 Curry-Howard 傳統（型別即命題、程式即證明）。
 - Robinson 1965 年提出合一（unification）演算法：找一個替換（substitution）使兩個型別表達式相等。這是拼圖的最後一塊。
 - Milner 把三者結合：型別文法 + unification + 推論 = 演算法 W，並證明其正確性與 principal type 的唯一性。
@@ -16,36 +16,42 @@
 
 ### 線索一：型別文法
 
-型別由型別變數 $\alpha, \beta$ 與函數型別構成：
+型別由型別變數 $`\alpha, \beta`$ 與函數型別構成：
 
-$$\tau ::= \alpha \mid \mathrm{int} \mid \mathrm{bool} \mid \tau_1 \to \tau_2$$
+$$
+\tau ::= \alpha \mid \mathrm{int} \mid \mathrm{bool} \mid \tau_1 \to \tau_2
+$$
 
-型別環境 $\Gamma$ 把變數映射到型別，判斷式 $\Gamma \vdash e : \tau$ 表示「在環境 $\Gamma$ 下，表達式 $e$ 有型別 $\tau$ 」。
+型別環境 $`\Gamma`$ 把變數映射到型別，判斷式 $`\Gamma \vdash e : \tau`$ 表示「在環境 $`\Gamma`$ 下，表達式 $`e`$ 有型別 $`\tau`$ 」。
 
 ### 線索二：Robinson 合一演算法
 
-合一（unification）是找替換 $\sigma$ 使 $\sigma(\tau_1) = \sigma(\tau_2)$ ：
+合一（unification）是找替換 $`\sigma`$ 使 $`\sigma(\tau_1) = \sigma(\tau_2)`$ ：
 
-$$\mathrm{unify}(\alpha, \mathrm{int}) = [\alpha \mapsto \mathrm{int}] \qquad \mathrm{unify}(\alpha \to \beta, \gamma \to \gamma) = [\alpha \mapsto \gamma, \beta \mapsto \gamma]$$
+$$
+\mathrm{unify}(\alpha, \mathrm{int}) = [\alpha \mapsto \mathrm{int}] \qquad \mathrm{unify}(\alpha \to \beta, \gamma \to \gamma) = [\alpha \mapsto \gamma, \beta \mapsto \gamma]
+$$
 
- Robinson 演算法保證：若合一存在，必存在最一般合一（most general unifier, mgu），且唯一（在變數改名意義下）。
+Robinson 演算法保證：若合一存在，必存在最一般合一（most general unifier, mgu），且唯一（在變數改名意義下）。
 
 ### 線索三：演算法 W -- 破案時刻
 
 演算法 W 對每個表達式推導型別與替換：
 
-- **變數** $x$ ：查 $\Gamma(x)$ ，一般化為型別方案。
-- **應用** $e_1\ e_2$ ：推 $e_1 : \tau_1$ 、 $e_2 : \tau_2$ ，合一 $\tau_1 \sim \tau_2 \to \alpha_{\text{new}}$ ，結果型別為 $\alpha_{\text{new}}$ 。
-- **抽象** $\lambda x.\ e$ ：推 $e : \tau$ ，結果為 $x$ 的新鮮型別變數 $\alpha \to \tau$ 。
-- **let** $\mathrm{let}\ x = e_1\ \mathrm{in}\ e_2$ ：推 $e_1 : \tau_1$ ，一般化 $\forall \bar{\alpha}.\ \tau_1$ ，在擴充環境中推 $e_2$ 。
+- **變數** $`x`$ ：查 $`\Gamma(x)`$ ，一般化為型別方案。
+- **應用** $`e_1\ e_2`$ ：推 $`e_1 : \tau_1`$ 、 $`e_2 : \tau_2`$ ，合一 $`\tau_1 \sim \tau_2 \to \alpha_{\text{new}}`$ ，結果型別為 $`\alpha_{\text{new}}`$ 。
+- **抽象** $`\lambda x.\ e`$ ：推 $`e : \tau`$ ，結果為 $`x`$ 的新鮮型別變數 $`\alpha \to \tau`$ 。
+- **let** $`\mathrm{let}\ x = e_1\ \mathrm{in}\ e_2`$ ：推 $`e_1 : \tau_1`$ ，一般化 $`\forall \bar{\alpha}.\ \tau_1`$ ，在擴充環境中推 $`e_2`$ 。
 
-$$\frac{\Gamma \vdash e_1 : \tau_1 \quad \Gamma, x : \forall \bar{\alpha}.\ \tau_1 \vdash e_2 : \tau_2}{\Gamma \vdash \mathrm{let}\ x = e_1\ \mathrm{in}\ e_2 : \tau_2}$$
+$$
+\frac{\Gamma \vdash e_1 : \tau_1 \quad \Gamma, x : \forall \bar{\alpha}.\ \tau_1 \vdash e_2 : \tau_2}{\Gamma \vdash \mathrm{let}\ x = e_1\ \mathrm{in}\ e_2 : \tau_2}
+$$
 
 Milner 證明：演算法 W 終止、正確（sound），且推出的型別是 principal type——最一般的型別，所有其他可行型別都是它的實例。
 
 ### 線索四：principal type 的唯一性
 
-principal type 的意義：對 identity 函數 $\lambda x. x$ ，推論結果是 $\alpha \to \alpha$ ；它是最一般的—— $\mathrm{int} \to \mathrm{int}$ 、 $\mathrm{bool} \to \mathrm{bool}$ 都是它的實例。Hindley 已證明此型別在組合邏輯中唯一；Milner 把定理推廣到 let 多型的語言。
+principal type 的意義：對 identity 函數 $`\lambda x. x`$ ，推論結果是 $`\alpha \to \alpha`$ ；它是最一般的—— $`\mathrm{int} \to \mathrm{int}`$ 、 $`\mathrm{bool} \to \mathrm{bool}`$ 都是它的實例。Hindley 已證明此型別在組合邏輯中唯一；Milner 把定理推廣到 let 多型的語言。
 
 ### 線索五：let-多型與 value restriction
 
@@ -137,7 +143,7 @@ let_type = infer({}, ("let", "y", "id_var",
                       ("apply", "y", "y")))
 ```
 
-對 $\lambda x. x$ 推出 $\alpha \to \alpha$ ，對 $\lambda f. \lambda x. f\ x$ 推出 $(\alpha \to \beta) \to \alpha \to \beta$ ——這正是 principal type。
+對 $`\lambda x. x`$ 推出 $`\alpha \to \alpha`$ ，對 $`\lambda f. \lambda x. f\ x`$ 推出 $`(\alpha \to \beta) \to \alpha \to \beta`$ ——這正是 principal type。
 
 ## 結案 -- 後果與影響
 

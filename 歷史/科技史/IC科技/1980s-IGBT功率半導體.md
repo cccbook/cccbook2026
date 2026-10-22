@@ -8,57 +8,69 @@
 
 ## 前因 -- 為什麼會有這個案子
 - **功率半導體的意義**：發電是交流、用電卻常要直流或變頻——變流器（inverter）、馬達驅動、開關電源都需要「高壓大電流的開關」。開關越快、損耗越低，系統效率就越高。
-- **BJT 時代的困境**：1970 年代主導的功率雙極電晶體導通壓降小（ $V_{CE(sat)} \approx 1{-}2\,\text{V}$ ），但它是**電流控制**元件——基極驅動電路笨重耗電，開關慢，且二次崩潰（secondary breakdown）容易燒毀。
+- **BJT 時代的困境**：1970 年代主導的功率雙極電晶體導通壓降小（ $`V_{CE(sat)} \approx 1{-}2\,\text{V}`$ ），但它是**電流控制**元件——基極驅動電路笨重耗電，開關慢，且二次崩潰（secondary breakdown）容易燒毀。
 - **功率 MOSFET 的困境**：1970s 後期問世的功率 MOSFET 是電壓控制、開關快，但高壓下導通電阻爆衝：
 
-$$R_{on} \propto V_{BR}^{2.5}$$
+$$
+R_{on} \propto V_{BR}^{2.5}
+$$
 
-  擊穿電壓翻倍，導通電阻暴增約 5.7 倍；要扛 600V 就得並聯幾十顆矽片，成本與面積爆炸。
-- **關鍵推理**：能不能「MOS 閘負責控制（電壓驅動、快），BJT 負責導通（電導調變、壓降小）」？把兩者垂直疊在同一片矽上，讓 MOS 的汲極充當 BJT 的基極——導通時少數載子注入漂移區（電導調變，conductivity modulation），把那個 $V_{BR}^{2.5}$ 的致命電阻「灌水稀釋」掉。1982 年前後，GE 的 **B. Jayant Baliga** 與 HP 的 **J. P. Plummer、M. Beckher**（及 RCA 等團隊）各自獨立做出這顆元件，1980s 量產後改名 IGBT。
+擊穿電壓翻倍，導通電阻暴增約 5.7 倍；要扛 600V 就得並聯幾十顆矽片，成本與面積爆炸。
+- **關鍵推理**：能不能「MOS 閘負責控制（電壓驅動、快），BJT 負責導通（電導調變、壓降小）」？把兩者垂直疊在同一片矽上，讓 MOS 的汲極充當 BJT 的基極——導通時少數載子注入漂移區（電導調變，conductivity modulation），把那個 $`V_{BR}^{2.5}`$ 的致命電阻「灌水稀釋」掉。1982 年前後，GE 的 **B. Jayant Baliga** 與 HP 的 **J. P. Plummer、M. Beckher**（及 RCA 等團隊）各自獨立做出這顆元件，1980s 量產後改名 IGBT。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 案件現場：MOS 閘 + BJT 尾電流
 IGBT 的等效電路：一顆 NMOS 驅動一顆 PNP BJT（MOS 汲極接 PNP 基極，漂移區即 PNP 基極）。
-- **關閉**： $V_G < V_{th}$ ，MOS 不導通，PNP 沒有基極電流，元件像一個背對背的 PN 二極體，耐壓可達 $V_{BR}$ （600V~6.5kV）。
-- **導通**： $V_G > V_{th}$ ，MOS 提供基極電流，PNP 導通；同時少數載子（電洞）大量注入漂移區：
+- **關閉**： $`V_G < V_{th}`$ ，MOS 不導通，PNP 沒有基極電流，元件像一個背對背的 PN 二極體，耐壓可達 $`V_{BR}`$ （600V~6.5kV）。
+- **導通**： $`V_G > V_{th}`$ ，MOS 提供基極電流，PNP 導通；同時少數載子（電洞）大量注入漂移區：
 
-$$n_{drift} \rightarrow p_{inj} \gg N_D \quad\Longrightarrow\quad \rho_{drift} = \frac{1}{q\mu n} \text{ 驟降數十倍}$$
+$$
+n_{drift} \rightarrow p_{inj} \gg N_D \quad\Longrightarrow\quad \rho_{drift} = \frac{1}{q\mu n} \text{ 驟降數十倍}
+$$
 
-  這就是**電導調變**：導通壓降 $V_{CE(on)} \approx 1{-}3\,\text{V}$ ，幾乎不隨擊穿電壓的平方惡化。
+這就是**電導調變**：導通壓降 $`V_{CE(on)} \approx 1{-}3\,\text{V}`$ ，幾乎不隨擊穿電壓的平方惡化。
 - **代價（尾電流）**：關閉時漂移區裡的儲存電荷（電洞）要靠復合慢慢抽走，形成數 μs 級的**尾電流（tail current）**——這正是 IGBT 開關損耗的來源。
 
 ### 2. 擊穿電壓與導通電阻：MOSFET 的宿命
 
 功率 MOSFET 高壓版的導通電阻由漂移區主導：
 
-$$R_{on,on} = \frac{4 V_{BR}^{2}}{\epsilon_s \mu_n E_c^{3}} \;\propto\; V_{BR}^{2.5}$$
+$$
+R_{on,on} = \frac{4 V_{BR}^{2}}{\epsilon_s \mu_n E_c^{3}} \;\propto\; V_{BR}^{2.5}
+$$
 
-（ $E_c$ 為矽的臨界電場 $\approx 3\times 10^5\,\text{V/cm}$ ；指數 2.5 來自臨界電場隨摻雜的緩慢變化。）
+（ $`E_c`$ 為矽的臨界電場 $`\approx 3\times 10^5\,\text{V/cm}`$ ；指數 2.5 來自臨界電場隨摻雜的緩慢變化。）
 Baliga 的**優劣因子（BFOM, Baliga Figure of Merit）**把這條定律寫成材料評分：
 
-$$\text{BFOM} = \epsilon_s \mu_n E_c^{3}$$
+$$
+\text{BFOM} = \epsilon_s \mu_n E_c^{3}
+$$
 
 這個式子直接預言了 SiC 與 GaN 的崛起（見第 4 節）。
 
 ### 3. 導通損耗 vs 開關損耗：取捨的數學
 功率開關一個週期的總損耗：
 
-$$P_{total} = \underbrace{I^2 R_{on}\cdot D}_{\text{導通損耗}} + \underbrace{\tfrac{1}{2} V I (t_r + t_f)\, f}_{\text{開關損耗}}$$
+$$
+P_{total} = \underbrace{I^2 R_{on}\cdot D}_{\text{導通損耗}} + \underbrace{\tfrac{1}{2} V I (t_r + t_f)\, f}_{\text{開關損耗}}
+$$
 
-- 開關頻率 $f$ 越高，變壓器/電感可以越小（系統省錢省體積），但開關損耗線性上升。
-- MOSFET： $R_{on}$ 大（高壓下）、 $(t_r+t_f)$ 極小（無尾電流）→ 適合**高頻低壓**。
-- IGBT： $R_{on}$ 等效極小（電導調變）、 $(t_r+t_f)$ 數 μs（尾電流）→ 適合**低頻高壓**。
+- 開關頻率 $`f`$ 越高，變壓器/電感可以越小（系統省錢省體積），但開關損耗線性上升。
+- MOSFET： $`R_{on}`$ 大（高壓下）、 $`(t_r+t_f)`$ 極小（無尾電流）→ 適合**高頻低壓**。
+- IGBT： $`R_{on}`$ 等效極小（電導調變）、 $`(t_r+t_f)`$ 數 μs（尾電流）→ 適合**低頻高壓**。
 - 電力電子工程師的日常，就是在這條取捨線上選元件、選頻率。
 
 ### 4. FBSOA、擎住效應與寬能隙接棒
 - **FBSOA（Forward-Biased Safe Operating Area）**：導通狀態下電壓-電流的安全邊界。早期 IGBT 因 NPN 寄生電晶體而受限。
-- **擎住效應（latch-up）**：IGBT 內部天然含有 PNPN 四層結構（寄生 NPN+PNP 晶閘管）；一旦電流過大或 $dv/dt$ 過猛，寄生晶閘管被觸發**自己鎖死導通**，閘極失去控制，直到燒毀。對策：降低寄生 NPN 的 $r_b$ （分流孔）、加大 $R_{body}$ 、後來的「穿通（punch-through）+ 場阻斷層」設計把 latch-up 基本消除。
+- **擎住效應（latch-up）**：IGBT 內部天然含有 PNPN 四層結構（寄生 NPN+PNP 晶閘管）；一旦電流過大或 $`dv/dt`$ 過猛，寄生晶閘管被觸發**自己鎖死導通**，閘極失去控制，直到燒毀。對策：降低寄生 NPN 的 $`r_b`$ （分流孔）、加大 $`R_{body}`$ 、後來的「穿通（punch-through）+ 場阻斷層」設計把 latch-up 基本消除。
 - **寬能隙半導體（2010s）**：Baliga 的 BFOM 指路——
 
-$$E_g:\ \text{SiC}\ 3.26\,\text{eV},\ \text{GaN}\ 3.4\,\text{eV}\ \text{vs Si}\ 1.12\,\text{eV}$$
+$$
+E_g:\ \text{SiC}\ 3.26\,\text{eV},\ \text{GaN}\ 3.4\,\text{eV}\ \text{vs Si}\ 1.12\,\text{eV}
+$$
 
-  能隙大 → 臨界電場 $E_c$ 高一個數量級（SiC $\approx 3\times 10^6\,\text{V/cm}$ ）→ 同耐壓下漂移區薄 10 倍、電阻低百倍，且耐溫 200°C 以上。SiC MOSFET 與 GaN HEMT 開始在 650V~1200V 戰場與 IGBT 爭地。
+能隙大 → 臨界電場 $`E_c`$ 高一個數量級（SiC $`\approx 3\times 10^6\,\text{V/cm}`$ ）→ 同耐壓下漂移區薄 10 倍、電阻低百倍，且耐溫 200°C 以上。SiC MOSFET 與 GaN HEMT 開始在 650V~1200V 戰場與 IGBT 爭地。
 
 ### 5. 元件對照表：三代功率開關的同台偵訊
 
@@ -66,7 +78,7 @@ $$E_g:\ \text{SiC}\ 3.26\,\text{eV},\ \text{GaN}\ 3.4\,\text{eV}\ \text{vs Si}\ 
 |------|------------------|----------------------|--------------|--------------------|
 | 控制方式 | 電流控制 | 電壓控制 | 電壓控制 | 電壓控制 |
 | 耐壓範圍 | <1kV | <900V | 600V~6.5kV | 650V~3.3kV |
-| 導通壓降/電阻 | $V_{CE(sat)}\approx1{-}2$ V | $R_{on}\propto V_{BR}^{2.5}$ 爆衝 | $V_{CE(on)}\approx1{-}3$ V | $R_{on}$ 低百倍 |
+| 導通壓降/電阻 | $`V_{CE(sat)}\approx1{-}2`$ V | $`R_{on}\propto V_{BR}^{2.5}`$ 爆衝 | $`V_{CE(on)}\approx1{-}3`$ V | $`R_{on}`$ 低百倍 |
 | 開關速度 | 慢（儲存時間） | 極快（ns 級） | 慢（尾電流 μs 級） | 快（與 Si MOSFET 相當） |
 | 適用頻率 | <10kHz | 100kHz~1MHz | 5~50kHz | 50~500kHz |
 | 驅動電路 | 笨重耗電 | 簡單 | 簡單 | 簡單（但閘壓較高） |
@@ -114,12 +126,14 @@ for m in eps_mu:
 
 ### 8. 應用現場：變頻器的數學
 
-變頻器（inverter）把直流變成可調頻率的交流，驅動馬達：馬達轉速正比於頻率（ $n \propto f/p$ ），
+變頻器（inverter）把直流變成可調頻率的交流，驅動馬達：馬達轉速正比於頻率（ $`n \propto f/p`$ ），
 所以「控制頻率」就是「控制轉速」——這正是電動車與高鐵牽引的核心：
 
-$$P_{motor} = \tau \cdot \omega = \tau \cdot 2\pi \frac{f}{p},\qquad \eta_{system} = \frac{P_{out}}{P_{out} + P_{total}^{(switch)}}$$
+$$
+P_{motor} = \tau \cdot \omega = \tau \cdot 2\pi \frac{f}{p},\qquad \eta_{system} = \frac{P_{out}}{P_{out} + P_{total}^{(switch)}}
+$$
 
-- 6 顆 IGBT 組成三相橋，以 PWM（脈寬調變）切換：開關頻率 $f_{sw}$ 越高，輸出波形越接近正弦、馬達越安靜，但 $P_{total}^{(switch)}$ 線性上升——又是那條取捨線。
+- 6 顆 IGBT 組成三相橋，以 PWM（脈寬調變）切換：開關頻率 $`f_{sw}`$ 越高，輸出波形越接近正弦、馬達越安靜，但 $`P_{total}^{(switch)}`$ 線性上升——又是那條取捨線。
 - 感應馬達 + IGBT 變頻器 vs 傳統定速馬達：省電 30% 以上；這也是 1990s 日本家電（冷氣、冰箱）全面變頻化的動力。
 - 電動車：電池（直流 400V/800V）→ 逆變器（IGBT/SiC）→ 馬達（交流變頻）；逆變器效率每提升 1%，續航多約 2-3 km。
 - 高鐵：架空線 25kV 交流 → 變壓器整流 → IGBT 牽引變流器 → 馬達；新幹線與中國高鐵的功率模組都以 IGBT 為心臟。

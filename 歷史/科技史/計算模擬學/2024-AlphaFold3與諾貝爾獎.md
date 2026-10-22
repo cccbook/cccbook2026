@@ -27,13 +27,13 @@ $$
 q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1-\bar{\alpha}_t) I)
 $$
 
-其中  $x_0$  為真實全原子座標， $x_t$  為第  $t$  步的 noisy 座標， $\bar{\alpha}_t$  為噪聲排程累積係數。反向去噪網路  $\epsilon_{\theta}$  以 Pairformer 嵌入與化學先驗為條件，學習：
+其中  $`x_0`$  為真實全原子座標， $`x_t`$  為第  $`t`$  步的 noisy 座標， $`\bar{\alpha}_t`$  為噪聲排程累積係數。反向去噪網路  $`\epsilon_{\theta}`$  以 Pairformer 嵌入與化學先驗為條件，學習：
 
 $$
 p_{\theta}(x_{t-1} | x_t, c) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t, c), \Sigma_t)
 $$
 
-其中  $c$  為條件（序列、MSA、配體 SMILES、模板）， $\mu_{\theta}$  為去噪均值預測。推理時從純雜訊採樣多次，可得不同對接姿態的系綜，附帶置信度排名。
+其中  $`c`$  為條件（序列、MSA、配體 SMILES、模板）， $`\mu_{\theta}`$  為去噪均值預測。推理時從純雜訊採樣多次，可得不同對接姿態的系綜，附帶置信度排名。
 
 ### Pairformer：Evoformer 的輕量繼任者
 
@@ -41,13 +41,13 @@ AF3 以 Pairformer 取代 Evoformer，拿掉昂貴的 MSA 列注意力，改以�
 
 | 偵查維度 | AlphaFold 2 | AlphaFold 3 |
 |----------|-------------|-------------|
-| 解碼器 | IPA 確定性回歸 | 擴散去噪  $x_t$  採樣 |
+| 解碼器 | IPA 確定性回歸 | 擴散去噪  $`x_t`$  採樣 |
 | 輸出 | 單一蛋白結構 | 複合體系綜（蛋白＋核酸＋配體＋離子） |
 | MSA 依賴 | 重度（Evoformer） | 減輕（Pairformer＋大規模蒸餾） |
 | 配體對接 | 不支援 | PoseBusters 有效性大幅領先 Vina |
 | 開源 | 全開源 | 先伺服器、後開源推理碼 |
 
-以  $x_t$  去噪取代座標回歸，換來的是不確定性量化與多姿態：AF3 可對同一口袋吐出多個候選，再用 pLDDT-like 置信頭挑案犯。這正是通用分子鑑識科的雛形。
+以  $`x_t`$  去噪取代座標回歸，換來的是不確定性量化與多姿態：AF3 可對同一口袋吐出多個候選，再用 pLDDT-like 置信頭挑案犯。這正是通用分子鑑識科的雛形。
 
 ### 另一半獎牌：Baker 的造物術
 
@@ -70,17 +70,17 @@ AF3 以 Pairformer 取代 Evoformer，拿掉昂貴的 MSA 列注意力，改以�
 
 ## 證據與工具
 
-- 關鍵公式：前向加噪  $q(x_t|x_0)$  、條件去噪  $p_{\theta}(x_{t-1}|x_t,c)$  、Pairformer 成對更新、置信度加權排名。
+- 關鍵公式：前向加噪  $`q(x_t|x_0)`$  、條件去噪  $`p_{\theta}(x_{t-1}|x_t,c)`$  、Pairformer 成對更新、置信度加權排名。
 - 核心工具：AF3 Server、開源推理權重、PoseBusters 對接驗證集、RFdiffusion 設計管線、PLIP 交互作用分析。
-- 評斷尺：DockQ、配體  $RMSD$  、核酸 lDDT、鍵長手性合理性檢查；擴散多次採樣需報告 top-1 與 oracle 最佳兩個數字。
-- 動手線索：取一個 PDBBind 口袋，用 AF3 Server 與 Vina 各跑一次對接，對比  $RMSD$  與化學有效性；再問：當模型不給 MSA 也能猜中時，它究竟記住了化學，還是記住了訓練集？
+- 評斷尺：DockQ、配體  $`RMSD`$  、核酸 lDDT、鍵長手性合理性檢查；擴散多次採樣需報告 top-1 與 oracle 最佳兩個數字。
+- 動手線索：取一個 PDBBind 口袋，用 AF3 Server 與 Vina 各跑一次對接，對比  $`RMSD`$  與化學有效性；再問：當模型不給 MSA 也能猜中時，它究竟記住了化學，還是記住了訓練集？
 
 | 驗證清單 | 指標 | 通過門檻示意 |
 |----------|------|--------------|
-| 對接幾何 | 配體  $RMSD$  | 通常以 2 埃為成功線 |
+| 對接幾何 | 配體  $`RMSD`$  | 通常以 2 埃為成功線 |
 | 化學有效性 | PoseBusters | 鍵長、手性、碰撞全檢 |
 | 複合體界面 | DockQ | 綜合界面品質分數 |
 | 信心校準 | pLDDT／PAE | 低信心區須實驗驗證 |
 
-- 術語對照：SMILES（小分子線性表示）、 $x_t$ （擴散第  $t$  步座標）、RFdiffusion（Baker 團隊擴散設計）、Isomorphic Labs（DeepMind 藥物分拆公司）。
+- 術語對照：SMILES（小分子線性表示）、 $`x_t`$ （擴散第  $`t`$  步座標）、RFdiffusion（Baker 團隊擴散設計）、Isomorphic Labs（DeepMind 藥物分拆公司）。
 - 史料座標：CASP（1994）→ Rosetta（1999）→ AF2（2020）→ AF3＋諾獎（2024），三十年懸案正式封卷。

@@ -4,7 +4,11 @@
 1969 年 10 月 29 日，DARPA 的 ARPANET 首次連線：
 UCLA（Leonard Kleinrock）向斯坦福研究院（Bill Duvall）發出「LOGIN」——
 系統在收到 **LO** 後當機。
-$$\text{四個節點} \xrightarrow{\text{分封交換}} \text{第一個封包交換網路}.$$
+
+$$
+\text{四個節點} \xrightarrow{\text{分封交換}} \text{第一個封包交換網路}.
+$$
+
 那次「LO」失敗成為網際網路的創世笑話——但分封交換的數學思想，
 70 年後統治了全世界每一個封包。
 
@@ -14,31 +18,51 @@ $$\text{四個節點} \xrightarrow{\text{分封交換}} \text{第一個封包交
   - 兩端電腦的速度不匹配 → 慢速端拖垮全局（**互速問題**）。
   - 線路易受天災破壞（海纜、颱風）——**脆弱的中央交換**。
 - **另一條思路的啟示**：MIT 的 Leonard Kleinrock 與隨後的 Paul Baran 獨立提出**分封交換 (Packet Switching)**：
-  $$\text{訊息} \xrightarrow{\text{切割}} \text{封包（分片）} \xrightarrow{\text{獨立路由}} \text{重新組合（reassembly）}.$$
-  **關鍵洞見**：不必為每個連線保留專用路徑——**封包像郵件一樣獨立投遞到目的地址**。
+
+$$
+\text{訊息} \xrightarrow{\text{切割}} \text{封包（分片）} \xrightarrow{\text{獨立路由}} \text{重新組合（reassembly）}.
+$$
+
+**關鍵洞見**：不必為每個連線保留專用路徑——**封包像郵件一樣獨立投遞到目的地址**。
   這是互聯網的哲學基石：**無連線 (connectionless) + 盡力而為 (best-effort) + 端對端 (end-to-end)**。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：電路 vs 分封的數學對比
-- **電路交換**： $n$ 條鏈路可支援 $n$ 個連線；尖峰話務 $A$ Erlangs 的阻塞率：
-  $$P_{\text{block}} = \frac{A^n/n!}{\sum_{k=0}^{n}A^k/k!} \quad \text{(Erlang B)}.$$
-  話務增加時阻塞率**指數爆炸**（ $n$ 越大越陡）——資源被話務峰值綁架。
-- **分封交換**：封包按佇列 $\text{M/M/1}$ 排隊：
-  $$\rho = \frac{\lambda}{\mu} < 1 \quad \Longrightarrow \quad W = \frac{1}{\mu - \lambda} \quad \text{（延遲隨負載發散）}.$$
-  **無阻塞概念**——只要平均負載 $<1$ ，任何連線都可獲得服務（僅延遲上升）。
+- **電路交換**： $`n`$ 條鏈路可支援 $`n`$ 個連線；尖峰話務 $`A`$ Erlangs 的阻塞率：
+
+$$
+P_{\text{block}} = \frac{A^n/n!}{\sum_{k=0}^{n}A^k/k!} \quad \text{(Erlang B)}.
+$$
+
+話務增加時阻塞率**指數爆炸**（ $`n`$ 越大越陡）——資源被話務峰值綁架。
+- **分封交換**：封包按佇列 $`\text{M/M/1}`$ 排隊：
+
+$$
+\rho = \frac{\lambda}{\mu} < 1 \quad \Longrightarrow \quad W = \frac{1}{\mu - \lambda} \quad \text{（延遲隨負載發散）}.
+$$
+
+**無阻塞概念**——只要平均負載 $`<1`$ ，任何連線都可獲得服務（僅延遲上升）。
   統計複用 (statistical multiplexing) 讓鏈路永遠在用，**從「預留」變「爭用」**。
 
 ### 第二條線索：包長取捨（Hopper 定理）
-1977 年 Dennis Hopper 證明：當 **端對端路徑上的封包總數 $\ge 2\times$ 停留的封包數** 時，
-端到端成功率 $\ge 0.6$ ，且**與網路負載無關**（極限定理）。
-$$\text{封包數} \le \frac{\text{主機數}}{2} \quad \Longrightarrow\quad P_{\text{成功}} \ge 0.6 \quad \text{（獨立於負載）}.$$
+1977 年 Dennis Hopper 證明：當 **端對端路徑上的封包總數 $`\ge 2\times`$ 停留的封包數** 時，
+端到端成功率 $`\ge 0.6`$ ，且**與網路負載無關**（極限定理）。
+
+$$
+\text{封包數} \le \frac{\text{主機數}}{2} \quad \Longrightarrow\quad P_{\text{成功}} \ge 0.6 \quad \text{（獨立於負載）}.
+$$
+
 **End-to-end argument**：端對端功能（如重傳）應在主機而非網路實作——
 網路保持「簡單」，功能在端點——**互聯網的架構哲學（1980s Saltzer/Reed/Clark）**。
 
 ### 第三條線索：互速問題與 store-and-forward
 ARPANET 使用介面訊息處理機 (IMP)，採** store-and-forward (儲存轉送)**：
-$$\text{封包} \xrightarrow{\text{完整收到}} \text{再轉發} \quad \text{（數據鏈路層分段，1960s 衛星時代）}.$$
+
+$$
+\text{封包} \xrightarrow{\text{完整收到}} \text{再轉發} \quad \text{（數據鏈路層分段，1960s 衛星時代）}.
+$$
+
 - **衛星往返延遲約 1.2 秒**：若用線路交換，**慢速端拖垮全局**。
 - store-and-forward 讓**不同速度的主機互不阻塞**——**「速度匹配」的第一個解決方案**。
 - 目標是「網路不必了解應用」——**網路透明性**。

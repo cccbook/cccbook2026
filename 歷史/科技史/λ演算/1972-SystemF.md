@@ -8,8 +8,8 @@
 
 線索有兩條：
 
-1. **簡單型別 λ 演算的限制**：恆等函數對每個型別都要重寫一遍—— $\text{id}_{\mathbb{Int}} : \mathbb{Int} \to \mathbb{Int}$ 、 $\text{id}_{\mathbb{Bool}} : \mathbb{Bool} \to \mathbb{Bool}$ ……無法寫出「對所有型別都成立的恆等函數」。這違反了 DRY（Don't Repeat Yourself）原則。
-2. **Girard 的邏輯動機**：Girard 正在研究「高階算術的切痕消去（cut-elimination）」。他把二階直覺邏輯（允許對命題變數量化 $\forall \alpha.\, \varphi$ ）與 λ 演算對應起來，得到一個強正規化的系統。Reynolds 則從程式設計的角度（抽象資料型別、parametric polymorphism）獨立推出同一系統。
+1. **簡單型別 λ 演算的限制**：恆等函數對每個型別都要重寫一遍—— $`\text{id}_{\mathbb{Int}} : \mathbb{Int} \to \mathbb{Int}`$ 、 $`\text{id}_{\mathbb{Bool}} : \mathbb{Bool} \to \mathbb{Bool}`$ ……無法寫出「對所有型別都成立的恆等函數」。這違反了 DRY（Don't Repeat Yourself）原則。
+2. **Girard 的邏輯動機**：Girard 正在研究「高階算術的切痕消去（cut-elimination）」。他把二階直覺邏輯（允許對命題變數量化 $`\forall \alpha.\, \varphi`$ ）與 λ 演算對應起來，得到一個強正規化的系統。Reynolds 則從程式設計的角度（抽象資料型別、parametric polymorphism）獨立推出同一系統。
 
 兩人的推理殊途同歸：**如果型別推導允許「對型別變數的抽象」，那麼多型就有了數學基礎**。
 
@@ -29,7 +29,7 @@ $$
 \text{id} : \forall \alpha.\, \alpha \to \alpha
 $$
 
-讀作「對所有型別 $\alpha$ ， $\text{id}$ 是從 $\alpha$ 到 $\alpha$ 的函數」。
+讀作「對所有型別 $`\alpha`$ ， $`\text{id}`$ 是從 $`\alpha`$ 到 $`\alpha`$ 的函數」。
 
 ### 2. 型別抽象與型別應用
 
@@ -39,8 +39,8 @@ $$
 e ::= x \mid \lambda x:\tau.\, e \mid e_1\ e_2 \mid \Lambda \alpha.\, e \mid e\ [\tau]
 $$
 
-- $\Lambda \alpha.\, e$ ：**型別抽象**（type abstraction）——「把型別 $\alpha$ 當作參數」；
-- $e\ [\tau]$ ：**型別應用**（type application）——「用具體型別 $\tau$ 實例化」。
+- $`\Lambda \alpha.\, e`$ ：**型別抽象**（type abstraction）——「把型別 $`\alpha`$ 當作參數」；
+- $`e\ [\tau]`$ ：**型別應用**（type application）——「用具體型別 $`\tau`$ 實例化」。
 
 型別規則：
 
@@ -62,7 +62,7 @@ $$
 \text{id}\ [\mathbb{Int}] : \mathbb{Int} \to \mathbb{Int}, \qquad \text{id}\ [\mathbb{Bool}] : \mathbb{Bool} \to \mathbb{Bool}
 $$
 
-一個 $\text{id}$ ，多種型別——DRY 的數學實現。
+一個 $`\text{id}`$ ，多種型別——DRY 的數學實現。
 
 ### 3. System F 的 Church 數字
 
@@ -72,19 +72,19 @@ $$
 \ulcorner n \urcorner \;=\; \Lambda \alpha.\, \lambda f:\alpha \to \alpha.\, \lambda x:\alpha.\, \underbrace{f (f (\cdots (f\ x)\cdots))}_{n \text{ 次}}
 $$
 
-例如 $n = 2$ ：
+例如 $`n = 2`$ ：
 
 $$
 \ulcorner 2 \urcorner = \Lambda \alpha.\, \lambda f:\alpha \to \alpha.\, \lambda x:\alpha.\, f\ (f\ x)
 $$
 
-型別： $\forall \alpha.\, (\alpha \to \alpha) \to (\alpha \to \alpha)$ ——**Church 數字在 System F 中有了統一的型別**。加法也自然定義：
+型別： $`\forall \alpha.\, (\alpha \to \alpha) \to (\alpha \to \alpha)`$ ——**Church 數字在 System F 中有了統一的型別**。加法也自然定義：
 
 $$
 \text{add} = \Lambda \alpha.\, \lambda m:\forall\alpha.\ldots\ \lambda n:\ldots\ \lambda f:\alpha \to \alpha.\, \lambda x:\alpha.\, m\ [\alpha]\ f\ (n\ [\alpha]\ f\ x)
 $$
 
-（簡化寫法： $\text{add}\ m\ n\ f\ x = m\ f\ (n\ f\ x)$ 。）
+（簡化寫法： $`\text{add}\ m\ n\ f\ x = m\ f\ (n\ f\ x)`$ 。）
 
 ### 4. Haskell 式寫法
 
@@ -118,13 +118,13 @@ addC m n f x = m f (n f x)
 
 **定理（Girard, 1972）**：System F 是**強正規化（strongly normalizing）**的——每個型別正確的項，無論以何種歸納順序，都會在有限步內化約到正規形式。
 
-**證明方法**：Girard 發明了「可滿足性候選（candidats de réductibilité / reducibility candidates）」方法：定義一類「好型別」 $S_\tau$ （正規化、由 neutral terms 或紅縮封閉等），對每個型別 $\tau$ 歸納地建立詮釋 $\llbracket \tau \rrbracket \subseteq S_\tau$ ，證明所有型別正確的項屬於對應詮釋。這個方法至今仍是依賴型別系統強正規化證明的標準工具。
+**證明方法**：Girard 發明了「可滿足性候選（candidats de réductibilité / reducibility candidates）」方法：定義一類「好型別」 $`S_\tau`$ （正規化、由 neutral terms 或紅縮封閉等），對每個型別 $`\tau`$ 歸納地建立詮釋 $`\llbracket \tau \rrbracket \subseteq S_\tau`$ ，證明所有型別正確的項屬於對應詮釋。這個方法至今仍是依賴型別系統強正規化證明的標準工具。
 
 推論：System F 中**沒有一般遞迴**（否則可寫出不終止的項），因此「圖靈完備」必須靠原始遞迴/資料型別/不動點組合子的受限形式補充。
 
 ### 6. 參數性（Parametricity）
 
-Reynolds 的關鍵洞察： $\text{id} : \forall \alpha.\, \alpha \to \alpha$ 的**唯一實現**是恆等函數——多型函數對型別「一視同仁」（parametric）。這導出：
+Reynolds 的關鍵洞察： $`\text{id} : \forall \alpha.\, \alpha \to \alpha`$ 的**唯一實現**是恆等函數——多型函數對型別「一視同仁」（parametric）。這導出：
 
 - **Theorems for Free!**（Wadler, 1989）：從型別就能推出函數必須滿足的定理；
 - **參數性抽象資料型別**：Abstract Data Type 的數學基礎。

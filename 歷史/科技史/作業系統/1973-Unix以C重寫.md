@@ -3,7 +3,11 @@
 ## 案件摘要
 1973 年，Dennis Ritchie 把 Unix 從 PDP-11 組合語言**重寫為 C 語言**——
 作業系統史上第一次，核心程式碼與特定機器**解耦**：
-$$\text{原始碼} + \text{編譯器} \quad\Longrightarrow\quad \text{任何機器上的 Unix}.$$
+
+$$
+\text{原始碼} + \text{編譯器} \quad\Longrightarrow\quad \text{任何機器上的 Unix}.
+$$
+
 Unix 從「一台機器的系統」變成「一族機器的系統」——**可移植性**的誕生，
 C 語言從此成為系統軟體的通用語言。
 
@@ -16,23 +20,37 @@ C 語言從此成為系統軟體的通用語言。
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：可移植性的數學
-設移植成本：組合語言版 = $c_{\text{asm}}$ （幾乎等於重寫），C 版 = $c_{\text{port}}$ （只改機器相依部分）：
-$$c_{\text{port}} = c_{\text{machine-dependent}} \ll c_{\text{asm}}.$$
+設移植成本：組合語言版 = $`c_{\text{asm}}`$ （幾乎等於重寫），C 版 = $`c_{\text{port}}`$ （只改機器相依部分）：
+
+$$
+c_{\text{port}} = c_{\text{machine-dependent}} \ll c_{\text{asm}}.
+$$
+
 核心的機器相依部分被隔離到極少數檔案（組合語言起動碼、MMU 設定）——**其餘 95% 不用動**：
-$$N \text{ 台機器: } c_{\text{asm}} \times N \quad \text{vs} \quad c_{\text{port}} \times N + c_{\text{port}}.$$
+
+$$
+N \text{ 台機器: } c_{\text{asm}} \times N \quad \text{vs} \quad c_{\text{port}} \times N + c_{\text{port}}.
+$$
 
 ### 第二條線索：C 語言的設計抉擇
 Ritchie 的關鍵取捨——**「可移植的組合語言」**：
 1. **低階控制**：指標、位元運算——能寫驅動程式與 MMU。
 2. **高階抽象**：函式、結構、型別——能寫大型系統。
 3. **極小核心**：C 只有 32 個關鍵字——編譯器容易移植到新機器。
-$$\text{C 編譯器可移植} \;\Longrightarrow\; \text{Unix 可移植} \;\Longrightarrow\; \text{生態系自我擴張}.$$
+
+$$
+\text{C 編譯器可移植} \;\Longrightarrow\; \text{Unix 可移植} \;\Longrightarrow\; \text{生態系自我擴張}.
+$$
+
 **語言與系統互相成就**——C 為 Unix 而生，Unix 為 C 而擴散。
 
 ### 第三條線索：1973 年的驗證——C 版 Unix 性能不輸組合語言
 Ritchie 與 Thompson 重寫的 C 版核心，性能與組合語言版相當——
 「高階語言太慢」的教條被正式謀殺。1974 年論文發表於 CACM：
-$$\text{C 版 Unix 性能} \approx \text{組合語言版} \quad \text{（差距 < 20–30%）}.$$
+
+$$
+\text{C 版 Unix 性能} \approx \text{組合語言版} \quad \text{（差距 < 20–30%）}.
+$$
 
 ### C 語言重寫核心的縮影
 

@@ -19,16 +19,27 @@ Turing 1950 年的測試（見「1950-Turing測試.md」）、73 年後實質通
 
 ### 第一步：監督微調 (SFT)
 用人類示範的問答對微調 GPT：
-$$L_{SFT} = -\sum_t \log P(x_t \mid x_{<t}; \theta) \quad (\text{資料} = \text{人類寫的理想回答}).$$
+
+$$
+L_{SFT} = -\sum_t \log P(x_t \mid x_{<t}; \theta) \quad (\text{資料} = \text{人類寫的理想回答}).
+$$
 
 ### 第二步：獎勵模型 (RM)
-讓模型生成多個回答，人類排序；訓練獎勵模型 $r_\phi(x, y)$ 預測人類偏好：
-$$L_{RM} = -\log \sigma\big(r_\phi(x, y_{\text{好}}) - r_\phi(x, y_{\text{差}})\big).$$
+讓模型生成多個回答，人類排序；訓練獎勵模型 $`r_\phi(x, y)`$ 預測人類偏好：
+
+$$
+L_{RM} = -\log \sigma\big(r_\phi(x, y_{\text{好}}) - r_\phi(x, y_{\text{差}})\big).
+$$
+
 **人類偏好被數學化為獎勵函數**——RLHF 的核心。
 
 ### 第三步：強化學習（PPO）
 用獎勵模型的分數當「獎勵」，PPO 更新語言模型：
-$$\max_\theta\; \mathbb{E}_{y\sim \pi_\theta}\big[r_\phi(x, y)\big] - \beta\, \mathrm{KL}\big(\pi_\theta \| \pi_{ref}\big).$$
+
+$$
+\max_\theta\; \mathbb{E}_{y\sim \pi_\theta}\big[r_\phi(x, y)\big] - \beta\, \mathrm{KL}\big(\pi_\theta \| \pi_{ref}\big).
+$$
+
 KL 項防止模型「討好獎勵模型而失去語言能力」（獎勵欺騙，reward hacking）——對齊與能力的平衡。
 
 ### 第四步：為什麼對話介面引爆了革命

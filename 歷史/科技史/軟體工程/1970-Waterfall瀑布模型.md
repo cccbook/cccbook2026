@@ -17,58 +17,78 @@
   橋樑蓋到一半不能改藍圖，所以軟體也**應該**先凍結需求再寫碼？Royce 認為這是誤植。
 - **關鍵推理**：Royce 論文的邏輯是兩段式的——
   先描述「理想的線性流程」（那張圖），**再指出它注定失敗**，然後提出修正：
-  $$\text{線性流程（圖）} \xrightarrow{\text{Royce 的批註}} \text{必須加回饋箭頭 + 至少兩次迭代}.$$
+
+$$
+\text{線性流程（圖）} \xrightarrow{\text{Royce 的批註}} \text{必須加回饋箭頭 + 至少兩次迭代}.
+$$
+
 - **斷章取義的誕生**：論文只有 11 頁，前半（純瀑布圖）被廣泛複印引用，
   後半（迭代修正）被集體遺忘——**「純瀑布」成為一個 Royce 從未主張的方法學**。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：瀑布的五道關卡與回饋延遲
-$$\text{需求} \to \text{設計} \to \text{實作} \to \text{測試} \to \text{維護} \qquad \text{（Royce 的原圖）}$$
 
-- **回饋延遲 $O(\text{phase})$ **：在階段 $k$ 發現的問題，要回溯到階段 $j < k$ 修正，
+$$
+\text{需求} \to \text{設計} \to \text{實作} \to \text{測試} \to \text{維護} \qquad \text{（Royce 的原圖）}
+$$
+
+- **回饋延遲 $`O(\text{phase})`$ **：在階段 $`k`$ 發現的問題，要回溯到階段 $`j < k`$ 修正，
   付出的回饋延遲與**兩個階段的距離**成正比：
-  $$\text{delay}(j \to k) \sim \sum_{i=j}^{k} T_i \quad\Longrightarrow\quad \text{隔得越遠，返工越貴。}$$
+
+$$
+\text{delay}(j \to k) \sim \sum_{i=j}^{k} T_i \quad\Longrightarrow\quad \text{隔得越遠，返工越貴。}
+$$
+
 - **純瀑布的罩門**：只有一條向下箭頭——問題只能在**最末端**（測試）才被發現，
-  此時回溯到需求階段的返工成本最大（ $O(10^k)$ ，見「1968-NATO軟體工程會議.md」）。
+  此時回溯到需求階段的返工成本最大（ $`O(10^k)`$ ，見「1968-NATO軟體工程會議.md」）。
 - **Royce 的原意**：在論文第 5、6 節明確寫著——
   > 「程式開發需要**至少兩次**迭代：先做一個小規模版本驗證設計，再做正式版本。」
   且開發者應「與客戶持續互動、計畫測試、**把測試設計與開發並行**」——
   這些回饋箭頭就畫在他那張圖上，卻被省略了。
 
-### 第二條線索：需求變更的成本 $C(k)$
-需求不會凍結——這是瀑布的**根本假設缺陷**。設專案在階段 $k$ 才處理一個需求變更：
+### 第二條線索：需求變更的成本 $`C(k)`$
+需求不會凍結——這是瀑布的**根本假設缺陷**。設專案在階段 $`k`$ 才處理一個需求變更：
 
-$$C_{\text{waterfall}}(k) = C_0 \cdot 10^{k} \cdot N_{\text{affected}} \qquad \text{vs} \qquad C_{\text{iter}} = C_0 \cdot \bar{10}^{k_{\text{iter}}} \cdot N_{\text{affected}}$$
+$$
+C_{\text{waterfall}}(k) = C_0 \cdot 10^{k} \cdot N_{\text{affected}} \qquad \text{vs} \qquad C_{\text{iter}} = C_0 \cdot \bar{10}^{k_{\text{iter}}} \cdot N_{\text{affected}}
+$$
 
-- 純瀑布中，需求變更平均要到**測試階段**（ $k=3\text{–}4$ ）才被整合——每個變更都是天價。
+- 純瀑布中，需求變更平均要到**測試階段**（ $`k=3\text{–}4`$ ）才被整合——每個變更都是天價。
 - 迭代式開發（Royce 原意、Boehm 螺旋）把回饋週期縮短到 2–4 週——
-  變更在**下一次迭代**就被吸收， $k_{\text{iter}}$ 一直很小。
-- **迭代縮短回饋**：回饋週期 $L$ 越短，變更累積量越少、修復階段越早——
-  $$\text{總成本} \propto \int_0^{T} 10^{k(t)}\, dt \quad\Longrightarrow\quad \text{壓低 } k(t) \text{ 就壓低總成本}.$$
+  變更在**下一次迭代**就被吸收， $`k_{\text{iter}}`$ 一直很小。
+- **迭代縮短回饋**：回饋週期 $`L`$ 越短，變更累積量越少、修復階段越早——
+
+$$
+\text{總成本} \propto \int_0^{T} 10^{k(t)}\, dt \quad\Longrightarrow\quad \text{壓低 } k(t) \text{ 就壓低總成本}.
+$$
 
 ### 第三條線索：Boehm 的螺旋模型（1988）——修正案
 Barry Boehm 在 1988 年提出螺旋模型（spiral model），把 Royce 的回饋思想形式化：
 
-$$\text{每一次螺旋} = \underbrace{\text{目標}}_{\text{objectives}} \to \underbrace{\text{風險分析}}_{\text{risk}} \to \underbrace{\text{開發與測試}}_{\text{prototype/build}} \to \underbrace{\text{評估與規劃}}_{\text{plan next}}$$
+$$
+\text{每一次螺旋} = \underbrace{\text{目標}}_{\text{objectives}} \to \underbrace{\text{風險分析}}_{\text{risk}} \to \underbrace{\text{開發與測試}}_{\text{prototype/build}} \to \underbrace{\text{評估與規劃}}_{\text{plan next}}
+$$
 
 - **每一圈都是一次小型瀑布**，但產出的是**可運作的原型**——回饋以「圈」為單位，而非「階段」。
-- **風險驅動**：每圈先問「哪裡會出事」，把 $O(10^k)$ 的返工成本前置到風險分析階段消化。
+- **風險驅動**：每圈先問「哪裡會出事」，把 $`O(10^k)`$ 的返工成本前置到風險分析階段消化。
 - 這是瀑布與敏捷之間的**演化中繼站**——敏捷（2001）把螺旋的「圈」再縮短到「衝刺（sprint）」。
 
 ### 第四條線索：迭代式開發——Royce 原意的落實
 Royce 論文第 5、6 節的修正，拆開來就是**三個具體主張**：
 
-$$\text{兩次迭代} + \text{開發與測試並行} + \text{持續的客戶互動} \quad\Longrightarrow\quad \text{回饋週期從「月」縮到「週」}$$
+$$
+\text{兩次迭代} + \text{開發與測試並行} + \text{持續的客戶互動} \quad\Longrightarrow\quad \text{回饋週期從「月」縮到「週」}
+$$
 
 1. **先做小型版本**：用一個精簡但完整的原型（pilot model）跑通全流程，
    驗證設計假設——**錯誤在第一輪就被吸收，而非累積到測試階段**。
 2. **測試與開發並行**：「計畫測試」不是專案末端的動作——測試設計應與每個階段同步展開，
-   讓 $k(t)$ 曲線永遠壓在低位。
+   讓 $`k(t)`$ 曲線永遠壓在低位。
 3. **持續的客戶互動**：需求凍結是幻想——與其假設需求不變，
    不如建立**短週期的需求回饋機制**，讓變更以「增量」而非「爆炸」的方式到來。
-- **迭代回饋的數學效果**：回饋週期 $L$ 縮短 $r$ 倍，
-  變更被吸收的階段 $k$ 隨之下降——總返工成本約下降 $10^{\Delta k}$ 倍，
+- **迭代回饋的數學效果**：回饋週期 $`L`$ 縮短 $`r`$ 倍，
+  變更被吸收的階段 $`k`$ 隨之下降——總返工成本約下降 $`10^{\Delta k}`$ 倍，
   **一個數量級的節省，來自一張圖上被省略的箭頭**。
 - 這三個主張在 1988 年被 Boehm 收進螺旋模型，在 2001 年被寫進敏捷宣言
   ——**Royce 的論文後半部，是敏捷的思想化石**。
@@ -133,7 +153,7 @@ for p in (0.2, 0.4, 0.6):
   *Managing the Development of Large Software Systems*（Proc. IEEE WESCON, 1970）
   ——11 頁的論文，被引用的方式與原文主張完全相反。
 - **Barry Boehm**（TRW/USC）：螺旋模型「A Spiral Model of Software Development
-  and Enhancement」(*Computer*, 1988)；bug 成本 $O(10^k)$ 與 COCOMO 的作者
+  and Enhancement」(*Computer*, 1988)；bug 成本 $`O(10^k)`$ 與 COCOMO 的作者
   ——見「1968-NATO軟體工程會議.md」。
 - **Herbert Benington**：SAGE 專案的「Production of Large Computer Programs」(1956)
   ——瀑布式流程的更早前身（Royce 論文亦受其影響）。

@@ -3,7 +3,10 @@
 ## 案件摘要
 1975 年，Bell 實驗室發布 **Version 6 Unix**——第一個廣泛流傳到大學的版本（約 9,000 行核心，含完整原始碼）。
 同年 **Ken Thompson 休假（sabbatical）到 UC Berkeley**，把 Unix 帶進西海岸——**BSD（Berkeley Software Distribution）的種子就此埋下**。
-$$\text{V6 原始碼流出} \;+\; \text{Thompson 進入 Berkeley} \;=\; \text{Unix 史上最重要的分岔：BSD 誕生}.$$
+
+$$
+\text{V6 原始碼流出} \;+\; \text{Thompson 進入 Berkeley} \;=\; \text{Unix 史上最重要的分岔：BSD 誕生}.
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **V6 的地位**：1975–77 年間，全球逾 75% 授權的 Unix 都是 V6——它是「標準 Unix」的第一個事實版本。
@@ -15,12 +18,20 @@ $$\text{V6 原始碼流出} \;+\; \text{Thompson 進入 Berkeley} \;=\; \text{Un
 
 ### 第一條線索：1BSD 與 2BSD（1977–78）
 Berkeley 發布的第一批「發行版」其實只是**附加軟體**（Pascal 編譯器、ex 編輯器）——
-$$\text{BSD} = \text{Unix 基底} + \text{Berkeley 的附加層}.$$
+
+$$
+\text{BSD} = \text{Unix 基底} + \text{Berkeley 的附加層}.
+$$
+
 - **歷史意義**：這是「發行版（distribution）」概念的起源——今天 Debian、Ubuntu、Red Hat 的模式，原型就是 BSD。
 
 ### 第二條線索：vi 的誕生（1976）
 Bill Joy 把 `ed` 的行編輯擴充為 `ex`，再加上**全螢幕視覺模式**成為 `vi`：
-$$\text{ed（行導向）} \Rightarrow \text{ex（擴充）} \Rightarrow \text{vi（全螢幕視覺）}.$$
+
+$$
+\text{ed（行導向）} \Rightarrow \text{ex（擴充）} \Rightarrow \text{vi（全螢幕視覺）}.
+$$
+
 - **彌補的缺陷**：1976 年的終端機（ADM-3A）終於能做游標定位——ed 的行編輯已浪費了硬體能力。**硬體進步逼出編輯器革命**。
 
 ### 第三條線索：C Shell（1978）

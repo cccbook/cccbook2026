@@ -2,7 +2,11 @@
 
 ## 案件摘要
 2008 年 9 月 23 日，Google 發布 **Android 1.0**——以 **Linux 核心**為基礎的行動作業系統。
-$$\text{Linux 核心（1991）} + \text{Java/Dalvik 虛擬機} + \text{Apache 授權} = \text{Android}.$$
+
+$$
+\text{Linux 核心（1991）} + \text{Java/Dalvik 虛擬機} + \text{Apache 授權} = \text{Android}.
+$$
+
 **Unix 的思想第三次勝利**：從伺服器（Linux）、Mac（BSD）到手機（Android）——今天逾 70% 的智慧型手機跑著 Linux 核心，**Unix 後裔成為地球上最普及的作業系統**。
 
 ## 前因 -- 為什麼會有這個案子
@@ -16,7 +20,11 @@ $$\text{Linux 核心（1991）} + \text{Java/Dalvik 虛擬機} + \text{Apache �
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：雙層授權的架構
-$$\text{Android} = \underbrace{\text{Linux 核心（GPL，必須開源）}}_{\text{核心層}} + \underbrace{\text{使用者空間（Apache，可閉源）}}_{\text{廠商層}}.$$
+
+$$
+\text{Android} = \underbrace{\text{Linux 核心（GPL，必須開源）}}_{\text{核心層}} + \underbrace{\text{使用者空間（Apache，可閉源）}}_{\text{廠商層}}.
+$$
+
 - **彌補的缺陷**：純 GPL 會嚇跑商業廠商；純 BSD 式授權會讓核心修改不回饋——雙層授權取折衷。
 
 ### 第二條線索：Dalvik/ART 虛擬機

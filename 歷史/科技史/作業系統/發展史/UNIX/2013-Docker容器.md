@@ -2,29 +2,49 @@
 
 ## 案件摘要
 2013 年 3 月，**Solomon Hykes** 在 PyCon 發表 **Docker**——把 Linux 的 **cgroups + namespaces** 包裝成「一個指令就能跑的容器」。
-$$\text{容器} = \text{namespaces（隔離視野）} + \text{cgroups（資源限制）} + \text{映像檔（image，不可變）}.$$
+
+$$
+\text{容器} = \text{namespaces（隔離視野）} + \text{cgroups（資源限制）} + \text{映像檔（image，不可變）}.
+$$
+
 **作業系統層虛擬化**：不需要虛擬機的重量級模擬，直接共享主機核心——部署從「小時級」降到「秒級」，**部署的工業革命**。
 
 ## 前因 -- 為什麼會有這個案子
 - **虛擬機的缺陷**：VM（VMware、KVM）每台要完整 guest OS（GB 級）、啟動數分鐘、記憶體重複——**彌補的缺陷：太重、太慢**。容器共享主機核心：MB 級、秒級啟動。
 - **「在我機器上可以跑」的詛咒**：開發環境與生產環境不一致是軟體工程永恆的痛——Docker 用**不可變映像檔**一次解決：
-  $$\text{映像檔（image）} = \text{環境的完整快照} \quad \Rightarrow \quad \text{處處一致}.$$
+
+$$
+\text{映像檔（image）} = \text{環境的完整快照} \quad \Rightarrow \quad \text{處處一致}.
+$$
+
 - **Linux 核心的技術積累**：namespaces（2002 年起逐步加入核心）、cgroups（2008 年加入核心 2.6.24）、LXC（2008）——Docker 的功勞不在發明這些，而是**把它們變成人人可用的一個指令**。
 - **理論基礎**：不可變基礎設施（immutable infrastructure）——系統狀態不再「修改」，而是「整個換掉」——消除狀態漂移（configuration drift）。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：namespaces——隔離的六個維度
-$$\text{namespaces} = \{\text{PID, NET, MNT, UTS, IPC, USER}\}.$$
+
+$$
+\text{namespaces} = \{\text{PID, NET, MNT, UTS, IPC, USER}\}.
+$$
+
 - **每個 namespace 隔離一種視野**：PID ns 讓容器有自己的行程編號 1；NET ns 讓容器有自己的網路堆疊；MNT ns 讓容器有自己的檔案樹。
 - **彌補的缺陷**：chroot（1979）只能隔離檔案系統一個維度——namespaces 把隔離推到六個維度。
 
 ### 第二條線索：cgroups——資源的會計與限制
-$$\text{cgroups} = \{\text{CPU, memory, IO, network}\} \text{ 的配額}.$$
+
+$$
+\text{cgroups} = \{\text{CPU, memory, IO, network}\} \text{ 的配額}.
+$$
+
 - **彌補的缺陷**：Unix 傳統上無法限制某群行程的資源用量（nice 只能調優先級）——cgroups 讓「資源配額」成為一等公民。
 
 ### 第三條線索：映像檔的分層（layered image）
-$$\text{映像檔} = \text{基底層} + \text{層}_1 + \text{層}_2 + \cdots \quad (\text{層可共享、可快取})$$
+
+$$
+\text{映像檔} = \text{基底層} + \text{層}_1 + \text{層}_2 + \cdots \quad (\text{層可共享、可快取})
+$$
+
 - **彌補的缺陷**：VM 映像數 GB 不可共享——容器映像分層，基底層（如 ubuntu:22.04）全機只存一份，**儲存與傳輸的數量級節省**。
 
 ### Shell 範例：容器的日常使用

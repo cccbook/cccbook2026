@@ -23,7 +23,11 @@ function fib(n) {
 
 ### 線索 2：Wasm 二進位格式與堆疊機
 Wasm 是**驗證型（type-safe）堆疊機**位元碼。指令明確標注型別：
-$$(i32.add\ (local.get\ 0)\ (local.get\ 1)) : i32 \times i32 \to i32$$
+
+$$
+(i32.add\ (local.get\ 0)\ (local.get\ 1)) : i32 \times i32 \to i32
+$$
+
 模組在載入時經過**單趟驗證**（single-pass validation），驗證通過才編譯執行——沙箱安全的理論根基。
 
 Wat 文字格式與二進位格式一一對應：
@@ -39,8 +43,12 @@ Wat 文字格式與二進位格式一一對應：
 ### 線索 3：驗證型與沙箱安全
 Wasm 的安全模型：
 1. **結構化控制流**：無任意 goto/跳到資料位址，控制流圖可靜態建構。
-2. **線性記憶體**：所有存取限制在模組自己的線性記憶體 $[0, M)$ ，越界即 trap：
-$$\forall \text{ 記憶體存取 } a:\ a + size \le M \ \text{ 否則 trap}$$
+2. **線性記憶體**：所有存取限制在模組自己的線性記憶體 $`[0, M)`$ ，越界即 trap：
+
+$$
+\forall \text{ 記憶體存取 } a:\ a + size \le M \ \text{ 否則 trap}
+$$
+
 3. **無能力外洩**：預設無法直接呼叫系統呼叫、觸碰 host 記憶體，一切需經 host 環境提供的 imported function。
 
 ### 線索 4：Emscripten 編譯 C/C++/Rust 到 Wasm
@@ -52,7 +60,10 @@ emcc hello.c -o hello.js         # 產生 JS 膠水 + hello.wasm
 cargo build --target wasm32-unknown-unknown
 ```
 Emscripten（Alon Zakai，2011 起）先以 asm.js 為目標、後改 Wasm，把整個 C/C++ 生態（含 LLVM/Clang 管線）搬進瀏覽器：編譯管線為
-$$C/C{+}{+} \xrightarrow{\text{clang}} \text{LLVM IR} \xrightarrow{\text{emcc/LLVM}} \text{Wasm}$$
+
+$$
+C/C{+}{+} \xrightarrow{\text{clang}} \text{LLVM IR} \xrightarrow{\text{emcc/LLVM}} \text{Wasm}
+$$
 
 ### 線索 5：Python/Wat 範例展示 Wasm 模組載入
 ```shell
@@ -72,7 +83,11 @@ print(instance.exports(store)["add"](store, 3, 4))  # 7
 
 ### 線索 6：效能證據
 Wasm 執行速度約為原生碼的 **1.5–2 倍慢**（即原生速度的 50–70%）：
-$$T_{wasm} \approx (1.5 \sim 2)\,T_{native} \ll T_{js} \approx 10\,T_{native}$$
+
+$$
+T_{wasm} \approx (1.5 \sim 2)\,T_{native} \ll T_{js} \approx 10\,T_{native}
+$$
+
 比 JavaScript 快 5–10 倍，且記憶體使用可預測（無 GC 抖動）。
 
 ## 結案 -- 後果與影響

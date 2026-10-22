@@ -31,7 +31,7 @@ x86 有 17 條指令在 ring 3 執行時**不 trap 而靜默失敗**或**洩漏�
 - `POPF`：ring 3 執行時不 trap，且**忽略**對 IF 旗標的修改 → Guest 無法透過 trap 讓 VMM 管理中斷。
 - `SGDT/SIDT`：任何 ring 都可執行，洩漏真實的 GDT/IDT 位址 → Guest 發現自己不是在 ring 0。
 
-形式化地：對敏感指令 $i \in S_{\text{sensitive}}$ ，若 $i \notin S_{\text{privileged}}$ ，則在非特權模式執行時
+形式化地：對敏感指令 $`i \in S_{\text{sensitive}}`$ ，若 $`i \notin S_{\text{privileged}}`$ ，則在非特權模式執行時
 
 $$
 \text{exec}(i) \not\to \text{trap} \quad\Longrightarrow\quad \text{VMM 無法攔截與模擬}
@@ -49,7 +49,7 @@ $$
 T_{\text{BT}} \;=\; k \cdot t_{\text{native}} + C_{\text{translate}} \quad\text{vs}\quad T_{\text{trap}} \;=\; k \cdot (t_{\text{trap}} + t_{\text{emulate}})
 $$
 
-當 $k$ 大時，BT 遠勝於反覆 trap。這與 JIT 的攤提邏輯完全同構——VMware 其實是對 x86 機器碼做了一次「JIT」。
+當 $`k`$ 大時，BT 遠勝於反覆 trap。這與 JIT 的攤提邏輯完全同構——VMware 其實是對 x86 機器碼做了一次「JIT」。
 
 ### VMware Workstation（1999）與 ESX Server（2001）
 - **Workstation（1999）**：Type 2 hypervisor，跑在 Windows/Linux 之上，讓開發者在一台 PC 上執行多個 OS。
@@ -75,7 +75,7 @@ $$
 $$
 
 ### 伺服器整合與雲端的前夜
-VM 的經濟學： $n$ 台實體機（各利用率 $u \approx 0.1$ ）可整合為一台跑 $n$ 個 VM 的機器，硬體成本與耗電近似降為 $\lceil n \cdot u \rceil$ 台。2001 年 ESX 問世後，x86 伺服器平均利用率開始攀升；2006 年 Amazon EC2 以 Xen 為基礎推出——雲端運算的技術底座，正是這條破案線索的延伸。
+VM 的經濟學： $`n`$ 台實體機（各利用率 $`u \approx 0.1`$ ）可整合為一台跑 $`n`$ 個 VM 的機器，硬體成本與耗電近似降為 $`\lceil n \cdot u \rceil`$ 台。2001 年 ESX 問世後，x86 伺服器平均利用率開始攀升；2006 年 Amazon EC2 以 Xen 為基礎推出——雲端運算的技術底座，正是這條破案線索的延伸。
 
 ## 結案 -- 後果與影響
 - VMware 成為 2000 年代虛擬化霸主，2004 年被 EMC 以 6.35 億美元收購，2007 年 IPO。

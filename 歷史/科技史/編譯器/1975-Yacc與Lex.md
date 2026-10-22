@@ -14,11 +14,15 @@
 ### Yacc：語法規則進去、LALR parser 出來
 Yacc 的輸入是擴充 BNF 文法，每條產生式可附**語意動作**（semantic action）`{ ... }`，在規約（reduce）時執行。語意值的傳遞用合成棧：
 
-$$\$\$ = \$1\ op\ \$3$$
+$$
+\$\$ = \$1\ op\ \$3
+$$
 
-其中 `$$` 是左部非終端的語意值，`$n` 是右部第 $n$ 個符號的語意值——**規約本身就是語意值的組合函數**：
+其中 `$$` 是左部非終端的語意值，`$n` 是右部第 $`n`$ 個符號的語意值——**規約本身就是語意值的組合函數**：
 
-$$\text{val}(A) = f(\text{val}(X_1), \dots, \text{val}(X_n)) \quad \text{當 } A \to X_1 \cdots X_n \text{ 規約}$$
+$$
+\text{val}(A) = f(\text{val}(X_1), \dots, \text{val}(X_n)) \quad \text{當 } A \to X_1 \cdots X_n \text{ 規約}
+$$
 
 Yacc 內部跑 DeRemer 式的 LALR(1) 建表：先建 LR(0) 項目集，再用**局部 lookahead 合併**消除 shift/reduce 衝突（衝突時 Yacc 預設偏 shift，並發出警告）。
 
@@ -49,9 +53,11 @@ Lesk 的 Lex 用正則表示式描述詞彙（token）模式，自動產生掃�
 [-+*/()]    { return yytext[0]; }                    /* 運算子 */
 ```
 
-正則到自動機的理論：Thompson 建構法（1968）先把正則 $r$ 轉成 NFA $\epsilon$ -NFA，再以 **subset construction** 轉成 DFA：
+正則到自動機的理論：Thompson 建構法（1968）先把正則 $`r`$ 轉成 NFA $`\epsilon`$ -NFA，再以 **subset construction** 轉成 DFA：
 
-$$\text{NFA 狀態數} = \mathcal{O}(|r|), \qquad \text{DFA 狀態數} \le 2^{\mathcal{O}(|r|)} \text{（最壞），實務通常線性}$$
+$$
+\text{NFA 狀態數} = \mathcal{O}(|r|), \qquad \text{DFA 狀態數} \le 2^{\mathcal{O}(|r|)} \text{（最壞），實務通常線性}
+$$
 
 掃描器的策略：**最長匹配**（maximal munch）+ 遇到無法延伸時回退並發出最後一個接受態的 token。
 

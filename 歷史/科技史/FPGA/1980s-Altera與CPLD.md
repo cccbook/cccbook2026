@@ -17,14 +17,16 @@ Altera 於 1983 年在加州創立（創辦人為 Robert Hartmann、Michael Magr
 
 PAL 的本質是一個兩級積之和（Sum-of-Products, SOP）電路：
 
-$$f(x_1,\dots,x_n) = \sum_{i=1}^{m} P_i(x_1,\dots,x_n) = \sum_{i=1}^{m} \prod_{j \in S_i} \ell_j$$
+$$
+f(x_1,\dots,x_n) = \sum_{i=1}^{m} P_i(x_1,\dots,x_n) = \sum_{i=1}^{m} \prod_{j \in S_i} \ell_j
+$$
 
-其中每個乘積項 $P_i$ 是輸入文字（literal）的 AND， $m$ 是硬體提供的乘積項數量（典型為 8）。關鍵約束是：
+其中每個乘積項 $`P_i`$ 是輸入文字（literal）的 AND， $`m`$ 是硬體提供的乘積項數量（典型為 8）。關鍵約束是：
 
-- 每個宏單元**固定**分到 $m$ 個乘積項，項與項之間不能共用；
-- 固定 OR 陣列意味着 $m$ 一出廠就定死，函數若需要超過 $m$ 個乘積項就無法實現。
+- 每個宏單元**固定**分到 $`m`$ 個乘積項，項與項之間不能共用；
+- 固定 OR 陣列意味着 $`m`$ 一出廠就定死，函數若需要超過 $`m`$ 個乘積項就無法實現。
 
-這就是 PAL 的數學天花板：一個 $n$ 變數函數的最簡 SOP 形式可能需要多達 $\binom{n}{\lfloor n/2 \rfloor}$ 個質蘊含項（例如對稱函數），遠超硬體上限。設計師只能手工拆分邏輯、跨越多顆 PAL，於是「PAL 之間的接線」又變回了一團麵包板亂線——問題只是被縮小，沒有被消滅。
+這就是 PAL 的數學天花板：一個 $`n`$ 變數函數的最簡 SOP 形式可能需要多達 $`\binom{n}{\lfloor n/2 \rfloor}`$ 個質蘊含項（例如對稱函數），遠超硬體上限。設計師只能手工拆分邏輯、跨越多顆 PAL，於是「PAL 之間的接線」又變回了一團麵包板亂線——問題只是被縮小，沒有被消滅。
 
 ### 線索二：CPLD 的架構解法——PIA 與宏單元
 
@@ -38,34 +40,44 @@ MAX 5000 的架構推理可以拆成三層：
 
 與 PAL 的根本差異有二：
 
-1. **乘積項可共用與擴展**：宏單元的乘積項可以借給同一 LAB 內的其他宏單元（product-term expansion），打破「每人固定 8 項」的限制，等效於讓 $m$ 變成軟性資源。
+1. **乘積項可共用與擴展**：宏單元的乘積項可以借給同一 LAB 內的其他宏單元（product-term expansion），打破「每人固定 8 項」的限制，等效於讓 $`m`$ 變成軟性資源。
 2. **單一確定性互連**：所有信號都經過 PIA，且 PIA 是「乘積項驅動的全域 AND 陣列」而非逐段開關。這帶來一個決定性的數學性質——
 
 ### 線索三：確定性 timing 的數學證明
 
-設信號從宏單元 $A$ 到宏單元 $B$ 。在 CPLD 中，任何路徑都必須是：
+設信號從宏單元 $`A`$ 到宏單元 $`B`$ 。在 CPLD 中，任何路徑都必須是：
 
-$$A \rightarrow \text{PIA} \rightarrow B$$
+$$
+A \rightarrow \text{PIA} \rightarrow B
+$$
 
 路徑數只有一種拓撲，因此延遲是一個常數：
 
-$$t_{pd}^{\text{CPLD}} = t_{\text{macro}} + t_{\text{PIA}} + t_{\text{macro}} = \text{const}$$
+$$
+t_{pd}^{\text{CPLD}} = t_{\text{macro}} + t_{\text{PIA}} + t_{\text{macro}} = \text{const}
+$$
 
-反觀 Xilinx XC2000/3000 這類「海洋式（sea-of-blocks）」架構，信號要穿過 $k$ 個可程式開關（switch matrix / pass transistor）：
+反觀 Xilinx XC2000/3000 這類「海洋式（sea-of-blocks）」架構，信號要穿過 $`k`$ 個可程式開關（switch matrix / pass transistor）：
 
-$$t_{pd}^{\text{FPGA}} = t_{\text{logic}} + \sum_{i=1}^{k} \left( t_{\text{sw}_i} + t_{\text{wire}_i} \right), \quad k \text{ 隨布線結果浮動}$$
+$$
+t_{pd}^{\text{FPGA}} = t_{\text{logic}} + \sum_{i=1}^{k} \left( t_{\text{sw}_i} + t_{\text{wire}_i} \right), \quad k \text{ 隨布線結果浮動}
+$$
 
-其中經過 $k$ 個串接 RC 級的傳播延遲近似為：
+其中經過 $`k`$ 個串接 RC 級的傳播延遲近似為：
 
-$$t_{pd} \approx 0.69 \, R_{\text{sw}} C_{\text{wire}} \cdot \frac{k(k+1)}{2}$$
+$$
+t_{pd} \approx 0.69 \, R_{\text{sw}} C_{\text{wire}} \cdot \frac{k(k+1)}{2}
+$$
 
-——注意是 $O(k^2)$ 而非 $O(k)$ ，因為每級開關的電容都累加到下一級。這個平方爆炸正是早期 FPGA 長布線延遲不可預測的物理根源。CPLD 用「一次經過、延遲恆定」交換掉了「高容量」，這是一筆清楚的可算交易：對於 fan-in 高、層數淺的邏輯（狀態機、解碼器、位址譯碼），CPLD 的 $t_{pd}$ 恆定且小，是嚴格優勢。
+——注意是 $`O(k^2)`$ 而非 $`O(k)`$ ，因為每級開關的電容都累加到下一級。這個平方爆炸正是早期 FPGA 長布線延遲不可預測的物理根源。CPLD 用「一次經過、延遲恆定」交換掉了「高容量」，這是一筆清楚的可算交易：對於 fan-in 高、層數淺的邏輯（狀態機、解碼器、位址譯碼），CPLD 的 $`t_{pd}`$ 恆定且小，是嚴格優勢。
 
 ### 線索四：非易失性的系統級推理
 
 EP300 用 EPROM 單元（浮閘電晶體，紫外線抹除）、MAX 5000 用 EPROM 式製程，組態儲存在晶片內部且斷電不消失。上電時序為：
 
-$$t_{\text{ready}} \approx t_{\text{power-up}} \approx \text{數百 ns} \sim \mu s$$
+$$
+t_{\text{ready}} \approx t_{\text{power-up}} \approx \text{數百 ns} \sim \mu s
+$$
 
 對比 SRAM FPGA 的上電流程：需要外部 PROM、上電後先載入 bitstream（典型 XC2064 需數十 ms 等級），期間所有 I/O 處於三態。這意味着：
 
@@ -82,7 +94,7 @@ $$t_{\text{ready}} \approx t_{\text{power-up}} \approx \text{數百 ns} \sim \mu
 | 等效容量 | ~數百閘 | 數百～數千閘 | 數千～數萬閘 |
 | 組態技術 | 熔絲（一次性） | EPROM（非易失） | SRAM（易失） |
 | 上電行為 | 即用 | 上電即用 | 需外部 bitstream 載入 |
-| 互連延遲 | 固定 | 固定（單一 PIA） | 路徑相關， $O(k^2)$ RC 累積 |
+| 互連延遲 | 固定 | 固定（單一 PIA） | 路徑相關， $`O(k^2)`$ RC 累積 |
 | 適合邏輯 | 小型組合邏輯 | 淺層寬邏輯、狀態機、glue logic | 深層寬電路、資料路徑、大型系統 |
 | 重複燒寫 | 無 | 有（紫外線/後續 EEPROM） | 無限次 |
 

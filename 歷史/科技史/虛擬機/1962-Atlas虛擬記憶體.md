@@ -14,16 +14,22 @@
 ### 1. 分頁（paging）與需求分頁（demand paging）
 把虛擬位址空間切成固定大小的「頁」（Atlas 頁大小 512 字），物理記憶體切成同大小的「頁框」（frame）。程式只在真正用到某頁時才載入它——這就是需求分頁。
 
-$$VA = (p, d) \quad\text{虛擬頁號 } p,\ \text{頁內位移 } d$$
+$$
+VA = (p, d) \quad\text{虛擬頁號 } p,\ \text{頁內位移 } d
+$$
 
-$$PA = f(p) \times (\text{frame size}) + d$$
+$$
+PA = f(p) \times (\text{frame size}) + d
+$$
 
 頁表（page table）記錄每頁的頁框號與「在場位元」（present bit）；不在場時觸發 page fault，由 OS 從磁鼓載入。
 
-### 2. 位址轉換 $VA \to PA$ 與 TLB
+### 2. 位址轉換 $`VA \to PA`$ 與 TLB
 Atlas 硬體首次提供位址轉換硬體，並用小型高速關聯暫存器快取最近的轉換——這正是今日 TLB（Translation Lookaside Buffer）的祖先。
 
-$$\text{TLB hit rate} = h \Rightarrow \text{平均轉換時間} = h \cdot t_{TLB} + (1-h)(t_{TLB} + t_{PT})$$
+$$
+\text{TLB hit rate} = h \Rightarrow \text{平均轉換時間} = h \cdot t_{TLB} + (1-h)(t_{TLB} + t_{PT})
+$$
 
 ### 3. 置換演算法與 Belady 反常
 記憶體滿了要換頁時，誰該被犧牲？
@@ -32,16 +38,20 @@ $$\text{TLB hit rate} = h \Rightarrow \text{平均轉換時間} = h \cdot t_{TLB
 
 Belady（1966）發現驚人反例：FIFO 在某些存取序列下，**頁框越多反而缺頁越多**，即 Belady 反常（anomaly）。LRU 屬於「堆疊演算法」，滿足
 
-$$P_n(k) \subseteq P_n(k+1)$$
+$$
+P_n(k) \subseteq P_n(k+1)
+$$
 
-（ $k$ 個頁框時的常駐頁集是 $k+1$ 個時的子集），因此不會有 Belady 反常。
+（ $`k`$ 個頁框時的常駐頁集是 $`k+1`$ 個時的子集），因此不會有 Belady 反常。
 
 ### 4. 有效存取時間（EAT）
-缺頁率 $p$ 、記憶體存取時間 $t_{mem}$ 、缺頁服務時間 $t_{fault}$ 時：
+缺頁率 $`p`$ 、記憶體存取時間 $`t_{mem}`$ 、缺頁服務時間 $`t_{fault}`$ 時：
 
-$$EAT = (1-p)\times t_{mem} + p \times t_{fault}$$
+$$
+EAT = (1-p)\times t_{mem} + p \times t_{fault}
+$$
 
-若 $t_{mem}=100\text{ns}$ 、 $t_{fault}=10\text{ms}$ ，則只要 $p > 10^{-5}$ ，EAT 就暴增一倍以上——「缺頁率必須極小」是虛擬記憶體可行的數學底線。
+若 $`t_{mem}=100\text{ns}`$ 、 $`t_{fault}=10\text{ms}`$ ，則只要 $`p > 10^{-5}`$ ，EAT 就暴增一倍以上——「缺頁率必須極小」是虛擬記憶體可行的數學底線。
 
 ### 5. Python 模擬：LRU 與 Belady 反常
 

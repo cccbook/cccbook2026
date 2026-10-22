@@ -7,12 +7,16 @@
 
 ## 前因 -- 為什麼會有這個案子
 - **封裝的意義**：裸晶（die）脆弱、怕水氧、散熱差、I/O 無法直接使用——封裝要同時做到**保護、散熱、訊號傳輸、I/O 擴展**四件事。
-- **Wire bond 的罩門一：I/O 數**：打線封裝只能沿晶片**周邊**放焊墊（pad），I/O 數 $O(\text{perimeter})$ ；1960 年代 IBM System/360 的處理器需要數百個 I/O，周邊繞線把 die 邊緣擠爆。
-- **Wire bond 的罩門二：寄生電感**：打線是懸空的細金線，電感量約每根 $1\ \text{nH}$ 級。高速開關時的感應雜訊：
-$$V = L\,\frac{di}{dt}$$
-  當電流切換愈快（ $di/dt$ 大）、I/O 愈多，電源與接地彈跳（ground bounce）愈嚴重——雜訊會把邏輯誤觸發。
+- **Wire bond 的罩門一：I/O 數**：打線封裝只能沿晶片**周邊**放焊墊（pad），I/O 數 $`O(\text{perimeter})`$ ；1960 年代 IBM System/360 的處理器需要數百個 I/O，周邊繞線把 die 邊緣擠爆。
+- **Wire bond 的罩門二：寄生電感**：打線是懸空的細金線，電感量約每根 $`1\ \text{nH}`$ 級。高速開關時的感應雜訊：
+
+$$
+V = L\,\frac{di}{dt}
+$$
+
+當電流切換愈快（ $`di/dt`$ 大）、I/O 愈多，電源與接地彈跳（ground bounce）愈嚴重——雜訊會把邏輯誤觸發。
 - **繞線長度**：打線從 pad 繞到基板，長度可達數 mm，訊號延遲與串擾（crosstalk）都與線長成正比。
-- **關鍵推理**：若晶片**面向下**、整個 die 表面都可以放 bump，I/O 就從 $O(\text{perimeter})$ 升級為 $O(\text{area})$ ；bump 高度僅數十微米，電感比打線低一個數量級——電性與密度雙贏，唯一的問題是：焊料熔融後晶片會不會掉？答案出人意料：**不會，它會自己站好**。
+- **關鍵推理**：若晶片**面向下**、整個 die 表面都可以放 bump，I/O 就從 $`O(\text{perimeter})`$ 升級為 $`O(\text{area})`$ ；bump 高度僅數十微米，電感比打線低一個數量級——電性與密度雙贏，唯一的問題是：焊料熔融後晶片會不會掉？答案出人意料：**不會，它會自己站好**。
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -30,20 +34,32 @@ C4 的工序：在 wafer 上每個 pad 蒸鍍/電鍍高鉛焊料凸塊（如 Pb/
 ```
 
 - **自我對準（self-alignment）**：回焊時焊料熔融成球，**表面張力**把晶片自動拉回與基板焊墊對齊的位置——對位精度可容許 ±50 μm 級誤差，遠低於 wire bond 的 wire bonder 精度需求：
-$$\Delta x \;\xrightarrow{\;\text{表面張力}\;}\; 0, \qquad F_{\gamma} = \gamma \,\frac{\partial A}{\partial x} \ \text{（表面張力驅動的最小化自由表面積）}$$
+
+$$
+\Delta x \;\xrightarrow{\;\text{表面張力}\;}\; 0, \qquad F_{\gamma} = \gamma \,\frac{\partial A}{\partial x} \ \text{（表面張力驅動的最小化自由表面積）}
+$$
+
 - **controlled collapse**：熔融焊料理論上會讓晶片塌到基板上短路，但焊料凸塊與周圍的**鈍化層限制**（ball-limiting metallurgy, BLM）把焊料「捏」成一個受控的球——晶片懸浮在 bump 之上，不會塌陷。
 - 這個物理巧合讓倒裝不需要高精度對位機台，量產成本反而更低。
 
 ### 2. I/O 密度：周邊 vs 面積陣列
 
-給定 die 尺寸 $s \times s$ 、pad/bump 間距 pitch $p$ ：
+給定 die 尺寸 $`s \times s`$ 、pad/bump 間距 pitch $`p`$ ：
 
-- **Wire bond（周邊）**：pad 只能放在四邊，每邊約 $s/p$ 個，扣除角落：
-$$N_{\text{wire}} \approx 4\,\frac{s}{p} - 4 \;\propto\; O(\text{perimeter}) = O(s)$$
+- **Wire bond（周邊）**：pad 只能放在四邊，每邊約 $`s/p`$ 個，扣除角落：
+
+$$
+N_{\text{wire}} \approx 4\,\frac{s}{p} - 4 \;\propto\; O(\text{perimeter}) = O(s)
+$$
+
 - **Flip chip（面積陣列）**：bump 鋪滿整個 die 表面：
-$$N_{\text{flip}} \approx \left(\frac{s}{p}\right)^2 \;\propto\; O(\text{area}) = O(s^2)$$
-- **比值**： $N_{\text{flip}}/N_{\text{wire}} \approx s/(4p)$ ——die 愈大，面積陣列的優勢呈**平方級**放大。10 mm die、200 μm pitch 時，面積陣列約可放 2,500 個 bump，周邊只能放約 196 個。
-- 這個 $O(s)$ vs $O(s^2)$ 的差異，正是現代 CPU/GPU 動輒數千個 I/O 的唯一解方。
+
+$$
+N_{\text{flip}} \approx \left(\frac{s}{p}\right)^2 \;\propto\; O(\text{area}) = O(s^2)
+$$
+
+- **比值**： $`N_{\text{flip}}/N_{\text{wire}} \approx s/(4p)`$ ——die 愈大，面積陣列的優勢呈**平方級**放大。10 mm die、200 μm pitch 時，面積陣列約可放 2,500 個 bump，周邊只能放約 196 個。
+- 這個 $`O(s)`$ vs $`O(s^2)`$ 的差異，正是現代 CPU/GPU 動輒數千個 I/O 的唯一解方。
 
 ### 3. 電性優勢：寄生電感的量化
 
@@ -55,18 +71,27 @@ bump 的電感遠低於打線：
 | Flip chip bump | ~50–100 μm | ~0.05–0.1 nH | ~10 mΩ |
 | TSV（3D） | ~50 μm（穿晶圓）| ~0.03 nH | ~20 mΩ |
 
-- 電源完整性： $V = L\,di/dt$ 。若 100 個 I/O 同時切換、每個 $di/dt = 10\ \text{mA/ns}$ ：
-$$V_{\text{wire}} = 100 \times 1\ \text{nH} \times 10\ \text{mA/ns} = 1\ \text{V} \quad\text{（足以誤觸發！）}$$
-$$V_{\text{flip}} = 100 \times 0.1\ \text{nH} \times 10\ \text{mA/ns} = 0.1\ \text{V} \quad\text{（可接受）}$$
+- 電源完整性： $`V = L\,di/dt`$ 。若 100 個 I/O 同時切換、每個 $`di/dt = 10\ \text{mA/ns}`$ ：
+
+$$
+V_{\text{wire}} = 100 \times 1\ \text{nH} \times 10\ \text{mA/ns} = 1\ \text{V} \quad\text{（足以誤觸發！）}
+$$
+
+$$
+V_{\text{flip}} = 100 \times 0.1\ \text{nH} \times 10\ \text{mA/ns} = 0.1\ \text{V} \quad\text{（可接受）}
+$$
+
 - 這正是高速訊號（GHz 級 clock、SerDes）非 flip chip 不可的原因——**電感是速度的天花板**。
 
 ### 4. Underfill：讓 bump 撐過熱膨脹
 
-矽的熱膨脹係數（CTE，約 $2.6\ \text{ppm/°C}$ ）與有機基板（約 $17\ \text{ppm/°C}$ ）相差近 7 倍，溫度循環會對 bump 施加剪應力：
+矽的熱膨脹係數（CTE，約 $`2.6\ \text{ppm/°C}`$ ）與有機基板（約 $`17\ \text{ppm/°C}`$ ）相差近 7 倍，溫度循環會對 bump 施加剪應力：
 
-$$\Delta x = \Delta\alpha \cdot \Delta T \cdot \frac{s}{2}, \qquad \tau \propto \frac{G\,\Delta x}{h_{\text{bump}}}$$
+$$
+\Delta x = \Delta\alpha \cdot \Delta T \cdot \frac{s}{2}, \qquad \tau \propto \frac{G\,\Delta x}{h_{\text{bump}}}
+$$
 
-- 1990 年代引入 **underfill**（毛細流動的環氧樹脂填滿 bump 間隙），把剪應力均攤到整個面積，bump 的熱循環壽命（如 $N_f \propto \tau^{-2}$ ，Coffin–Manson 律）提升一個數量級——flip chip 才能在消費性產品的溫度循環下存活。
+- 1990 年代引入 **underfill**（毛細流動的環氧樹脂填滿 bump 間隙），把剪應力均攤到整個面積，bump 的熱循環壽命（如 $`N_f \propto \tau^{-2}`$ ，Coffin–Manson 律）提升一個數量級——flip chip 才能在消費性產品的溫度循環下存活。
 - 無鉛焊料（2000s，RoHS）與 Cu pillar bump（銅柱凸塊，細間距）是後續的兩次製程升級。
 
 ### 5. 此後演進：BGA → CSP → 2.5D/3D

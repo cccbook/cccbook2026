@@ -3,7 +3,11 @@
 ## 案件摘要
 2013 年，Solomon Hykes 在 Python 研討會上演示 **Docker**——
 作業系統層虛擬化 (OS-level virtualization) 的商品化：
-$$\text{應用 + 依賴 + 設定} \xrightarrow{\text{映像檔}} \text{任何機器上一致的執行環境}.$$
+
+$$
+\text{應用 + 依賴 + 設定} \xrightarrow{\text{映像檔}} \text{任何機器上一致的執行環境}.
+$$
+
 「在我機器上能跑」的永恆痛點被謀殺——
 虛擬機的重量級隔離（見「2006-AWS虛擬化雲端.md」）與 Linux 核心的輕量級 namespaces/cgroups 聯手，
 **部署成為工業革命**。
@@ -31,17 +35,31 @@ $$\text{應用 + 依賴 + 設定} \xrightarrow{\text{映像檔}} \text{任何機
 | USER | UID/GID 映射 |
 | IPC | 行程間通訊 |
 
-$$\text{容器內的行程} \quad \text{以為自己獨佔整台機器}.$$
+$$
+\text{容器內的行程} \quad \text{以為自己獨佔整台機器}.
+$$
+
 **Multics 的保護思想（1965）+ CTSS 的「感覺獨佔」思想（1961）的容器版**。
 
 ### 第二條線索：cgroups —— 資源限額
-$$\text{cgroup} = \{\text{CPU 限額}, \text{記憶體限額}, \text{I/O 限額}, \text{pids 限額}\}.$$
+
+$$
+\text{cgroup} = \{\text{CPU 限額}, \text{記憶體限額}, \text{I/O 限額}, \text{pids 限額}\}.
+$$
+
 容器不會吃光主機資源——**「吵鬧鄰居」(noisy neighbor) 被制服**：
-$$\text{每個容器的資源} \le \text{cgroup 限額} \quad \text{（超出即節流或 OOM）}.$$
+
+$$
+\text{每個容器的資源} \le \text{cgroup 限額} \quad \text{（超出即節流或 OOM）}.
+$$
 
 ### 第三條線索：映像檔的分層 (layers)
 Docker 映像檔是**唯讀分層** + 聯合掛載：
-$$\text{映像} = \text{base 層} + \text{依賴層} + \cdots + \text{應用層（唯讀）} \quad \xrightarrow{\text{聯合掛載}} \quad \text{容器（+ 可寫層）}.$$
+
+$$
+\text{映像} = \text{base 層} + \text{依賴層} + \cdots + \text{應用層（唯讀）} \quad \xrightarrow{\text{聯合掛載}} \quad \text{容器（+ 可寫層）}.
+$$
+
 - **分層共用**：100 個容器共用同一個 base 層——儲存空間節省數十倍。
 - **分發**：只需下載未有的層——**部署速度的關鍵**。
 

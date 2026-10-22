@@ -26,17 +26,28 @@
 
 ### 核心推理：構象 = 遺傳（核酸的缺席）
 Prusiner 的偵破（成分確認 + 機制假說）：
-$$\text{傳染因子} = \text{抗紫外} + \text{抗輻射} + \text{抗 DNase/RNase} + \text{含蛋白質} \Longrightarrow \text{只有蛋白質}.$$
+
+$$
+\text{傳染因子} = \text{抗紫外} + \text{抗輻射} + \text{抗 DNase/RNase} + \text{含蛋白質} \Longrightarrow \text{只有蛋白質}.
+$$
+
 **機制的偵破**（Griffith 1967 年的理論預言 + Prusiner 的實驗確認）——
 **構象的模板複製**：
-$$\text{PrP}^{C}（\text{正常構象}） + \text{PrP}^{Sc}（\text{病態構象}） \to 2\,\text{PrP}^{Sc} \to 4\,\text{PrP}^{Sc} \to \cdots$$
+
+$$
+\text{PrP}^{C}（\text{正常構象}） + \text{PrP}^{Sc}（\text{病態構象}） \to 2\,\text{PrP}^{Sc} \to 4\,\text{PrP}^{Sc} \to \cdots
+$$
+
 - **PrP^C**：正常的膜蛋白（α 螺旋為主，無害）
 - **PrP^Sc**：病態構象（**β 摺板**為主，聚集、不可溶、致神經死亡）
 - **PrP^Sc 誘導 PrP^C 轉換構象**——**指數級的構象擴散**——**這就是「遺傳」**
 
 **構象 = 遺傳資訊的載體**——**沒有核酸、沒有序列，只有形狀的傳播**——
 **中心法則的第二次修正**（Temin 1970 的第一次修正的再延伸）：
-$$\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質}， \qquad \text{蛋白質構象} \to \text{蛋白質構象}（\text{旁支}）.$$
+
+$$
+\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質}， \qquad \text{蛋白質構象} \to \text{蛋白質構象}（\text{旁支}）.
+$$
 
 ### 核心推理二：三種模式的統一
 庫賈氏症的三種模式被同一機制統一：

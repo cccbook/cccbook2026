@@ -16,7 +16,9 @@
 
 關鍵的邏輯跳躍發生在 2012 年初。道納團隊的博士後 Martin Jinek 提出一個大膽的問題：既然 crRNA 與 tracrRNA 是兩個 RNA 靠鹼基配對結合，**為什麼不把它們融合成一條嵌合 RNA？** 這就是「向導 RNA」（guide RNA, gRNA）的誕生：
 
-$$\text{crRNA} + \text{tracrRNA} \xrightarrow{\text{融合設計}} \text{單鏈向導 RNA (sgRNA)}$$
+$$
+\text{crRNA} + \text{tracrRNA} \xrightarrow{\text{融合設計}} \text{單鏈向導 RNA (sgRNA)}
+$$
 
 單鏈 gRNA 的 5' 端帶有 20 個核苷酸的「目標序列」（與目標 DNA 互補），可以直接告訴 Cas9 要切哪裡。這意味著一個革命性的簡化：**要編輯任何基因，只需要改變這 20 個核苷酸的序列**——蛋白質完全不用動。基因編輯從「每次都要重新工程蛋白質」變成「只要訂一段 RNA」。
 
@@ -24,12 +26,16 @@ $$\text{crRNA} + \text{tracrRNA} \xrightarrow{\text{融合設計}} \text{單鏈�
 
 1. **辨識**：Cas9-gRNA 複合體沿著 DNA 掃描，gRNA 的 20 nt 序列與目標 DNA 進行鹼基配對；配對成功的前提是目標序列旁邊有「PAM 序列」（5'-NGG-3'），這是 Cas9 的「檢查點」，防止系統攻擊細菌自己的 CRISPR 位點。
 2. **切割**：一旦配對成功，Cas9 的兩個核酸酶結構域分別切斷目標 DNA 的兩條鏈：
-$$\text{DNA 目標} + \text{Cas9-gRNA} \rightarrow \text{平端雙鏈斷裂 (DSB)} + \text{gRNA-Cas9 (可重複使用)}$$
+
+$$
+\text{DNA 目標} + \text{Cas9-gRNA} \rightarrow \text{平端雙鏈斷裂 (DSB)} + \text{gRNA-Cas9 (可重複使用)}
+$$
+
 3. **修復**：細胞自己的修復機制接手——非同源末端接合（NHEJ）會把斷口隨機接回（造成基因失效），而同源重組修復（HDR）若提供修復模板，則可精確寫入新序列。
 
 2012 年 6 月，Doudna 與 Charpentier 團隊在《Science》發表論文，示範在試管中 CRISPR-Cas9 可以程式化地切割**任何**指定序列的 DNA——這是把細菌免疫系統「轉化為通用基因編輯工具」的關鍵一刻。論文中明確寫出這個系統「有潛力用於基因體工程」，為後續的哺乳動物細胞編輯（2013 年張鋒等人的工作）鋪路。
 
-從量子化學的角度看，這個系統的精準度來自鹼基配對的氫鍵網路：A-T 兩條氫鍵、G-C 三條氫鍵構成互補辨識，20 個核苷酸的配對能（約 $20 \times 5\ \mathrm{kJ/mol}$ 量級的協同貢獻）使雜合體的結合自由能遠低於錯配，從而實現單核苷酸級的辨識精度——這是化學鍵能量學在生物工程中的直接應用。
+從量子化學的角度看，這個系統的精準度來自鹼基配對的氫鍵網路：A-T 兩條氫鍵、G-C 三條氫鍵構成互補辨識，20 個核苷酸的配對能（約 $`20 \times 5\ \mathrm{kJ/mol}`$ 量級的協同貢獻）使雜合體的結合自由能遠低於錯配，從而實現單核苷酸級的辨識精度——這是化學鍵能量學在生物工程中的直接應用。
 
 ## 結案報告
 
@@ -47,7 +53,9 @@ CRISPR-Cas9 的遺產以驚人的速度展開：
 
 **辨識的兩個檢查點：** Cas9 的靶點認證由兩個元素決定——PAM（SpCas9 為 5′-NGG-3′）與 gRNA 的 20 nt 互補配對。Cas9 先直接讀取 PAM（不經鹼基配對），認證後才解開雙鏈，讓 gRNA 與靶股形成 R 環：
 
-$$5' \text{-} \underbrace{N_{1}\,N_{2}\cdots N_{20}}_{\text{靶序列：與 gRNA 互補}}\ \underbrace{N\,G\,G}_{\text{PAM}} \text{-} 3'$$
+$$
+5' \text{-} \underbrace{N_{1}\,N_{2}\cdots N_{20}}_{\text{靶序列：與 gRNA 互補}}\ \underbrace{N\,G\,G}_{\text{PAM}} \text{-} 3'
+$$
 
 配對的結合能來自氫鍵與鹼基堆疊：A–T 兩條氫鍵、G–C 三條；錯配會造成局部凸起並破壞堆疊，結合能大幅下降。
 
@@ -59,8 +67,10 @@ $$5' \text{-} \underbrace{N_{1}\,N_{2}\cdots N_{20}}_{\text{靶序列：與 gRNA
 
 **設計範例：** 目標 20 nt 5′-GACCCCTGACCATCAAGTGG-3′ 緊鄰 PAM 5′-AGG-3′，gRNA 即其反向互補序列（RNA 版，T→U）5′-CCAGGACUGGUAGUUCACC-3′，雙鏈斷裂為平端、位於 PAM 上游第 3 bp：
 
-$$5'\text{-GACCCCTGACCATCAA} \; \big\Vert \; \text{GTGG} \cdot \text{AGG-3'}$$
+$$
+5'\text{-GACCCCTGACCATCAA} \; \big\Vert \; \text{GTGG} \cdot \text{AGG-3'}
+$$
 
-（ $\big\Vert$ 為切割點；PAM 的 AGG 不被 gRNA 配對，是 Cas9 直接讀取的認證碼。）
+（ $`\big\Vert`$ 為切割點；PAM 的 AGG 不被 gRNA 配對，是 Cas9 直接讀取的認證碼。）
 
 **脫靶風險：** 只差一個鹼基的近親序列，在遠離 PAM 端的錯配容忍度較高，仍可能被切割——這是 CRISPR 應用的最大風險，也是設計 gRNA 時必須以全基因體搜尋排雷的原因。鹼基配對的氫鍵能量學（錯配越多結合越不穩定）正是辨識精度的物理根源。

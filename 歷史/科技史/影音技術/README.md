@@ -71,6 +71,8 @@
 
 ## 主線索：一條技術鏈路
 
-$$\text{光/聲} \xrightarrow{\text{感測}} \text{信號} \xrightarrow{\text{取樣}} \text{數位} \xrightarrow{\text{DCT/預測}} \text{壓縮} \xrightarrow{\text{封包}} \text{串流}$$
+$$
+\text{光/聲} \xrightarrow{\text{感測}} \text{信號} \xrightarrow{\text{取樣}} \text{數位} \xrightarrow{\text{DCT/預測}} \text{壓縮} \xrightarrow{\text{封包}} \text{串流}
+$$
 
 每一次革命都是鏈路中某一環的替換：介質替換（蠟筒→磁帶→光碟→網路）、感測替換（真空管→CCD/CMOS）、壓縮替換（丟高頻→丟人耳聽不到的→神經網路編碼）。

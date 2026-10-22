@@ -16,7 +16,7 @@ DREAMPlace 的同構映射：
 
 | 深度學習 | 佈局（DREAMPlace）|
 |----------|------------------|
-| 模型參數 $\theta$ | 單元座標 $(x, y)$ |
+| 模型參數 $`\theta`$ | 單元座標 $`(x, y)`$ |
 | 損失函數 | 線長損失 + 密度損失 |
 | 前向傳播 | 損失計算（HPWL + density）|
 | 反向傳播（autograd）| 梯度計算（自動微分）|
@@ -25,13 +25,15 @@ DREAMPlace 的同構映射：
 
 線長損失（加權平均長度 WA WL）：
 
-$$L_{\text{wire}} = \sum_{\text{nets}} w_i \cdot \text{WL}_i, \quad \text{WL}_i = \max_{(u,v)}|x_u - x_v| + \max_{(u,v)}|y_u - y_v|$$
+$$
+L_{\text{wire}} = \sum_{\text{nets}} w_i \cdot \text{WL}_i, \quad \text{WL}_i = \max_{(u,v)}|x_u - x_v| + \max_{(u,v)}|y_u - y_v|
+$$
 
 密度損失（ePlace 的靜電場）用 FFT 在 GPU 上計算。**自動微分的威力**：梯度不用手推——PyTorch 的 autograd 從損失函數自動算出全部梯度，演算法開發者只需寫「前向」。
 
 ### 為什麼 30 倍加速
 1. **資料並行**：百萬 net 的梯度計算、千萬單元的更新——GPU 的 SIMT 架構一網打盡；
-2. **FFT 平行化**：密度場的 FFT 在 cuFFT 上 $O(n \log n)$ 且高度平行；
+2. **FFT 平行化**：密度場的 FFT 在 cuFFT 上 $`O(n \log n)`$ 且高度平行；
 3. **迭代數不變、每步成本降**：與 ePlace 相同的迭代數，每步從 CPU 秒級降到 GPU 毫秒級——純算力紅利，不犧牲品質。
 
 ### 精度問題：連續優化的 GPU 化

@@ -6,7 +6,9 @@
 
 核心謎題只有一個：**一個學生的 10,000 行嗜好專案，如何成為地球最普及的核心？**
 
-$$\text{0.01（1991）} \xrightarrow{\text{GPL + 網路協作}} \text{1.0（1994）} \xrightarrow{\text{SMP}} \text{2.x} \xrightarrow{\text{2.6 革命}} \text{通用核心} \xrightarrow{\text{容器/雲端}} \text{6.x}.$$
+$$
+\text{0.01（1991）} \xrightarrow{\text{GPL + 網路協作}} \text{1.0（1994）} \xrightarrow{\text{SMP}} \text{2.x} \xrightarrow{\text{2.6 革命}} \text{通用核心} \xrightarrow{\text{容器/雲端}} \text{6.x}.
+$$
 
 ## 案件卷宗（歷史年表）
 

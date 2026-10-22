@@ -22,7 +22,7 @@ Paulson 在劍橋與慕尼黑工大（Nipkow 加入後）立志：
 ### 線索一：元邏輯——邏輯的邏輯
 
 Isabelle 的絕招是引進一個極小的**元邏輯**（meta-logic），
-只有蘊含 $\Longrightarrow$ 、全稱 $\bigwedge$ 與等式 $\equiv$ 三個連接詞。
+只有蘊含 $`\Longrightarrow`$ 、全稱 $`\bigwedge`$ 與等式 $`\equiv`$ 三個連接詞。
 一切物件邏輯的規則都被編碼為元邏輯公理。
 
 例如一階邏輯的合取消去：
@@ -32,11 +32,11 @@ $$
 $$
 
 物件邏輯的證明即元邏輯的證明，Isabelle 的核心只懂元邏輯的歸結：
-由 $A \Longrightarrow B$ 與 $A$ 得 $B$ ，外加高階合一。
+由 $`A \Longrightarrow B`$ 與 $`A`$ 得 $`B`$ ，外加高階合一。
 
 | 層次 | 例子 | 角色 |
 |---|---|---|
-| 元邏輯 | $\bigwedge x \, . \, P(x) \Longrightarrow Q$ | 通用黏合劑 |
+| 元邏輯 | $`\bigwedge x \, . \, P(x) \Longrightarrow Q`$ | 通用黏合劑 |
 | 物件邏輯 | HOL、一階邏輯、ZF | 可插拔的規則集 |
 | 證明腳本 | Isar、tactic | 使用者介面 |
 
@@ -67,7 +67,7 @@ next
 qed
 ```
 
-每個 $have$ 、 $show$ 、 $hence$ 都是顯式的邏輯斷言，
+每個 $`have`$ 、 $`show`$ 、 $`hence`$ 都是顯式的邏輯斷言，
 機器檢查每一步，讀者讀懂每一步。證明從「咒語」變成「文章」。
 
 ### 線索三：Sledgehammer 伏筆——人機聯手的預告
@@ -101,9 +101,9 @@ Isabelle 案是 LCF 血脈的第二次演化：從單一邏輯走向邏輯廣場
 
 ## 證據與工具
 
-- 元蘊含： $P \Longrightarrow Q$ 為框架層蘊含，區別於物件層 $P \to Q$ 。
-- 元全稱： $\bigwedge x \, . \, P(x)$ 為框架層全稱，區別於物件層 $\forall x \, . \, P(x)$ 。
-- 規則編碼例：合取引入編碼為 $\bigwedge P \, \bigwedge Q \, . \, P \Longrightarrow Q \Longrightarrow (P \land Q)$ 。
+- 元蘊含： $`P \Longrightarrow Q`$ 為框架層蘊含，區別於物件層 $`P \to Q`$ 。
+- 元全稱： $`\bigwedge x \, . \, P(x)`$ 為框架層全稱，區別於物件層 $`\forall x \, . \, P(x)`$ 。
+- 規則編碼例：合取引入編碼為 $`\bigwedge P \, \bigwedge Q \, . \, P \Longrightarrow Q \Longrightarrow (P \land Q)`$ 。
 
 ```isabelle
 lemma app_nil: "app xs [] = xs"
@@ -111,7 +111,7 @@ lemma app_nil: "app xs [] = xs"
 (* Sledgehammer 會建議: by (simp add: app_def) *)
 ```
 
-- 實驗：在 Isabelle／HOL 中分別用 $apply$ 腳本與 $Isar$ 重寫同一個串列引理，
+- 實驗：在 Isabelle／HOL 中分別用 $`apply`$ 腳本與 $`Isar`$ 重寫同一個串列引理，
   比較可讀性與報錯定位，體會結構化證明的價值。
 - 文獻：Paulson 1994 年《Isabelle: A Generic Theorem Prover》，
   Wenzel 2007 年 Isar 參考手冊。

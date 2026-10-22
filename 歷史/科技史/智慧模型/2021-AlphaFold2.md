@@ -4,14 +4,16 @@
 
 2021 年 7 月，DeepMind 的 Jumper 等人在 **CASP14**（第 14 屆蛋白質結構預測競賽）發表 **AlphaFold2**：以**端對端注意力網路（Evoformer）**直接從胺基酸序列預測三維結構。中位 GDT_TS 達 **92.4**（GDT 100 = 完美重合）——而傳統實驗方法（冷凍電鏡、X 射線繞射）一個蛋白質要數年與百萬美元。這是**五十年大問題的結案**：1972 年 Anfinsen 提出的「序列決定結構」假說，被一個注意力網路在數分鐘內實現。核心公式是幾何約束的學習：
 
-$$\text{序列} \xrightarrow{\text{Evoformer}} \text{殘基對表示} \xrightarrow{\text{結構模組}} \text{三維座標} \; \{\mathbf{r}_1, \dots, \mathbf{r}_L\}$$
+$$
+\text{序列} \xrightarrow{\text{Evoformer}} \text{殘基對表示} \xrightarrow{\text{結構模組}} \text{三維座標} \; \{\mathbf{r}_1, \dots, \mathbf{r}_L\}
+$$
 
 這是科學智能的巔峰案件：2024 年，Hassabis 與 Jumper 獲**諾貝爾化學獎**（與 Baker 共享）。
 
 ## 前因 -- 為什麼會有這個案子
 
 - **五十年大問題**：蛋白質折疊——1972 年 Anfinsen 諾獎演說提出假說：**蛋白質的天然三維結構完全由其胺基酸序列決定**。序列已知，但從序列算出結構的「折疊密碼」五十年未破。
-- 搜尋空間的殘酷： $L$ 個殘基的構象空間天文數字（Levinthal 悖論：若隨機搜尋，宇宙年齡都不夠）——但蛋白質在數毫秒內自己折好，說明存在**物理原理**或**動力學路徑**可循。
+- 搜尋空間的殘酷： $`L`$ 個殘基的構象空間天文數字（Levinthal 悖論：若隨機搜尋，宇宙年齡都不夠）——但蛋白質在數毫秒內自己折好，說明存在**物理原理**或**動力學路徑**可循。
 - CASP 競賽的歷史：兩年一屆的結構預測奧林匹克，2018 年 CASP13 的 **2021-AlphaFold蛋白質摺疊.md**（AlphaFold1）已奪冠（GDT ~60），但仍是「協同進化特徵 + 梯度下降優化」的兩段式方法，且距離實驗精度遙遠。
 - 前驅線索：**共進化訊號**——MSA（多序列比對）中，兩個在空間上相鄰的殘基會協同突變；DCA（direct coupling analysis, 2011）用統計物理從 MSA 推出殘基接觸圖。但 MSA 深度不足時訊號崩塌。
 - **2017-Transformer注意力機制.md** 的注意力恰好是「殘基對之間的關係學習器」——注意力矩陣天然對應殘基接觸。
@@ -25,13 +27,15 @@ AlphaFold2 的核心是 **Evoformer**（48 層）：同時維護兩種表示，�
 
 | 表示 | 形狀 | 角色 |
 |---|---|---|
-| MSA 表示 | $M \times L \times c$ | $M$ 條同源序列 × $L$ 個殘基的演化史 |
-| Pair 表示 | $L \times L \times c'$ | 每對殘基之間的關係（接觸圖、距離、方向） |
+| MSA 表示 | $`M \times L \times c`$ | $`M`$ 條同源序列 × $`L`$ 個殘基的演化史 |
+| Pair 表示 | $`L \times L \times c'`$ | 每對殘基之間的關係（接觸圖、距離、方向） |
 
-- **軸向注意力（axial attention）**：MSA 表示沿序列軸與沿序列間軸分別做注意力——把 $O(M^2 L^2)$ 的全注意力壓成 $O(ML^2 + M^2 L)$ ，48 層深網才訓得動。
-- **三角更新（triangle update）**：pair 表示中，若 $i$ - $j$ 相鄰且 $j$ - $k$ 相鄰，則 $i$ - $k$ 的關係受幾何一致性約束——三角不等式被寫進網路：
+- **軸向注意力（axial attention）**：MSA 表示沿序列軸與沿序列間軸分別做注意力——把 $`O(M^2 L^2)`$ 的全注意力壓成 $`O(ML^2 + M^2 L)`$ ，48 層深網才訓得動。
+- **三角更新（triangle update）**：pair 表示中，若 $`i`$ - $`j`$ 相鄰且 $`j`$ - $`k`$ 相鄰，則 $`i`$ - $`k`$ 的關係受幾何一致性約束——三角不等式被寫進網路：
 
-$$d(i,k) \;\lesssim\; d(i,j) + d(j,k)$$
+$$
+d(i,k) \;\lesssim\; d(i,j) + d(j,k)
+$$
 
 這是「物理幾何先驗」被內化為架構的罕見設計：不是靠損失函數軟約束，而是**架構本身強制幾何一致性**。
 
@@ -39,13 +43,17 @@ $$d(i,k) \;\lesssim\; d(i,j) + d(j,k)$$
 
 Evoformer 之後，結構模組用**不變點注意力（invariant point attention, IPA）**把 pair 表示直接解碼成三維座標：
 
-$$\{\mathbf{r}_1, \dots, \mathbf{r}_L\} = \mathrm{StructureModule}(\text{MSA repr}, \text{pair repr})$$
+$$
+\{\mathbf{r}_1, \dots, \mathbf{r}_L\} = \mathrm{StructureModule}(\text{MSA repr}, \text{pair repr})
+$$
 
 IPA 的巧妙之處：注意力在 **SE(3) 等變**的框架下計算——整體旋轉、平移不影響內部表示。訓練時以「反覆修正」（recycling）：把上一輪的預測結構餵回輸入再修正，共 3 輪——像雕塑家反覆修整。損失函數的組合：
 
-$$\mathcal{L} = \mathcal{L}_{\text{FAPE}} + \lambda_1 \mathcal{L}_{\text{dist}} + \lambda_2 \mathcal{L}_{\text{angle}} + \lambda_3 \mathcal{L}_{\text{masked MSA}} + \cdots$$
+$$
+\mathcal{L} = \mathcal{L}_{\text{FAPE}} + \lambda_1 \mathcal{L}_{\text{dist}} + \lambda_2 \mathcal{L}_{\text{angle}} + \lambda_3 \mathcal{L}_{\text{masked MSA}} + \cdots
+$$
 
-$\mathcal{L}_{\text{FAPE}}$ （frame-aligned point error）在局部座標系中量測預測與真實殘基的偏差——對整體位姿不變。
+$`\mathcal{L}_{\text{FAPE}}`$ （frame-aligned point error）在局部座標系中量測預測與真實殘基的偏差——對整體位姿不變。
 
 ### 第三條線索：從兩段式到端對端——AlphaFold1 的謀殺
 

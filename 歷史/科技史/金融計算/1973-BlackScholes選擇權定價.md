@@ -8,14 +8,16 @@
 
 答案是一個優雅到近乎魔法般的公式：
 
-$$C = S_0 \, \Phi(d_1) - K e^{-rT} \Phi(d_2), \qquad d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}, \quad d_2 = d_1 - \sigma\sqrt{T}$$
+$$
+C = S_0 \, \Phi(d_1) - K e^{-rT} \Phi(d_2), \qquad d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}, \quad d_2 = d_1 - \sigma\sqrt{T}
+$$
 
-其中 $\Phi$ 是標準常態 CDF。Scholes 與 Merton 獲 **1997 年**諾貝爾獎（Black 已於 1995 年去世）。
+其中 $`\Phi`$ 是標準常態 CDF。Scholes 與 Merton 獲 **1997 年**諾貝爾獎（Black 已於 1995 年去世）。
 
 ## 前因：73 年的懸案
 
 - Bachelier（1900）給出第一個公式，但基於算術布朗運動且未處理風險溢價。
-- Samuelson（1965）修正為幾何布朗運動，但留下未解問題：**期望報酬率 $\mu$ 與折現率 $\rho$ 取決於風險偏好，如何消掉它們？**
+- Samuelson（1965）修正為幾何布朗運動，但留下未解問題：**期望報酬率 $`\mu`$ 與折現率 $`\rho`$ 取決於風險偏好，如何消掉它們？**
 - Sprenkle、Boness、Samuelson 等人都給出過「接近但差一步」的公式——都還需要代入投資人的風險偏好參數。
 - **線索一**：Black 與 Scholes 在 MIT 偶然相識。Black 是應用數學出身的顧問，Scholes 是財務學者。他們試圖用 CAPM 求解——用資產的 beta 決定折現率。
 - **線索二**：Merton（MIT 博士生，師從 Samuelson）精通 Itô 隨機積分——當時金融學界幾乎沒人會的蘇聯數學。
@@ -24,25 +26,29 @@ $$C = S_0 \, \Phi(d_1) - K e^{-rT} \Phi(d_2), \qquad d_1 = \frac{\ln(S_0/K) + (r
 
 ### 線索一：Black–Scholes 的 CAPM 路線（以及它為什麼失敗）
 
-Black 與 Scholes 最初用 CAPM：選擇權的 beta 隨 $S/K$ 變化，用它決定折現率。他們推導出一個 PDE，但驗證時發現公式「差一項」卻又算不出錯在哪。他們卡了很多個月。
+Black 與 Scholes 最初用 CAPM：選擇權的 beta 隨 $`S/K`$ 變化，用它決定折現率。他們推導出一個 PDE，但驗證時發現公式「差一項」卻又算不出錯在哪。他們卡了很多個月。
 
-**關鍵突破**：他們注意到公式中的 $\mu$ （股票期望報酬）**消失了**——這暗示正確的推理根本不需要風險偏好。
+**關鍵突破**：他們注意到公式中的 $`\mu`$ （股票期望報酬）**消失了**——這暗示正確的推理根本不需要風險偏好。
 
 ### 線索二：Merton 的動態避險路線（正解）
 
 Merton 的推理是純粹的 MM 式套利論證（見 [1958-ModiglianiMiller定理.md](1958-ModiglianiMiller定理.md)）：
 
-1. **賣出一個選擇權，動態持有 $\Delta = \Phi(d_1)$ 股股票**。
-2. 由 Itô 引理，選擇權價值 $V(S,t)$ 滿足：
+1. **賣出一個選擇權，動態持有 $`\Delta = \Phi(d_1)`$ 股股票**。
+2. 由 Itô 引理，選擇權價值 $`V(S,t)`$ 滿足：
 
-$$dV = \left(\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2}\right)dt + \frac{\partial V}{\partial S} dS$$
+$$
+dV = \left(\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2}\right)dt + \frac{\partial V}{\partial S} dS
+$$
 
-3. 選擇 $\Delta = \partial V/\partial S$ 時， $dS$ 項**完全抵銷**——組合瞬間無風險。
-4. 無風險組合必須賺無風險利率 $r$ （無套利）：
+3. 選擇 $`\Delta = \partial V/\partial S`$ 時， $`dS`$ 項**完全抵銷**——組合瞬間無風險。
+4. 無風險組合必須賺無風險利率 $`r`$ （無套利）：
 
-$$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0$$
+$$
+\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
+$$
 
-這就是 **Black–Scholes PDE**。終端條件 $V(S,T) = (S-K)^+$ ，解出即為公式。
+這就是 **Black–Scholes PDE**。終端條件 $`V(S,T) = (S-K)^+`$ ，解出即為公式。
 
 **哲學核心**：風險偏好被「動態避險」機械地消掉了——**你不需要知道投資人怕不怕風險**。這是 Samuelson 未解問題的答案，也是 MM 套利論證在連續時間的完美重現。
 
@@ -50,9 +56,11 @@ $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\p
 
 Cox 與 Ross（1976）後來重新詮釋：定價等於在「風險中立測度」下取期望再折現：
 
-$$C = e^{-rT} \, E^Q[(S_T - K)^+]$$
+$$
+C = e^{-rT} \, E^Q[(S_T - K)^+]
+$$
 
-其中 $Q$ 測度下所有資產賺 $r$ 。Harrison–Kreps（1979）與 Harrison–Pliska（1981）將其公理化為**鞅定價理論**：無套利 ⟺ 存在等價鞅測度。
+其中 $`Q`$ 測度下所有資產賺 $`r`$ 。Harrison–Kreps（1979）與 Harrison–Pliska（1981）將其公理化為**鞅定價理論**：無套利 ⟺ 存在等價鞅測度。
 
 ## 現代程式重現：Black–Scholes 定價與 delta 避險
 

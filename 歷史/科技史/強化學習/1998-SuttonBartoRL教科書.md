@@ -21,23 +21,27 @@ Samuel 的自我對弈、Sutton 的 TD、Watkins 的 Q-learning——整合成�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理一：MDP 統一框架
-全書的地圖：所有 RL 問題都化為**馬爾可夫決策過程 (MDP)** $\langle \mathcal{S}, \mathcal{A}, P, r, \gamma \rangle$ ，
+全書的地圖：所有 RL 問題都化為**馬爾可夫決策過程 (MDP)** $`\langle \mathcal{S}, \mathcal{A}, P, r, \gamma \rangle`$ ，
 目標是找最優策略
-$$\pi^* = \arg\max_\pi \; V^\pi(s), \qquad V^\pi(s) = \mathbb{E}_\pi\Big[\sum_{t=0}^\infty \gamma^t r_{t+t'} \,\Big|\, s_0 = s\Big].$$
+
+$$
+\pi^* = \arg\max_\pi \; V^\pi(s), \qquad V^\pi(s) = \mathbb{E}_\pi\Big[\sum_{t=0}^\infty \gamma^t r_{t+t'} \,\Big|\, s_0 = s\Big].
+$$
+
 四條求解路線，全書各佔一編：
 1. **動態規劃**（知道模型）：值迭代、策略迭代
 2. **Monte Carlo**（不知道模型，等終局）：回傳平均
 3. **TD 學習**（不知道模型，每步即學）：TD(0)、SARSA、Q-learning
-4. **策略梯度**（直接學策略）： $\theta \leftarrow \theta + \alpha\, \nabla_\theta J(\theta)$
+4. **策略梯度**（直接學策略）： $`\theta \leftarrow \theta + \alpha\, \nabla_\theta J(\theta)`$
 
 ### 核心推理二：所有演算法 = Bellman 方程的隨機逼近
 教科書的統一視角（偵探的終極推理）：
 | 演算法 | 更新式 | 逼近的方程 |
 |--------|--------|-----------|
-| 值迭代 | $V \leftarrow \max_a [r + \gamma P V]$ | Bellman 最優方程 |
-| TD(0) | $V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]$ | Bellman 期望方程 |
-| SARSA | $Q \leftarrow Q + \alpha[r + \gamma Q(s',a') - Q(s,a)]$ | on-policy Bellman |
-| Q-learning | $Q \leftarrow Q + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]$ | Bellman 最優方程 |
+| 值迭代 | $`V \leftarrow \max_a [r + \gamma P V]`$ | Bellman 最優方程 |
+| TD(0) | $`V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]`$ | Bellman 期望方程 |
+| SARSA | $`Q \leftarrow Q + \alpha[r + \gamma Q(s',a') - Q(s,a)]`$ | on-policy Bellman |
+| Q-learning | $`Q \leftarrow Q + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]`$ | Bellman 最優方程 |
 
 **全部都是壓縮映射的隨機逼近**——Sutton 與 Barto 用一句話統一了四十年的碎片。
 

@@ -26,15 +26,15 @@ $$
 N_{\text{die}} \approx \frac{W \cdot D_{\text{eff}}}{A} - \frac{W \cdot \sqrt{2AD_{\text{eff}}}}{A}
 $$
 
-$W$ 為晶圓邊長、 $D_{\text{eff}}$ 為有效良率參數、 $A$ 為單一 die 面積。此式可用簡化的良率模型（ Murphy model）逼近：
+$`W`$ 為晶圓邊長、 $`D_{\text{eff}}`$ 為有效良率參數、 $`A`$ 為單一 die 面積。此式可用簡化的良率模型（ Murphy model）逼近：
 
 $$
 Y = \left( \frac{1 - e^{-A D_0}}{A D_0} \right)^2
 $$
 
-$D_0$ 為缺陷密度。偵破重點在於：當 $A$ 縮小（製程微縮），不僅 $N_{\text{die}}$ 增加，良率 $Y$ 也會快速上升，因為每片 die 撞到缺陷的機率 $1 - e^{-AD_0}$ 隨 $A$ 下降而降低。這兩個效應疊加，使成本隨製程微縮呈「非線性跳水」。
+$`D_0`$ 為缺陷密度。偵破重點在於：當 $`A`$ 縮小（製程微縮），不僅 $`N_{\text{die}}`$ 增加，良率 $`Y`$ 也會快速上升，因為每片 die 撞到缺陷的機率 $`1 - e^{-AD_0}`$ 隨 $`A`$ 下降而降低。這兩個效應疊加，使成本隨製程微縮呈「非線性跳水」。
 
-下表以 2003 年前後的數據做估算（晶圓成本約 $\$2{,}000$ – $\$2{,}500$ ，缺陷密度 $D_0 \approx 0.4$ defects/cm²）：
+下表以 2003 年前後的數據做估算（晶圓成本約 $`\$2{,}000`$ – $`\$2{,}500`$ ，缺陷密度 $`D_0 \approx 0.4`$ defects/cm²）：
 
 | 製程 | 典型 FPGA die 面積 (mm²) | 每晶圓 die 數（300mm） | 估算良率 | 估算 die 成本 |
 |------|------------------------|----------------------|---------|-------------|
@@ -106,7 +106,7 @@ $$
 t_{\text{wire}} \approx 0.69 \cdot R_{\text{wire}} \cdot C_{\text{wire}} = 0.69 \cdot r \cdot c \cdot L^2
 $$
 
-low-k 使 $c$ 下降約 20–30%，補償了 $L$ 的變化。這是 Xilinx 敢跳代升級的物理信心。
+low-k 使 $`c`$ 下降約 20–30%，補償了 $`L`$ 的變化。這是 Xilinx 敢跳代升級的物理信心。
 
 ## 結案 -- 後果與影響
 Spartan-3 的成功使 Xilinx 在 2004–2006 年間於低成本 FPGA 市場取得壓倒性市佔，並迫使 Altera 推出 Cyclone 系列應戰。「FPGA 大眾化」正式啟動：FPGA 從工程師的實驗室工具，變成消費電子產品內的量產零件。單價跌破數美元的門檻，也直接催生了日後「FPGA 用於原型設計 → 小量產 → 甚至終端產品」的新商業模式。
@@ -124,5 +124,5 @@ Spartan-3 的成功使 Xilinx 在 2004–2006 年間於低成本 FPGA 市場取�
 - **Xilinx, "Spartan-3 Generation FPGA User Guide" (UG331)**：Spartan-3 架構的官方文獻
 - **Xilinx, "Spartan-3 Generation Data Sheet (DS312)"**：規格與定價的原始依據
 - **I. Kuon and J. Rose, "Measuring the Gap Between FPGAs and ASICs" (FCCM/FPT, 2006)**：量化 FPGA 與 ASIC 成本差異的經典論文，可反推本案的成本模型
-- **TSMC 與 UMC 的 90nm 製程文獻**：提供 $D_0$ 、low-k、應力工程的物理基礎
+- **TSMC 與 UMC 的 90nm 製程文獻**：提供 $`D_0`$ 、low-k、應力工程的物理基礎
 - **G. E. Moore, "Cramming More Components onto Integrated Circuits" (1965)**：本案價格曲線背後的理論依據

@@ -25,7 +25,9 @@ Versal 的 AI Engine 是一個二維陣列，每個 tile 包含：
 
 每個 tile 的計算能力約為每週期 128 MAC（INT8 模式），749 個 tile 的 VC1902 總計算力約為：
 
-$$749 \text{ tiles} \times 128 \text{ MAC/cycle} \times 2 \text{ ops/MAC} \times 1.6\text{ GHz} \approx 307\text{ TOPS (INT8)}$$
+$$
+749 \text{ tiles} \times 128 \text{ MAC/cycle} \times 2 \text{ ops/MAC} \times 1.6\text{ GHz} \approx 307\text{ TOPS (INT8)}
+$$
 
 這個能效的關鍵在於「資料流架構」：資料從一個 tile 的 DMA 流入，計算後直接流入下一個 tile，不經過中央記憶體。這與 GPU 的「共用記憶體 + 大量執行緒」架構完全不同，也與 FPGA 的「LUT 織布」架構不同。
 
@@ -33,11 +35,13 @@ $$749 \text{ tiles} \times 128 \text{ MAC/cycle} \times 2 \text{ ops/MAC} \times
 
 AI 加速的核心運算是矩陣乘法：
 
-$$C_{ij} = \sum_{k=1}^{N} A_{ik} B_{kj}$$
+$$
+C_{ij} = \sum_{k=1}^{N} A_{ik} B_{kj}
+$$
 
 傳統 CPU/GPU 的做法是「抓資料 → 算 → 存回」，每次乘加都要碰記憶體，記憶體頻寬是瓶頸。**Systolic array（脈動陣列）** 的做法則是讓資料像血液一樣在 PE（Processing Element）陣列中流動，每個 PE 只做一次乘加，資料一進一出，記憶體只在邊界被讀寫一次。
 
-一個 $4 \times 4$ systolic array 計算 $C = A \times B$ （ $N=4$ ）：
+一個 $`4 \times 4`$ systolic array 計算 $`C = A \times B`$ （ $`N=4`$ ）：
 
 ```
         B[0][*]   B[1][*]   B[2][*]   B[3][*]     ← B 橫向流入
@@ -50,11 +54,15 @@ A[*][3]→ PE(3,0)  PE(3,1)  PE(3,2)  PE(3,3)  → C[3][*]
 
 每個 PE 的行為是：
 
-$$C_{ij}^{(k)} = C_{ij}^{(k-1)} + a_{ik} \cdot b_{kj}, \quad C_{ij}^{(0)} = 0$$
+$$
+C_{ij}^{(k)} = C_{ij}^{(k-1)} + a_{ik} \cdot b_{kj}, \quad C_{ij}^{(0)} = 0
+$$
 
-總週期數分析：對 $N \times N$ systolic array 計算 $N \times N$ 矩陣乘法，需要 $3N - 2$ 個週期（ $N$ 個週期填入 + $N-1$ 個週期排空 + $N-1$ 個週期流水線啟動）。吞吐量為每週期 $N^2$ 個 MAC，且記憶體頻寬需求只有 $O(N)$ （邊界），而非 $O(N^2)$ （每個 MAC 讀寫）。這就是 systolic array 的能效優勢：
+總週期數分析：對 $`N \times N`$ systolic array 計算 $`N \times N`$ 矩陣乘法，需要 $`3N - 2`$ 個週期（ $`N`$ 個週期填入 + $`N-1`$ 個週期排空 + $`N-1`$ 個週期流水線啟動）。吞吐量為每週期 $`N^2`$ 個 MAC，且記憶體頻寬需求只有 $`O(N)`$ （邊界），而非 $`O(N^2)`$ （每個 MAC 讀寫）。這就是 systolic array 的能效優勢：
 
-$$\text{Arithmetic Intensity} = \frac{N^2 \text{ MACs/cycle}}{O(N) \text{ words/cycle}} = O(N) \text{ MACs/word}$$
+$$
+\text{Arithmetic Intensity} = \frac{N^2 \text{ MACs/cycle}}{O(N) \text{ words/cycle}} = O(N) \text{ MACs/word}
+$$
 
 AI Engine 的每個 tile 本質上是一個小型 systolic array，tile 之間用 AXI-Stream 串接，形成更大的「虛擬 systolic array」。Xilinx 的 Vitis AI 工具鏈會自動把神經網路層映射到 tile 陣列上，實現資料流。
 
@@ -71,7 +79,7 @@ Versal 的第二個革命是引入 **NoC（Network-on-Chip）**：在晶片上�
 | QoS | 無 | 有（頻寬/延遲預留） |
 | 適用 | 少量 master | 異質多域（PS + PL + AIE + DDR） |
 
-NoC 的數學模型：若晶片上有 $M$ 個 master、 $S$ 個 slave，匯流排的總頻寬 $B$ 被均分為 $B/M$ ；NoC 中每條路徑可預留頻寬 $b_i$ ，只要 $\sum_i b_i \leq B_{\text{NOC}}$ （實際上由 mesh 的 bisection bandwidth 限制）即可同時滿足。Bisection bandwidth 是關鍵指標：把 mesh 對半切開，切面上的總頻寬決定「左半與右半之間」的最大資料交換速率。
+NoC 的數學模型：若晶片上有 $`M`$ 個 master、 $`S`$ 個 slave，匯流排的總頻寬 $`B`$ 被均分為 $`B/M`$ ；NoC 中每條路徑可預留頻寬 $`b_i`$ ，只要 $`\sum_i b_i \leq B_{\text{NOC}}`$ （實際上由 mesh 的 bisection bandwidth 限制）即可同時滿足。Bisection bandwidth 是關鍵指標：把 mesh 對半切開，切面上的總頻寬決定「左半與右半之間」的最大資料交換速率。
 
 Versal 的 NoC 更進一步提供「虛擬通道」與「QoS 預留」：設計者可以用工具聲明「這條路徑需要 X GB/s」，工具會在 NoC 上為它保留頻寬，使延遲近似確定性。這對 5G beamforming、即時視訊等應用至關重要。
 
@@ -93,13 +101,15 @@ Versal 的 NoC 更進一步提供「虛擬通道」與「QoS 預留」：設計�
 
 ### 線索五：異質運算的調度理論
 
-異質系統的調度問題：給定一個工作負載 DAG（有向無環圖） $G = (V, E)$ ，每個節點 $v \in V$ 是一個任務，每種處理器類型 $p \in P$ （CPU、AIE、PL、GPU）有各自的執行時間 $t(v, p)$ ，目標是最小化 makespan（總完成時間）。這是 NP-hard 的排程問題（HEFT、list scheduling 等啟發式是常用解法）。
+異質系統的調度問題：給定一個工作負載 DAG（有向無環圖） $`G = (V, E)`$ ，每個節點 $`v \in V`$ 是一個任務，每種處理器類型 $`p \in P`$ （CPU、AIE、PL、GPU）有各自的執行時間 $`t(v, p)`$ ，目標是最小化 makespan（總完成時間）。這是 NP-hard 的排程問題（HEFT、list scheduling 等啟發式是常用解法）。
 
 HEFT（Heterogeneous Earliest Finish Time）的貪心策略：
 
-$$\text{rank}_u(v) = \overline{w}(v) + \max_{s \in \text{succ}(v)} \left( c(v, s) + \text{rank}_u(s) \right)$$
+$$
+\text{rank}_u(v) = \overline{w}(v) + \max_{s \in \text{succ}(v)} \left( c(v, s) + \text{rank}_u(s) \right)
+$$
 
-其中 $\overline{w}(v)$ 是任務 $v$ 在各處理器上的平均執行時間， $c(v,s)$ 是通訊成本。任務按 rank 降序排列，依次分配到「最早完成時間（EFT）」最小的處理器上。
+其中 $`\overline{w}(v)`$ 是任務 $`v`$ 在各處理器上的平均執行時間， $`c(v,s)`$ 是通訊成本。任務按 rank 降序排列，依次分配到「最早完成時間（EFT）」最小的處理器上。
 
 Versal 的 Vitis 工具鏈把這個調度問題交給工程師聲明 + 工具解決：工程師用 C++ 標記 kernel，工具分析資料依賴，自動把資料流 kernel 放到 AIE、控制流放到 ARM、介面邏輯放到 PL，並用 NoC 連接。這是「硬體異質性 + 軟體聲明式開發」的新範式。
 

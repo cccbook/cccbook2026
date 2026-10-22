@@ -28,7 +28,7 @@ meta def my_simp : tactic unit := do
   rewrite_search simp_set
 ```
 
-概念上，每個 tactic 都是 $tactic\, \alpha$ 單子裡的程式，直接讀寫證明狀態。社群隨即爆發： $ring$ 、 $linarith$ 、 $omega$ 的前身、數百個領域 tactic，以及一整包語義 linter（提醒你犯了常見形式化錯誤），全是使用者寫的，不是核心團隊施恩的。
+概念上，每個 tactic 都是 $`tactic\, \alpha`$ 單子裡的程式，直接讀寫證明狀態。社群隨即爆發： $`ring`$ 、 $`linarith`$ 、 $`omega`$ 的前身、數百個領域 tactic，以及一整包語義 linter（提醒你犯了常見形式化錯誤），全是使用者寫的，不是核心團隊施恩的。
 
 | Lean 2 | Lean 3 |
 |------|------|
@@ -60,17 +60,17 @@ Lean 3 破了「社群擴展性」大案：
 |------|------|
 | 2016 夏 | Selsam 實習，blast tactic；Avigad–Ebner 通信定型 VM |
 | 2017-01-20 | Lean 3.0 first release，POPL 2017 教學 |
-| 2017 | ICFP 元程式框架論文， $ring$ ／ $linarith$ ／linter 爆發 |
+| 2017 | ICFP 元程式框架論文， $`ring`$ ／ $`linarith`$ ／linter 爆發 |
 | 2017–2020 | mathlib 從數萬行衝向百萬行；3.4.2 官方收尾，社群版至 3.51.1 |
 
 **證據二：tactic 狀態變遷（概念表）**
 
 | 步驟 | 證明狀態 |
 |------|------|
-| 初始目標 | $⊢ p ∧ q → q ∧ p$ |
-| $intro\, h$ 後 | $h : p ∧ q ⊢ q ∧ p$ |
-| $cases\, h$ 後 | $hp : p,\, hq : q ⊢ q ∧ p$ |
-| $exact\, ⟨hq,\, hp⟩$ 後 | 無剩餘目標，結案 |
+| 初始目標 | $`⊢ p ∧ q → q ∧ p`$ |
+| $`intro\, h`$ 後 | $`h : p ∧ q ⊢ q ∧ p`$ |
+| $`cases\, h`$ 後 | $`hp : p,\, hq : q ⊢ q ∧ p`$ |
+| $`exact\, ⟨hq,\, hp⟩`$ 後 | 無剩餘目標，結案 |
 
 **證據三：偵探工具箱**
 

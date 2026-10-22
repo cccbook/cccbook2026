@@ -4,7 +4,9 @@
 
 1966 年，MIT 的 Joseph Weizenbaum 發表了 ELIZA——史上第一個聊天機器人。它的全部「智慧」只是模式比對加範本替換：把使用者說的話套進預設的心理治療回應範本。最著名的 DOCTOR 腳本扮演羅傑斯學派心理治療師：
 
-$$\text{回應} = \text{替換}\big(\text{範本}(\text{輸入})\big)，\quad \text{智慧感} \gg \text{實際智慧}$$
+$$
+\text{回應} = \text{替換}\big(\text{範本}(\text{輸入})\big)，\quad \text{智慧感} \gg \text{實際智慧}
+$$
 
 Weizenbaum 的震驚在於：**使用者明知程式只是字串替換，卻依然對它傾訴內心**。這個現象被稱為「Eliza 效應」——人類把智慧投射到最粗糙的語言機器上。這既是 NLP 的起點，也是一桩關於人類認知弱點的懸案。
 
@@ -23,7 +25,9 @@ Weizenbaum 的震驚在於：**使用者明知程式只是字串替換，卻依�
 
 ELIZA 的核心機制只有兩步。對每句輸入，依序檢查一組「關鍵字 + 分解範本」（decomposition pattern），命中後套用「重組規則」（reassembly rule）：
 
-$$(\text{keyword},\ \text{pattern},\ \text{template})：\quad \text{"I am } X\text{"} \Rightarrow \text{"How long have you been } X\text{?"}$$
+$$
+(\text{keyword},\ \text{pattern},\ \text{template})：\quad \text{"I am } X\text{"} \Rightarrow \text{"How long have you been } X\text{?"}
+$$
 
 規則以優先序排列，關鍵字越具體優先權越高；無命中時使用萬用回應（如 "Please go on."）。
 

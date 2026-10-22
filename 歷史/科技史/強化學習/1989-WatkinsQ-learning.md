@@ -1,41 +1,53 @@
-# 1989 - Watkins Q-learning（無模型學習必收斂到 $Q^*$ ）
+# 1989 - Watkins Q-learning（無模型學習必收斂到 $`Q^*`$ ）
 
 ## 案件摘要
 1989 年，Christopher Watkins 在劍橋大學的博士論文《Learning from Delayed Rewards》中提出
 **Q-learning**，並證明其收斂性定理：
-一個不知道轉移模型 $P, r$ 的 agent，只靠試誤與下列更新
-$$Q(s,a) \leftarrow Q(s,a) + \alpha \big[ r + \gamma \max_{a'} Q(s',a') - Q(s,a) \big],$$
-在適當條件下**必定收斂到最優動作價值函數 $Q^*$ **。
+一個不知道轉移模型 $`P, r`$ 的 agent，只靠試誤與下列更新
+
+$$
+Q(s,a) \leftarrow Q(s,a) + \alpha \big[ r + \gamma \max_{a'} Q(s',a') - Q(s,a) \big],
+$$
+
+在適當條件下**必定收斂到最優動作價值函數 $`Q^*`$ **。
 這是強化學習史上最重要的定理之一——**無模型 + off-policy + 必收斂**，三大特性合體。
 
 ## 前因 -- 為什麼會有這個案子
-- **TD 的 off-policy 懸案**：Sutton 1988 的 TD(0) 學習的是**當前策略** $\pi$ 的價值 $V^\pi$ 。
-  但真正的目標是**最優策略** $\pi^*$ 的價值 $V^*$ ——怎麼在探索（試別的動作）的同時
+- **TD 的 off-policy 懸案**：Sutton 1988 的 TD(0) 學習的是**當前策略** $`\pi`$ 的價值 $`V^\pi`$ 。
+  但真正的目標是**最優策略** $`\pi^*`$ 的價值 $`V^*`$ ——怎麼在探索（試別的動作）的同時
   學最優策略？**探索與學習的矛盾是兇手。**
-- **動態規劃的模型依賴**：Bellman 的值迭代需要知道 $P(s'|s,a)$ ，現實中（下棋、機器人）
+- **動態規劃的模型依賴**：Bellman 的值迭代需要知道 $`P(s'|s,a)`$ ，現實中（下棋、機器人）
   模型不可得。**模型是兇手。**
 - **Watkins 的偵探直覺**：在 BP 資助的博士研究中（為了做自適應序列預測），
-  他把 Bellman 方程的 $\max$ 算子直接搬進試誤更新——用 $\max_{a'} Q(s',a')$
+  他把 Bellman 方程的 $`\max`$ 算子直接搬進試誤更新——用 $`\max_{a'} Q(s',a')`$
   代替「當前策略的估值」，於是探索的動作不污染最優價值的學習。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理：off-policy 的數學魔術
-關鍵：更新目標用的是 $\max_{a'} Q(s',a')$ （**最優**的估值），而不是 $Q(s', \pi(s'))$ （**當前**的估值）。
-即使執行的動作 $a$ 是隨機探索選的（行為策略 $\mu \ne$ 目標策略 $\pi^*$ ），
-更新仍朝 $Q^*$ 收斂——因為 Bellman 最優算子是壓縮映射（見 `1957-Bellman最優性原理.md`）：
-$$TQ(s,a) = r + \gamma \max_{a'} Q(s',a'), \qquad \|TQ_1 - TQ_2\|_\infty \le \gamma\|Q_1 - Q_2\|_\infty.$$
+關鍵：更新目標用的是 $`\max_{a'} Q(s',a')`$ （**最優**的估值），而不是 $`Q(s', \pi(s'))`$ （**當前**的估值）。
+即使執行的動作 $`a`$ 是隨機探索選的（行為策略 $`\mu \ne`$ 目標策略 $`\pi^*`$ ），
+更新仍朝 $`Q^*`$ 收斂——因為 Bellman 最優算子是壓縮映射（見 `1957-Bellman最優性原理.md`）：
+
+$$
+TQ(s,a) = r + \gamma \max_{a'} Q(s',a'), \qquad \|TQ_1 - TQ_2\|_\infty \le \gamma\|Q_1 - Q_2\|_\infty.
+$$
+
 Q-learning 是這個壓縮算子的**隨機逼近**。收斂定理（Watkins & Dayan 1992 補全證明）：
-> 若每個 $(s,a)$ 被無限次造訪，且學習率 $\alpha_t$ 滿足 Robbins–Monro 條件
-> $\sum_t \alpha_t = \infty, \sum_t \alpha_t^2 < \infty$ ，
-> 則 $Q_t \to Q^*$ 以機率 1 收斂。
+> 若每個 $`(s,a)`$ 被無限次造訪，且學習率 $`\alpha_t`$ 滿足 Robbins–Monro 條件
+> $`\sum_t \alpha_t = \infty, \sum_t \alpha_t^2 < \infty`$ ，
+> 則 $`Q_t \to Q^*`$ 以機率 1 收斂。
 
 ### 收斂偵查：探索必須夠多
-Q-learning 本身不保證探索——需要 $\epsilon$ -greedy 等策略保證每個 $(s,a)$ 無限造訪：
-$$\pi(a|s) = \begin{cases} 1-\epsilon+\frac{\epsilon}{|\mathcal{A}|} & a = \arg\max Q(s,a)\\ \frac{\epsilon}{|\mathcal{A}|} & \text{其他}\end{cases}$$
+Q-learning 本身不保證探索——需要 $`\epsilon`$ -greedy 等策略保證每個 $`(s,a)`$ 無限造訪：
+
+$$
+\pi(a|s) = \begin{cases} 1-\epsilon+\frac{\epsilon}{|\mathcal{A}|} & a = \arg\max Q(s,a)\\ \frac{\epsilon}{|\mathcal{A}|} & \text{其他}\end{cases}
+$$
+
 若探索不足，Q 會卡在次優策略——**這是後來 DQN 過估 (overestimation) 問題的遠因。**
 
-### Python：Q-learning 走迷宮（收斂到 $Q^*$ 偵查）
+### Python：Q-learning 走迷宮（收斂到 $`Q^*`$ 偵查）
 
 ```python
 import numpy as np
@@ -72,7 +84,7 @@ Q*       = [[0.81, 0.729], [0.9, 0.729], [1.0, 0.81], [0.0, 0.0]]
 Q 學到的  = [[0.81, 0.729], [0.9, 0.729], [1.0, 0.81], [0.0, 0.0]]
 最大誤差  = 0.0000
 ```
-3000 局後誤差為 0——**隨機逼近確實收斂到 $Q^*$ **，Watkins 定理驗證成功。
+3000 局後誤差為 0——**隨機逼近確實收斂到 $`Q^*`$ **，Watkins 定理驗證成功。
 
 ### Q-learning 家族樹
 | 年份 | 演算法 | 改進點 |
@@ -80,7 +92,7 @@ Q 學到的  = [[0.81, 0.729], [0.9, 0.729], [1.0, 0.81], [0.0, 0.0]]
 | 1989 | Q-learning | 無模型 + off-policy + 收斂證明 |
 | 1992 | Watkins & Dayan | 補全收斂性證明 |
 | 2013/2015 | DQN | + 深度網路 + 經驗回放 + 目標網路 |
-| 2015 | Double DQN | 解決 $\max$ 算子的過估偏差 |
+| 2015 | Double DQN | 解決 $`\max`$ 算子的過估偏差 |
 
 ## 結案 -- 後果與影響
 - **無模型 RL 的基石**：Q-learning 證明「不需要模型也能學到最優」——

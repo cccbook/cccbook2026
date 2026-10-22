@@ -20,15 +20,19 @@
 
 ## 理論
 
-標準戰中的跟隨者模型：設領先者（Apple）先行投入市場教育成本 $E$ ，跟隨者（微軟）免費獲得 $E$ 的外溢。跟隨者的價值為
+標準戰中的跟隨者模型：設領先者（Apple）先行投入市場教育成本 $`E`$ ，跟隨者（微軟）免費獲得 $`E`$ 的外溢。跟隨者的價值為
 
-$$V_{follower} = \alpha E + V_{installed\ base} - C_{imitation}$$
+$$
+V_{follower} = \alpha E + V_{installed\ base} - C_{imitation}
+$$
 
-微軟的 $V_{installed\ base}$ 來自 DOS 裝機量與相容機生態； $C_{imitation}$ 由法律承擔（1988 年 Apple 訴微軟，1994 年和解，法院認定 1985 年授權合約涵蓋 Windows 的視覺比喻）。
+微軟的 $`V_{installed\ base}`$ 來自 DOS 裝機量與相容機生態； $`C_{imitation}`$ 由法律承擔（1988 年 Apple 訴微軟，1994 年和解，法院認定 1985 年授權合約涵蓋 Windows 的視覺比喻）。
 
 與 IBM 決裂的賽局可視為囚徒困境變體：合作開發 OS/2 是「合作」，暗推 Windows 是「背叛」。微軟背叛的報酬（獨占 PC OS）遠大於合作報酬（與 IBM 分租），且 IBM 無有效報復手段——它已失去 BIOS 獨占（Compaq 案），唯一籌碼是品牌，而品牌抵不過 n² 的應用生態。
 
-$$\pi_{MS}^{Windows} > \pi_{MS}^{OS/2}, \quad \pi_{IBM}^{OS/2} \text{ 隨 } n_{clone} \downarrow \text{ 而崩解}$$
+$$
+\pi_{MS}^{Windows} > \pi_{MS}^{OS/2}, \quad \pi_{IBM}^{OS/2} \text{ 隨 } n_{clone} \downarrow \text{ 而崩解}
+$$
 
 | 版本 | 年份 | 意義 |
 |---|---|---|

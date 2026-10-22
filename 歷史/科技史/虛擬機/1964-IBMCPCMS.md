@@ -12,8 +12,8 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 時間共享 vs 機器共享
-- **Time-sharing**： $N$ 個使用者 $\to$ 一個 OS $\to$ 硬體。共享的是 OS。
-- **Machine-sharing（虛擬機）**： $N$ 個使用者 $\to$ $N$ 個 guest OS $\to$ hypervisor $\to$ 硬體。共享的是硬體。
+- **Time-sharing**： $`N`$ 個使用者 $`\to`$ 一個 OS $`\to`$ 硬體。共享的是 OS。
+- **Machine-sharing（虛擬機）**： $`N`$ 個使用者 $`\to`$ $`N`$ 個 guest OS $`\to`$ hypervisor $`\to`$ 硬體。共享的是硬體。
 
 後者的隔離性與彈性（各自可跑不同 OS、可快照、可遷移）是雲端架構的本質。
 
@@ -64,7 +64,7 @@ class Hypervisor:
 2. **Control-sensitive**：改變處理器模式或記憶體位址轉換（如 LPSW、設定頁表）。
 3. **Behavior-sensitive**：執行結果依賴系統組態（如讀 timer、實際位址）。
 
-形式化： $\text{sensitive} \subseteq \text{privileged} \Rightarrow \text{virtualizable}$ 。
+形式化： $`\text{sensitive} \subseteq \text{privileged} \Rightarrow \text{virtualizable}`$ 。
 
 IBM S/360 的問題恰恰是部分敏感指令（如 `LPSW`）**不陷入**，導致 S/360 早期無法完美虛擬化，IBM 得用 "hardware assist"（S/370 加了 V=R 模式）補救。x86 直到 2005 年 VT-x 才補齊。
 

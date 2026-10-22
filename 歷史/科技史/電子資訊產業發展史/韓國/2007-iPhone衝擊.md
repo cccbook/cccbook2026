@@ -14,8 +14,13 @@
 
 **iPhone 殺死了什麼？**
 
-$$\text{功能機時代的勝負} = \text{機種數量} \times \text{通路密度} \times \text{硬體規格}$$
-$$\text{智慧機時代的勝負} = \text{OS 生態} \times \text{軟體體驗} \times \text{硬體規格}$$
+$$
+\text{功能機時代的勝負} = \text{機種數量} \times \text{通路密度} \times \text{硬體規格}
+$$
+
+$$
+\text{智慧機時代的勝負} = \text{OS 生態} \times \text{軟體體驗} \times \text{硬體規格}
+$$
 
 第三項三星很強，前兩項是空白——**三星發現自己「會做手機，但不會做軟體」**。
 
@@ -29,7 +34,9 @@ $$\text{智慧機時代的勝負} = \text{OS 生態} \times \text{軟體體驗} 
 
 ## 理論：典範轉移的「資產清算」
 
-$$\text{舊時代資產} = \text{機種 know-how} + \text{通路} + \text{供應鏈}$$
+$$
+\text{舊時代資產} = \text{機種 know-how} + \text{通路} + \text{供應鏈}
+$$
 
 - 諾基亞：舊資產成包袱（Symbian 的用戶基數、製造傳統）→ **資產變負債**。
 - 三星：舊資產（供應鏈、量產）可**直接平移**到智慧機 → 資產保值。

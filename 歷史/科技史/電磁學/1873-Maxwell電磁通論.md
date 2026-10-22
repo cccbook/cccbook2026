@@ -12,11 +12,13 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：位移電流——Missing Piece
-Maxwell 注意到 Ampère 定律 $\nabla\times\mathbf{B} = \mu_0\mathbf{J}$ 與電荷守恆矛盾：取散度得 $\nabla\cdot\mathbf{J}=0$ ，但電荷守恆要求 $\nabla\cdot\mathbf{J} = -\partial_t\rho$ 。
+Maxwell 注意到 Ampère 定律 $`\nabla\times\mathbf{B} = \mu_0\mathbf{J}`$ 與電荷守恆矛盾：取散度得 $`\nabla\cdot\mathbf{J}=0`$ ，但電荷守恆要求 $`\nabla\cdot\mathbf{J} = -\partial_t\rho`$ 。
 
-**推理**：若在磁場旋度中加入一項 $\epsilon_0\partial_t\mathbf{E}$ ，利用 $\nabla\cdot\mathbf{E}=\rho/\epsilon_0$ （Gauss 定律），矛盾自動消解：
+**推理**：若在磁場旋度中加入一項 $`\epsilon_0\partial_t\mathbf{E}`$ ，利用 $`\nabla\cdot\mathbf{E}=\rho/\epsilon_0`$ （Gauss 定律），矛盾自動消解：
 
-$$\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}$$
+$$
+\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}
+$$
 
 這個「修正項」看似只是數學補丁，實質上意味著：**變化的電場也能產生磁場**，於是電場與磁場可以互相激發、在真空中自我維持地傳播——這就是電磁波。
 
@@ -24,33 +26,39 @@ $$\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathb
 
 | 定律 | 方程式 | 物理意義 |
 |------|--------|----------|
-| Gauss（電） | $\nabla\cdot\mathbf{E} = \dfrac{\rho}{\epsilon_0}$ | 電荷產生電場 |
-| Gauss（磁） | $\nabla\cdot\mathbf{B} = 0$ | 磁單極不存在 |
-| Faraday | $\nabla\times\mathbf{E} = -\dfrac{\partial\mathbf{B}}{\partial t}$ | 變化磁場生電場 |
-| Ampère–Maxwell | $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\dfrac{\partial\mathbf{E}}{\partial t}$ | 電流與變化電場生磁場 |
+| Gauss（電） | $`\nabla\cdot\mathbf{E} = \dfrac{\rho}{\epsilon_0}`$ | 電荷產生電場 |
+| Gauss（磁） | $`\nabla\cdot\mathbf{B} = 0`$ | 磁單極不存在 |
+| Faraday | $`\nabla\times\mathbf{E} = -\dfrac{\partial\mathbf{B}}{\partial t}`$ | 變化磁場生電場 |
+| Ampère–Maxwell | $`\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\dfrac{\partial\mathbf{E}}{\partial t}`$ | 電流與變化電場生磁場 |
 
-（介質中則為 $\nabla\cdot\mathbf{D}=\rho_f$ 、 $\nabla\times\mathbf{H}=\mathbf{J}_f+\partial_t\mathbf{D}$ 等形式；Heaviside 於 1880 年代將 Maxwell 的 20 個分量方程化簡為今日的 4 條向量方程。）
+（介質中則為 $`\nabla\cdot\mathbf{D}=\rho_f`$ 、 $`\nabla\times\mathbf{H}=\mathbf{J}_f+\partial_t\mathbf{D}`$ 等形式；Heaviside 於 1880 年代將 Maxwell 的 20 個分量方程化簡為今日的 4 條向量方程。）
 
 ### 線索三：波動方程與光速
-在真空（ $\rho=0,\ \mathbf{J}=0$ ）中，對 $\mathbf{E}$ 的旋度再取旋度：
+在真空（ $`\rho=0,\ \mathbf{J}=0`$ ）中，對 $`\mathbf{E}`$ 的旋度再取旋度：
 
-$$\nabla\times(\nabla\times\mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E} = -\nabla^2\mathbf{E}$$
+$$
+\nabla\times(\nabla\times\mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E} = -\nabla^2\mathbf{E}
+$$
 
-另一邊 $= -\partial_t(\nabla\times\mathbf{B}) = -\mu_0\epsilon_0\,\partial_t^2\mathbf{E}$ ，故得**波動方程**：
+另一邊 $`= -\partial_t(\nabla\times\mathbf{B}) = -\mu_0\epsilon_0\,\partial_t^2\mathbf{E}`$ ，故得**波動方程**：
 
-$$\boxed{\ \nabla^2\mathbf{E} = \mu_0\epsilon_0\frac{\partial^2\mathbf{E}}{\partial t^2}\ }$$
+$$
+\boxed{\ \nabla^2\mathbf{E} = \mu_0\epsilon_0\frac{\partial^2\mathbf{E}}{\partial t^2}\ }
+$$
 
-與標準波動方程 $\nabla^2 u = \dfrac{1}{v^2}\partial_t^2 u$ 比較，波速為：
+與標準波動方程 $`\nabla^2 u = \dfrac{1}{v^2}\partial_t^2 u`$ 比較，波速為：
 
-$$\boxed{\ c = \frac{1}{\sqrt{\mu_0\epsilon_0}}\ }$$
+$$
+\boxed{\ c = \frac{1}{\sqrt{\mu_0\epsilon_0}}\ }
+$$
 
-代入 $\mu_0 = 4\pi\times10^{-7}\ \mathrm{H/m}$ 、 $\epsilon_0 = 8.854\times10^{-12}\ \mathrm{F/m}$ ，得 $c \approx 3\times10^8\ \mathrm{m/s}$ ——**與 Fizeau 1849 年測得的光速 $3.15\times10^8$ m/s 驚人地吻合**。Maxwell 的推理結論：「我們幾乎無法避免推論：光是同一介質中橫向波動的體現。」
+代入 $`\mu_0 = 4\pi\times10^{-7}\ \mathrm{H/m}`$ 、 $`\epsilon_0 = 8.854\times10^{-12}\ \mathrm{F/m}`$ ，得 $`c \approx 3\times10^8\ \mathrm{m/s}`$ ——**與 Fizeau 1849 年測得的光速 $`3.15\times10^8`$ m/s 驚人地吻合**。Maxwell 的推理結論：「我們幾乎無法避免推論：光是同一介質中橫向波動的體現。」
 
 ### 線索四：電磁譜的預言
-波動方程是線性的，且不含任何「特性長度」——若電磁波存在，任何頻率 $\omega = ck$ 的波都該存在。Maxwell 因此隱含預言了可見光之外還有無限寬廣的**電磁譜**（無線電、微波、紅外、紫外、X 射線……），等待後人逐一發現。
+波動方程是線性的，且不含任何「特性長度」——若電磁波存在，任何頻率 $`\omega = ck`$ 的波都該存在。Maxwell 因此隱含預言了可見光之外還有無限寬廣的**電磁譜**（無線電、微波、紅外、紫外、X 射線……），等待後人逐一發現。
 
 ### 程式驗證：numpy 數值模擬電磁波傳播
-以 FDTD（有限差分時域法）在 1D 真空中驗證波速 $c = 1/\sqrt{\mu_0\epsilon_0}$ ：
+以 FDTD（有限差分時域法）在 1D 真空中驗證波速 $`c = 1/\sqrt{\mu_0\epsilon_0}`$ ：
 
 ```python
 import numpy as np
@@ -96,10 +104,10 @@ print(f"相對誤差 = {abs(c_sim-c_theory)/c_theory*100:.3f}%")  # < 1%
 模擬輸出顯示脈衝以理論光速傳播（誤差 < 1%），數值上驗證了 Maxwell 波動方程。注意更新公式正對應 Faraday 與 Ampère–Maxwell 兩定律——**四條方程直接寫成了程式碼**。
 
 ## 結案 -- 後果與影響
-- **結案陳詞**：電、磁、光三案併為一案。光就是電磁波，速度 $c=1/\sqrt{\mu_0\epsilon_0}$ 完全由兩個電磁常數決定。
+- **結案陳詞**：電、磁、光三案併為一案。光就是電磁波，速度 $`c=1/\sqrt{\mu_0\epsilon_0}`$ 完全由兩個電磁常數決定。
 - 1879 年 Maxwell 去世，未能親見證實；1887 年 Hertz 以實驗證實電磁波存在（見 [1887-Hertz電磁波實驗](1887-Hertz電磁波實驗.md)）。
 - 本書直接啟發了：Hertz 的實驗、Lorentz 的電子論、以及 Einstein 1905 年的特殊相對論——愛因斯坦的論文標題就是〈論動體的電動力學〉，出發點正是 Maxwell 理論在 Galilei 變換下的矛盾。
-- $c$ 成為宇宙的基本常數，連結電磁學與時空幾何。
+- $`c`$ 成為宇宙的基本常數，連結電磁學與時空幾何。
 - 電磁譜預言開啟了無線電、雷達、光纖通訊等整個現代科技文明。
 
 ## 關鍵人物與文獻

@@ -13,11 +13,15 @@
 ### 線索一：串流的技術棧
 串流 = **邊下載邊播放**，核心是緩衝（buffering）與碼率自適應：
 
-$$\text{播放進度} \le \text{下載進度} \Rightarrow \text{緩衝區吸收網路抖動}$$
+$$
+\text{播放進度} \le \text{下載進度} \Rightarrow \text{緩衝區吸收網路抖動}
+$$
 
 早期用 RTSP/漸進式下載；2010 年代轉向 **HLS/DASH 自適應串流**：影片切成 2–6 秒的小段，每段以多種碼率預先編碼，播放器依即時頻寬動態切換：
 
-$$\text{頻寬} \downarrow \Rightarrow \text{切到低碼率段} \Rightarrow \text{不中斷播放}$$
+$$
+\text{頻寬} \downarrow \Rightarrow \text{切到低碼率段} \Rightarrow \text{不中斷播放}
+$$
 
 ### 線索二：CDN 的規模偵探題
 全球同時百萬人觀看，需要內容傳遞網路（CDN）把影片複製到邊緣節點。Google 的全球基礎設施（光纖、資料中心）讓 YouTube 的邊際成本趨近於零——**規模經濟是串流商業模式的物理基礎**。

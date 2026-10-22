@@ -21,15 +21,19 @@ VaR 從此成為全球銀行業的通用風險語言，並被巴塞爾委員會�
 
 ### 線索一：VaR 的統計定義
 
-對組合報酬 $R$ 、信賴水準 $\alpha$ （如 95%）、期間 $\Delta t$ （如 1 日）：
+對組合報酬 $`R`$ 、信賴水準 $`\alpha`$ （如 95%）、期間 $`\Delta t`$ （如 1 日）：
 
-$$P(R_{\Delta t} < -\mathrm{VaR}_\alpha) = 1 - \alpha$$
+$$
+P(R_{\Delta t} < -\mathrm{VaR}_\alpha) = 1 - \alpha
+$$
 
-若 $R$ 近似常態（均值可忽略）：
+若 $`R`$ 近似常態（均值可忽略）：
 
-$$\mathrm{VaR}_\alpha = z_\alpha \, \sigma_p \, V$$
+$$
+\mathrm{VaR}_\alpha = z_\alpha \, \sigma_p \, V
+$$
 
-其中 $z_{0.95} = 1.645$ 、 $V$ 是組合價值、 $\sigma_p$ 是組合波動率。**風險從「名目曝險」變成「機率加權的潛在虧損」**。
+其中 $`z_{0.95} = 1.645`$ 、 $`V`$ 是組合價值、 $`\sigma_p`$ 是組合波動率。**風險從「名目曝險」變成「機率加權的潛在虧損」**。
 
 ### 線索二：共變異數法（Variance-Covariance Method）
 
@@ -38,12 +42,14 @@ RiskMetrics 的標準演算法：
 1. 把組合拆成**現金流映射**（cash flow mapping）到風險因子（各期限利率、匯率、股價）。
 2. 預測各風險因子的波動率與相關性——用**指數加權移動平均（EWMA）**：
 
-$$\sigma_t^2 = \lambda \sigma_{t-1}^2 + (1-\lambda) r_{t-1}^2, \quad \lambda = 0.94 \text{（日資料）}$$
+$$
+\sigma_t^2 = \lambda \sigma_{t-1}^2 + (1-\lambda) r_{t-1}^2, \quad \lambda = 0.94 \text{（日資料）}
+$$
 
-（這是 $\alpha + \beta = 1$ 的 GARCH 特例——RiskMetrics 用實證把 $\lambda$ 定為 0.94，見 [1986-BollerslevGARCH模型.md](1986-BollerslevGARCH模型.md)。）
+（這是 $`\alpha + \beta = 1`$ 的 GARCH 特例——RiskMetrics 用實證把 $`\lambda`$ 定為 0.94，見 [1986-BollerslevGARCH模型.md](1986-BollerslevGARCH模型.md)。）
 
-3. 組合波動率： $\sigma_p = \sqrt{\mathbf{w}^T \Sigma \mathbf{w}}$ （Markowitz 的數學，見 [1952-Markowitz投資組合理論.md](1952-Markowitz投資組合理論.md)）。
-4. VaR $= 1.645 \, \sigma_p \, V$ 。
+3. 組合波動率： $`\sigma_p = \sqrt{\mathbf{w}^T \Sigma \mathbf{w}}`$ （Markowitz 的數學，見 [1952-Markowitz投資組合理論.md](1952-Markowitz投資組合理論.md)）。
+4. VaR $`= 1.645 \, \sigma_p \, V`$ 。
 
 **巧妙之處**：VaR 把 Markowitz 的組合數學、GARCH 的波動率預測、Black–Scholes 的敏感度（greeks）全部整合成「一個數字」。
 
@@ -85,7 +91,9 @@ def ewma_sigma(returns, lam=0.94):
 - **回溯測試（backtesting）**：Kupiec（1995）等檢驗 VaR 是否「說謊」——觀測到的違約次數是否與 5% 一致。
 - **尾端風險的遺漏**：VaR 不說「超過 VaR 之後虧多少」——這催生了**期望短缺（Expected Shortfall, CVaR）**：
 
-$$\mathrm{ES}_\alpha = -E[R \mid R < -\mathrm{VaR}_\alpha]$$
+$$
+\mathrm{ES}_\alpha = -E[R \mid R < -\mathrm{VaR}_\alpha]
+$$
 
 巴塞爾協定 IV（2019）已把法規從 VaR 轉向 ES。
 - **模型同質性的危機**：所有人都用同一套 VaR，壓力下的去槓桿行為同質化——2008 年金融海嘯中 VaR 全面失靈（見 [2008-金融海嘯與CDO.md](2008-金融海嘯與CDO.md)）。

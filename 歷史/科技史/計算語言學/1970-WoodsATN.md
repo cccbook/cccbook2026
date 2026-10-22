@@ -16,26 +16,30 @@
 
 ### 核心證據：ATN 的三種弧
 
-ATN 的形式化：一個網路是 $(Q, \Sigma, \text{arcs}, q_0, F)$ ，其中弧（arc）有三類，語義各不相同：
+ATN 的形式化：一個網路是 $`(Q, \Sigma, \text{arcs}, q_0, F)`$ ，其中弧（arc）有三類，語義各不相同：
 
-- **Cat arc（詞類弧）**：從狀態 $q$ 到 $q'$ ，條件是下一個詞屬於詞類 $\text{Cat}$ （如 NP、V）。掃描一個詞，推進輸入指標。
-- **Push arc（推入弧）**：從 $q$ 到 $q'$ ，遞迴呼叫子網路 $\text{Net}$ （如呼叫 NP 網路）；子網路成功返回後才推進。這是突破 FSM 限制的關鍵。
+- **Cat arc（詞類弧）**：從狀態 $`q`$ 到 $`q'`$ ，條件是下一個詞屬於詞類 $`\text{Cat}`$ （如 NP、V）。掃描一個詞，推進輸入指標。
+- **Push arc（推入弧）**：從 $`q`$ 到 $`q'`$ ，遞迴呼叫子網路 $`\text{Net}`$ （如呼叫 NP 網路）；子網路成功返回後才推進。這是突破 FSM 限制的關鍵。
 - **Pop arc（彈出弧）**：宣告子網路成功結束，把建構好的結構（存在暫存器裡）回傳給呼叫者。
 - **Jump arc（跳躍弧）**：不消耗輸入、直接轉移狀態，用於可選成分（如省略冠詞）。
 
 ### 遞迴使 ATN 等價於 CFG
 
-Push/Pop 的遞迴能力是破案的關鍵時刻：對任意 CFG $G$ ，可以構造一個 ATN $M_G$ ，使得
+Push/Pop 的遞迴能力是破案的關鍵時刻：對任意 CFG $`G`$ ，可以構造一個 ATN $`M_G`$ ，使得
 
-$$L(M_G) = L(G)$$
+$$
+L(M_G) = L(G)
+$$
 
-每個非終端符號 $A$ 對應一個子網路，每條產生規則 $A \rightarrow X_1 X_2 \cdots X_k$ 對應子網路中一條經過 $k$ 個 Cat/Push 弧的路徑。反之，任何 ATN 也可被 CFG 模擬（ATN 的辨識能力恰好落在 CFG 層級）。這個等價性證明，讓「被 Chomsky 否定的 FSM」以增強的形式重返戰場。
+每個非終端符號 $`A`$ 對應一個子網路，每條產生規則 $`A \rightarrow X_1 X_2 \cdots X_k`$ 對應子網路中一條經過 $`k`$ 個 Cat/Push 弧的路徑。反之，任何 ATN 也可被 CFG 模擬（ATN 的辨識能力恰好落在 CFG 層級）。這個等價性證明，讓「被 Chomsky 否定的 FSM」以增強的形式重返戰場。
 
 ### 暫存器：從辨識到結構
 
 純辨識只回答「是否合法」；ATN 的暫存器（registers）讓剖析過程順便建構語法樹與語義表示。每個 Push arc 成功後，把子網路 Pop 回傳的結構存入暫存器（如 `SUBJ`、`OBJ`），最後 Pop 時組裝成完整結構：
 
-$$\text{POP}(\text{net}, \; \text{regs}[\text{SUBJ} \leftarrow s, \text{OBJ} \leftarrow o])$$
+$$
+\text{POP}(\text{net}, \; \text{regs}[\text{SUBJ} \leftarrow s, \text{OBJ} \leftarrow o])
+$$
 
 這也是 LUNAR 語義翻譯的基礎：暫存器裡填的不是語法樹節點，而是直接可查詢資料庫的邏輯式。
 

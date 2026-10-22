@@ -12,19 +12,23 @@ SIS 能把邏輯優化成多級網路，但最後一哩懸而未決：**怎樣�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心：覆蓋（covering）的數學化
-給定邏輯 DAG $N$ 與工藝庫 $L$ （每個單元 = 一棵模式樹 $p$ ，帶面積/延遲成本）。技術映射 = 用 $L$ 的模式**覆蓋** $N$ ：
+給定邏輯 DAG $`N`$ 與工藝庫 $`L`$ （每個單元 = 一棵模式樹 $`p`$ ，帶面積/延遲成本）。技術映射 = 用 $`L`$ 的模式**覆蓋** $`N`$ ：
 
-$$\min \sum_{p \in \text{cover}} \text{cost}(p)$$
+$$
+\min \sum_{p \in \text{cover}} \text{cost}(p)
+$$
 
 - **NP-困難**（DAG 覆蓋）；DAGON 的戰術：**切成樹**——在多 fanout 節點處切斷，DAG 變成森林；
 - **樹覆蓋 = 動態規劃最優**：對每棵樹自底向上，每個節點取「所有可行模式」的最優組合：
 
-$$\text{cost}(v) = \min_{p \in \text{patterns matching at } v} \big(\text{cost}(p) + \sum_{\text{leaves of } p} \text{cost}(\text{leaf})\big)$$
+$$
+\text{cost}(v) = \min_{p \in \text{patterns matching at } v} \big(\text{cost}(p) + \sum_{\text{leaves of } p} \text{cost}(\text{leaf})\big)
+$$
 
 這是 Aho-Johnson 樹覆蓋的直系移植——**跨界借力的教科書案例**：編譯器的代碼生成理論餵給了硬體合成。
 
 ### 範例：三種覆蓋的取捨
-邏輯 $f = \overline{(a \cdot b) + c}$ 可映射為：
+邏輯 $`f = \overline{(a \cdot b) + c}`$ 可映射為：
 - NAND2 + NOR2 + OR2：3 閘；
 - AOI21（and-or-invert）：1 閘——面積省 2/3、延遲更短；
 - NAND2 + NOR2（堆疊）：2 閘但深度更深。

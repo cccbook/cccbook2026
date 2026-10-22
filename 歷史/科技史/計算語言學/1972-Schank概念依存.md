@@ -28,13 +28,17 @@ CD 的偵探手法是「化約」：把所有動作化約到一小組原始動�
 
 概念化（conceptualization）是 CD 的基本結構，形式化為：
 
-$$\text{Conceptualization} = [\text{Actor}, \; \text{Action}, \; \text{Object}, \; \text{Direction}, \; \text{Time}]$$
+$$
+\text{Conceptualization} = [\text{Actor}, \; \text{Action}, \; \text{Object}, \; \text{Direction}, \; \text{Time}]
+$$
 
 ### 「John gave Mary a book」的 CD 表示
 
 「give」的深層不是一個動作，而是兩個概念化的組合：
 
-$$\text{ATRANS}(\text{book}, \; \text{John} \rightarrow \text{Mary})$$
+$$
+\text{ATRANS}(\text{book}, \; \text{John} \rightarrow \text{Mary})
+$$
 
 即：一本書的抽象所有權（ATRANS）從 John 轉移到 Mary。這個表示的威力：
 
@@ -50,7 +54,9 @@ CD 的野心是成為跨語言的中介表示：中文「約翰給瑪麗一本�
 
 CD 表示單一句子的意義；要理解整段故事，需要「預期的知識」。Schank 與 Abelson（1977）提出腳本（script）：
 
-$$\text{Script} = \text{Track}(\text{enter}, \; \text{order}, \; \text{eat}, \; \text{pay}, \; \text{leave})$$
+$$
+\text{Script} = \text{Track}(\text{enter}, \; \text{order}, \; \text{eat}, \; \text{pay}, \; \text{leave})
+$$
 
 「John went to a restaurant, ordered a hamburger, and left」——CD 層只有三個動作，但餐廳腳本補出了「付錢」「吃漢堡」「給小費」等未說出的概念。1980 年代 Schank 再發展 MOP（Memory Organization Packets），把腳本動態化，成為案例式推理（case-based reasoning）的先驅。
 

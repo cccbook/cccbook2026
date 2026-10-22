@@ -12,23 +12,26 @@
 
 #### 1. 核心數學原理
 
-假設模型預測出的未來狀態包含位置 $\hat{x}_t$ 、速度 $\hat{v}_t$ 與加速度 $\hat{a}_t$ ，且系統受到外力 $F_t$ 與質量 $m$ 作用：
+假設模型預測出的未來狀態包含位置 $`\hat{x}_t`$ 、速度 $`\hat{v}_t`$ 與加速度 $`\hat{a}_t`$ ，且系統受到外力 $`F_t`$ 與質量 $`m`$ 作用：
 
-* **牛頓第二運動定律 ( $F = ma$ ) 約束**：
+* **牛頓第二運動定律 ( $`F = ma`$ ) 約束**：
 
-$$\mathcal{L}_{\text{Newton}} = \left\Vert{} F_t - m \hat{a}_t \right\Vert{}_2^2 = \left\Vert{} F_t - m \frac{\hat{v}_{t+\Delta t} - \hat{v}_t}{\Delta t} \right\Vert{}_2^2$$
-
+$$
+\mathcal{L}_{\text{Newton}} = \left\Vert{} F_t - m \hat{a}_t \right\Vert{}_2^2 = \left\Vert{} F_t - m \frac{\hat{v}_{t+\Delta t} - \hat{v}_t}{\Delta t} \right\Vert{}_2^2
+$$
 
 * **動量守恆與能量守恆約束**：
 若無外力非彈性碰撞，系統總動量與總能量（動能 + 潛能）在時間前後應保持一致：
 
-$$\mathcal{L}_{\text{Energy}} = \left\vert{} E_{\text{kin}}(t+\Delta t) + E_{\text{pot}}(t+\Delta t) - \left( E_{\text{kin}}(t) + E_{\text{pot}}(t) \right) \right\vert{}$$
-
-
+$$
+\mathcal{L}_{\text{Energy}} = \left\vert{} E_{\text{kin}}(t+\Delta t) + E_{\text{pot}}(t+\Delta t) - \left( E_{\text{kin}}(t) + E_{\text{pot}}(t) \right) \right\vert{}
+$$
 
 #### 2. 總訓練目標
 
-$$\mathcal{L}_{\text{Total}} = \mathcal{L}_{\text{Data}} + \lambda_1 \mathcal{L}_{\text{Newton}} + \lambda_2 \mathcal{L}_{\text{Energy}}$$
+$$
+\mathcal{L}_{\text{Total}} = \mathcal{L}_{\text{Data}} + \lambda_1 \mathcal{L}_{\text{Newton}} + \lambda_2 \mathcal{L}_{\text{Energy}}
+$$
 
 * **優點**：實作簡單，能強制世界模型在預測未來畫面或隱狀態時，不敢輸出違反重力加速度（如物體無故懸浮）或違背動量守恆的現象。
 
@@ -42,13 +45,14 @@ $$\mathcal{L}_{\text{Total}} = \mathcal{L}_{\text{Data}} + \lambda_1 \mathcal{L}
 
 #### 1. 哈密頓神經網路 (Hamiltonian Neural Networks, HNNs)
 
-在古典力學中，系統的哈密頓量 $H(q, p)$ 代表總能量（ $q$ 為位置， $p$ 為動量）。系統演化嚴格遵循哈密頓正則方程：
+在古典力學中，系統的哈密頓量 $`H(q, p)`$ 代表總能量（ $`q`$ 為位置， $`p`$ 為動量）。系統演化嚴格遵循哈密頓正則方程：
 
+$$
+\frac{dq}{dt} = \frac{\partial H}{\partial p}, \quad \frac{dp}{dt} = -\frac{\partial H}{\partial q}
+$$
 
-$$\frac{dq}{dt} = \frac{\partial H}{\partial p}, \quad \frac{dp}{dt} = -\frac{\partial H}{\partial q}$$
-
-* **做法**：讓神經網路**不要直接預測未來的 $q$ 與 $p$ **，而是去**學習純量哈密頓量 $H_\theta(q, p)$ （即系統的能量函數）**。
-* **效果**：未來的狀態變化量由 $H_\theta$ 對輸入求偏導數得出。由於微分幾何的數學結構限制，**模型輸出的軌跡天生 100% 嚴格遵守能量守恆**，即使外推到沒見過的數據區間也不會崩潰。
+* **做法**：讓神經網路**不要直接預測未來的 $`q`$ 與 $`p`$ **，而是去**學習純量哈密頓量 $`H_\theta(q, p)`$ （即系統的能量函數）**。
+* **效果**：未來的狀態變化量由 $`H_\theta`$ 對輸入求偏導數得出。由於微分幾何的數學結構限制，**模型輸出的軌跡天生 100% 嚴格遵守能量守恆**，即使外推到沒見過的數據區間也不會崩潰。
 
 ---
 
@@ -64,8 +68,8 @@ $$\frac{dq}{dt} = \frac{\partial H}{\partial p}, \quad \frac{dp}{dt} = -\frac{\p
 
 ```
 
-1. **參數識別 (System Identification)**：深度學習模型（Encoder）不負責計算複雜的物理動態，它只負責**從畫面上「猜出」物理參數**（例如：根據視覺判斷這顆球的質量 $m=0.5\text{kg}$ 、表面摩擦係數 $\mu=0.2$ ）。
-2. **牛頓引擎推演**：將猜出的參數丟給可微分物理引擎，根據牛頓力學精確求解微分方程 $\ddot{x} = \frac{1}{m}\sum F$ 。
+1. **參數識別 (System Identification)**：深度學習模型（Encoder）不負責計算複雜的物理動態，它只負責**從畫面上「猜出」物理參數**（例如：根據視覺判斷這顆球的質量 $`m=0.5\text{kg}`$ 、表面摩擦係數 $`\mu=0.2`$ ）。
+2. **牛頓引擎推演**：將猜出的參數丟給可微分物理引擎，根據牛頓力學精確求解微分方程 $`\ddot{x} = \frac{1}{m}\sum F`$ 。
 3. **梯度回傳 (Backpropagation)**：若預測與實際有誤差，梯度會穿過物理引擎，反向更新神經網路對物理參數的估計。
 
 * **優點**：將「規律計算」完全交給 100% 精準的牛頓力學，神經網路只需要專注於「理解視覺並提取物理屬性」。
@@ -74,13 +78,13 @@ $$\frac{dq}{dt} = \frac{\partial H}{\partial p}, \quad \frac{dp}{dt} = -\frac{\p
 
 ### 四、 結合圖神經網路：神經物理模擬器 (Graph Neural Network Simulators)
 
-對於複雜的非剛體、流體（如水、沙子、黏土）或多物體交互，牛頓力學表現為粒子間的相互作用力（如萬有引力、庫倫力、彈性力 $F_{ij}$ ）。
+對於複雜的非剛體、流體（如水、沙子、黏土）或多物體交互，牛頓力學表現為粒子間的相互作用力（如萬有引力、庫倫力、彈性力 $`F_{ij}`$ ）。
 
 **Graph Network Simulators (GNS，如 DeepMind 的 MeshGraphNets)**：
 
 1. **構建物理圖（Physics Graph）**：將場景中的物體拆解為粒子（Nodes），相互作用拉出邊（Edges）。
-2. **邊訊息傳遞 (Edge Message Passing)**：神經網路在 Edge 上計算粒子間的交互力 $\hat{F}_{ij}$ 。
-3. **節點更新 (Node Update)**：根據牛頓第二定律 $\hat{a}_i = \frac{\sum_j \hat{F}_{ij}}{m_i}$ 計算每個粒子的加速度，並更新速度與位置。
+2. **邊訊息傳遞 (Edge Message Passing)**：神經網路在 Edge 上計算粒子間的交互力 $`\hat{F}_{ij}`$ 。
+3. **節點更新 (Node Update)**：根據牛頓第二定律 $`\hat{a}_i = \frac{\sum_j \hat{F}_{ij}}{m_i}`$ 計算每個粒子的加速度，並更新速度與位置。
 
 ---
 

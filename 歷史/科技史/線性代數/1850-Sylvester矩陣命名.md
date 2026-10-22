@@ -14,25 +14,31 @@
 ### 線索一：matrix 的誕生
 1850 年論文中，Sylvester 寫道（意譯）：「我們必須定義一個由若干項排成的矩形陣列……我把這樣的矩形陣列稱為 **matrix**，因為從這個母體中可以生出各種不同的行列式系統，就像是從共同子宮生出的一批子女。」
 
-具體地，一個 $(m+1)\times(n+1)$ 的矩陣可以刪去某些行與列，生出許多不同階的子行列式（ minors）。Sylvester 的視角是：矩陣是**生成行列式的母體**，行列式才是主角。他沒有想到——這個「配角」在八年後會反客為主。
+具體地，一個 $`(m+1)\times(n+1)`$ 的矩陣可以刪去某些行與列，生出許多不同階的子行列式（ minors）。Sylvester 的視角是：矩陣是**生成行列式的母體**，行列式才是主角。他沒有想到——這個「配角」在八年後會反客為主。
 
 ### 線索二：Sylvester 消去法與結式
 1840 年的消去法：給定兩多項式
 
-$$f(x) = a_0 x^m + a_1 x^{m-1} + \cdots + a_m, \qquad g(x) = b_0 x^n + b_1 x^{n-1} + \cdots + b_n$$
+$$
+f(x) = a_0 x^m + a_1 x^{m-1} + \cdots + a_m, \qquad g(x) = b_0 x^n + b_1 x^{n-1} + \cdots + b_n
+$$
 
-把它們分別乘上 $1, x, \dots, x^{n-1}$ 與 $1, x, \dots, x^{m-1}$ ，得到 $m+n$ 個方程，其係數排成 $(m+n)\times(m+n)$ 的 **Sylvester 矩陣**。定義**結式**：
+把它們分別乘上 $`1, x, \dots, x^{n-1}`$ 與 $`1, x, \dots, x^{m-1}`$ ，得到 $`m+n`$ 個方程，其係數排成 $`(m+n)\times(m+n)`$ 的 **Sylvester 矩陣**。定義**結式**：
 
-$$\operatorname{Res}(f, g) = \det(\operatorname{Syl}(f, g))$$
+$$
+\operatorname{Res}(f, g) = \det(\operatorname{Syl}(f, g))
+$$
 
-核心定理： $\operatorname{Res}(f,g) = 0 \Leftrightarrow f$ 與 $g$ 有公根（在 $\mathbb{C}$ 上）。消去法像指紋比對：把兩個嫌疑人的所有線索排成陣列，若行列式為零，表示指紋重疊——公根存在。結式選一個更簡單的例子： $\operatorname{Res}(x^2-2, x-1) = (1)^2-2 = -1 \neq 0$ ，無公根； $\operatorname{Res}(x^2-1, x-1) = 0$ ，公根 $x=1$ 。
+核心定理： $`\operatorname{Res}(f,g) = 0 \Leftrightarrow f`$ 與 $`g`$ 有公根（在 $`\mathbb{C}`$ 上）。消去法像指紋比對：把兩個嫌疑人的所有線索排成陣列，若行列式為零，表示指紋重疊——公根存在。結式選一個更簡單的例子： $`\operatorname{Res}(x^2-2, x-1) = (1)^2-2 = -1 \neq 0`$ ，無公根； $`\operatorname{Res}(x^2-1, x-1) = 0`$ ，公根 $`x=1`$ 。
 
 ### 線索三：判別式（discriminant）與不變量
 Sylvester 進一步定義**判別式**：多項式與其導數的結式（帶符號正規化）：
 
-$$\Delta = (-1)^{\frac{m(m-1)}{2}} \frac{1}{a_0}\operatorname{Res}(f, f')$$
+$$
+\Delta = (-1)^{\frac{m(m-1)}{2}} \frac{1}{a_0}\operatorname{Res}(f, f')
+$$
 
-判別式為零 $\Leftrightarrow$ $f$ 有重根。例如二次式 $ax^2+bx+c$ 的判別式 $b^2-4ac$ 正是這個定義的特例。判別式是**座標變換下的不變量**（在適當的權重意義下），這正是不變量理論的起點：Sylvester 創造 "invariant" 一詞（1851），Cayley 發展不變量的形式理論。1851 年 Sylvester 還創造 "discriminant" 一詞。矩陣、結式、判別式、不變量——這批「同門子女」全部出自 1840–1851 年的倫敦偵探社。
+判別式為零 $`\Leftrightarrow`$ $`f`$ 有重根。例如二次式 $`ax^2+bx+c`$ 的判別式 $`b^2-4ac`$ 正是這個定義的特例。判別式是**座標變換下的不變量**（在適當的權重意義下），這正是不變量理論的起點：Sylvester 創造 "invariant" 一詞（1851），Cayley 發展不變量的形式理論。1851 年 Sylvester 還創造 "discriminant" 一詞。矩陣、結式、判別式、不變量——這批「同門子女」全部出自 1840–1851 年的倫敦偵探社。
 
 ### 程式碼範例：Sylvester 結式與判別式計算
 ```python
@@ -84,10 +90,10 @@ roots = np.roots(f3)
 print("x²-x-6 的根 =", roots, " 判別式 > 0 ↔ 兩相異實根 ✓")
 ```
 
-輸出確認： $\operatorname{disc}(x^2-2)=8$ 、 $\operatorname{disc}((x-1)^2)=0$ 、 $\operatorname{Res}(x-1,x^2-1)=0$ （有公根）、 $\operatorname{Res}(x-1,x^2-2)=-1$ （無公根）——Sylvester 的偵查儀完全可靠。
+輸出確認： $`\operatorname{disc}(x^2-2)=8`$ 、 $`\operatorname{disc}((x-1)^2)=0`$ 、 $`\operatorname{Res}(x-1,x^2-1)=0`$ （有公根）、 $`\operatorname{Res}(x-1,x^2-2)=-1`$ （無公根）——Sylvester 的偵查儀完全可靠。
 
 ## 結案 -- 後果與影響
-- 1858 年 Cayley 發表〈A Memoir on the Theory of Matrices〉，首次把矩陣當成獨立代數物件：定義矩陣加法、純量乘法、乘法 $AB$ （注意一般不可交換）、零矩陣與單位矩陣。矩陣從「生出行列式的子宮」反客為主，成為主角。
+- 1858 年 Cayley 發表〈A Memoir on the Theory of Matrices〉，首次把矩陣當成獨立代數物件：定義矩陣加法、純量乘法、乘法 $`AB`$ （注意一般不可交換）、零矩陣與單位矩陣。矩陣從「生出行列式的子宮」反客為主，成為主角。
 - Cayley 觀察到 Cayley–Hamilton 定理的跡象（一般證明由 Frobenius 1878 補全）：矩陣滿足自己的特徵多項式。
 - 不變量理論在 1860–1890 年代成為數學主戰場（Cayley、Sylvester、Gordan、Hilbert；Hilbert 1893 年用基底定理終結經典不變量理論）。
 - 結式與判別式至今是計算代數幾何、符號計算（Gröbner 基底的先聲）的標準工具。

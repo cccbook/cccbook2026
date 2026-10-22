@@ -2,7 +2,11 @@
 
 ## 案件摘要
 2008 年，**cgroups（control groups）進入 Linux 核心 2.6.24**，同年 **LXC（Linux Containers）0.1** 發布——
-$$\text{cgroups（資源限制）} + \text{namespaces（隔離視野）} + \text{LXC（包裝）} = \text{容器的地基}.$$
+
+$$
+\text{cgroups（資源限制）} + \text{namespaces（隔離視野）} + \text{LXC（包裝）} = \text{容器的地基}.
+$$
+
 **Docker（2013）的全部技術都在 2008 年就緒**——Docker 的功勞是把它們變成一個指令。
 
 ## 前因 -- 為什麼會有這個案子

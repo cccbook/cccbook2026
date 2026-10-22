@@ -20,9 +20,13 @@
 | 隔離強度 | 強（硬體邊界） | 中（kernel 邊界） |
 | 密度（單機實例數） | 十幾台 | 數百個 |
 
-理論上，容器省去每台 VM 的 OS 開銷 $M_{os}$ ， $n$ 個工作負載的總記憶體：
-$$M_{vm} = n(M_{os} + M_{app}), \qquad M_{container} = M_{os} + nM_{app}$$
-密度提升比 $\approx \dfrac{n(M_{os}+M_{app})}{M_{os}+nM_{app}}$ ，當 $M_{os} \gg M_{app}$ 時趨近 $n$ 倍以上。
+理論上，容器省去每台 VM 的 OS 開銷 $`M_{os}`$ ， $`n`$ 個工作負載的總記憶體：
+
+$$
+M_{vm} = n(M_{os} + M_{app}), \qquad M_{container} = M_{os} + nM_{app}
+$$
+
+密度提升比 $`\approx \dfrac{n(M_{os}+M_{app})}{M_{os}+nM_{app}}`$ ，當 $`M_{os} \gg M_{app}`$ 時趨近 $`n`$ 倍以上。
 
 ### 線索 2：容器 = 隔離的行程群組
 容器不是「小型機器」，本質是**一組被 namespace 隔離、被 cgroups 限量的普通行程**。Docker 啟動容器約等於：
@@ -36,9 +40,16 @@ echo "cpu.max 50000 100000" > /sys/fs/cgroup/app/cpu.max # 2. cgroups 限量（0
 
 ### 線索 3：映像檔分層（Layers 與 UnionFS）
 Docker 映像檔由唯讀層（layer）堆疊而成，容器寫入時在上層加一個可寫層（copy-on-write）：
-$$\text{image} = L_1 + L_2 + \cdots + L_k, \qquad \text{container} = \text{image} + L_{rw}$$
+
+$$
+\text{image} = L_1 + L_2 + \cdots + L_k, \qquad \text{container} = \text{image} + L_{rw}
+$$
+
 UnionFS（AUFS、overlayfs2）把多層「合併」成一棵檔案樹。共用基底層（如同一個 ubuntu 基底）只存一份：
-$$\text{儲存總量} = |L_{base}| + \sum_i |L_i^{diff}| \ll n \cdot |image_{full}|$$
+
+$$
+\text{儲存總量} = |L_{base}| + \sum_i |L_i^{diff}| \ll n \cdot |image_{full}|
+$$
 
 ### 線索 4：Dockerfile 範例
 ```dockerfile
@@ -55,12 +66,20 @@ docker run -p 8000:8000 myapp  # 毫秒級啟動
 ```
 
 ### 線索 5：chroot → jail → LXC → Docker 的演進
-$$\text{chroot (1979)} \to \text{FreeBSD jail (2000)} \to \text{Solaris Zones (2004)} \to \text{LXC (2008)} \to \text{Docker (2013)}$$
+
+$$
+\text{chroot (1979)} \to \text{FreeBSD jail (2000)} \to \text{Solaris Zones (2004)} \to \text{LXC (2008)} \to \text{Docker (2013)}
+$$
+
 chroot 只隔離檔案系統（易逃逸）；jail 加入多重 namespace；LXC 提供完整容器工具但難用；Docker 加上**映像檔格式 + Registry（Docker Hub）+ CLI**，把容器變成可分發的「軟體貨櫃」。
 
 ### 線索 6：Kubernetes（2014）的誕生
 Docker 單機可用後，多機編排成為新案。Google 把內部 Borg 的經驗開源為 Kubernetes（2014）：
-$$\text{K8s} = \text{排程(scheduler)} + \text{期望狀態(declarative)} + \text{控制迴圈(reconcile loop)}$$
+
+$$
+\text{K8s} = \text{排程(scheduler)} + \text{期望狀態(declarative)} + \text{控制迴圈(reconcile loop)}
+$$
+
 ```shell
 kubectl scale deployment myapp --replicas=10
 ```

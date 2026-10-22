@@ -39,7 +39,7 @@ $$
 (\lambda x.\, M)\ N \;\to_\beta\; M[x := N]
 $$
 
-其中 $M[x := N]$ 表示把 $M$ 中自由出現的 $x$ 替換為 $N$ （注意需先
+其中 $`M[x := N]`$ 表示把 $`M`$ 中自由出現的 $`x`$ 替換為 $`N`$ （注意需先
 α-改名避免捕獲衝突，variable capture）。
 
 例：
@@ -79,7 +79,7 @@ $$
 f = g \;\iff\; \forall x.\ f\ x = g\ x
 $$
 
-例： $\lambda x.\ (\lambda y.\ y)\ x \to_\eta \lambda y.\ y$
+例： $`\lambda x.\ (\lambda y.\ y)\ x \to_\eta \lambda y.\ y`$
 
 程式模擬：
 
@@ -96,9 +96,9 @@ def eta_reduce(term):
 
 全書最重要的定理，1936 年由 Church 與 Barkley Rosser 證明：
 
-> **定理（Church–Rosser / Confluence）**：若 $M \twoheadrightarrow P$ 且
-> $M \twoheadrightarrow Q$ ，則存在 $N$ 使 $P \twoheadrightarrow N$ 且
-> $Q \twoheadrightarrow N$ 。
+> **定理（Church–Rosser / Confluence）**：若 $`M \twoheadrightarrow P`$ 且
+> $`M \twoheadrightarrow Q`$ ，則存在 $`N`$ 使 $`P \twoheadrightarrow N`$ 且
+> $`Q \twoheadrightarrow N`$ 。
 
 $$
 \begin{array}{ccc}
@@ -110,14 +110,14 @@ P & & Q \\
 \end{array}
 $$
 
-其中 $\twoheadrightarrow$ 是 $\to$ 的自反傳遞閉包（多重步約簡），
-$\multimap$ 表示「存在路徑」。
+其中 $`\twoheadrightarrow`$ 是 $`\to`$ 的自反傳遞閉包（多重步約簡），
+$`\multimap`$ 表示「存在路徑」。
 
-**推論一（正規形式唯一性）**：若 $M$ 有正規形式，則其正規形式
+**推論一（正規形式唯一性）**：若 $`M`$ 有正規形式，則其正規形式
 在（α-等價意義下）唯一。
 
-**推論二（一致性）**：不存在項 $P$ 使 $P =_\beta \lambda x.\, x$ 且
-$P =_\beta \lambda x.\, y$ ——演算不會推出矛盾。
+**推論二（一致性）**：不存在項 $`P`$ 使 $`P =_\beta \lambda x.\, x`$ 且
+$`P =_\beta \lambda x.\, y`$ ——演算不會推出矛盾。
 
 證明技術：平行約簡（parallel reduction, ⊸ 關係）+ Tait–Martin-Löf 的
 「完成菱形圖」（strip lemma）：平行約簡一步保留菱形性質，

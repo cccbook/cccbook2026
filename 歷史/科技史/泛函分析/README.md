@@ -12,17 +12,17 @@
 |------|------|------|
 | 1887 | Volterra 積分方程：第二類方程的解的存在性 | [1887-Volterra積分方程.md](1887-Volterra積分方程.md) |
 | 1900 | Fredholm 二擇一：積分方程的行列式理論，線性代數的無窮維迴聲 | [1900-Fredholm二擇一.md](1900-Fredholm二擇一.md) |
-| 1906 | Hilbert 空間 $l^2$ ：平方可和序列，無窮維歐氏幾何 | [1906-Hilbert空間l2.md](1906-Hilbert空間l2.md) |
+| 1906 | Hilbert 空間 $`l^2`$ ：平方可和序列，無窮維歐氏幾何 | [1906-Hilbert空間l2.md](1906-Hilbert空間l2.md) |
 | 1906 | Fréchet 度量空間：把距離抽象成公理，泛函分析的地基 | [1906-Frechet度量空間.md](1906-Frechet度量空間.md) |
-| 1907 | Riesz–Fischer 定理： $L^2$ 完備性，Fourier 收斂之謎終結 | [1907-RieszFischer定理.md](1907-RieszFischer定理.md) |
-| 1907 | Riesz 表示定理（ $C[a,b]$ ）：泛函即 Stieltjes 積分 | [1907-Riesz表示C.md](1907-Riesz表示C.md) |
-| 1909 | Riesz 表示定理（ $C[a,b]$ 定稿）：測度從泛函中長出來 | [1909-Riesz表示定理.md](1909-Riesz表示定理.md) |
+| 1907 | Riesz–Fischer 定理： $`L^2`$ 完備性，Fourier 收斂之謎終結 | [1907-RieszFischer定理.md](1907-RieszFischer定理.md) |
+| 1907 | Riesz 表示定理（ $`C[a,b]`$ ）：泛函即 Stieltjes 積分 | [1907-Riesz表示C.md](1907-Riesz表示C.md) |
+| 1909 | Riesz 表示定理（ $`C[a,b]`$ 定稿）：測度從泛函中長出來 | [1909-Riesz表示定理.md](1909-Riesz表示定理.md) |
 
 ### 第二幕：波蘭學派 — Banach 空間的黃金年代（1920–1932）
 
 | 年份 | 事件 | Wiki |
 |------|------|------|
-| 1920 | Banach 論文：公理化完備賦範空間， $L^p$ 全家入籍 | [1920-Banach論文.md](1920-Banach論文.md) |
+| 1920 | Banach 論文：公理化完備賦範空間， $`L^p`$ 全家入籍 | [1920-Banach論文.md](1920-Banach論文.md) |
 | 1927 | Hahn–Banach 定理：延拓而不增範數，對偶理論的第一把刀 | [1927-HahnBanach定理.md](1927-HahnBanach定理.md) |
 | 1927 | Hellinger–Toeplitz：處處有界，對稱算子的緊箍咒 | [1927-HellingerToeplitz.md](1927-HellingerToeplitz.md) |
 | 1929 | 開映射與閉圖像定理：Banach 的聯合作戰 | [1929-開映射與閉圖像.md](1929-開映射與閉圖像.md) |
@@ -37,7 +37,7 @@
 | 1916 | Riesz 緊算子：Fredholm 理論的抽象化，譜只有 0 與特徵值 | [1916-Riesz緊算子.md](1916-Riesz緊算子.md) |
 | 1926 | Schrödinger 與譜：物理等價性之謎，von Neumann 接案 | [1926-Schrodinger與譜論.md](1926-Schrodinger與譜論.md) |
 | 1929 | von Neumann 自伴譜定理：投影值測度，量子力學的數學地基 | [1929-vonNeumann譜定理.md](1929-vonNeumann譜定理.md) |
-| 1930 | Stone–Weierstrass：代數逼近， $C(X)$ 的稠密判據 | [1930-StoneWeierstrass.md](1930-StoneWeierstrass.md) |
+| 1930 | Stone–Weierstrass：代數逼近， $`C(X)`$ 的稠密判據 | [1930-StoneWeierstrass.md](1930-StoneWeierstrass.md) |
 | 1931 | 閉算子與譜移：Weyl–von Neumann 的奇異擾動 | [1931-Weyl奇異擾動.md](1931-Weyl奇異擾動.md) |
 | 1932 | 《量子力學的數學基礎》：Hilbert 空間公理化量子力學 | [1932-vonNeumann量子力學.md](1932-vonNeumann量子力學.md) |
 | 1932 | Lax–Milgram 前身之變分法：Ritz–Galerkin 的收斂理論 | [1932-RitzGalerkin收斂.md](1932-RitzGalerkin收斂.md) |
@@ -58,7 +58,7 @@
 | 年份 | 事件 | Wiki |
 |------|------|------|
 | 1935 | Sobolev 空間：把導數分給弱拓樸，PDE 的現代語言 | [1935-Sobolev空間.md](1935-Sobolev空間.md) |
-| 1945 | Schwartz 分布理論：把 $\delta$ 函數扶正，1950 Fields | [1945-Schwartz分布理論.md](1945-Schwartz分布理論.md) |
+| 1945 | Schwartz 分布理論：把 $`\delta`$ 函數扶正，1950 Fields | [1945-Schwartz分布理論.md](1945-Schwartz分布理論.md) |
 | 1950 | Lax–Milgram 定理：橢圓邊值問題的萬能鑰匙 | [1950-LaxMilgram定理.md](1950-LaxMilgram定理.md) |
 | 1956 | Gårding 不等式：橢圓估計的一致支柱 | [1956-Garding不等式.md](1956-Garding不等式.md) |
 | 1958 | Grothendieck《張量積與核空間》：拓樸向量空間的哥白尼轉向 | [1958-Grothendieck核空間.md](1958-Grothendieck核空間.md) |

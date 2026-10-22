@@ -6,7 +6,9 @@
 
 > **GARCH(p, q)：今天的條件變異數 = 常數 + 過去平方誤差的加權 + 過去變異數的加權。**
 
-$$h_t = \omega + \sum_{i=1}^{q} \alpha_i \varepsilon_{t-i}^2 + \sum_{j=1}^{p} \beta_j h_{t-j}$$
+$$
+h_t = \omega + \sum_{i=1}^{q} \alpha_i \varepsilon_{t-i}^2 + \sum_{j=1}^{p} \beta_j h_{t-j}
+$$
 
 最簡單的 GARCH(1,1) 成為金融計量經濟學史上被使用最多的模型——沒有之一。
 
@@ -19,29 +21,35 @@ $$h_t = \omega + \sum_{i=1}^{q} \alpha_i \varepsilon_{t-i}^2 + \sum_{j=1}^{p} \b
 
 ### 線索一：GARCH(1,1) 的優雅
 
-$$h_t = \omega + \alpha \varepsilon_{t-1}^2 + \beta h_{t-1}$$
+$$
+h_t = \omega + \alpha \varepsilon_{t-1}^2 + \beta h_{t-1}
+$$
 
-三個參數（ $\omega, \alpha, \beta$ ）捕捉全部：
+三個參數（ $`\omega, \alpha, \beta`$ ）捕捉全部：
 
-- $\alpha$ ：**衝擊的反應強度**（news 今天的影響）
-- $\beta$ ：**記憶的持續性**（persistence）
-- $\alpha + \beta < 1$ ：平穩條件； $\alpha + \beta$ 越接近 1，波動率的記憶越長（實證上股票通常 $\approx 0.95–0.99$ ）
+- $`\alpha`$ ：**衝擊的反應強度**（news 今天的影響）
+- $`\beta`$ ：**記憶的持續性**（persistence）
+- $`\alpha + \beta < 1`$ ：平穩條件； $`\alpha + \beta`$ 越接近 1，波動率的記憶越長（實證上股票通常 $`\approx 0.95–0.99`$ ）
 
 ### 線索二：波動率的預測公式
 
 GARCH(1,1) 有封閉形式的多期波動率預測——這是它成為工業標準的實務理由：
 
-$$E[h_{t+k}] = \sigma^2 + (\alpha+\beta)^{k-1}(h_{t+1} - \sigma^2)$$
+$$
+E[h_{t+k}] = \sigma^2 + (\alpha+\beta)^{k-1}(h_{t+1} - \sigma^2)
+$$
 
-其中 $\sigma^2 = \dfrac{\omega}{1-\alpha-\beta}$ 是長期（無條件）變異數。預測以幾何速度 $(\alpha+\beta)^k$ 回歸長期平均——**均值回歸的波動率**。
+其中 $`\sigma^2 = \dfrac{\omega}{1-\alpha-\beta}`$ 是長期（無條件）變異數。預測以幾何速度 $`(\alpha+\beta)^k`$ 回歸長期平均——**均值回歸的波動率**。
 
 ### 線索三：條件厚尾
 
-即使標準化殘差 $z_t = \varepsilon_t/\sqrt{h_t}$ 是常態， $r_t$ 的**無條件分配**也是厚尾的（過度峰態）：
+即使標準化殘差 $`z_t = \varepsilon_t/\sqrt{h_t}`$ 是常態， $`r_t`$ 的**無條件分配**也是厚尾的（過度峰態）：
 
-$$\text{kurtosis} = 3 + \frac{2\alpha^2}{1 - (\alpha+\beta)^2 - 2\alpha^2} \times \frac{1}{1} > 3$$
+$$
+\text{kurtosis} = 3 + \frac{2\alpha^2}{1 - (\alpha+\beta)^2 - 2\alpha^2} \times \frac{1}{1} > 3
+$$
 
-（在 $\alpha>0$ 時。）這解釋了為什麼金融報酬看起來「常態但厚尾」——**厚尾不一定是機制厚尾，可能是波動率隨機造成的**。
+（在 $`\alpha>0`$ 時。）這解釋了為什麼金融報酬看起來「常態但厚尾」——**厚尾不一定是機制厚尾，可能是波動率隨機造成的**。
 
 ## 現代程式重現：GARCH(1,1) 估計與預測
 
@@ -72,7 +80,7 @@ print(forecast.variance.values[-1])
 
 ## 後果
 
-- **RiskMetrics（1994）**：J.P. Morgan 的 VaR 系統的波動率引擎就是指數加權的 GARCH 特例（ $\alpha+\beta=1$ 的 IGARCH，見 [1994-RiskMetricsVaR.md](1994-RiskMetricsVaR.md)）。
+- **RiskMetrics（1994）**：J.P. Morgan 的 VaR 系統的波動率引擎就是指數加權的 GARCH 特例（ $`\alpha+\beta=1`$ 的 IGARCH，見 [1994-RiskMetricsVaR.md](1994-RiskMetricsVaR.md)）。
 - **計量經濟的工業標準**：GARCH 家族超過數百個變體（EGARCH、GJR、TGARCH、GARCH-M...），用於匯率、利率、商品、加密貨幣。
 - Engle 獲 2003 年諾貝爾獎——GARCH 是主要功臣之一。
 - **選擇權定價**：Duan（1995）的 GARCH 選擇權定價模型，把條件變異數帶進衍生品定價。

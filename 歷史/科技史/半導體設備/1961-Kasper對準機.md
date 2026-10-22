@@ -3,7 +3,11 @@
 ## 案件摘要
 1961 年，**William Kasper** 在山景城（Mountain View）成立 **Kasper Instruments**，
 出貨**第一台商用光罩對準機（mask aligner）**——半導體製造設備第一次成為「商品」：
-$$\text{fab 自製設備（1950s）} \xrightarrow{\text{1961}} \text{向專業廠商購買（merchant model）}$$
+
+$$
+\text{fab 自製設備（1950s）} \xrightarrow{\text{1961}} \text{向專業廠商購買（merchant model）}
+$$
+
 對準機：光罩與晶片精確對位 + 真空接觸曝光。1960s 每座 fab 的核心機台——
 **「fab 專注製程、設備外包給廠商」的商業模式**從此確立。
 
@@ -33,7 +37,11 @@ $$\text{fab 自製設備（1950s）} \xrightarrow{\text{1961}} \text{向專業�
 - 對準誤差 = 光罩對位誤差 + 晶片定位誤差 + **人眼分辨極限**（~25 μm 裸眼，
   顯微鏡下 ~1 μm）；
 - **牛頓環**：真空接觸時光罩與晶片間的干涉條紋——工程師用條紋數判斷貼合品質：
-  $$\text{縫隙} \approx N \cdot \frac{\lambda}{2} \quad (\text{N 條牛頓環})$$
+
+$$
+\text{縫隙} \approx N \cdot \frac{\lambda}{2} \quad (\text{N 條牛頓環})
+$$
+
 - **偵推**：1960s 的對準精度由「人的視力 + 機械精加工」決定——
   這解釋了為什麼後來的設備公司都瘋狂投資**自動對準**。
 
@@ -41,7 +49,11 @@ $$\text{fab 自製設備（1950s）} \xrightarrow{\text{1961}} \text{向專業�
 - 1961 年對準機售價 ~$5,000–10,000（手工生產）；
 - 產能：操作員手動，~10–20 片/小時；
 - **設備產業的商業公式**（至今有效）：
-  $$\text{設備價值} = \frac{\text{良率提升} + \text{產能提升} + \text{人力節省}}{\text{折舊年限}}$$
+
+$$
+\text{設備價值} = \frac{\text{良率提升} + \text{產能提升} + \text{人力節省}}{\text{折舊年限}}
+$$
+
 - Kasper 們賣的不是機器，是**「良率」**——這句話 60 年後仍適用於 EUV（一台 $2 億）。
 
 ### 第四條線索：Kasper 之後的繼承者們

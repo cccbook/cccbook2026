@@ -14,36 +14,56 @@
 ### SPICE 架構
 三層管線：**網表解析 → 方程組建立 → 數值求解**。
 
-**1. 修正節點分析（Modified Nodal Analysis, MNA）**：對每個節點寫 KCL（ $\sum I = 0$ ），用元件的伴隨模型（companion model）把非線性/動態元件線性化後塞進矩陣：
-$$G \cdot x = b$$
-其中 $G$ 是稀疏導納矩陣， $x$ 是節點電壓（與部分支路電流）向量。
+**1. 修正節點分析（Modified Nodal Analysis, MNA）**：對每個節點寫 KCL（ $`\sum I = 0`$ ），用元件的伴隨模型（companion model）把非線性/動態元件線性化後塞進矩陣：
 
-**2. Newton-Raphson 非線性求解**：含二極體/MOSFET 的電路方程 $f(x)=0$ 非線性，迭代求解：
-$$x_{k+1} = x_k - \left[J_f(x_k)\right]^{-1} f(x_k)$$
-其中雅可比矩陣 $J_f = \partial f/\partial x$ 。MOSFET 飽和電流模型：
-$$I_D = \frac{1}{2}\beta (V_{GS}-V_{th})^2, \quad \beta = \mu_n C_{ox}\frac{W}{L}$$
-每次迭代把元件在其工作點線性化（等效為電導 + 電流源），直到 $|f(x_k)| < \varepsilon$ 收斂。
+$$
+G \cdot x = b
+$$
 
-**3. LU 分解**：矩陣求解 $Gx=b$ 不直接求反矩陣，而做稀疏 LU 分解 $G = LU$ ，先解 $Ly=b$ （前代）再 $Ux=y$ （回代），複雜度 $O(n^3)$ 降為稀疏情形近似 $O(n)$ 。SPICE 的稀疏矩陣技術（Sparse matrix package）是它能處理數百節點電路的關鍵。
+其中 $`G`$ 是稀疏導納矩陣， $`x`$ 是節點電壓（與部分支路電流）向量。
+
+**2. Newton-Raphson 非線性求解**：含二極體/MOSFET 的電路方程 $`f(x)=0`$ 非線性，迭代求解：
+
+$$
+x_{k+1} = x_k - \left[J_f(x_k)\right]^{-1} f(x_k)
+$$
+
+其中雅可比矩陣 $`J_f = \partial f/\partial x`$ 。MOSFET 飽和電流模型：
+
+$$
+I_D = \frac{1}{2}\beta (V_{GS}-V_{th})^2, \quad \beta = \mu_n C_{ox}\frac{W}{L}
+$$
+
+每次迭代把元件在其工作點線性化（等效為電導 + 電流源），直到 $`|f(x_k)| < \varepsilon`$ 收斂。
+
+**3. LU 分解**：矩陣求解 $`Gx=b`$ 不直接求反矩陣，而做稀疏 LU 分解 $`G = LU`$ ，先解 $`Ly=b`$ （前代）再 $`Ux=y`$ （回代），複雜度 $`O(n^3)`$ 降為稀疏情形近似 $`O(n)`$ 。SPICE 的稀疏矩陣技術（Sparse matrix package）是它能處理數百節點電路的關鍵。
 
 ### 元件模型（BSIM）
 - SPICE 2 用 Level 1–3 MOS 模型（平方律、經驗修正）。
 - 短通道效應（速度飽和、亞閾值漏電、DIBL）使簡單模型失效，Berkeley 在 1980–90 年代發展 **BSIM**（Berkeley Short-channel IGFET Model）系列，今日 BSIM4/BSIM6 是晶圓廠交付 PDK 的標準模型。
-- 模型參數透過**參數萃取**（從實測 I-V 曲線擬合）取得，例如用最小平方法最小化 $\sum_i (I_{meas,i} - I_{model,i}(p))^2$ 。
+- 模型參數透過**參數萃取**（從實測 I-V 曲線擬合）取得，例如用最小平方法最小化 $`\sum_i (I_{meas,i} - I_{model,i}(p))^2`$ 。
 
-### 瞬態分析： $\frac{dx}{dt}$ 的數值積分
-瞬態分析解微分方程 $\frac{dx}{dt} = f(x, t)$ （如 $C\frac{dv}{dt} = i$ ）。SPICE 用隱式方法保證穩定：
+### 瞬態分析： $`\frac{dx}{dt}`$ 的數值積分
+瞬態分析解微分方程 $`\frac{dx}{dt} = f(x, t)`$ （如 $`C\frac{dv}{dt} = i`$ ）。SPICE 用隱式方法保證穩定：
 
 **後向歐拉（Backward Euler）**：
-$$x_{n+1} = x_n + h\, f(x_{n+1}, t_{n+1})$$
+
+$$
+x_{n+1} = x_n + h\, f(x_{n+1}, t_{n+1})
+$$
+
 一階精度，但無條件穩定，適合剛性（stiff）電路。
 
 **梯形法（Trapezoidal）**（SPICE 預設）：
-$$x_{n+1} = x_n + \frac{h}{2}\left[f(x_n,t_n) + f(x_{n+1},t_{n+1})\right]$$
+
+$$
+x_{n+1} = x_n + \frac{h}{2}\left[f(x_n,t_n) + f(x_{n+1},t_{n+1})\right]
+$$
+
 二階精度；SPICE 再搭配 LTE（局部截斷誤差）控制自動調步長，以及 Gear 法處理梯形法的振鈴問題。
 
 ### Python：簡單 nodal analysis 解 RC 電路
-用後向歐拉 + MNA 解「電流源對並聯 RC」： $\;C\frac{dv}{dt} + \frac{v}{R} = I$ 。
+用後向歐拉 + MNA 解「電流源對並聯 RC」： $`\;C\frac{dv}{dt} + \frac{v}{R} = I`$ 。
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -63,7 +83,7 @@ plt.plot(t*1e9, I*R*(1-np.exp(-t/(R*C))), '--', label='analytic')
 plt.xlabel('Time (ns)'); plt.ylabel('V (V)')
 plt.title('Nodal Analysis: RC circuit'); plt.legend(); plt.show()
 ```
-理論穩態 $V_\infty = IR = 1\,\text{V}$ ，時間常數 $\tau = RC = 1\,\text{ns}$ ——數值解與解析解重合，驗證了 MNA + 後向歐拉的正確性。這 20 行程式就是 SPICE 的最小核心。
+理論穩態 $`V_\infty = IR = 1\,\text{V}`$ ，時間常數 $`\tau = RC = 1\,\text{ns}`$ ——數值解與解析解重合，驗證了 MNA + 後向歐拉的正確性。這 20 行程式就是 SPICE 的最小核心。
 
 ### SPICE 衍生家族
 - **SPICE 2**（1975, Nagel）：C 語言重寫前身，成為業界事實標準。

@@ -2,13 +2,13 @@
 
 ## 案件摘要
 2016 年 3 月，DeepMind 的 **AlphaGo** 在首爾以 **4:1** 擊敗世界頂尖棋手李世乭 (Lee Sedol)。
-圍棋被公認為「電腦永遠攻不下的堡壘」——狀態空間約 $10^{170}$ ，
-比宇宙的原子數（ $10^{80}$ ）還多。AlphaGo 用
+圍棋被公認為「電腦永遠攻不下的堡壘」——狀態空間約 $`10^{170}`$ ，
+比宇宙的原子數（ $`10^{80}`$ ）還多。AlphaGo 用
 **MCTS + 策略網路 + 價值網路 + 自我對弈**偵破了這個世紀之謎。
 第二局的第 37 手（肩衝五路）被棋界稱為「神之一手」——機器走出人類 3000 年沒想過的棋。
 
 ## 前因 -- 為什麼會有這個案子
-- **狀態空間的絕望**：圍棋 $19\times19$ ，合法局面約 $2\times10^{170}$ ，博弈樹複雜度約 $10^{360}$ 。
+- **狀態空間的絕望**：圍棋 $`19\times19`$ ，合法局面約 $`2\times10^{170}`$ ，博弈樹複雜度約 $`10^{360}`$ 。
   西洋棋的暴力搜索（Deep Blue 1997）在此完全失效——**分支因子是兇手**
   （西洋棋約 35，圍棋約 250）。
 - **傅利葉式的估值困境**：局部特徵（棋形、死活）無法評估全域勝率，
@@ -23,24 +23,39 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理一：策略網路把分支因子砍到個位數
-策略網路 $p_\sigma(a|s)$ 學人類棋譜（KGS 的 3000 萬手），預測「高手會走哪」：
-$$p_\sigma(a|s) \approx P(a \mid s), \qquad \text{MCTS 只走 } p_\sigma \text{ 前 } k \text{ 名}.$$
+策略網路 $`p_\sigma(a|s)`$ 學人類棋譜（KGS 的 3000 萬手），預測「高手會走哪」：
+
+$$
+p_\sigma(a|s) \approx P(a \mid s), \qquad \text{MCTS 只走 } p_\sigma \text{ 前 } k \text{ 名}.
+$$
+
 **分支因子從 250 砍到 5–10**——搜索深度從 4 層變成 40 層。
 再經 RL 微調：讓策略網路自我對弈，用勝負結果做策略梯度：
-$$\Delta\sigma \propto \sum_t \nabla_\sigma \log p_\sigma(a_t|s_t) \cdot z, \qquad z \in \{+1, -1\}.$$
+
+$$
+\Delta\sigma \propto \sum_t \nabla_\sigma \log p_\sigma(a_t|s_t) \cdot z, \qquad z \in \{+1, -1\}.
+$$
 
 ### 核心推理二：價值網路取代 Monte Carlo rollout
 傳統 MCTS 用隨機 rollout 到終局估勝率——噪聲大、慢。AlphaGo 改用
-**價值網路 $v_\theta(s) \approx \mathbb{E}[z \mid s, \text{雙方都下最優}]$ **：
-$$\theta \leftarrow \arg\min_\theta \sum_{(s, z)} \big( v_\theta(s) - z \big)^2.$$
+**價值網路 $`v_\theta(s) \approx \mathbb{E}[z \mid s, \text{雙方都下最優}]`$ **：
+
+$$
+\theta \leftarrow \arg\min_\theta \sum_{(s, z)} \big( v_\theta(s) - z \big)^2.
+$$
+
 訓練資料：自我對弈 3000 萬局的終局結果。
 **估值從「雜訊很大的抽樣」變成「一次前向傳播」**——快數千倍、準確得多。
 
 ### 核心推理三：MCTS 的 PUCT 公式
 樹上每個節點的選擇權衡「利用（價值高）」與「探索（先驗沒看過）」：
-$$\text{PUCT}(s, a) = Q(s, a) + c_{puct} \; p_\sigma(a|s) \frac{\sqrt{\sum_b N(s,b)}}{1 + N(s,a)}$$
-$N$ 為造訪次數、 $c_{puct} = 5$ 。**這是 AlphaZero 的核心公式**，
-把 Bellman 的 $\max$ （見 `1957-Bellman最優性原理.md`）與 UCB 的探索項合體。
+
+$$
+\text{PUCT}(s, a) = Q(s, a) + c_{puct} \; p_\sigma(a|s) \frac{\sqrt{\sum_b N(s,b)}}{1 + N(s,a)}
+$$
+
+$`N`$ 為造訪次數、 $`c_{puct} = 5`$ 。**這是 AlphaZero 的核心公式**，
+把 Bellman 的 $`\max`$ （見 `1957-Bellman最優性原理.md`）與 UCB 的探索項合體。
 
 ### Python：MCTS + 神經網路的極簡骨架
 

@@ -4,15 +4,17 @@
 
 1982 年，物理學家 John Hopfield 發表論文 "Neural networks and physical systems with emergent collective computational abilities"，提出以能量函數驅動的循環神經網路——Hopfield 網路。核心公式：
 
-$$E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i，\quad s_i \in \{-1, +1\}$$
+$$
+E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i，\quad s_i \in \{-1, +1\}
+$$
 
-網路的狀態 $s$ 沿著能量下降方向演化，最終落入局部極小值——每個極小值對應一段被儲存的記憶。這是**聯想記憶**（associative memory）的數學化：給定殘缺的線索，網路自動補全整段記憶。物理學家的介入讓連結派在寒冬中絕處逢生（見「1969-MinskyPapert批判.md」），而這條線索最終通往 2024 年諾貝爾物理學獎——四十二年後的翻案判決書。
+網路的狀態 $`s`$ 沿著能量下降方向演化，最終落入局部極小值——每個極小值對應一段被儲存的記憶。這是**聯想記憶**（associative memory）的數學化：給定殘缺的線索，網路自動補全整段記憶。物理學家的介入讓連結派在寒冬中絕處逢生（見「1969-MinskyPapert批判.md」），而這條線索最終通往 2024 年諾貝爾物理學獎——四十二年後的翻案判決書。
 
 ## 前因 -- 為什麼會有這個案子
 
 - 1969 年《Perceptrons》（見「1969-MinskyPapert批判.md」）與 1973 年 Lighthill 報告把連結派打入寒冬；1974 年 Werbos 的反向傳播（見「1974-Werbos反向傳播先驅.md」）被埋沒，神經網路在主流科學中無人敢碰。
 - Hopfield 是凝聚態物理學家（贝尔实验室出身，後任教普林斯頓），他的動機是**跨界的**：神經網路的集體行為與自旋玻璃（spin glass）、Ising 模型的動力學同構——他想知道「大量簡單單元能否湧現集體計算能力」。
-- 物理學的線索早已備好：Ising 模型（1925）的能量函數 $E = -\sum_{\langle i,j\rangle} J_{ij} s_i s_j$ 與 Monte Carlo 模擬、統計力學的相變理論，全部可以移植到神經網路。
+- 物理學的線索早已備好：Ising 模型（1925）的能量函數 $`E = -\sum_{\langle i,j\rangle} J_{ij} s_i s_j`$ 與 Monte Carlo 模擬、統計力學的相變理論，全部可以移植到神經網路。
 - 1970 年代的聯想記憶問題：傳統電腦用位址存取記憶，但人類記憶是**內容定址**的——聞到一味香料就想起整段往事。這個能力在當時沒有任何數學模型。
 - Little（1973）曾提出類似的機率式神經網路，但未用能量函數語言，未引起注意——線索再次沉睡，Hopfield 是把它擦亮的翻譯者。
 - 1970 年代末 Hopfield 參與神經生物學研討會，被真實神經元的集體動力學吸引——他決定用物理學家的武器（能量、極小值、對稱性）進攻這個領域。
@@ -21,37 +23,47 @@ $$E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i，\quad s_i \
 
 ### 第一條線索：能量函數——物理學的武器被搬進神經網路
 
-Hopfield 網路是全連接循環網路：每個單元 $s_i \in \{-1,+1\}$ 與所有其他單元相連，權重對稱 $w_{ij} = w_{ji}$ 且 $w_{ii}=0$ 。單元依非同步規則更新：
+Hopfield 網路是全連接循環網路：每個單元 $`s_i \in \{-1,+1\}`$ 與所有其他單元相連，權重對稱 $`w_{ij} = w_{ji}`$ 且 $`w_{ii}=0`$ 。單元依非同步規則更新：
 
-$$s_i \leftarrow \mathrm{sign}\!\left( \sum_j w_{ij} s_j - \theta_i \right)$$
+$$
+s_i \leftarrow \mathrm{sign}\!\left( \sum_j w_{ij} s_j - \theta_i \right)
+$$
 
-關鍵定理：**每次更新都讓能量 $E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i$ 不增**。證明：翻轉 $s_i$ 時能量變化為
+關鍵定理：**每次更新都讓能量 $`E = -\frac{1}{2} \sum_{i,j} w_{ij} s_i s_j + \sum_i \theta_i s_i`$ 不增**。證明：翻轉 $`s_i`$ 時能量變化為
 
-$$\Delta E = -\Delta s_i \left( \sum_j w_{ij} s_j - \theta_i \right) = -\Delta s_i \cdot h_i$$
+$$
+\Delta E = -\Delta s_i \left( \sum_j w_{ij} s_j - \theta_i \right) = -\Delta s_i \cdot h_i
+$$
 
-若 $h_i > 0$ 則 $s_i$ 翻為 $+1$ （ $\Delta s_i \ge 0$ ），故 $\Delta E \le 0$ ； $h_i < 0$ 同理。 $\blacksquare$
+若 $`h_i > 0`$ 則 $`s_i`$ 翻為 $`+1`$ （ $`\Delta s_i \ge 0`$ ），故 $`\Delta E \le 0`$ ； $`h_i < 0`$ 同理。 $`\blacksquare`$
 
-由於狀態空間有限（ $2^N$ ），網路必在有限步內收斂到能量極小值——**動力學 = 下降到記憶谷底**。
+由於狀態空間有限（ $`2^N`$ ），網路必在有限步內收斂到能量極小值——**動力學 = 下降到記憶谷底**。
 
 ### 第二條線索：Hebbian 儲存——把記憶刻進能量地形
 
-儲存 $p$ 個記憶模式 $\xi^{\mu} \in \{-1,+1\}^N$ 的方法是最樸素的 Hebb 規則：
+儲存 $`p`$ 個記憶模式 $`\xi^{\mu} \in \{-1,+1\}^N`$ 的方法是最樸素的 Hebb 規則：
 
-$$w_{ij} = \frac{1}{N} \sum_{\mu=1}^{p} \xi_i^{\mu} \xi_j^{\mu}$$
+$$
+w_{ij} = \frac{1}{N} \sum_{\mu=1}^{p} \xi_i^{\mu} \xi_j^{\mu}
+$$
 
-儲存後，每個記憶 $\xi^{\mu}$ 變成能量地形的一個極小值。檢驗：代入 $s = \xi^{\mu}$ ，
+儲存後，每個記憶 $`\xi^{\mu}`$ 變成能量地形的一個極小值。檢驗：代入 $`s = \xi^{\mu}`$ ，
 
-$$E(\xi^{\mu}) = -\frac{N}{2} + \frac{1}{N}\sum_{\nu \ne \mu} \left( \xi^{\mu} \cdot \xi^{\nu} \right)^2 \cdot \frac{N}{2} \approx -\frac{N}{2}$$
+$$
+E(\xi^{\mu}) = -\frac{N}{2} + \frac{1}{N}\sum_{\nu \ne \mu} \left( \xi^{\mu} \cdot \xi^{\nu} \right)^2 \cdot \frac{N}{2} \approx -\frac{N}{2}
+$$
 
-當記憶數 $p$ 不超過容量上限 $p_{\max} \approx 0.138\,N$ （ $\alpha = p/N \approx 0.138$ ，由統計力學方法算出），各記憶之間的交叉項足夠小， $\xi^{\mu}$ 保持為穩定極小值——記憶成功儲存。
+當記憶數 $`p`$ 不超過容量上限 $`p_{\max} \approx 0.138\,N`$ （ $`\alpha = p/N \approx 0.138`$ ，由統計力學方法算出），各記憶之間的交叉項足夠小， $`\xi^{\mu}`$ 保持為穩定極小值——記憶成功儲存。
 
 ### 第三條線索：聯想記憶的動力學——殘缺線索補全整段記憶
 
-檢索時輸入殘缺或帶噪的線索 $s(0)$ ，網路沿能量下降演化：
+檢索時輸入殘缺或帶噪的線索 $`s(0)`$ ，網路沿能量下降演化：
 
-$$s(t+1) = \mathrm{sign}\!\big( W s(t) \big) \quad \Rightarrow \quad s(\infty) \approx \text{最近的記憶極小值 } \xi^{\mu^*}$$
+$$
+s(t+1) = \mathrm{sign}\!\big( W s(t) \big) \quad \Rightarrow \quad s(\infty) \approx \text{最近的記憶極小值 } \xi^{\mu^*}
+$$
 
-以 $N=8$ 、儲存兩個記憶為例（Python 縮影，闡明用）：
+以 $`N=8`$ 、儲存兩個記憶為例（Python 縮影，闡明用）：
 
 ```python
 import numpy as np
@@ -73,8 +85,8 @@ Hopfield 網路與 Ising 模型的同構是本案最深的線索：
 
 | | Ising / 自旋玻璃 | Hopfield 網路 |
 |---|---|---|
-| 變數 | 自旋 $s_i \in \{\pm 1\}$ | 神經元 $s_i \in \{\pm 1\}$ |
-| 能量 | $E = -\sum J_{ij} s_i s_j$ | $E = -\frac12 \sum w_{ij} s_i s_j + \sum \theta_i s_i$ |
+| 變數 | 自旋 $`s_i \in \{\pm 1\}`$ | 神經元 $`s_i \in \{\pm 1\}`$ |
+| 能量 | $`E = -\sum J_{ij} s_i s_j`$ | $`E = -\frac12 \sum w_{ij} s_i s_j + \sum \theta_i s_i`$ |
 | 動力學 | 降溫、Glauber 動力學 | 非同步更新、能量下降 |
 | 湧現 | 磁序、相變 | 記憶、集體計算 |
 

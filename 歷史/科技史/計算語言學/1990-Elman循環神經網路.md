@@ -13,24 +13,28 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Elman 網路（SRN）的架構
-Elman 的關鍵手法：把隱層在時刻 $t-1$ 的狀態 $h_{t-1}$ 複製到一組 context unit，與當前輸入 $x_t$ 一起送入隱層：
+Elman 的關鍵手法：把隱層在時刻 $`t-1`$ 的狀態 $`h_{t-1}`$ 複製到一組 context unit，與當前輸入 $`x_t`$ 一起送入隱層：
 
-$$h_t = \sigma(W_{hx} x_t + W_{hh} h_{t-1} + b)$$
+$$
+h_t = \sigma(W_{hx} x_t + W_{hh} h_{t-1} + b)
+$$
 
-其中 $\sigma$ 是 sigmoid 函數。context unit 就像偵探的筆記本：每次看新線索前，先把上一頁的筆記攤在桌上。隱層因此同時「看到」現在與（壓縮後的）過去。
+其中 $`\sigma`$ 是 sigmoid 函數。context unit 就像偵探的筆記本：每次看新線索前，先把上一頁的筆記攤在桌上。隱層因此同時「看到」現在與（壓縮後的）過去。
 
 ### BPTT：沿時間展開的反傳播
-訓練時，把循環網路沿時間展開成 $T$ 層的深層前饋網路，再用標準反傳播。隱層梯度沿時間倒傳：
+訓練時，把循環網路沿時間展開成 $`T`$ 層的深層前饋網路，再用標準反傳播。隱層梯度沿時間倒傳：
 
-$$\frac{\partial L}{\partial h_{t-k}} = \left( W_{hh}^\top \right)^k \frac{\partial L}{\partial h_t} \prod_{j=0}^{k-1} \mathrm{diag}\big(\sigma'(a_{t-j})\big)$$
+$$
+\frac{\partial L}{\partial h_{t-k}} = \left( W_{hh}^\top \right)^k \frac{\partial L}{\partial h_t} \prod_{j=0}^{k-1} \mathrm{diag}\big(\sigma'(a_{t-j})\big)
+$$
 
-這條式子預告了下一個案子：若 $W_{hh}$ 的譜半徑小於 1，梯度會連乘而**消失**；大於 1 則爆炸（vanishing/exploding gradient，Hochreiter 1991、Bengio 1994 將正式立案）。
+這條式子預告了下一個案子：若 $`W_{hh}`$ 的譜半徑小於 1，梯度會連乘而**消失**；大於 1 則爆炸（vanishing/exploding gradient，Hochreiter 1991、Bengio 1994 將正式立案）。
 
 ### 破案時刻：隱層聚類自動浮現語法類別
 Elman 訓練小型人工文法生成的句子，任務只有一個：預測下一個詞。訓練完後對隱層表示做階層式聚類，樹狀圖上自動分出名詞／動詞、有生命／無生命等類別。網路從「預測下一詞」這個單純的監督訊號中，自己學出了語法結構——這正是今日「分散式語義表示」的哲學起點。
 
 ### 對照：Jordan 網路
-Jordan（1986）回饋的是**輸出層** $h_t = \sigma(W_{hx} x_t + W_{ho}\, y_{t-1})$ ；Elman 回饋的是**隱層**。隱層是可學習的壓縮表示，容量遠大於輸出，這是 SRN 勝出的關鍵差異。
+Jordan（1986）回饋的是**輸出層** $`h_t = \sigma(W_{hx} x_t + W_{ho}\, y_{t-1})`$ ；Elman 回饋的是**隱層**。隱層是可學習的壓縮表示，容量遠大於輸出，這是 SRN 勝出的關鍵差異。
 
 ### Python 示範：numpy 手刻 SimpleRNN
 以下用 numpy 手刻 Elman 網路，訓練它預測人工文法的下一個詞，並展示隱層自動分群：

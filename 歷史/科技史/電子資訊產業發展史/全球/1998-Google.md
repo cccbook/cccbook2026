@@ -17,17 +17,23 @@
 第三個推理：錢從哪來？答案是 2002 年Bill Gross 的 GoTo.com（Overture）已驗證的競價排名，但 Google 加上第二把鑰匙：AdWords Select（2002）不只看出價，還看點擊率——廣告排序由「出價 × 品質」決定。這把拍賣機制與演算法品質鎖在一起：使用者體驗越好，廣告收入越高，兩者不再是對立。
 
 ## 理論
-PageRank 的核心公式。設網頁 $i$ 的 PageRank 為 $PR(i)$ ，指向 $i$ 的頁面集合為 $B(i)$ ， $L(j)$ 為 $j$ 的出鏈數，阻尼係數 $d \approx 0.85$ ：
+PageRank 的核心公式。設網頁 $`i`$ 的 PageRank 為 $`PR(i)`$ ，指向 $`i`$ 的頁面集合為 $`B(i)`$ ， $`L(j)`$ 為 $`j`$ 的出鏈數，阻尼係數 $`d \approx 0.85`$ ：
 
-$$PR(i) = \frac{1-d}{N} + d \sum_{j \in B(i)} \frac{PR(j)}{L(j)}$$
+$$
+PR(i) = \frac{1-d}{N} + d \sum_{j \in B(i)} \frac{PR(j)}{L(j)}
+$$
 
-寫成矩陣形式： $\mathbf{r} = \left(\frac{1-d}{N}\mathbf{1}\right) + d\, \mathbf{M}\mathbf{r}$ ，其中 $\mathbf{M}$ 為按行歸一化的連結矩陣。等價於隨機漫遊模型：一位網衝者以機率 $d$ 沿隨機連結前進、以 $1-d$ 跳到任意頁面，PageRank 即其平穩分布。因 $d<1$ ，轉移矩陣滿足收縮條件，Banach 不動點定理保證解存在唯一，可用冪迭代法求解：
+寫成矩陣形式： $`\mathbf{r} = \left(\frac{1-d}{N}\mathbf{1}\right) + d\, \mathbf{M}\mathbf{r}`$ ，其中 $`\mathbf{M}`$ 為按行歸一化的連結矩陣。等價於隨機漫遊模型：一位網衝者以機率 $`d`$ 沿隨機連結前進、以 $`1-d`$ 跳到任意頁面，PageRank 即其平穩分布。因 $`d<1`$ ，轉移矩陣滿足收縮條件，Banach 不動點定理保證解存在唯一，可用冪迭代法求解：
 
-$$\mathbf{r}^{(k+1)} = \frac{1-d}{N}\mathbf{1} + d\, \mathbf{M}\mathbf{r}^{(k)}, \qquad \sum_i r_i = 1$$
+$$
+\mathbf{r}^{(k+1)} = \frac{1-d}{N}\mathbf{1} + d\, \mathbf{M}\mathbf{r}^{(k)}, \qquad \sum_i r_i = 1
+$$
 
-經濟面：AdWords 本質是 generalized second-price（GSP）拍賣。廣告主 $i$ 排名勝出需支付
+經濟面：AdWords 本質是 generalized second-price（GSP）拍賣。廣告主 $`i`$ 排名勝出需支付
 
-$$p_i = \frac{b_{i+1} \cdot CTR_{i+1}}{CTR_i} + \epsilon$$
+$$
+p_i = \frac{b_{i+1} \cdot CTR_{i+1}}{CTR_i} + \epsilon
+$$
 
 即「下一名的出價乘以對方點擊率，除以自己的點擊率」——誘因相容（incentive-compatible）：誠實出價近似於占優策略，這與 Vickrey 二價拍賣的機制設計精神一脈相承。學術根源可追溯到 2007 年 Edelman、Ostrovsky、Schwarz 的 GSP 理論分析。
 

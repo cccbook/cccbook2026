@@ -10,7 +10,7 @@
 
 ## 前因：1987 年留下的微笑
 
-- 1987 年黑色星期一之前，美股選擇權的隱含波動率大致平坦（符合同一個 $\sigma$ 的假設）。
+- 1987 年黑色星期一之前，美股選擇權的隱含波動率大致平坦（符合同一個 $`\sigma`$ 的假設）。
 - 1987 年之後，市場出現持久的「微笑」（equity smirk）：深價外賣權（OTM put）的隱含波動率遠高於價平——**市場用價格投票：常態分配錯了，股價會崩、會跳**。
 - 已有的修正路線：
   - 常數彈性變異數（CEV, Cox 1976）
@@ -24,32 +24,38 @@
 
 Heston 模型：價格與方差（波動率的平方）都是隨機過程：
 
-$$dS_t = \mu S_t \, dt + \sqrt{v_t}\, S_t \, dW_t^{(1)}$$
+$$
+dS_t = \mu S_t \, dt + \sqrt{v_t}\, S_t \, dW_t^{(1)}
+$$
 
-$$dv_t = \kappa(\theta - v_t) \, dt + \xi \sqrt{v_t} \, dW_t^{(2)}, \qquad dW^{(1)} dW^{(2)} = \rho \, dt$$
+$$
+dv_t = \kappa(\theta - v_t) \, dt + \xi \sqrt{v_t} \, dW_t^{(2)}, \qquad dW^{(1)} dW^{(2)} = \rho \, dt
+$$
 
 五個參數各司其職：
 
 | 參數 | 意義 | 對應微笑的哪部分 |
 |------|------|------|
-| $\theta$ | 長期方差水準 | 整體高度 |
-| $\kappa$ | 均值回歸速度 | 短端行為 |
-| $\xi$ | 方差的波動率（vol of vol） | 笑的**深度** |
-| $\rho$ | 價格與方差的相關 | 笑的**歪斜**（skew） |
+| $`\theta`$ | 長期方差水準 | 整體高度 |
+| $`\kappa`$ | 均值回歸速度 | 短端行為 |
+| $`\xi`$ | 方差的波動率（vol of vol） | 笑的**深度** |
+| $`\rho`$ | 價格與方差的相關 | 笑的**歪斜**（skew） |
 
-**數學解讀**： $\rho < 0$ （股價跌時波動升）產生負偏斜——正是美股 smirk； $\xi$ 越大，兩端翹得越高——正是微笑。
+**數學解讀**： $`\rho < 0`$ （股價跌時波動升）產生負偏斜——正是美股 smirk； $`\xi`$ 越大，兩端翹得越高——正是微笑。
 
 ### 線索二：方差的 Feller 條件
 
-方差過程 $dv = \kappa(\theta - v)dt + \xi\sqrt{v}\,dW$ 是 **CIR 過程**（Cox–Ingersoll–Ross 1985）——平方根項保證方差非負（可為零但撞到零時彈回），Feller 條件 $2\kappa\theta > \xi^2$ 保證不觸零。
+方差過程 $`dv = \kappa(\theta - v)dt + \xi\sqrt{v}\,dW`$ 是 **CIR 過程**（Cox–Ingersoll–Ross 1985）——平方根項保證方差非負（可為零但撞到零時彈回），Feller 條件 $`2\kappa\theta > \xi^2`$ 保證不觸零。
 
 ### 線索三：特徵函數與閉式解
 
 Heston 的殺手級技巧：歐式選擇權價格可寫成特徵函數的反傅立葉積分（用 Carr–Madan 的記號重述）：
 
-$$C(K) = \frac{e^{-rT}}{2}\left[S_0 - \frac{\sqrt{S_0 K}}{\pi} \int_0^\infty \mathrm{Re}\left[e^{iu\ln(S_0/K)} \varphi(u - i/2)\right] \frac{du}{u}\right]$$
+$$
+C(K) = \frac{e^{-rT}}{2}\left[S_0 - \frac{\sqrt{S_0 K}}{\pi} \int_0^\infty \mathrm{Re}\left[e^{iu\ln(S_0/K)} \varphi(u - i/2)\right] \frac{du}{u}\right]
+$$
 
-其中 $\varphi(u) = E^Q[e^{iu \ln S_T}]$ 是 $\ln S_T$ 的特徵函數——Heston 用仿射過程理論解出 $\varphi$ 的**閉式形式**（兩個 Riccati ODE 的解）。
+其中 $`\varphi(u) = E^Q[e^{iu \ln S_T}]`$ 是 $`\ln S_T`$ 的特徵函數——Heston 用仿射過程理論解出 $`\varphi`$ 的**閉式形式**（兩個 Riccati ODE 的解）。
 
 **實務意義**：有了閉式特徵函數，定價只需一次數值積分——比蒙地卡羅（見 [1977-Boyle蒙地卡羅選擇權定價.md](1977-Boyle蒙地卡羅選擇權定價.md)）快上千倍，還能做隱含波動率校準（calibration）。
 
@@ -89,7 +95,7 @@ def heston_call(S, K, v, kappa, theta, xi, rho, r, T):
 
 ## 偵探筆記
 
-- 動機：1987 後的波動率微笑違反常數 $\sigma$
+- 動機：1987 後的波動率微笑違反常數 $`\sigma`$
 - 工具：雙變數 CIR 方差過程、仿射過程、特徵函數閉式解
 - 遺產：隨機波動率工業標準、傅立葉定價法
 - 盲點：短長端微笑難兼顧、Feller 條件的數值麻煩

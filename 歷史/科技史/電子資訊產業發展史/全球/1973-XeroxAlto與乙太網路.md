@@ -25,11 +25,15 @@
 ## 理論
 CSMA/CD 的核心演算法：發送前先偵聽載波；發送中偵測衝突；衝突時停止並等待隨機退避後重試。第 n 次重試的退避時間：
 
-$$t_{backoff} = r \times 51.2\,\mu s,\quad r \in \{0, 1, \dots, 2^k-1\},\; k=\min(n,10)$$
+$$
+t_{backoff} = r \times 51.2\,\mu s,\quad r \in \{0, 1, \dots, 2^k-1\},\; k=\min(n,10)
+$$
 
 這是「截斷二進位指數退避」，隨機性使衝突節點自動錯開。吞吐量上界可用微量模型估計：
 
-$$S_{max} = \frac{1}{1 + 2a},\quad a = \frac{t_{prop}}{t_{trans}}$$
+$$
+S_{max} = \frac{1}{1 + 2a},\quad a = \frac{t_{prop}}{t_{trans}}
+$$
 
 網路愈短、訊框愈長，效率愈高——這解釋了乙太網路為何從 2.94 Mbps 到 10 Mbps 到今日 400 Gbps 一路統治。
 

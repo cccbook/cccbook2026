@@ -23,20 +23,24 @@ Amdahl 的解法是現代電腦工業最重要的概念發明——**架構（ar
 - **架構（ISA）**：程式設計師看見的機器——指令集、暫存器、定址方式、中斷機制
 - **實作**：架構的具體硬體——電路、速度、價格
 
-只要所有機型實作**同一個 ISA**，軟體就能在家族內自由遷移。System/360 家族的性能跨越約 $50\times$ ，價格跨越約 $50\times$ （從約 \$13 萬到 \$550 萬）：
+只要所有機型實作**同一個 ISA**，軟體就能在家族內自由遷移。System/360 家族的性能跨越約 $`50\times`$ ，價格跨越約 $`50\times`$ （從約 \$13 萬到 \$550 萬）：
 
-$$\frac{\text{Model 75 性能}}{\text{Model 30 性能}} \approx 50, \qquad \frac{\text{Model 75 價格}}{\text{Model 30 價格}} \approx 50$$
+$$
+\frac{\text{Model 75 性能}}{\text{Model 30 性能}} \approx 50, \qquad \frac{\text{Model 75 價格}}{\text{Model 30 價格}} \approx 50
+$$
 
-用數學語言說，家族中每台機器都是同一抽象機器的不同「效能等化實例」：對任意機型 $m$ 與程式 $P$ ，其語義不變，只有執行時間伸縮：
+用數學語言說，家族中每台機器都是同一抽象機器的不同「效能等化實例」：對任意機型 $`m`$ 與程式 $`P`$ ，其語義不變，只有執行時間伸縮：
 
-$$\text{Semantics}_m(P) = \text{Semantics}(P), \quad \text{Time}_m(P) = c_m \cdot T(P)$$
+$$
+\text{Semantics}_m(P) = \text{Semantics}(P), \quad \text{Time}_m(P) = c_m \cdot T(P)
+$$
 
 軟體投資從此「跟著架構走」而非「跟著機器走」。這個思想直接催生了後世所有的相容機產業（PC clones）、x86 的長壽（40 年相容性）、以及今天的「指令集生態」概念（ARM、RISC-V）。
 
 ### 2. 8-bit byte 標準化
 在 System/360 之前，byte/word 長度百家爭鳴：36 bit（7090）、12/24 bit（PDP 系列）、變動字元長（1401）。System/360 統一採用 **8-bit byte、32-bit word**，並搭配 EBCDIC 與（後來的）ASCII 字元碼。8-bit 的選擇有精密的工程推理：
 
-- 8 bit 可表示 $2^8 = 256$ 個符號，足以容納字母、數字、標點與控制碼
+- 8 bit 可表示 $`2^8 = 256`$ 個符號，足以容納字母、數字、標點與控制碼
 - 8 是 2 的冪，方便二進位運算與定址
 - 32-bit word = 4 bytes，可同時容納一個單精度浮點數與一個位址
 
@@ -47,9 +51,11 @@ $$\text{Semantics}_m(P) = \text{Semantics}(P), \quad \text{Time}_m(P) = c_m \cdo
 
 > 把複雜的 360 指令，用底層更簡單的微指令（microinstruction）一段小程式來「扮演」。
 
-亦即低階機器的控制單元本質上是一台**硬體實作的直譯器**。若機器指令為 $I$ 、微指令集為 $\mu$ ，則：
+亦即低階機器的控制單元本質上是一台**硬體實作的直譯器**。若機器指令為 $`I`$ 、微指令集為 $`\mu`$ ，則：
 
-$$\text{Execute}(I) = \text{interpret}_{\mu}(\text{Microprogram}(I))$$
+$$
+\text{Execute}(I) = \text{interpret}_{\mu}(\text{Microprogram}(I))
+$$
 
 高階機型（Model 75）則用硬體線路直接實作指令以追求速度。同一架構、不同實作層——這是「模擬/虛擬化」思想的硬體先聲。IBM 後來甚至在 System/370 上用微碼**模擬執行舊機器（1401、7090）的程式**，實現了「換機器不換軟體」的承諾。
 
@@ -102,7 +108,12 @@ class System360:
 - **8-bit byte** 成為全球標準，影響至今一切數位基建。
 
 ## 關鍵人物與文獻
-- **Gene Amdahl（1922–2015）**：System/360 主架構師，後創 Amdahl Corp（相容機）、提出 Amdahl's Law（並行加速比上限定理）：$$S = \frac{1}{(1-p) + \frac{p}{n}}$$
+- **Gene Amdahl（1922–2015）**：System/360 主架構師，後創 Amdahl Corp（相容機）、提出 Amdahl's Law（並行加速比上限定理）：
+
+$$
+S = \frac{1}{(1-p) + \frac{p}{n}}
+$$
+
 - **Fred Brooks（1931–2022）**：OS/360 專案經理，《人月神話》作者，1999 年圖靈獎。
 - **Maurice Wilkes**：1949 年提出微程式設計概念，微碼的理論源頭。
 - 文獻：*SPREAD Report*（IBM 內部, 1961）；G. Amdahl et al., "Architecture of the IBM System/360", *IBM Journal of R&D*, 1964；Fred Brooks, *The Mythical Man-Month*（1975）。

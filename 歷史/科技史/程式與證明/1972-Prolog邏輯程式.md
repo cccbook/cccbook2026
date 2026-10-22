@@ -33,15 +33,15 @@ $$
 A \leftarrow B_1, \dots, B_n
 $$
 
-讀作「若 $B_1$ 到 $B_n$ 皆成立，則 $A$ 成立」。當 $n = 0$ 時就是事實。
+讀作「若 $`B_1`$ 到 $`B_n`$ 皆成立，則 $`A`$ 成立」。當 $`n = 0`$ 時就是事實。
 例如家族知識庫：
 
 | Prolog 寫法 | 邏輯讀法 |
 |---|---|
-| `parent(tom, bob).` | $Parent(Tom, Bob)$ 為真 |
-| `parent(bob, ann).` | $Parent(Bob, Ann)$ 為真 |
-| `ancestor(X, Y) :- parent(X, Y).` | $Parent(X,Y) \to Ancestor(X,Y)$ |
-| `ancestor(X, Z) :- parent(X, Y), ancestor(Y, Z).` | $Parent(X,Y) \land Ancestor(Y,Z) \to Ancestor(X,Z)$ |
+| `parent(tom, bob).` | $`Parent(Tom, Bob)`$ 為真 |
+| `parent(bob, ann).` | $`Parent(Bob, Ann)`$ 為真 |
+| `ancestor(X, Y) :- parent(X, Y).` | $`Parent(X,Y) \to Ancestor(X,Y)`$ |
+| `ancestor(X, Z) :- parent(X, Y), ancestor(Y, Z).` | $`Parent(X,Y) \land Ancestor(Y,Z) \to Ancestor(X,Z)`$ |
 
 為什麼選它？因為 Horn 子句集的可滿足性是 P-完全的，
 而一般子句集是 NP-完全的。偵探用「犧牲表達力」換來「可執行的效率」。
@@ -54,11 +54,11 @@ with Selection function for Definite clauses）。
 
 查詢 `?- ancestor(tom, ann).` 的 SLD 反駁過程如下：
 
-1. 目標為 $\leftarrow Ancestor(Tom, Ann)$ 。
-2. 與第二條祖先規則合一，得替代 $\{X/Tom, Z/Ann\}$ ，新目標為 $\leftarrow Parent(Tom, Y), Ancestor(Y, Ann)$ 。
-3. 選最左文字 $Parent(Tom, Y)$ ，與事實 $Parent(Tom, Bob)$ 合一，得 $\{Y/Bob\}$ 。
-4. 剩餘目標 $\leftarrow Ancestor(Bob, Ann)$ ，與第一條規則合一，
-   再與 $Parent(Bob, Ann)$ 合一，得到空子句 $\Box$ ，證畢。
+1. 目標為 $`\leftarrow Ancestor(Tom, Ann)`$ 。
+2. 與第二條祖先規則合一，得替代 $`\{X/Tom, Z/Ann\}`$ ，新目標為 $`\leftarrow Parent(Tom, Y), Ancestor(Y, Ann)`$ 。
+3. 選最左文字 $`Parent(Tom, Y)`$ ，與事實 $`Parent(Tom, Bob)`$ 合一，得 $`\{Y/Bob\}`$ 。
+4. 剩餘目標 $`\leftarrow Ancestor(Bob, Ann)`$ ，與第一條規則合一，
+   再與 $`Parent(Bob, Ann)`$ 合一，得到空子句 $`\Box`$ ，證畢。
 
 一般形式的 SLD 步驟可寫為：
 
@@ -66,13 +66,13 @@ $$
 \frac{\leftarrow A_1, \dots, A_i, \dots, A_k \quad A \leftarrow B_1, \dots, B_n}{(\leftarrow A_1, \dots, A_{i-1}, B_1, \dots, B_n, A_{i+1}, \dots, A_k)\theta}
 $$
 
-其中 $\theta$ 是 $A_i$ 與 $A$ 的最一般合一者（mgu）。
+其中 $`\theta`$ 是 $`A_i`$ 與 $`A`$ 的最一般合一者（mgu）。
 每次只解一個子目標，堆疊起來就是深度優先搜尋。
 
 ### 線索三：合一＋深度優先——引擎的兩顆心臟
 
-合一演算法回答「 $P(X, Bob)$ 與 $P(Tom, Y)$ 能否變成一樣？」
-答案是 $\theta = \{X/Tom, Y/Bob\}$ 。Robinson 的合一演算法保證
+合一演算法回答「 $`P(X, Bob)`$ 與 $`P(Tom, Y)`$ 能否變成一樣？」
+答案是 $`\theta = \{X/Tom, Y/Bob\}`$ 。Robinson 的合一演算法保證
 能找到最一般的替代，否則回報失敗。
 
 Prolog 引擎的執行策略可歸納為下表：
@@ -91,7 +91,7 @@ Prolog 引擎的執行策略可歸納為下表：
 ## 結案報告
 
 Prolog 破了案：程式不必寫「怎麼做」，只要寫「是什麼」，
-剩下的搜尋交給 SLD 引擎。這就是 Kowalski 名言「 $Algorithm = Logic + Control$ 」
+剩下的搜尋交給 SLD 引擎。這就是 Kowalski 名言「 $`Algorithm = Logic + Control`$ 」
 的現場示範。
 
 它的遺產有三：
@@ -103,7 +103,7 @@ Prolog 破了案：程式不必寫「怎麼做」，只要寫「是什麼」，
 
 ## 證據與工具
 
-- 核心公式：Horn 規則 $A \leftarrow B_1, \dots, B_n$ ，查詢 $\leftarrow G_1, \dots, G_k$ ，終點 $\Box$ ， $\theta$ 為最一般合一者。
+- 核心公式：Horn 規則 $`A \leftarrow B_1, \dots, B_n`$ ，查詢 $`\leftarrow G_1, \dots, G_k`$ ，終點 $`\Box`$ ， $`\theta`$ 為最一般合一者。
 - 祖先範例完整程式：
 
 ```prolog
@@ -115,6 +115,6 @@ ancestor(X, Z) :- parent(X, Y), ancestor(Y, Z).
 % Who = bob ; Who = ann
 ```
 
-- 手動模擬搜尋樹：節點為目標串列，邊為規則與合一替代， $\Box$ 即回報答案。
+- 手動模擬搜尋樹：節點為目標串列，邊為規則與合一替代， $`\Box`$ 即回報答案。
 - 延伸閱讀：Kowalski 1974 年〈Predicate Logic as Programming Language〉，
   Colmerauer 與 Roussel 1996 年回顧 Prolog 誕生史。

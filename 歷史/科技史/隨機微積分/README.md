@@ -57,7 +57,7 @@
 | 年份 | 事件 | Wiki |
 |------|------|------|
 | 2014 | Hairer 正則結構：KPZ 的嚴格解，Fields 獎 | [2014-Hairer正則結構.md](2014-Hairer正則結構.md) |
-| 2014 | Rough Volatility：波動比布朗更粗糙， $H \approx 0.1$ | [2014-RoughVolatility.md](2014-RoughVolatility.md) |
+| 2014 | Rough Volatility：波動比布朗更粗糙， $`H \approx 0.1`$ | [2014-RoughVolatility.md](2014-RoughVolatility.md) |
 | 2017 | Deep BSDE：E–Han–Jentzen，高維 PDE 的神經解法 | [2017-DeepBSDE.md](2017-DeepBSDE.md) |
 | 2018 | Neural SDE：把 SDE 寫進神經網路層 | [2018-NeuralSDE.md](2018-NeuralSDE.md) |
 | 2021 | 擴散生成模型 SDE：Song 等人的分數逆擴散，Anderson 歸來 | [2021-擴散模型SDE.md](2021-擴散模型SDE.md) |
@@ -66,30 +66,30 @@
 
 | 程式 | 對應 Wiki | 驗證要點 |
 |------|-----------|----------|
-| [_code/1827-brownian_msd.py](_code/1827-brownian_msd.py) | 1827 Brown | 二維均方位移 $\approx 4Dt$ |
-| [_code/1900-bachelier_option.py](_code/1900-bachelier_option.py) | 1900 Bachelier | MC 與 Bachelier 公式誤差 $< 1\%$ |
+| [_code/1827-brownian_msd.py](_code/1827-brownian_msd.py) | 1827 Brown | 二維均方位移 $`\approx 4Dt`$ |
+| [_code/1900-bachelier_option.py](_code/1900-bachelier_option.py) | 1900 Bachelier | MC 與 Bachelier 公式誤差 $`< 1\%`$ |
 | [_code/1905-einstein_diffusion.py](_code/1905-einstein_diffusion.py) | 1905 Einstein／1909 Perrin | MSD 斜率還原擴散係數 |
-| [_code/1906-markov_stationary.py](_code/1906-markov_stationary.py) | 1906 Markov | 模擬頻率 $\approx$ 平穩分佈 |
-| [_code/1908-langevin_ou.py](_code/1908-langevin_ou.py) | 1908 Langevin | 平穩變異數 $\approx \sigma^2/2\theta$ |
-| [_code/1923-wiener_qv.py](_code/1923-wiener_qv.py) | 1923 Wiener | 二次變差 $\to T$ |
-| [_code/1931-fokker_planck_ou.py](_code/1931-fokker_planck_ou.py) | 1931 Kolmogorov | 直方圖 $\approx$ 解析常態 |
+| [_code/1906-markov_stationary.py](_code/1906-markov_stationary.py) | 1906 Markov | 模擬頻率 $`\approx`$ 平穩分佈 |
+| [_code/1908-langevin_ou.py](_code/1908-langevin_ou.py) | 1908 Langevin | 平穩變異數 $`\approx \sigma^2/2\theta`$ |
+| [_code/1923-wiener_qv.py](_code/1923-wiener_qv.py) | 1923 Wiener | 二次變差 $`\to T`$ |
+| [_code/1931-fokker_planck_ou.py](_code/1931-fokker_planck_ou.py) | 1931 Kolmogorov | 直方圖 $`\approx`$ 解析常態 |
 | [_code/1933-clt_demo.py](_code/1933-clt_demo.py) | 1933 公理化 | 標準化均值逼近常態 |
-| [_code/1942-ito_isometry.py](_code/1942-ito_isometry.py) | 1942 Itô／1984 量子 | 均值 $0$ 、變異數 $T^2/2$ |
-| [_code/1949-feynman_kac_heat.py](_code/1949-feynman_kac_heat.py) | 1949 Feynman–Kac | MC 解熱方程誤差 $< 1\%$ |
-| [_code/1951-ito_gbm.py](_code/1951-ito_gbm.py) | 1951 Itô 公式 | Itô 修正項 $-\sigma^2/2$ 現形 |
-| [_code/1955-euler_maruyama_order.py](_code/1955-euler_maruyama_order.py) | 1955 Maruyama／1992 聖經 | 強收斂約 $1/2$ 階 |
+| [_code/1942-ito_isometry.py](_code/1942-ito_isometry.py) | 1942 Itô／1984 量子 | 均值 $`0`$ 、變異數 $`T^2/2`$ |
+| [_code/1949-feynman_kac_heat.py](_code/1949-feynman_kac_heat.py) | 1949 Feynman–Kac | MC 解熱方程誤差 $`< 1\%`$ |
+| [_code/1951-ito_gbm.py](_code/1951-ito_gbm.py) | 1951 Itô 公式 | Itô 修正項 $`-\sigma^2/2`$ 現形 |
+| [_code/1955-euler_maruyama_order.py](_code/1955-euler_maruyama_order.py) | 1955 Maruyama／1992 聖經 | 強收斂約 $`1/2`$ 階 |
 | [_code/1960-girsanov_drift.py](_code/1960-girsanov_drift.py) | 1960 Girsanov | 加權均值還原漂移 |
 | [_code/1960-kalman_1d.py](_code/1960-kalman_1d.py) | 1960 Kalman | RMSE 低於 raw 觀測三成以上 |
-| [_code/1973-black_scholes_mc.py](_code/1973-black_scholes_mc.py) | 1973 Black–Scholes | MC 與公式誤差 $< 1\%$ |
-| [_code/1975-milstein_order.py](_code/1975-milstein_order.py) | 1975 Milstein／1992 聖經 | 強收斂約 $1$ 階 |
-| [_code/1976-malliavin_delta.py](_code/1976-malliavin_delta.py) | 1976 Malliavin | 權重 Delta $\approx$ 解析值 |
+| [_code/1973-black_scholes_mc.py](_code/1973-black_scholes_mc.py) | 1973 Black–Scholes | MC 與公式誤差 $`< 1\%`$ |
+| [_code/1975-milstein_order.py](_code/1975-milstein_order.py) | 1975 Milstein／1992 聖經 | 強收斂約 $`1`$ 階 |
+| [_code/1976-malliavin_delta.py](_code/1976-malliavin_delta.py) | 1976 Malliavin | 權重 Delta $`\approx`$ 解析值 |
 | [_code/1979-binomial_crr.py](_code/1979-binomial_crr.py) | 1979 鞅定價 | CRR 收斂至 BS 公式 |
 | [_code/1982-reverse_ou.py](_code/1982-reverse_ou.py) | 1982 Anderson | 逆時重建邊際分佈 |
-| [_code/1990-linear_bsde.py](_code/1990-linear_bsde.py) | 1990 BSDE／2017 Deep BSDE | 迴歸解 $\approx$ 解析解 |
+| [_code/1990-linear_bsde.py](_code/1990-linear_bsde.py) | 1990 BSDE／2017 Deep BSDE | 迴歸解 $`\approx`$ 解析解 |
 | [_code/1993-heston_mc.py](_code/1993-heston_mc.py) | 1993 Heston | 賣買權平價成立 |
 | [_code/1993-particle_filter.py](_code/1993-particle_filter.py) | 1993 粒子濾波 | RMSE 達 Kalman 九成水準 |
-| [_code/1998-fbm_hurst.py](_code/1998-fbm_hurst.py) | 1998 Lyons／2014 Rough Vol | 變異數標度 $t^{2H}$ |
-| [_code/2018-ou_mle.py](_code/2018-ou_mle.py) | 2018 Neural SDE | 參數還原誤差 $< 10\%$ |
+| [_code/1998-fbm_hurst.py](_code/1998-fbm_hurst.py) | 1998 Lyons／2014 Rough Vol | 變異數標度 $`t^{2H}`$ |
+| [_code/2018-ou_mle.py](_code/2018-ou_mle.py) | 2018 Neural SDE | 參數還原誤差 $`< 10\%`$ |
 | [_code/2021-score_diffusion_1d.py](_code/2021-score_diffusion_1d.py) | 2021 擴散模型 | 雙峰還原，KS 檢定通過 |
 
 ## 因果鏈總覽

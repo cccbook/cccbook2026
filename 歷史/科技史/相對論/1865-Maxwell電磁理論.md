@@ -6,13 +6,13 @@
 這是物理史上第一次有人從純理論推出「光就是電磁波」，也埋下了相對論的第一顆種子。
 
 ## 前因 -- 為什麼會有這個案子
-- **Coulomb（1785）**：靜電力平方反比定律 $\mathbf{F} = \dfrac{1}{4\pi\epsilon_0}\dfrac{q_1 q_2}{r^2}\hat{\mathbf{r}}$ 。
+- **Coulomb（1785）**：靜電力平方反比定律 $`\mathbf{F} = \dfrac{1}{4\pi\epsilon_0}\dfrac{q_1 q_2}{r^2}\hat{\mathbf{r}}`$ 。
 - **Ørsted（1820）**：電流會使磁針偏轉——電與磁有關！
 - **Ampère（1820s）**：給出電流產生磁場的定量定律。
 - **Faraday（1831）**：電磁感應——變化的磁場產生電場；他還提出「力線」的場論雛形。
 - **疑點（線索之一）**：Faraday 的實驗顯示「變化的磁場生電場」，但 Ampère 定律
-  $\nabla\times\mathbf{B} = \mu_0\mathbf{J}$ 對電容器充電電路會自相矛盾——
-  對閉曲面取散度得 $\nabla\cdot\mathbf{J} = 0$ ，違反電荷守恆 $\nabla\cdot\mathbf{J} = -\partial_t\rho$ 。
+  $`\nabla\times\mathbf{B} = \mu_0\mathbf{J}`$ 對電容器充電電路會自相矛盾——
+  對閉曲面取散度得 $`\nabla\cdot\mathbf{J} = 0`$ ，違反電荷守恆 $`\nabla\cdot\mathbf{J} = -\partial_t\rho`$ 。
   MaxWell 的偵探工作，就是從這個「破洞」開始的。
 
 ## 線索與推理 -- 數學式、程式、理論
@@ -31,26 +31,33 @@ $$
 ### 線索 2：位移電流 -- 關鍵的「補洞」推理
 
 Maxwell 注意到：對 Ampère 定律取散度，
+
 $$
 0 = \mu_0\nabla\cdot\mathbf{J} \quad\Rightarrow\quad \nabla\cdot\mathbf{J} = 0
 $$
-但電荷守恆要求 $\nabla\cdot\mathbf{J} = -\partial_t\rho$ 。補救方法只有一個：加進一項
-$\mu_0\epsilon_0\,\partial_t\mathbf{E}/\partial t$ ，因為由 Gauss 定律
+
+但電荷守恆要求 $`\nabla\cdot\mathbf{J} = -\partial_t\rho`$ 。補救方法只有一個：加進一項
+$`\mu_0\epsilon_0\,\partial_t\mathbf{E}/\partial t`$ ，因為由 Gauss 定律
+
 $$
 \nabla\cdot\left(\epsilon_0\frac{\partial\mathbf{E}}{\partial t}\right) = \frac{\partial\rho}{\partial t},
 $$
-恰好把方程組「自洽化」。Maxwell 稱 $\epsilon_0\,\partial_t\mathbf{E}$ 為**位移電流**。
+
+恰好把方程組「自洽化」。Maxwell 稱 $`\epsilon_0\,\partial_t\mathbf{E}`$ 為**位移電流**。
 這一項看似數學補丁，實際上卻是打開「電磁波」大門的鑰匙：變化的電場也能生磁場，
 於是 E 與 B 可以互相激發、脫離電荷而自行傳播。
 
 ### 線索 3：波動方程 -- 光速從方程組裡掉出來
 
-在真空（ $\rho = 0,\ \mathbf{J} = 0$ ）中，對 $\nabla\times\mathbf{E}$ 再取旋度，配合
-$\nabla\times(\nabla\times\mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E}$ ：
+在真空（ $`\rho = 0,\ \mathbf{J} = 0`$ ）中，對 $`\nabla\times\mathbf{E}`$ 再取旋度，配合
+$`\nabla\times(\nabla\times\mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E}`$ ：
+
 $$
 \nabla^2\mathbf{E} = \mu_0\epsilon_0\,\frac{\partial^2\mathbf{E}}{\partial t^2}
 $$
-這正是波速 $v$ 滿足 $\nabla^2 E = \frac{1}{v^2}\partial_t^2 E$ 的波動方程，故
+
+這正是波速 $`v`$ 滿足 $`\nabla^2 E = \frac{1}{v^2}\partial_t^2 E`$ 的波動方程，故
+
 $$
 c = \frac{1}{\sqrt{\mu_0\epsilon_0}}
 $$
@@ -59,16 +66,16 @@ $$
 
 | 物理量 | 數值（當年實測） |
 |---|---|
-| $\epsilon_0\mu_0$ 算出的電磁波速 | $3.107\times 10^8$ m/s |
-| Fizeau（1849）光速 | $3.15\times 10^8$ m/s |
-| Foucault（1862）光速 | $2.98\times 10^8$ m/s |
+| $`\epsilon_0\mu_0`$ 算出的電磁波速 | $`3.107\times 10^8`$ m/s |
+| Fizeau（1849）光速 | $`3.15\times 10^8`$ m/s |
+| Foucault（1862）光速 | $`2.98\times 10^8`$ m/s |
 
 誤差在實驗誤差範圍內！Maxwell 寫道：「我們幾乎無法避免這個推論：
 光本身就是同一介質中的電磁擾動。」——**光就是電磁波**。
 
 ### 線索 4：Python numpy 數值驗證波動方程傳播
 
-用 FDTD 差分法驗證 $c = 1/\sqrt{\mu_0\epsilon_0}$ ，並確認波形以速度 $c$ 傳播：
+用 FDTD 差分法驗證 $`c = 1/\sqrt{\mu_0\epsilon_0}`$ ，並確認波形以速度 $`c`$ 傳播：
 
 ```python
 import numpy as np
@@ -97,14 +104,14 @@ for n, E_s in snapshots.items():
 # 驗證：peak 位置 ≈ c*t，波形形狀不變 -> 波動方程成立
 ```
 
-執行結果顯示脈衝峰值以 $x \approx ct$ 移動、波形不失真——數值實驗確認了
-Maxwell 方程組確實承載一個以 $c$ 傳播的波。
+執行結果顯示脈衝峰值以 $`x \approx ct`$ 移動、波形不失真——數值實驗確認了
+Maxwell 方程組確實承載一個以 $`c`$ 傳播的波。
 
 ## 結案 -- 後果與影響
-- **光學併入電磁學**：折射率 $n = \sqrt{\epsilon_r\mu_r}$ ，光的偏振、干涉皆可用 Maxwell 理論解釋。
-- **留下新謎團（偵探式伏筆）**：波需要介質嗎？Maxwell 方程中的 $c$ 是相對於誰的速度？
+- **光學併入電磁學**：折射率 $`n = \sqrt{\epsilon_r\mu_r}`$ ，光的偏振、干涉皆可用 Maxwell 理論解釋。
+- **留下新謎團（偵探式伏筆）**：波需要介質嗎？Maxwell 方程中的 $`c`$ 是相對於誰的速度？
   當時答案似乎是「乙太」——這引出了 1887 年 Michelson–Morley 實驗。
-- **伽利略變換 vs Maxwell**：Maxwell 方程在 Galilean 變換下**不**不變（因為 $c$ 出現在方程中），
+- **伽利略變換 vs Maxwell**：Maxwell 方程在 Galilean 變換下**不**不變（因為 $`c`$ 出現在方程中），
   這個矛盾最終由 Lorentz 變換與 Einstein 1905 解決。
 - Hertz（1887）實驗證實電磁波存在，完成結案的最後一塊拼圖。
 

@@ -4,7 +4,9 @@
 
 2022 年 9 月，OpenAI 發表 **Whisper**：一個以 **68 萬小時**弱監督語音資料訓練的多語言、多任務語音辨識系統。核心主張：**不需要人工標註，只要規模夠大、資料夠雜，Transformer 就能從網路上「髒」的語音資料中學出接近人類水平的辨識能力**。
 
-$$\text{多任務序列} = [\text{語言偵測},\ \text{辨識},\ \text{翻譯},\ \text{時間戳}],\quad D \approx 680{,}000\ \text{小時}$$
+$$
+\text{多任務序列} = [\text{語言偵測},\ \text{辨識},\ \text{翻譯},\ \text{時間戳}],\quad D \approx 680{,}000\ \text{小時}
+$$
 
 Whisper 開源權重，零樣本（zero-shot）即在各基準上逼近甚至超越專門微調的 SOTA 模型——這是語音辨識的「GPT-3 時刻」，也是弱監督規模化在聲學世界的勝訴判決。
 
@@ -36,7 +38,9 @@ Whisper 的訓練集從網路爬取，經過自動過濾（去重、去音樂、
 
 Whisper 把任務規格**編碼進輸入序列的開頭**（special tokens），讓單一 encoder-decoder Transformer 完成所有工作：
 
-$$[\text{sot}]\ [\text{lang}]\ [\text{transcribe}|\text{translate}]\ [\text{ts}_{\text{start}}] \to \text{audio} \to \text{text}\ [\text{eot}]$$
+$$
+[\text{sot}]\ [\text{lang}]\ [\text{transcribe}|\text{translate}]\ [\text{ts}_{\text{start}}] \to \text{audio} \to \text{text}\ [\text{eot}]
+$$
 
 - encoder：log-Mel 頻譜圖 → Transformer 編碼（表徵聲學內容）
 - decoder：自迴歸生成文字 token，可選輸出**時間戳**
@@ -64,7 +68,9 @@ decoder 的語言 token 同時學會了語言辨識（LID），準確率在主�
 
 傳統 ASR 在乾淨資料上過擬合，遇到真實環境就崩壞；Whisper 的訓練資料本身就是**真實世界的雜訊分布**：
 
-$$\text{泛化誤差} \approx \text{訓練分布與測試分布的落差}$$
+$$
+\text{泛化誤差} \approx \text{訓練分布與測試分布的落差}
+$$
 
 當訓練分布涵蓋 podcast、口音、背景音樂、遠場收音，落差自然縮小——**弱監督的「弱」，意外成為最強的正則化**。這是規模化哲學在聲學域的完整判決：規模不僅帶來能力，還帶來魯棒性。
 

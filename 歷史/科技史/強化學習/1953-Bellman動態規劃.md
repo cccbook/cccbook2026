@@ -3,15 +3,23 @@
 ## 案件摘要
 1953 年，Richard Bellman 在 RAND 公司的研究報告中發明了**動態規劃 (Dynamic Programming)** 與
 **Bellman 方程**。他證明：多期決策問題
-$$\max_\pi \; \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t r_t\right]$$
-不必暴力枚舉所有策略（ $|\mathcal{A}|^{T}$ 種！），而可以用一個遞迴方程解決——
-$$V(s) = \max_a \big[ r(s,a) + \gamma V(s') \big].$$
+
+$$
+\max_\pi \; \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t r_t\right]
+$$
+
+不必暴力枚舉所有策略（ $`|\mathcal{A}|^{T}`$ 種！），而可以用一個遞迴方程解決——
+
+$$
+V(s) = \max_a \big[ r(s,a) + \gamma V(s') \big].
+$$
+
 這是強化學習的數學地基。**試誤有了思想（Turing 1950），數學骨架在這裡出現。**
 
 ## 前因 -- 為什麼會有這個案子
 - **RAND 的軍事決策問題**：二戰後 RAND 需處理飛彈路徑、後勤補給、庫存調度等
   「一連串互相糾纏的決策」——今天省一點，明天會吃虧。**時間耦合是兇手。**
-- **暴力枚舉的絕望**： $T$ 期、每期 $m$ 個選擇，就有 $m^T$ 種策略。 $T=30, m=10$ 時是 $10^{30}$ ，
+- **暴力枚舉的絕望**： $`T`$ 期、每期 $`m`$ 個選擇，就有 $`m^T`$ 種策略。 $`T=30, m=10`$ 時是 $`10^{30}`$ ，
   宇宙的原子都不夠數。古典變分法（Euler–Lagrange，見微積分史）只能處理連續情形。
 - **名稱的偵探花絮**：Bellman 為什麼叫 "dynamic programming"？他自述——當年國防部長
   Wilson 討厭 "research"，他故意選一個神祕的名字「動態的、程式化的」，
@@ -26,16 +34,20 @@ Bellman 的洞察只有一句話：
 
 翻譯成數學：既然「未來的最優」與「過去怎麼走到這裡」無關（馬爾可夫性），
 那麼每一步只需問「**眼前這一步 + 未來的價值**」：
-$$\boxed{V^*(s) = \max_{a \in \mathcal{A}(s)} \Big[ r(s,a) + \gamma \sum_{s'} P(s'|s,a)\, V^*(s') \Big]}$$
-這就是 **Bellman 方程**。狀態數 $|S|$ ，每個狀態只需 $\mathcal{O}(|S|^2 |\mathcal{A}|)$ 次運算，
-把 $m^T$ 降成多項式時間。
+
+$$
+\boxed{V^*(s) = \max_{a \in \mathcal{A}(s)} \Big[ r(s,a) + \gamma \sum_{s'} P(s'|s,a)\, V^*(s') \Big]}
+$$
+
+這就是 **Bellman 方程**。狀態數 $`|S|`$ ，每個狀態只需 $`\mathcal{O}(|S|^2 |\mathcal{A}|)`$ 次運算，
+把 $`m^T`$ 降成多項式時間。
 
 ### 計算量偵查
 
-| 方法 | 複雜度 | $T=30, m=10, |S|=100$ |
+| 方法 | 複雜度 | $`T=30, m=10, |S|=100`$ |
 |------|--------|----------------------|
-| 暴力枚舉所有策略 | $m^T$ | $10^{30}$ （不可能） |
-| 動態規劃 | $|S|^2 |\mathcal{A}| \cdot K$ | $10^5 \cdot K$ （毫秒級） |
+| 暴力枚舉所有策略 | $`m^T`$ | $`10^{30}`$ （不可能） |
+| 動態規劃 | $`|S|^2 |\mathcal{A}| \cdot K`$ | $`10^5 \cdot K`$ （毫秒級） |
 
 ### Python：最短路徑的 Bellman 方程（值迭代）
 
@@ -67,10 +79,14 @@ print(V.round(3), pi)                     # 值隨距終點遞減；策略指向
 ```
 
 ### 從 Bellman 方程到強化學習的橋
-$$V(s) \leftarrow \underbrace{\max_a \big[r + \gamma V(s')\big]}_{\text{Bellman 算子}}$$
-- 動態規劃需要**知道模型** $P, r$ （model-based）。
+
+$$
+V(s) \leftarrow \underbrace{\max_a \big[r + \gamma V(s')\big]}_{\text{Bellman 算子}}
+$$
+
+- 動態規劃需要**知道模型** $`P, r`$ （model-based）。
 - 1959 年 Samuel、1988 年 Sutton、1989 年 Watkins 的問題變成：
-  **不知道 $P, r$ 時，能不能靠試誤逼近同一個方程？**——答案是能，這就是 Q-learning。
+  **不知道 $`P, r`$ 時，能不能靠試誤逼近同一個方程？**——答案是能，這就是 Q-learning。
 
 ## 結案 -- 後果與影響
 - **強化學習的數學基礎**：Bellman 方程是 MDP（馬爾可夫決策過程）的核心。

@@ -10,27 +10,35 @@
 ## 線索與推理
 
 ### 線索一：取樣定理
-帶限信號 $x(t)$ （最高頻率 $B$ ，即 $X(f)=0,\ |f|>B$ ），若取樣率
+帶限信號 $`x(t)`$ （最高頻率 $`B`$ ，即 $`X(f)=0,\ |f|>B`$ ），若取樣率
 
-$$f_s > 2B$$
+$$
+f_s > 2B
+$$
 
-則 $x(t)$ 可由樣本 $x(n/f_s)$ 完全重建：
+則 $`x(t)`$ 可由樣本 $`x(n/f_s)`$ 完全重建：
 
-$$x(t) = \sum_{n=-\infty}^{\infty} x\!\left(\frac{n}{f_s}\right) \mathrm{sinc}\!\left(\pi(f_s t - n)\right)$$
+$$
+x(t) = \sum_{n=-\infty}^{\infty} x\!\left(\frac{n}{f_s}\right) \mathrm{sinc}\!\left(\pi(f_s t - n)\right)
+$$
 
-其中 $\mathrm{sinc}(x) = \sin(x)/x$ 。臨界取樣率 $f_s = 2B$ 稱為 Nyquist 率。
+其中 $`\mathrm{sinc}(x) = \sin(x)/x`$ 。臨界取樣率 $`f_s = 2B`$ 稱為 Nyquist 率。
 
 ### 線索二：混疊（Aliasing）
-若 $f_s < 2B$ ，高頻成分會「摺疊」成低頻假信號：
+若 $`f_s < 2B`$ ，高頻成分會「摺疊」成低頻假信號：
 
-$$f_{alias} = |f_s - f|$$
+$$
+f_{alias} = |f_s - f|
+$$
 
 例如影片中車輪看起來倒轉，就是時間取樣（每秒 24/30 格）造成的混疊。解法是取樣前先過**抗混疊低通濾波器**。
 
 ### 線索三：量化
-取樣之後，每個樣本再量化為 $b$ 位元。量化雜訊的理論信噪比（均勻量化）：
+取樣之後，每個樣本再量化為 $`b`$ 位元。量化雜訊的理論信噪比（均勻量化）：
 
-$$SNR \approx 6.02\,b + 1.76 \ \text{dB}$$
+$$
+SNR \approx 6.02\,b + 1.76 \ \text{dB}
+$$
 
 每多 1 位元，SNR 提升 6 dB。CD 的 16 位元 ≈ 96 dB，恰好達到人耳動態範圍的上限。
 

@@ -40,14 +40,18 @@ void strcpy(char *dst, const char *src) {
 
 兩者幾乎一一對應，但 C 版可編譯到 PDP-11、VAX、任何機器。**效能犧牲趨近於零，可移植性獲得無限大**——這正是這場革命的本質：
 
-$$\text{Value} = \frac{\text{Portability} \to \infty}{\text{Performance loss} \to 0}$$
+$$
+\text{Value} = \frac{\text{Portability} \to \infty}{\text{Performance loss} \to 0}
+$$
 
 ### Portability 的革命
 - **1972–73**：Ritchie 重寫 Unix 核心，1973 年第四版 Unix 已有 95% 以上是 C（僅少數底層仍是組語）。
 - **1977–78**：Unix 首度移植到 Interdata 8/32，證明「一次編寫、處處執行」。隨後移植到 VAX，誕生 32-bit 的 **32V**，成為 BSD 系的祖先。
-- 可移植性的數學意義：若 OS 有 $n$ 個模組、面對 $m$ 種 CPU：
+- 可移植性的數學意義：若 OS 有 $`n`$ 個模組、面對 $`m`$ 種 CPU：
 
-$$\text{組語成本} = n \times m, \quad \text{C 成本} = n + m \quad (\text{只需 } m \text{ 個編譯器})$$
+$$
+\text{組語成本} = n \times m, \quad \text{C 成本} = n + m \quad (\text{只需 } m \text{ 個編譯器})
+$$
 
 從乘法到加法——這是軟體工程的線性化革命，與分封交換之於通訊、PageRank 之於搜尋同構。
 

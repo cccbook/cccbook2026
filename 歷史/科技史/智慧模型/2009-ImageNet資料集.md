@@ -4,7 +4,9 @@
 
 2009 年，李飛飛（Fei-Fei Li）團隊在 CVPR 發表 **ImageNet**：以 WordNet 層級為骨架、包含 **1,400 萬張標註影像、2 萬餘類別**的超大資料集：
 
-$$\text{ImageNet} = \text{WordNet 概念樹} \times \text{百萬級標註影像}$$
+$$
+\text{ImageNet} = \text{WordNet 概念樹} \times \text{百萬級標註影像}
+$$
 
 一句話：**資料集即基石**。深度學習革命的引爆缺的不是演算法（1986 反向傳播早已備好），而是資料——ImageNet 補上了這一塊，為 **2012-AlexNet影像革命.md** 鋪路。
 
@@ -36,12 +38,14 @@ ImageNet 不是雜亂的圖庫，而是**語義層級**：每個節點是 WordNe
 
 經驗法則（scaling law 的先聲）：模型效能隨資料量冪律增長：
 
-$$\text{Error} \propto N^{-\alpha}, \qquad \alpha \approx 0.2\text{–}0.5 \text{（視覺任務）}$$
+$$
+\text{Error} \propto N^{-\alpha}, \qquad \alpha \approx 0.2\text{–}0.5 \text{（視覺任務）}
+$$
 
 | 資料集 | 年份 | 影像數 | 類別數 | 能餵飽的模型 |
 |---|---|---|---|---|
-| Caltech 101 | 2003 | $\sim$ 9,000 | 101 | 淺層 |
-| PASCAL VOC | 2005 | $\sim$ 1 萬 | 20 | 淺層 |
+| Caltech 101 | 2003 | $`\sim`$ 9,000 | 101 | 淺層 |
+| PASCAL VOC | 2005 | $`\sim`$ 1 萬 | 20 | 淺層 |
 | **ImageNet** | 2009 | **1,400 萬** | **2 萬** | **深網路** |
 
 淺層方法（SVM + 手工特徵）在數萬張影像上已飽和；深網路（數千萬參數）需要百萬級標註才能發揮——**ImageNet 與深網路是彼此的缺席拼圖**。
@@ -69,7 +73,7 @@ $$\text{Error} \propto N^{-\alpha}, \qquad \alpha \approx 0.2\text{–}0.5 \text
 
 2010 年起，ImageNet 附帶 **ILSVRC**（Large Scale Visual Recognition Challenge）：1,000 類、120 萬張訓練影像的子集，每年公開比武：
 
-- 2010–2011 年冠軍仍是手工特徵方法（錯誤率 $\sim 28\% \to 25\%$ ，擠牙膏式進步）。
+- 2010–2011 年冠軍仍是手工特徵方法（錯誤率 $`\sim 28\% \to 25\%`$ ，擠牙膏式進步）。
 - 2012 年 AlexNet 以深度 CNN 把錯誤率一刀砍到 **15.3%**（見 **2012-AlexNet影像革命.md**）——10 個百分點的斷崖，震撼整個視覺社群。
 - 競賽設計的智慧：公開、可比、年度——把資料集變成領域的進度條與聚光燈。
 

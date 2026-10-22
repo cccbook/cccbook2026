@@ -12,17 +12,25 @@
 ## 線索與推理 -- 數學式、程式、理論
 ### Cook（1971）的表述
 Cook 在 STOC 1971 提出：
-$$\text{SAT} \in \text{P} \iff \text{P} = \text{NP}$$
-並定義「多項式歸約」 $A \leq_p^T B$ ，指出 SAT 是 NP 中「最難」的問題。
+
+$$
+\text{SAT} \in \text{P} \iff \text{P} = \text{NP}
+$$
+
+並定義「多項式歸約」 $`A \leq_p^T B`$ ，指出 SAT 是 NP 中「最難」的問題。
 
 ### Levin（1971 口頭發表 / 1975 論文）的表述
 Levin 1971 年在莫斯科演講中口頭報告，1973 年以俄文發表於《Проблемы передачи информации》（問題傳輸資訊期刊），題為 *Universal Search Problems*（Универсальные задачи перебора），英文譯本 1975 年刊出。
 
 Levin 不用「NP-完備」術語，而用「通用搜索問題」（universal search problem）：
 
-**Levin 的定義（現代轉述）**：一個大量問題（mass problem） $\Pi$ 由可計算的謂詞 $R(x, y)$ 給定——給定輸入 $x$ ，要找證書 $y$ 使 $R(x,y)$ 成立。若存在多項式 $p$ 使得驗證 $R(x,y)$ 只需 $p(|x|)$ 時間，且存在問題 $\Pi_0$ （如 SAT）滿足：
-$$\Pi_0 \leq_{\text{Red}} \Pi \implies \Pi \text{ 是通用問題}$$
-則稱 $\Pi$ 為通用的。Levin 證明：**六個問題是通用的**：
+**Levin 的定義（現代轉述）**：一個大量問題（mass problem） $`\Pi`$ 由可計算的謂詞 $`R(x, y)`$ 給定——給定輸入 $`x`$ ，要找證書 $`y`$ 使 $`R(x,y)`$ 成立。若存在多項式 $`p`$ 使得驗證 $`R(x,y)`$ 只需 $`p(|x|)`$ 時間，且存在問題 $`\Pi_0`$ （如 SAT）滿足：
+
+$$
+\Pi_0 \leq_{\text{Red}} \Pi \implies \Pi \text{ 是通用問題}
+$$
+
+則稱 $`\Pi`$ 為通用的。Levin 證明：**六個問題是通用的**：
 
 1. SAT（布爾可滿足性）
 2. 整數線性規劃
@@ -55,8 +63,12 @@ def three_color_to_sat(vertices, edges, k=3):
 這正是 Levin 六個通用問題之間互相歸約的精神：**把「找解」翻譯成「找滿足賦值」**。
 
 ### 理論定義（現代教科書版，Cook–Levin 定理）
-$$\text{Cook--Levin 定理：}\quad \text{SAT 是 NP-完備的}$$
-即：(1) $\text{SAT} \in \text{NP}$ ；(2) 對任意 $L \in \text{NP}$ ， $L \leq_p \text{SAT}$ 。
+
+$$
+\text{Cook--Levin 定理：}\quad \text{SAT 是 NP-完備的}
+$$
+
+即：(1) $`\text{SAT} \in \text{NP}`$ ；(2) 對任意 $`L \in \text{NP}`$ ， $`L \leq_p \text{SAT}`$ 。
 
 ## 結案 -- 後果與影響
 - **優先權爭議**：誰先？Cook 1971 年 5 月在 STOC 正式發表；Levin 1971 年在莫斯科口頭發表、1973 俄文見刊、1975 英文譯本。史學界（如 Sipser 1992 的歷史註記）裁定為**獨立發現**，並稱「Cook–Levin 定理」。

@@ -30,7 +30,9 @@ IF BALANCE < 0 THEN PERFORM OVERDUE-ROUTINE.
 
 `MOVE A TO B` 這種「動詞—受詞」結構，本質上是一種**以動作為中心的 DSL**。以現代觀點看，它等價於賦值運算：
 
-$$B \leftarrow A$$
+$$
+B \leftarrow A
+$$
 
 當時主流觀點（如 Dijkstra）批評英語式語法「太囉唆」，但辯護方的推理是：**可讀性即可維護性**——商業系統壽命以十年計，讓非程式設計師（會計師、精算師）能讀懂程式邏輯，價值遠超打字成本。歷史證明這個推理在商業領域是對的。
 
@@ -70,14 +72,18 @@ PROCEDURE DIVISION.        *> 主邏輯
 
 其中 `PIC`（PICTURE 子句）是精妙的**資料格式宣告語言**：`9(5)` 表示五位數字、`X(20)` 表示二十個字元、`V` 表示隱含小數點。特別注意 `9(7)V99` ——COBOL 用**定點十進位**表示金額：
 
-$$\text{金額} = \text{整數部分} + \frac{\text{小數部分}}{100}$$
+$$
+\text{金額} = \text{整數部分} + \frac{\text{小數部分}}{100}
+$$
 
 這是一個被後世反覆驗證的洞察：浮點數（IEEE 754 二進位）**無法精確表示 0.1**，會產生累積捨入誤差；而金額計算必須分毫不差。這就是為什麼六十年後，處理金錢的系統仍然首選定點十進位——現代 Java 的 `BigDecimal`、Python 的 `decimal.Decimal` 都是 COBOL `PIC V` 的精神後裔。
 
 ### 3. 批次處理模型
 COBOL 程式的典型形態是「讀一筆—處理一筆—寫一筆」的串流迴圈，這是磁帶時代的產物，也定義了此後三十年的**批次處理（batch processing）**正典：夜間跑批、日間報表。用數學描述，一個 COBOL 批次程式就是一個作用在記錄流上的摺疊（fold）：
 
-$$\text{Total} = \bigoplus_{i=1}^{n} f(r_i)$$
+$$
+\text{Total} = \bigoplus_{i=1}^{n} f(r_i)
+$$
 
 這與今天的 MapReduce、Spark 的 reduce 操作在本質上是同一個抽象。
 

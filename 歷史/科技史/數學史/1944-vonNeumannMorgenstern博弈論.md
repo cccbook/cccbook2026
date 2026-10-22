@@ -19,33 +19,37 @@
 ### 期望效用理論
 **von Neumann–Morgenstern 公理**（理性行為的公理化）：
 
-1. **完備性**：任何兩個結果可比較（ $A \succ B$ 或 $B \succ A$ 或無差異）
-2. **傳遞性**： $A \succ B$ 且 $B \succ C \implies A \succ C$
-3. **連續性**： $A \succ B \succ C \implies$ 存在機率 $p$ 使「 $pA + (1-p)C$ 」∼ $B$
-4. **獨立性**： $A \succ B \implies pA + (1-p)C \succ pB + (1-p)C$ （與無關選項無關）
+1. **完備性**：任何兩個結果可比較（ $`A \succ B`$ 或 $`B \succ A`$ 或無差異）
+2. **傳遞性**： $`A \succ B`$ 且 $`B \succ C \implies A \succ C`$
+3. **連續性**： $`A \succ B \succ C \implies`$ 存在機率 $`p`$ 使「 $`pA + (1-p)C`$ 」∼ $`B`$
+4. **獨立性**： $`A \succ B \implies pA + (1-p)C \succ pB + (1-p)C`$ （與無關選項無關）
 
-**定理**：滿足公理 ⟺ 存在**效用函數** $u$ ，偏好 = 期望效用的比較：
+**定理**：滿足公理 ⟺ 存在**效用函數** $`u`$ ，偏好 = 期望效用的比較：
 
-$$A \succ B \iff E[u(A)] > E[u(B)]$$
+$$
+A \succ B \iff E[u(A)] > E[u(B)]
+$$
 
 **公理 ⟺ 效用函數的存在**——**理性的公理化**（與 Kolmogorov 公理化機率 1933 的範式同源，見 `1933-Kolmogorov公理化.md`）。
 
 **風險態度**：效用函數的**凹凸**：
 
-- $u$ 凹：**風險厭惡**（ $E[u] < u(E)$ ——保險的動機）
-- $u$ 凸：**風險偏好**（賭徒）
-- $u$ 線性：風險中性
+- $`u`$ 凹：**風險厭惡**（ $`E[u] < u(E)`$ ——保險的動機）
+- $`u`$ 凸：**風險偏好**（賭徒）
+- $`u`$ 線性：風險中性
 
 ### 合作博弈與穩定集
-**多人合作博弈**：聯盟（coalition） $S \subseteq N$ 的「特徵函數」 $v(S)$ （聯盟能保證的總收益）。
+**多人合作博弈**：聯盟（coalition） $`S \subseteq N`$ 的「特徵函數」 $`v(S)`$ （聯盟能保證的總收益）。
 
-**問題**：合作收益怎麼分？——**分配（imputation）**： $\sum_{i \in N} x_i = v(N)$ 、每人至少得到單獨行動的收益。
+**問題**：合作收益怎麼分？——**分配（imputation）**： $`\sum_{i \in N} x_i = v(N)`$ 、每人至少得到單獨行動的收益。
 
 **von Neumann–Morgenstern 的穩定集**（stable set）：沒有分配可以「支配」另一分配的集合——**聯盟的談判理論**。
 
 **Shapley 值**（1953，後續）：公平分配的解——**按「邊際貢獻」平均分**：
 
-$$\phi_i = \sum_{S \ni i} \frac{|S|!(|N|-|S|-1)!}{|N|!} (v(S) - v(S \setminus \{i\}))$$
+$$
+\phi_i = \sum_{S \ni i} \frac{|S|!(|N|-|S|-1)!}{|N|!} (v(S) - v(S \setminus \{i\}))
+$$
 
 ——**成本分攤、投票權力、拍賣設計的標準**。
 

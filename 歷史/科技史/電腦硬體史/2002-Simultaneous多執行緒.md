@@ -2,7 +2,11 @@
 
 ## 案件摘要
 1995 年，Dean Tullsen、Susan Eggers 與 Henry Levy（Univ. of Washington）發表 **SMT**（Simultaneous Multithreading）論文：
-$$\text{一個物理核心} + \text{多組架構狀態（暫存器/PC）} + \text{共享執行單元} \quad\Longrightarrow\quad \text{每個週期同時發射多執行緒的指令}.$$
+
+$$
+\text{一個物理核心} + \text{多組架構狀態（暫存器/PC）} + \text{共享執行單元} \quad\Longrightarrow\quad \text{每個週期同時發射多執行緒的指令}.
+$$
+
 2001 年 **IBM POWER5** 首度將 SMT 量產（每核 2 執行緒）；2002 年 **Intel Hyper-Threading**（Xeon/Pentium 4）把它帶進大眾市場。
 **本案的謎題**：超標量 CPU 的功能單元大半時間在閒置——
 SMT 的答案是「**別再輪流切換，讓所有執行緒同時擠進同一條流水線**」，
@@ -11,11 +15,19 @@ SMT 的答案是「**別再輪流切換，讓所有執行緒同時擠進同一�
 ## 前因 -- 為什麼會有這個案子
 - **單執行緒 ILP 的枯竭**：超標量處理器（4–8 wide 發射）依賴指令級平行（ILP），
   但單一執行緒的依賴鏈（真相依、控制相依、cache miss）讓每週期根本湊不滿發射寬度：
-  $$\text{實際 IPC} \ll \text{峰值 IPC} \quad\Longrightarrow\quad \text{功能單元大量閒置。}$$
-  Tullsen 的實測：典型工作負載下，單執行緒的功能單元利用率 $U = \frac{\text{busy}}{\text{total}}$ 只有 **~20–25%**。
+
+$$
+\text{實際 IPC} \ll \text{峰值 IPC} \quad\Longrightarrow\quad \text{功能單元大量閒置。}
+$$
+
+Tullsen 的實測：典型工作負載下，單執行緒的功能單元利用率 $`U = \frac{\text{busy}}{\text{total}}`$ 只有 **~20–25%**。
 - **粗粒度多執行緒（Coarse-Grained MT）的罩門**：一個執行緒跑到 stall（如 cache miss）才切換——
   但**切換要沖刷流水線（pipeline flush）**，且 stall 前的空泡（bubble）已浪費：
-  $$\text{切換開銷} = \text{流水線深度} \times \text{沖刷損失} \quad\Longrightarrow\quad \text{粗粒度省不了多少。}$$
+
+$$
+\text{切換開銷} = \text{流水線深度} \times \text{沖刷損失} \quad\Longrightarrow\quad \text{粗粒度省不了多少。}
+$$
+
 - **細粒度多執行緒（Fine-Grained MT）的罩門**：每個週期輪流發射不同執行緒（如 Tera MTA），
   雖無沖刷，但**單一週期仍然只出一個執行緒的指令**——若該執行緒沒有可發射的指令，功能單元照樣閒置。
 - **SMT 的關鍵推理（1995）**：
@@ -36,16 +48,31 @@ SMT 的答案是「**別再輪流切換，讓所有執行緒同時擠進同一�
 | 單執行緒性能 | 尚可 | 略降 | **略降（資源競爭）** |
 
 ### 第二條線索：吞吐量提升模型
-設單執行緒的功能單元利用率為 $U_1$ ，峰值 IPC 為 $W$ （發射寬度）：
-$$\text{IPC}_1 = U_1 \cdot W.$$
-SMT 讓 $n$ 個執行緒的指令互相填補對方的洞——若執行緒間的 stall **不相關（uncorrelated）**：
-$$\text{閒置率} \approx (1-U_1)^n \quad\Longrightarrow\quad U_{SMT} = 1-(1-U_1)^n.$$
-代入 $U_1 = 0.25$ 、 $n = 2$ （Pentium 4 的 Hyper-Threading）：
-$$U_{SMT} = 1 - 0.75^2 = 0.4375 \quad\Longrightarrow\quad \text{吞吐提升} = \frac{0.4375}{0.25} - 1 = 75\%_{\text{理論上限}}.$$
+設單執行緒的功能單元利用率為 $`U_1`$ ，峰值 IPC 為 $`W`$ （發射寬度）：
+
+$$
+\text{IPC}_1 = U_1 \cdot W.
+$$
+
+SMT 讓 $`n`$ 個執行緒的指令互相填補對方的洞——若執行緒間的 stall **不相關（uncorrelated）**：
+
+$$
+\text{閒置率} \approx (1-U_1)^n \quad\Longrightarrow\quad U_{SMT} = 1-(1-U_1)^n.
+$$
+
+代入 $`U_1 = 0.25`$ 、 $`n = 2`$ （Pentium 4 的 Hyper-Threading）：
+
+$$
+U_{SMT} = 1 - 0.75^2 = 0.4375 \quad\Longrightarrow\quad \text{吞吐提升} = \frac{0.4375}{0.25} - 1 = 75\%_{\text{理論上限}}.
+$$
+
 - **實測約 30%+**：因為兩執行緒的 stall 有相關性（同時 miss 同一頁/同一分支模式）、
   且共用快取造成干擾——**理論模型的差距就是工程師要偵辦的細節**。
 - **fetch-policy（ICOUNT）**：Tullsen 論文的關鍵發明——優先發射「在指令佇列中指令數最少」的執行緒：
-  $$\text{ICOUNT} \propto -\text{佇列長度} \quad\Longrightarrow\quad \text{快的執行緒先走，慢的（等快取的）不堵住流水線。}$$
+
+$$
+\text{ICOUNT} \propto -\text{佇列長度} \quad\Longrightarrow\quad \text{快的執行緒先走，慢的（等快取的）不堵住流水線。}
+$$
 
 ### 第三條線索：共用與複製（什麼共享、什麼各自複製）
 SMT 的資源劃分是本案的「物證清單」：
@@ -58,11 +85,18 @@ SMT 的資源劃分是本案的「物證清單」：
 
 ### 第四條線索：吞吐量 vs 單執行緒延遲的取捨
 SMT 提升的是**吞吐量（throughput）**，不是**單執行緒延遲（latency）**：
-$$\text{SMT} \uparrow \text{吞吐} \quad\Longrightarrow\quad \text{單執行緒延遲可能} \uparrow \text{（資源被瓜分）}.$$
+
+$$
+\text{SMT} \uparrow \text{吞吐} \quad\Longrightarrow\quad \text{單執行緒延遲可能} \uparrow \text{（資源被瓜分）}.
+$$
+
 - 伺服器工作負載（資料庫、Web）多執行緒並存 → **吞吐量優先 → SMT 大勝**。
 - 單執行緒 HPC/遊戲 → 延遲優先 → 關閉 SMT 反而更快（且更省功耗）。
-- **取捨公式**：若工作負載有 $T$ 個活躍執行緒，SMT 的收益約為
-  $$\text{加速} \approx \min\!\left(T,\ 1 + \text{可填補的閒置}\right) \quad\text{（多核 + SMT 時兩者相乘）}.$$
+- **取捨公式**：若工作負載有 $`T`$ 個活躍執行緒，SMT 的收益約為
+
+$$
+\text{加速} \approx \min\!\left(T,\ 1 + \text{可填補的閒置}\right) \quad\text{（多核 + SMT 時兩者相乘）}.
+$$
 
 ### Python：SMT 模擬（單執行緒 vs SMT 的 cycles 與功能單元利用率）
 
@@ -134,12 +168,20 @@ SMT（同時發射）：12 cycles，48 條指令，功能單元利用率 U = 100
 - **伺服器 CPU 的標準**：x86（Intel/AMD SMT）、POWER、SPARC（SMT8/SMT8 執行緒）——
   **資料中心的工作負載（多執行緒並存）正是 SMT 的主場**。
 - **multi-core + SMT 的組合**：核心內 SMT + 核心間 multi-core——
-  $$\text{邏輯核心數} = \text{物理核心數} \times \text{SMT 執行緒數} \quad\Longrightarrow\quad \text{8C16T、16C32T 成為主流規格。}$$
-  （見「2007-多核心CPU.md」——多核心解決功耗牆，SMT 解決單核內的閒置，兩者互補而非競爭。）
+
+$$
+\text{邏輯核心數} = \text{物理核心數} \times \text{SMT 執行緒數} \quad\Longrightarrow\quad \text{8C16T、16C32T 成為主流規格。}
+$$
+
+（見「2007-多核心CPU.md」——多核心解決功耗牆，SMT 解決單核內的閒置，兩者互補而非競爭。）
 - **代價一：side-channel 安全問題**：共享執行單元與快取 → **跨執行緒的 cache side-channel 攻擊**：
   - 2018 **Spectre/Meltdown** 之後，SMT 成為攻擊面（PortSmother、Scheduler-side channel）。
   - 2018 OpenBSD、2022 Linux/雲端供應商（部分）**預設關閉 SMT**——
-    $$\text{共享 = 榨取吞吐} \quad\Longleftrightarrow\quad \text{共享 = 洩漏秘密}.$$
+
+$$
+\text{共享 = 榨取吞吐} \quad\Longleftrightarrow\quad \text{共享 = 洩漏秘密}.
+$$
+
 - **代價二：雲端安全策略**：多租戶 VM 若共用一個物理核的兩個 SMT 執行緒——
   **隔離邊界被打破** → 雲端供應商採「**同租戶綁定同一核**」或直接關閉 SMT（性能 -30% 換安全）。
 - 歷史定位：**SMT 是「從浪費中榨取性能」的教科書案例**——

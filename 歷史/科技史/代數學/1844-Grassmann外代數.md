@@ -1,7 +1,7 @@
 # 1844-Grassmann 外代數
 
 ## 案件摘要
-1844 年，德國中學教師 Hermann Grassmann 自費出版《線性擴張論》（*Die lineale Ausdehnungslehre*），發明了**外代數**（exterior algebra）——一種帶有反交換楔積 $\wedge$ 的乘法結構。這本書太超前於時代，幾乎無人閱讀，卻在數十年後成為微分幾何與理論物理的基石。
+1844 年，德國中學教師 Hermann Grassmann 自費出版《線性擴張論》（*Die lineale Ausdehnungslehre*），發明了**外代數**（exterior algebra）——一種帶有反交換楔積 $`\wedge`$ 的乘法結構。這本書太超前於時代，幾乎無人閱讀，卻在數十年後成為微分幾何與理論物理的基石。
 
 ## 前因 -- 為什麼會有這個案子
 - 1844 年，向量還沒有被發明成現代形式：Hamilton 的四元數要到 1843 年剛誕生，Gibbs/Heaviside 的向量分析要到 1880 年代。
@@ -11,49 +11,63 @@
 
 ## 線索與推理
 
-### 線索一：楔積 $\wedge$ 與反交換性
+### 線索一：楔積 $`\wedge`$ 與反交換性
 
-設 $V$ 是佈於域 $K$ 的向量空間。外代數 $\bigwedge V = \bigoplus_{k=0}^{\infty} \bigwedge^k V$ ，其中 $\bigwedge^k V$ 是 $k$ -向量（ $k$ -form 空間）。楔積滿足：
+設 $`V`$ 是佈於域 $`K`$ 的向量空間。外代數 $`\bigwedge V = \bigoplus_{k=0}^{\infty} \bigwedge^k V`$ ，其中 $`\bigwedge^k V`$ 是 $`k`$ -向量（ $`k`$ -form 空間）。楔積滿足：
 
-- **結合律**： $(u \wedge v) \wedge w = u \wedge (v \wedge w)$
-- **反交換性**： $u \wedge v = -\,v \wedge u$ ，因此 $u \wedge u = 0$
+- **結合律**： $`(u \wedge v) \wedge w = u \wedge (v \wedge w)`$
+- **反交換性**： $`u \wedge v = -\,v \wedge u`$ ，因此 $`u \wedge u = 0`$
 - **雙線性**：對每個變元線性
 
-**理論定義**： $\bigwedge^k V$ 是「 $k$ 個向量的反對稱張量積」：
+**理論定義**： $`\bigwedge^k V`$ 是「 $`k`$ 個向量的反對稱張量積」：
 
-$$\bigwedge^k V = \frac{V^{\otimes k}}{\mathrm{span}\{v_1 \otimes \cdots \otimes v_k : v_i = v_j \text{ 對某 } i \neq j\}}$$
+$$
+\bigwedge^k V = \frac{V^{\otimes k}}{\mathrm{span}\{v_1 \otimes \cdots \otimes v_k : v_i = v_j \text{ 對某 } i \neq j\}}
+$$
 
-若 $\dim V = n$ ，則 $\dim \bigwedge^k V = \binom{n}{k}$ ，特別地 $\dim \bigwedge^n V = 1$ ——最高階只有一維，這就是「有向體積」的代數化身。
+若 $`\dim V = n`$ ，則 $`\dim \bigwedge^k V = \binom{n}{k}`$ ，特別地 $`\dim \bigwedge^n V = 1`$ ——最高階只有一維，這就是「有向體積」的代數化身。
 
-**推理核心**：為什麼要 $u \wedge u = 0$ ？因為面積為零！一條線段自己與自己張不成面積。反交換性不是任意規定，而是**幾何事實的代數反映**：交換兩個向量會翻轉有向面積的符號。
+**推理核心**：為什麼要 $`u \wedge u = 0`$ ？因為面積為零！一條線段自己與自己張不成面積。反交換性不是任意規定，而是**幾何事實的代數反映**：交換兩個向量會翻轉有向面積的符號。
 
 ### 線索二：幾何意義——面積與體積
 
-在 $\mathbb{R}^3$ 中，設 $u = u_1 e_1 + u_2 e_2 + u_3 e_3$ ， $v = v_1 e_1 + v_2 e_2 + v_3 e_3$ ：
+在 $`\mathbb{R}^3`$ 中，設 $`u = u_1 e_1 + u_2 e_2 + u_3 e_3`$ ， $`v = v_1 e_1 + v_2 e_2 + v_3 e_3`$ ：
 
-$$u \wedge v = (u_2 v_3 - u_3 v_2)\, e_2 \wedge e_3 + (u_3 v_1 - u_1 v_3)\, e_3 \wedge e_1 + (u_1 v_2 - u_2 v_1)\, e_1 \wedge e_2$$
+$$
+u \wedge v = (u_2 v_3 - u_3 v_2)\, e_2 \wedge e_3 + (u_3 v_1 - u_1 v_3)\, e_3 \wedge e_1 + (u_1 v_2 - u_2 v_1)\, e_1 \wedge e_2
+$$
 
 其係數正是**叉積的分量**！而
 
-$$\|u \wedge v\| = \|u\| \|v\| \sin\theta = \text{平行四邊形的有向面積}$$
+$$
+\|u \wedge v\| = \|u\| \|v\| \sin\theta = \text{平行四邊形的有向面積}
+$$
 
-$$\|u \wedge v \wedge w\| = |\det(u, v, w)| = \text{平行六面體的有向體積}$$
+$$
+\|u \wedge v \wedge w\| = |\det(u, v, w)| = \text{平行六面體的有向體積}
+$$
 
-**偵探推理**：叉積 $\times$ 只是外積在 3 維的「影子」（透過 Hodge 對偶 $u \wedge v \mapsto \star(u \wedge v)$ 識別 2-向量與向量）。叉積只在 3 維（與 7 維）存在，但**外積在所有維度存在**——這就是 Grassmann 版本更深刻的證據。
+**偵探推理**：叉積 $`\times`$ 只是外積在 3 維的「影子」（透過 Hodge 對偶 $`u \wedge v \mapsto \star(u \wedge v)`$ 識別 2-向量與向量）。叉積只在 3 維（與 7 維）存在，但**外積在所有維度存在**——這就是 Grassmann 版本更深刻的證據。
 
-### 線索三：微分形式 $dx \wedge dy$ 的誕生
+### 線索三：微分形式 $`dx \wedge dy`$ 的誕生
 
 Grassmann 的符號直接孕育了**微分形式**：
 
-$$dx \wedge dy = -\,dy \wedge dx, \qquad dx \wedge dx = 0$$
+$$
+dx \wedge dy = -\,dy \wedge dx, \qquad dx \wedge dx = 0
+$$
 
-於是二重積分的面積元自然寫成 $\iint_D f\, dx \wedge dy$ ，而變數變換的 Jacobian：
+於是二重積分的面積元自然寫成 $`\iint_D f\, dx \wedge dy`$ ，而變數變換的 Jacobian：
 
-$$dx \wedge dy = \frac{\partial(x,y)}{\partial(u,v)}\, du \wedge dv = (\det J)\, du \wedge dv$$
+$$
+dx \wedge dy = \frac{\partial(x,y)}{\partial(u,v)}\, du \wedge dv = (\det J)\, du \wedge dv
+$$
 
-**這就是 Jacobian 行列式出現在換元公式中的代數原因**——不需要死背，楔積的反交換性自動給出。Poincaré 於 1899 年將外微分 $d$ 系統化，Cartan 於 1920 年代完成現代微分形式理論，最終 Stokes 定理寫成優雅的：
+**這就是 Jacobian 行列式出現在換元公式中的代數原因**——不需要死背，楔積的反交換性自動給出。Poincaré 於 1899 年將外微分 $`d`$ 系統化，Cartan 於 1920 年代完成現代微分形式理論，最終 Stokes 定理寫成優雅的：
 
-$$\int_{\partial M} \omega = \int_M d\omega$$
+$$
+\int_{\partial M} \omega = \int_M d\omega
+$$
 
 ### 程式驗證（Python + numpy）
 
@@ -100,13 +114,13 @@ print("a||b||sinθ =", np.linalg.norm(a) * np.linalg.norm(b) * math.sqrt(1 - cos
 # 兩者相等 ✓ —— 楔積範數就是有向面積
 ```
 
-**程式偵探筆記**：`wedge2(u,v)` 的係數恰為叉積分量、範數恰為面積——這證實「叉積是外積的 3 維影子」。反交換性與 $u \wedge u = 0$ 全部自動成立。
+**程式偵探筆記**：`wedge2(u,v)` 的係數恰為叉積分量、範數恰為面積——這證實「叉積是外積的 3 維影子」。反交換性與 $`u \wedge u = 0`$ 全部自動成立。
 
 ## 結案 -- 後果與影響
 - **當時的悲劇**：1844 年初版僅數百本，Möbius 拒審、Gauss 未回應。Grassmann 1862 年出版徹底改寫的第二版，仍無人理解。他在 1878 年給 Sturm 的信中痛苦地寫道：「我完全確信，即使再過五十年，這本書也不會有人跟進。」——諷刺的是，這封信寄出後不久他就去世了，而 Gibbs 當年正好讀到了 Grassmann。
 - **1880 年代**：Gibbs 與 Heaviside 發展向量分析時，明確採用了 Grassmann 的體系（而非 Hamilton 的四元數），引發著名的「向量戰爭」。
 - **1899 年 Poincaré、1920 年代 Élie Cartan**：外微分與微分形式理論誕生，Grassmann 代數成為微分幾何的標準語言。
-- **物理**：量子力學中費米子的反對稱波函數 $\Psi(x_1, \ldots, x_n)$ （Pauli 不相容原理）本質上是外代數；現代規範場論、超對稱（Grassmann 變數 $\theta\eta = -\eta\theta$ ）、外爾旋量，全是 Grassmann 遺產。
+- **物理**：量子力學中費米子的反對稱波函數 $`\Psi(x_1, \ldots, x_n)`$ （Pauli 不相容原理）本質上是外代數；現代規範場論、超對稱（Grassmann 變數 $`\theta\eta = -\eta\theta`$ ）、外爾旋量，全是 Grassmann 遺產。
 - **計算數學**：計算機圖學中的外積代數（PGA）、幾何代數（Clifford 代數的推廣）用於剛體運動學。
 
 ## 關鍵人物與文獻

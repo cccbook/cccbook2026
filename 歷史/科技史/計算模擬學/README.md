@@ -74,30 +74,30 @@
 
 | 程式 | 對應 Wiki | 驗證要點 |
 |------|-----------|----------|
-| [_code/-0230-archimedes_pi.py](_code/-0230-archimedes_pi.py) | 前230 窮竭法 | 96 邊夾擊 $3.1408 < \pi < 3.1429$ |
-| [_code/1768-euler_method.py](_code/1768-euler_method.py) | 1768 Euler 方法 | 誤差比約 10 倍， $O(h)$ |
-| [_code/1822-heat_equation_ftcs.py](_code/1822-heat_equation_ftcs.py) | 1822 Fourier／NS | 穩定 $r \le 0.5$ 、 $r=0.6$ 發散 |
+| [_code/-0230-archimedes_pi.py](_code/-0230-archimedes_pi.py) | 前230 窮竭法 | 96 邊夾擊 $`3.1408 < \pi < 3.1429`$ |
+| [_code/1768-euler_method.py](_code/1768-euler_method.py) | 1768 Euler 方法 | 誤差比約 10 倍， $`O(h)`$ |
+| [_code/1822-heat_equation_ftcs.py](_code/1822-heat_equation_ftcs.py) | 1822 Fourier／NS | 穩定 $`r \le 0.5`$ 、 $`r=0.6`$ 發散 |
 | [_code/1922-advection_cfl.py](_code/1922-advection_cfl.py) | 1922 Richardson／1950 Charney | 迎風穩定、中心差發散（CFL） |
-| [_code/1926-schrodinger_box.py](_code/1926-schrodinger_box.py) | 1926 Schrödinger | 有限差分本徵值誤差 $< 2\%$ |
-| [_code/1946-monte_carlo_pi.py](_code/1946-monte_carlo_pi.py) | 1946 Monte Carlo | 誤差 $\sim 1/\sqrt N$ |
-| [_code/1952-hodgkin_huxley.py](_code/1952-hodgkin_huxley.py) | 1952 H–H | 動作電位峰值 $> 0$ mV |
+| [_code/1926-schrodinger_box.py](_code/1926-schrodinger_box.py) | 1926 Schrödinger | 有限差分本徵值誤差 $`< 2\%`$ |
+| [_code/1946-monte_carlo_pi.py](_code/1946-monte_carlo_pi.py) | 1946 Monte Carlo | 誤差 $`\sim 1/\sqrt N`$ |
+| [_code/1952-hodgkin_huxley.py](_code/1952-hodgkin_huxley.py) | 1952 H–H | 動作電位峰值 $`> 0`$ mV |
 | [_code/1953-metropolis_ising.py](_code/1953-metropolis_ising.py) | 1953 Metropolis | 低溫有序／高溫無序 |
-| [_code/1956-fem_1d_poisson.py](_code/1956-fem_1d_poisson.py) | 1956 FEM | P1 元誤差 $< 10^{-3}$ |
+| [_code/1956-fem_1d_poisson.py](_code/1956-fem_1d_poisson.py) | 1956 FEM | P1 元誤差 $`< 10^{-3}`$ |
 | [_code/1957-hardsphere_gas.py](_code/1957-hardsphere_gas.py) | 1957 硬球 MD | 碰撞動量能量守恆 |
-| [_code/1963-lorenz_butterfly.py](_code/1963-lorenz_butterfly.py) | 1963 Lorenz | 初值差 $10^{-8}$ 指數分離 |
-| [_code/1964-lennard_jones_md.py](_code/1964-lennard_jones_md.py) | 1964 Rahman | NVE 能量漂移 $< 2\%$ |
+| [_code/1963-lorenz_butterfly.py](_code/1963-lorenz_butterfly.py) | 1963 Lorenz | 初值差 $`10^{-8}`$ 指數分離 |
+| [_code/1964-lennard_jones_md.py](_code/1964-lennard_jones_md.py) | 1964 Rahman | NVE 能量漂移 $`< 2\%`$ |
 | [_code/1967-verlet_oscillator.py](_code/1967-verlet_oscillator.py) | 1967 Verlet | Verlet 保能量、Euler 發散 |
 | [_code/1970-game_of_life_glider.py](_code/1970-game_of_life_glider.py) | 1970 生命遊戲 | 滑翔機 4 步平移 |
-| [_code/1976-gillespie_ssa.py](_code/1976-gillespie_ssa.py) | 1976 Gillespie | 均值 $\approx \lambda/\mu$ |
-| [_code/1976-qmmm_double_well.py](_code/1976-qmmm_double_well.py) | 1976 QM/MM | 雙阱佔比 $\approx$ 1:1 |
-| [_code/1977-sph_density.py](_code/1977-sph_density.py) | 1977 SPH | 密度估計 L2 $< 0.05$ |
-| [_code/1984-nose_hoover.py](_code/1984-nose_hoover.py) | 1984 Nosé–Hoover | 平均動能 $\approx T/2$ |
+| [_code/1976-gillespie_ssa.py](_code/1976-gillespie_ssa.py) | 1976 Gillespie | 均值 $`\approx \lambda/\mu`$ |
+| [_code/1976-qmmm_double_well.py](_code/1976-qmmm_double_well.py) | 1976 QM/MM | 雙阱佔比 $`\approx`$ 1:1 |
+| [_code/1977-sph_density.py](_code/1977-sph_density.py) | 1977 SPH | 密度估計 L2 $`< 0.05`$ |
+| [_code/1984-nose_hoover.py](_code/1984-nose_hoover.py) | 1984 Nosé–Hoover | 平均動能 $`\approx T/2`$ |
 | [_code/1999-hp_lattice_folding.py](_code/1999-hp_lattice_folding.py) | 1999 Rosetta | HP 格點最低能量構形 |
 | [_code/2002-metadynamics_1d.py](_code/2002-metadynamics_1d.py) | 2002 Metadynamics | 自由能重建、多次躍遷 |
 | [_code/2007-neural_pair_potential.py](_code/2007-neural_pair_potential.py) | 2007 神經勢能 | MLP 擬合 Morse 勢 |
 | [_code/2018-contact_mi_toy.py](_code/2018-contact_mi_toy.py) | 2018 AlphaFold1 | 共演化互資訊找接觸 |
-| [_code/2023-neural_weather_toy.py](_code/2023-neural_weather_toy.py) | 2023 AI 天氣 | AI 勝持續性 $> 20\%$ |
-| [_code/2025-equivariant_filter_toy.py](_code/2025-equivariant_filter_toy.py) | 2025 基礎模型 | 旋轉等變 $F(Rx) = RF(x)$ |
+| [_code/2023-neural_weather_toy.py](_code/2023-neural_weather_toy.py) | 2023 AI 天氣 | AI 勝持續性 $`> 20\%`$ |
+| [_code/2025-equivariant_filter_toy.py](_code/2025-equivariant_filter_toy.py) | 2025 基礎模型 | 旋轉等變 $`F(Rx) = RF(x)`$ |
 
 ## 因果鏈總覽
 

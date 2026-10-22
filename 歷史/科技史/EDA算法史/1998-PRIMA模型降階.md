@@ -14,31 +14,41 @@ SPICE（1973）精確但慢：百萬節點的互連網路，一次瞬態分析�
 ### 核心：Krylov 子空間投影
 MNA 的頻域方程：
 
-$$(sC + G)\, x(s) = b(s), \quad H(s) = l^T (sC + G)^{-1} b$$
+$$
+(sC + G)\, x(s) = b(s), \quad H(s) = l^T (sC + G)^{-1} b
+$$
 
-傳遞函數 $H(s)$ 的降階 = 找子空間 $V \in \mathbb{R}^{n \times q}$ （ $q \ll n$ ），投影：
+傳遞函數 $`H(s)`$ 的降階 = 找子空間 $`V \in \mathbb{R}^{n \times q}`$ （ $`q \ll n`$ ），投影：
 
-$$H_q(s) = l^T V (s V^T C V + V^T G V)^{-1} V^T b$$
+$$
+H_q(s) = l^T V (s V^T C V + V^T G V)^{-1} V^T b
+$$
 
-子空間 $V$ 取 **Krylov 子空間**（Arnoldi 迭代生成）：
+子空間 $`V`$ 取 **Krylov 子空間**（Arnoldi 迭代生成）：
 
-$$\mathcal{K}_q(G^{-1}C, G^{-1}b) = \text{span}\{G^{-1}b,\ (G^{-1}C)G^{-1}b,\ \dots,\ (G^{-1}C)^{q-1}G^{-1}b\}$$
+$$
+\mathcal{K}_q(G^{-1}C, G^{-1}b) = \text{span}\{G^{-1}b,\ (G^{-1}C)G^{-1}b,\ \dots,\ (G^{-1}C)^{q-1}G^{-1}b\}
+$$
 
-**矩匹配定理**：投影模型的 Taylor 展開前 $q$ 項矩與原模型一致（ $H_q$ 與 $H$ 匹配前 $q$ 個矩）——這是 AWE 矩匹配的嚴格化，但用正交投影（Arnoldi）避免高階矩的數值爆炸。
+**矩匹配定理**：投影模型的 Taylor 展開前 $`q`$ 項矩與原模型一致（ $`H_q`$ 與 $`H`$ 匹配前 $`q`$ 個矩）——這是 AWE 矩匹配的嚴格化，但用正交投影（Arnoldi）避免高階矩的數值爆炸。
 
 ### 無源性的保證：PRIMA 的關鍵貢獻
 系統無源 ⟺ 傳遞函數**正實**（positive real）：
 
-$$\text{Re}\{H(s)\} \ge 0 \quad \forall\ \text{Re}\{s\} > 0$$
+$$
+\text{Re}\{H(s)\} \ge 0 \quad \forall\ \text{Re}\{s\} > 0
+$$
 
-PVL 的 Lanczos 雙正交投影不保證此性質。PRIMA 的推理：用 **Arnoldi 正交投影**且保持 $C, G$ 的對稱結構——可證明投影模型繼承無源性：
+PVL 的 Lanczos 雙正交投影不保證此性質。PRIMA 的推理：用 **Arnoldi 正交投影**且保持 $`C, G`$ 的對稱結構——可證明投影模型繼承無源性：
 
-$$C, G \succeq 0\ (\text{半正定}) \implies V^T C V,\ V^T G V \succeq 0 \implies H_q \text{ 無源}$$
+$$
+C, G \succeq 0\ (\text{半正定}) \implies V^T C V,\ V^T G V \succeq 0 \implies H_q \text{ 無源}
+$$
 
 半正定性在正交投影下保持——這是線性代數的標準結果，PRIMA 把它變成工程保證。
 
 ### 複雜度的推理
-$|V| = q \approx 10\text{-}100$ ，遠小於 $n \approx 10^6$ 。一次時域分析： $O(n)$ 的 Arnoldi 預處理 + $O(q^3)$ 的降階模擬——總成本比直接 SPICE（ $O(n^{1.5})$ × 時間點數）快 2-3 個數量級。
+$`|V| = q \approx 10\text{-}100`$ ，遠小於 $`n \approx 10^6`$ 。一次時域分析： $`O(n)`$ 的 Arnoldi 預處理 + $`O(q^3)`$ 的降階模擬——總成本比直接 SPICE（ $`O(n^{1.5})`$ × 時間點數）快 2-3 個數量級。
 
 ## 結案 -- 後果與影響
 - **fast-SPICE 時代的引擎**：PRIMA 成為互連降階的標準（Synopsys HSIM、Cadence UltraSim 的互連處理），百萬節點互連的模擬從天級降到分級。

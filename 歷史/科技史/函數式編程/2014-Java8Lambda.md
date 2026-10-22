@@ -28,7 +28,7 @@ Comparator<String> c = new Comparator<String>() {
 Comparator<String> c2 = (a, b) -> a.length() - b.length();
 ```
 
-型別論上，若介面 $I$ 只有一個抽象方法 $m: A \to R$ ，則 lambda $\lambda x . \ e(x)$ 的型別即為 $I$ ：
+型別論上，若介面 $`I`$ 只有一個抽象方法 $`m: A \to R`$ ，則 lambda $`\lambda x . \ e(x)`$ 的型別即為 $`I`$ ：
 
 $$
 \frac{I \text{ 是 SAM，} \ m : A \to R}{(\lambda x . \ e(x)) : I}
@@ -55,10 +55,10 @@ lazy 的價值：`(a, b) -> a.length() - b.length()` 這類描述能被融合（
 
 Java 8 內建 `java.util.function` 套件，提供核心函數型別：
 
-- `Function<T, R>`： $T \to R$ ，映射；
-- `Supplier<T>`： $() \to T$ ，供給；
-- `Consumer<T>`： $T \to ()$ ，消費；
-- `Predicate<T>`： $T \to \text{bool}$ ，判斷。
+- `Function<T, R>`： $`T \to R`$ ，映射；
+- `Supplier<T>`： $`() \to T`$ ，供給；
+- `Consumer<T>`： $`T \to ()`$ ，消費；
+- `Predicate<T>`： $`T \to \text{bool}`$ ，判斷。
 
 同時引入 **default method**：介面可以有預設實作。這解決了演化難題——若給 `Collection` 加 `stream()` 方法，所有實作類別都會壞掉；default method 讓介面能演化而不破壞相容性。
 

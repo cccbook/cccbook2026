@@ -14,7 +14,9 @@
 
 **「魔改 Android」的技術-商業結構**：
 
-$$\text{中國 ROM} = \text{AOSP（免費）} + \text{本地化 UI} + \text{自有服務層} - \text{GMS}$$
+$$
+\text{中國 ROM} = \text{AOSP（免費）} + \text{本地化 UI} + \text{自有服務層} - \text{GMS}
+$$
 
 | 環節 | 全球手機（三星） | 中國手機 |
 |------|----------------|---------|
@@ -27,11 +29,15 @@ $$\text{中國 ROM} = \text{AOSP（免費）} + \text{本地化 UI} + \text{自�
 
 **MIUI 的社群打法**（100 個夢想贊助人 → 每週五更新）：
 
-$$\text{迭代速度} = \frac{\text{用戶回饋}}{\text{發版週期}} \Rightarrow \text{MIUI 每週迭代 vs 原生 Android 每年大版}$$
+$$
+\text{迭代速度} = \frac{\text{用戶回饋}}{\text{發版週期}} \Rightarrow \text{MIUI 每週迭代 vs 原生 Android 每年大版}
+$$
 
 ## 理論：開源生態的「分叉演化」
 
-$$N_{分支} \propto \text{開源度} \times \text{市場異質性}$$
+$$
+N_{分支} \propto \text{開源度} \times \text{市場異質性}
+$$
 
 Android 的 Apache 開源許可 → 中國出現 10+ 分支 ROM → 每支分支都在本地生態上演化。**這是 Linux 發行版歷史在手機上的重演**——但這次分叉者擁有 10 億級用戶市場。
 

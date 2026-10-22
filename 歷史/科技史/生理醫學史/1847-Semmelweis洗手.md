@@ -26,7 +26,10 @@ Semmelweis 的推理只有兩步：
 1. **對比**：兩個產房的唯一差異是「接觸過屍體與否」→ 差異的原因在差異之中
 2. **干預**：移除差異（氯水洗手）→ 死亡率趨同 → **因果確認**
 
-$$\text{死亡率差異} = f(\text{接觸屍體}) \xrightarrow{\text{洗手干預}} \text{差異消失} \Longrightarrow \text{因果成立}.$$
+$$
+\text{死亡率差異} = f(\text{接觸屍體}) \xrightarrow{\text{洗手干預}} \text{差異消失} \Longrightarrow \text{因果成立}.
+$$
+
 這是**干預實驗 (intervention)** 的偵破——比 Bradford Hill 的因果準則（1965）
 早了 118 年，是現代流行病學與對照試驗（RCT）的方法論先驅。
 

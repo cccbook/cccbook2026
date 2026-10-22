@@ -8,7 +8,7 @@ $$
 \lambda = \frac{h}{p} = \frac{h}{mv}
 $$
 
-其中 $h$ 是 Planck 常數， $p$ 是動量。這個想法實驗上很快被 Davisson–Germer 的電子繞射實驗（1927）證實，但理論上沒人知道：**這個「物質波」到底遵守什麼方程？**
+其中 $`h`$ 是 Planck 常數， $`p`$ 是動量。這個想法實驗上很快被 Davisson–Germer 的電子繞射實驗（1927）證實，但理論上沒人知道：**這個「物質波」到底遵守什麼方程？**
 
 在蘇黎世大學，38 歲的 Erwin Schrödinger（1887–1961）剛被聘為理論物理教授。他的同事 Debye 在一次討論會上說：如果物質是波，那就該有一個波動方程；你講了半天波，波動方程在哪裡？這句話像偵探對嫌犯的當頭質問，逼出了物理學史上最重要的微分方程。
 
@@ -24,7 +24,7 @@ $$
 \nabla^2 \psi - \frac{n^2}{c^2} \frac{\partial^2 \psi}{\partial t^2} = 0
 $$
 
-在波長 $\lambda \to 0$ 的極限下，其短波近似正是 eikonal 方程 $\ |\nabla S|^2 = n^2$ 。而 Hamilton–Jacobi 方程
+在波長 $`\lambda \to 0`$ 的極限下，其短波近似正是 eikonal 方程 $`\ |\nabla S|^2 = n^2`$ 。而 Hamilton–Jacobi 方程
 
 $$
 \frac{\partial S}{\partial t} + \frac{1}{2m}|\nabla S|^2 + V = 0
@@ -34,7 +34,7 @@ $$
 
 ### 關鍵靈感二：從 de Broglie 關係推出方程
 
-設波函數形式為 $\psi(\mathbf{r}, t) = \varphi(\mathbf{r})\, e^{-iEt/\hbar}$ ，其中 $\hbar = h/2\pi$ 。de Broglie 關係給出 $E = \hbar\omega$ 、 $\mathbf{p} = \hbar\mathbf{k}$ 。
+設波函數形式為 $`\psi(\mathbf{r}, t) = \varphi(\mathbf{r})\, e^{-iEt/\hbar}`$ ，其中 $`\hbar = h/2\pi`$ 。de Broglie 關係給出 $`E = \hbar\omega`$ 、 $`\mathbf{p} = \hbar\mathbf{k}`$ 。
 
 第一步：對時間求導可得
 
@@ -48,45 +48,45 @@ $$
 -i\hbar \nabla \psi = \mathbf{p}\,\psi \quad\Longrightarrow\quad -\hbar^2 \nabla^2 \psi = p^2\,\psi
 $$
 
-第三步：古典能量關係 $E = \frac{p^2}{2m} + V$ 中，把 $E$ 換成 $i\hbar\partial_t$ 、把 $p^2$ 換成 $-\hbar^2\nabla^2$ ，即得
+第三步：古典能量關係 $`E = \frac{p^2}{2m} + V`$ 中，把 $`E`$ 換成 $`i\hbar\partial_t`$ 、把 $`p^2`$ 換成 $`-\hbar^2\nabla^2`$ ，即得
 
 $$
 i\hbar \frac{\partial \psi}{\partial t} = \left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\psi = \hat H \psi
 $$
 
-這就是含時 Schrödinger 方程。注意其推理本質是「算符替換」：把古典力學的相空間函數 $E(\mathbf{r},\mathbf{p})$ 中的變數換成對應的微分算符 $\hat E = i\hbar\partial_t$ 、 $\hat{\mathbf{p}} = -i\hbar\nabla$ 。這正是 Hamilton 力學（見 [1838-Jacobi與Hamilton-Jacobi方程.md](1838-Jacobi與Hamilton-Jacobi方程.md)）的結構在量子世界的再現。
+這就是含時 Schrödinger 方程。注意其推理本質是「算符替換」：把古典力學的相空間函數 $`E(\mathbf{r},\mathbf{p})`$ 中的變數換成對應的微分算符 $`\hat E = i\hbar\partial_t`$ 、 $`\hat{\mathbf{p}} = -i\hbar\nabla`$ 。這正是 Hamilton 力學（見 [1838-Jacobi與Hamilton-Jacobi方程.md](1838-Jacobi與Hamilton-Jacobi方程.md)）的結構在量子世界的再現。
 
 ### 氫原子解與本徵值奇蹟
 
-對氫原子， $V(r) = -\dfrac{e^2}{4\pi\varepsilon_0 r}$ 。因位勢不隨時間變化，分離變數 $\psi = \varphi e^{-iEt/\hbar}$ ，得定態方程
+對氫原子， $`V(r) = -\dfrac{e^2}{4\pi\varepsilon_0 r}`$ 。因位勢不隨時間變化，分離變數 $`\psi = \varphi e^{-iEt/\hbar}`$ ，得定態方程
 
 $$
 \left(-\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\varepsilon_0 r}\right)\varphi = E\,\varphi
 $$
 
-在球坐標下分離變數 $\varphi = R(r)\,Y_\ell^m(\theta,\phi)$ ，徑向方程為
+在球坐標下分離變數 $`\varphi = R(r)\,Y_\ell^m(\theta,\phi)`$ ，徑向方程為
 
 $$
 \frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right) + \left[\frac{2m}{\hbar^2}\left(E + \frac{e^2}{4\pi\varepsilon_0 r}\right) - \frac{\ell(\ell+1)}{r^2}\right]R = 0
 $$
 
-**這裡是微分方程偵查的破案關鍵**：物理上要求波函數在 $r \to \infty$ 處可積（歸一化），這是邊界條件。對徑向方程做無量綱化並代入 $R = \rho^\ell e^{-\rho/2} L(\rho)$ （其中 $\rho = \dfrac{2r}{na_0}$ ， $a_0$ 是 Bohr 半徑）， $L$ 滿足**伴隨 Laguerre 方程**：
+**這裡是微分方程偵查的破案關鍵**：物理上要求波函數在 $`r \to \infty`$ 處可積（歸一化），這是邊界條件。對徑向方程做無量綱化並代入 $`R = \rho^\ell e^{-\rho/2} L(\rho)`$ （其中 $`\rho = \dfrac{2r}{na_0}`$ ， $`a_0`$ 是 Bohr 半徑）， $`L`$ 滿足**伴隨 Laguerre 方程**：
 
 $$
 \rho \frac{d^2 L}{d\rho^2} + 2(\ell + 1 - \rho)\frac{dL}{d\rho} + (n - \ell - 1)L = 0
 $$
 
-此方程只有在 $n - \ell - 1$ 為非負整數時才有多項式解（否則級數解在無窮遠發散，違反歸一化）。因此：
+此方程只有在 $`n - \ell - 1`$ 為非負整數時才有多項式解（否則級數解在無窮遠發散，違反歸一化）。因此：
 
 $$
 E_n = -\frac{m e^4}{2(4\pi\varepsilon_0)^2 \hbar^2}\cdot\frac{1}{n^2}, \qquad n = 1, 2, 3, \dots
 $$
 
-**分立能階不是假設，而是微分方程 + 邊界條件的數學必然**。Schrödinger 算出的 $E_n$ 與 Bohr 模型完全一致，且自然解釋了主量子數 $n$ 、角量子數 $\ell$ 、磁量子數 $m$ 的來源——它們是球諧函數與 Laguerre 多項式的指標。這是 Sturm–Liouville 本徵值理論（見 [1858-SturmLiouville理論.md](1858-SturmLiouville理論.md)）在物理學的巔峰應用。
+**分立能階不是假設，而是微分方程 + 邊界條件的數學必然**。Schrödinger 算出的 $`E_n`$ 與 Bohr 模型完全一致，且自然解釋了主量子數 $`n`$ 、角量子數 $`\ell`$ 、磁量子數 $`m`$ 的來源——它們是球諧函數與 Laguerre 多項式的指標。這是 Sturm–Liouville 本徵值理論（見 [1858-SturmLiouville理論.md](1858-SturmLiouville理論.md)）在物理學的巔峰應用。
 
 ### 結案前的最後一塊拼圖：Born 的機率詮釋
 
-Schrödinger 原本想用電磁波詮釋 $\psi$ ，但波包會擴散，且多粒子情形 $\psi$ 是組態空間的函數，無法是物理波。1926 年，Max Born 在研究散射問題時提出： $|\psi(\mathbf{r})|^2$ 是**機率密度**——在 $\mathbf{r}$ 附近找到粒子的機率。測量問題從此成為量子力學的核心哲學議題，而 Schrödinger 本人在 1935 年用著名的「薛丁格的貓」思想實驗表達了對此的不安。
+Schrödinger 原本想用電磁波詮釋 $`\psi`$ ，但波包會擴散，且多粒子情形 $`\psi`$ 是組態空間的函數，無法是物理波。1926 年，Max Born 在研究散射問題時提出： $`|\psi(\mathbf{r})|^2`$ 是**機率密度**——在 $`\mathbf{r}`$ 附近找到粒子的機率。測量問題從此成為量子力學的核心哲學議題，而 Schrödinger 本人在 1935 年用著名的「薛丁格的貓」思想實驗表達了對此的不安。
 
 ## 結案報告
 

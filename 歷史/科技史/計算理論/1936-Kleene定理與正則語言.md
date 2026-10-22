@@ -12,57 +12,69 @@
 
 ### 1. 有限狀態機（FSM/DFA）的定義
 決定性有限自動機（DFA）是五元組：
+
 $$
 M = (Q,\ \Sigma,\ \delta,\ q_0,\ F)
 $$
-- $Q$ ：有限狀態集； $\Sigma$ ：輸入字母表； $\delta: Q \times \Sigma \to Q$ ：轉移函數
-- $q_0 \in Q$ ：起始狀態； $F \subseteq Q$ ：接受狀態集
 
-接受語言： $L(M) = \{ w \in \Sigma^* \mid \hat\delta(q_0, w) \in F \}$ ，其中 $\hat\delta$ 是 $\delta$ 的擴充（ $\hat\delta(q, \epsilon) = q$ ， $\hat\delta(q, wa) = \delta(\hat\delta(q,w), a)$ ）。
+- $`Q`$ ：有限狀態集； $`\Sigma`$ ：輸入字母表； $`\delta: Q \times \Sigma \to Q`$ ：轉移函數
+- $`q_0 \in Q`$ ：起始狀態； $`F \subseteq Q`$ ：接受狀態集
 
-**非決定性自動機（NFA）**： $\delta: Q \times \Sigma_\epsilon \to 2^Q$ ，一個輸入可有多個（含 $\epsilon$ ）後繼，只要**存在**一條接受路徑即接受。
+接受語言： $`L(M) = \{ w \in \Sigma^* \mid \hat\delta(q_0, w) \in F \}`$ ，其中 $`\hat\delta`$ 是 $`\delta`$ 的擴充（ $`\hat\delta(q, \epsilon) = q`$ ， $`\hat\delta(q, wa) = \delta(\hat\delta(q,w), a)`$ ）。
+
+**非決定性自動機（NFA）**： $`\delta: Q \times \Sigma_\epsilon \to 2^Q`$ ，一個輸入可有多個（含 $`\epsilon`$ ）後繼，只要**存在**一條接受路徑即接受。
 
 ### 2. DFA vs NFA 等價性：子集構造
-對 NFA $N = (Q, \Sigma, \delta, q_0, F)$ ，構造 DFA $D$ ：
+對 NFA $`N = (Q, \Sigma, \delta, q_0, F)`$ ，構造 DFA $`D`$ ：
+
 $$
 D = (2^Q,\ \Sigma,\ \delta',\ \{q_0\},\ F')
 $$
-- $\delta'(S, a) = \bigcup_{q \in S} \delta(q, a)$ （狀態集整體推移）
-- $F' = \{ S \subseteq Q \mid S \cap F \neq \emptyset \}$
 
-**定理**： $L(D) = L(N)$ 。子集數最壞 $2^n$ 個（指數爆炸），但實務上常遠小於此；不可達子集可再剪除。
+- $`\delta'(S, a) = \bigcup_{q \in S} \delta(q, a)`$ （狀態集整體推移）
+- $`F' = \{ S \subseteq Q \mid S \cap F \neq \emptyset \}`$
+
+**定理**： $`L(D) = L(N)`$ 。子集數最壞 $`2^n`$ 個（指數爆炸），但實務上常遠小於此；不可達子集可再剪除。
 
 ### 3. Kleene 定理：正則語言 = FSM 可辨識
 正則表示式文法：
+
 $$
 R ::= \emptyset \mid \epsilon \mid a \;(a \in \Sigma) \mid R_1 R_2 \mid R_1 \mid R_2 \mid R^*
 $$
 
 **Kleene 定理（1951/1956）**：
+
 $$
 L \text{ 是正則表示式定義的語言} \iff L \text{ 被某個有限自動機辨識}
 $$
 
 兩個方向：
-- **(⇒) 表示式 → 自動機**：對 $\emptyset, \epsilon, a$ 給基本自動機；串接用串聯（ $R_1$ 的接受態 → $R_2$ 起始態）、聯集用並聯、星號用迴路（Thompson 構造，1968）。
+- **(⇒) 表示式 → 自動機**：對 $`\emptyset, \epsilon, a`$ 給基本自動機；串接用串聯（ $`R_1`$ 的接受態 → $`R_2`$ 起始態）、聯集用並聯、星號用迴路（Thompson 構造，1968）。
 - **(⇐) 自動機 → 表示式**：狀態消去法（state elimination）或動態規劃：
+
 $$
 R_{ij}^{(k)} = R_{ij}^{(k-1)} \;\big|\; R_{ik}^{(k-1)} \left( R_{kk}^{(k-1)} \right)^* R_{kj}^{(k-1)}
 $$
-（ $R_{ij}^{(k)}$ ：從 $i$ 到 $j$ 只經過中間狀態 $\le k$ 的路徑表示式。）
+
+（ $`R_{ij}^{(k)}`$ ：從 $`i`$ 到 $`j`$ 只經過中間狀態 $`\le k`$ 的路徑表示式。）
 
 ### 4. 封閉性與泵引理
 正則語言在聯集、串接、星號、補、交集下封閉：
+
 $$
 L, M \text{ 正則} \Rightarrow L \cup M,\ LM,\ L^*,\ \bar{L},\ L \cap M \text{ 皆正則}
 $$
-（補靠 DFA 完備性直接翻轉 $F$ ；交集由 De Morgan： $L \cap M = \overline{\bar L \cup \bar M}$ 。）
 
-**泵引理（pumping lemma）**：若 $L$ 正則，則存在 $p \ge 1$ ，使任意 $w \in L$ 、 $|w| \ge p$ 可寫成 $w = xyz$ ，滿足：
+（補靠 DFA 完備性直接翻轉 $`F`$ ；交集由 De Morgan： $`L \cap M = \overline{\bar L \cup \bar M}`$ 。）
+
+**泵引理（pumping lemma）**：若 $`L`$ 正則，則存在 $`p \ge 1`$ ，使任意 $`w \in L`$ 、 $`|w| \ge p`$ 可寫成 $`w = xyz`$ ，滿足：
+
 $$
 |xy| \le p,\quad |y| \ge 1,\quad \forall i \ge 0:\ xy^i z \in L
 $$
-（DFA 走過 $p$ 步必重複狀態，迴圈 $y$ 可任意泵。）用以證明 $\{a^n b^n\}$ 、 $\{a^{2^n}\}$ 等語言**非正則**。
+
+（DFA 走過 $`p`$ 步必重複狀態，迴圈 $`y`$ 可任意泵。）用以證明 $`\{a^n b^n\}`$ 、 $`\{a^{2^n}\}`$ 等語言**非正則**。
 
 ### 5. Python：DFA 模擬器與 NFA→DFA 子集構造
 

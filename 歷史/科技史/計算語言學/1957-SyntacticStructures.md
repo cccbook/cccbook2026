@@ -16,21 +16,27 @@
 
 ### 短語結構文法的生成式定義
 
-語法 $G = (N, \Sigma, P, S)$ ，其中 $N$ 是非終端符號（S、NP、VP…）， $\Sigma$ 是詞彙， $P$ 是生成規則， $S$ 是起始符號。書中分析英語的核心規則包括：
+語法 $`G = (N, \Sigma, P, S)`$ ，其中 $`N`$ 是非終端符號（S、NP、VP…）， $`\Sigma`$ 是詞彙， $`P`$ 是生成規則， $`S`$ 是起始符號。書中分析英語的核心規則包括：
 
-$$S \to NP + VP, \quad VP \to V + NP, \quad NP \to T + N$$
+$$
+S \to NP + VP, \quad VP \to V + NP, \quad NP \to T + N
+$$
 
-語法「生成」的語言是所有可從 $S$ 推導出的句子集合：
+語法「生成」的語言是所有可從 $`S`$ 推導出的句子集合：
 
-$$L(G) = \{ w \in \Sigma^* \mid S \Rightarrow^* w \}$$
+$$
+L(G) = \{ w \in \Sigma^* \mid S \Rightarrow^* w \}
+$$
 
 關鍵在於：有限條規則經遞迴引用，生成無限句子——這就是 Chomsky 所謂語言的「無限使用有限手段」。
 
 ### 轉換規則：被動式的數學
 
-短語結構文法無法優雅處理主動/被動的關係（兩句要各寫一套規則）。Chomsky 引入轉換規則（transformational rules）：作用於整個句法結構上的映射。被動轉換 $T_{\text{passive}}$ ：
+短語結構文法無法優雅處理主動/被動的關係（兩句要各寫一套規則）。Chomsky 引入轉換規則（transformational rules）：作用於整個句法結構上的映射。被動轉換 $`T_{\text{passive}}`$ ：
 
-$$NP_1 + V + NP_2 \Rightarrow NP_2 + be + V + en + by + NP_1$$
+$$
+NP_1 + V + NP_2 \Rightarrow NP_2 + be + V + en + by + NP_1
+$$
 
 例如：
 
@@ -55,7 +61,7 @@ Chomsky 的著名偵探式例證：
 《Syntactic Structures》第三章的偵探式排除法：
 
 1. **有限狀態馬可夫模型不可**：無法表達中心嵌入（The rat the cat the dog chased killed ate the malt）的任意深度配對。
-2. **短語結構文法可以**生成中心嵌入：遞迴規則 $NP \to NP + S'$ 提供無限嵌套能力。
+2. **短語結構文法可以**生成中心嵌入：遞迴規則 $`NP \to NP + S'`$ 提供無限嵌套能力。
 3. **但 CFG 不足以**描述英語全部現象（被動式、助動詞移位），需要轉換規則。
 結論：英語的語法是「CFG + 轉換」的第三種模型——這就是書的破案時刻。
 

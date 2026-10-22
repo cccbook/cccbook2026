@@ -23,7 +23,7 @@
 2. **創造**有限個新的 actors（新 actor 的行為由定義給定，位址即時可用）。
 3. **指定**下一則訊息到來時要採用的**行為**（可以更換自己的行為——這就是狀態演化的唯一途徑）。
 
-形式化地，actor 的計算是一個非同步事件系統：每個事件 $e = (\text{actor}, \text{message}, \text{audience})$ 表示「actor 收到 message，把訊息發給 audience」。事件之間只有偏序（partial order）關係——發送先於接收——不存在全域時鐘：
+形式化地，actor 的計算是一個非同步事件系統：每個事件 $`e = (\text{actor}, \text{message}, \text{audience})`$ 表示「actor 收到 message，把訊息發給 audience」。事件之間只有偏序（partial order）關係——發送先於接收——不存在全域時鐘：
 
 $$
 e \prec e' \;\equiv\; e \text{ 的訊息傳送 } \to e' \text{ 的訊息接收}

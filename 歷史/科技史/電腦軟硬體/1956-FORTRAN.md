@@ -10,26 +10,32 @@
 
 開發成本的痛點：
 
-$$T_{\text{開發}}^{\text{asm}} \gg T_{\text{開發}}^{\text{高階}}\ \text{（期望值），但}\ T_{\text{執行}}^{\text{直譯}} \gg T_{\text{執行}}^{\text{asm}}$$
+$$
+T_{\text{開發}}^{\text{asm}} \gg T_{\text{開發}}^{\text{高階}}\ \text{（期望值），但}\ T_{\text{執行}}^{\text{直譯}} \gg T_{\text{執行}}^{\text{asm}}
+$$
 
 破案關鍵：用「編譯 + 優化」同時壓低兩者——這在 1957 年是賭上職涯的豪賭。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 定義：編譯器與優化
-> 編譯器是一個函數 $\text{compile}: \text{Source} \to \text{Target}$ ，將進階語言程式轉換為機器碼。優化編譯器進一步要求
+> 編譯器是一個函數 $`\text{compile}: \text{Source} \to \text{Target}`$ ，將進階語言程式轉換為機器碼。優化編譯器進一步要求
 
-$$\forall P:\quad T_{\text{執行}}(\text{compile}(P)) \lesssim k \cdot T_{\text{執行}}^{\text{asm}}(P), \quad k \approx 1$$
+$$
+\forall P:\quad T_{\text{執行}}(\text{compile}(P)) \lesssim k \cdot T_{\text{執行}}^{\text{asm}}(P), \quad k \approx 1
+$$
 
-Backus 團隊的目標是讓 $k$ 接近 1（宣稱平均效率達手寫碼的一半以上，實測常常更好）。
+Backus 團隊的目標是讓 $`k`$ 接近 1（宣稱平均效率達手寫碼的一半以上，實測常常更好）。
 
 ### FORTRAN I 的核心語言特徵
 - **算術式**：直接寫 `X = (A+B)*C`，編譯器自動配置暫存器與浮點指令（IBM 704 內建浮點硬體是關鍵助力）。
 - **DO 迴圈**：最早的結構化迴圈，語義為（FORTRAN I 中 iteration 數至少一次，do-while 語義）
 
-$$\text{for } i = m \text{ to } n \text{ step } s:\quad \text{body}(i)$$
+$$
+\text{for } i = m \text{ to } n \text{ step } s:\quad \text{body}(i)
+$$
 
-- **IF 算術判斷**：`IF (X) 10, 20, 20` 依 $x < 0$ 、 $x = 0$ 、 $x > 0$ 三路跳轉。
+- **IF 算術判斷**：`IF (X) 10, 20, 20` 依 $`x < 0`$ 、 $`x = 0`$ 、 $`x > 0`$ 三路跳轉。
 - **格式化 I/O**：FORMAT 敘述，是科學報表的核心。
 
 ### 第一個優化編譯器
@@ -57,7 +63,9 @@ C     C = A x B，三重 DO 迴圈
 
 數學定義：
 
-$$C_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}, \qquad \Theta(n^3) \text{ 次乘加}$$
+$$
+C_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}, \qquad \Theta(n^3) \text{ 次乘加}
+$$
 
 ### Python 對照
 ```python

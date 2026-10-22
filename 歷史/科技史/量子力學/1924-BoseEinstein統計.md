@@ -12,27 +12,27 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### Bose 的光子計數推導
-Bose 將相空間（動量 $\mathbf{p}$ ，體積 $V$ ）劃分為體積 $h^3$ 的相格，每格對應一個量子態。動量在 $p$ 到 $p+dp$ 之間的態數（含兩個偏振）：
+Bose 將相空間（動量 $`\mathbf{p}`$ ，體積 $`V`$ ）劃分為體積 $`h^3`$ 的相格，每格對應一個量子態。動量在 $`p`$ 到 $`p+dp`$ 之間的態數（含兩個偏振）：
 
 $$
 g(p)\,dp = \frac{2 \cdot 4\pi p^2 V\,dp}{h^3}
 $$
 
-將 $p = h\nu/c$ 代入，得到頻率 $\nu$ 附近每單位頻率的態數 $g(\nu) = \frac{8\pi V \nu^2}{c^3}$ 。
+將 $`p = h\nu/c`$ 代入，得到頻率 $`\nu`$ 附近每單位頻率的態數 $`g(\nu) = \frac{8\pi V \nu^2}{c^3}`$ 。
 
-關鍵一步：Bose 把 $N_\nu$ 個光子分配到 $g_\nu$ 個相格中，**光子不可分辨、每格可容納任意多個光子**。將 $N_\nu$ 個相同光子與 $g_\nu-1$ 個隔板排成一列的方法數：
+關鍵一步：Bose 把 $`N_\nu`$ 個光子分配到 $`g_\nu`$ 個相格中，**光子不可分辨、每格可容納任意多個光子**。將 $`N_\nu`$ 個相同光子與 $`g_\nu-1`$ 個隔板排成一列的方法數：
 
 $$
 W = \frac{(N_\nu + g_\nu - 1)!}{N_\nu!\,(g_\nu-1)!}
 $$
 
-配合理論極大化（ $W$ 最大）並以 $\bar{n} = N_\nu/g_\nu$ 表示平均佔據數，Bose 得到：
+配合理論極大化（ $`W`$ 最大）並以 $`\bar{n} = N_\nu/g_\nu`$ 表示平均佔據數，Bose 得到：
 
 $$
 \bar{n} = \frac{1}{e^{h\nu/kT} - 1}
 $$
 
-再乘上 $g(\nu)\cdot h\nu$ ，立即得到 Planck 定律：
+再乘上 $`g(\nu)\cdot h\nu`$ ，立即得到 Planck 定律：
 
 $$
 u(\nu)\,d\nu = \frac{8\pi h \nu^3}{c^3}\frac{d\nu}{e^{h\nu/kT}-1}
@@ -51,14 +51,14 @@ $$
 
 | 統計 | 粒子類型 | 自旋 | 每態佔據 | 分母 |
 |---|---|---|---|---|
-| Maxwell–Boltzmann | 可分辨經典粒子 | 任意 | 無限制 | 無量子修正， $\bar{n}_i = e^{-(\epsilon_i-\mu)/kT}$ |
-| Bose–Einstein | 玻色子 | 整數（0,1,2,…） | 無限制 | $e^{(\epsilon_i-\mu)/kT}-1$ |
-| Fermi–Dirac | 費米子 | 半整數（1/2, 3/2,…） | 最多 1 個 | $e^{(\epsilon_i-\mu)/kT}+1$ |
+| Maxwell–Boltzmann | 可分辨經典粒子 | 任意 | 無限制 | 無量子修正， $`\bar{n}_i = e^{-(\epsilon_i-\mu)/kT}`$ |
+| Bose–Einstein | 玻色子 | 整數（0,1,2,…） | 無限制 | $`e^{(\epsilon_i-\mu)/kT}-1`$ |
+| Fermi–Dirac | 費米子 | 半整數（1/2, 3/2,…） | 最多 1 個 | $`e^{(\epsilon_i-\mu)/kT}+1`$ |
 
 高溫低密度時三者趨於一致；低溫高密度時 BE 有凝聚、FD 有 Fermi 面。
 
 ### Bose–Einstein 凝聚 (BEC) 預言
-Einstein 1925 年發現：對理想玻色氣體，當溫度低於臨界溫度 $T_c$ 時，基態佔據數劇增：
+Einstein 1925 年發現：對理想玻色氣體，當溫度低於臨界溫度 $`T_c`$ 時，基態佔據數劇增：
 
 $$
 T_c = \frac{2\pi\hbar^2}{mk}\left(\frac{n}{\zeta(3/2)}\right)^{2/3}

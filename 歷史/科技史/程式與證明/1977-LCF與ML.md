@@ -21,7 +21,7 @@ HOL、Isabelle、Coq 皆繼承此架構，影響延續至今。
 
 ### 線索一：抽象型別 thm——證明的封印
 
-Milner 的神來一筆是借用抽象資料型別。系統中宣告一個型別 $thm$ ，
+Milner 的神來一筆是借用抽象資料型別。系統中宣告一個型別 $`thm`$ ，
 它只能由少數幾個「公理與推理規則」構造出來：
 
 $$
@@ -39,8 +39,8 @@ abstype thm = Thm of formula
 end
 ```
 
-使用者可以在 $thm$ 之外寫任意程式，即使寫錯也造不出假的 $thm$ 值，
-因為唯一能產生 $thm$ 的函數就是那幾個可信原語。
+使用者可以在 $`thm`$ 之外寫任意程式，即使寫錯也造不出假的 $`thm`$ 值，
+因為唯一能產生 $`thm`$ 的函數就是那幾個可信原語。
 這就是**可信核心（trusted kernel）**：小到可審查，強到撐起一切。
 
 | 設計 | 可信代碼量 | 風險 |
@@ -54,18 +54,18 @@ end
 為了寫證明策略，Milner 發明了 ML（Meta Language）。
 它有三件利器：
 
-1. 高階函數：策略本身就是函數， $tactic$ 類型為 $goal \to (subgoal \, list \times proof)$ 。
-2. 多型與型別推論：寫策略不必寫型別標註， $let$ 多型自動推導。
+1. 高階函數：策略本身就是函數， $`tactic`$ 類型為 $`goal \to (subgoal \, list \times proof)`$ 。
+2. 多型與型別推論：寫策略不必寫型別標註， $`let`$ 多型自動推導。
 3. 例外與模式匹配：搜尋失敗即丟例外，回溯乾淨俐落。
 
-一個 $tactic$ 把目標 $G$ 化為子目標 $G_1$ 與 $G_2$ ，
-一個 $tactical$ 把小策略組合成大策略，例如 $THEN$ 、 $ORELSE$ 、 $REPEAT$ ：
+一個 $`tactic`$ 把目標 $`G`$ 化為子目標 $`G_1`$ 與 $`G_2`$ ，
+一個 $`tactical`$ 把小策略組合成大策略，例如 $`THEN`$ 、 $`ORELSE`$ 、 $`REPEAT`$ ：
 
 $$
 TACTIC_1 \, THEN \, TACTIC_2 \quad,\quad REPEAT(TAC) \quad,\quad TAC_1 \, ORELSE \, TAC_2
 $$
 
-例如證明 $A \land B$ 的策略是先拆合取消去，再分別證明 $A$ 與 $B$ ：
+例如證明 $`A \land B`$ 的策略是先拆合取消去，再分別證明 $`A`$ 與 $`B`$ ：
 
 ```ocaml
 let prove_conj = CONJ_TAC THENL [prove_A; prove_B]
@@ -97,15 +97,15 @@ LCF 破了「誰來證明證明器」的後設案件。
 
 1. **可信核心原則**：今天審查 Coq、Lean、Isabelle，第一件事就是看核心有多小。
 2. **ML 語言家族**：Standard ML、OCaml、F# 皆源於此，函數式程式因此發揚光大。
-3. **tactics 範式**： $tactic$ 與 $tactical$ 的詞彙成為全行業通用語，
-   從 Coq 的 $Ltac$ 到 Lean 的 $tactic$ 框架皆是回聲。
+3. **tactics 範式**： $`tactic`$ 與 $`tactical`$ 的詞彙成為全行業通用語，
+   從 Coq 的 $`Ltac`$ 到 Lean 的 $`tactic`$ 框架皆是回聲。
 
 Milner 因此獲 1991 年圖靈獎。
 
 ## 證據與工具
 
-- 核心三公設： $thm$ 只能由公理與原語構造，任何 $tactic$ 失敗只回傳失敗而非假 $thm$ ，核心程式碼行數即信任成本。
-- $tactic$ 簽名： $tactic : goal \to ((goal \, list) \times (thm \, list \to thm))$ ，前者是子目標，後者是正當性函數。
+- 核心三公設： $`thm`$ 只能由公理與原語構造，任何 $`tactic`$ 失敗只回傳失敗而非假 $`thm`$ ，核心程式碼行數即信任成本。
+- $`tactic`$ 簽名： $`tactic : goal \to ((goal \, list) \times (thm \, list \to thm))`$ ，前者是子目標，後者是正當性函數。
 - 最小模擬（概念 Python）：
 
 ```python
@@ -116,5 +116,5 @@ def modus_ponens(th1, th2):
     return Thm(conclusion)
 ```
 
-- 實驗：寫一個錯的 $tactic$ ，觀察它只能「失敗」不能「造假」，體會封印威力。
+- 實驗：寫一個錯的 $`tactic`$ ，觀察它只能「失敗」不能「造假」，體會封印威力。
 - 文獻：Milner 1979 年〈LCF: A Way of Doing Proofs with a Machine〉，Gordon 2000 年回顧史。

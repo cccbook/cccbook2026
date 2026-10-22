@@ -21,7 +21,7 @@ $$
 Q_{t+1} = f(Q_t, X_t), \quad Y_t = g(Q_t, X_t)
 $$
 
-其中 $Q_t$ 為當前狀態（暫存器值）， $X_t$ 為輸入， $Y_t$ 為輸出， $f, g$ 為組合邏輯函數。這正是 RTL 想要捕捉的模型。
+其中 $`Q_t`$ 為當前狀態（暫存器值）， $`X_t`$ 為輸入， $`Y_t`$ 為輸出， $`f, g`$ 為組合邏輯函數。這正是 RTL 想要捕捉的模型。
 
 ### Verilog 的崛起（1984）
 Gateway Design Automation 於 1984 年提出 Verilog。其設計哲學是「類 C 的語法」（C-like syntax），讓工程師能快速上手。Verilog 最具代表性的時序建構是 `always @(posedge clk)`，用於描述在時脈正緣觸發的同步邏輯：

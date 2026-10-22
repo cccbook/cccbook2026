@@ -20,7 +20,7 @@ van der Waerden 在序言中直言：
 ### 線索二：第一本抽象代數教科書——兩冊架構
 **第一卷（1930）**：
 - 集合與映射的基礎語言；
-- **群論**：公理、子群、陪集、正規子群、商群、同態定理 $G/\ker\varphi \cong \operatorname{im}\varphi$ ；
+- **群論**：公理、子群、陪集、正規子群、商群、同態定理 $`G/\ker\varphi \cong \operatorname{im}\varphi`$ ；
 - **環與理想**：環公理、理想、商環、多項式環、Noether 環與唯一分解；
 - **域論**：域擴張、Galois 理論（以 Artin 的觀點重述）。
 
@@ -30,10 +30,14 @@ van der Waerden 在序言中直言：
 - **超複數系**（結合代數）：Wedderburn 結構定理。
 
 **推理**：這個「群 → 環/域 → 線性代數」的骨架，就是今天全世界大學代數課程與教科書的標準架構。以域論為例，書中採用的核心工具是同構擴張引理與分裂域：
-- 對域 $F$ 與其上的不可約多項式 $f(x)$ ，存在擴張域 $E \supseteq F$ 使 $f$ 在 $E$ 上分裂；
-- Galois 對應： $E/F$ 的中間域與 Galois 群 $G = \operatorname{Gal}(E/F)$ 的子群之間有反序雙射
-  $$\{ \text{中間域 } K : F \subseteq K \subseteq E \} \;\longleftrightarrow\; \{ \text{子群 } H \leq G \}$$
-  這個對應徹底解決了「五次方程無根式解」的古典問題（Abel–Ruffini， $S_5$ 不可解）。
+- 對域 $`F`$ 與其上的不可約多項式 $`f(x)`$ ，存在擴張域 $`E \supseteq F`$ 使 $`f`$ 在 $`E`$ 上分裂；
+- Galois 對應： $`E/F`$ 的中間域與 Galois 群 $`G = \operatorname{Gal}(E/F)`$ 的子群之間有反序雙射
+
+$$
+\{ \text{中間域 } K : F \subseteq K \subseteq E \} \;\longleftrightarrow\; \{ \text{子群 } H \leq G \}
+$$
+
+這個對應徹底解決了「五次方程無根式解」的古典問題（Abel–Ruffini， $`S_5`$ 不可解）。
 
 ### 線索三：結構主義數學的典範
 《Moderne Algebra》的哲學：數學研究的不是「數」，而是**結構**。書中首次大規模使用「同構的兩個結構視為同一」的觀點，並以定義—定理—證明的嚴格公理化格式呈現。這種風格直接啟發了 1930 年代末期的 **Bourbaki 學派**（法國），其《Éléments de mathématique》正是結構主義的極致版本。偵探的推理：一本教科書之所以能成為典範，是因為它改變了「什麼才算一段數學」的敘述格式。
@@ -45,7 +49,7 @@ van der Waerden 在序言中直言：
 - 「modern algebra（近代代數）」一詞本身就成為這門學科的名字。
 
 ### Python 示範：Galois 對應的小例子
-以 $E = \mathbb{F}_4$ （ $\mathbb{F}_2$ 的二次擴張）為例，驗證 Galois 對應：
+以 $`E = \mathbb{F}_4`$ （ $`\mathbb{F}_2`$ 的二次擴張）為例，驗證 Galois 對應：
 ```python
 from itertools import product
 
@@ -70,7 +74,7 @@ print("σ 保持加法:", all(fadd(sigma(a), sigma(b)) == sigma(fadd(a, b)) for 
 print("σ 修正 F2 子域:", all(sigma(u) == u for u in F4[:2]))  # 不動點 = 子域 F2
 # Galois 對應：子群 {id, σ} ↔ 子域 F2；子群 {id} ↔ E 本身
 ```
-程式驗證了書中 Galois 理論的最小實例： $\operatorname{Gal}(\mathbb{F}_4/\mathbb{F}_2) \cong \mathbb{Z}/2\mathbb{Z}$ ，其子群與中間域一一對應。
+程式驗證了書中 Galois 理論的最小實例： $`\operatorname{Gal}(\mathbb{F}_4/\mathbb{F}_2) \cong \mathbb{Z}/2\mathbb{Z}`$ ，其子群與中間域一一對應。
 
 ## 結案 -- 後果與影響
 - **代數教育的全球統一**：此書的章節架構沿用至今，所有「近世代數」「抽象代數」課程都是它的後裔。

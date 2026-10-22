@@ -3,7 +3,11 @@
 ## 案件摘要
 1801 年，Joseph-Marie Jacquard 發明 **Jacquard Loom**（雅卡織布機）：
 首次用**打孔卡片 (punched cards)** 控制織機圖案：
-$$\text{打孔卡} = \text{程式碼} \quad \Longrightarrow \quad \text{織布機} = \text{解譯器}.$$
+
+$$
+\text{打孔卡} = \text{程式碼} \quad \Longrightarrow \quad \text{織布機} = \text{解譯器}.
+$$
+
 一副卡片 = 一個花樣。**織布這件事，第一次被「資料」而非「工人記憶」所控制**。
 這個思想 35 年後啟發了 Babbage（見「1837-Babbage差分機.md」），70 年後啟發了 Hollerith（1890 美國人口普查機），直接導致 20 世紀初期的**打孔卡資料處理時代**。
 
@@ -23,22 +27,34 @@ $$\text{打孔卡} = \text{程式碼} \quad \Longrightarrow \quad \text{織布�
 ### 第一條線索：可程式性 = 資料與指令的分離
 在 Jacquard Loom 前，機械裝置的功能是**固定**的（齒輪決定運動）。
 Jacquard Loom 的功能由**打孔卡序列**決定：
-$$\text{動作序列}_t = f(\text{card}_t), \qquad t=1,\ldots,N.$$
+
+$$
+\text{動作序列}_t = f(\text{card}_t), \qquad t=1,\ldots,N.
+$$
+
 **控制與機構分離**：同一台織機可織出完全不同的花樣——只要換一副卡片。
 這正是現代電腦的**軟體與硬體分離**的雛形。
 
 ### 第二條線索：有限狀態機（循環控制）
 織機是一個循環執行的機械裝置：
-$$S_{t+1} = \delta(S_t, \text{input}_t), \qquad \text{output}_t = \lambda(S_t, \text{input}_t).$$
-- $S_t$ ：經線的提起狀態（warp harness）
-- $\text{input}_t = \text{card}_t$ （打孔模式）
-- $\text{output}_t$ ：織出的紋路（一行 weft）
+
+$$
+S_{t+1} = \delta(S_t, \text{input}_t), \qquad \text{output}_t = \lambda(S_t, \text{input}_t).
+$$
+
+- $`S_t`$ ：經線的提起狀態（warp harness）
+- $`\text{input}_t = \text{card}_t`$ （打孔模式）
+- $`\text{output}_t`$ ：織出的紋路（一行 weft）
 - **打孔卡序列 = 輸入序列 = 程式**。
 這是**有限狀態機（FSM）+ 外部輸入**的機械實現——先於 Turing 機（1936）的工程範例。
 
 ### 第三條線索：重複與遞迴的效率
 複雜花樣常有重複單元（border, motif）。打孔卡可重複循環：
-$$\{\text{card}_1,\ldots,\text{card}_k,\;\text{card}_1,\ldots,\text{card}_k,\ldots\}.$$
+
+$$
+\{\text{card}_1,\ldots,\text{card}_k,\;\text{card}_1,\ldots,\text{card}_k,\ldots\}.
+$$
+
 **迴圈（loop）**在機械層面首次被「資料序列」實現，而非靠齒輪比率——
 工程上的**子程式/迴圈**思想。
 

@@ -21,22 +21,34 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理一：一個網路同時學策略與價值
-AlphaZero 的網路 $f_\theta(s)$ 同時輸出兩個頭：
-$$(\mathbf{p}, v) = f_\theta(s), \qquad \mathbf{p} \approx \pi(s) \text{（策略）}, \quad v \approx V^*(s) \text{（勝率）}.$$
+AlphaZero 的網路 $`f_\theta(s)`$ 同時輸出兩個頭：
+
+$$
+(\mathbf{p}, v) = f_\theta(s), \qquad \mathbf{p} \approx \pi(s) \text{（策略）}, \quad v \approx V^*(s) \text{（勝率）}.
+$$
+
 西洋棋用 20 層 CNN（256 濾波器），圍棋用 40 層——**架構相同，只改深度與輸入編碼。**
 
 ### 核心推理二：MCTS 當「策略改進算子」
 AlphaZero 的核心洞見：**把 MCTS 的搜索結果當作改進後的策略來訓練網路**。
-每次自我對弈，MCTS 從 $f_\theta$ 出發搜索，得到的造訪分佈 $\pi_{mcts}$ 比原策略更強：
-$$\theta \leftarrow \arg\min_\theta \sum_{(s, \pi_{mcts}, z)} \Big[ \big( v_\theta(s) - z \big)^2 - \pi_{mcts}^\top \log f_\theta(s) \Big].$$
+每次自我對弈，MCTS 從 $`f_\theta`$ 出發搜索，得到的造訪分佈 $`\pi_{mcts}`$ 比原策略更強：
+
+$$
+\theta \leftarrow \arg\min_\theta \sum_{(s, \pi_{mcts}, z)} \Big[ \big( v_\theta(s) - z \big)^2 - \pi_{mcts}^\top \log f_\theta(s) \Big].
+$$
+
 這形成一個循環：**網路 → MCTS 搜索 → 更強的策略 → 訓練網路 → 更強的搜索**……
 **這就是策略迭代 (policy iteration) 的神經網路版**（Bellman 1957 的思想復活）。
 
 ### 核心推理三：為什麼拋棄棋譜反而更強？
-數學解釋：人類棋譜分佈 $\pi_{human}$ 是**次優的**（3000 年的定式含大量錯誤）。
-從 $\pi_{human}$ 出發的策略梯度會被拉向次優解；從均勻/網路自生成出發，
+數學解釋：人類棋譜分佈 $`\pi_{human}`$ 是**次優的**（3000 年的定式含大量錯誤）。
+從 $`\pi_{human}`$ 出發的策略梯度會被拉向次優解；從均勻/網路自生成出發，
 MCTS 的改進算子直通最優：
-$$\pi_0 = \text{網路自生成} \xrightarrow{\text{MCTS}} \pi_1 \xrightarrow{\text{訓練}} f_{\theta_1} \xrightarrow{\text{MCTS}} \pi_2 \to \cdots \to \pi^*.$$
+
+$$
+\pi_0 = \text{網路自生成} \xrightarrow{\text{MCTS}} \pi_1 \xrightarrow{\text{訓練}} f_{\theta_1} \xrightarrow{\text{MCTS}} \pi_2 \to \cdots \to \pi^*.
+$$
+
 AlphaGo Zero 的證據：自我對弈過程中，**人類 3000 年的定式被機器重新發現**——
 但只在它們真正最優時出現（如角部的死活手筋）；錯誤的定式則被拋棄。
 **機器不是不懂人類知識，而是重新驗證了一遍，只留下對的。**

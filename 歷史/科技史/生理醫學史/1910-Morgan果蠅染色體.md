@@ -22,9 +22,17 @@
 
 ### 核心推理一：白眼雄蠅與性聯遺傳
 1910 年，Morgan 在紅眼群體中發現一隻**白眼雄蠅**。雜交結果：
-$$\text{白眼雄} \times \text{紅眼雌} \to \text{F}_1 \text{ 全紅} \to \text{F}_2: \text{紅眼}: \text{白眼} = 3:1，\text{但白眼全為雄性！}$$
+
+$$
+\text{白眼雄} \times \text{紅眼雌} \to \text{F}_1 \text{ 全紅} \to \text{F}_2: \text{紅眼}: \text{白眼} = 3:1，\text{但白眼全為雄性！}
+$$
+
 關鍵推理：白眼基因位於 **X 染色體**上（雄性 XY 只有一個 X，隱性基因直接表現）：
-$$X^W X^W \times X^w Y \to X^W X^w, X^W Y \to \text{F}_2 \text{ 的白眼全是 } X^w Y \text{（雄）。}$$
+
+$$
+X^W X^W \times X^w Y \to X^W X^w, X^W Y \to \text{F}_2 \text{ 的白眼全是 } X^w Y \text{（雄）。}
+$$
+
 **性聯遺傳 = 基因在染色體上的第一個證據。**
 
 ### 核心推理二：連鎖與互換 = 基因的線性地圖
@@ -32,19 +40,24 @@ Morgan 發現同條染色體上的基因**一起遺傳**（連鎖），但偶爾
 - 兩基因距離越遠，互換頻率越高
 - **互換頻率 = 圖距單位 (centimorgan)**
 
-$$\text{圖距}(A, B) = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}).$$
+$$
+\text{圖距}(A, B) = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}).
+$$
+
 1911 年，19 歲大學生 Sturtevant 聽完 Morgan 的討論，通宵畫出**第一張基因圖譜**——
 6 個基因在 X 染色體上的線性排序。**互換頻率 = 基因的尺。**
 
 ### 理論與數學式：從互換頻率到基因圖譜
 
-異型合子 $\mathrm{Ab}/\mathrm{aB}$ 與隱性純合子 $\mathrm{ab}/\mathrm{ab}$ 測交：
-親本型配子 $\mathrm{Ab},\ \mathrm{aB}$ 各佔 $\frac{1-r}{2}$ ，重組型配子 $\mathrm{AB},\ \mathrm{ab}$ 各佔 $\frac{r}{2}$
-（ $r$ 為互換頻率）。重組率等於圖距：
+異型合子 $`\mathrm{Ab}/\mathrm{aB}`$ 與隱性純合子 $`\mathrm{ab}/\mathrm{ab}`$ 測交：
+親本型配子 $`\mathrm{Ab},\ \mathrm{aB}`$ 各佔 $`\frac{1-r}{2}`$ ，重組型配子 $`\mathrm{AB},\ \mathrm{ab}`$ 各佔 $`\frac{r}{2}`$
+（ $`r`$ 為互換頻率）。重組率等於圖距：
 
-$$r = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}), \qquad r \le 50\%.$$
+$$
+r = \frac{\text{重組後代數}}{\text{總後代數}} \times 100\% \ (\text{cM}), \qquad r \le 50\%.
+$$
 
-$r = 50\%$ 時四種配子等機率——**等於自由組合**：兩基因視為獨立
+$`r = 50\%`$ 時四種配子等機率——**等於自由組合**：兩基因視為獨立
 （分屬不同染色體，或相距極遠）。
 
 **Sturtevant（1911）的方法**：互換頻率近似可加——兩基因的圖距 ≈ 沿途區段之和，
@@ -56,7 +69,9 @@ $r = 50\%$ 時四種配子等機率——**等於自由組合**：兩基因視�
 | w — v（硃紅眼） | 7.5 |
 | v — m（小翅） | 30.0 |
 
-$$\text{y} \xrightarrow{\ 1.0\ } \text{w} \xrightarrow{\ 7.5\ } \text{v} \xrightarrow{\ 30\ } \text{m}$$
+$$
+\text{y} \xrightarrow{\ 1.0\ } \text{w} \xrightarrow{\ 7.5\ } \text{v} \xrightarrow{\ 30\ } \text{m}
+$$
 
 **互換頻率就是基因的尺**——基因圖譜不是畫出來的，是算出來的。
 

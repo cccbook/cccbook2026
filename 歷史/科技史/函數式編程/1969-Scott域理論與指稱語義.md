@@ -6,42 +6,50 @@
 
 ## 前因 -- 為什麼會有這個案子
 
-- Scott 在 1960 年代初曾「證明」單純型（untyped）λ-Calculus 的實在（set-theoretic）模型不存在：如果函數只是集合論的函數，則 $D \cong [D \to D]$ 不可能對非平凡集合成立，因為集合論中 $|[D\to D]| < |D^{[D]}|$ 的基數論證會爆炸。這個「模型不完備」結果讓他一度認為 λ-Calculus 沒有像樣的數學模型。
+- Scott 在 1960 年代初曾「證明」單純型（untyped）λ-Calculus 的實在（set-theoretic）模型不存在：如果函數只是集合論的函數，則 $`D \cong [D \to D]`$ 不可能對非平凡集合成立，因為集合論中 $`|[D\to D]| < |D^{[D]}|`$ 的基數論證會爆炸。這個「模型不完備」結果讓他一度認為 λ-Calculus 沒有像樣的數學模型。
 - Strachey 的立場不同：他是實務派，想給 ALGOL、ISWIM 這類真實程式語言一個數學語義。當時主流的操作性語義（operational semantics）只描述「機器怎麼跑」，不回答「程式到底是什麼」。
-- 謎題浮現：遞迴定義 `rec f. fun x. if x = 0 then 1 else x * f(x-1)` 中，`f` 出現在自己的定義裡。若 $\llbracket f \rrbracket$ 是某個數學物件，它必須滿足一個自指方程。
+- 謎題浮現：遞迴定義 `rec f. fun x. if x = 0 then 1 else x * f(x-1)` 中，`f` 出現在自己的定義裡。若 $`\llbracket f \rrbracket`$ 是某個數學物件，它必須滿足一個自指方程。
 - 兩人在 Oxford 遇上：Scott 的邏輯加上 Strachey 的實務，正好是破案的組合。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：域（Domain）與 ⊥
 
-Scott 的第一個洞見：不要用「全函數集合」，改用帶偏序的完備集（CPO, complete partial order）。在域 $D$ 上定義偏序 $\sqsubseteq$ ，其中 $\bot$ （bottom）代表「未定義值」， $\bot \sqsubseteq x$ 對所有 $x$ 成立。資訊越多的元素「越大」：
+Scott 的第一個洞見：不要用「全函數集合」，改用帶偏序的完備集（CPO, complete partial order）。在域 $`D`$ 上定義偏序 $`\sqsubseteq`$ ，其中 $`\bot`$ （bottom）代表「未定義值」， $`\bot \sqsubseteq x`$ 對所有 $`x`$ 成立。資訊越多的元素「越大」：
 
-$$\bot \sqsubseteq 0 \sqsubseteq 1 \sqsubseteq 2 \sqsubseteq \cdots \sqsubseteq \top$$
+$$
+\bot \sqsubseteq 0 \sqsubseteq 1 \sqsubseteq 2 \sqsubseteq \cdots \sqsubseteq \top
+$$
 
 ### 線索二：單調與連續函數
 
-域之間的函數必須是單調的（ $x \sqsubseteq y \Rightarrow f(x) \sqsubseteq f(y)$ ），更好的是連續的（保序上確界）：
+域之間的函數必須是單調的（ $`x \sqsubseteq y \Rightarrow f(x) \sqsubseteq f(y)`$ ），更好的是連續的（保序上確界）：
 
-$$f\left(\bigsqcup_{n} x_n\right) = \bigsqcup_{n} f(x_n)$$
+$$
+f\left(\bigsqcup_{n} x_n\right) = \bigsqcup_{n} f(x_n)
+$$
 
 連續函數是「資訊增量」的合理運算：輸入多一點資訊，輸出就多一點，不會無中生有。
 
 ### 線索三：Kleene 不動點定理 -- 破案時刻
 
-Kleene 不動點定理說：連續函數 $f: D \to D$ 在 CPO 上必有最小不動點，而且可以明確建構出來：
+Kleene 不動點定理說：連續函數 $`f: D \to D`$ 在 CPO 上必有最小不動點，而且可以明確建構出來：
 
-$$\mathrm{fix}(f) = \bigsqcup_{n=0}^{\infty} f^n(\bot)$$
+$$
+\mathrm{fix}(f) = \bigsqcup_{n=0}^{\infty} f^n(\bot)
+$$
 
-從 $\bot$ 開始，反覆套用 $f$ ，逼近極限。這就是遞迴的語義：
+從 $`\bot`$ 開始，反覆套用 $`f`$ ，逼近極限。這就是遞迴的語義：
 
-$$\llbracket \mathrm{rec}\ f.\ e \rrbracket = \mathrm{fix}\left(\lambda d.\ \llbracket e \rrbracket[d/f]\right)$$
+$$
+\llbracket \mathrm{rec}\ f.\ e \rrbracket = \mathrm{fix}\left(\lambda d.\ \llbracket e \rrbracket[d/f]\right)
+$$
 
 「rec 到底是什麼」的答案：遞迴程式的語義是其定義函數的最小不動點——最小的一個滿足方程的解，恰好捕捉「定義最少的合理行為」。
 
-### 線索四：自指域 $D \cong [D \to D]$
+### 線索四：自指域 $`D \cong [D \to D]`$
 
-剩下Scott 自己過去的「不可能證明」怎麼辦？他發現：若放棄集合論的全函數空間，改用**連續函數的域**，則基數悖論消失。Scott 用投影（retraction）與反演極限（inverse limit）建構出一個與自身函數空間同構的域 $D \cong [D \to D]$ 。函數可以是自己的輸入——λ-Calculus 終於有了數學模型。
+剩下Scott 自己過去的「不可能證明」怎麼辦？他發現：若放棄集合論的全函數空間，改用**連續函數的域**，則基數悖論消失。Scott 用投影（retraction）與反演極限（inverse limit）建構出一個與自身函數空間同構的域 $`D \cong [D \to D]`$ 。函數可以是自己的輸入——λ-Calculus 終於有了數學模型。
 
 ### 程式驗證：最小不動點迭代
 
@@ -80,11 +88,13 @@ print("收斂結果 fact(5) =", fact(5))   # 120
 
 ### 指稱語義：語義函數 ⟦e⟧
 
-最後拼上 Strachey 的部分：語義函數 $\llbracket \cdot \rrbracket$ 把語法映射到域中的值：
+最後拼上 Strachey 的部分：語義函數 $`\llbracket \cdot \rrbracket`$ 把語法映射到域中的值：
 
-$$\llbracket e_1 + e_2 \rrbracket \rho = \llbracket e_1 \rrbracket \rho + \llbracket e_2 \rrbracket \rho$$
+$$
+\llbracket e_1 + e_2 \rrbracket \rho = \llbracket e_1 \rrbracket \rho + \llbracket e_2 \rrbracket \rho
+$$
 
-其中 $\rho$ 是環境（environment，變數到域值的映射）。語法構造對應語義構造，這是「組合性」原則。
+其中 $`\rho`$ 是環境（environment，變數到域值的映射）。語法構造對應語義構造，這是「組合性」原則。
 
 ## 結案 -- 後果與影響
 

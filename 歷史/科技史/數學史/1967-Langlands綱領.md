@@ -3,7 +3,9 @@
 ## 案件摘要
 1967 年 1 月，30 歲的 Robert Langlands 在普林斯頓高等研究院寫下一封 17 頁的**手寫信**給 André Weil（Bourbaki 的靈魂人物，見 `1935-Bourbaki結構革命.md`）：提出**Langlands 綱領**——**數論（Galois 表示）與表示論（自守形式）的大統一**：
 
-$$\text{Galois 表示} \longleftrightarrow \text{自守表示}$$
+$$
+\text{Galois 表示} \longleftrightarrow \text{自守表示}
+$$
 
 **「數學的大統一理論」**——把素數（Galois 側）與對稱（表示論側）連結。**Wiles 證明費馬定理（1995，見 `1994-Wiles費馬定理.md`）是 Langlands 的一角**（谷山–志村猜想）；**Fermat 大獎、Abel 獎（2018）、Wolf 獎**——**21 世紀數論的總綱領**（至今仍在推進）。
 
@@ -15,7 +17,7 @@ $$\text{Galois 表示} \longleftrightarrow \text{自守表示}$$
 
 **兩者已經交會過**：
 - **類域論**（Hilbert、Artin 1920s）：**Abel 擴張**（交換的 Galois 擴張）的完整分類——L-函數對應——**但只對交換的擴張**
-- **非交換的懸案**：非交換擴張（一般五次方程的 Galois 群 $S_5$ ）——**類域論無能為力**
+- **非交換的懸案**：非交換擴張（一般五次方程的 Galois 群 $`S_5`$ ）——**類域論無能為力**
 
 **Langlands 的問題**：**類域論能否推廣到非交換**？——答案：**用表示論**。
 
@@ -26,14 +28,18 @@ $$\text{Galois 表示} \longleftrightarrow \text{自守表示}$$
 ### Langlands 對應
 **大統一的陳述**：
 
-$$\{\text{Galois 表示 } \rho: \mathrm{Gal}(\bar{K}/k) \to GL_n\} \longleftrightarrow \{\text{自守表示 } \pi\}$$
+$$
+\{\text{Galois 表示 } \rho: \mathrm{Gal}(\bar{K}/k) \to GL_n\} \longleftrightarrow \{\text{自守表示 } \pi\}
+$$
 
 - **Galois 側**：數論的對稱（方程的根的置換群——與 Galois 1832 同源）
 - **自守側**：**自守形式**（模形式的推廣——與 Riemann 假設的 ζ、Wiles 的谷山–志村同源）——分析與表示論的語言
 
 **對應的內容**：兩側的 **L-函數相等**：
 
-$$L(\rho, s) = L(\pi, s)$$
+$$
+L(\rho, s) = L(\pi, s)
+$$
 
 **——素數的分佈（Galois 側）= 表示論的資訊（自守側）**。
 
@@ -42,11 +48,15 @@ $$L(\rho, s) = L(\pi, s)$$
 ### 類域論的推廣
 **類域論（Artin 1927）**：**交換的** Galois 擴張完全分類：
 
-$$\text{Abel 擴張 } K/k \longleftrightarrow \text{指標 } \chi \text{（交換群的表示）}$$
+$$
+\text{Abel 擴張 } K/k \longleftrightarrow \text{指標 } \chi \text{（交換群的表示）}
+$$
 
 **Langlands 的推廣**：
 
-$$\text{非交換擴張} \longleftrightarrow \text{高維表示 } GL_n \text{（自守表示）}$$
+$$
+\text{非交換擴張} \longleftrightarrow \text{高維表示 } GL_n \text{（自守表示）}
+$$
 
 **n = 1**：交換（類域論）✓
 **n = 2**：**谷山–志村**（Wiles 1995 證明半穩定情況，見 `1994-Wiles費馬定理.md`）✓

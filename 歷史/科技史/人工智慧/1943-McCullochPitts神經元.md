@@ -4,7 +4,11 @@
 1943 年，神經生理學家 Warren McCulloch 與 18 歲的邏輯天才 Walter Pitts 在《Bulletin of Mathematical Biophysics》發表
 〈A Logical Calculus of the Ideas Immanent in Nervous Activity〉：
 用一個極簡的數學模型描述神經元——加權輸入、超過閾值就「放電」。
-$$y = H\!\left(\sum_i w_i x_i - \theta\right).$$
+
+$$
+y = H\!\left(\sum_i w_i x_i - \theta\right).
+$$
+
 這是人工智慧偵探案的第一塊積木：**神經元的行為，可以用邏輯與算術完全描述**。
 
 ## 前因 -- 為什麼會有這個案子
@@ -21,15 +25,19 @@ McCulloch 觀察神經元的行為特徵：
 3. 輸出只有 0 或 1 兩種狀態。
 
 ### 第二步：數學模型
-$$y = H\!\left(\sum_i w_i x_i - \theta\right), \qquad H(z) = \begin{cases}1 & z \ge 0 \\ 0 & z < 0\end{cases}$$
-$w_i$ 權重（興奮 $>0$ 、抑制 $<0$ ）、 $\theta$ 閾值、 $H$ 階梯函數。
+
+$$
+y = H\!\left(\sum_i w_i x_i - \theta\right), \qquad H(z) = \begin{cases}1 & z \ge 0 \\ 0 & z < 0\end{cases}
+$$
+
+$`w_i`$ 權重（興奮 $`>0`$ 、抑制 $`<0`$ ）、 $`\theta`$ 閾值、 $`H`$ 階梯函數。
 
 ### 第三步：驚人的推論——邏輯閘的誕生
-適當選 $w_i$ 與 $\theta$ ，單一神經元就能實作所有基本邏輯閘：
-- **AND**： $w=(1,1), \theta=2$ → $y = x_1 \wedge x_2$
-- **OR**： $w=(1,1), \theta=1$ → $y = x_1 \vee x_2$
-- **NOT**： $w=(-1), \theta=0$ → $y = \neg x_1$
-- **NAND**： $w=(-1,-1), \theta=-1$ → $y = \neg(x_1 \wedge x_2)$
+適當選 $`w_i`$ 與 $`\theta`$ ，單一神經元就能實作所有基本邏輯閘：
+- **AND**： $`w=(1,1), \theta=2`$ → $`y = x_1 \wedge x_2`$
+- **OR**： $`w=(1,1), \theta=1`$ → $`y = x_1 \vee x_2`$
+- **NOT**： $`w=(-1), \theta=0`$ → $`y = \neg x_1`$
+- **NAND**： $`w=(-1,-1), \theta=-1`$ → $`y = \neg(x_1 \wedge x_2)`$
 
 而 NAND 閘是**萬能閘**——任何布林函數都能用 NAND 組合（Sheffer, 1913）。
 **推論**：神經元網路 = 布林電路 = Turing 機可計算的一切。McCulloch 與 Pitts 據此宣稱：大腦在原理上是一台圖靈機。
@@ -60,7 +68,7 @@ NAND [1, 1, 1, 0]
 ```
 
 ## 結案 -- 後果與影響
-- **神經網路的開端**：1957 年 Rosenblatt 的感知器（見「1957-Perceptron感知器.md」）就是把閾值 $\theta$ 與權重 $w_i$ 變成**可學習**參數。
+- **神經網路的開端**：1957 年 Rosenblatt 的感知器（見「1957-Perceptron感知器.md」）就是把閾值 $`\theta`$ 與權重 $`w_i`$ 變成**可學習**參數。
 - **邏輯閘 → 數位電腦**：McCulloch–Pitts 模型直接影響早期數位電路設計——神經科學反向啟發了電腦硬體。
 - **符號 AI 的哲學基礎**：「思想 = 邏輯運算」的宣言，催生了 1956 年的 Dartmouth 會議（見「1956-Dartmouth會議.md」）。
 - 限制：模型不可學習（權重寫死）、無法處理連續輸出、階梯函數不可微——這些缺口正是日後感知器與反向傳播要補的洞。

@@ -26,9 +26,11 @@
 
 基本執行迴圈（fetch–decode–execute）：
 
-$$\text{PC} \rightarrow \text{IR} \leftarrow M[\text{PC}]; \quad \text{PC} \leftarrow \text{PC}+1; \quad \text{Execute}(\text{IR})$$
+$$
+\text{PC} \rightarrow \text{IR} \leftarrow M[\text{PC}]; \quad \text{PC} \leftarrow \text{PC}+1; \quad \text{Execute}(\text{IR})
+$$
 
-馮紐曼瓶頸：CPU 與 M 間頻寬 $B$ 限制吞吐量， $T \ge \dfrac{N_{inst}}{B}$ 。ENIAC 性能：每秒約 5,000 次加法，比機械計算器快千倍。
+馮紐曼瓶頸：CPU 與 M 間頻寬 $`B`$ 限制吞吐量， $`T \ge \dfrac{N_{inst}}{B}`$ 。ENIAC 性能：每秒約 5,000 次加法，比機械計算器快千倍。
 
 ## 後果
 1. 1948 年曼徹斯特 Baby、1949 年 EDSAC、1951 年 UNIVAC I 依此架構問世，儲存程式成為工業標準。

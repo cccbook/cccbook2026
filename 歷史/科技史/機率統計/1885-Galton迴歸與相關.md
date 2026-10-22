@@ -14,31 +14,39 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：豌豆實驗的謎團
-Galton 將豌豆依母代大小分組（每組 $n=10$ 顆），種植後測量子代大小，發現：
+Galton 將豌豆依母代大小分組（每組 $`n=10`$ 顆），種植後測量子代大小，發現：
 
-$$\text{子代平均} = \bar{y}_{pop} + b\,(\text{母代大小} - \bar{x}_{pop})$$
+$$
+\text{子代平均} = \bar{y}_{pop} + b\,(\text{母代大小} - \bar{x}_{pop})
+$$
 
-其中斜率 $b < 1$ （約 $0.33$ ）。**極端的母代，其子代會退回平均值附近**——他稱之為 "regression to mediocrity"（向平庸迴歸）。
+其中斜率 $`b < 1`$ （約 $`0.33`$ ）。**極端的母代，其子代會退回平均值附近**——他稱之為 "regression to mediocrity"（向平庸迴歸）。
 
 ### 線索二：身高數據的散佈圖
 Galton 將 928 筆父子身高畫成散佈圖，並手繪等高線，發現等高線近似**同心橢圓**。這是雙變數常態分佈的視覺證據：
 
-$$f(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\!\left(-\frac{1}{2(1-\rho^2)}\left[\frac{(x-\mu_X)^2}{\sigma_X^2} - \frac{2\rho(x-\mu_X)(y-\mu_Y)}{\sigma_X\sigma_Y} + \frac{(y-\mu_Y)^2}{\sigma_Y^2}\right]\right)$$
+$$
+f(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\!\left(-\frac{1}{2(1-\rho^2)}\left[\frac{(x-\mu_X)^2}{\sigma_X^2} - \frac{2\rho(x-\mu_X)(y-\mu_Y)}{\sigma_X\sigma_Y} + \frac{(y-\mu_Y)^2}{\sigma_Y^2}\right]\right)
+$$
 
 ### 線索三：迴歸直線與相關係數
-在雙變數常態分佈下，條件期望 $E[Y|X=x]$ 是一條直線：
+在雙變數常態分佈下，條件期望 $`E[Y|X=x]`$ 是一條直線：
 
-$$E[Y|X=x] = \mu_Y + \rho\,\frac{\sigma_Y}{\sigma_X}(x-\mu_X)$$
+$$
+E[Y|X=x] = \mu_Y + \rho\,\frac{\sigma_Y}{\sigma_X}(x-\mu_X)
+$$
 
 其中**相關係數**：
 
-$$r = \frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y} = \frac{\sum_i (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_i (x_i-\bar{x})^2}\,\sqrt{\sum_i (y_i-\bar{y})^2}} \in [-1, 1]$$
+$$
+r = \frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y} = \frac{\sum_i (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_i (x_i-\bar{x})^2}\,\sqrt{\sum_i (y_i-\bar{y})^2}} \in [-1, 1]
+$$
 
-Galton 身高數據的 $r \approx 0.5$ ：兒子身高的「可預測部分」只有父代身高偏差的一半。**退縮不是生物衰敗，而是常態分佈與不完全相關的必然數學結果。**
+Galton 身高數據的 $`r \approx 0.5`$ ：兒子身高的「可預測部分」只有父代身高偏差的一半。**退縮不是生物衰敗，而是常態分佈與不完全相關的必然數學結果。**
 
 ### 推理重點
 1. 「迴歸」最初是生物學現象的名字，後來被抽象為**線性條件期望**的統計方法。
-2. 相關係數 $r$ 同時是迴歸斜率（標準化後）： $\text{slope} = r \cdot \sigma_Y/\sigma_X$ 。
+2. 相關係數 $`r`$ 同時是迴歸斜率（標準化後）： $`\text{slope} = r \cdot \sigma_Y/\sigma_X`$ 。
 3. 迴歸到均值會產生「假效果」陷阱：例如補習後成績變差 ≠ 補習無效，可能是單純的均值迴歸。
 
 ### Python 模擬：父子身高迴歸

@@ -18,7 +18,7 @@
 
 1990 年代初，SDE 數值圈是一座沒有地圖的叢林。
 
-每個實驗室都有自己的格式：Euler–Maruyama 簡單但慢，Milstein 加了修正項卻只在特定噪聲下漂亮，高階 Runge–Kutta 眾說紛紜。有人用步長  $h$  吹噓精度，有人用樣本數  $N$  掩飾偏差。更亂的是，強收斂與弱收斂被混為一談：追蹤一條軌跡的誤差，和估計一個期望值的誤差，根本是兩樁不同的案子。
+每個實驗室都有自己的格式：Euler–Maruyama 簡單但慢，Milstein 加了修正項卻只在特定噪聲下漂亮，高階 Runge–Kutta 眾說紛紜。有人用步長  $`h`$  吹噓精度，有人用樣本數  $`N`$  掩飾偏差。更亂的是，強收斂與弱收斂被混為一談：追蹤一條軌跡的誤差，和估計一個期望值的誤差，根本是兩樁不同的案子。
 
 當時的受害者是計算金融與工程。選擇權定價要的是期望，誤差量的是弱收斂；濾波與控制要的是路徑，誤差量的是強收斂。沒有統一理論，審稿人只能各憑信仰判案。
 
@@ -28,7 +28,7 @@ Kloeden 與 Platen 決定編一本法典。他們的野心毫不掩飾：把 It�
 
 偵探的第一步，是區分兩種正義：強收斂追路徑，弱收斂追分佈。
 
-設步長為  $h$ ，數值解為  $\bar X$ ，真解為  $X$ 。強收斂量均方路徑誤差，弱收斂量光滑泛函期望誤差：
+設步長為  $`h`$ ，數值解為  $`\bar X`$ ，真解為  $`X`$ 。強收斂量均方路徑誤差，弱收斂量光滑泛函期望誤差：
 
 $$
 \mathbb{E}\lvert X_T - \bar X_T\rvert \le C\,h^{\gamma}
@@ -38,26 +38,26 @@ $$
 \lvert \mathbb{E}[g(X_T)] - \mathbb{E}[g(\bar X_T)]\rvert \le C\,h^{\beta}
 $$
 
-其中  $\gamma$  為強階， $\beta$  為弱階。Euler–Maruyama 的強階只有  $1/2$ ，弱階卻有  $1$ 。一句話：算期望比跟軌跡容易一倍。
+其中  $`\gamma`$  為強階， $`\beta`$  為弱階。Euler–Maruyama 的強階只有  $`1/2`$ ，弱階卻有  $`1`$ 。一句話：算期望比跟軌跡容易一倍。
 
-第二步是解剖 Itô–Taylor 展開。古典 Taylor 按  $h$  的整數次展開，隨機 Taylor 還要按多重隨機積分展開。記  $I_{\alpha}$  為指標  $\alpha$  對應的多重積分，則：
+第二步是解剖 Itô–Taylor 展開。古典 Taylor 按  $`h`$  的整數次展開，隨機 Taylor 還要按多重隨機積分展開。記  $`I_{\alpha}`$  為指標  $`\alpha`$  對應的多重積分，則：
 
 $$
 X_t = X_0 + \sum_{\alpha} c_{\alpha}(X_0)\,I_{\alpha}(t)
 $$
 
-截斷這級數，就得到不同階數的格式。Euler–Maruyama 只留到  $I_{(0)}$  與  $I_{(1)}$ ；Milstein 多留一項  $I_{(1,1)}$ ，強階從  $1/2$  升到  $1$ 。
+截斷這級數，就得到不同階數的格式。Euler–Maruyama 只留到  $`I_{(0)}`$  與  $`I_{(1)}`$ ；Milstein 多留一項  $`I_{(1,1)}`$ ，強階從  $`1/2`$  升到  $`1`$ 。
 
 下表是格式的身分證，也是聖經最常被翻開的一頁：
 
-| 格式 | 強階  $\gamma$  | 弱階  $\beta$  | 關鍵增項 | 代價 |
+| 格式 | 強階  $`\gamma`$  | 弱階  $`\beta`$  | 關鍵增項 | 代價 |
 |------|----------------|----------------|----------|------|
-| Euler–Maruyama |  $1/2$  |  $1$  | 無 | 最省，每步一次正態 |
-| Milstein |  $1$  |  $1$  |  $\tfrac{1}{2}b b'((\Delta W)^2 - h)$  | 需導數或差商 |
-| 強 Taylor 1.5 |  $3/2$  |  $2$  | 含  $I_{(1,0)}$  等雙重積分 | 需模擬 Lévy 面積 |
-| 弱 Taylor 2.0 | — |  $2$  | 矩匹配的三點分佈可代正態 | 省隨機數，宜定價 |
+| Euler–Maruyama |  $`1/2`$  |  $`1`$  | 無 | 最省，每步一次正態 |
+| Milstein |  $`1`$  |  $`1`$  |  $`\tfrac{1}{2}b b'((\Delta W)^2 - h)`$  | 需導數或差商 |
+| 強 Taylor 1.5 |  $`3/2`$  |  $`2`$  | 含  $`I_{(1,0)}`$  等雙重積分 | 需模擬 Lévy 面積 |
+| 弱 Taylor 2.0 | — |  $`2`$  | 矩匹配的三點分佈可代正態 | 省隨機數，宜定價 |
 
-第三步是本案的法醫高潮：階數障壁與 Platen–Wagner 展開。當噪聲為多維且非交換時，高階格式需要模擬 Lévy 面積  $A_{ij}$ ，其密度無初等閉式。Platen–Wagner 展開把層級結構講透：想跨過強階  $1$  的門檻，就必須面對面積；想繞開，就只能退守弱格式，用矩匹配的三點隨機數蒙混過關。
+第三步是本案的法醫高潮：階數障壁與 Platen–Wagner 展開。當噪聲為多維且非交換時，高階格式需要模擬 Lévy 面積  $`A_{ij}`$ ，其密度無初等閉式。Platen–Wagner 展開把層級結構講透：想跨過強階  $`1`$  的門檻，就必須面對面積；想繞開，就只能退守弱格式，用矩匹配的三點隨機數蒙混過關。
 
 聖經還釐清了穩定性。均方穩定域、剛性 SDE 的隱式格式、外插加速，皆有專章。隱式 Euler 對付剛性漂移，恰如古典 ODE 世界的隱式格式翻版，只是穩定條件多了擴散項的貢獻。
 
@@ -77,7 +77,7 @@ $$
 
 ## 證據與工具
 
-證物一，Euler–Maruyama 與 Milstein 的並排虛擬碼。設步長  $h$ ，增量  $\Delta W \sim \mathcal{N}(0, h)$ ，漂移  $a$ ，擴散  $b$ ：
+證物一，Euler–Maruyama 與 Milstein 的並排虛擬碼。設步長  $`h`$ ，增量  $`\Delta W \sim \mathcal{N}(0, h)`$ ，漂移  $`a`$ ，擴散  $`b`$ ：
 
 $$
 \bar X_{n+1} = \bar X_n + a\,h + b\,\Delta W \quad \text{(Euler)}
@@ -96,7 +96,7 @@ $$
 | 剛性漂移 | 隱式 Euler–Maruyama | 穩定壓倒精度 |
 | 高維系統 | 簡化弱格式 | 成本隨維度線性化 |
 
-證物三，動手實驗。對應程式  `_code/1955-euler_maruyama_order.py`  驗證強階  $1/2$ ， `_code/1975-milstein_order.py`  驗證強階  $1$ 。讀者可把步長折半四次，以 log–log 圖量斜率，親自為聖經驗明正身。
+證物三，動手實驗。對應程式  `_code/1955-euler_maruyama_order.py`  驗證強階  $`1/2`$ ， `_code/1975-milstein_order.py`  驗證強階  $`1`$ 。讀者可把步長折半四次，以 log–log 圖量斜率，親自為聖經驗明正身。
 
 探員格言：先問強弱，再問階數，最後才問步長。不分強弱就調參者，如同不驗屍就結案。
 
@@ -104,15 +104,15 @@ $$
 
 ### 對應程式
 
-- [1955-euler_maruyama_order.py](_code/1955-euler_maruyama_order.py)：以幾何布朗運動驗證 Euler–Maruyama 強階 $1/2$ 。
-- [1975-milstein_order.py](_code/1975-milstein_order.py)：以三次漂移乘性噪聲模型驗證 Milstein 強階 $1$ ，並同場附帶 Euler 對照組；兩支合起來即聖經核心對照表 EM 半階對 Milstein 一階。
+- [1955-euler_maruyama_order.py](_code/1955-euler_maruyama_order.py)：以幾何布朗運動驗證 Euler–Maruyama 強階 $`1/2`$ 。
+- [1975-milstein_order.py](_code/1975-milstein_order.py)：以三次漂移乘性噪聲模型驗證 Milstein 強階 $`1`$ ，並同場附帶 Euler 對照組；兩支合起來即聖經核心對照表 EM 半階對 Milstein 一階。
 
 ### 理論呼應
 
-聖經以強誤差 $E[\lvert X_T - \bar X_T\rvert] \le C\,h^{\gamma}$ 定義強階 $\gamma$ ，弱誤差以 $\lvert E[g(X_T)] - E[g(\bar X_T)]\rvert$ 另計。
-Euler–Maruyama 只留到 $I_{(0)}$ 與 $I_{(1)}$ ，故在乘性噪聲下強階僅為 $\gamma = 1/2$ ，弱階卻有 $1$ 。
-Milstein 多留一項 $I_{(1,1)}$ ，對應修正項 $\tfrac{1}{2}bb'((\Delta W)^2 - h)$ ，把強階拉到 $\gamma = 1$ 。
-兩支程式皆以 log–log 斜率量測 $\gamma$ ，正是聖經要求新格式報戶口的標準動作。
+聖經以強誤差 $`E[\lvert X_T - \bar X_T\rvert] \le C\,h^{\gamma}`$ 定義強階 $`\gamma`$ ，弱誤差以 $`\lvert E[g(X_T)] - E[g(\bar X_T)]\rvert`$ 另計。
+Euler–Maruyama 只留到 $`I_{(0)}`$ 與 $`I_{(1)}`$ ，故在乘性噪聲下強階僅為 $`\gamma = 1/2`$ ，弱階卻有 $`1`$ 。
+Milstein 多留一項 $`I_{(1,1)}`$ ，對應修正項 $`\tfrac{1}{2}bb'((\Delta W)^2 - h)`$ ，把強階拉到 $`\gamma = 1`$ 。
+兩支程式皆以 log–log 斜率量測 $`\gamma`$ ，正是聖經要求新格式報戶口的標準動作。
 
 ### 執行方式
 
@@ -120,7 +120,7 @@ Milstein 多留一項 $I_{(1,1)}$ ，對應修正項 $\tfrac{1}{2}bb'((\Delta W)
 
 ### 實測輸出
 
-Euler–Maruyama（GBM， $h = 0.04, 0.02, 0.01$ ）：
+Euler–Maruyama（GBM， $`h = 0.04, 0.02, 0.01`$ ）：
 
 ```text
 h=0.040 N=25 strong_err=0.403264
@@ -131,7 +131,7 @@ log-log slope=0.5181 (theory 0.5)
 VERIFY 1955 Euler-Maruyama strong order: slope=0.5181 in [0.35,0.65] PASS
 ```
 
-Milstein（ $dX = -X^3\,dt + X\,dW$ ， $dt = 0.04, 0.02, 0.01, 0.005$ ）：
+Milstein（ $`dX = -X^3\,dt + X\,dW`$ ， $`dt = 0.04, 0.02, 0.01, 0.005`$ ）：
 
 ```text
 [milstein] seed=1975 M=8000 SDE dX=-X^3*dt+X*dW X0=0.5 T=1.0 N_fine=1600
@@ -146,7 +146,7 @@ VERIFY: milstein slope=1.088 in [0.8,1.2] PASS
 
 ### 讀者實驗
 
-將 Euler 程式的步長表 `h_list` 加一格 0.005，或將 Milstein 程式的粒子數 `M` 由 8000 改為 16000，再看兩條斜率是否仍分守 $0.5$ 與 $1.0$ 附近。
+將 Euler 程式的步長表 `h_list` 加一格 0.005，或將 Milstein 程式的粒子數 `M` 由 8000 改為 16000，再看兩條斜率是否仍分守 $`0.5`$ 與 $`1.0`$ 附近。
 
 完整程式如下：
 

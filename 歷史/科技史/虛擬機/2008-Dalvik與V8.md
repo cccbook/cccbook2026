@@ -12,11 +12,14 @@
 
 ### 線索 1：stack-based vs register-based 的理論成本
 對一次二元運算 `a + b`：
-- 堆疊機需 **3 條指令**：`load a`、`load b`、`add`，共 $3$ 次堆疊讀寫。
+- 堆疊機需 **3 條指令**：`load a`、`load b`、`add`，共 $`3`$ 次堆疊讀寫。
 - 暫存器機只需 **1 條指令**：`add-int v0, v1, v2`。
 
-設每條指令解碼成本為 $c_d$ ，堆疊存取成本為 $c_s$ ，則：
-$$T_{stack} = 3c_d + 3c_s, \qquad T_{reg} = c_d + 0c_s$$
+設每條指令解碼成本為 $`c_d`$ ，堆疊存取成本為 $`c_s`$ ，則：
+
+$$
+T_{stack} = 3c_d + 3c_s, \qquad T_{reg} = c_d + 0c_s
+$$
 
 程式碼越小（bytecode 較大約 25–47%），但指令數少、dispatch 次數少，在無 JIT 的直譯器上反而更快——這正是 Dalvik 的賭注。
 
@@ -48,14 +51,23 @@ print(reg_add())  # 7
 ### 線索 3：Dalvik 的演進──JIT 與 ART
 - **Dalvik（2008）**：register-based、每個 App 一個 VM 實例（Zygote fork）、dex 格式、有 trace-based JIT（Android 2.2 加入）。
 - **ART（Android 4.4 試驗、5.0 全面取代，2014）**：安裝時 AOT（ahead-of-time）編譯 dex 為機器碼（`dex2oat`），執行時免 JIT；後來又加入 profile-guided JIT 混合模式：
-$$\text{ART} = \text{AOT(熱點)} + \text{JIT(冷路徑)} + \text{Profile}$$
+
+$$
+\text{ART} = \text{AOT(熱點)} + \text{JIT(冷路徑)} + \text{Profile}
+$$
 
 ### 線索 4：V8 的隱藏類（Hidden Classes）與 Inline Caching
 V8 不用字典存物件屬性，而是為每個物件配置一個「隱藏類」（shape/Map）。當物件新增屬性，隱藏類沿著轉移鏈演進：
-$$C_0 \xrightarrow{\text{add } x} C_1 \xrightarrow{\text{add } y} C_2$$
+
+$$
+C_0 \xrightarrow{\text{add } x} C_1 \xrightarrow{\text{add } y} C_2
+$$
 
 若所有物件形狀相同（同構 monomorphic），屬性存取是固定偏移量：
-$$\text{addr}(o.x) = \text{base}(o) + \delta_x$$
+
+$$
+\text{addr}(o.x) = \text{base}(o) + \delta_x
+$$
 
 Inline caching 把「上次查到的偏移與隱藏類」直接快取在呼叫點，下一次命中就免查表：
 ```python
@@ -79,7 +91,11 @@ print(ic.load(o, "x", shapes))  # 1（第二次起走快取路徑）
 ```
 
 ### 線索 5：Lars Bak 的譜系
-$$\text{Self (1987,丹麦)} \to \text{HotSpot 團隊 (1994)} \to \text{Strongtalk} \to \text{V8 (2006–2008)}$$
+
+$$
+\text{Self (1987,丹麦)} \to \text{HotSpot 團隊 (1994)} \to \text{Strongtalk} \to \text{V8 (2006–2008)}
+$$
+
 Self 貢獻了 prototype-based 物件與「以 shape 最佳化」的技術，HotSpot 貢獻了 JIT 與自適應最佳化（adaptive optimization）——V8 繼承兩者。
 
 ## 結案 -- 後果與影響

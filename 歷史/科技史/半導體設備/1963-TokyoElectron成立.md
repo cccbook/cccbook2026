@@ -5,7 +5,10 @@
 最初只是**美國 IC 設備的進口代理商**。1968 年推出自製擴散爐（DFV-80），
 1980s 抓住「塗佈顯影機（coater/developer, track）」利基，
 今日 TEL = 全球前四大設備商，**track 市占 > 90%**。
-$$\text{代理商} \to \text{自製} \to \text{技術領導} \quad \text{（日本設備業的三級跳）}$$
+
+$$
+\text{代理商} \to \text{自製} \to \text{技術領導} \quad \text{（日本設備業的三級跳）}
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **日本 IC 業的起飛**：1960s NEC、東芝、日立、三菱投入 IC——
@@ -29,7 +32,11 @@ $$\text{代理商} \to \text{自製} \to \text{技術領導} \quad \text{（日�
 ### 第二條線索：Track 為什麼是塊寶地（與步進機的共生）
 步進機（1978 起，見 `1978-GCA步進機.md`）把晶圓切成一場一場曝光——
 **每場曝光後要立刻塗膠、烘、顯影**：track 這台「膠水機」必須與步進機**同步**：
-$$\text{步進機曝光} \leftrightarrow \text{track 塗佈/顯影} \quad (\text{inline pairing})$$
+
+$$
+\text{步進機曝光} \leftrightarrow \text{track 塗佈/顯影} \quad (\text{inline pairing})
+$$
+
 - **晶圓在兩機台間傳送的節拍**（throughput matching）成為關鍵工程；
 - TEL 把 track 做到**自動化、潔淨度高、與所有步進機相容**——
   到 1990s 全球 track 市占 >90%，**「步進機可以換廠牌，track 幾乎只有 TEL」**。

@@ -1,13 +1,13 @@
 # 1879 - Frege 概念文字
 
 ## 案件摘要
-1879 年，德國數學家 Gottlob Frege 出版《概念文字》（Begriffsschrift）：發明**量詞邏輯**（quantifier logic）——「**所有**人皆會死」（ $\forall$ ）與「**存在**」（ $\exists$ ）的符號化。亞里士多德兩千年的三段論只有「主謂結構」，**無法表達多重量詞**（「每個人都愛某個人」）——Frege 的量詞解開了這個枷鎖，**數理邏輯的誕生**。Frege 的邏輯是 Hilbert 綱領（見 `../計算理論/1900-Hilbert23問題.md`）、Gödel 不完備（1931）、Turing 機（1936）的**地基**——現代數學的形式化全部站在 Frege 的肩膀上。
+1879 年，德國數學家 Gottlob Frege 出版《概念文字》（Begriffsschrift）：發明**量詞邏輯**（quantifier logic）——「**所有**人皆會死」（ $`\forall`$ ）與「**存在**」（ $`\exists`$ ）的符號化。亞里士多德兩千年的三段論只有「主謂結構」，**無法表達多重量詞**（「每個人都愛某個人」）——Frege 的量詞解開了這個枷鎖，**數理邏輯的誕生**。Frege 的邏輯是 Hilbert 綱領（見 `../計算理論/1900-Hilbert23問題.md`）、Gödel 不完備（1931）、Turing 機（1936）的**地基**——現代數學的形式化全部站在 Frege 的肩膀上。
 
 ## 前因 -- 為什麼會有這個案子
 **亞里士多德邏輯的枷鎖**（前 350–1879）：三段論只有「S 是 P」的主謂結構——
 
 - 「所有人皆會死」✓（主謂）
-- 「**每個人**愛**某個人**」（ $\forall x \exists y\, \text{Loves}(x, y)$ ）——**三段論無法表達**（兩個量詞的疊加）
+- 「**每個人**愛**某個人**」（ $`\forall x \exists y\, \text{Loves}(x, y)`$ ）——**三段論無法表達**（兩個量詞的疊加）
 - 數學的陳述（「對每個數存在更大的素數」）——**亞氏邏輯無能為力**
 
 **萊布尼茨與 Boole 的不足**（見 `1703-Leibniz二進制.md`、`1854-Boole布爾代數.md`）：命題邏輯（命題之間的運算）——**但命題的「內部結構」（量詞）未處理**。
@@ -21,18 +21,20 @@
 ### 量詞邏輯
 **Frege 的發明**：
 
-- **全稱量詞**： $\forall x\, P(x)$ （「所有 $x$ 滿足 $P$ 」）
-- **存在量詞**： $\exists x\, P(x)$ （「存在 $x$ 滿足 $P$ 」）
-- **量詞的疊加**： $\forall x \exists y\, L(x, y)$ （「每個 $x$ 都愛某個 $y$ 」）——**順序有意義**！
+- **全稱量詞**： $`\forall x\, P(x)`$ （「所有 $`x`$ 滿足 $`P`$ 」）
+- **存在量詞**： $`\exists x\, P(x)`$ （「存在 $`x`$ 滿足 $`P`$ 」）
+- **量詞的疊加**： $`\forall x \exists y\, L(x, y)`$ （「每個 $`x`$ 都愛某個 $`y`$ 」）——**順序有意義**！
 
-$$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
+$$
+\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)
+$$
 
 （「每人愛某人」≠「有人被所有人愛」——**量詞順序的語義**——亞氏邏輯無法表達的。）
 
 **數學陳述的符號化**：
-- 極限： $\lim_{x\to a} f(x) = L$ ⟺ $\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)$ ——**Weierstrass 的 $\epsilon$ - $\delta$ （1872，見 `1872-Weierstrass分析嚴格化.md`）本質是量詞邏輯**！
-- 素數無窮： $\forall n\, \exists p > n\, \text{Prime}(p)$
-- 哥德巴赫： $\forall n \text{ 偶} \exists p, q\, (n = p + q)$ （見 `1742-Goldbach猜想.md`）
+- 極限： $`\lim_{x\to a} f(x) = L`$ ⟺ $`\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)`$ ——**Weierstrass 的 $`\epsilon`$ - $`\delta`$ （1872，見 `1872-Weierstrass分析嚴格化.md`）本質是量詞邏輯**！
+- 素數無窮： $`\forall n\, \exists p > n\, \text{Prime}(p)`$
+- 哥德巴赫： $`\forall n \text{ 偶} \exists p, q\, (n = p + q)`$ （見 `1742-Goldbach猜想.md`）
 
 **深遠的意義**：**數學的全部陳述**（分析、數論、幾何）都可以用量詞邏輯表達——**形式化的地基**。
 
@@ -40,7 +42,7 @@ $$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
 **《概念文字》的系統**（二維符號——**樹狀圖**，現代改為線性）：
 
 1. **判斷符號**（⊢）：斷言為真
-2. **條件線**：蘊涵（ $\to$ ）
+2. **條件線**：蘊涵（ $`\to`$ ）
 3. **否定**、**同一**（=）
 4. **量詞**（∀、∃ 的原創符號）
 
@@ -49,21 +51,23 @@ $$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
 **但邏輯系統長存**：量詞邏輯成為標準——**Hilbert 的形式化**（1920s）、**Peano 的公理**（1889）、**Gödel 的不完備**（1931）——全部站在 Frege 的符號系統上。
 
 ### 量詞順序的語義（示例）
-**量詞順序有意義**——以三人 $\{A, B, C\}$ 與「愛」關係 $L = \{(A,B), (B,A), (C,A)\}$ 為例：
+**量詞順序有意義**——以三人 $`\{A, B, C\}`$ 與「愛」關係 $`L = \{(A,B), (B,A), (C,A)\}`$ 為例：
 
 | 陳述 | 符號 | 檢驗 | 結果 |
 |------|------|------|------|
-| 每人愛某人 | $\forall x \exists y\, L(x, y)$ | $A$ 愛 $B$ 、 $B$ 愛 $A$ 、 $C$ 愛 $A$ | **真** |
-| 有人被所有人愛 | $\exists y \forall x\, L(x, y)$ | 無人被 $A, B, C$ 全部愛 | **假** |
+| 每人愛某人 | $`\forall x \exists y\, L(x, y)`$ | $`A`$ 愛 $`B`$ 、 $`B`$ 愛 $`A`$ 、 $`C`$ 愛 $`A`$ | **真** |
+| 有人被所有人愛 | $`\exists y \forall x\, L(x, y)`$ | 無人被 $`A, B, C`$ 全部愛 | **假** |
 
-$$\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)$$
+$$
+\forall x \exists y\, L(x, y) \ne \exists y \forall x\, L(x, y)
+$$
 
 ——**亞里士多德的三段論無法表達的結構**（只有主謂結構，無多重量詞）。
 
 **數學陳述的量詞化**：
-- 極限： $\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)$ ——**Weierstrass 的 $\epsilon$ - $\delta$ 本質是量詞邏輯**
-- 素數無窮： $\forall n\, \exists p > n\, \mathrm{Prime}(p)$
-- 哥德巴赫： $\forall n \text{ 偶} \exists p, q\, (n = p + q)$
+- 極限： $`\forall \epsilon > 0\, \exists \delta > 0\, \forall x\, (0 < |x-a| < \delta \implies |f(x)-L| < \epsilon)`$ ——**Weierstrass 的 $`\epsilon`$ - $`\delta`$ 本質是量詞邏輯**
+- 素數無窮： $`\forall n\, \exists p > n\, \mathrm{Prime}(p)`$
+- 哥德巴赫： $`\forall n \text{ 偶} \exists p, q\, (n = p + q)`$
 
 ## 結案 -- 後果與影響
 - **數理邏輯的誕生**：量詞邏輯——數學陳述的完整符號化（亞氏兩千年枷鎖解開）。

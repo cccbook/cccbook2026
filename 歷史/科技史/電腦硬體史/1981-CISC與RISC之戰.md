@@ -2,7 +2,11 @@
 
 ## 案件摘要
 1981 年，John Hennessy 與 David Patterson 在 UC Berkeley 與 Stanford 分別提出 **RISC**（精簡指令集電腦）：
-$$\text{固定長度指令} + \text{少數定址模式} + \text{Load/Store 架構} \quad\Longrightarrow\quad \text{單週期執行、流水線易建}.$$
+
+$$
+\text{固定長度指令} + \text{少數定址模式} + \text{Load/Store 架構} \quad\Longrightarrow\quad \text{單週期執行、流水線易建}.
+$$
+
 1990 年代初的實測結果：**RISC 的性能超越 CISC**——但 **RISC 打输了市場戰爭**。
 CISC 藉 x86 的相容性護城河（見「1978-Intel8086.md」）稱霸 PC，
 RISC 則在**行動與嵌入式**（ARM）與 Apple（M 系列）另闢疆土。
@@ -12,7 +16,11 @@ RISC 則在**行動與嵌入式**（ARM）與 Apple（M 系列）另闢疆土。
 - **1960s–1970s 硬體的「複雜度危機」**：
   CISC 指令越加越多（大型機有數百條指令，如 IBM 360 的 200+ 條），微碼越來越大，
   解碼器（decoder）佔用大量晶片面積與週期：
-  $$\text{指令解碼延遲} \propto \text{指令複雜度} \quad\Longrightarrow\quad \text{速度受限。}$$
+
+$$
+\text{指令解碼延遲} \propto \text{指令複雜度} \quad\Longrightarrow\quad \text{速度受限。}
+$$
+
 - **CDC 6600/7600 的「發射機 + 標量 + 向量」三機結構（1964）**：
   提供了一個啟示：**「簡單指令 + 多台流水線並存」比「複雜指令」更有效率**。
 - **Berkeley RISC I（1980）與 Stanford MIPS（1981）**：
@@ -38,12 +46,20 @@ RISC 則在**行動與嵌入式**（ARM）與 Apple（M 系列）另闢疆土。
 
 ### 第二條線索：Amdahl 定律（流水線的極限）
 流水線化（pipelining）能加速，但受**串行部分**限制（Amdahl 定律）：
-$$S(n) = \frac{1}{(1-p) + \frac{p}{n}} \quad \text{（p = 可平行比例，n = 流水線級數）}.$$
+
+$$
+S(n) = \frac{1}{(1-p) + \frac{p}{n}} \quad \text{（p = 可平行比例，n = 流水線級數）}.
+$$
+
 - **RISC**：指令簡單 → 可流水線 5–8 級（FPGA/CPU），理想加速近 n。
 - **CISC 傳統**：變長指令 → 流水線化困難（早期 486 的 5 級已算極限）。
   **解法：微碼 + 快取 + 推測執行（1993 Pentium）**——把 CISC 指令拆成微操作（µops）：
-  $$\text{CISC 指令} \xrightarrow{\text{微碼解碼}} \text{微操作序列} \xrightarrow{\text{超標量執行}} \text{結果}.$$
-  **Intel Pentium 的 TDP（µop cache）**：預先解碼常用 CISC 指令為 µops——這是「用微架構補救 ISA」的策略。
+
+$$
+\text{CISC 指令} \xrightarrow{\text{微碼解碼}} \text{微操作序列} \xrightarrow{\text{超標量執行}} \text{結果}.
+$$
+
+**Intel Pentium 的 TDP（µop cache）**：預先解碼常用 CISC 指令為 µops——這是「用微架構補救 ISA」的策略。
 
 ### 第三條線索：RISC 的黃金年代與没落（1990s）
 **性能比較（SPEC CPU2000, 1999–2000）**：
@@ -62,7 +78,10 @@ $$S(n) = \frac{1}{(1-p) + \frac{p}{n}} \quad \text{（p = 可平行比例，n = 
 - **1990s–2000s**：ARM 佔全球智慧手機SoC 的 95%+（Qualcomm/MediaTek/Apple）。
 - **2020–2024**：Apple M 系列（ARM）、AWS Graviton（ARM）、Google Axion（ARM）——
   **RISC 席捲雲端**（雲端伺服器 CPU 由 x86 轉向 ARM）。
-$$\text{RISC 的勝利不在 PC，而在下一個計算平台}.$$
+
+$$
+\text{RISC 的勝利不在 PC，而在下一個計算平台}.
+$$
 
 ### Python：Amdahl 定律與流水線加速比
 

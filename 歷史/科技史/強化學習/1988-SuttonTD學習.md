@@ -5,8 +5,12 @@
 〈Learning to Predict by the Methods of Temporal Differences〉——**TD 學習**。
 他證明：預測一個緩慢顯現的結果，不必等到結果出現才學，
 而可以在**每一步就用「預期的變化」來學**：
-$$V(s_t) \leftarrow V(s_t) + \alpha \big[ r_{t+1} + \gamma V(s_{t+1}) - V(s_t) \big].$$
-方括號裡的 $\delta = r + \gamma V(s') - V(s)$ 稱為 **TD 誤差**——它就是強化學習的心臟，
+
+$$
+V(s_t) \leftarrow V(s_t) + \alpha \big[ r_{t+1} + \gamma V(s_{t+1}) - V(s_t) \big].
+$$
+
+方括號裡的 $`\delta = r + \gamma V(s') - V(s)`$ 稱為 **TD 誤差**——它就是強化學習的心臟，
 也是後來多巴胺研究的數學模型、DQN 與 AlphaGo 的學習引擎。
 
 ## 前因 -- 為什麼會有這個案子
@@ -25,19 +29,25 @@ $$V(s_t) \leftarrow V(s_t) + \alpha \big[ r_{t+1} + \gamma V(s_{t+1}) - V(s_t) \
 ### 核心推理：三種預測法的偵查對比
 | 方法 | 更新時機 | 更新目標 | 偏差 | 變異數 |
 |------|---------|---------|------|--------|
-| Monte Carlo | 等到終局 | 實際回傳 $G_t = \sum_{k} \gamma^k r_{t+k}$ | 無偏 | 高（雜訊大） |
+| Monte Carlo | 等到終局 | 實際回傳 $`G_t = \sum_{k} \gamma^k r_{t+k}`$ | 無偏 | 高（雜訊大） |
 | 動態規劃 | 立即 | Bellman 算子（需知道模型） | — | — |
-| **TD(0)** | **立即** | ** $r + \gamma V(s')$ （用估計代替模型）** | 有偏 | **低** |
+| **TD(0)** | **立即** | ** $`r + \gamma V(s')`$ （用估計代替模型）** | 有偏 | **低** |
 
-TD 的更新目標 $r + \gamma V(s')$ 本身含估計值 $V(s')$ （**bootstrap**），故有偏；
+TD 的更新目標 $`r + \gamma V(s')`$ 本身含估計值 $`V(s')`$ （**bootstrap**），故有偏；
 但每步都更新、只依賴一步轉移，變異數小、樣本效率高、**可以在線學習**。
-$$\boxed{V(s_t) \leftarrow V(s_t) + \alpha\, \delta_t, \quad \delta_t = r_{t+1} + \gamma V(s_{t+1}) - V(s_t)}$$
+
+$$
+\boxed{V(s_t) \leftarrow V(s_t) + \alpha\, \delta_t, \quad \delta_t = r_{t+1} + \gamma V(s_{t+1}) - V(s_t)}
+$$
 
 ### 收斂性偵查
-Sutton 證明：線性函數近似 $V(s) = w^\top \phi(s)$ 下，若 $\sum \alpha_t = \infty$ 、 $\sum \alpha_t^2 < \infty$ ，
-則表格型 TD(0) 收斂到 $V$ 的最小均方解 $\Pi V^\pi$ （投影到可表示空間）。
-推廣 $TD(\lambda)$ 以指數衰減的資格跡 (eligibility trace) 混合所有步數：
-$$V(s) \leftarrow V(s) + \alpha\, \delta_t\, e_t(s), \quad e_t(s) = \gamma\lambda\, e_{t-1}(s) + \mathbb{1}[s = s_t].$$
+Sutton 證明：線性函數近似 $`V(s) = w^\top \phi(s)`$ 下，若 $`\sum \alpha_t = \infty`$ 、 $`\sum \alpha_t^2 < \infty`$ ，
+則表格型 TD(0) 收斂到 $`V`$ 的最小均方解 $`\Pi V^\pi`$ （投影到可表示空間）。
+推廣 $`TD(\lambda)`$ 以指數衰減的資格跡 (eligibility trace) 混合所有步數：
+
+$$
+V(s) \leftarrow V(s) + \alpha\, \delta_t\, e_t(s), \quad e_t(s) = \gamma\lambda\, e_{t-1}(s) + \mathbb{1}[s = s_t].
+$$
 
 ### Python：Monte Carlo vs TD(0) 樣本效率偵查
 
@@ -81,13 +91,13 @@ TD 真值 [1/6..4/6]: [0.12 0.28 0.41 0.73]
 同樣 100 集，TD 的平均誤差約 0.06、MC 約 0.14（多 seed 驗證 TD 一致更接近解析解 [1/6, 2/6, 3/6, 4/6]）——**樣本效率的差距**。
 
 ### TD 誤差 = 多巴胺（後續偵查的橋）
-Sutton 的 $\delta_t$ 與 Schultz 1990 年代的多巴胺放電模式完全吻合：
-意外獎賞 → $\delta>0$ 放電；符合預期 → $\delta\approx 0$ ；預期落空 → $\delta<0$ 抑制。
+Sutton 的 $`\delta_t`$ 與 Schultz 1990 年代的多巴胺放電模式完全吻合：
+意外獎賞 → $`\delta>0`$ 放電；符合預期 → $`\delta\approx 0`$ ；預期落空 → $`\delta<0`$ 抑制。
 **1972 年 Klopf 的假說 + 1988 年 Sutton 的數學 + 1997 年 Schultz 的實驗 = 完整偵破。**
 
 ## 結案 -- 後果與影響
 - **強化學習的心臟**：之後所有主流演算法都是 TD 家族——
-  Q-learning（1989）= TD 對 $Q$ 函數的 off-policy 版；
+  Q-learning（1989）= TD 對 $`Q`$ 函數的 off-policy 版；
   DQN（2013）= TD + 深度網路 + 經驗回放；AlphaGo/AlphaZero = TD 思想的 MCTS 變體。
 - **動物學習的數學化**：TD 模型成為解釋 Rescorla–Wagner、阻斷 (blocking) 等古典條件反射
   現象的標準框架，心理學與神經科學共用一套數學。

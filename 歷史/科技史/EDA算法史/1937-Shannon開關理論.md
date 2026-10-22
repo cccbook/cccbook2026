@@ -16,27 +16,31 @@ Shannon 觀察繼電器電路，寫下對應表：
 
 | 布林代數 | 繼電器電路 |
 |----------|-----------|
-| 變數 $x \in \{0,1\}$ | 開關 $x$ 開/閉 |
-| $x \cdot y$ （AND） | $x, y$ 串聯 |
-| $x + y$ （OR） | $x, y$ 並聯 |
-| $\bar{x}$ （NOT） | 常閉觸點（反相） |
-| 恆等式 $x + \bar{x} = 1$ | 並聯反相開關必導通 |
+| 變數 $`x \in \{0,1\}`$ | 開關 $`x`$ 開/閉 |
+| $`x \cdot y`$ （AND） | $`x, y`$ 串聯 |
+| $`x + y`$ （OR） | $`x, y`$ 並聯 |
+| $`\bar{x}`$ （NOT） | 常閉觸點（反相） |
+| 恆等式 $`x + \bar{x} = 1`$ | 並聯反相開關必導通 |
 
-兩個系統滿足相同的公理（交換律、分配律、補律），因此**布林的定理自動是電路的定理**。化簡代數式 $F = x + x\bar{y}$ 得 $F = x$ ，就等於省下一顆繼電器。
+兩個系統滿足相同的公理（交換律、分配律、補律），因此**布林的定理自動是電路的定理**。化簡代數式 $`F = x + x\bar{y}`$ 得 $`F = x`$ ，就等於省下一顆繼電器。
 
 ### 線索二：形式化定義
-開關函數是映射 $f : \{0,1\}^n \to \{0,1\}$ ，其合成規則構成自由布林代數。任意函數可用積項之和（SOP）表示：
+開關函數是映射 $`f : \{0,1\}^n \to \{0,1\}`$ ，其合成規則構成自由布林代數。任意函數可用積項之和（SOP）表示：
 
-$$f(x_1,\dots,x_n) = \bigvee_{i : f(a_i)=1} m_i, \quad m_i = \bigwedge_{j} x_j^{(i)}$$
+$$
+f(x_1,\dots,x_n) = \bigvee_{i : f(a_i)=1} m_i, \quad m_i = \bigwedge_{j} x_j^{(i)}
+$$
 
 Shannon 展開定理（MVS 展開）更給出遞迴分解：
 
-$$f(x_1, \dots, x_n) = \bar{x}_n \cdot f|_{x_n=0} + x_n \cdot f|_{x_n=1}$$
+$$
+f(x_1, \dots, x_n) = \bar{x}_n \cdot f|_{x_n=0} + x_n \cdot f|_{x_n=1}
+$$
 
 ——這條式子正是日後 BDD（1986）、Shannon 樹、多層合成的遞迴核心。
 
 ### 線索三：最省電路的雙面刃
-Shannon 同時指出：找**最少閘數**的等價電路是極難問題。他在 1949 年進一步證明任意 $n$ 元開關函數需 $O(2^n/n)$ 個閘——組合爆炸的陰影從第一天就籠罩這門學問，逼出後世一切啟發式演算法（QM、Espresso、SIS）。
+Shannon 同時指出：找**最少閘數**的等價電路是極難問題。他在 1949 年進一步證明任意 $`n`$ 元開關函數需 $`O(2^n/n)`$ 個閘——組合爆炸的陰影從第一天就籠罩這門學問，逼出後世一切啟發式演算法（QM、Espresso、SIS）。
 
 ## 結案 -- 後果與影響
 - **數位設計有了數學**：從此電路設計 = 代數運算，「驗證」變成檢查兩個布林式等價，為 EDA 打下可能性。
@@ -49,5 +53,5 @@ Shannon 同時指出：找**最少閘數**的等價電路是極難問題。他�
 - **Claude E. Shannon**（1916–2001）：MIT 碩士（1937）、貝爾實驗室，資訊論之父。
 - 文獻：
   - C. E. Shannon, "A Symbolic Analysis of Relay and Switching Circuits," *Trans. AIEE* 57, 713 (1938)（1937 論文出版版）。
-  - C. E. Shannon, "The Synthesis of Two-Terminal Switching Circuits," *Bell Syst. Tech. J.* 28, 59 (1949)（計數下界 $O(2^n/n)$ ）。
+  - C. E. Shannon, "The Synthesis of Two-Terminal Switching Circuits," *Bell Syst. Tech. J.* 28, 59 (1949)（計數下界 $`O(2^n/n)`$ ）。
   - G. Boole, *An Investigation of the Laws of Thought*, 1854.

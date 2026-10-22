@@ -3,13 +3,21 @@
 ## 案件摘要
 2012 年，Google 的 **James C. Corbett** 與 Spanner 團隊在 **OSDI 2012** 發表
 *Spanner: Google's Globally-Distributed Database*：
-$$\boxed{\text{用 GPS + 原子鐘，把強一致性帶回全球規模}}$$
+
+$$
+\boxed{\text{用 GPS + 原子鐘，把強一致性帶回全球規模}}
+$$
+
 **Spanner** 是第一個**全球分佈式資料庫**，橫跨各大洲的資料中心，卻提供：
 - **TrueTime**：GPS + 原子鐘打造的**全球時鐘**，給出時間**區間**而非點；
 - **外部一致性（external consistency）**：比可序列化更強的保證；
 - **Paxos 複製**：每個分片（tablet）一個 Paxos 組，多數派存活即可用；
 - **可插拔的 SQL 前端**——「**NewSQL**」的誕生。
-$$\text{TrueTime} + \text{Paxos} = \text{全球規模的 ACID}.$$
+
+$$
+\text{TrueTime} + \text{Paxos} = \text{全球規模的 ACID}.
+$$
+
 Dynamo 放軟了一致性，**Spanner 說：與其改變語義，不如把時鐘造準**——
 **分佈式資料庫的哲學之爭，被一台硬體時鐘終結**。
 
@@ -17,53 +25,90 @@ Dynamo 放軟了一致性，**Spanner 說：與其改變語義，不如把時鐘
 - **1981 年 Gray 的交易 ACID 與 2PC**：
   Jim Gray 界定了**交易**的 ACID 性質（見 `1981-葛雷交易ACID.md`），
   但分散式交易靠 **兩階段提交（2PC）**——協調者一掛，全體卡死：
-  $$\text{2PC：單點故障} \xrightarrow{\text{Spanner：每分片一個 Paxos 組}} \text{多數派複製}.$$
-  Spanner 把 Gray 的交易語義**原封不動搬上全球規模**。
+
+$$
+\text{2PC：單點故障} \xrightarrow{\text{Spanner：每分片一個 Paxos 組}} \text{多數派複製}.
+$$
+
+Spanner 把 Gray 的交易語義**原封不動搬上全球規模**。
 - **1982 年 Lamport 的 Paxos**：
   Paxos（見 `../資訊科學/1982-蘭波特Paxos.md`）證明**多數派共識**能在
   故障與延遲中就一個值達成一致——
-  $$\boxed{\text{Paxos：分佈式共識的基石（1998 年才正式發表）}}$$
-  Spanner 把它從理論變成**生產系統的主力引擎**。
+
+$$
+\boxed{\text{Paxos：分佈式共識的基石（1998 年才正式發表）}}
+$$
+
+Spanner 把它從理論變成**生產系統的主力引擎**。
 - **2000 年 CAP 定理——用硬體繞過取捨**：
   CAP（見 `2000-布魯爾CAP定理.md`）說分區時必須在 C 與 A 之間抉擇；
   **Spanner 的回答是：用硬體把「不確定性」本身消滅**——
   TrueTime 把時鐘誤差壓到極小，**讓「等待」代替「猜測」**：
-  $$\text{Dynamo：放軟 C（軟體路線）} \ne \text{Spanner：強化 C（硬體路線）}.$$
+
+$$
+\text{Dynamo：放軟 C（軟體路線）} \ne \text{Spanner：強化 C（硬體路線）}.
+$$
+
 - **1978 年 Lamport 邏輯時鐘的極限**：
   Lamport 邏輯時鐘（見 `../資訊科學/1978-蘭波特邏輯時鐘.md`）只有因果序、
   沒有「物理先後」的概念——**外部一致性需要真實的時間感**。
   TrueTime 正是對「物理時鐘不可靠」這一前提的**工程反攻**：
-  $$\text{邏輯時鐘（1978）：放棄物理時間} \xrightarrow{\text{TrueTime（2012）：量測它的誤差}} \text{兩種時鐘哲學}.$$
+
+$$
+\text{邏輯時鐘（1978）：放棄物理時間} \xrightarrow{\text{TrueTime（2012）：量測它的誤差}} \text{兩種時鐘哲學}.
+$$
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：TrueTime 的時間區間
 TrueTime API 不回傳一個時間點，而是回傳一個**保證包含真實時間的區間**：
-$$TT.\text{now}() = [t_{early},\ t_{late}],\quad \text{誤差界 } \epsilon = t_{late} - t_{early}.$$
-- **GPS 接收器**（每資料中心）+ **原子鐘**（每台機器）互相校驗；
-- 誤差 $\epsilon$ 通常只有 **1–7 毫秒**；
-- 「絕對正確」不可得，但「**誤差有界**」可以量測——
-  $$\boxed{\text{不確定的不是時間，而是區間寬度——而區間寬度是已知的}}$$
 
-### 第二條線索：等待 $\epsilon$ 保證外部一致性
-**外部一致性**：若交易 $T_1$ 在真實時間上**先於** $T_2$ **開始**（ $T_1$ 先提交完成），
-則 $T_1$ 的時間戳必**小於** $T_2$ ：
-$$T_1 < T_2 \quad\text{（若 } T_1 \text{ 物理上先提交）}.$$
-**Commit-wait 策略**：交易提交時取區間 $[t_{early}, t_{late}]$ ，選 $s = t_{late}$
-作為時間戳，然後**等到物理時間確定已過 $s$ ** 才回報客戶端：
-$$\boxed{\text{提交時間 } s = t_{late}，\ \text{等待 } \epsilon\ \text{毫秒} \implies \text{外部一致性}}$$
+$$
+TT.\text{now}() = [t_{early},\ t_{late}],\quad \text{誤差界 } \epsilon = t_{late} - t_{early}.
+$$
+
+- **GPS 接收器**（每資料中心）+ **原子鐘**（每台機器）互相校驗；
+- 誤差 $`\epsilon`$ 通常只有 **1–7 毫秒**；
+- 「絕對正確」不可得，但「**誤差有界**」可以量測——
+
+$$
+\boxed{\text{不確定的不是時間，而是區間寬度——而區間寬度是已知的}}
+$$
+
+### 第二條線索：等待 $`\epsilon`$ 保證外部一致性
+**外部一致性**：若交易 $`T_1`$ 在真實時間上**先於** $`T_2`$ **開始**（ $`T_1`$ 先提交完成），
+則 $`T_1`$ 的時間戳必**小於** $`T_2`$ ：
+
+$$
+T_1 < T_2 \quad\text{（若 } T_1 \text{ 物理上先提交）}.
+$$
+
+**Commit-wait 策略**：交易提交時取區間 $`[t_{early}, t_{late}]`$ ，選 $`s = t_{late}`$
+作為時間戳，然後**等到物理時間確定已過 $`s`$ ** 才回報客戶端：
+
+$$
+\boxed{\text{提交時間 } s = t_{late}，\ \text{等待 } \epsilon\ \text{毫秒} \implies \text{外部一致性}}
+$$
+
 兩個交易若區間重疊，後提交者**主動等待**對方時間戳過去——
 **用幾毫秒的延遲，買回整個強一致性**。
 
 ### 第三條線索：Paxos 複製組
 每個 tablet（分片）複製到多個副本，形成一個 **Paxos 組**：
-- 寫入需**多數派**（ $\lfloor n/2 \rfloor + 1$ 個副本）接受；
+- 寫入需**多數派**（ $`\lfloor n/2 \rfloor + 1`$ 個副本）接受；
 - 少數派故障不影響可用性；
 - 一個資料被指定為**領導者**（leader），協調 Paxos 與 commit-wait。
-$$\text{可用性條件}： \text{存活副本} \ge \left\lfloor \frac{n}{2} \right\rfloor + 1$$
+
+$$
+\text{可用性條件}： \text{存活副本} \ge \left\lfloor \frac{n}{2} \right\rfloor + 1
+$$
+
 跨組交易（事務觸及多個 Paxos 組）再用 **2PC** 協調——
 但每個參與者本身是 Paxos 組，**2PC 的單點故障被 Paxos 消化**：
-$$\boxed{\text{2PC（協調）} + \text{Paxos（複製）} = \text{全球規模的分散式交易}}$$
+
+$$
+\boxed{\text{2PC（協調）} + \text{Paxos（複製）} = \text{全球規模的分散式交易}}
+$$
 
 ### Python：TrueTime 區間與 Paxos 複製組
 
@@ -156,15 +201,27 @@ Paxos 複製組（5 副本，多數派 = 3）：
 - **2017 年 Spanner 公開雲服務**：
   Spanner 先服務 Google 內部（Google Ads 的 **F1** 資料庫），
   **2017 年正式登上 Google Cloud（Cloud Spanner）**——
-  $$\text{內部系統（2012）} \xrightarrow{5\ \text{年}} \text{公開雲服務（2017）}.$$
-  任何企業第一次能買到**全球規模的強一致 SQL 資料庫**。
+
+$$
+\text{內部系統（2012）} \xrightarrow{5\ \text{年}} \text{公開雲服務（2017）}.
+$$
+
+任何企業第一次能買到**全球規模的強一致 SQL 資料庫**。
 - **NewSQL 的誕生與後裔**：
   Spanner 證明「分散式」與「SQL/ACID」可以並存，引發 NewSQL 浪潮：
-  $$\text{Spanner（2012）} \xrightarrow{\text{論文公開}} \text{CockroachDB、TiDB、YugabyteDB}$$
-  - **CockroachDB（2015）**：直接承襲 Spanner 的範圍分片與共識複製；
+
+$$
+\text{Spanner（2012）} \xrightarrow{\text{論文公開}} \text{CockroachDB、TiDB、YugabyteDB}
+$$
+
+- **CockroachDB（2015）**：直接承襲 Spanner 的範圍分片與共識複製；
   - **TiDB（2017）**：Paxos 後裔 Raft + MySQL 相容；
   - **Calvin、FaunaDB**：其他分佈式交易路線。
-  $$\boxed{\text{NoSQL（2007）與 NewSQL（2012）：一放一收，兩種哲學}}$$
+
+$$
+\boxed{\text{NoSQL（2007）與 NewSQL（2012）：一放一收，兩種哲學}}
+$$
+
 - **雲端時代分佈式 SQL 的勝利**：
   2010 年代中葉，業界共識反轉：**「關聯式模型已死」被證明是謠言**——
   死的不是 SQL，而是**單機的規模極限**。
@@ -173,17 +230,28 @@ Paxos 複製組（5 副本，多數派 = 3）：
 - **CAP 的硬體答案**：
   TrueTime 是「工程反攻理論」的典範——CAP 假設時鐘不可信，
   **Spanner 就把時鐘造得可信**（誤差界可量測），讓**等待**取代**放軟**。
-  $$\text{Dynamo（軟體妥協）} \longleftrightarrow \text{Spanner（硬體堅持）}，\ \text{雙雄並立至今}.$$
+
+$$
+\text{Dynamo（軟體妥協）} \longleftrightarrow \text{Spanner（硬體堅持）}，\ \text{雙雄並立至今}.
+$$
+
 - **Corbató 分時思想的遠端迴響**：
   1961 年 **Corbató 的 CTSS 分時系統**（見 `../資訊科學/1961-科巴托分時系統.md`）
   讓許多用戶**同時**分享一台電腦；
   五十年後，Spanner 讓全球用戶**同時**分享一份強一致的資料——
-  $$\text{分時（1961）：一台電腦的共享} \xrightarrow{\text{Spanner（2012）}} \text{一份資料的全球共享}.$$
-  而 Spanner 的**領導者 James C. Corbett** 恰與 Corbató 同姓——
+
+$$
+\text{分時（1961）：一台電腦的共享} \xrightarrow{\text{Spanner（2012）}} \text{一份資料的全球共享}.
+$$
+
+而 Spanner 的**領導者 James C. Corbett** 恰與 Corbató 同姓——
   **歷史偶然的巧合，卻是分時思想血脈的真實延續**。
 - 歷史定位：正如**圖靈機**（見 `../資訊科學/1936-圖靈機.md`）
   用數學定義了「計算」，**Spanner 用硬體重新定義了「時間」**——
-  $$\text{Paxos（1982/1998）} \xrightarrow{} \text{TrueTime（2012）} \xrightarrow{} \text{分佈式 SQL 的時代}.$$
+
+$$
+\text{Paxos（1982/1998）} \xrightarrow{} \text{TrueTime（2012）} \xrightarrow{} \text{分佈式 SQL 的時代}.
+$$
 
 ## 關鍵人物與文獻
 - **J. C. Corbett、J. Dean、M. Epstein 等**：*Spanner: Google's Globally-Distributed Database*（OSDI 2012）。

@@ -4,7 +4,11 @@
 1980 年，**Roger Bonham 與 David Brandly**（皆前 Applied Materials 工程師）
 成立 **Lam Research**；1982 年出貨 **AutoEtch**——**單片式（single-wafer）
 電漿蝕刻機**，專攻**多晶矽閘極蝕刻**：
-$$\text{批次式（batch，一次數十片）} \xrightarrow{\text{單片式（一片一片）}} \text{均勻性 ±3\% 以內}$$
+
+$$
+\text{批次式（batch，一次數十片）} \xrightarrow{\text{單片式（一片一片）}} \text{均勻性 ±3\% 以內}
+$$
+
 「**批次 → 單片**」是 1980s 設備業最重要的轉折——
 良率與均勻性打敗了產能與成本。Lam 成為**蝕刻之王**（2024 年全球第三大設備商）。
 
@@ -35,13 +39,21 @@ $$\text{批次式（batch，一次數十片）} \xrightarrow{\text{單片式（�
 
 ### 第二條線索：CD 控制的數學（閘極蝕刻為何致命）
 MOSFET 飽和電流：
-$$I_{D,sat} \propto \frac{W}{L} \quad (L = \text{閘極長度 = 蝕刻後的 CD})$$
+
+$$
+I_{D,sat} \propto \frac{W}{L} \quad (L = \text{閘極長度 = 蝕刻後的 CD})
+$$
+
 - 閘極 CD 變化 ±10% → 電流變化 ±10% → **Vt 與速度的飄移** → 良率崩盤；
 - 蝕刻的 CD 控制 = 微影 CD + 蝕刻 bias（各半）——
   **蝕刻機是 CD 的「第二支筆」**。
 
 ### 第三條線索：成本模型（CoO——設備業的通用語言）
-$$\text{CoO} = \frac{\text{設備折舊} + \text{人力} + \text{耗材} + \text{電力/氣體}}{\text{產能} \times \text{良率} \times \text{稼動率}}$$
+
+$$
+\text{CoO} = \frac{\text{設備折舊} + \text{人力} + \text{耗材} + \text{電力/氣體}}{\text{產能} \times \text{良率} \times \text{稼動率}}
+$$
+
 - 單片式的產能劣勢要靠**自動化、真空傳送、多腔體**補回——
   這正是 1991 年群集設備（見 `1991-Endura群集設備.md`）誕生的伏筆。
 - **偵推**：設備業的辯論永遠是「**產能 vs 良率**」——

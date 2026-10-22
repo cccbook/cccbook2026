@@ -39,24 +39,28 @@ instance (Eq a) => Eq [a] where       -- 條件實例：遞迴推導
     (x:xs) == (y:ys) = x == y && xs == ys
 ```
 
-型別類的推導規則：函數宣告 $(==) :: a \to a \to Bool$ 中， $a$ 被約束為 `Eq a` 的成員，寫作：
+型別類的推導規則：函數宣告 $`(==) :: a \to a \to Bool`$ 中， $`a`$ 被約束為 `Eq a` 的成員，寫作：
 
-$$\frac{Eq\ a \in \Gamma \quad \Gamma \vdash e : a \to a \to Bool}{\Gamma \vdash (==) : a \to a \to Bool}$$
+$$
+\frac{Eq\ a \in \Gamma \quad \Gamma \vdash e : a \to a \to Bool}{\Gamma \vdash (==) : a \to a \to Bool}
+$$
 
 這樣重載有了理論基礎（ad-hoc 多型），而型別推導依然可判定。型別類直接影響了 Rust 的 trait、Scala 的 implicit、Swift 的 protocol。
 
-**第三步：Monad——副作用之謎的解答。** 1990 年代初，Eugenio Moggi 提出：可以用範疇論的 monad 來建模計算的「效果」。Wadler 將其引入 Haskell（1992），Peyton Jones 將其應用於 IO。核心推導：把「帶效果的計算」表示為型別 $M\ a$ （如 $IO\ a$ 表示「會做 IO、最終產生 $a$ 」），並提供兩個運算子：
+**第三步：Monad——副作用之謎的解答。** 1990 年代初，Eugenio Moggi 提出：可以用範疇論的 monad 來建模計算的「效果」。Wadler 將其引入 Haskell（1992），Peyton Jones 將其應用於 IO。核心推導：把「帶效果的計算」表示為型別 $`M\ a`$ （如 $`IO\ a`$ 表示「會做 IO、最終產生 $`a`$ 」），並提供兩個運算子：
 
 $$
 return : a \to M\ a \qquad
 (\gg=) : M\ a \to (a \to M\ b) \to M\ b
 $$
 
- Monad 需滿足三條定律：
+Monad 需滿足三條定律：
 
-$$return\ a \gg= f = f\ a \qquad m \gg= return = m \qquad (m \gg= f) \gg= g = m \gg= (\lambda x. f\ x \gg= g)$$
+$$
+return\ a \gg= f = f\ a \qquad m \gg= return = m \qquad (m \gg= f) \gg= g = m \gg= (\lambda x. f\ x \gg= g)
+$$
 
-關鍵洞察：**效果被關在型別 $M$ 的「盒子」裡**，純函數無法拆開盒子，只有 `>>=` 能串接帶效果的計算。於是「無副作用」與「能印字」同時成立： $IO\ String$ 是純的值（一個描述），執行它的是執行期系統。這是程式語言史上最精妙的一次理論調和。
+關鍵洞察：**效果被關在型別 $`M`$ 的「盒子」裡**，純函數無法拆開盒子，只有 `>>=` 能串接帶效果的計算。於是「無副作用」與「能印字」同時成立： $`IO\ String`$ 是純的值（一個描述），執行它的是執行期系統。這是程式語言史上最精妙的一次理論調和。
 
 ## 結案報告
 

@@ -12,27 +12,31 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：Peano 的向量空間公理（1888 年原始版本）
-Peano 在《Calcolo geometrico》第九章定義：設 $V$ 為一類「量」（entities），其上定義加法與實數純量乘法，滿足以下公理（Peano 原文編號為 1–8，以現代語言整理）：
+Peano 在《Calcolo geometrico》第九章定義：設 $`V`$ 為一類「量」（entities），其上定義加法與實數純量乘法，滿足以下公理（Peano 原文編號為 1–8，以現代語言整理）：
 
-1. （加法封閉與交換） $x + y = y + x$
-2. $(x + y) + z = x + (y + z)$
-3. 存在零元 $0$ ，使 $x + 0 = x$
-4. 對每個 $x$ 存在 $-x$ ，使 $x + (-x) = 0$
-5. （純量乘法對加法的分配） $a(x + y) = ax + ay$
-6. $(a + b)x = ax + bx$
-7. $a(bx) = (ab)x$
-8. $1 \cdot x = x$
+1. （加法封閉與交換） $`x + y = y + x`$
+2. $`(x + y) + z = x + (y + z)`$
+3. 存在零元 $`0`$ ，使 $`x + 0 = x`$
+4. 對每個 $`x`$ 存在 $`-x`$ ，使 $`x + (-x) = 0`$
+5. （純量乘法對加法的分配） $`a(x + y) = ax + ay`$
+6. $`(a + b)x = ax + bx`$
+7. $`a(bx) = (ab)x`$
+8. $`1 \cdot x = x`$
 
 這就是今日教科書中向量空間的**八條公理**。Peano 接著定義了線性相依、線性無關、基底、維度（他稱為「線性系統的最大獨立組」的元素個數），全部用公理化的純邏輯語言寫成——不依賴任何坐標表示。
 
 ### 線索二：線性映射的首度公理化
-Peano 同一章還首次定義了**線性映射**（linear transformation，他稱為 linear transformation of one linear system into another）：設 $A: V \to W$ 滿足
+Peano 同一章還首次定義了**線性映射**（linear transformation，他稱為 linear transformation of one linear system into another）：設 $`A: V \to W`$ 滿足
 
-$$A(x + y) = Ax + Ay, \qquad A(ax) = aAx$$
+$$
+A(x + y) = Ax + Ay, \qquad A(ax) = aAx
+$$
 
-並定義了核（kernel，他稱之為被映到 $0$ 的那些 $x$ ）與值域，得到了「維度定理」的早期形式：
+並定義了核（kernel，他稱之為被映到 $`0`$ 的那些 $`x`$ ）與值域，得到了「維度定理」的早期形式：
 
-$$\dim(\ker A) + \dim(\operatorname{im} A) = \dim V$$
+$$
+\dim(\ker A) + \dim(\operatorname{im} A) = \dim V
+$$
 
 這條秩–零化度定理（rank–nullity theorem）在 Peano 的書中已有清晰陳述，是抽象線性代數的第一個深刻結果。
 
@@ -76,7 +80,7 @@ except AssertionError:
     print("  反例：正實數上的『乘法 x^y』不交換，故不構成向量空間")
 ```
 
-抽樣檢驗顯示 $M_2(\mathbb{R})$ 通過全部八條公理——它是一個向量空間；而違反任何一條的候選結構立即被排除。這正是公理方法的威力：**判定只需查驗公理，不需知道對象的具體面貌**。
+抽樣檢驗顯示 $`M_2(\mathbb{R})`$ 通過全部八條公理——它是一個向量空間；而違反任何一條的候選結構立即被排除。這正是公理方法的威力：**判定只需查驗公理，不需知道對象的具體面貌**。
 
 ### 線索四：Peano 為何「結案卻無人知」
 諷刺的是，Peano 的公理化當時也未引起廣泛迴響。直到 20 世紀：Weyl 1918 年《空間・時間・物質》、Banach 1922 年的賦篤空間公理、Noether 學派的抽象代數，才把公理化方法推上主流。1930 年代 Van der Waerden《Moderne Algebra》與 Birkhoff–Mac Lane 的教科書，使「向量空間 = 八條公理」成為全世界數學系的共同語言。歷史的判決書，延遲了四十年才送達。

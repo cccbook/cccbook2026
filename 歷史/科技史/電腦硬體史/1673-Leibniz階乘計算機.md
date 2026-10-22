@@ -3,8 +3,12 @@
 ## 案件摘要
 1673 年，Gottfried Leibniz 發明 **Stepped Reckoner**（階梯計算機）：
 改進 Pascaline（見「1642-Pascal進位法計算機.md」）加入**多位相乘/除法機構**，
-首次提出把計算建立在**二進位制** $\{0,1\}$ 上：
-$$\text{二進位：} 0,1 \quad \Longrightarrow \quad \text{機械開關最簡（齒輪可用啟停）。}$$
+首次提出把計算建立在**二進位制** $`\{0,1\}`$ 上：
+
+$$
+\text{二進位：} 0,1 \quad \Longrightarrow \quad \text{機械開關最簡（齒輪可用啟停）。}
+$$
+
 Leibniz 遠在 1679 年就寫下《二進位算術》（De Progressione Dyadica）——
 **他預言：二進位制將是「未來計算的語言」**，233 年後的電子電路完全證實了這個預言。
 
@@ -13,18 +17,25 @@ Leibniz 遠在 1679 年就寫下《二進位算術》（De Progressione Dyadica�
 - **Leibniz 的數學夢想**：與 Newton 同時發明微積分的萬能數學家，
   夢想建造一台「**推理機**」（calculus ratiocinator），能自動化一切推理（先於 Boole 1854 年，見「1854-Boole邏輯代數.md」）。
 - **二進位的哲學起源**：受中國《易經》六十四卦的啟發（1666 年讀過關於易經的記錄）——
-  陰陽 $\{-,-+\}$ → $0,1$ 。**哲學啟發了工程預言**。
+  陰陽 $`\{-,-+\}`$ → $`0,1`$ 。**哲學啟發了工程預言**。
 - **機械改良的關鍵**：Leibniz 設計**階梯鼓輪（stepped drum）**：
   每個齒輪的有效齒數可變（0–9 齒）——**乘數直接設置，不需連加輪轉**。
-  $$\text{乘法：} N \times M = \sum N \cdot m_i \times 10^i \quad \text{直接完成一次傳遞}.$$
+
+$$
+\text{乘法：} N \times M = \sum N \cdot m_i \times 10^i \quad \text{直接完成一次傳遞}.
+$$
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：二進位制的簡單性（預言未來）
 十進位 0–9 需 10 種狀態；二進位 0–1 只需 2 種：
-$$2^n \quad \text{bits 表示 } 10^n \text{ 範圍}.$$
+
+$$
+2^n \quad \text{bits 表示 } 10^n \text{ 範圍}.
+$$
+
 機械角度：**開關（on/off） = 0/1**——最簡單的狀態。
-電子角度：**真空管（導通/截止）、電晶體（飽和/截止）**恰好對應 $1/0$ 。
+電子角度：**真空管（導通/截止）、電晶體（飽和/截止）**恰好對應 $`1/0`$ 。
 Leibniz 在 1679 年寫道：
 > 「以二進位計算，所有數字僅用 0 與 1 兩符號……這種算術將是最簡單的，對機器的建造最有利。」
 
@@ -33,12 +44,19 @@ Leibniz 在 1679 年寫道：
 ### 第二條線索：階梯鼓輪（Stepped Drum）
 傳統 Pascaline 齒輪固定 10 齒；Leibniz 的鼓輪：
 - 長軸上有 9 段可變齒（從 1 齒到 9 钱）、第 0 段空；
-- 設置乘數 $M$ ，則相應段參與旋轉——**一次旋轉完成 $N \times m_i$ **。
-$$N \times 37 = (N\times7) + (N\times3)\times10 \quad \text{兩次鼓輪旋轉完成}.$$
+- 設置乘數 $`M`$ ，則相應段參與旋轉——**一次旋轉完成 $`N \times m_i`$ **。
+
+$$
+N \times 37 = (N\times7) + (N\times3)\times10 \quad \text{兩次鼓輪旋轉完成}.
+$$
 
 ### 第三條線索：邏輯與機器的聯結（先驅）
 Leibniz 夢想的 **Characteristica Universalis**（普遍特徵符號系統）+ **Calculus Ratiocinator**：
-$$\text{所有推理} \xrightarrow{\text{符號化}} \text{可計算運算}.$$
+
+$$
+\text{所有推理} \xrightarrow{\text{符號化}} \text{可計算運算}.
+$$
+
 1854 年 Boole 實現邏輯代數（見「1854-Boole邏輯代數.md」），1936 年 Turing 實現通用機（見「1936-Turing機.md」），1946 年 ENIAC 實現電子計算（見「1946-ENIAC電子計算機.md」）——**Leibniz 的夢想整整實現了 250 年**。
 
 ### Python：二進位與十進位的對比（機械簡單性）

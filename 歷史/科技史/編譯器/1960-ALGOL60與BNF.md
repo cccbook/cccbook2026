@@ -16,12 +16,14 @@ Chomsky 把語言按產生式規則的限制分為四層：
 
 | 層級 | 產生式形式 | 語言類型 | 辨識機器 |
 |---|---|---|---|
-| Type 0 | $\alpha \to \beta$ （任意） | 遞迴可枚舉 | 圖靈機 |
-| Type 1 | $\alpha A \beta \to \alpha \gamma \beta$ | 上下文有關 | 線性有界自動機 |
-| Type 2 | $A \to \gamma$ | 上下文無關 | 下推自動機 |
-| Type 3 | $A \to aB$ 或 $A \to a$ | 正則語言 | 有限自動機 |
+| Type 0 | $`\alpha \to \beta`$ （任意） | 遞迴可枚舉 | 圖靈機 |
+| Type 1 | $`\alpha A \beta \to \alpha \gamma \beta`$ | 上下文有關 | 線性有界自動機 |
+| Type 2 | $`A \to \gamma`$ | 上下文無關 | 下推自動機 |
+| Type 3 | $`A \to aB`$ 或 $`A \to a`$ | 正則語言 | 有限自動機 |
 
-$$L \subseteq \Sigma^*, \quad L_{regular} \subsetneq L_{CFL} \subsetneq L_{CSL} \subsetneq L_{RE}$$
+$$
+L \subseteq \Sigma^*, \quad L_{regular} \subsetneq L_{CFL} \subsetneq L_{CSL} \subsetneq L_{RE}
+$$
 
 程式語言的語法大多是 **Type 2（上下文無關）**——這正是 BNF 能描述的層級。
 
@@ -94,7 +96,9 @@ print(expr())   # 23 —— BNF 產生式直接成為遞迴下降 parser！
 - **遞迴**：第一次正式允許程序呼叫自己——Dijkstra 的證明使遞迴在無堆疊的機器上成為可能。
 - **區塊結構**：`begin ... end` 第一次進入語言，變數的**作用域**（scope）概念誕生：
 
-$$\text{scope}(x) = \text{最小包含 } x \text{ 的宣告區塊}$$
+$$
+\text{scope}(x) = \text{最小包含 } x \text{ 的宣告區塊}
+$$
 
 - **call by name**：Jensen 的裝置（call by name）使參數以「未求值表達式」傳入——優雅但難實作，後來被 call by value 取代。
 

@@ -17,7 +17,7 @@ Haskell Curry 在 1941 年出版《A Formalization of Logic》（Harvard Univers
 
 ### 線索一：組合邏輯的形式系統
 
-Curry 的系統以 $\mathbf{B}$ 、 $\mathbf{C}$ 、 $\mathbf{K}$ 、 $\mathbf{W}$ 為基底（S 可由它們合成）：
+Curry 的系統以 $`\mathbf{B}`$ 、 $`\mathbf{C}`$ 、 $`\mathbf{K}`$ 、 $`\mathbf{W}`$ 為基底（S 可由它們合成）：
 
 $$
 \begin{aligned}
@@ -29,16 +29,20 @@ $$
 \end{aligned}
 $$
 
-- Curry 證明 $\mathbf{S}\,\mathbf{K}$ 是完備基底，但 $\mathbf{B}\,\mathbf{C}\,\mathbf{K}\,\mathbf{W}$ 系統在翻譯 λ 項時產生更小、更可讀的組合子項。
+- Curry 證明 $`\mathbf{S}\,\mathbf{K}`$ 是完備基底，但 $`\mathbf{B}\,\mathbf{C}\,\mathbf{K}\,\mathbf{W}`$ 系統在翻譯 λ 項時產生更小、更可讀的組合子項。
 - 還原（reduction）是唯一的推演規則；Curry 發展了還原的詞序理論（standardization）與一致性證明。
 
 ### 線索二：Curry 化（currying）
 
 多元函數 = 單元函數的鏈：
 
-$$f(x, y) = f(x)(y), \qquad f : A \times B \to C \;\cong\; f : A \to (B \to C)$$
+$$
+f(x, y) = f(x)(y), \qquad f : A \times B \to C \;\cong\; f : A \to (B \to C)
+$$
 
-$$\text{curry}(f) = \lambda x.\lambda y.\,f(x, y), \qquad \text{uncurry}(g) = \lambda p.\,g(\pi_1 p)(\pi_2 p)$$
+$$
+\text{curry}(f) = \lambda x.\lambda y.\,f(x, y), \qquad \text{uncurry}(g) = \lambda p.\,g(\pi_1 p)(\pi_2 p)
+$$
 
 歷史註記：這個技巧在 Schönfinkel 1924 年的論文中已經出現，因此更準確的名字應該是 Schönfinkeling；但 Curry 在 1958 年與 Feys 的專著中將其系統化，「currying」之名遂不脛而走。
 
@@ -60,7 +64,7 @@ print("currying 驗證通過")
 
 ### 線索三：bracket abstraction——λ 消除演算法
 
-Curry 的關鍵貢獻：一個把任意 λ 項翻譯成組合子項的機械演算法。定義翻譯 $[x]M$ （把變數 $x$ 從 $M$ 中抽象出來）：
+Curry 的關鍵貢獻：一個把任意 λ 項翻譯成組合子項的機械演算法。定義翻譯 $`[x]M`$ （把變數 $`x`$ 從 $`M`$ 中抽象出來）：
 
 $$
 \begin{aligned}
@@ -70,9 +74,11 @@ $$
 \end{aligned}
 $$
 
-性質： $([x]M)\,x = M$ （對任何 $x$ ）。任何 $\lambda x. M = [x]M$ 。用 $\mathbf{B}$ 、 $\mathbf{C}$ 可優化：
+性質： $`([x]M)\,x = M`$ （對任何 $`x`$ ）。任何 $`\lambda x. M = [x]M`$ 。用 $`\mathbf{B}`$ 、 $`\mathbf{C}`$ 可優化：
 
-$$[x]\,M\,N = \mathbf{B}\,([x]\,M)\,N \;\;(x \notin FV(N)), \qquad [x]\,M\,N = \mathbf{C}\,M\,([x]\,N) \;\;(x \notin FV(M))$$
+$$
+[x]\,M\,N = \mathbf{B}\,([x]\,M)\,N \;\;(x \notin FV(N)), \qquad [x]\,M\,N = \mathbf{C}\,M\,([x]\,N) \;\;(x \notin FV(M))
+$$
 
 Python 實作 bracket abstraction：
 
@@ -132,15 +138,19 @@ print(show(to_combinator(Lam("x", (Var("x"), "a")))))       # 輸出: (S (I (K a
 
 Curry 證明：兩個系統在表達力上等價——每個 λ 項都有對應的組合子項，且還原行為一致：
 
-$$\llbracket \lambda x. M \rrbracket\,a = \llbracket M[x := a] \rrbracket$$
+$$
+\llbracket \lambda x. M \rrbracket\,a = \llbracket M[x := a] \rrbracket
+$$
 
 這個等價性有實際意義：λ-Calculus 好寫（人類友善），組合子好算（機器友善）——編譯器可以讓人類用 λ 寫程式、機器用組合子執行。
 
 ### 線索五：固定點組合子理論
 
-Curry 系統化了一切組合子的不動點理論：對任何組合子 $Y$ ，若 $Y\,f = f\,(Y\,f)$ ，則 $Y$ 是固定點組合子。Curry 的 $\mathbf{Y}$ 是 Church 的 $Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))(\lambda x.\,f\,(x\,x))$ 的組合子版本：
+Curry 系統化了一切組合子的不動點理論：對任何組合子 $`Y`$ ，若 $`Y\,f = f\,(Y\,f)`$ ，則 $`Y`$ 是固定點組合子。Curry 的 $`\mathbf{Y}`$ 是 Church 的 $`Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))(\lambda x.\,f\,(x\,x))`$ 的組合子版本：
 
-$$\mathbf{Y} = \mathbf{S}\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I}))\,(\mathbf{S}\,(\mathbf{S}\,(\mathbf{K}\,\mathbf{S})\,\mathbf{K})\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I})))$$
+$$
+\mathbf{Y} = \mathbf{S}\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I}))\,(\mathbf{S}\,(\mathbf{S}\,(\mathbf{K}\,\mathbf{S})\,\mathbf{K})\,(\mathbf{K}\,(\mathbf{S}\,\mathbf{I}\,\mathbf{I})))
+$$
 
 ### 線索六：Curry-Howard 對應的「Curry」部分
 

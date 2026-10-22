@@ -21,7 +21,11 @@ Turing 提出了**「孩童機器」(Child Machine)** 的構想——與其費�
 Turing 將學習機拆解為：
 1. **初始狀態**：隨機或極小先驗的「空白頭腦」——現代說法即隨機初始化的神經網路。
 2. **獎懲機制**：環境（教師）給出標量訊號
-   $$\text{reward} \in \{-1, 0, +1\}, \qquad \text{policy} \leftarrow \text{policy}(\text{reward}).$$
+
+$$
+\text{reward} \in \{-1, 0, +1\}, \qquad \text{policy} \leftarrow \text{policy}(\text{reward}).
+$$
+
 3. **教育程式**：一門「課程」，讓機器循序學會越來越難的任務——現代說法即 curriculum learning。
 
 Turing 甚至預言了「最佳化 + 搜索」的路線：他建議對孩童機器進行

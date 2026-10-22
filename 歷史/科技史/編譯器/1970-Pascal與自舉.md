@@ -18,17 +18,24 @@ Pascal（1970 完成、1971 "The Programming Language Pascal" 發表於 *Acta In
 2. 區塊結構、遞迴、強型別、使用者自定資料結構（record、set、file）。
 3. 編譯器直接產生**堆疊機碼**，不做複雜最佳化——可靠性與正確性優先。
 
-單趟編譯的代價可用「先宣告後使用」條件刻畫：若文法 $G$ 滿足每個標識符在使用點之前已進入符號表，則解析時可線性時間完成語意檢查：
-$$\text{use}(x) \Rightarrow x \in \text{symtab}(\text{scope}_{\text{use}(x)})$$
+單趟編譯的代價可用「先宣告後使用」條件刻畫：若文法 $`G`$ 滿足每個標識符在使用點之前已進入符號表，則解析時可線性時間完成語意檢查：
+
+$$
+\text{use}(x) \Rightarrow x \in \text{symtab}(\text{scope}_{\text{use}(x)})
+$$
 
 ### 自舉：用 L 寫 L 的編譯器
-自舉（bootstrapping）的核心問題：編譯器 $C_L$ 把語言 $L$ 編譯到機器 $M$ 。**用 $L$ 自己寫 $C_L$ **，之後：
+自舉（bootstrapping）的核心問題：編譯器 $`C_L`$ 把語言 $`L`$ 編譯到機器 $`M`$ 。**用 $`L`$ 自己寫 $`C_L`$ **，之後：
 
-$$C_L \xrightarrow{\ C_{L0}\ } M \text{ 碼的 } C_L$$
+$$
+C_L \xrightarrow{\ C_{L0}\ } M \text{ 碼的 } C_L
+$$
 
-先用已有編譯器 $C_{L0}$ 編譯新版（用 $L$ 寫的） $C_L$ ，得到能跑的 $C_L$ ；之後 $C_L$ 就能編譯自己，甚至改進自己：
+先用已有編譯器 $`C_{L0}`$ 編譯新版（用 $`L`$ 寫的） $`C_L`$ ，得到能跑的 $`C_L`$ ；之後 $`C_L`$ 就能編譯自己，甚至改進自己：
 
-$$C_L^{new} \xrightarrow{\ C_L^{old}\ } C_L^{new} \quad (\text{編譯器自我改進的飛輪})$$
+$$
+C_L^{new} \xrightarrow{\ C_L^{old}\ } C_L^{new} \quad (\text{編譯器自我改進的飛輪})
+$$
 
 ### P-code 與 T-diagram：移植的祕密
 1973 年 ETH Zürich 的 P-code（Pascal-P 系統，1975 廣泛流傳）把整個編譯器編到一台**虛擬堆疊機** P 上。移植到新機器 M 只需兩步：
@@ -50,7 +57,9 @@ T-diagram（文字版）記號：編譯器 `S→T` 跑在機器 `I` 上寫成三
 
 這個組合律就是 P-code 傳教的數學基礎：**移植成本從「重寫整個編譯器（數萬行）」降到「寫直譯器（數百行）」**，比例懸殊：
 
-$$\frac{\text{直譯器}}{\text{編譯器}} \approx \frac{10^2}{10^4} = 1\%$$
+$$
+\frac{\text{直譯器}}{\text{編譯器}} \approx \frac{10^2}{10^4} = 1\%
+$$
 
 ### Python 模擬：P-code 堆疊機
 P-code 的核心指令：`ldc`（載入常數）、`lod`（載入變數）、`sto`（存回變數）、`add`/`mul`（堆疊頂運算）。以下模擬一台迷你堆疊機，執行運算式 `(a + b) * 2` 的 P-code：
@@ -83,7 +92,9 @@ print(result)   # 14 —— (3+4)*2
 
 堆疊機的妙處：**指令不需要位址欄位描述運算元位置**（運算元永遠在堆疊頂），因此 P-code 緊�、直譯器極簡——這正是「任何機器都能快速自舉」的原因。堆疊機的求值就是後序走訪運算式樹：
 
-$$\text{eval}(E_1\ op\ E_2) = \text{eval}(E_1)\ \text{eval}(E_2)\ op$$
+$$
+\text{eval}(E_1\ op\ E_2) = \text{eval}(E_1)\ \text{eval}(E_2)\ op
+$$
 
 ### Pascal 的自舉實錄
 Wirth 團隊的順序：先在 CDC 6000 上寫 Pascal 編譯器 → 把它改寫成**用 Pascal 寫**、目標是 P 碼 → 用舊編譯器自舉出新編譯器 → 發布「P 碼版編譯器 + 原始碼」。加州 UCSD 由此發展出 UCSD Pascal 與 P-system（1978），甚至成為早期 Apple II 的作業系統之一。

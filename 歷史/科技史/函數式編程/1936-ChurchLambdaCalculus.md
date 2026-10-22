@@ -22,28 +22,34 @@ $$
 M ::= x \mid \lambda x.\,M \mid M\,N
 $$
 
-- $x$ ：變數； $\lambda x. M$ ：抽象（建立函數）； $M\,N$ ：應用（把 $N$ 餵給 $M$ ）。
-- 應用左結合： $M\,N\,P = (M\,N)\,P$ ；λ 的管轄範圍向右延伸到盡頭。
+- $`x`$ ：變數； $`\lambda x. M`$ ：抽象（建立函數）； $`M\,N`$ ：應用（把 $`N`$ 餵給 $`M`$ ）。
+- 應用左結合： $`M\,N\,P = (M\,N)\,P`$ ；λ 的管轄範圍向右延伸到盡頭。
 
 ### 線索二：三條改寫規則
 
 α 變換（改名，不改變意義）：
 
-$$\lambda x.\,M \equiv \lambda y.\,M[x := y] \quad (y \notin FV(M))$$
+$$
+\lambda x.\,M \equiv \lambda y.\,M[x := y] \quad (y \notin FV(M))
+$$
 
 β 歸約（計算的核心）：
 
-$$(\lambda x.\,M)\,N \;\to\; M[x := N]$$
+$$
+(\lambda x.\,M)\,N \;\to\; M[x := N]
+$$
 
 η 變換（外延性）：
 
-$$\lambda x.\,f\,x \;\equiv\; f \quad (x \notin FV(f))$$
+$$
+\lambda x.\,f\,x \;\equiv\; f \quad (x \notin FV(f))
+$$
 
-自由變數 $FV(M)$ 與束縛變數的區分是整個系統的技術核心：β 歸約代入時必須避免變數捕獲，這正是 Schönfinkel 想用組合子繞過的麻煩。
+自由變數 $`FV(M)`$ 與束縛變數的區分是整個系統的技術核心：β 歸約代入時必須避免變數捕獲，這正是 Schönfinkel 想用組合子繞過的麻煩。
 
 ### 線索三：Church-Rosser 定理——合流性
 
-Church 與 Rosser 於 1936 年證明：若項 $M$ 可以歸約到 $N_1$ 也可以歸約到 $N_2$ ，則必存在 $N_3$ 使 $N_1 \to N_3$ 且 $N_2 \to N_3$ ：
+Church 與 Rosser 於 1936 年證明：若項 $`M`$ 可以歸約到 $`N_1`$ 也可以歸約到 $`N_2`$ ，則必存在 $`N_3`$ 使 $`N_1 \to N_3`$ 且 $`N_2 \to N_3`$ ：
 
 $$
 M \twoheadrightarrow N_1,\; M \twoheadrightarrow N_2 \;\Longrightarrow\; \exists N_3.\; N_1 \twoheadrightarrow N_3 \wedge N_2 \twoheadrightarrow N_3
@@ -67,11 +73,15 @@ $$
 
 布林與配對：
 
-$$\mathrm{TRUE} \equiv \lambda a.\lambda b.\,a \qquad \mathrm{FALSE} \equiv \lambda a.\lambda b.\,b \qquad \mathrm{PAIR} \equiv \lambda a.\lambda b.\lambda z.\,z\,a\,b$$
+$$
+\mathrm{TRUE} \equiv \lambda a.\lambda b.\,a \qquad \mathrm{FALSE} \equiv \lambda a.\lambda b.\,b \qquad \mathrm{PAIR} \equiv \lambda a.\lambda b.\lambda z.\,z\,a\,b
+$$
 
 Y 組合子（遞迴的钥匙，代替被禁止的 self-reference）：
 
-$$Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))\,(\lambda x.\,f\,(x\,x)), \qquad Y\,f = f\,(Y\,f)$$
+$$
+Y \equiv \lambda f.\,(\lambda x.\,f\,(x\,x))\,(\lambda x.\,f\,(x\,x)), \qquad Y\,f = f\,(Y\,f)
+$$
 
 ### 線索五：Python 驗證 Church 編碼
 

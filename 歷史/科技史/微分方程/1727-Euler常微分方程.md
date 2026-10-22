@@ -6,7 +6,7 @@
 
 當時的未解之謎包括：
 
-1. **二階與高階方程**： $\ddot{y} = -\omega^2 y$ 這類方程已在力學中出現，但除特定的猜測與驗證外，沒有一般解法。高階線性方程的通解結構（通解 = 齊次通解 + 特解）尚未被明確表述。
+1. **二階與高階方程**： $`\ddot{y} = -\omega^2 y`$ 這類方程已在力學中出現，但除特定的猜測與驗證外，沒有一般解法。高階線性方程的通解結構（通解 = 齊次通解 + 特解）尚未被明確表述。
 2. **積分因子的系統化**：Leibniz 的「恰當乘子」技巧零散地存在，何時存在積分因子、如何求出，無人知曉。
 3. **數值方法**：當方程無法用初等函數積出時（例如三體問題），該怎麼辦？分析與計算的邊界在哪裡？
 
@@ -16,71 +16,97 @@ Euler 遇到的正是這三重謎題。而他的重要性在於：他不是解�
 
 ### 偵查一：線性方程的通解結構
 
-Euler 的第一個洞見是**疊加原理**：對 $n$ 階線性齊次方程
+Euler 的第一個洞見是**疊加原理**：對 $`n`$ 階線性齊次方程
 
-$$a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)} + \cdots + a_0(x)\, y = 0$$
+$$
+a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)} + \cdots + a_0(x)\, y = 0
+$$
 
-若 $y_1, y_2, \ldots, y_n$ 是解，則它們的任意線性組合 $C_1 y_1 + C_2 y_2 + \cdots + C_n y_n$ 也是解。Euler 證明了（在係數適當的條件下）齊次方程恰有 $n$ 個線性獨立的解，構成**通解**。
+若 $`y_1, y_2, \ldots, y_n`$ 是解，則它們的任意線性組合 $`C_1 y_1 + C_2 y_2 + \cdots + C_n y_n`$ 也是解。Euler 證明了（在係數適當的條件下）齊次方程恰有 $`n`$ 個線性獨立的解，構成**通解**。
 
 對非齊次方程（右邊不為零），Euler 明確表述了今日的標準定理：
 
-$$y_{\text{通解}} = y_{\text{齊次通解}} + y_{\text{特解}}$$
+$$
+y_{\text{通解}} = y_{\text{齊次通解}} + y_{\text{特解}}
+$$
 
-**驗證**：設 $L[y] = a_n y^{(n)} + \cdots + a_0 y$ （線性算子）， $y_p$ 滿足 $L[y_p] = f(x)$ ， $y_h$ 滿足 $L[y_h] = 0$ 。則由線性性：
+**驗證**：設 $`L[y] = a_n y^{(n)} + \cdots + a_0 y`$ （線性算子）， $`y_p`$ 滿足 $`L[y_p] = f(x)`$ ， $`y_h`$ 滿足 $`L[y_h] = 0`$ 。則由線性性：
 
-$$L[y_h + y_p] = L[y_h] + L[y_p] = 0 + f(x) = f(x) \checkmark$$
+$$
+L[y_h + y_p] = L[y_h] + L[y_p] = 0 + f(x) = f(x) \checkmark
+$$
 
-### 偵查二：Euler 方程與特徵根 $y = e^{rx}$
+### 偵查二：Euler 方程與特徵根 $`y = e^{rx}`$
 
-對係數為常數的方程，Euler 的靈感堪稱百年一遇：**猜測解的形式為指數函數**。他注意到指數函數 $e^{rx}$ 有個神奇的性質——求導不變形：
+對係數為常數的方程，Euler 的靈感堪稱百年一遇：**猜測解的形式為指數函數**。他注意到指數函數 $`e^{rx}`$ 有個神奇的性質——求導不變形：
 
-$$\frac{d}{dx}e^{rx} = r\, e^{rx}, \qquad \frac{d^n}{dx^n}e^{rx} = r^n\, e^{rx}$$
+$$
+\frac{d}{dx}e^{rx} = r\, e^{rx}, \qquad \frac{d^n}{dx^n}e^{rx} = r^n\, e^{rx}
+$$
 
-把它代入常係數方程 $a_n y^{(n)} + \cdots + a_0 y = 0$ ，每項都提出公因子 $e^{rx}$ ：
+把它代入常係數方程 $`a_n y^{(n)} + \cdots + a_0 y = 0`$ ，每項都提出公因子 $`e^{rx}`$ ：
 
-$$e^{rx}\left(a_n r^n + a_{n-1} r^{n-1} + \cdots + a_0\right) = 0$$
+$$
+e^{rx}\left(a_n r^n + a_{n-1} r^{n-1} + \cdots + a_0\right) = 0
+$$
 
-由於 $e^{rx} \neq 0$ ，得**特徵方程**：
+由於 $`e^{rx} \neq 0`$ ，得**特徵方程**：
 
-$$a_n r^n + a_{n-1} r^{n-1} + \cdots + a_0 = 0$$
+$$
+a_n r^n + a_{n-1} r^{n-1} + \cdots + a_0 = 0
+$$
 
 微分方程被代數化為多項式方程！以最經典的簡諧運動方程驗證：
 
-$$y'' + \omega^2 y = 0 \quad\Rightarrow\quad r^2 + \omega^2 = 0 \quad\Rightarrow\quad r = \pm i\omega$$
+$$
+y'' + \omega^2 y = 0 \quad\Rightarrow\quad r^2 + \omega^2 = 0 \quad\Rightarrow\quad r = \pm i\omega
+$$
 
-複數根 $\pm i\omega$ 給出兩個實解 $\cos\omega x$ 與 $\sin\omega x$ （Euler 透過他著名的公式 $e^{i\theta} = \cos\theta + i\sin\theta$ 處理複數根），通解為：
+複數根 $`\pm i\omega`$ 給出兩個實解 $`\cos\omega x`$ 與 $`\sin\omega x`$ （Euler 透過他著名的公式 $`e^{i\theta} = \cos\theta + i\sin\theta`$ 處理複數根），通解為：
 
-$$y = C_1 \cos\omega x + C_2 \sin\omega x$$
+$$
+y = C_1 \cos\omega x + C_2 \sin\omega x
+$$
 
-**等時曲線之謎**（[1690-JacobBernoulli等時曲線.md](1690-JacobBernoulli等時曲線.md)）中 Jacob 仰賴幾何直覺才辨認出的擺線運動 $\ddot{s} = -\omega^2 s$ ，如今用兩行代數就解決了。
+**等時曲線之謎**（[1690-JacobBernoulli等時曲線.md](1690-JacobBernoulli等時曲線.md)）中 Jacob 仰賴幾何直覺才辨認出的擺線運動 $`\ddot{s} = -\omega^2 s`$ ，如今用兩行代數就解決了。
 
 Euler 更進一步處理了**變係數**的 Euler 方程（今稱 Cauchy-Euler 方程）：
 
-$$x^n y^{(n)} + a_{n-1} x^{n-1} y^{(n-1)} + \cdots + a_0\, y = 0$$
+$$
+x^n y^{(n)} + a_{n-1} x^{n-1} y^{(n-1)} + \cdots + a_0\, y = 0
+$$
 
-其靈感是： $x^r$ 也有「求導降冪、維持形式」的性質： $\frac{d}{dx}x^r = r x^{r-1}$ ， $n$ 階導後 $x^{r-n}$ 仍為冪函數。代入後同樣得到特徵方程（各項提出 $x^r$ ）：
+其靈感是： $`x^r`$ 也有「求導降冪、維持形式」的性質： $`\frac{d}{dx}x^r = r x^{r-1}`$ ， $`n`$ 階導後 $`x^{r-n}`$ 仍為冪函數。代入後同樣得到特徵方程（各項提出 $`x^r`$ ）：
 
-$$r(r-1)(r-2)\cdots(r-n+1) + a_{n-1} r(r-1)\cdots(r-n+2) + \cdots + a_0 = 0$$
+$$
+r(r-1)(r-2)\cdots(r-n+1) + a_{n-1} r(r-1)\cdots(r-n+2) + \cdots + a_0 = 0
+$$
 
 ### 偵查三：積分因子的系統化
 
-對一階線性方程 $y' + P(x)y = Q(x)$ ，Euler 將 Leibniz 與 Bernoulli 的零散技巧（見 [1695-Bernoulli方程.md](1695-Bernoulli方程.md)）系統化。他的推理是：想找一個函數 $\mu(x)$ ，使 $\mu y' + \mu P y$ 恰好等於某乘積的導數：
+對一階線性方程 $`y' + P(x)y = Q(x)`$ ，Euler 將 Leibniz 與 Bernoulli 的零散技巧（見 [1695-Bernoulli方程.md](1695-Bernoulli方程.md)）系統化。他的推理是：想找一個函數 $`\mu(x)`$ ，使 $`\mu y' + \mu P y`$ 恰好等於某乘積的導數：
 
-$$\frac{d}{dx}(\mu y) = \mu y' + \mu' y \stackrel{!}{=} \mu y' + \mu P y \quad\Rightarrow\quad \mu' = \mu P$$
+$$
+\frac{d}{dx}(\mu y) = \mu y' + \mu' y \stackrel{!}{=} \mu y' + \mu P y \quad\Rightarrow\quad \mu' = \mu P
+$$
 
 這是一個可分離變數方程，解得：
 
-$$\mu(x) = e^{\int P\, dx}$$
+$$
+\mu(x) = e^{\int P\, dx}
+$$
 
-**何時存在積分因子**？Euler 對一般形式 $M(x,y)dx + N(x,y)dy = 0$ 給出了判別法：方程恰當（即 $\partial M/\partial y = \partial N/\partial x$ ）時可直接積分；不恰當時，若 $\frac{M_y - N_x}{N}$ 只依賴 $x$ ，則積分因子 $\mu(x) = e^{\int \frac{M_y - N_x}{N} dx}$ 存在。這把「找積分因子」從藝術變成了演算法。
+**何時存在積分因子**？Euler 對一般形式 $`M(x,y)dx + N(x,y)dy = 0`$ 給出了判別法：方程恰當（即 $`\partial M/\partial y = \partial N/\partial x`$ ）時可直接積分；不恰當時，若 $`\frac{M_y - N_x}{N}`$ 只依賴 $`x`$ ，則積分因子 $`\mu(x) = e^{\int \frac{M_y - N_x}{N} dx}`$ 存在。這把「找積分因子」從藝術變成了演算法。
 
 ### 偵查四：Euler 法——數值解的思想誕生
 
-當方程解不出初等函數時怎麼辦？Euler 在《Institutiones calculi integralis》（1768-1770）中給出了劃時代的答案：**用切線逐段逼近**。對 $y' = f(x, y)$ ，從初值 $(x_0, y_0)$ 出發：
+當方程解不出初等函數時怎麼辦？Euler 在《Institutiones calculi integralis》（1768-1770）中給出了劃時代的答案：**用切線逐段逼近**。對 $`y' = f(x, y)`$ ，從初值 $`(x_0, y_0)`$ 出發：
 
-$$y_{n+1} = y_n + h\, f(x_n, y_n)$$
+$$
+y_{n+1} = y_n + h\, f(x_n, y_n)
+$$
 
-**推理**：在 $(x_n, y_n)$ 處曲線的切線斜率為 $f(x_n, y_n)$ ，走一小步 $h$ 後，用切線代替曲線， $y$ 的增量近似為 $h \cdot f(x_n, y_n)$ 。誤差為 $O(h^2)$ ，累積全域誤差為 $O(h)$ ——步長越小越準。這是**歷史上第一個數值解微分方程的通用方法**，直達今日的三體問題、氣候模擬、分子動力學。
+**推理**：在 $`(x_n, y_n)`$ 處曲線的切線斜率為 $`f(x_n, y_n)`$ ，走一小步 $`h`$ 後，用切線代替曲線， $`y`$ 的增量近似為 $`h \cdot f(x_n, y_n)`$ 。誤差為 $`O(h^2)`$ ，累積全域誤差為 $`O(h)`$ ——步長越小越準。這是**歷史上第一個數值解微分方程的通用方法**，直達今日的三體問題、氣候模擬、分子動力學。
 
 ## 結案報告
 

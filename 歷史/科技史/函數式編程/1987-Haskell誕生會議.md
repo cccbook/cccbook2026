@@ -19,8 +19,12 @@
 委員會面對的第一組證詞是「純度」之爭：
 
 - **純函數（purity）vs 副作用**：純函數式陣營（Hudak、Wadler）主張表達式無副作用，才能保證引用透明（referential transparency）與等式推理：
-  $$e \Downarrow v \implies e \equiv v$$
-  任何地方都可以把表達式替換為其值，程式正確性可用代數變換證明。
+
+$$
+e \Downarrow v \implies e \equiv v
+$$
+
+任何地方都可以把表達式替換為其值，程式正確性可用代數變換證明。
 - **非嚴格（non-strict）vs 嚴格**：另一組證詞關乎求值順序。委員會投票決定跟隨 Miranda 的非嚴格傳統（call-by-need），因為它允許無窮結構與模組化解耦；反對者（如 Peyton Jones 早期）擔心非嚴格使效能難以掌控——這場辯論在後續十年持續發酵。
 
 ### 線索二：type class 的誕生
@@ -29,9 +33,11 @@
 
 Wadler 與 Stephen Blott 的破案提案（1989）：在型別上附加「約束」（constraint），即 type class：
 
-$$\texttt{(==)} :: \forall a.\, \texttt{Eq}\, a \Rightarrow a \to a \to \texttt{Bool}$$
+$$
+\texttt{(==)} :: \forall a.\, \texttt{Eq}\, a \Rightarrow a \to a \to \texttt{Bool}
+$$
 
-讀作：對任意型別 $a$ ，只要 $a$ 屬於 $\texttt{Eq}$ 類別，`(==)` 的型別就是 $a \to a \to \texttt{Bool}$ 。約束 $\texttt{Eq}\,a$ 是型別層級的邏輯前提，解決了 overloading 與 HM 的矛盾，同時保持型別推論的自動化。
+讀作：對任意型別 $`a`$ ，只要 $`a`$ 屬於 $`\texttt{Eq}`$ 類別，`(==)` 的型別就是 $`a \to a \to \texttt{Bool}`$ 。約束 $`\texttt{Eq}\,a`$ 是型別層級的邏輯前提，解決了 overloading 與 HM 的矛盾，同時保持型別推論的自動化。
 
 ### 線索三：為什麼 HM 單獨不夠——程式示範
 
@@ -58,13 +64,15 @@ elem _ [] = False
 elem x (y:ys) = x == y || elem x ys
 ```
 
-沒有約束時，`elem` 的型別參數 $a$ 上沒有任何操作可用——這正是委員會要解決的核心難題。
+沒有約束時，`elem` 的型別參數 $`a`$ 上沒有任何操作可用——這正是委員會要解決的核心難題。
 
 ### 線索四：語言設計作為「委員會數學」
 
 委員會的方法論本身就是一條線索：語言不用實作（implementation）定義，而用報告（report）定義——語義以數學規則書寫，任何人都可以做出符合報告的編譯器。這是數學公理化的作法：先有公理（report），後有定理（實作）。命名致敬 Haskell Curry，因為 Curry 的組合子邏輯正是函數式編程的理論根基：
 
-$$\texttt{S}fgx = fx(gx), \qquad \texttt{K}xy = x$$
+$$
+\texttt{S}fgx = fx(gx), \qquad \texttt{K}xy = x
+$$
 
 ### 破案時刻
 

@@ -3,17 +3,25 @@
 ## 案件摘要
 1964 年 4 月 7 日，IBM 發表 **System/360**——
 一個**家族**：從最小的 360/20 到最大的 360/75，**全部跑同一份軟體**：
-$$\text{一個 ISA（架構）} + \text{多種實作（implementation）} \quad\Longrightarrow\quad \text{軟體投資跨機器延續}.$$
+
+$$
+\text{一個 ISA（架構）} + \text{多種實作（implementation）} \quad\Longrightarrow\quad \text{軟體投資跨機器延續}.
+$$
+
 Fred Brooks 與 Gene Amdahl 主導這場設計，Fortune 雜誌稱之為
-**「 $5,000,000,000 gamble」**（IBM 當時年營收約$ 20 億）。
+**「 $`5,000,000,000 gamble」**（IBM 當時年營收約`$ 20 億）。
 案件的謎底：**「架構」這個概念在這裡誕生**——此後的 x86 相容性、軟體護城河、
 乃至大型機 z/OS 延續至今，都是這場賭注的利息。
 
 ## 前因 -- 為什麼會有這個案子
 - **每台電腦專屬指令集的罩門（1950s–60s 初）**：IBM 有多條產品線
   （7090 科學計算、1401 商業、7010、1620……），**各自不相容**：
-  $$\text{換新機器} = \text{重寫所有軟體} \quad\Longrightarrow\quad \text{軟體投資歸零。}$$
-  客戶被鎖死在舊機器上，IBM 也要為每台新機器重寫編譯器與 OS——**開發成本爆炸**。
+
+$$
+\text{換新機器} = \text{重寫所有軟體} \quad\Longrightarrow\quad \text{軟體投資歸零。}
+$$
+
+客戶被鎖死在舊機器上，IBM 也要為每台新機器重寫編譯器與 OS——**開發成本爆炸**。
 - **軟體投資的規模問題**：1960 年代客戶累積了數千個 1401 上的程式；
   「New Product Line」（NP 計畫）若不相容，等於要求全體客戶自斷手臂——**市場會叛逃**。
 - **Amdahl 的關鍵推理（架構 vs implementation 分離）**：
@@ -38,7 +46,11 @@ System/360 首次把「電腦」分成兩層：
   性能差 **50 倍**，但**同一份二進位軟體都能跑**。
 - **Amdahl 定律的另一面**：Amdahl 也在 1967 年提出著名的 Amdahl's Law（見「1981-CISC與RISC之戰.md」）
   ——這位設計者深知平行與速度的極限，360 的策略是**用家族化攤銷軟體成本**：
-  $$\text{軟體總成本} = O(\text{ISA life}) \times \text{單次開發} \quad\text{vs}\quad O(\text{機器數}) \times \text{重寫}.$$
+
+$$
+\text{軟體總成本} = O(\text{ISA life}) \times \text{單次開發} \quad\text{vs}\quad O(\text{機器數}) \times \text{重寫}.
+$$
+
 - **「向上相容」**：為小機器寫的程式在大機器直接跑——**客戶升級不換軟體**，
   這成為此後所有電腦產業的商業模式。
 
@@ -47,15 +59,23 @@ System/360 首次把「電腦」分成兩層：
 360 的決定：
 - **8-bit byte**（一個 byte = 8 bits，一個字組 = 32 bits = 4 bytes）。
 - **理由**：8 bits 剛好容納 **EBCDIC 字元**（擴充 BCD，256 個組合），
-  且 8 = $2^3$ 便於定址與封裝（兩個十進位數字打包在一 byte）。
+  且 8 = $`2^3`$ 便於定址與封裝（兩個十進位數字打包在一 byte）。
 - **位址以 byte 為單位**（byte-addressable）——**細粒度定址**成為此後所有電腦的標準。
-$$\text{1 word} = 4\ \text{bytes} = 32\ \text{bits} \quad\Longrightarrow\quad \text{8-bit byte 從此一統天下}.$$
+
+$$
+\text{1 word} = 4\ \text{bytes} = 32\ \text{bits} \quad\Longrightarrow\quad \text{8-bit byte 從此一統天下}.
+$$
+
 **你在用的每一個「KB/MB/GB」與 UTF-8，都站在這個決定上。**
 
 ### 第三條線索：微程式控制與 emulation
 Maurice Wilkes（1951，見 Cambridge EDSAC）提出微程式（microprogramming）——
 360 把它發揚光大：
-$$\text{機器指令（ISA）} \xrightarrow{\text{微碼解碼}} \text{微指令序列（control store）}.$$
+
+$$
+\text{機器指令（ISA）} \xrightarrow{\text{微碼解碼}} \text{微指令序列（control store）}.
+$$
+
 - **低端型號**（如 360/25）用微碼實作整個 ISA——**便宜、規則、易驗證**。
 - **emulation**：微碼可以實作**另一台機器的 ISA**——360 上跑 1401 的程式（客戶無痛轉換）。
 - **軟體相容性的技術基礎**：ISA 是契約，微碼是履約方式——

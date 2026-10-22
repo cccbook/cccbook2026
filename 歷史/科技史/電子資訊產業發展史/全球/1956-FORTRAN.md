@@ -28,9 +28,11 @@ FORTRAN 77 片段：
    10 C(I,J) = C(I,J) + A(I,K) * B(K,J)
 ```
 
-其浮點運算量為 $2N^3$ 次，編譯器需將內層迴圈優化至接近硬體上限。若組語手寫耗時 $T_{asm}$ 、編譯器產出耗時 $T_{fort}$ 、開發人時各為 $t_{asm}, t_{fort}$ ，則 FORTRAN 的經濟優勢為：
+其浮點運算量為 $`2N^3`$ 次，編譯器需將內層迴圈優化至接近硬體上限。若組語手寫耗時 $`T_{asm}`$ 、編譯器產出耗時 $`T_{fort}`$ 、開發人時各為 $`t_{asm}, t_{fort}`$ ，則 FORTRAN 的經濟優勢為：
 
-$$\frac{T_{fort}}{T_{asm}} \approx 1.2 \quad\text{但}\quad \frac{t_{fort}}{t_{asm}} \approx \frac{1}{5} \sim \frac{1}{20}$$
+$$
+\frac{T_{fort}}{T_{asm}} \approx 1.2 \quad\text{但}\quad \frac{t_{fort}}{t_{asm}} \approx \frac{1}{5} \sim \frac{1}{20}
+$$
 
 亦即：機器時間小幅讓步，人力時間數量級節省。1958 年 FORTRAN II 加入副程式與連結，之後 FORTRAN IV、77、90 一路演進至今。Backus 團隊隨後在 1958–1960 年發展 BNF 正規文法（Backus–Naur Form），奠定語言理論基礎。
 

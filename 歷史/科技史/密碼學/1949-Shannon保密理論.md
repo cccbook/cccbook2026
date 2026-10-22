@@ -7,7 +7,7 @@
 Shannon 的動機有三層：
 
 1. **戰時經驗**：Shannon 在貝爾實驗室參與美軍密碼工作（與英國 X 站合作），接觸到 Vernam 的一次性密碼本
-2. **資訊論**：1948 年 Shannon 發表《A Mathematical Theory of Communication》——資訊熵 $H$ 、通道容量。密碼學是「敵對通道」——自然延伸
+2. **資訊論**：1948 年 Shannon 發表《A Mathematical Theory of Communication》——資訊熵 $`H`$ 、通道容量。密碼學是「敵對通道」——自然延伸
 3. **Kerckhoffs 原則的數學化**：1883 年的原則（保密在金鑰）需要定理級的證明（見 `1883-Kerckhoffs原則.md`）
 
 ## 線索與推理 -- 數學式、程式、理論
@@ -15,37 +15,49 @@ Shannon 的動機有三層：
 ### 密碼系統的數學模型
 Shannon 的模型（與圖靈機同年代的公理化風格）：
 
-$$\text{明文 } M \xrightarrow{E_k} \text{密文 } C = E_k(M) \xrightarrow{D_k} M = D_k(C)$$
+$$
+\text{明文 } M \xrightarrow{E_k} \text{密文 } C = E_k(M) \xrightarrow{D_k} M = D_k(C)
+$$
 
-其中 $E_k, D_k$ 是金鑰 $k$ 的函數， $D_k(E_k(M)) = M$ （可逆）。
+其中 $`E_k, D_k`$ 是金鑰 $`k`$ 的函數， $`D_k(E_k(M)) = M`$ （可逆）。
 
 ### 完美保密
 **定義**：密碼系統是完美保密的，若密文與明文**統計獨立**：
 
-$$P(M = m \mid C = c) = P(M = m) \quad \forall m, c$$
+$$
+P(M = m \mid C = c) = P(M = m) \quad \forall m, c
+$$
 
 （觀察密文後，對明文的認識**完全沒有增加**。）
 
 **定理（Shannon）**：完美保密 ⟺
 
-$$H(M \mid C) = H(M) \iff H(K \mid C) \ge H(M)$$
+$$
+H(M \mid C) = H(M) \iff H(K \mid C) \ge H(M)
+$$
 
 由熵的鏈式法則：
 
-$$H(K, M, C) = H(K) + H(M) = H(C \mid K, M) + H(K, M) = H(C \mid K, M) + H(K) + H(M)$$
+$$
+H(K, M, C) = H(K) + H(M) = H(C \mid K, M) + H(K, M) = H(C \mid K, M) + H(K) + H(M)
+$$
 
-且 $H(C \mid K, M) = 0$ （ $C$ 由 $K, M$ 決定）、 $H(K \mid C, M) = 0$ （給定 $C, M$ 可解 $K$ ），推出：
+且 $`H(C \mid K, M) = 0`$ （ $`C`$ 由 $`K, M`$ 決定）、 $`H(K \mid C, M) = 0`$ （給定 $`C, M`$ 可解 $`K`$ ），推出：
 
-$$H(C) = H(K) + H(M) - H(K \mid C) \ge H(M) \implies H(K \mid C) \ge H(M)$$
+$$
+H(C) = H(K) + H(M) - H(K \mid C) \ge H(M) \implies H(K \mid C) \ge H(M)
+$$
 
 **白話**：**金鑰的不確定性必須 ≥ 明文的不確定性**——金鑰要與訊息等長且真隨機。
 
 ### 一次性密碼本（OTP）的唯一性
-**驗證**：OTP（Vernam 1917）： $C = M \oplus K$ ， $K$ 真隨機、等長、只用一次：
+**驗證**：OTP（Vernam 1917）： $`C = M \oplus K`$ ， $`K`$ 真隨機、等長、只用一次：
 
-$$H(K) = n \log_2 26 = H(M) \implies \text{完美保密} \quad \blacksquare$$
+$$
+H(K) = n \log_2 26 = H(M) \implies \text{完美保密} \quad \blacksquare
+$$
 
-**反面**：任何金鑰較短的系統（Vigenère、Enigma、DES、AES、RSA）， $H(K) < H(M)$ ，**都不是完美保密**——理論上可被「無限計算」破譯。實用密碼只能追求**計算保密**：破譯需要超過實際可行的計算資源。
+**反面**：任何金鑰較短的系統（Vigenère、Enigma、DES、AES、RSA）， $`H(K) < H(M)`$ ，**都不是完美保密**——理論上可被「無限計算」破譯。實用密碼只能追求**計算保密**：破譯需要超過實際可行的計算資源。
 
 ### 擴散與混淆（Diffusion & Confusion）
 Shannon 的設計原則——實用密碼的兩大支柱：
@@ -53,7 +65,9 @@ Shannon 的設計原則——實用密碼的兩大支柱：
 - **混淆（confusion）**：密文與金鑰的關係越複雜越好——敵人無法利用金鑰-密文的簡單結構。實現：S-Box（代換盒）
 - **擴散（diffusion）**：明文的一位元影響密文的許多位元——統計結構被攤平，頻率分析失效。實現：P-Box（置換盒）與多輪迭代
 
-$$\text{理想：} \text{改變明文一位元} \implies \text{密文約一半位元改變（雪崩效應）}$$
+$$
+\text{理想：} \text{改變明文一位元} \implies \text{密文約一半位元改變（雪崩效應）}
+$$
 
 **混合變換**：混淆與擴散的反覆迭代——**S-Box + P-Box 的多輪結構**。這個藍圖在 Feistel（1970，見 `1970-Lucifer.md`）的 Lucifer、DES（1977）、AES（2001）中完整實現。
 

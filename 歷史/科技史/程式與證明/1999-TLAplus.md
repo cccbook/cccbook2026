@@ -6,7 +6,7 @@
 
 並行系統的 bug 最狡猾。它們不藏在單行程式裡，藏在交錯（interleaving）裡。兩個行程各自正確，合在一起就死結、活鎖、遺失更新。測試只能走過億萬交錯中的幾條，剩下的就是深夜當機的來源。
 
-1977 年 Pnueli 把時序邏輯帶入程式驗證，1981 年模型檢測誕生，但工業界仍缺一支「能寫規格」的筆。工程師會寫虛擬碼，不會寫 $AG$ 與 $EU$ ；數學家會寫公式，不懂訊息佇列與容錯移轉。
+1977 年 Pnueli 把時序邏輯帶入程式驗證，1981 年模型檢測誕生，但工業界仍缺一支「能寫規格」的筆。工程師會寫虛擬碼，不會寫 $`AG`$ 與 $`EU`$ ；數學家會寫公式，不懂訊息佇列與容錯移轉。
 
 Lamport 早已是並行演算法的傳奇（Bakery 演算法、Paxos、因果時鐘）。他在 1990 年代初提出 TLA（Temporal Logic of Actions），1999 年前後補上 PlusCal 與 TLC，形成完整工具鏈 TLA+ 。目標只有一個：讓工程師用數學寫出系統，再讓機器自動找反例。
 
@@ -20,15 +20,15 @@ $$
 Init \land \Box [Next]_{vars} \land Fairness
 $$
 
-其中 $Init$ 描述初態， $Next$ 描述下一步動作， $vars$ 為所有變數組成的元組， $Fairness$ 為公平性假設。
+其中 $`Init`$ 描述初態， $`Next`$ 描述下一步動作， $`vars`$ 為所有變數組成的元組， $`Fairness`$ 為公平性假設。
 
 逐段解讀：
 
-- $Init$ ：例如 $x = 0 \land queue = \langle \rangle$ 。
-- $[Next]_{vars}$ 即 $Next \lor UNCHANGED \, vars$ ，允許「什麼都不變」的步（stuttering），使規格具備精化下的不變性。
-- $\Box$ 為「永遠」， $Fairness$ 常用弱公平 $WF_{vars}(A)$ 或強公平 $SF_{vars}(A)$ 排除「某個該發生的動作永遠被忽略」的不合理反例。
+- $`Init`$ ：例如 $`x = 0 \land queue = \langle \rangle`$ 。
+- $`[Next]_{vars}`$ 即 $`Next \lor UNCHANGED \, vars`$ ，允許「什麼都不變」的步（stuttering），使規格具備精化下的不變性。
+- $`\Box`$ 為「永遠」， $`Fairness`$ 常用弱公平 $`WF_{vars}(A)`$ 或強公平 $`SF_{vars}(A)`$ 排除「某個該發生的動作永遠被忽略」的不合理反例。
 
-動作（action）是含 primed 變數的公式，如 $x' = x + 1$ 表示 $x$ 加一。狀態謂詞不含 prime，時序公式描述無窮行為序列。
+動作（action）是含 primed 變數的公式，如 $`x' = x + 1`$ 表示 $`x`$ 加一。狀態謂詞不含 prime，時序公式描述無窮行為序列。
 
 ### 線索二：PlusCal 與 TLC 的雙人搭檔
 
@@ -50,7 +50,7 @@ PlusCal 翻譯器把它轉成 TLA+ ，再交給 TLC 模型檢查器窮舉狀態�
 
 | 層 | 工具 | 輸入 | 輸出 |
 |---|---|---|---|
-| 建模 | TLA+ / PlusCal | $Init$ 、 $Next$ 、性質 | 規格文件 |
+| 建模 | TLA+ / PlusCal | $`Init`$ 、 $`Next`$ 、性質 | 規格文件 |
 | 檢查 | TLC | 規格＋有限模型 | 反例或通過 |
 | 證明 | TLAPS | 歸納不變式 | 機械化證明 |
 
@@ -71,7 +71,7 @@ TLA+ 的第一批戰果在硬體：Digital 的 Alpha 記憶體模型、快取一
 | DynamoDB | 複寫與容錯移轉 | 遺失確認 |
 | S3 | 後台一致性流程 | 極端交錯死結 |
 
-偵探筆記：TLA+ 的哲學是「先寫規格再寫程式」。規格只有數百行，卻能把設計者的模糊假設逼成 $Init$ 與 $Next$ ，模糊之處正是 bug 之家。
+偵探筆記：TLA+ 的哲學是「先寫規格再寫程式」。規格只有數百行，卻能把設計者的模糊假設逼成 $`Init`$ 與 $`Next`$ ，模糊之處正是 bug 之家。
 
 ## 結案報告
 
@@ -93,8 +93,8 @@ $$
 Init \land \Box [Next]_{vars} \land Fairness
 $$
 
-證據 B：弱公平定義。 $WF_{vars}(A)$ 意為：若動作 $A$ 持續被使能，則終將發生一步 $A$ 。它排除了排程器惡意餓死某行程的假反例。
+證據 B：弱公平定義。 $`WF_{vars}(A)`$ 意為：若動作 $`A`$ 持續被使能，則終將發生一步 $`A`$ 。它排除了排程器惡意餓死某行程的假反例。
 
-證據 C：TLA+ 不變式示例。互斥： $Mutex \triangleq \neg (pc_0 = crit \land pc_1 = crit)$ ，以 $Inv \land [Next]_{vars} \Rightarrow Inv'$ 歸納證明，或直接交 TLC 檢查。
+證據 C：TLA+ 不變式示例。互斥： $`Mutex \triangleq \neg (pc_0 = crit \land pc_1 = crit)`$ ，以 $`Inv \land [Next]_{vars} \Rightarrow Inv'`$ 歸納證明，或直接交 TLC 檢查。
 
 證據 D：延伸閱讀。Lamport 1994 年〈The Temporal Logic of Actions〉；Lamport 2002 年《Specifying Systems》免費公開；Newcombe 等 2015 年〈How Amazon Web Services Uses Formal Methods〉；TLC 與 TLAPS 官方手冊。

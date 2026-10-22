@@ -10,7 +10,9 @@
 
 商業模型的困境可以用不等式刻劃：
 
-$$\text{成本}(C_i) > \sum_{j \le i} \text{訂金}_j \quad \Rightarrow \quad \text{持續的現金流危機}$$
+$$
+\text{成本}(C_i) > \sum_{j \le i} \text{訂金}_j \quad \Rightarrow \quad \text{持續的現金流危機}
+$$
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -33,9 +35,11 @@ $$\text{成本}(C_i) > \sum_{j \le i} \text{訂金}_j \quad \Rightarrow \quad \t
 - CBS 電視台租用 UNIVAC，在 1952 年 11 月 4 日開票夜進行即時預測。
 - UNIVAC 根據早期開票率外推，預測 **Eisenhower**（艾森豪）將以 438 張選舉人票大勝 Stevenson（只給 Stevenson 93 票）。
 - 因結果太懸殊，CBS 不敢播出，人工改成「8:7 险勝」的假數據；最終實際結果 442:89，UNIVAC 幾乎命中。
-- 預測模型本質是外推：以開票比例 $p_i$ 加權外推各州選票
+- 預測模型本質是外推：以開票比例 $`p_i`$ 加權外推各州選票
 
-$$\hat{E} = \sum_{\text{州}} \frac{\text{已開票}(s)}{\text{總票數}(s)}^{-1} \cdot \text{投票傾向}(s)$$
+$$
+\hat{E} = \sum_{\text{州}} \frac{\text{已開票}(s)}{\text{總票數}(s)}^{-1} \cdot \text{投票傾向}(s)
+$$
 
 （細節為商業機密，但精神是樣本比例的統計外推。）
 
@@ -45,7 +49,9 @@ $$\hat{E} = \sum_{\text{州}} \frac{\text{已開票}(s)}{\text{總票數}(s)}^{-
 - UNIVAC 配備 UNISERVO 磁帶機，速度約每秒 7,200 字元，遠快於讀卡機。
 - 磁帶是順序存取媒體，適合「批次處理」：排序→合併→報表，正是商業資料處理的骨架。
 
-$$\text{讀卡機} \approx 250\ \text{卡/s} \times 80\ \text{字元} = 2\times10^4\ \text{字元/s? 不——實際僅約 } 2\times10^2\text{–}10^3\ \text{字元/s} \ll \text{磁帶 } 7.2\times10^3\ \text{字元/s}$$
+$$
+\text{讀卡機} \approx 250\ \text{卡/s} \times 80\ \text{字元} = 2\times10^4\ \text{字元/s? 不——實際僅約 } 2\times10^2\text{–}10^3\ \text{字元/s} \ll \text{磁帶 } 7.2\times10^3\ \text{字元/s}
+$$
 
 磁帶讓「大量交易記錄的批次彙總」成為日常，會計、薪資、庫存首次自動化。
 

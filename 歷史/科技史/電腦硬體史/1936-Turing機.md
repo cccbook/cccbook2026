@@ -4,7 +4,11 @@
 1936 年 5 月，Alan Turing 發表論文
 *On Computable Numbers, with an Application to the Entscheidungsproblem*：
 設計一台**抽象機器**——**Turing Machine（圖靈機）**：
-$$\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制器} \quad \Longrightarrow \quad \text{通用計算模型}.$$
+
+$$
+\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制器} \quad \Longrightarrow \quad \text{通用計算模型}.
+$$
+
 他在論文中證明：存在**不可計算的數**（e.g. 停機問題不可解）。
 **圖靈機不是電腦，它是「計算是什麼」的數學定義**。1946 年的 ENIAC（見「1946-ENIAC電子計算機.md」）與後世所有電腦，都是它的具體實現。
 
@@ -23,13 +27,13 @@ $$\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：圖靈機的形式定義（七個元件）
-一台圖靈機 $M = (Q, \Gamma, \Sigma, \delta, q_0, q_{accept}, q_{reject})$ ：
-- $Q$ ：有限狀態集合（有限控制器）
-- $\Gamma$ ：帶子字母表（包含空白符 $B$ ）
-- $\Sigma \subseteq \Gamma \setminus \{B\}$ ：輸入字母表
-- $\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ ：轉移函數（讀、寫、移動）
-- $q_0 \in Q$ ：初始狀態
-- $q_{accept}, q_{reject} \in Q$ ：接受/拒絕狀態（終止狀態）
+一台圖靈機 $`M = (Q, \Gamma, \Sigma, \delta, q_0, q_{accept}, q_{reject})`$ ：
+- $`Q`$ ：有限狀態集合（有限控制器）
+- $`\Gamma`$ ：帶子字母表（包含空白符 $`B`$ ）
+- $`\Sigma \subseteq \Gamma \setminus \{B\}`$ ：輸入字母表
+- $`\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}`$ ：轉移函數（讀、寫、移動）
+- $`q_0 \in Q`$ ：初始狀態
+- $`q_{accept}, q_{reject} \in Q`$ ：接受/拒絕狀態（終止狀態）
 
 **關鍵限制**：
 - **狀態集有限**（人腦有限步驟的規則）
@@ -37,25 +41,40 @@ $$\text{讀寫頭} + \text{無限帶子（紙帶）} + \text{有限狀態控制�
 - **每一步只看一個符號、只寫一個符號、只移動一步**——**原子動作（atomic operation）**。
 
 ### 第二條線索：通用圖靈機（Universal Turing Machine, UTM）
-Turing 的最強洞見：**存在一台機器 $U$ ，能模擬任何其他圖靈機 $M$ 在輸入 $w$ 上的運行**：
-$$U(\langle M, w \rangle) = M(w).$$
-其中 $\langle M,w \rangle$ 是 $M$ 的編碼（描述表）+ 輸入 $w$ 的二進位表示。
-$$\text{程式 = 資料} \quad \text{（stored-program 的數學起源）}.$$
+Turing 的最強洞見：**存在一台機器 $`U`$ ，能模擬任何其他圖靈機 $`M`$ 在輸入 $`w`$ 上的運行**：
+
+$$
+U(\langle M, w \rangle) = M(w).
+$$
+
+其中 $`\langle M,w \rangle`$ 是 $`M`$ 的編碼（描述表）+ 輸入 $`w`$ 的二進位表示。
+
+$$
+\text{程式 = 資料} \quad \text{（stored-program 的數學起源）}.
+$$
+
 **Von Neumann 架構（1945）**（見「1946-ENIAC電子計算機.md」的延伸）正是 UTM 的工程化：
 「記憶體同時儲存資料與指令」——這是通用計算的關鍵設計。
 
 ### 第三條線索：停機問題（Halting Problem）
-Turing 證明：不存在圖靈機 $H$ ，對任意 $\langle M,w \rangle$ 判定：
-$$H(\langle M,w \rangle) = \begin{cases}
+Turing 證明：不存在圖靈機 $`H`$ ，對任意 $`\langle M,w \rangle`$ 判定：
+
+$$
+H(\langle M,w \rangle) = \begin{cases}
 \text{true}, & \text{若 } M(w) \text{ 終止（停機）},\\
 \text{false}, & \text{若 } M(w) \text{ 無限循環（不停機）}.
-\end{cases}$$
+\end{cases}
+$$
+
 **對角論證（diagonalization）**：
-假設 $H$ 存在，定義 $D(\langle M\rangle)$ ：
-- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{true}$ （ $M$ 對自身編碼停機），則 $D$ 進入無限循環。
-- 如果 $H(\langle M, \langle M\rangle \rangle) = \text{false}$ ，則 $D$ 停機。
-套用 $D(\langle D\rangle)$ → 矛盾。**因此 $H$ 不存在**。
-$$\text{可判定（decidable）} \subsetneq \text{可計算（computable）}.$$
+假設 $`H`$ 存在，定義 $`D(\langle M\rangle)`$ ：
+- 如果 $`H(\langle M, \langle M\rangle \rangle) = \text{true}`$ （ $`M`$ 對自身編碼停機），則 $`D`$ 進入無限循環。
+- 如果 $`H(\langle M, \langle M\rangle \rangle) = \text{false}`$ ，則 $`D`$ 停機。
+套用 $`D(\langle D\rangle)`$ → 矛盾。**因此 $`H`$ 不存在**。
+
+$$
+\text{可判定（decidable）} \subsetneq \text{可計算（computable）}.
+$$
 
 ### Python：圖靈機的極簡模擬（停機問題的直觀展示）
 
@@ -105,7 +124,7 @@ Step   4 [q1] h=3: 1011_
 Step   5 [HALT]: 1100_  （11+1=12 ✓）
 ```
 （二進位加 1 的圖靈機在 5 步內停機——**明確可計算**。
-停機問題：若輸入一個「會無限循環的程式 + 輸入」，則 $H$ 無法判定——這是不可計算問題。）
+停機問題：若輸入一個「會無限循環的程式 + 輸入」，則 $`H`$ 無法判定——這是不可計算問題。）
 
 ## 結案 -- 後果與影響
 - **圖靈的三大貢獻（1936 年論文）**：
@@ -113,8 +132,12 @@ Step   5 [HALT]: 1100_  （11+1=12 ✓）
   2. **通用圖靈機（UTM）**——可程式計算機的理論基礎。
   3. **停機問題不可解**——證明**並非所有數學問題有演算法解**。
 - **Church–Turing 論題**：
-  $$\text{任何有效計算} = \text{圖靈機可計算} = \lambda\text{-可計算}.$$
-  **這不是定理，是哲學性假說**——但至今所有計算模型（量子計算除非推翻，但仍受限制）都證明等價。
+
+$$
+\text{任何有效計算} = \text{圖靈機可計算} = \lambda\text{-可計算}.
+$$
+
+**這不是定理，是哲學性假說**——但至今所有計算模型（量子計算除非推翻，但仍受限制）都證明等價。
 - **Von Neumann 架構（1945）**：ENIAC 團隊（Mauchly/Eckert）+ von Neumann 寫出《First Draft of a Report on the EDVAC》（1945），提出**存儲程式（stored-program）**：
   指令與資料共用記憶體——**UTM 的工程實現**（見「1946-ENIAC電子計算機.md」）。
 - **Turing 參與實作**：二戰期間 Turing 參與破譯德軍 Enigma（Bletchley Park），設計 Bombe 機——

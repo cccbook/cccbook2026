@@ -2,7 +2,11 @@
 
 ## 案件摘要
 2001 年 3 月 24 日，Apple 發布 **Mac OS X 10.0**——核心 **Darwin** 建立在 **Mach 微核心 + FreeBSD** 之上，Unix 第一次被「消費性電腦帝國」收編。
-$$\text{Mac OS X} = \text{Mach 微核心} + \text{BSD（FreeBSD）} + \text{Aqua 圖形介面}.$$
+
+$$
+\text{Mac OS X} = \text{Mach 微核心} + \text{BSD（FreeBSD）} + \text{Aqua 圖形介面}.
+$$
+
 **今天每一台 Mac、iPhone（iOS 為其後裔）的底下，都跑著一套 Unix**。
 
 ## 前因 -- 為什麼會有這個案子
@@ -13,7 +17,11 @@ $$\text{Mac OS X} = \text{Mach 微核心} + \text{BSD（FreeBSD）} + \text{Aqua
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：混合核心（hybrid kernel）
-$$\text{Darwin} = \text{Mach（微核心抽象：IPC、記憶體物件）} + \text{BSD（實用層：POSIX、檔案系統、網路）}.$$
+
+$$
+\text{Darwin} = \text{Mach（微核心抽象：IPC、記憶體物件）} + \text{BSD（實用層：POSIX、檔案系統、網路）}.
+$$
+
 - **彌補的缺陷**：純微核心的效能損耗（IPC 開銷）與純巨核心的隔離性差——混合核心取兩者折衷：Mach 層管抽象，BSD 層管實用。
 
 ### 第二條線索：記憶體保護與搶佔式多工
@@ -21,7 +29,11 @@ $$\text{Darwin} = \text{Mach（微核心抽象：IPC、記憶體物件）} + \te
 - **彌補的缺陷**：一個程式卡死/當掉拖垮全機——OS X 用硬體分頁（MMU）強制隔離。
 
 ### 第三條線索：Unix 的終端與圖形的合體
-$$\text{Terminal（BSD shell）} \;+\; \text{Aqua（圖形介面）} = \text{Mac OS X}.$$
+
+$$
+\text{Terminal（BSD shell）} \;+\; \text{Aqua（圖形介面）} = \text{Mac OS X}.
+$$
+
 - 開發者第一次在消費性電腦上**同時擁有** Unix 命令列與精緻圖形介面——**工程師大舉遷移到 Mac**。
 
 ### Shell 範例：Mac 上的 Unix

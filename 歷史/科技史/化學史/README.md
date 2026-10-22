@@ -52,9 +52,9 @@
 | 1876 | Gibbs 化學熱力學：自由能與化學平衡 | [1876-Gibbs化學熱力學.md](1876-Gibbs化學熱力學.md) |
 | 1884 | Ostwald 與化學平衡、催化理論 | [1884-Ostwald催化與平衡.md](1884-Ostwald催化與平衡.md) |
 | 1887 | Arrhenius 電解質解離說 | [1887-Arrhenius電解解離.md](1887-Arrhenius電解解離.md) |
-| 1887 | van't Hoff 滲透壓定律 $\pi V = nRT$ | [1887-vantHoff滲透壓.md](1887-vantHoff滲透壓.md) |
+| 1887 | van't Hoff 滲透壓定律 $`\pi V = nRT`$ | [1887-vantHoff滲透壓.md](1887-vantHoff滲透壓.md) |
 | 1893 | Werner 配位化學理論 | [1893-Werner配位化學.md](1893-Werner配位化學.md) |
-| 1889 | Arrhenius 活化能與速率常數方程 $k = Ae^{-E_a/RT}$ | [1889-Arrhenius活化能.md](1889-Arrhenius活化能.md) |
+| 1889 | Arrhenius 活化能與速率常數方程 $`k = Ae^{-E_a/RT}`$ | [1889-Arrhenius活化能.md](1889-Arrhenius活化能.md) |
 | 1896 | Becquerel 發現放射性；居禮夫婦分離釙與鐳 | [1896-Becquerel放射性.md](1896-Becquerel放射性.md) |
 | 1898 | Ramsay 發現氦氖氬氪氙，惰性氣體族 | [1898-Ramsay惰性氣體.md](1898-Ramsay惰性氣體.md) |
 | 1909 | Haber 合成氨法與 Sørensen pH 概念 | [1909-Haber合成氨與pH.md](1909-Haber合成氨與pH.md) |
@@ -81,8 +81,8 @@
 | 1962 | Bartlett 合成第一個惰性氣體化合物 XePtF6 | [1962-Bartlett惰性氣體化合物.md](1962-Bartlett惰性氣體化合物.md) |
 | 1927 | Heitler-London 量子力學處理氫分子，量子化學誕生 | [1927-HeitlerLondon氫分子.md](1927-HeitlerLondon氫分子.md) |
 | 1931 | Pauling 價鍵理論與雜化軌域 | [1931-Pauling價鍵理論.md](1931-Pauling價鍵理論.md) |
-| 1931 | Hückel 分子軌域法與芳香性規則 $4n+2$ | [1931-Huckel分子軌域法.md](1931-Huckel分子軌域法.md) |
-| 1951 | Pauling 蛋白質 $\alpha$ -螺旋結構 | [1951-Pauling螺旋結構.md](1951-Pauling螺旋結構.md) |
+| 1931 | Hückel 分子軌域法與芳香性規則 $`4n+2`$ | [1931-Huckel分子軌域法.md](1931-Huckel分子軌域法.md) |
+| 1951 | Pauling 蛋白質 $`\alpha`$ -螺旋結構 | [1951-Pauling螺旋結構.md](1951-Pauling螺旋結構.md) |
 | 1953 | Watson-Crick 解開 DNA 雙螺旋之謎 | [1953-WatsonCrickDNA.md](1953-WatsonCrickDNA.md) |
 | 1964 | Hohenberg-Kohn 定理與密度泛函理論（DFT） | [1964-密度泛函理論.md](1964-密度泛函理論.md) |
 | 1965 | Woodward-Hoffmann 規則：軌域對稱性決定反應路徑 | [1965-WoodwardHoffmann規則.md](1965-WoodwardHoffmann規則.md) |

@@ -12,7 +12,7 @@
 |------|------|------|
 | 1950 | Turing 發表《Computing Machinery and Intelligence》，主張「孩童式學習機」：機器可以像小孩一樣被教導、靠獎懲學習 | [1950-Turing學習機.md](1950-Turing學習機.md) |
 | 1953 | Bellman 在 RAND 發明動態規劃與 Bellman 方程，把「多期決策」化為遞迴 | [1953-Bellman動態規劃.md](1953-Bellman動態規劃.md) |
-| 1957 | Bellman 出版《Dynamic Programming》，最優性原理與 $V^*, Q^*$ 正式問世；同一年 Skiner 的《Verbal Behavior》與 Rommetveit 的隨機學習理論並行，心理學的增強（reinforcement）概念流入工程 | [1957-Bellman最優性原理.md](1957-Bellman最優性原理.md) |
+| 1957 | Bellman 出版《Dynamic Programming》，最優性原理與 $`V^*, Q^*`$ 正式問世；同一年 Skiner 的《Verbal Behavior》與 Rommetveit 的隨機學習理論並行，心理學的增強（reinforcement）概念流入工程 | [1957-Bellman最優性原理.md](1957-Bellman最優性原理.md) |
 
 ### 案發與試誤：會下棋、會配線的機器（1959–1962）
 
@@ -27,8 +27,8 @@
 | 年份 | 事件 | 檔案 |
 |------|------|------|
 | 1972 | Klopf 提出神經元的「獎懲性異質塑造」，動物心理學的 TD 思想流入 AI | [1972-Klopf獎懲塑造.md](1972-Klopf獎懲塑造.md) |
-| 1988 | Sutton 發表〈Learning to Predict by the Methods of Temporal Differences〉： $V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]$ ，TD 誤差成為學習的引擎 | [1988-SuttonTD學習.md](1988-SuttonTD學習.md) |
-| 1989 | Watkins 博士論文提出 Q-learning，證明在適當條件下無模型學習必收斂到 $Q^*$ | [1989-WatkinsQ-learning.md](1989-WatkinsQ-learning.md) |
+| 1988 | Sutton 發表〈Learning to Predict by the Methods of Temporal Differences〉： $`V(s) \leftarrow V(s) + \alpha[r + \gamma V(s') - V(s)]`$ ，TD 誤差成為學習的引擎 | [1988-SuttonTD學習.md](1988-SuttonTD學習.md) |
+| 1989 | Watkins 博士論文提出 Q-learning，證明在適當條件下無模型學習必收斂到 $`Q^*`$ | [1989-WatkinsQ-learning.md](1989-WatkinsQ-learning.md) |
 
 ### 數位革命：神經網路遇上 RL（1992–1998）
 

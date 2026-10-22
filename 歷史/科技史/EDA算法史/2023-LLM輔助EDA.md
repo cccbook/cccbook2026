@@ -14,7 +14,9 @@ AI 佈局（AlphaChip, 2021）之後，EDA 的最後一塊處女地：**設計�
 ### 核心：LLM 作為設計代理
 LLM 的本質是**下一 token 機率分布**的建模：
 
-$$P(x_t \mid x_{<t}) = \text{softmax}(W h_t), \quad h_t = \text{Transformer}(x_{<t})$$
+$$
+P(x_t \mid x_{<t}) = \text{softmax}(W h_t), \quad h_t = \text{Transformer}(x_{<t})
+$$
 
 EDA 的用法分三層：
 
@@ -27,7 +29,9 @@ EDA 的用法分三層：
 ### ChatEDA：自然語言 → 工具鏈編排
 ChatEDA 的架構：LLM 為「大腦」，EDA 工具為「手腳」——
 
-$$\text{自然語言指令} \xrightarrow{\text{LLM 任務規劃}} \text{工具序列} \xrightarrow{\text{執行}} \text{結果回饋} \xrightarrow{\text{LLM 反思}} \cdots$$
+$$
+\text{自然語言指令} \xrightarrow{\text{LLM 任務規劃}} \text{工具序列} \xrightarrow{\text{執行}} \text{結果回饋} \xrightarrow{\text{LLM 反思}} \cdots
+$$
 
 LLM 把「用戶意圖」翻譯成 EDA 工具的調用序列（如：跑合成 → 時序分析 → 若違規調整約束重跑）——這是「代理（agent）」範式在 EDA 的第一次系統化：推理（reasoning）+ 工具使用（tool use）+ 回饋（reflection）的迴圈。
 

@@ -12,35 +12,45 @@
 ## 線索與推理 -- 數學、程式、理論
 
 ### 線索一：火花隙發射器
-Hertz 的發射器是一對金屬球中間夾 7.5 mm 火花隙，由感應線圈充電。火花隙擊穿時，電荷在金屬球間以約 $L C$ 電路的頻率來回振盪：
+Hertz 的發射器是一對金屬球中間夾 7.5 mm 火花隙，由感應線圈充電。火花隙擊穿時，電荷在金屬球間以約 $`L C`$ 電路的頻率來回振盪：
 
-$$f_0 = \frac{1}{2\pi\sqrt{LC}}$$
+$$
+f_0 = \frac{1}{2\pi\sqrt{LC}}
+$$
 
 每次火花對應一串阻尼振盪（dipole antenna 輻射）：
 
-$$E(t) \propto e^{-\gamma t}\cos(2\pi f_0 t)$$
+$$
+E(t) \propto e^{-\gamma t}\cos(2\pi f_0 t)
+$$
 
-他的偶極天線半波長約 0.5 m，故輻射頻率約 $f \approx c/(2\times1\,\mathrm{m}) \approx 150\ \mathrm{MHz}$ （今日稱 VHF/超短波波段，波長約 2–3 m，含諧波成分）。
+他的偶極天線半波長約 0.5 m，故輻射頻率約 $`f \approx c/(2\times1\,\mathrm{m}) \approx 150\ \mathrm{MHz}`$ （今日稱 VHF/超短波波段，波長約 2–3 m，含諧波成分）。
 
 ### 線索二：共振環接收器
 接收器是直徑約 35 cm 的開口金屬環，環上也有微小火花隙。當電磁波到達，環中感應電動勢若與環的固有頻率共振，火花隙便迸出微小火花：
 
-$$V_{\mathrm{ind}} = -\frac{d\Phi_B}{dt} \quad(\text{Faraday 定律})$$
+$$
+V_{\mathrm{ind}} = -\frac{d\Phi_B}{dt} \quad(\text{Faraday 定律})
+$$
 
-Hertz 在暗室中看見極微弱的火花——**這就是電磁波的「指紋」**。他移動接收環的方向，發現火花強度隨方位變化，符合偶極輻射的角分佈 $I(\theta)\propto\sin^2\theta$ ，證明波是**橫波**（沿偶極軸方向無輻射）。
+Hertz 在暗室中看見極微弱的火花——**這就是電磁波的「指紋」**。他移動接收環的方向，發現火花強度隨方位變化，符合偶極輻射的角分佈 $`I(\theta)\propto\sin^2\theta`$ ，證明波是**橫波**（沿偶極軸方向無輻射）。
 
 ### 線索三：駐波測波長——關鍵測量
 Hertz 讓波在金屬牆（大鋅板）反射，入射波與反射波疊加形成**駐波**：
 
-$$E(x,t) = 2E_0\sin(kx)\cos(\omega t), \qquad k = \frac{2\pi}{\lambda}$$
+$$
+E(x,t) = 2E_0\sin(kx)\cos(\omega t), \qquad k = \frac{2\pi}{\lambda}
+$$
 
-波節（節點）間距為 $\lambda/2$ 。Hertz 沿牆法線方向移動接收器，記錄火花消失的位置，量得半波長約 1.5–1.6 m，即 $\lambda \approx 3\ \mathrm{m}$ （對應主要振盪頻率）。
+波節（節點）間距為 $`\lambda/2`$ 。Hertz 沿牆法線方向移動接收器，記錄火花消失的位置，量得半波長約 1.5–1.6 m，即 $`\lambda \approx 3\ \mathrm{m}`$ （對應主要振盪頻率）。
 
-**推理（結案關鍵一步）**：已知頻率 $f$ 與波長 $\lambda$ ，波速為
+**推理（結案關鍵一步）**：已知頻率 $`f`$ 與波長 $`\lambda`$ ，波速為
 
-$$v = f\lambda \approx 3\times10^8\ \mathrm{m/s} = c$$
+$$
+v = f\lambda \approx 3\times10^8\ \mathrm{m/s} = c
+$$
 
-**電磁波的速度就是光速**——Maxwell 方程 $\nabla^2\mathbf{E} = \mu_0\epsilon_0\,\partial_t^2\mathbf{E}$ 與 $c = 1/\sqrt{\mu_0\epsilon_0}$ 的預言被實驗直接證實。
+**電磁波的速度就是光速**——Maxwell 方程 $`\nabla^2\mathbf{E} = \mu_0\epsilon_0\,\partial_t^2\mathbf{E}`$ 與 $`c = 1/\sqrt{\mu_0\epsilon_0}`$ 的預言被實驗直接證實。
 
 ### 線索四：電磁波的光學性質
 Hertz 進一步用大稜鏡（硬橡膠製，重約 680 kg）證明電磁波會**折射**；用金屬柵網證明會**偏振**（柵條平行偶極軸時擋波）；用大型凹面鏡證明會**反射聚焦**。波動光學的全部性質都適用——光與電磁波同族的證據鏈完整閉合。
@@ -84,7 +94,7 @@ for x0 in [0.75, 1.5]:
           f"-> {'節點: 不發火花' if amp < 0.2 else '腹點: 火花明亮'}")
 ```
 
-輸出顯示節點間距恰為 $\lambda/2 = 1.5$ m、 $v=f\lambda=c$ ，並重現「節點無火花、腹點火花亮」的 Hertz 觀察。
+輸出顯示節點間距恰為 $`\lambda/2 = 1.5`$ m、 $`v=f\lambda=c`$ ，並重現「節點無火花、腹點火花亮」的 Hertz 觀察。
 
 ## 結案 -- 後果與影響
 - **結案陳詞**：電磁波存在、速度為光速、具有反射折射偏振等光學性質——Maxwell 理論定讞成立。

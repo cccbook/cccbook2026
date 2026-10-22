@@ -70,7 +70,9 @@ print(trampoline(fact_trampoline, 100000))     # 算得出 100000!
 
 CPS 是把控制流顯式化的變換：每個函數多一個參數 `k`（continuation，代表「接下來要做什麼」），所有呼叫都是尾呼叫：
 
-$$\llbracket e \rrbracket_{\mathrm{cps}} : (\text{值} \to \text{答案}) \to \text{答案}$$
+$$
+\llbracket e \rrbracket_{\mathrm{cps}} : (\text{值} \to \text{答案}) \to \text{答案}
+$$
 
 ```scheme
 ; CPS 版本的 fact：k 是 continuation

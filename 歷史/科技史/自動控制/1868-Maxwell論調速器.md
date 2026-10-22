@@ -20,7 +20,7 @@
 ### 第 1 步：把調速器寫成微分方程
 
 Maxwell 的偵探手法：不畫機械圖，而是**直接寫方程組**。以三階簡化模型為例
-（飛球角 $\theta$ 、蒸汽機轉速 $\omega$ 、節流閥位移 $u$ ）：
+（飛球角 $`\theta`$ 、蒸汽機轉速 $`\omega`$ 、節流閥位移 $`u`$ ）：
 
 $$
 J\dot\omega = a\,u - b\,\omega, \qquad
@@ -28,7 +28,7 @@ M\ddot\theta = -k\theta - c\dot\theta + d(\omega - \omega_0), \qquad
 u = -g\,\theta
 $$
 
-其中 $g$ 是調速器增益。消去變數，得閉環特徵方程：
+其中 $`g`$ 是調速器增益。消去變數，得閉環特徵方程：
 
 $$
 a_n \lambda^3 + a_{n-1}\lambda^2 + a_{n-1}\lambda + a_0 = 0
@@ -36,15 +36,15 @@ $$
 
 ### 第 2 步：穩定性 = 根的實部符號
 
-線性系統的解是 $\lambda_i$ 的指數組合：
+線性系統的解是 $`\lambda_i`$ 的指數組合：
 
 $$
 x(t) = \sum_i c_i e^{\lambda_i t}
 $$
 
-- $\mathrm{Re}(\lambda_i) < 0$ ： $e^{\lambda_i t} \to 0$ ，擾動衰減——**穩定**。
-- $\mathrm{Re}(\lambda_i) > 0$ ： $e^{\lambda_i t} \to \infty$ ，擾動放大——**不穩定**。
-- $\mathrm{Re}(\lambda_i) = 0$ （純虛數）：持續振盪——**hunting**！
+- $`\mathrm{Re}(\lambda_i) < 0`$ ： $`e^{\lambda_i t} \to 0`$ ，擾動衰減——**穩定**。
+- $`\mathrm{Re}(\lambda_i) > 0`$ ： $`e^{\lambda_i t} \to \infty`$ ，擾動放大——**不穩定**。
+- $`\mathrm{Re}(\lambda_i) = 0`$ （純虛數）：持續振盪——**hunting**！
 
 **謎題解開**：hunting 就是特徵根跑到虛軸上。蒸汽機 + 調速器的某些參數組合，
 讓系統恰好落在「穩定邊界」。
@@ -58,14 +58,14 @@ $$
 
 ### 第 4 步：參數如何影響穩定
 
-以二階系統 $\ddot x + 2\zeta\omega_n\dot x + \omega_n^2 x = 0$ 為例：
+以二階系統 $`\ddot x + 2\zeta\omega_n\dot x + \omega_n^2 x = 0`$ 為例：
 
 | 參數 | 穩定條件 | 物理意義 |
 |------|----------|----------|
-| $\omega_n^2 > 0$ | 剛度為正 | 回復力指向平衡點 |
-| $\zeta > 0$ | 阻尼為正 | 能量耗散 |
+| $`\omega_n^2 > 0`$ | 剛度為正 | 回復力指向平衡點 |
+| $`\zeta > 0`$ | 阻尼為正 | 能量耗散 |
 
-**調速器增益太大 ⇒ 有效阻尼下降 ⇒ $\zeta$ 接近 0 ⇒ hunting**。
+**調速器增益太大 ⇒ 有效阻尼下降 ⇒ $`\zeta`$ 接近 0 ⇒ hunting**。
 這就是為何某些蒸汽機振盪：不是調速器不好，是**增益調得太高**——
 「增益與穩定的 trade-off」從此成為控制設計的核心矛盾。
 

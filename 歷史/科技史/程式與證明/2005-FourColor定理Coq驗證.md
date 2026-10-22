@@ -16,19 +16,19 @@
 
 ### 線索一：可約構形＋放電法的雙重鎖
 
-形式化之前，先重述 Appel–Haken 策略。假設存在極小反例 $G$ （頂點數最少的需五色平面圖），則：
+形式化之前，先重述 Appel–Haken 策略。假設存在極小反例 $`G`$ （頂點數最少的需五色平面圖），則：
 
-1. $G$ 必為三角剖分（triangulation），否則可加邊得更小反例。
-2. 列出一組構形集 $K$ ，證明 $K$ 不可避免（unavoidable）：任何三角剖分必含 $K$ 中一員，此即放電法（discharging）。
-3. 證明 $K$ 中每員可約（reducible）：含該構形的圖不可為極小反例。
+1. $`G`$ 必為三角剖分（triangulation），否則可加邊得更小反例。
+2. 列出一組構形集 $`K`$ ，證明 $`K`$ 不可避免（unavoidable）：任何三角剖分必含 $`K`$ 中一員，此即放電法（discharging）。
+3. 證明 $`K`$ 中每員可約（reducible）：含該構形的圖不可為極小反例。
 
-若 $K$ 又不可避免又可約，則極小反例不可能存在，定理得證。邏輯骨架為：
+若 $`K`$ 又不可避免又可約，則極小反例不可能存在，定理得證。邏輯骨架為：
 
 $$
 Unavoidable(K) \land (\forall C \in K : Reducible(C)) \Rightarrow 4CT
 $$
 
-其中 $4CT$ 表「所有平面圖四可著色」。偵探的工作就是把這兩 conjunct 都變成 Coq 定理。
+其中 $`4CT`$ 表「所有平面圖四可著色」。偵探的工作就是把這兩 conjunct 都變成 Coq 定理。
 
 表格：證明規模演化。
 
@@ -42,15 +42,15 @@ $$
 
 Gonthier 的策略不是重寫數學，而是把整個組合論證搬進構造演算（CIC）。平面圖、超圖（hypermap）、可約性檢查器，全部在 Coq 內定義；放電法的計數論證變成可計算的布林判斷。
 
-關鍵技巧是「反射」（reflection）：把判定 $P$ 寫成布林函數 $b_P$ ，再證明 $b_P = true \leftrightarrow P$ 。於是 633 個構形的可約性檢查，在 Coq 內就是一次 $Compute$ ：
+關鍵技巧是「反射」（reflection）：把判定 $`P`$ 寫成布林函數 $`b_P`$ ，再證明 $`b_P = true \leftrightarrow P`$ 。於是 633 個構形的可約性檢查，在 Coq 內就是一次 $`Compute`$ ：
 
 $$
 CheckAll(K) = true \Rightarrow \forall C \in K : Reducible(C)
 $$
 
-機器檢查 $CheckAll(K)$ 歸約到 $true$ ，即完成上千個案例的驗證。信任基縮小到 Coq 核心與規格定義，不再信任一次性 C 程式。
+機器檢查 $`CheckAll(K)`$ 歸約到 $`true`$ ，即完成上千個案例的驗證。信任基縮小到 Coq 核心與規格定義，不再信任一次性 C 程式。
 
-偵查筆記：超圖形式化約 6 萬行 Coq，定義平面性、對偶、 Kempe 鏈等概念；放電部分把「電荷」分配寫成有理數計算， $\sum charge = 12$ 一類的組合恆等式全部機械驗算。
+偵查筆記：超圖形式化約 6 萬行 Coq，定義平面性、對偶、 Kempe 鏈等概念；放電部分把「電荷」分配寫成有理數計算， $`\sum charge = 12`$ 一類的組合恆等式全部機械驗算。
 
 ### 線索三：SSReflect 的雛形
 
@@ -72,9 +72,9 @@ SSReflect 後來長成 MathComp 函式庫，支撐 2012 年 Odd Order 定理。�
 
 ## 證據與工具
 
-證據 A：定理陳述（Coq 風格簡寫）。 $map$ 為平面超圖， $coloring$ 為四色函數，定理斷言 $\forall map : Planar \, map \Rightarrow \exists coloring : Proper \, coloring$ 。
+證據 A：定理陳述（Coq 風格簡寫）。 $`map`$ 為平面超圖， $`coloring`$ 為四色函數，定理斷言 $`\forall map : Planar \, map \Rightarrow \exists coloring : Proper \, coloring`$ 。
 
-證據 B：放電恆等式示例。初賦電荷 $ch(v) = deg(v) - 6$ ，面電荷 $ch(f) = 2 \, deg(f) - 6$ ，放電後總和不變，極小反例的正電荷頂點附近必現 $K$ 中構形。
+證據 B：放電恆等式示例。初賦電荷 $`ch(v) = deg(v) - 6`$ ，面電荷 $`ch(f) = 2 \, deg(f) - 6`$ ，放電後總和不變，極小反例的正電荷頂點附近必現 $`K`$ 中構形。
 
 證據 C：反射引理模式。
 
@@ -82,6 +82,6 @@ SSReflect 後來長成 MathComp 函式庫，支撐 2012 年 Odd Order 定理。�
 Lemma check_implies P b : reflect P b -> (b = true -> P).
 ```
 
-一旦證明 $reflect$ 實例， $b = true$ 的計算即 $P$ 的證明。
+一旦證明 $`reflect`$ 實例， $`b = true`$ 的計算即 $`P`$ 的證明。
 
 證據 D：延伸閱讀。Gonthier 2008 年〈Formal Proof: The Four-Color Theorem〉；Robertson 等 1997 年簡化證明；MathComp/SSReflect 文件與 Coq 四色原始碼庫。

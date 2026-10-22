@@ -11,7 +11,7 @@
 
 ## 線索與推理 -- 數學式、程式、理論
 ### 1. 主動式衛星 vs 被動反射
-Echo 被動反射：地面接收功率 ~ $\left(\frac{\sigma_{sc}}{4\pi R_t^2 R_r^2}\right)$ 級，損耗巨大。
+Echo 被動反射：地面接收功率 ~ $`\left(\frac{\sigma_{sc}}{4\pi R_t^2 R_r^2}\right)`$ 級，損耗巨大。
 Telstar 主動轉頻：衛星先接收、放大、再變頻發射——鏈路損耗只需付一次衛星路徑的自由空間衰減。
 
 ### 2. Telstar 的設計
@@ -23,18 +23,24 @@ Telstar 主動轉頻：衛星先接收、放大、再變頻發射——鏈路損
 ### 3. 衛星通訊鏈路預算：Friis 公式
 Friis 傳輸公式給出自由空間接收功率：
 
-$$P_r = P_t\,G_t\,G_r\left(\frac{\lambda}{4\pi R}\right)^2$$
+$$
+P_r = P_t\,G_t\,G_r\left(\frac{\lambda}{4\pi R}\right)^2
+$$
 
 以 dB 表示的鏈路預算：
 
-$$\frac{P_r}{P_n}\,(\text{dB}) = P_t + G_t + G_r - 20\log_{10}\!\left(\frac{4\pi R}{\lambda}\right) - \underbrace{10\log_{10}(kTB)}_{\text{雜訊功率}}$$
+$$
+\frac{P_r}{P_n}\,(\text{dB}) = P_t + G_t + G_r - 20\log_{10}\!\left(\frac{4\pi R}{\lambda}\right) - \underbrace{10\log_{10}(kTB)}_{\text{雜訊功率}}
+$$
 
-其中 $\frac{4\pi R}{\lambda}$ 是「自由空間路徑損耗」，距離每翻倍損耗加 6 dB。
+其中 $`\frac{4\pi R}{\lambda}`$ 是「自由空間路徑損耗」，距離每翻倍損耗加 6 dB。
 
 ### 4. Clarke 同步軌道的數學
 同步軌道半徑由 Kepler 第三定律決定：軌道週期等於地球自轉（23h56m）：
 
-$$T = 2\pi\sqrt{\frac{r^3}{GM_\oplus}} \;\Rightarrow\; r = \left(\frac{GM_\oplus T^2}{4\pi^2}\right)^{1/3} \approx 42{,}164\ \text{km}$$
+$$
+T = 2\pi\sqrt{\frac{r^3}{GM_\oplus}} \;\Rightarrow\; r = \left(\frac{GM_\oplus T^2}{4\pi^2}\right)^{1/3} \approx 42{,}164\ \text{km}
+$$
 
 減去地球半徑 6,378 km，得高度 **35,786 km**。
 

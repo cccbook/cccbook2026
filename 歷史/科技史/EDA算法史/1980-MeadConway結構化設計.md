@@ -16,22 +16,24 @@
 
 | 規則 | λ 表達 |
 |------|--------|
-| 最小線寬 | $2\lambda$ |
-| 最小間距 | $2\lambda$ |
-| 接觸孔 | $2\lambda \times 2\lambda$ |
-| 多晶矽閘對擴散的延伸 | $2\lambda$ |
+| 最小線寬 | $`2\lambda`$ |
+| 最小間距 | $`2\lambda`$ |
+| 接觸孔 | $`2\lambda \times 2\lambda`$ |
+| 多晶矽閘對擴散的延伸 | $`2\lambda`$ |
 
-**推理**：微影誤差、套刻誤差都與特徵尺寸成比例（線性縮放），因此把安全餘量表達成 λ 的比例，設計就對製程**尺度不變**——換製程只改一個常數。這是數學上的相似變換（scaling transform）：座標 $\times s$ ，設計不變。
+**推理**：微影誤差、套刻誤差都與特徵尺寸成比例（線性縮放），因此把安全餘量表達成 λ 的比例，設計就對製程**尺度不變**——換製程只改一個常數。這是數學上的相似變換（scaling transform）：座標 $`\times s`$ ，設計不變。
 
 ### 線索二：結構化設計三原則
-1. **階層化（hierarchy）**：大系統 = 小單元的巢狀組合，設計複雜度從 $O(n)$ 降到 $O(\log n)$ 層級管理；
+1. **階層化（hierarchy）**：大系統 = 小單元的巢狀組合，設計複雜度從 $`O(n)`$ 降到 $`O(\log n)`$ 層級管理；
 2. **規則化（regularity）**：記憶體、ALU 用重複單元，一個單元設計好，處處復用（iteration + replication）；
 3. **局部性（locality）**：介面規範清楚，模組內部與外界解耦——平行設計成為可能。
 
 ### 線索三：符號版圖與工具鏈
 設計者畫「棒狀圖（sticks）」——只標拓撲連接與相對位置，工具按 λ 規則生成實體幾何：
 
-$$\text{sticks (拓撲)} \xrightarrow{\ \lambda\ \text{規則生成器}\ } \text{geometry (實體)}$$
+$$
+\text{sticks (拓撲)} \xrightarrow{\ \lambda\ \text{規則生成器}\ } \text{geometry (實體)}
+$$
 
 這是「設計表示與物理實現分離」的第一次工程實踐，直接預示了後來的 EDIF、GDSII 工作流與生成的 layout generator 語言（如 1980s 的 silicon compilers）。
 

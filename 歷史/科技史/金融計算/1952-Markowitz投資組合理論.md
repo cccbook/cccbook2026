@@ -23,23 +23,29 @@ Markowitz 的洞察：投資人關心的是「**期望報酬**」與「**風險*
 
 ### 線索二：相關性是分散的靈魂
 
-關鍵數學：對 $n$ 檔資產，權重 $\mathbf{w} = (w_1, \dots, w_n)^T$ ，期望報酬向量 $\boldsymbol{\mu}$ ，共變異數矩陣 $\Sigma$ ：
+關鍵數學：對 $`n`$ 檔資產，權重 $`\mathbf{w} = (w_1, \dots, w_n)^T`$ ，期望報酬向量 $`\boldsymbol{\mu}`$ ，共變異數矩陣 $`\Sigma`$ ：
 
-$$E[R_p] = \mathbf{w}^T \boldsymbol{\mu}, \qquad \mathrm{Var}(R_p) = \mathbf{w}^T \Sigma \, \mathbf{w}$$
+$$
+E[R_p] = \mathbf{w}^T \boldsymbol{\mu}, \qquad \mathrm{Var}(R_p) = \mathbf{w}^T \Sigma \, \mathbf{w}
+$$
 
 **展開變異數**：
 
-$$\mathbf{w}^T \Sigma \, \mathbf{w} = \sum_i w_i^2 \sigma_i^2 + \sum_{i \neq j} w_i w_j \, \sigma_{ij}$$
+$$
+\mathbf{w}^T \Sigma \, \mathbf{w} = \sum_i w_i^2 \sigma_i^2 + \sum_{i \neq j} w_i w_j \, \sigma_{ij}
+$$
 
-當資產間相關係數 $\rho_{ij} < 1$ 時，組合變異數**小於**個股變異數的加權平均——這就是「分散投資降低風險」的數學證明。極端情況下，若 $\rho = -1$ ，可以構造出零風險組合。
+當資產間相關係數 $`\rho_{ij} < 1`$ 時，組合變異數**小於**個股變異數的加權平均——這就是「分散投資降低風險」的數學證明。極端情況下，若 $`\rho = -1`$ ，可以構造出零風險組合。
 
 ### 線索三：效率前緣——一個二次規劃問題
 
 Markowitz 把投資組合選擇寫成二次規劃（QP）：
 
-$$\min_{\mathbf{w}} \; \mathbf{w}^T \Sigma \, \mathbf{w} \quad \text{s.t.} \quad \mathbf{w}^T \boldsymbol{\mu} = \mu^*, \quad \mathbf{w}^T \mathbf{1} = 1$$
+$$
+\min_{\mathbf{w}} \; \mathbf{w}^T \Sigma \, \mathbf{w} \quad \text{s.t.} \quad \mathbf{w}^T \boldsymbol{\mu} = \mu^*, \quad \mathbf{w}^T \mathbf{1} = 1
+$$
 
-對每個目標報酬 $\mu^*$ 求解，得到的最低風險組合連成一條曲線——**效率前緣（Efficient Frontier）**。理性投資人只應該選擇前緣上的組合。
+對每個目標報酬 $`\mu^*`$ 求解，得到的最低風險組合連成一條曲線——**效率前緣（Efficient Frontier）**。理性投資人只應該選擇前緣上的組合。
 
 Markowitz 在 1950 年代初期用**手工計算**（參考線性規劃的 Dantzig 單純形法）求解小規模問題——這也是二次規劃演算法發展的動力之一。
 
@@ -76,9 +82,9 @@ for mu_star in np.linspace(0.07, 0.12, 20):
 - **1959 年**，Markowitz 出版專書《Portfolio Selection: Efficient Diversification of Investments》，加入完整的計算方法。
 - **1964 年**，他的學生 Sharpe 從這套框架中提煉出 CAPM（見 [1964-SharpeCAPM.md](1964-SharpeCAPM.md)）。
 - **1990 年**諾貝爾獎。
-- 現代資產管理業的根基：**所有現代資產配置、風險平價、Robo-advisor 的數學核心都是 Markowitz 的 $\mathbf{w}^T \Sigma \mathbf{w}$ 。**
+- 現代資產管理業的根基：**所有現代資產配置、風險平價、Robo-advisor 的數學核心都是 Markowitz 的 $`\mathbf{w}^T \Sigma \mathbf{w}`$ 。**
 - Markowitz 自己曾說，他的貢獻不是告訴投資人「如何選股」，而是「**如何在不選股的前提下思考風險**」。
-- 著名的盲點：Markowitz 框架依賴 $\Sigma$ 的估計，而實務上 $\Sigma$ 難以準確估計（高維度下估計誤差巨大）——這催生了後來的 shrinkage 估計（Ledoit–Wolf 2004）與因子模型。
+- 著名的盲點：Markowitz 框架依賴 $`\Sigma`$ 的估計，而實務上 $`\Sigma`$ 難以準確估計（高維度下估計誤差巨大）——這催生了後來的 shrinkage 估計（Ledoit–Wolf 2004）與因子模型。
 
 ## 偵探筆記
 

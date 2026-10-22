@@ -23,15 +23,23 @@ Berg 因此獲 1980 年諾貝爾化學獎（與 Sanger、Gilbert 同獲）——
 
 ### 核心推理：黏性末端 = 拼接的魔鬼氈
 EcoRI 的切割：
-$$5'\text{-G A A T T C-}3' \xrightarrow{EcoRI} 
+
+$$
+5'\text{-G A A T T C-}3' \xrightarrow{EcoRI} 
 \begin{cases}
 5'\text{-G} \quad \text{AATTC-}3' \\
 3'\text{-CTTAA} \quad \text{G-}5'
-\end{cases}$$
+\end{cases}
+$$
+
 切口留下 **AATT 單鏈尾巴**（黏性末端）。兩段用 EcoRI 剪的 DNA，
 尾巴**互補咬合**、連接酶封口：
-$$\text{DNA}_1 + \text{DNA}_2 \xrightarrow{EcoRI + \text{連接酶}} \text{重組 DNA}.$$
-**特異性的數學**：EcoRI 認 6 bp 序列—— $4^6 = 4096$ bp 隨機出現一次——
+
+$$
+\text{DNA}_1 + \text{DNA}_2 \xrightarrow{EcoRI + \text{連接酶}} \text{重組 DNA}.
+$$
+
+**特異性的數學**：EcoRI 認 6 bp 序列—— $`4^6 = 4096`$ bp 隨機出現一次——
 **4 kb 的基因組有 ~1000 個切點、30 億的人類基因組有 ~73 萬個**——
 剪刀的特異性讓拼接**可程式化**（CRISPR 2012 的先聲：剪刀 + 序列 = 可程式化編輯）。
 
@@ -40,7 +48,11 @@ Berg 的雜種 DNA **不能複製**（沒有複製起點）。1973 年，Cohen �
 最後一環：把外源基因拼進**質體 (plasmid)**——細菌的環狀小染色體（有自己的複製起點），
 轉型（Avery 1944 偵破的機制！）送進大腸桿菌——
 **細胞自己複製外源基因**：
-$$\text{外源基因} + \text{質體} \xrightarrow{EcoRI + \text{連接酶}} \text{重組質體} \xrightarrow{\text{轉型}} \text{大腸桿菌} \to \text{基因量產}.$$
+
+$$
+\text{外源基因} + \text{質體} \xrightarrow{EcoRI + \text{連接酶}} \text{重組質體} \xrightarrow{\text{轉型}} \text{大腸桿菌} \to \text{基因量產}.
+$$
+
 **基因可以種進細胞、讓細胞當工廠**——1978 年合成人類胰島素（Genentech，1982 年獲批——
 第一個基因工程藥物，見 `1921-BantingBest胰島素.md` 的接力）、
 1980 年代的生技產業全部由此誕生。

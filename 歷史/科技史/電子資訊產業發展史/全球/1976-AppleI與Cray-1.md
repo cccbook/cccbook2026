@@ -31,7 +31,9 @@ Cray-1 的動機是性能極限。Cray 的工程哲學：「我不懂行銷，�
 ## 理論
 Cray-1 的向量鏈結（chaining）使兩條指令並行：
 
-$$\text{向量加法}：C_i = A_i + B_i \quad \text{鏈結} \quad \text{向量乘法}：D_i = B_i \times C_i$$
+$$
+\text{向量加法}：C_i = A_i + B_i \quad \text{鏈結} \quad \text{向量乘法}：D_i = B_i \times C_i
+$$
 
 每次鏈結可節省一個向量的讀寫往返時間。Cray-1 峰值約 160 MFLOPS（80 MHz × 2 FLOP/週期 × 1 鏈結）。對照：Apple I 的 1 MHz 6502 約 0.05 MIPS——相差三到四個數量級，但 Apple I 一台抵得上 Cray 一台的「台數」達 10 萬倍以上，總運算力在十年內反而由 Apple 陣營反超。
 

@@ -6,7 +6,7 @@
 
 > **波動率不是常數——它可以被預測！**
 
-Black–Scholes 假設 $\sigma$ 是常數，但看一眼任何股價圖就知道：平靜的日子聚集在一起，瘋狂的日子也聚集在一起（**波動率聚類**，volatility clustering）。Engle 的 ARCH 模型是第一個系統性地為「風險本身建模」的工具。Engle 獲 **2003 年**諾貝爾獎。
+Black–Scholes 假設 $`\sigma`$ 是常數，但看一眼任何股價圖就知道：平靜的日子聚集在一起，瘋狂的日子也聚集在一起（**波動率聚類**，volatility clustering）。Engle 的 ARCH 模型是第一個系統性地為「風險本身建模」的工具。Engle 獲 **2003 年**諾貝爾獎。
 
 ## 前因：常數波動的矛盾
 
@@ -21,26 +21,30 @@ Black–Scholes 假設 $\sigma$ 是常數，但看一眼任何股價圖就知道
 
 Engle 的核心思想：把變異數拆成「無條件（常數）」與「條件（隨時間變化）」：
 
-$$r_t = \mu_t + \varepsilon_t, \qquad \varepsilon_t \mid \mathcal{I}_{t-1} \sim N(0, h_t)$$
+$$
+r_t = \mu_t + \varepsilon_t, \qquad \varepsilon_t \mid \mathcal{I}_{t-1} \sim N(0, h_t)
+$$
 
-其中 $h_t$ 是**條件變異數**——用過去資訊 $\mathcal{I}_{t-1}$ 可預測。
+其中 $`h_t`$ 是**條件變異數**——用過去資訊 $`\mathcal{I}_{t-1}`$ 可預測。
 
 ### 線索二：ARCH(p) 方程式
 
 讓條件變異數取決於過去的**平方誤差**：
 
-$$h_t = \omega + \sum_{i=1}^{p} \alpha_i \, \varepsilon_{t-i}^2$$
+$$
+h_t = \omega + \sum_{i=1}^{p} \alpha_i \, \varepsilon_{t-i}^2
+$$
 
-**數學解讀**：昨天的大誤差（ $\varepsilon_{t-1}^2$ 大）→ 今天的變異數大。這正是波動率聚類的數學化身。
+**數學解讀**：昨天的大誤差（ $`\varepsilon_{t-1}^2`$ 大）→ 今天的變異數大。這正是波動率聚類的數學化身。
 
-- 限制 $\alpha_i \geq 0$ 、 $\sum \alpha_i < 1$ 保證平穩性。
-- 無條件變異數 $= \dfrac{\omega}{1 - \sum \alpha_i}$ （常數），但**條件**變異數隨時間劇烈波動。
+- 限制 $`\alpha_i \geq 0`$ 、 $`\sum \alpha_i < 1`$ 保證平穩性。
+- 無條件變異數 $`= \dfrac{\omega}{1 - \sum \alpha_i}`$ （常數），但**條件**變異數隨時間劇烈波動。
 
 ### 線索三：為什麼這是革命？
 
 在 ARCH 之前，「預測」只針對**均值**；ARCH 讓**變異數也可以預測**。這開啟了全新的問題清單：
 
-- 波動率預測 → 風險管理（VaR）、選擇權定價（時變 $\sigma$ ）
+- 波動率預測 → 風險管理（VaR）、選擇權定價（時變 $`\sigma`$ ）
 - 波動率的可預測性**不違反**有效市場假說：報酬的均值仍不可預測，但風險可以——「預測風險」與「預測報酬」是兩回事。
 
 ## 現代程式重現：ARCH(1) 模擬與檢驗

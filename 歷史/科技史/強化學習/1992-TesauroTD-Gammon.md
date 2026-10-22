@@ -1,7 +1,7 @@
 # 1992 - Tesauro 的 TD-Gammon（自我對弈學成大師）
 
 ## 案件摘要
-1992 年，IBM 的 Gerald Tesauro 發表 **TD-Gammon**——一個只用 TD( $\lambda$ ) 學習
+1992 年，IBM 的 Gerald Tesauro 發表 **TD-Gammon**——一個只用 TD( $`\lambda`$ ) 學習
 + 神經網路 + **自我對弈**訓練的西洋雙陸棋 (backgammon) 程式。
 它不讀任何人類棋譜、不靠任何開局理論，純靠「自己跟自己下幾十萬局」，
 達到了**人類世界頂尖水準**，改變了人類雙陸棋的開局定式。**這是 AlphaGo 的 24 年前預演。**
@@ -19,18 +19,30 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理一：估值網路取代搜索
-TD-Gammon 用三層神經網路 $V_\theta(s)$ 直接從局面（198 個輸入特徵）
+TD-Gammon 用三層神經網路 $`V_\theta(s)`$ 直接從局面（198 個輸入特徵）
 預測「白方最終獲勝的機率」：
-$$V_\theta(s) \approx P(\text{白方勝} \mid s), \qquad \theta \text{ 為網路權重}.$$
+
+$$
+V_\theta(s) \approx P(\text{白方勝} \mid s), \qquad \theta \text{ 為網路權重}.
+$$
+
 決策：對每個合法走法，取「走完後的期望局面」估值最高者：
-$$a^* = \arg\max_{a \in \mathcal{A}(s)} \mathbb{E}_{\text{dice}}\big[ V_\theta(s') \big].$$
+
+$$
+a^* = \arg\max_{a \in \mathcal{A}(s)} \mathbb{E}_{\text{dice}}\big[ V_\theta(s') \big].
+$$
+
 **沒有 minimax 搜索、沒有對手模型——單靠一個估值函數。**
 
-### 核心推理二：TD( $\lambda$ ) 自我對弈
-每局白方 vs 黑方（同一網路），終局回傳 $z \in \{0, 1\}$ （白方勝/負），
+### 核心推理二：TD( $`\lambda`$ ) 自我對弈
+每局白方 vs 黑方（同一網路），終局回傳 $`z \in \{0, 1\}`$ （白方勝/負），
 每一步用 TD 誤差更新：
-$$\delta_t = V_\theta(s_{t+1}) - V_\theta(s_t), \qquad \theta \leftarrow \theta + \eta\, \delta_t\, e_t,$$
-其中 $e_t$ 是資格跡： $e_t = \lambda e_{t-1} + \nabla_\theta V_\theta(s_t)$ ， $\lambda = 0.7$ 。
+
+$$
+\delta_t = V_\theta(s_{t+1}) - V_\theta(s_t), \qquad \theta \leftarrow \theta + \eta\, \delta_t\, e_t,
+$$
+
+其中 $`e_t`$ 是資格跡： $`e_t = \lambda e_{t-1} + \nabla_\theta V_\theta(s_t)`$ ， $`\lambda = 0.7`$ 。
 **自我對弈 = 無限的免費標註資料**；TD = 每步即學，不必等終局。
 
 ### Python：極簡 TD 自我對弈骨架

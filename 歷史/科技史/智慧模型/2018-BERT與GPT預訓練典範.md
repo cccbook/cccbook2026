@@ -4,7 +4,9 @@
 
 2018 年是 NLP 的「ImageNet 元年」：兩篇論文在半年內各自宣判——6 月 OpenAI 的 **GPT-1**、10 月 Google 的 **BERT**。兩者共享同一骨架（2017 年 Transformer）與同一信條（**預訓練 + 微調**），卻選了兩條互相排斥的訓練目標：
 
-$$\text{GPT（自回歸）:} \quad \mathcal{L} = \sum_{i} \log p(x_i \mid x_{<i}) \qquad\qquad \text{BERT（掩碼）:} \quad \mathcal{L} = \sum_{i \in M} \log p(x_i \mid x_{\setminus M})$$
+$$
+\text{GPT（自回歸）:} \quad \mathcal{L} = \sum_{i} \log p(x_i \mid x_{<i}) \qquad\qquad \text{BERT（掩碼）:} \quad \mathcal{L} = \sum_{i \in M} \log p(x_i \mid x_{\setminus M})
+$$
 
 GPT 是 Transformer 解碼器的語言化：從左到右逐字預測。BERT 是 Transformer 編碼器的語言化：遮住 15% 的字，用**雙向上下文**猜出被遮的字。這是「雙向理解 vs 自回歸生成」的百年之爭的開庭日。
 
@@ -23,11 +25,15 @@ GPT 是 Transformer 解碼器的語言化：從左到右逐字預測。BERT 是 
 
 GPT-1 是 12 層 Transformer 解碼器（掩碼自注意力），在 BooksCorpus（約 7,000 本書）上做**從左到右的語言模型**：
 
-$$p(x) = \prod_{i=1}^{T} p(x_i \mid x_1, \dots, x_{i-1}; \Theta), \qquad \mathcal{L}_{\text{LM}} = -\sum_i \log p(x_i \mid x_{<i})$$
+$$
+p(x) = \prod_{i=1}^{T} p(x_i \mid x_1, \dots, x_{i-1}; \Theta), \qquad \mathcal{L}_{\text{LM}} = -\sum_i \log p(x_i \mid x_{<i})
+$$
 
 訓練完後，微調時在最後加一個線性層做下游任務，損失混合：
 
-$$\mathcal{L} = \mathcal{L}_{\text{task}} + \lambda \, \mathcal{L}_{\text{LM}}$$
+$$
+\mathcal{L} = \mathcal{L}_{\text{task}} + \lambda \, \mathcal{L}_{\text{LM}}
+$$
 
 GPT-1 在 12 項任務中 9 項刷新 SOTA。關鍵主張：**語言模型本身就在學「理解」**——預測下一個字需要語法、語義、常識的全部知識。
 
@@ -38,7 +44,9 @@ GPT 的自回歸只能看左邊；BERT 主張理解需要**雙向**。但雙向 
 - 隨機遮住 15% 的 token（80% 換 `[MASK]`、10% 換隨機詞、10% 保留）
 - 用整個（雙向）上下文預測被遮的 token
 
-$$\mathcal{L}_{\text{MLM}} = -\sum_{i \in M} \log p(x_i \mid x_{\setminus M}; \Theta)$$
+$$
+\mathcal{L}_{\text{MLM}} = -\sum_{i \in M} \log p(x_i \mid x_{\setminus M}; \Theta)
+$$
 
 加上**下一句預測（NSP）**：判斷句子 B 是否真的跟在 A 後面——給模型句際關係的線索。
 
@@ -47,7 +55,7 @@ $$\mathcal{L}_{\text{MLM}} = -\sum_{i \in M} \log p(x_i \mid x_{\setminus M}; \T
 | | **GPT-1** | **BERT** |
 |---|---|---|
 | 骨架 | Transformer 解碼器（12 層） | Transformer 編碼器（12/24 層） |
-| 目標 | 自回歸 $\log p(x_i \mid x_{<i})$ | 掩碼 $\log p(x_i \mid x_{\setminus M})$ |
+| 目標 | 自回歸 $`\log p(x_i \mid x_{<i})`$ | 掩碼 $`\log p(x_i \mid x_{\setminus M})`$ |
 | 上下文 | 單向（左→右） | 雙向 |
 | 擅長 | 生成、續寫 | 理解、分類、問答 |
 | 資料 | BooksCorpus ~5GB | BooksCorpus + Wikipedia ~16GB |
@@ -57,7 +65,7 @@ $$\mathcal{L}_{\text{MLM}} = -\sum_{i \in M} \log p(x_i \mid x_{\setminus M}; \T
 
 ### 第四條線索：[CLS] 與句子嵌入——理解任務的統一介面
 
-BERT 在輸入前加一個特殊 token `[CLS]`，其最終隱狀態 $\mathbf{h}_{[\text{CLS}]}$ 被用作整句的表示，餵入分類器。加上 `[SEP]` 分隔句對，BERT 用**同一個模型**統一了分類、問答、NLI、命名實體識別——11 項 NLP 任務全部 SOTA，GLUE 榜單直接碾壓（+7.7 分）。這是「一個模型、所有任務」的預訓練典範正式加冕。
+BERT 在輸入前加一個特殊 token `[CLS]`，其最終隱狀態 $`\mathbf{h}_{[\text{CLS}]}`$ 被用作整句的表示，餵入分類器。加上 `[SEP]` 分隔句對，BERT 用**同一個模型**統一了分類、問答、NLI、命名實體識別——11 項 NLP 任務全部 SOTA，GLUE 榜單直接碾壓（+7.7 分）。這是「一個模型、所有任務」的預訓練典範正式加冕。
 
 ### 第五條線索：成績單——兩條路線的第一次交鋒
 

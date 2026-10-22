@@ -4,7 +4,11 @@
 1993 年，自由 Unix 的兩支後裔同年誕生：
 1. **NetBSD（3 月）與 FreeBSD（12 月）**——386BSD 的兩個分叉，BSD 授權的繼承者。
 2. **Slackware（7 月）與 Debian（8 月）**——第一批 Linux 發行版（distributions）。
-$$\text{386BSD} \Rightarrow \text{NetBSD / FreeBSD} \qquad \text{Linux 核心} \Rightarrow \text{Slackware / Debian}.$$
+
+$$
+\text{386BSD} \Rightarrow \text{NetBSD / FreeBSD} \qquad \text{Linux 核心} \Rightarrow \text{Slackware / Debian}.
+$$
+
 **「發行版」模式成型**：核心 + 工具 + 套件管理 = 可安裝的完整系統。
 
 ## 前因 -- 為什麼會有這個案子
@@ -16,13 +20,21 @@ $$\text{386BSD} \Rightarrow \text{NetBSD / FreeBSD} \qquad \text{Linux 核心} \
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：發行版 = 核心 + 生態
-$$\text{發行版} = \text{核心（Linux/BSD）} + \text{使用者空間（GNU/utilities）} + \text{套件管理} + \text{安裝器}.$$
+
+$$
+\text{發行版} = \text{核心（Linux/BSD）} + \text{使用者空間（GNU/utilities）} + \text{套件管理} + \text{安裝器}.
+$$
+
 - **歷史意義**：BSD 的「distribution」概念（1977 年 1BSD 起源）在 1993 年被 Linux 發揚光大——**今天 Ubuntu、Red Hat 的模式，原型就是 BSD**。
 
 ### 第二條線索：套件管理——依賴解決的演算法
 - Slackware：tgz 壓縮包，無依賴解決（手動）。
 - **Debian：dpkg + APT（1998）**——自動解決依賴關係：
-  $$\text{套件 A 依賴 B、C} \;\xrightarrow{\text{APT}}\; \text{拓撲排序安裝}.$$
+
+$$
+\text{套件 A 依賴 B、C} \;\xrightarrow{\text{APT}}\; \text{拓撲排序安裝}.
+$$
+
 - **彌補的缺陷**：手動安裝會陷入「依賴地獄」（dependency hell）——APT 用圖論（依賴圖 + 拓撲排序）一次解決。
 
 ### 第三條線索：三支 BSD 的分工

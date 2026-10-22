@@ -11,14 +11,14 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 四類文法與對應自動機
-形式文法 $G = (V, \Sigma, P, S)$ ：非終結符 $V$ 、終結符 $\Sigma$ 、產生規則 $P$ 、起始符 $S$ 。依規則形式限制分四層：
+形式文法 $`G = (V, \Sigma, P, S)`$ ：非終結符 $`V`$ 、終結符 $`\Sigma`$ 、產生規則 $`P`$ 、起始符 $`S`$ 。依規則形式限制分四層：
 
 | 層級 | 文法名稱 | 規則形式限制 | 對應自動機 | 識別的語言 |
 |---|---|---|---|---|
-| **Type-3** | 正則文法 | $A \to aB$ 或 $A \to a$ （右線性） | 有限狀態機 FSM | 正則語言 |
-| **Type-2** | 上下文無關文法 CFG | $A \to \alpha$ （左邊必為單一非終結符） | 下推自動機 PDA | CFL |
-| **Type-1** | 上下文有關文法 CSG | $\alpha A \beta \to \alpha \gamma \beta$ （ $|\gamma| \geq |A|$ ，不縮短） | 線性有界自動機 LBA | CSL |
-| **Type-0** | 無限制文法 | $\alpha \to \beta$ （任意） | 圖靈機 TM | 遞迴可枚舉語言 |
+| **Type-3** | 正則文法 | $`A \to aB`$ 或 $`A \to a`$ （右線性） | 有限狀態機 FSM | 正則語言 |
+| **Type-2** | 上下文無關文法 CFG | $`A \to \alpha`$ （左邊必為單一非終結符） | 下推自動機 PDA | CFL |
+| **Type-1** | 上下文有關文法 CSG | $`\alpha A \beta \to \alpha \gamma \beta`$ （ $`|\gamma| \geq |A|`$ ，不縮短） | 線性有界自動機 LBA | CSL |
+| **Type-0** | 無限制文法 | $`\alpha \to \beta`$ （任意） | 圖靈機 TM | 遞迴可枚舉語言 |
 
 ### 產生規則形式範例
 ```text
@@ -38,12 +38,14 @@ Type-0:  任意重寫規則，可模擬圖靈機的計算過程
 ### 包含關係
 四層語言族形成嚴格的包含鏈：
 
-$$\text{Type-3} \subsetneq \text{Type-2} \subsetneq \text{Type-1} \subsetneq \text{Type-0}$$
+$$
+\text{Type-3} \subsetneq \text{Type-2} \subsetneq \text{Type-1} \subsetneq \text{Type-0}
+$$
 
 經典見證：
-- $a^n b^n \in$ Type-2 但 $\notin$ Type-3（有限狀態機無法無限計數——泵引理可證）。
-- $a^n b^n c^n \in$ Type-1 但 $\notin$ Type-2（PDA 只有一個堆疊，無法同時比對三段——CFL 泵引理可證）。
-- 存在 Type-0 但 $\notin$ Type-1 的語言（如某些不可判定的編碼）——LBA 的接受問題可判定，但圖靈機的不行。
+- $`a^n b^n \in`$ Type-2 但 $`\notin`$ Type-3（有限狀態機無法無限計數——泵引理可證）。
+- $`a^n b^n c^n \in`$ Type-1 但 $`\notin`$ Type-2（PDA 只有一個堆疊，無法同時比對三段——CFL 泵引理可證）。
+- 存在 Type-0 但 $`\notin`$ Type-1 的語言（如某些不可判定的編碼）——LBA 的接受問題可判定，但圖靈機的不行。
 
 ### 自動機對應的計算本質
 每一層的計算能力由「記憶體結構」決定：
@@ -53,7 +55,7 @@ $$\text{Type-3} \subsetneq \text{Type-2} \subsetneq \text{Type-1} \subsetneq \te
 - TM：無限 tape，完全自由。
 
 ### Python 實作：下推自動機檢查括號配對
-括號配對語言 $\{ w : \text{括號平衡} \}$ 是典型 CFL，用 PDA（以 list 模擬堆疊）識別：
+括號配對語言 $`\{ w : \text{括號平衡} \}`$ 是典型 CFL，用 PDA（以 list 模擬堆疊）識別：
 
 ```python
 def pda_paren(s: str) -> bool:

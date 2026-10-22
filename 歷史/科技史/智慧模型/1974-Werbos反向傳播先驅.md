@@ -4,7 +4,9 @@
 
 1974 年，哈佛大學博士生 Paul Werbos 在博士論文《Beyond Regression: New Tools for Prediction and Analysis in the Behavioral Sciences》中，首次系統地提出「透過時間的反向傳播」（Backpropagation Through Time, BPTT）——把誤差沿著計算圖的反方向逐層回傳，用微積分鏈鎖法則訓練多層（含迴路）網路。核心公式只有一行：
 
-$$\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}}，\quad \text{其中 } y_j = f(u_j)，\ u_j = \sum_i w_{ij} y_i$$
+$$
+\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}}，\quad \text{其中 } y_j = f(u_j)，\ u_j = \sum_i w_{ij} y_i
+$$
 
 這是走出 1969 年《Perceptrons》迷宮（見「1969-MinskyPapert批判.md」）的鑰匙——卻被埋沒了整整 12 年，直到 1986 年才被 Rumelhart、Hinton、Williams 以同一公式翻案（見「1986-反向傳播演算法.md」）。
 
@@ -21,21 +23,27 @@ $$\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial y_j} \cdot \fr
 
 ### 第一條線索：鏈鎖法則——誤差沿計算圖反流
 
-任何前饋網路都是一張有向無環圖：節點 $j$ 接收輸入 $u_j = \sum_i w_{ij} y_i$ ，經激活函數 $f$ 產生輸出 $y_j = f(u_j)$ 。目標是最小化誤差 $E$ 。鏈鎖法則說，誤差對上游權重的梯度可由下游誤差信號 $\delta_j = \partial E / \partial u_j$ 逐層回傳：
+任何前饋網路都是一張有向無環圖：節點 $`j`$ 接收輸入 $`u_j = \sum_i w_{ij} y_i`$ ，經激活函數 $`f`$ 產生輸出 $`y_j = f(u_j)`$ 。目標是最小化誤差 $`E`$ 。鏈鎖法則說，誤差對上游權重的梯度可由下游誤差信號 $`\delta_j = \partial E / \partial u_j`$ 逐層回傳：
 
-$$\delta_j = f'(u_j) \sum_k w_{jk} \delta_k，\qquad \frac{\partial E}{\partial w_{ij}} = \delta_j \, y_i$$
+$$
+\delta_j = f'(u_j) \sum_k w_{jk} \delta_k，\qquad \frac{\partial E}{\partial w_{ij}} = \delta_j \, y_i
+$$
 
 這就是「誤差的反流」：**前向傳播算輸出，反向傳播算梯度**。若網路有迴路（遞迴結構），把計算圖在時間軸上展開即可——這正是 BPTT：
 
-$$E = \sum_{t=1}^{T} E_t，\quad \delta_j^{(t)} = f'(u_j^{(t)}) \left( \sum_k w_{jk} \delta_k^{(t)} + \sum_k v_{jk} \delta_k^{(t+1)} \right)$$
+$$
+E = \sum_{t=1}^{T} E_t，\quad \delta_j^{(t)} = f'(u_j^{(t)}) \left( \sum_k w_{jk} \delta_k^{(t)} + \sum_k v_{jk} \delta_k^{(t+1)} \right)
+$$
 
-其中 $v_{jk}$ 是跨時間步的迴路權重。第二項就是「透過時間」的部分。
+其中 $`v_{jk}`$ 是跨時間步的迴路權重。第二項就是「透過時間」的部分。
 
 ### 第二條線索：與最優控制的血緣
 
 Werbos 的公式與 1960 年代最優控制的敏感性分析幾乎同構。以 Bryson 的連續時間版本為例，控制理論中的伴隨方程（adjoint equation）：
 
-$$\dot{\lambda}(t) = -\frac{\partial H}{\partial x}，\quad \text{對應神經網路的 } \delta_j = f'(u_j) \sum_k w_{jk} \delta_k$$
+$$
+\dot{\lambda}(t) = -\frac{\partial H}{\partial x}，\quad \text{對應神經網路的 } \delta_j = f'(u_j) \sum_k w_{jk} \delta_k
+$$
 
 | | 最優控制（Bryson, 1960s） | Werbos BPTT（1974） |
 |---|---|---|

@@ -12,11 +12,15 @@ H = p²/2m + ½kx²，質量 m，角頻率 ω = √(k/m)。
 Hamilton 在 1834-1835 年發現：把哈密頓量中的 p 換成「作用量函數的梯度」
 p = ∂S/∂x，就得到一個偏微分方程：
 
-$$H\left(x, \frac{\partial S}{\partial x}\right) = E$$
+$$
+H\left(x, \frac{\partial S}{\partial x}\right) = E
+$$
 
 對諧振子而言：
 
-$$\frac{1}{2m}\left(\frac{\partial S}{\partial x}\right)^2 + \frac{1}{2}m\omega^2 x^2 = E$$
+$$
+\frac{1}{2m}\left(\frac{\partial S}{\partial x}\right)^2 + \frac{1}{2}m\omega^2 x^2 = E
+$$
 
 **直觀理解**：S(x, t) 就像一張「地形圖」，等高線是 S 相同的點，
 而粒子的軌道永遠垂直於等高線前進。解出 S，就解出了所有可能的軌道！
@@ -26,31 +30,43 @@ $$\frac{1}{2m}\left(\frac{\partial S}{\partial x}\right)^2 + \frac{1}{2}m\omega^
 
 設 S(x, t) = W(x) − Et（時間部分可以先提出來，因為 H 不含 t）：
 
-$$\frac{1}{2m}\left(\frac{dW}{dx}\right)^2 + \frac{1}{2}m\omega^2 x^2 = E$$
+$$
+\frac{1}{2m}\left(\frac{dW}{dx}\right)^2 + \frac{1}{2}m\omega^2 x^2 = E
+$$
 
 解出 dW/dx：
 
-$$\frac{dW}{dx} = \pm\sqrt{2mE - m^2\omega^2 x^2}$$
+$$
+\frac{dW}{dx} = \pm\sqrt{2mE - m^2\omega^2 x^2}
+$$
 
 積分（這是高中就會的三角代換積分，令 x = A sin θ，A = √(2E/mω²)）：
 
-$$W(x) = \frac{E}{\omega}\left[\theta + \frac{1}{2}\sin 2\theta\right], \quad \theta = \sin^{-1}\!\left(\sqrt{\frac{m\omega^2}{2E}}\,x\right)$$
+$$
+W(x) = \frac{E}{\omega}\left[\theta + \frac{1}{2}\sin 2\theta\right], \quad \theta = \sin^{-1}\!\left(\sqrt{\frac{m\omega^2}{2E}}\,x\right)
+$$
 
 ### 第 3 步：Jacobi 的神來一筆
 
 Jacobi（1843）指出：把 W 當成「新座標」，令
 
-$$\beta = \frac{\partial S}{\partial E} = \frac{\partial W}{\partial E} - t = \text{常數}$$
+$$
+\beta = \frac{\partial S}{\partial E} = \frac{\partial W}{\partial E} - t = \text{常數}
+$$
 
 （這就是「正則變換」：換到一組讓運動變得超簡單的新座標。）
 
 計算 ∂W/∂E 時注意 E 藏在 A 裡。結果整理後可得：
 
-$$\cos\theta = \sin(\omega(\beta + t))$$
+$$
+\cos\theta = \sin(\omega(\beta + t))
+$$
 
 稍加整理就得到：
 
-$$x(t) = A\sin(\omega t + \phi)$$
+$$
+x(t) = A\sin(\omega t + \phi)
+$$
 
 **一個再熟悉不過的答案**：諧振子做簡諧運動，振幅 A 由能量決定
 （E = ½mω²A²），相位 φ 由初始條件決定。
@@ -68,10 +84,12 @@ Hamilton-Jacobi 理論的三個深遠影響：
 
 3. **通往矩陣力學**：Heisenberg（1925）注意到 H-J 理論中的「作用變數-角度變數」
    J, θ 天生帶有週期性，把 J 量子化（J = nh/2π）就得到能階：
-   
-   $$E_n = \left(n + \frac{1}{2}\right)\hbar\omega$$
 
-   諧振子的能階是等間距的——這正是 Planck（1900）黑體輻射假設的根源！
+$$
+E_n = \left(n + \frac{1}{2}\right)\hbar\omega
+$$
+
+諧振子的能階是等間距的——這正是 Planck（1900）黑體輻射假設的根源！
 
 ### 第 5 步：總結——一條思想的長河
 

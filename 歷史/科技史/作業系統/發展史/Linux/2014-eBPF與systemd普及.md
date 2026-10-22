@@ -4,7 +4,10 @@
 2014 年，兩件大事代表 Linux 的現代演進：
 1. **eBPF（extended Berkeley Packet Filter）** 進入核心 3.18——核心第一次變成**安全可程式化**的 VM。
 2. **systemd 進入 Debian 8 / RHEL 7**——init 系統的世代交替完成。
-$$\text{eBPF（核心可程式化）} + \text{systemd（服務管理現代化）} = \text{Linux 的現代化革命}.$$
+
+$$
+\text{eBPF（核心可程式化）} + \text{systemd（服務管理現代化）} = \text{Linux 的現代化革命}.
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **BPF 的演化**：經典 BPF（1992，McCanne/Jacobson）只是封包過濾器——**彌補的缺陷：核心觀察與擴展要寫核心模組（有當機風險）**。Alexei Starovoitov 的 **eBPF（2014，3.18）**把 BPF 升級為通用 VM：**驗證器（verifier）保證程式不會當機**。

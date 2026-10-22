@@ -10,7 +10,9 @@
 
 關鍵痛點可以用一個簡單的複雜度來刻劃：
 
-$$T_{\text{改程式}}^{\text{ENIAC}} \gg T_{\text{執行}}^{\text{ENIAC}}$$
+$$
+T_{\text{改程式}}^{\text{ENIAC}} \gg T_{\text{執行}}^{\text{ENIAC}}
+$$
 
 重新設定程式所需的時間遠大於程式執行的時間——這在工程上完全不合理，必須破案。
 
@@ -21,7 +23,9 @@ $$T_{\text{改程式}}^{\text{ENIAC}} \gg T_{\text{執行}}^{\text{ENIAC}}$$
 
 統一的關鍵：記憶體中不區分「指令」與「資料」，只是取用方式不同：
 
-$$\text{memory}[pc] \xrightarrow{\text{當作指令}} \text{decode}, \qquad \text{memory}[addr] \xrightarrow{\text{當作資料}} \text{operand}$$
+$$
+\text{memory}[pc] \xrightarrow{\text{當作指令}} \text{decode}, \qquad \text{memory}[addr] \xrightarrow{\text{當作資料}} \text{operand}
+$$
 
 ### 定義：五大單元
 報告將電腦分為五個單元：
@@ -35,6 +39,7 @@ $$\text{memory}[pc] \xrightarrow{\text{當作指令}} \text{decode}, \qquad \tex
 | 輸出 | Output | 將計算結果送出 |
 
 ### 定義：指令週期（fetch–decode–execute）
+
 $$
 \begin{aligned}
 \text{FETCH:}\quad & IR \leftarrow M[PC];\ PC \leftarrow PC + 1 \\

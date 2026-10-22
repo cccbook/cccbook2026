@@ -12,17 +12,19 @@
 ## 線索與推理 -- 數學式、程式、理論
 ### 線索一：Xerox Alto 與 PARC 的 GUI 發明
 Alto（1973）已具備 GUI 的全部要素：
-- **WYSIWYG**（What You See Is What You Get）：螢幕上的文件就是列印結果。位元映射顯示器（bitmapped display）是前提：解析度 $W \times H$ 的螢幕需要 $W \times H$ 位元的顯示記憶體，Alto 為 $606 \times 808 \approx 490\,\text{Kb}$ 。
+- **WYSIWYG**（What You See Is What You Get）：螢幕上的文件就是列印結果。位元映射顯示器（bitmapped display）是前提：解析度 $`W \times H`$ 的螢幕需要 $`W \times H`$ 位元的顯示記憶體，Alto 為 $`606 \times 808 \approx 490\,\text{Kb}`$ 。
 - **滑鼠**：Engelbart 1964 年發明，PARC 改良為三鍵光學滑鼠。
 - **重疊視窗（overlapping windows）與下拉選單**：Alan Kay 的 Smalltalk 環境首創。
 - PARC 還發明了乙太網路與雷射印表機——整座金山卻沒人開採。
 
 ### 線索二：Jobs 的 PARC 朝聖（1980）
-Jobs 看到圖形介面的第一反應是：「你們坐在一座金礦上！」他立刻把構念帶回蘋果，先用在 Lisa（1983，售價 $9{,}995$ 美元，商業上失敗），再簡化為 Macintosh。這就是所謂「好的藝術家抄襲，偉大的藝術家偷竊」：
+Jobs 看到圖形介面的第一反應是：「你們坐在一座金礦上！」他立刻把構念帶回蘋果，先用在 Lisa（1983，售價 $`9{,}995`$ 美元，商業上失敗），再簡化為 Macintosh。這就是所謂「好的藝術家抄襲，偉大的藝術家偷竊」：
 
-$$\text{價值} = \text{發明} \times \text{整合} \times \text{量產}$$
+$$
+\text{價值} = \text{發明} \times \text{整合} \times \text{量產}
+$$
 
-Xerox 有發明（ $\times 1$ ），蘋果補上後兩項（ $\times 1$ ），因此 $V_{Apple} \gg V_{Xerox}$ 。
+Xerox 有發明（ $`\times 1`$ ），蘋果補上後兩項（ $`\times 1`$ ），因此 $`V_{Apple} \gg V_{Xerox}`$ 。
 
 ### 線索三：Macintosh 的設計
 - **CPU**：Motorola 68000，32-bit 內部架構（16-bit 匯流排），7.83 MHz。
@@ -30,12 +32,16 @@ Xerox 有發明（ $\times 1$ ），蘋果補上後兩項（ $\times 1$ ），�
 - **ROM**：64KB，內含 QuickDraw 圖形函式庫與 Toolbox，實現「ROM 裡的 GUI」。
 - 記憶體預算的殘酷數學：
 
-$$\underbrace{128\,\text{KB}}_{\text{總 RAM}} = \underbrace{22\,\text{KB}}_{\text{系統}} + \underbrace{\approx 42\,\text{KB}}_{\text{顯示緩衝區 } 512 \times 342 / 8} + \text{僅剩約 } 64\,\text{KB 給應用程式}$$
+$$
+\underbrace{128\,\text{KB}}_{\text{總 RAM}} = \underbrace{22\,\text{KB}}_{\text{系統}} + \underbrace{\approx 42\,\text{KB}}_{\text{顯示緩衝區 } 512 \times 342 / 8} + \text{僅剩約 } 64\,\text{KB 給應用程式}
+$$
 
 ### 線索四：GUI 的心理學與易用性革命
 GUI 的理論基礎是「直接操縱」（direct manipulation，Shneiderman）：物件可見、動作即時回饋、以辨識取代記憶。用認知負荷理論量化：
 
-$$\text{總認知負荷} = \text{內在負荷} + \text{外在負荷（extraneous load）}$$
+$$
+\text{總認知負荷} = \text{內在負荷} + \text{外在負荷（extraneous load）}
+$$
 
 CLI 要求使用者「記憶」命令語法（高外在負荷）；GUI 讓使用者「辨識」圖示與選單（低外在負荷）。心理學的法則：**辨識遠比回憶容易**（recognition over recall）。這就是易用性革命的數學核心。
 

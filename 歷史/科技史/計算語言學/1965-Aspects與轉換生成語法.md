@@ -23,9 +23,11 @@
 
 標準理論的規則層次是一條流水線：
 
-$$\text{base rules} \to \text{deep structure} \to \text{transformational rules} \to \text{surface structure} \to \text{semantic interpretation}$$
+$$
+\text{base rules} \to \text{deep structure} \to \text{transformational rules} \to \text{surface structure} \to \text{semantic interpretation}
+$$
 
-形式化：句子 $s$ 的語義由深層結構 $d$ 決定，表層結構 $t = T(d)$ 只決定語音。歧義句的破案工具：
+形式化：句子 $`s`$ 的語義由深層結構 $`d`$ 決定，表層結構 $`t = T(d)`$ 只決定語音。歧義句的破案工具：
 
 - "Flying planes can be dangerous" 有一個深層結構（planes fly → 飛機危險）與另一個（[someone] flies planes → 開飛機危險）——表層相同、深層不同，所以歧義。
 - 反之，主動與被動句表層不同、深層相同，所以語義相同。
@@ -39,7 +41,9 @@ $$\text{base rules} \to \text{deep structure} \to \text{transformational rules} 
 
 形式上，實際語料是能力的「雜訊觀測」：
 
-$$\text{observed data} = \text{performance} = f(\text{competence}) + \text{noise}$$
+$$
+\text{observed data} = \text{performance} = f(\text{competence}) + \text{noise}
+$$
 
 因此「語料中的頻率」不反映語法知識——這是 Chomsky 反對統計方法的哲學根據。而統計 NLP 陣營則認為：既然只能觀測 performance，就該直接為 performance 建模。這條戰場延燒到 2020 年代：LLM 從語料（performance）中學習，它是否因此獲得「能力」，正是 competence/performance 之分的現代化身。
 

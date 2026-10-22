@@ -1,7 +1,7 @@
 # 1925 - Fisher 統計方法
 
 ## 案件摘要
-1925 年，R. A. Fisher 出版《Statistical Methods for Research Workers》，將顯著性檢定、p 值、ANOVA 與實驗設計打包成「研究者工具箱」。這本書被尊為「統計學聖經」，也讓 $p < 0.05$ 成為百年來最受愛戴與爭議的慣例。
+1925 年，R. A. Fisher 出版《Statistical Methods for Research Workers》，將顯著性檢定、p 值、ANOVA 與實驗設計打包成「研究者工具箱」。這本書被尊為「統計學聖經」，也讓 $`p < 0.05`$ 成為百年來最受愛戴與爭議的慣例。
 
 ## 前因 -- 為什麼會有這個案子
 Fisher 自 1919 年起任職於英國的 **Rothamsted 農業實驗站**（The Laboratory for Agricultural Experimentation，1843 年創立），面對的是現實的難題：
@@ -21,21 +21,23 @@ Rothamsted 有長達 70 年的長期田間實驗數據（如 Broadbalk wheat exp
 Fisher 在書中正式推廣顯著性檢定流程：
 
 1. 設定 H0（如「處理無效應」）。
-2. 選擇檢定統計量 $T$ 。
+2. 選擇檢定統計量 $`T`$ 。
 3. 在 H0 下計算**p 值**：
 
-   $$p = P_0(T \ge t_{obs})$$
+$$
+p = P_0(T \ge t_{obs})
+$$
 
-4. 若 $p$ 足夠小，則 H0「顯著不成立」，拒絕 H0。
+4. 若 $`p`$ 足夠小，則 H0「顯著不成立」，拒絕 H0。
 
-書中列出 $t$ 、 $\chi^2$ 、 $F$ 分佈的表格，使研究者能直接查表完成檢定——這是**統計方法平民化**的關鍵一步。
+書中列出 $`t`$ 、 $`\chi^2`$ 、 $`F`$ 分佈的表格，使研究者能直接查表完成檢定——這是**統計方法平民化**的關鍵一步。
 
-### 線索三： $p < 0.05$ 慣例的誕生
+### 線索三： $`p < 0.05`$ 慣例的誕生
 Fisher 在書中寫道（大意）：
 
 > "…we shall not often be astray if we draw a conventional line at 0.05."
 
-這句話是 $p < 0.05$ 慣例的**直接來源**。Fisher 原意是「常用門檻」而非「神聖界線」，但後世將其制度化為學術出版的硬門檻，造成：
+這句話是 $`p < 0.05`$ 慣例的**直接來源**。Fisher 原意是「常用門檻」而非「神聖界線」，但後世將其制度化為學術出版的硬門檻，造成：
 
 - **正面爭議**：0.05 是方便的共識語言，易於比較。
 - **負面爭議**：p-hacking、發表偏誤（publication bias）、可重複性危機（reproducibility crisis）。
@@ -44,13 +46,17 @@ Fisher 在書中寫道（大意）：
 ### 線索四：變異數分析（ANOVA）
 ANOVA 將總變異分解為「處理效應」與「隨機誤差」：
 
-$$\underbrace{\sum_i (y_i - \bar{y})^2}_{SS_{total}} = \underbrace{\sum_g n_g(\bar{y}_g - \bar{y})^2}_{SS_{between}} + \underbrace{\sum_i (y_i - \bar{y}_g)^2}_{SS_{within}}$$
+$$
+\underbrace{\sum_i (y_i - \bar{y})^2}_{SS_{total}} = \underbrace{\sum_g n_g(\bar{y}_g - \bar{y})^2}_{SS_{between}} + \underbrace{\sum_i (y_i - \bar{y}_g)^2}_{SS_{within}}
+$$
 
 檢定統計量為 **F 統計量**：
 
-$$F = \frac{SS_{between} / (k-1)}{SS_{within} / (N-k)} = \frac{MS_{between}}{MS_{within}} \;\sim\; F_{k-1,\,N-k} \;\;(\text{H0 下})$$
+$$
+F = \frac{SS_{between} / (k-1)}{SS_{within} / (N-k)} = \frac{MS_{between}}{MS_{within}} \;\sim\; F_{k-1,\,N-k} \;\;(\text{H0 下})
+$$
 
-其中 $k$ 為組數、 $N$ 為總樣本數。這是 Gosset t 檢定的推廣：兩組時 $F = t^2$ 。
+其中 $`k`$ 為組數、 $`N`$ 為總樣本數。這是 Gosset t 檢定的推廣：兩組時 $`F = t^2`$ 。
 
 ### 線索五：實驗設計三原則
 Fisher 總結實驗設計的三大支柱：
@@ -102,7 +108,7 @@ plt.title("One-way ANOVA"); plt.savefig("anova.png", dpi=100)
 - 顯著性檢定 + ANOVA + 實驗設計三件套，成為農業、醫學、心理學、經濟學的標準研究流程。
 - 1935 年 Fisher 出版《The Design of Experiments》，進一步發展實驗設計理論（含著名的「女士品茶」實驗）。
 - Neyman–Pearson 的「假設檢定理論」（1933）與 Fisher 的顯著性檢定在概念上競爭，但後世教材將兩者混合成今日通行的「NHST」。
-- $p < 0.05$ 慣例造成的可重複性危機，促成 2010 年代後的預註冊（preregistration）、效應量報告與 ASA 聲明（2016）。
+- $`p < 0.05`$ 慣例造成的可重複性危機，促成 2010 年代後的預註冊（preregistration）、效應量報告與 ASA 聲明（2016）。
 - Fisher 的 ANOVA 是日後廣義線性模型、混合效應模型的理論源頭。
 
 ## 關鍵人物與文獻

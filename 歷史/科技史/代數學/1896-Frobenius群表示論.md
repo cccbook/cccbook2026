@@ -4,49 +4,61 @@
 1896 年，Ferdinand Georg Frobenius 在一系列論文中發明「群的表示」與「特徵標」理論，1897 年與 Issai Schur 合作將其完善。表示論把抽象群具體化為矩陣，使無形的對稱性變成可計算的線性代數，成為 20 世紀數學與物理的共通語言。
 
 ## 前因 -- 為什麼會有這個案子
-- **Jordan 的線性群（1870）**：Jordan《Traité》已研究 $\mathrm{GL}(n,\mathbb{C})$ 的有限子群與 Jordan 標準形，但只把矩陣當作變換本身，未發展「用矩陣研究群」的一般方法。
-- **特徵標的模糊先聲**：Dedekind 在數論中研究群行列式（group determinant） $\det\!\left(\sum_g a_g \, g\right)$ ，1896 年請教 Frobenius 如何分解它——這是點燃本案的直接火花。
+- **Jordan 的線性群（1870）**：Jordan《Traité》已研究 $`\mathrm{GL}(n,\mathbb{C})`$ 的有限子群與 Jordan 標準形，但只把矩陣當作變換本身，未發展「用矩陣研究群」的一般方法。
+- **特徵標的模糊先聲**：Dedekind 在數論中研究群行列式（group determinant） $`\det\!\left(\sum_g a_g \, g\right)`$ ，1896 年請教 Frobenius 如何分解它——這是點燃本案的直接火花。
 - **Dirichlet 分析傳統**：Frobenius 出身柏林分析學派，熟悉 Fourier 級數與正交函數，「把正交性搬到群上」是他的自然直覺。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 表示與特徵標的定義
-群 $G$ 的（線性）表示是群同態：
+群 $`G`$ 的（線性）表示是群同態：
 
-$$\rho: G \to \mathrm{GL}(V),\qquad \rho(gh) = \rho(g)\rho(h),\ \ \rho(e) = I$$
+$$
+\rho: G \to \mathrm{GL}(V),\qquad \rho(gh) = \rho(g)\rho(h),\ \ \rho(e) = I
+$$
 
-取定 $V$ 的基底後， $\rho(g)$ 是 $n \times n$ 矩陣（ $n = \dim V$ 稱為表示的次數）。**特徵標**為跡函數：
+取定 $`V`$ 的基底後， $`\rho(g)`$ 是 $`n \times n`$ 矩陣（ $`n = \dim V`$ 稱為表示的次數）。**特徵標**為跡函數：
 
-$$\chi(g) = \operatorname{tr}\big(\rho(g)\big) = \sum_{i=1}^n \rho(g)_{ii}$$
+$$
+\chi(g) = \operatorname{tr}\big(\rho(g)\big) = \sum_{i=1}^n \rho(g)_{ii}
+$$
 
-特徵標是類函數：共軛元素特徵標相同， $\chi(hgh^{-1}) = \chi(g)$ 。
+特徵標是類函數：共軛元素特徵標相同， $`\chi(hgh^{-1}) = \chi(g)`$ 。
 
 Frobenius 關鍵洞見：**群行列式可分解為不可約因子的乘積**，每個因子對應一個不可約表示：
 
-$$\det\Big(\sum_{g\in G} a_g\, g\Big) = \prod_{i} \det\Big(\sum_g a_g\, \rho_i(g)\Big)^{\deg \rho_i}$$
+$$
+\det\Big(\sum_{g\in G} a_g\, g\Big) = \prod_{i} \det\Big(\sum_g a_g\, \rho_i(g)\Big)^{\deg \rho_i}
+$$
 
 ### 2. 不可約表示與特徵標正交關係
-表示 $\rho$ 稱為**不可約**，若 $V$ 沒有非平凡的不變子空間 $W \subsetneq V$ （ $\rho(g)W \subseteq W,\ \forall g$ ）。Frobenius 證明正交關係：
+表示 $`\rho`$ 稱為**不可約**，若 $`V`$ 沒有非平凡的不變子空間 $`W \subsetneq V`$ （ $`\rho(g)W \subseteq W,\ \forall g`$ ）。Frobenius 證明正交關係：
 
-$$\langle \chi_i, \chi_j \rangle = \frac{1}{|G|}\sum_{g \in G} \chi_i(g)\,\overline{\chi_j(g)} = \delta_{ij}$$
+$$
+\langle \chi_i, \chi_j \rangle = \frac{1}{|G|}\sum_{g \in G} \chi_i(g)\,\overline{\chi_j(g)} = \delta_{ij}
+$$
 
 **第一正交關係的推論**：
-- 群 $G$ 的不可約表示個數 = 共軛類個數
-- $\sum_i (\deg \chi_i)^2 = |G|$ （正則表示的分解）
-- $\sum_{g\in G}|\chi(g)|^2 \geq |G|$ ，等號成立 $\iff \chi$ 不可約
+- 群 $`G`$ 的不可約表示個數 = 共軛類個數
+- $`\sum_i (\deg \chi_i)^2 = |G|`$ （正則表示的分解）
+- $`\sum_{g\in G}|\chi(g)|^2 \geq |G|`$ ，等號成立 $`\iff \chi`$ 不可約
 
 ### 3. Maschke 定理：複數表示完全可約
-Maschke（1899）證明：若 $|G|$ 在體 $F$ 中可逆（例如 $F = \mathbb{C}$ ），則任何有限維表示都可分解為不可約表示的直和：
+Maschke（1899）證明：若 $`|G|`$ 在體 $`F`$ 中可逆（例如 $`F = \mathbb{C}`$ ），則任何有限維表示都可分解為不可約表示的直和：
 
-$$V = W_1 \oplus W_2 \oplus \cdots \oplus W_k, \qquad \rho \cong \rho_1 \oplus \cdots \oplus \rho_k$$
+$$
+V = W_1 \oplus W_2 \oplus \cdots \oplus W_k, \qquad \rho \cong \rho_1 \oplus \cdots \oplus \rho_k
+$$
 
-構造法：給不變子空間 $W$ ，取任意投影 $\pi: V \to W$ ，再「群平均」：
+構造法：給不變子空間 $`W`$ ，取任意投影 $`\pi: V \to W`$ ，再「群平均」：
 
-$$\tilde{\pi} = \frac{1}{|G|}\sum_{g \in G} \rho(g)\,\pi\,\rho(g)^{-1}$$
+$$
+\tilde{\pi} = \frac{1}{|G|}\sum_{g \in G} \rho(g)\,\pi\,\rho(g)^{-1}
+$$
 
-$\tilde{\pi}$ 是 $G$ -等變投影，其核 $\ker \tilde{\pi}$ 也是不變子空間——可約性由此獲得結構化的分解。複數情形下，有限群的表示論因此完全化為不可約表示的清點。
+$`\tilde{\pi}`$ 是 $`G`$ -等變投影，其核 $`\ker \tilde{\pi}`$ 也是不變子空間——可約性由此獲得結構化的分解。複數情形下，有限群的表示論因此完全化為不可約表示的清點。
 
-### 4. Python numpy 實作： $S_3$ 特徵標表的驗證
+### 4. Python numpy 實作： $`S_3`$ 特徵標表的驗證
 
 ```python
 import numpy as np
@@ -92,11 +104,11 @@ print("<std  , sign > =", inner(chi_std,  chi_sign))   # 0
 print("sum deg^2 =", 1**2 + 2**2 + 1**2)
 ```
 
-輸出中三個正交關係全數成立（ $\delta_{ij}$ 得證），且 $1^2+2^2+1^2 = 6 = |S_3|$ 印證正則表示分解——Frobenius 理論的計算實證。
+輸出中三個正交關係全數成立（ $`\delta_{ij}`$ 得證），且 $`1^2+2^2+1^2 = 6 = |S_3|`$ 印證正則表示分解——Frobenius 理論的計算實證。
 
 ## 結案 -- 後果與影響
 - **表示論獨立成科**：Schur、Weyl 等人接續發展，有限群、Lie 群、緊群的表示論成為 20 世紀數學主幹之一。
-- **量子力學的對稱性語言**：1927 年起 Weyl 與 Wigner 用群表示論解釋原子光譜、角動量（ $\mathrm{SO}(3)$ 的表示）、量子態的分類——沒有表示論就沒有現代量子力學的教科書體系。
+- **量子力學的對稱性語言**：1927 年起 Weyl 與 Wigner 用群表示論解釋原子光譜、角動量（ $`\mathrm{SO}(3)`$ 的表示）、量子態的分類——沒有表示論就沒有現代量子力學的教科書體系。
 - **化學與晶體學**：分子振動模式、晶體點群的特徵標表成為標準工具。
 - **數論與 Langlands 綱領**：Galois 表示、自守表示把表示論推到当代數學最深處的統一綱領。
 

@@ -32,7 +32,11 @@ WASM 的驗證器可靜態保證型別安全與記憶體隔離（`memory.grow`�
 LLVM IR 是**單一層級**的低階抽象——對 AI 運算圖（高階、領域特定）來說太低，對硬體指令（TPU 的脈動陣列）來說又不夠貼近。MLIR 的宣言：
 
 1. **多層級 IR**：編譯過程是一連串的「漸進式降級（progressive lowering）」——從高階領域抽象一層層降到硬體：
-   $$\text{TensorFlow IR} \rightarrow \text{linalg} \rightarrow \text{vector} \rightarrow \text{loop/affine} \rightarrow \text{LLVM IR} \rightarrow \text{機器碼}$$
+
+$$
+\text{TensorFlow IR} \rightarrow \text{linalg} \rightarrow \text{vector} \rightarrow \text{loop/affine} \rightarrow \text{LLVM IR} \rightarrow \text{機器碼}
+$$
+
 2. **方言系統（dialects）**：每個層級是一個「方言」（如 `tf`、`linalg`、`affine`、`llvm`），方言之間可互相操作與轉換，使用者還能**自訂方言**——這是 LLVM 做不到的。
 3. **Infrastructure 的 Infrastructure**：MLIR 不想統一所有編譯器，而是提供**建造編譯器基建的工具**——IR 表示法、降級機制、優化框架全部可重用。
 
@@ -64,9 +68,11 @@ affine.for %i = 0 to 1024 step 64 {
 ### AI 編譯的搜索空間分析
 2023 年 DeepMind 的 AlphaDev 用強化學習發現更快的排序演算法（比人類最佳短 1-2 條指令，寫進 LLVM libc++）。AI 輔助編譯的本質是在巨大的搜索空間中找最佳化路徑：
 
-$$|\mathcal{S}| \sim \prod_{i=1}^{P} |O_i|$$
+$$
+|\mathcal{S}| \sim \prod_{i=1}^{P} |O_i|
+$$
 
-其中 $P$ 是優化 pass 數（LLVM 有數百個）， $|O_i|$ 是第 $i$ 個 pass 的候選選擇數（如平鋪尺寸、展開次數）。總搜索空間是指數級的——傳統編譯器靠人類手寫的啟發式（heuristic）挑選；AI 則靠學習在空間中導航：
+其中 $`P`$ 是優化 pass 數（LLVM 有數百個）， $`|O_i|`$ 是第 $`i`$ 個 pass 的候選選擇數（如平鋪尺寸、展開次數）。總搜索空間是指數級的——傳統編譯器靠人類手寫的啟發式（heuristic）挑選；AI 則靠學習在空間中導航：
 
 | 方法 | 搜索策略 | 成本 | 例子 |
 |---|---|---|---|

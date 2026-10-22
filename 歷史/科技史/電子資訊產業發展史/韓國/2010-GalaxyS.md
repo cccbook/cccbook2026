@@ -14,7 +14,9 @@
 
 **Galaxy S 的勝利公式**：
 
-$$V_{Galaxy} = \underbrace{\text{規格超車}}_{\text{4吋屏+AMOLED}} \times \underbrace{\text{全球同步鋪貨}}_{\text{94家電信商}} \times \underbrace{\text{安卓免費}}_{\text{OS成本為零}} \times \underbrace{\text{垂直整合}}_{\text{成本優勢}}$$
+$$
+V_{Galaxy} = \underbrace{\text{規格超車}}_{\text{4吋屏+AMOLED}} \times \underbrace{\text{全球同步鋪貨}}_{\text{94家電信商}} \times \underbrace{\text{安卓免費}}_{\text{OS成本為零}} \times \underbrace{\text{垂直整合}}_{\text{成本優勢}}
+$$
 
 **「94 家電信商」的通路暴擊**：三星同時供應全球所有主要電信商、每家客製化機型——**蘋果只跟一兩家獨家合作，三星跟所有人合作**。這是「功能機時代通路能力」的直接平移（2007 檔案的資產平移）。
 

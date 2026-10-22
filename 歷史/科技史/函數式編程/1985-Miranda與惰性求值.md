@@ -20,9 +20,11 @@
 
 在指稱語義上，非嚴格求值允許底數（bottom，表示未定義或發散）傳遞而不引爆：
 
-$$\llbracket \lambda x. e \rrbracket \, \rho = \lambda v. \llbracket e \rrbracket \, \rho[x \mapsto v]$$
+$$
+\llbracket \lambda x. e \rrbracket \, \rho = \lambda v. \llbracket e \rrbracket \, \rho[x \mapsto v]
+$$
 
-嚴格求值要求 $v \neq \bot$ 才能進入函數體；非嚴格求值允許 $v = \bot$ ，只要 $x$ 不被用到。
+嚴格求值要求 $`v \neq \bot`$ 才能進入函數體；非嚴格求值允許 $`v = \bot`$ ，只要 $`x`$ 不被用到。
 
 ### 線索二：無窮資料結構
 
@@ -34,9 +36,11 @@ fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
 這在數學上是「遞迴方程式的最小不動點」：
 
-$$\text{fibs} = \bigsqcup_{n \geq 0} F^n(\bot)$$
+$$
+\text{fibs} = \bigsqcup_{n \geq 0} F^n(\bot)
+$$
 
-其中 $F$ 是右邊表達式對應的連續泛函。因為每次只「需要」有限個元素，`take 10 fibs` 只求值前 10 個 thunk，其餘永遠停留在未展開狀態。
+其中 $`F`$ 是右邊表達式對應的連續泛函。因為每次只「需要」有限個元素，`take 10 fibs` 只求值前 10 個 thunk，其餘永遠停留在未展開狀態。
 
 ### 線索三：thunk 的 Python 實作
 
@@ -77,10 +81,14 @@ print(take(10, fibs))   # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 Turner（1979）的關鍵推理：與其在直譯器中反覆展開 λ 項，不如在編譯期把程式翻譯成組合子（combinator），讓執行期只需圖規約。
 
 - **組合子編碼**：把 λ 項消去抽象（lambda lifting），例如以 SK 優化：
-  $$\llbracket \lambda x. x \rrbracket = I, \quad \llbracket \lambda x. f \rrbracket = K\,f, \quad \llbracket \lambda x. f\,x \rrbracket = f$$
+
+$$
+\llbracket \lambda x. x \rrbracket = I, \quad \llbracket \lambda x. f \rrbracket = K\,f, \quad \llbracket \lambda x. f\,x \rrbracket = f
+$$
+
 - **Hughes 的 supercombinators（1982）**：不只用固定的 S、K、I，而是為每個函數找出「最大的自由組合子」作為編譯單位，減少中間規約步數。
 - **G-machine 執行**：程式被編譯成操作抽象機（圖堆疊機）的指令序列，規約即「在圖上找最外層 redex、替換為其結果」。
-- **嚴格性分析（strictness analysis）**：若能證明某參數「一定會被用到」，就前瞻地先求值它，把 thunk 開銷省掉。形式上，若 $f\,\bot = \bot$ ，則 $f$ 對第一參數是嚴格的，可安全地 eager 求值。
+- **嚴格性分析（strictness analysis）**：若能證明某參數「一定會被用到」，就前瞻地先求值它，把 thunk 開銷省掉。形式上，若 $`f\,\bot = \bot`$ ，則 $`f`$ 對第一參數是嚴格的，可安全地 eager 求值。
 
 ### 破案時刻
 

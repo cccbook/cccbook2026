@@ -6,17 +6,17 @@
 
 ## 前因 -- 為什麼會有這個案子
 
-18 世紀天文學面臨一個實際難題：觀測天體（如彗星、行星）位置時，每次測量都有誤差。由 $n$ 個觀測方程解 $k$ 個未知數（軌道參數）時：
+18 世紀天文學面臨一個實際難題：觀測天體（如彗星、行星）位置時，每次測量都有誤差。由 $`n`$ 個觀測方程解 $`k`$ 個未知數（軌道參數）時：
 
-- 若 $n = k$ ：解唯一，但完全被誤差污染。
-- 若 $n > k$ ：方程過多，通常**無解**（互相矛盾）。
+- 若 $`n = k`$ ：解唯一，但完全被誤差污染。
+- 若 $`n > k`$ ：方程過多，通常**無解**（互相矛盾）。
 
 問題：如何在互相矛盾的觀測之間，找到「最合理」的一組參數？
 
 前人的嘗試：
 
 1. **Bernoulli 與 Euler**（clairaut 亦然）用誤差函數的變分法，但結果繁複且缺乏原則。
-2. **Mayer 與 Boscovich**：分組平均法、以絕對誤差和 $\sum|e_i|$ 極小化為準則——但絕對值難以微分處理。
+2. **Mayer 與 Boscovich**：分組平均法、以絕對誤差和 $`\sum|e_i|`$ 極小化為準則——但絕對值難以微分處理。
 3. **Laplace**（1793 前後）研究過誤差分佈，但未提出系統化的擬合法。
 
 Legendre 在處理 1802 年發現的彗星（Ceres 相關的軌道計算時代背景）觀測資料時，提出了一個優美得可疑的簡單原則：**取誤差平方和最小**。
@@ -27,9 +27,11 @@ Legendre 在處理 1802 年發現的彗星（Ceres 相關的軌道計算時代�
 
 Legendre 的陳述（1805 附錄）：選擇參數使
 
-$$\min_{\beta} \; S(\beta) = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} e_i^2$$
+$$
+\min_{\beta} \; S(\beta) = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} e_i^2
+$$
 
-其中 $\hat{y}_i$ 為模型預測值， $e_i = y_i - \hat{y}_i$ 為殘差。
+其中 $`\hat{y}_i`$ 為模型預測值， $`e_i = y_i - \hat{y}_i`$ 為殘差。
 
 **為何是平方？** Legendre 給出的辯護：
 
@@ -41,23 +43,31 @@ $$\min_{\beta} \; S(\beta) = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n}
 
 ### 正規方程（Normal Equations）
 
-線性模型 $\hat{y}_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip}$ ，矩陣形式 $X\beta$ 。對 $S(\beta)$ 求梯度並令為零：
+線性模型 $`\hat{y}_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip}`$ ，矩陣形式 $`X\beta`$ 。對 $`S(\beta)`$ 求梯度並令為零：
 
-$$\frac{\partial S}{\partial \beta} = -2X^T(y - X\beta) = 0 \quad\Longrightarrow\quad X^T X \hat{\beta} = X^T y$$
+$$
+\frac{\partial S}{\partial \beta} = -2X^T(y - X\beta) = 0 \quad\Longrightarrow\quad X^T X \hat{\beta} = X^T y
+$$
 
-$$\boxed{\hat{\beta} = (X^T X)^{-1} X^T y}$$
+$$
+\boxed{\hat{\beta} = (X^T X)^{-1} X^T y}
+$$
 
 單變數情形的正規方程（1821 年 Gauss 更簡潔的推導）：
 
-$$\hat{\beta}_1 = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2} = \frac{\operatorname{Cov}(x,y)}{\operatorname{Var}(x)}, \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
+$$
+\hat{\beta}_1 = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2} = \frac{\operatorname{Cov}(x,y)}{\operatorname{Var}(x)}, \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
+$$
 
 ### 幾何觀點（Gauss 後代的現代詮釋）
 
-最小平方解是 $y$ 在 $X$ 的行空間（column space）上的**正交投影**：
+最小平方解是 $`y`$ 在 $`X`$ 的行空間（column space）上的**正交投影**：
 
-$$\hat{y} = X\hat{\beta} = P_X y, \qquad P_X = X(X^TX)^{-1}X^T$$
+$$
+\hat{y} = X\hat{\beta} = P_X y, \qquad P_X = X(X^TX)^{-1}X^T
+$$
 
-殘差 $e = y - \hat{y}$ 與 $X$ 的每一行正交： $X^T e = 0$ ——這正是正規方程的幾何意義。
+殘差 $`e = y - \hat{y}`$ 與 $`X`$ 的每一行正交： $`X^T e = 0`$ ——這正是正規方程的幾何意義。
 
 ### Python：numpy 實作最小平方法
 

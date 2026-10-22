@@ -3,7 +3,11 @@
 ## 案件摘要
 2004 年 10 月 20 日，**Ubuntu 4.10（Warty Warthog）** 發布——Mark Shuttleworth（Canonical 創辦人）的宣言：
 > **"Linux for Human Beings"**——把 Debian 的穩固 + 桌面的易用，變成人人可裝的系統。
-$$\text{Debian（穩固但艱澀）} \;\xrightarrow{\text{Ubuntu}}\; \text{半年一版、預裝桌面、免費光碟}.$$
+
+$$
+\text{Debian（穩固但艱澀）} \;\xrightarrow{\text{Ubuntu}}\; \text{半年一版、預裝桌面、免費光碟}.
+$$
+
 **Linux 桌面化的關鍵一步**——今天逾半數雲端伺服器與大量開發者工作站衍生自 Ubuntu。
 
 ## 前因 -- 為什麼會有這個案子

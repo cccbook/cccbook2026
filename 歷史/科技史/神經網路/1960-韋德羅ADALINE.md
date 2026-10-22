@@ -4,74 +4,136 @@
 1960 年，史丹佛的 **Bernard Widrow（1929–）** 與博士生 **Ted Hoff（1937–）**
 （後來的 Intel 4004 微處理器共同發明人！）發表 **ADALINE**
 （Adaptive Linear Neuron，自適應線性神經元）：
-$$\boxed{\text{對「連續輸出」的誤差學習——delta 規則（LMS 最小均方）}}$$
+
+$$
+\boxed{\text{對「連續輸出」的誤差學習——delta 規則（LMS 最小均方）}}
+$$
+
 **ADALINE** 與感知機的關鍵差別：
-- 感知機用**階梯函數後**的離散誤差 $(t - o)$ ；
+- 感知機用**階梯函數後**的離散誤差 $`(t - o)`$ ；
 - ADALINE 用**階梯函數前**的連續誤差：
-$$E = \frac{1}{2}(t - y)^2, \quad y = w \cdot x$$
-**delta 規則（LMS）**——對誤差 $E$ 做梯度下降：
-$$\Delta w = \eta \, (t - y) \, x$$
+
+$$
+E = \frac{1}{2}(t - y)^2, \quad y = w \cdot x
+$$
+
+**delta 規則（LMS）**——對誤差 $`E`$ 做梯度下降：
+
+$$
+\Delta w = \eta \, (t - y) \, x
+$$
+
 **形式上與感知機相同，本質上更深刻**：它在最小化**二次誤差面**——
 **收斂性更強、對雜訊更穩健**。
 ADALINE/Madaline 是**第一批實際應用的神經網路**：
 **電話迴音消除器（adaptive filter）**曾部署在全球的電話網路中——
-$$\text{神經網路} \xrightarrow{\text{ADALINE（1960）}} \text{第一次走出實驗室}.$$
+
+$$
+\text{神經網路} \xrightarrow{\text{ADALINE（1960）}} \text{第一次走出實驗室}.
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **Rosenblatt 感知機的缺陷（1958）**：
-  感知機的學習用**階梯輸出**的誤差 $(t - o) \in \{-1, 0, 1\}$ ——
+  感知機的學習用**階梯輸出**的誤差 $`(t - o) \in \{-1, 0, 1\}`$ ——
   **錯很多只知「錯了」**：誤差訊號粗、收斂慢、對雜訊敏感。
-  $$\boxed{\text{「能不能用連續的誤差大小，而不是只有對錯？」}}$$
-  Widrow 的回答：**對連續誤差做梯度下降**——delta 規則。
+
+$$
+\boxed{\text{「能不能用連續的誤差大小，而不是只有對錯？」}}
+$$
+
+Widrow 的回答：**對連續誤差做梯度下降**——delta 規則。
 - **McCulloch–Pitts 與 Hebb 的遺產（1943、1949）**：
   神經元 = 閾值單元（`1943-麥卡洛克皮茨神經元.md`）；
   Hebb 規則 = 學習的第一定律（`1949-赫布學習規則.md`）——
   Widrow 把它們工程化：**他要的不是模擬大腦，是有用的機器**。
 - **最小平方法的回聲（1795 → 1960）**：
   **Gauss 與 Legendre** 在 1795 年前後發明**最小平方法**（least squares）：
-  $$\min_w \sum_k (t^{(k)} - w \cdot x^{(k)})^2 \quad \text{（二次誤差面）}$$
-  這是**回歸分析的基礎**。Widrow–Hoff 的 LMS 是**最小平方法的線上版**——
+
+$$
+\min_w \sum_k (t^{(k)} - w \cdot x^{(k)})^2 \quad \text{（二次誤差面）}
+$$
+
+這是**回歸分析的基礎**。Widrow–Hoff 的 LMS 是**最小平方法的線上版**——
   不一次吃全部資料，而是**一個樣本一個樣本地更新**：
-  $$\text{Gauss（1795）：批次最小平方} \xrightarrow{\text{Widrow（1960）：線上 delta 規則}} \text{隨機梯度下降}.$$
+
+$$
+\text{Gauss（1795）：批次最小平方} \xrightarrow{\text{Widrow（1960）：線上 delta 規則}} \text{隨機梯度下降}.
+$$
+
 - **貝爾實驗室的迴音問題（1950s–1960s）**：
   長途電話有**迴音**（訊號反射回原端）——
   迴音路徑**因線路而異、隨時間變化**——
   **固定濾波器無法消除**——需要**自適應（adaptive）**的濾波器——
   ADALINE 正好是「會自我調整的線性濾波器」——
-  $$\text{工程需求} \xrightarrow{} \text{自適應濾波} \xrightarrow{} \text{神經網路的第一個殺手級應用}.$$
+
+$$
+\text{工程需求} \xrightarrow{} \text{自適應濾波} \xrightarrow{} \text{神經網路的第一個殺手級應用}.
+$$
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：ADALINE 的形式定義
 **ADALINE** 是一個**線性單元**（無階梯函數的輸出）：
-$$y = \sum_i w_i x_i = w \cdot x$$
-- 輸出 $y$ 是**連續的**（與感知機的二值輸出不同）；
-- 二值決策（若需要）在 $y$ 之後用符號函數 $\mathrm{sgn}(y)$ 做出；
-- **學習發生在連續輸出 $y$ 上**——這是核心差別。
+
+$$
+y = \sum_i w_i x_i = w \cdot x
+$$
+
+- 輸出 $`y`$ 是**連續的**（與感知機的二值輸出不同）；
+- 二值決策（若需要）在 $`y`$ 之後用符號函數 $`\mathrm{sgn}(y)`$ 做出；
+- **學習發生在連續輸出 $`y`$ 上**——這是核心差別。
 
 ### 第二條線索：delta 規則 = 誤差面的梯度下降
 **均方誤差**（單一樣本）：
-$$E = \frac{1}{2}(t - y)^2 = \frac{1}{2}(t - w \cdot x)^2$$
-**對 $E$ 求梯度**（連鎖法則）：
-$$\frac{\partial E}{\partial w_i} = (t - y) \cdot \frac{\partial y}{\partial w_i} = (t - y) \, x_i$$
+
+$$
+E = \frac{1}{2}(t - y)^2 = \frac{1}{2}(t - w \cdot x)^2
+$$
+
+**對 $`E`$ 求梯度**（連鎖法則）：
+
+$$
+\frac{\partial E}{\partial w_i} = (t - y) \cdot \frac{\partial y}{\partial w_i} = (t - y) \, x_i
+$$
+
 **梯度下降**（往誤差下降最快的方向走）：
-$$\boxed{\Delta w_i = -\eta \frac{\partial E}{\partial w_i} = \eta \, (t - y) \, x_i}$$
+
+$$
+\boxed{\Delta w_i = -\eta \frac{\partial E}{\partial w_i} = \eta \, (t - y) \, x_i}
+$$
+
 **這是 delta 規則（LMS, least mean squares）**——
-- 感知機：誤差 $(t - o)$ 只有 $\{-1, 0, +1\}$ （階梯後）；
-- ADALINE：誤差 $(t - y)$ 是**連續實數**（階梯前）——
+- 感知機：誤差 $`(t - o)`$ 只有 $`\{-1, 0, +1\}`$ （階梯後）；
+- ADALINE：誤差 $`(t - y)`$ 是**連續實數**（階梯前）——
   **錯得越多，推得越用力**——
-  $$\text{感知機（1958）：}(t - o) \in \{-1,0,1\} \xrightarrow{\text{ADALINE（1960）}} (t - y) \in \mathbb{R}.$$
-- **收斂性**：當 $\eta$ 足夠小（ $\eta < 2/\lambda_{\max}$ ， $\lambda_{\max}$ 是輸入相關矩陣的最大特徵值），
+
+$$
+\text{感知機（1958）：}(t - o) \in \{-1,0,1\} \xrightarrow{\text{ADALINE（1960）}} (t - y) \in \mathbb{R}.
+$$
+
+- **收斂性**：當 $`\eta`$ 足夠小（ $`\eta < 2/\lambda_{\max}`$ ， $`\lambda_{\max}`$ 是輸入相關矩陣的最大特徵值），
   LMS **必收斂到誤差面的最低點**——比感知機的行為更可控。
 
 ### 第三條線索：LMS = 最小平方法的線上版
-**批次最小平方**（Gauss, 1795）：一次用全部 $p$ 筆資料解正規方程：
-$$X^{\top} X \, w = X^{\top} t$$
+**批次最小平方**（Gauss, 1795）：一次用全部 $`p`$ 筆資料解正規方程：
+
+$$
+X^{\top} X \, w = X^{\top} t
+$$
+
 **線上 LMS**（Widrow, 1960）：一筆一筆更新：
-$$w \leftarrow w + \eta \, (t^{(k)} - w \cdot x^{(k)}) \, x^{(k)}$$
+
+$$
+w \leftarrow w + \eta \, (t^{(k)} - w \cdot x^{(k)}) \, x^{(k)}
+$$
+
 - **兩者收斂到同一個解**（最小均方解）；
 - 但 LMS **不需要儲存全部資料**、**能追蹤緩慢變化的系統**——
-  $$\boxed{\text{線上更新} + \text{自我調整} = \text{自適應濾波}}$$
+
+$$
+\boxed{\text{線上更新} + \text{自我調整} = \text{自適應濾波}}
+$$
+
 - 這正是**迴音消除**需要的：迴音路徑隨時間變化，
   LMS 濾波器**即時跟蹤**——
   **這是隨機梯度下降（SGD）的第一次實戰**。
@@ -181,28 +243,48 @@ LMS 線性回歸（學習 y = 2x1 + 3x2）：
 
 ## 結案 -- 後果與影響
 - **第一批實用的神經網路（1960s）**：
-  $$\boxed{\text{ADALINE/Madaline 是第一個走出實驗室的神經網路}}$$
-  - **Madaline I（1961）**：多層 ADALINE，做**自適應模式辨識**；
+
+$$
+\boxed{\text{ADALINE/Madaline 是第一個走出實驗室的神經網路}}
+$$
+
+- **Madaline I（1961）**：多層 ADALINE，做**自適應模式辨識**；
   - **迴音消除器**：部署在全球電話網路——**神經網路的第一個商業應用**。
-    $$\text{delta 規則} \xrightarrow{\text{應用}} \text{電話、數據機、雷達、天線陣列}.$$
+
+$$
+\text{delta 規則} \xrightarrow{\text{應用}} \text{電話、數據機、雷達、天線陣列}.
+$$
+
 - **反向傳播的預言（1960 → 1986）**：
   delta 規則是「**對連續誤差做梯度下降**」——
   Rumelhart–Hinton–Williams 的**反向傳播（1986）**把它推廣到**多層**：
   誤差從輸出層**逐層回傳**，每層都用 delta 規則更新——
-  $$\text{delta 規則（單層, 1960）} \xrightarrow{\text{反傳（多層, 1986）}} \text{深度學習}.$$
-  **Widrow 的單層規則，養育了多層的世界**。
+
+$$
+\text{delta 規則（單層, 1960）} \xrightarrow{\text{反傳（多層, 1986）}} \text{深度學習}.
+$$
+
+**Widrow 的單層規則，養育了多層的世界**。
 - **Hoff 的另一個傳奇（1971）**：
   Ted Hoff 離開史丹佛後加入 Intel，
   是 **Intel 4004 微處理器（1971）**的四位共同發明人之一——
-  $$\text{ADALINE（1960）：學習的晶片} \xrightarrow{\text{4004（1971）：計算的晶片}} \text{兩條傳奇線在同一人身上交會}.$$
+
+$$
+\text{ADALINE（1960）：學習的晶片} \xrightarrow{\text{4004（1971）：計算的晶片}} \text{兩條傳奇線在同一人身上交會}.
+$$
+
 - **第一次寒冬中的倖存者（1969–1980s）**：
   Minsky–Papert 的批判（1969）凍結了感知機路線——
   但 ADALINE 因為**有實際應用**（電話、數據機）而**倖存**——
   Widrow 的史丹佛實驗室持續運作，培養了新一代的神經網路研究者——
   **務實的工程活過了理論的寒冬**。
 - 歷史定位：**Widrow–Hoff 是神經網路的工程師與倖存者**——
-  $$\text{計算（1943）} \xrightarrow{\text{學習（1949）}} \text{機器（1958）} \xrightarrow{\text{應用（1960）}} \text{走出實驗室}.$$
-  **「讓它有用」——ADALINE 用電話網路證明了神經網路的價值**。
+
+$$
+\text{計算（1943）} \xrightarrow{\text{學習（1949）}} \text{機器（1958）} \xrightarrow{\text{應用（1960）}} \text{走出實驗室}.
+$$
+
+**「讓它有用」——ADALINE 用電話網路證明了神經網路的價值**。
 
 ## 關鍵人物與文獻
 - **B. Widrow 與 M. E. Hoff**：*Adaptive Switching Circuits*（1960 WESCON）——ADALINE 與 delta 規則。

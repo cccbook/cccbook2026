@@ -6,7 +6,11 @@
 核心謎題只有一個：**如何把「在矽片上畫出、長出、刻出奈米圖形」這件事，從手工藝變成機器、從機器變成雷射、從雷射變成電漿、電子束，最後變成原子層操作？**
 
 設備史的邏輯是一個循環：
-$$\text{理論（物理/化學）} \xrightarrow{\text{工程化}} \text{機台} \xrightarrow{\text{量產}} \text{製程} \xrightarrow{\text{良率壓力}} \text{新理論的需求}$$
+
+$$
+\text{理論（物理/化學）} \xrightarrow{\text{工程化}} \text{機台} \xrightarrow{\text{量產}} \text{製程} \xrightarrow{\text{良率壓力}} \text{新理論的需求}
+$$
+
 理論、實驗、技術相互促進——每一次「摩爾定律危機」，都是一台新設備的誕生證明。
 
 ## 案件卷宗（歷史年表）

@@ -28,11 +28,13 @@
 
 破壞式創新（Christensen, 1997）：iPhone 初期在「性能軸」上劣於日本旗艦機，卻在「便利性軸」（易用性、App 無限擴充、全球一致體驗）開新戰場。加拉巴哥手機的性能再高，也是「性能過剩」，無法回應軸線轉移。
 
-平台生態的網路效應估計：App Store 應用數 $N_a$ 與用戶數 $N_u$ 滿足
+平台生態的網路效應估計：App Store 應用數 $`N_a`$ 與用戶數 $`N_u`$ 滿足
 
-$$\frac{dN_a}{dt} = \beta N_u - \delta, \qquad V_{user} = v_0 + \alpha N_a$$
+$$
+\frac{dN_a}{dt} = \beta N_u - \delta, \qquad V_{user} = v_0 + \alpha N_a
+$$
 
-日本廠商單機研發成本 $C$ 高（防水、One-Seg、FeliCa 全客製），出貨量 $Q$ 僅限日本，單位成本 $C/Q$ 遠高於以全球為市場的三星與 Apple。規模劣勢 × 生態劣勢，兩條曲線同時發散。
+日本廠商單機研發成本 $`C`$ 高（防水、One-Seg、FeliCa 全客製），出貨量 $`Q`$ 僅限日本，單位成本 $`C/Q`$ 遠高於以全球為市場的三星與 Apple。規模劣勢 × 生態劣勢，兩條曲線同時發散。
 
 | 軸線 | 加拉巴哥手機 | iPhone / Android |
 |---|---|---|

@@ -30,7 +30,9 @@ PC DOS 1.0 的 API 核心是 int 21h 系統呼叫（來自 CP/M 的 BDOS 慣例�
 
 IBM PC 記憶體配置：
 
-$$\text{0x00000–0x9FFFF：RAM（640 KB）} \quad \text{0xA0000–0xFFFFF：BIOS/ROM/視訊（384 KB）}$$
+$$
+\text{0x00000–0x9FFFF：RAM（640 KB）} \quad \text{0xA0000–0xFFFFF：BIOS/ROM/視訊（384 KB）}
+$$
 
 「640K 上限」成為十年間最著名的瓶頸，催生 EMS 擴充記憶體與 80286 保護模式的呼聲。
 

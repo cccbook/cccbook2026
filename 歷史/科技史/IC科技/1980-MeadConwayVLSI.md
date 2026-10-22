@@ -13,24 +13,27 @@
 
 ### 結構化 VLSI 設計方法學
 Mead–Conway 的核心信念：**設計規則必須與製程參數解耦，並以比例常數 λ 表示**。
-- 全部尺寸以 $\lambda$ （半個 MOS 製程線寬）的倍數表示：線寬、間距、接觸孔都寫成 $n\lambda$ 。
-- 製程升級（線寬縮小）時，只需改變一個常數 $\lambda$ ，整份版圖不用重畫。
-- 注意：此 $\lambda$ 是**幾何縮放常數**，與函數程式的 λ 演算（lambda calculus）完全無關——只是同名的記號巧合。
+- 全部尺寸以 $`\lambda`$ （半個 MOS 製程線寬）的倍數表示：線寬、間距、接觸孔都寫成 $`n\lambda`$ 。
+- 製程升級（線寬縮小）時，只需改變一個常數 $`\lambda`$ ，整份版圖不用重畫。
+- 注意：此 $`\lambda`$ 是**幾何縮放常數**，與函數程式的 λ 演算（lambda calculus）完全無關——只是同名的記號巧合。
 
 ### 可擴縮設計規則（λ-based design rules）
-基於 Dennard 縮放（1974），CMOS 在 $\lambda \to \lambda/S$ 時電氣特性同步改善。典型 λ 規則：
+基於 Dennard 縮放（1974），CMOS 在 $`\lambda \to \lambda/S`$ 時電氣特性同步改善。典型 λ 規則：
 
 | 規則 | λ 表示 |
 |---|---|
-| 金屬最小線寬 | $3\lambda$ |
-| 金屬最小間距 | $3\lambda$ |
-| 多晶矽線寬 | $2\lambda$ |
-| 多晶矽–擴散間距 | $1\lambda$ |
-| 接觸孔尺寸 | $2\lambda \times 2\lambda$ |
-| 電晶體最小寬度 | $2\lambda$ |
+| 金屬最小線寬 | $`3\lambda`$ |
+| 金屬最小間距 | $`3\lambda`$ |
+| 多晶矽線寬 | $`2\lambda`$ |
+| 多晶矽–擴散間距 | $`1\lambda`$ |
+| 接觸孔尺寸 | $`2\lambda \times 2\lambda`$ |
+| 電晶體最小寬度 | $`2\lambda`$ |
 
-Dennard 縮放的數學：尺寸 $\frac{1}{S}$ 、電壓 $\frac{1}{S}$ 、電流 $\frac{1}{S}$ 、延遲 $\frac{CV}{I} = \frac{1}{S}$ 、功耗密度不變、密度 $S^2$ ：
-$$I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{th})^2$$
+Dennard 縮放的數學：尺寸 $`\frac{1}{S}`$ 、電壓 $`\frac{1}{S}`$ 、電流 $`\frac{1}{S}`$ 、延遲 $`\frac{CV}{I} = \frac{1}{S}`$ 、功耗密度不變、密度 $`S^2`$ ：
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{th})^2
+$$
 
 ### MPC79 計畫（多專案晶圓, Multi-Project Chip）
 - 1979–80 年，Conway 組織「多專案晶圓」：把**多個不同設計者的晶片**拼到同一片光罩上，分攤昂貴的製造成本。
@@ -40,9 +43,16 @@ $$I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{th})^2$$
 
 ### 設計規則檢查（DRC）的 λ 規則
 DRC 就是把 λ 規則寫成演算法自動檢查版圖。核心檢查 = 兩個幾何關係：
-$$\text{width}(A) \geq w_{min}, \qquad \text{dist}(A, B) \geq s_{min}(A,B)$$
-用 minkowski 膨脹（dilation）實作：把版圖形狀用半徑 $r = \lfloor (w_{min}-\epsilon)/2 \rfloor$ 的方形結構元素膨脹，膨脹前後有差異的區域即違規：
-$$A' = A \oplus B_r, \quad \text{violations} = (A' \ominus B_r) \setminus A$$
+
+$$
+\text{width}(A) \geq w_{min}, \qquad \text{dist}(A, B) \geq s_{min}(A,B)
+$$
+
+用 minkowski 膨脹（dilation）實作：把版圖形狀用半徑 $`r = \lfloor (w_{min}-\epsilon)/2 \rfloor`$ 的方形結構元素膨脹，膨脹前後有差異的區域即違規：
+
+$$
+A' = A \oplus B_r, \quad \text{violations} = (A' \ominus B_r) \setminus A
+$$
 
 ### 晶片設計民主化與矽編譯的先聲
 - 《Introduction to VLSI Systems》成為 1980 年代大學 VLSI 課程聖經，數萬工程師照書自學設計晶片。
@@ -80,7 +90,7 @@ for ax, lam in zip(axes, [2.0, 1.0, 0.5, 0.25]):
 plt.suptitle("λ-based design rules scale automatically")
 plt.show()
 ```
-同一份設計（比例不變），只改 $\lambda$ 就能從 2 μm 縮到 0.25 μm 製程——這是 Mead–Conway 方法學「可擴縮」本質的最小演示。
+同一份設計（比例不變），只改 $`\lambda`$ 就能從 2 μm 縮到 0.25 μm 製程——這是 Mead–Conway 方法學「可擴縮」本質的最小演示。
 
 ## 結案 -- 後果與影響
 - VLSI 設計從企業機密變成公開知識，催生 1980 年代美國大學 VLSI 課程與整個 EDA 產業（Cadence、Mentor）。

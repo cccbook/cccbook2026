@@ -13,7 +13,9 @@
 ### 1. P-code：bytecode 的祖先
 P-code（pseudo-code）是一種緊湊的**堆疊式中間碼**：指令不帶暫存器編號，操作數隱含在堆疊頂端。
 
-$$\text{source } \xrightarrow{\text{編譯器前端}} \text{P-code} \xrightarrow{\text{P-machine 直譯器}} \text{執行}$$
+$$
+\text{source } \xrightarrow{\text{編譯器前端}} \text{P-code} \xrightarrow{\text{P-machine 直譯器}} \text{執行}
+$$
 
 典型指令（UCSD P-code 風格）：
 
@@ -28,26 +30,30 @@ $$\text{source } \xrightarrow{\text{編譯器前端}} \text{P-code} \xrightarrow
 | `HALT` | 停機 |
 
 ### 2. P-machine 直譯器（理論定義）
-P-machine 是一個抽象機 $M = \langle S, D, C, \delta \rangle$ ：
+P-machine 是一個抽象機 $`M = \langle S, D, C, \delta \rangle`$ ：
 
-- $S$ ：求值堆疊（evaluation stack）
-- $D$ ：資料區（frame：static link、dynamic link、區域變數、返回位址）
-- $C$ ：程式碼區（P-code 序列）
-- $\delta$ ：狀態轉移函數， $\delta: (S, D, C, pc) \to (S', D', C, pc')$
+- $`S`$ ：求值堆疊（evaluation stack）
+- $`D`$ ：資料區（frame：static link、dynamic link、區域變數、返回位址）
+- $`C`$ ：程式碼區（P-code 序列）
+- $`\delta`$ ：狀態轉移函數， $`\delta: (S, D, C, pc) \to (S', D', C, pc')`$
 
 每步取 `$C[pc]$`、解碼、執行、更新堆疊與 `$pc$`——這就是 fetch-decode-execute 迴圈，與真實 CPU 同構，只是由軟體實作。
 
 ### 3. 「一次編譯，到處執行」的數學理由
-對任意平台 $X$ ，只要有直譯器 $I_X$ ：
+對任意平台 $`X`$ ，只要有直譯器 $`I_X`$ ：
 
-$$\forall X:\ \text{P-code} \xrightarrow{I_X} \text{same semantics}$$
+$$
+\forall X:\ \text{P-code} \xrightarrow{I_X} \text{same semantics}
+$$
 
-即語意函數等價： $\text{sem}(\text{src}) = \text{sem}_X(\text{P-code})\ \ \forall X$ 。
-移植成本從「重寫整個編譯器後端 $O(\text{compiler})$ 」降為「寫一個小直譯器 $O(\text{interpreter})$ 」：
+即語意函數等價： $`\text{sem}(\text{src}) = \text{sem}_X(\text{P-code})\ \ \forall X`$ 。
+移植成本從「重寫整個編譯器後端 $`O(\text{compiler})`$ 」降為「寫一個小直譯器 $`O(\text{interpreter})`$ 」：
 
-$$\text{cost}_{new\ platform} \approx |I_X| \ll |C_{backend}|$$
+$$
+\text{cost}_{new\ platform} \approx |I_X| \ll |C_{backend}|
+$$
 
-代價：直譯執行比原生慢 5–20 倍（ $t_{interp} \gg t_{native}$ ）——這個缺口後來由 JIT 補上。
+代價：直譯執行比原生慢 5–20 倍（ $`t_{interp} \gg t_{native}`$ ）——這個缺口後來由 JIT 補上。
 
 ### 4. Python 實作：簡單堆疊 VM（P-code 風格）
 

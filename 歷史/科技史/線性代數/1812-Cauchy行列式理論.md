@@ -1,11 +1,11 @@
 # 1812 — Cauchy 行列式理論
 
 ## 案件摘要
-1812 年，28 歲的 Augustin-Louis Cauchy 在巴黎發表兩篇重磅論文（一篇法文〈Mémoire sur les fonctions qui ne peuvent obtenir que deux valeurs égales et de signes contraires...〉，一篇拉丁文〈DeBinis...〉系列），首次把「行列式」當成一個獨立的數學物件系統研究：確立了雙重下標記法 $a_{ij}$ 、證明乘法規則 $\det(AB)=\det(A)\det(B)$ 、系統研究行列式的對稱性質。混亂的「符號偵探學」從此變成有法可依的偵探科學。
+1812 年，28 歲的 Augustin-Louis Cauchy 在巴黎發表兩篇重磅論文（一篇法文〈Mémoire sur les fonctions qui ne peuvent obtenir que deux valeurs égales et de signes contraires...〉，一篇拉丁文〈DeBinis...〉系列），首次把「行列式」當成一個獨立的數學物件系統研究：確立了雙重下標記法 $`a_{ij}`$ 、證明乘法規則 $`\det(AB)=\det(A)\det(B)`$ 、系統研究行列式的對稱性質。混亂的「符號偵探學」從此變成有法可依的偵探科學。
 
 ## 前因 -- 為什麼會有這個案子
 - 1683 年 Leibniz 在寫給 l'Hôpital 的信中已經使用類似行列式的陣列來解線性方程組，但符號笨重、無人跟進——第一樁懸案石沉大海。
-- 1750 年 Cramer 在《曲線解析引論》中提出 **Cramer 法則**： $n$ 個未知數、 $n$ 個方程的解可以用係數陣列的比值表示。但他沒有給這個「陣列」正式的名字與理論，符號的合法性來自直覺。
+- 1750 年 Cramer 在《曲線解析引論》中提出 **Cramer 法則**： $`n`$ 個未知數、 $`n`$ 個方程的解可以用係數陣列的比值表示。但他沒有給這個「陣列」正式的名字與理論，符號的合法性來自直覺。
 - 1772 年 Vandermonde 在巴黎科學院宣讀論文，研究如何用「帶符號的乘積和」計算行列式，並對特殊結構（如循環規則）給出聰明算法。Bézout 也在同期研究消去法中的結式。但這些都是「個案偵辦」，沒有統一的理論框架。
 - 1800 年前後，Gauss 在《算術研究》處理二次型時用「行列式」一詞（determinans，指二次型的判別式性質），但含義與今日不同。
 - 案件的核心疑問：這些散落各處的符號技巧，究竟是不是同一個數學物件？它有沒有自己的運算律？
@@ -13,30 +13,36 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：雙重下標記法與定義
-Cauchy 的第一大功績是記法。他把 $n$ 階行列式寫成方陣 $(a_{ij})$ ，其中第一個下標 $i$ 標示行、第二個下標 $j$ 標示列，並定義：
+Cauchy 的第一大功績是記法。他把 $`n`$ 階行列式寫成方陣 $`(a_{ij})`$ ，其中第一個下標 $`i`$ 標示行、第二個下標 $`j`$ 標示列，並定義：
 
-$$\det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma)\, a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}$$
+$$
+\det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma)\, a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}
+$$
 
-其中 $\sigma$ 跑遍所有 $n!$ 個置換， $\operatorname{sgn}(\sigma)$ 是置換的符號（偶置換 $+1$ 、奇置換 $-1$ ）。Cauchy 是第一個清楚地把「符號」與「置換的奇偶性」綁在一起的人——他甚至發展了置換理論（後來成為群論的養分）來當偵查工具。
+其中 $`\sigma`$ 跑遍所有 $`n!`$ 個置換， $`\operatorname{sgn}(\sigma)`$ 是置換的符號（偶置換 $`+1`$ 、奇置換 $`-1`$ ）。Cauchy 是第一個清楚地把「符號」與「置換的奇偶性」綁在一起的人——他甚至發展了置換理論（後來成為群論的養分）來當偵查工具。
 
-### 線索二：乘法規則 $\det(AB) = \det(A)\det(B)$
+### 線索二：乘法規則 $`\det(AB) = \det(A)\det(B)`$
 1812 年論文的高潮是證明：兩個行列式的乘積等於「乘積行列式」。用今日記法：
 
-$$\det(AB) = \det(A)\,\det(B)$$
+$$
+\det(AB) = \det(A)\,\det(B)
+$$
 
-Cauchy 用雙重和與置換符號的乘法性質 $\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)$ 證明此式。他還給出一個漂亮的組合表述：乘積 $\det(A)\det(B)$ 等於把 $A$ 的第 $i$ 行與 $B$ 的第 $i$ 列「配對」後形成的所有「合成項」之和——這就是所謂 **Cauchy–Binet 公式**的雛形（完整版 1815 年由 Cauchy 本人給出，處理非方陣情形）：
+Cauchy 用雙重和與置換符號的乘法性質 $`\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)`$ 證明此式。他還給出一個漂亮的組合表述：乘積 $`\det(A)\det(B)`$ 等於把 $`A`$ 的第 $`i`$ 行與 $`B`$ 的第 $`i`$ 列「配對」後形成的所有「合成項」之和——這就是所謂 **Cauchy–Binet 公式**的雛形（完整版 1815 年由 Cauchy 本人給出，處理非方陣情形）：
 
-$$\det(AB) = \sum_{S} \det(A_{[n],S})\det(B_{S,[n]})$$
+$$
+\det(AB) = \sum_{S} \det(A_{[n],S})\det(B_{S,[n]})
+$$
 
-其中 $S$ 跑遍所有 $n$ 元子集。這條公式像指紋比對：把兩個嫌疑人的特徵逐一組合，得到第三人的完整特徵。
+其中 $`S`$ 跑遍所有 $`n`$ 元子集。這條公式像指紋比對：把兩個嫌疑人的特徵逐一組合，得到第三人的完整特徵。
 
 ### 線索三：拉丁方與對稱性
 Cauchy 觀察到行列式展開式中各項的正負號排列，可以用「拉丁方」（每行每列符號恰出現一次的方陣）來記憶。3 階與 4 階的符號方陣呈現完美對稱：沿主對角線翻轉不變、符號成對出現。他系統列出一系列恆等式：
 
-- 轉置不變： $\det(A^T) = \det(A)$ （Cauchy 證明，解釋了行與列的地位對等）
-- 兩行（列）交換則變號： $\det(\cdots \text{swap} \cdots) = -\det(A)$
-- 一行乘 $c$ 加到另一行：行列式不變
-- 兩行相同則行列式為零： $\det(A) = 0$
+- 轉置不變： $`\det(A^T) = \det(A)`$ （Cauchy 證明，解釋了行與列的地位對等）
+- 兩行（列）交換則變號： $`\det(\cdots \text{swap} \cdots) = -\det(A)`$
+- 一行乘 $`c`$ 加到另一行：行列式不變
+- 兩行相同則行列式為零： $`\det(A) = 0`$
 
 這些「偵查守則」至今就是每一本線性代數教科書第一章的內容。Cauchy 還研究**對稱函數與交錯函數**：行列式是變數的交錯函數，這正是他 1812 年法文論文的標題主題。
 
@@ -91,7 +97,7 @@ AB2 = [[sum(A2[i][k]*B2[k][j] for k in range(3)) for j in range(2)] for i in ran
 print("Cauchy–Binet sum       =", cb, " det(AB) =", det_laplace(AB2))
 ```
 
-輸出顯示三條線索全部吻合：暴力展開與 Laplace 展開相等、 $\det(AB)=\det(A)\det(B)$ 、 $\det(A^T)=\det(A)$ 、Cauchy–Binet 和恰等於 $\det(AB)$ 。
+輸出顯示三條線索全部吻合：暴力展開與 Laplace 展開相等、 $`\det(AB)=\det(A)\det(B)`$ 、 $`\det(A^T)=\det(A)`$ 、Cauchy–Binet 和恰等於 $`\det(AB)`$ 。
 
 ## 結案 -- 後果與影響
 - 行列式從「解方程的符號技巧」升格為**獨立的代數物件**，擁有自己的定義、記法與運算律。

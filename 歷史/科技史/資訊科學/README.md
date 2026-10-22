@@ -68,7 +68,9 @@
 
 圖靈獎（1966 年設立）是資訊科學的最高榮譽，本卷收錄的圖靈獎主線：
 
-$$\text{Turing（1936，奠基）} \to \text{Newell/Simon（1956，第一個 AI）} \to \text{Backus（1957，FORTRAN）} \to \text{McCarthy（1958，AI 與 LISP）} \to \text{Dijkstra（1959/1968，演算法與結構化）} \to \text{Hoare（1960，快速排序）} \to \text{Corbató（1961，分時系統）} \to \text{Dahl/Nygaard（1967，物件導向）} \to \text{Knuth（1968，演算法分析）} \to \text{Engelbart（1968，人機介面）} \to \text{Codd（1970，資料庫）} \to \text{Cook（1971，NP-完全）} \to \text{Tarjan/Hopcroft（1972，圖論演算法）} \to \text{Thompson/Ritchie（1973，UNIX）} \to \text{Cerf/Kahn（1974，TCP/IP）} \to \text{Lamport（1978/1982，邏輯時鐘與 Paxos）} \to \text{Goldwasser/Micali（1985，零知識）} \to \text{Pearl（1988，貝氏網路）} \to \text{Kahan（1989，浮點）} \to \text{姚期智（2000，量子）} \to \text{RSA（2002，密碼學）} \to \text{Allen（2006，編譯器）} \to \text{深度學習三巨頭（2018，AI）}$$
+$$
+\text{Turing（1936，奠基）} \to \text{Newell/Simon（1956，第一個 AI）} \to \text{Backus（1957，FORTRAN）} \to \text{McCarthy（1958，AI 與 LISP）} \to \text{Dijkstra（1959/1968，演算法與結構化）} \to \text{Hoare（1960，快速排序）} \to \text{Corbató（1961，分時系統）} \to \text{Dahl/Nygaard（1967，物件導向）} \to \text{Knuth（1968，演算法分析）} \to \text{Engelbart（1968，人機介面）} \to \text{Codd（1970，資料庫）} \to \text{Cook（1971，NP-完全）} \to \text{Tarjan/Hopcroft（1972，圖論演算法）} \to \text{Thompson/Ritchie（1973，UNIX）} \to \text{Cerf/Kahn（1974，TCP/IP）} \to \text{Lamport（1978/1982，邏輯時鐘與 Paxos）} \to \text{Goldwasser/Micali（1985，零知識）} \to \text{Pearl（1988，貝氏網路）} \to \text{Kahan（1989，浮點）} \to \text{姚期智（2000，量子）} \to \text{RSA（2002，密碼學）} \to \text{Allen（2006，編譯器）} \to \text{深度學習三巨頭（2018，AI）}
+$$
 
 ## 關鍵人物年表
 

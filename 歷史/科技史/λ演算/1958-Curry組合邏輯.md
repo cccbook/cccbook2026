@@ -54,7 +54,7 @@ $$
 S\ K\ K\ x \to K\ x\ (K\ x) \to x
 $$
 
-所以 $I \equiv S\ K\ K$ ——恆等函數竟可由 S、K 組合而成。
+所以 $`I \equiv S\ K\ K`$ ——恆等函數竟可由 S、K 組合而成。
 
 Python 模擬：
 
@@ -69,7 +69,7 @@ assert K(1)(2) == 1  # K a b = a
 
 ### 變數消除原理（Bracket Abstraction）
 
-**Bracket abstraction** 是把 λ 項轉為組合子的演算法。對 $\lambda x.\, M$ ：
+**Bracket abstraction** 是把 λ 項轉為組合子的演算法。對 $`\lambda x.\, M`$ ：
 
 $$
 [x] M =
@@ -80,13 +80,13 @@ S\ ([x]\,M_1)\ ([x]\,M_2) & M = M_1\ M_2
 \end{cases}
 $$
 
-例：把 $\lambda x.\ f\ x$ 轉為組合子：
+例：把 $`\lambda x.\ f\ x`$ 轉為組合子：
 
 $$
 [x]\,(f\ x) = S\ ([x]\,f)\ ([x]\,x) = S\ (K\ f)\ I
 $$
 
-驗證： $S\ (K\ f)\ I\ x \to K\ f\ x\ (I\ x) \to f\ x$ ✓
+驗證： $`S\ (K\ f)\ I\ x \to K\ f\ x\ (I\ x) \to f\ x`$ ✓
 
 完整轉換（Python）：
 
@@ -142,13 +142,13 @@ assert curry(add)(3)(4) == 7      # add 3 4，組合子邏輯的呼叫方式
 # λa. λb. a + b  ≡  curry(add)
 ```
 
-這解釋了為何函數型 $\sigma \to \tau \to \gamma$ 右結合、
-應用 $f\ x\ y$ 左結合——兩者都是 curry 化的語法體現。
+這解釋了為何函數型 $`\sigma \to \tau \to \gamma`$ 右結合、
+應用 $`f\ x\ y`$ 左結合——兩者都是 curry 化的語法體現。
 
 ### Curry–Howard 對應中 Curry 的角色
 
 - 1934 年，Curry 觀察到：組合邏輯的型別與公理模式
-  $P \to P$ 、 $P \to (Q \to P)$ 、 $(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))$
+  $`P \to P`$ 、 $`P \to (Q \to P)`$ 、 $`(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))`$
   一一對應。
 - 1958 年《Combinatory Logic》中此觀察被系統化：**組合子 = 公理、
   應用 = modus ponens（肯定前件）**。
@@ -156,12 +156,12 @@ assert curry(add)(3)(4) == 7      # add 3 4，組合子邏輯的呼叫方式
 
 | 組合邏輯 / λ 演算 | 直覺主義邏輯 |
 |---|---|
-| 組合子 K（λa.λb.a） | 公理 $P \to (Q \to P)$ |
-| 組合子 S（λf.λg.λx.f x (g x)） | 公理 $(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))$ |
+| 組合子 K（λa.λb.a） | 公理 $`P \to (Q \to P)`$ |
+| 組合子 S（λf.λg.λx.f x (g x)） | 公理 $`(P \to (Q \to R)) \to ((P \to Q) \to (P \to R))`$ |
 | λ 抽象（→-I 引入） | 蘊含引入 |
 | 函數應用（→-E 消除） | modus ponens |
-| 項 $M$ | 證明（proof） |
-| 型別 $\tau$ | 命題（proposition） |
+| 項 $`M`$ | 證明（proof） |
+| 型別 $`\tau`$ | 命題（proposition） |
 
 **命題即型別、證明即程式**——這是現代定理證明器（Coq、Agda、Lean）
 的理論基石。
@@ -169,14 +169,14 @@ assert curry(add)(3)(4) == 7      # add 3 4，組合子邏輯的呼叫方式
 ### 與 λ 演算的等價性
 
 > **定理**：組合邏輯與 λ 演算在表達力上等價。
-> 由 bracket abstraction，每個 λ 項 $M$ 可轉為組合子項 $[M]$ ；
+> 由 bracket abstraction，每個 λ 項 $`M`$ 可轉為組合子項 $`[M]`$ ；
 > 反之每個組合子項都是 λ 項。
 
 $$
 M \to_\beta N \implies [M] \to_w [N], \qquad [M] \to_w P \implies \exists N.\ M \twoheadrightarrow_\beta N \text{ 且 } P \twoheadrightarrow_w [N]
 $$
 
-其中 $\to_w$ 是「弱約簡」（weak reduction：不在 $\lambda$ 下方約簡）。
+其中 $`\to_w`$ 是「弱約簡」（weak reduction：不在 $`\lambda`$ 下方約簡）。
 此等價性由 Curry 與 Feys 嚴格證明（abstraction theorem）。
 
 ## 結案 -- 後果與影響

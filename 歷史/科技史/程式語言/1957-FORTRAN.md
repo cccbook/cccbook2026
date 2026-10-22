@@ -32,7 +32,9 @@ Backus 團隊的推理分三步：
 
 2. **公共子表達式消除**：若程式中兩處都算 `A(I)*B(I)`，只算一次：
 
-$$\text{Cost}(\text{手寫組語}) \approx \text{Cost}(\text{FORTRAN 編譯碼})$$
+$$
+\text{Cost}(\text{手寫組語}) \approx \text{Cost}(\text{FORTRAN 編譯碼})
+$$
 
 3. **展開與融合**：對迴圈內的運算重新排序，減少記憶體存取。
 

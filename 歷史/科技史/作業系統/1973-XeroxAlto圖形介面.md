@@ -3,7 +3,11 @@
 ## 案件摘要
 1973 年，Xerox PARC 的 Chuck Thacker 與 Butler Lampson 團隊完成 **Alto**——
 史上第一台具備**點陣圖螢幕、視窗、滑鼠、所見即所得編輯**的個人電腦：
-$$\text{位元圖顯示} + \text{滑鼠 + 視窗} \quad\Longrightarrow\quad \text{圖形使用者介面 (GUI) 的誕生}.$$
+
+$$
+\text{位元圖顯示} + \text{滑鼠 + 視窗} \quad\Longrightarrow\quad \text{圖形使用者介面 (GUI) 的誕生}.
+$$
+
 命令列的霸權（Unix 的文字介面，見「1969-Unix誕生.md」）遭遇第一個挑戰者——
 但 Xerox 自己沒有商業化，這場破案的成果被蘋果與微軟撿走。
 
@@ -17,21 +21,37 @@ $$\text{位元圖顯示} + \text{滑鼠 + 視窗} \quad\Longrightarrow\quad \tex
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：位元圖顯示 = 記憶體即畫面
-$$\text{螢幕} = \text{記憶體}, \qquad \text{像素} (x,y) \leftrightarrow \text{位元} (x + y \cdot W).$$
+
+$$
+\text{螢幕} = \text{記憶體}, \qquad \text{像素} (x,y) \leftrightarrow \text{位元} (x + y \cdot W).
+$$
+
 繪圖 = 寫記憶體——**繪圖變成軟體問題**：
 - 視窗 = 記憶體中的矩形區域 + 重疊管理。
 - 字型 = 位元圖字型（所見即所得的基礎）。
 
 ### 第二條線索：視窗的重疊管理
 多個視窗疊放，需要**裁剪** (clipping) 與**重繪**：
-$$\text{可見區域} = \text{視窗矩形} \cap \text{未被遮擋區域}.$$
+
+$$
+\text{可見區域} = \text{視窗矩形} \cap \text{未被遮擋區域}.
+$$
+
 事件驅動模型的誕生：
-$$\text{滑鼠點擊} \xrightarrow{\text{事件佇列}} \text{視窗管理器} \xrightarrow{\text{分發}} \text{應用程式}.$$
+
+$$
+\text{滑鼠點擊} \xrightarrow{\text{事件佇列}} \text{視窗管理器} \xrightarrow{\text{分發}} \text{應用程式}.
+$$
+
 **「事件驅動」取代「程式主導」**——GUI 程式的根本範式，沿用至今（React、瀏覽器、手機）。
 
 ### 第三條線索：滑鼠與直接操縱 (direct manipulation)
 Engelbart 發明的滑鼠（1963/1968）+ Kay/Lafuente 的**直接操縱**哲學：
-$$\text{使用者操縱可見物件} \quad \text{（而非輸入抽象指令）}.$$
+
+$$
+\text{使用者操縱可見物件} \quad \text{（而非輸入抽象指令）}.
+$$
+
 Sheridan 的直接操縱三原則：**連續呈現、實體動作物件、快速可逆動作**——易用性的誕生。
 
 ### Python：位元圖繪圖與視窗裁剪的縮影

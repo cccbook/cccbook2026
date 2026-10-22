@@ -19,10 +19,12 @@ Jobs 稱 iPhone 具備三大革命：
 ### 觸控手勢的語言
 iPhone 定義了一套至今通用的人機介面詞彙：`tap`（點選）、`double-tap`（縮放）、`swipe`（滑動換頁）、`pinch`（雙指捏合縮放）、`long-press`（長按）。以數學描述，捏合縮放的比例因子為兩指距離之比值：
 
-$$s = \frac{d_t}{d_0} = \frac{\|p_{1,t} - p_{2,t}\|}{\|p_{1,0} - p_{2,0}\|}, \quad
-\theta = \arctan\frac{y_{1,t}-y_{2,t}}{x_{1,t}-x_{2,t}}$$
+$$
+s = \frac{d_t}{d_0} = \frac{\|p_{1,t} - p_{2,t}\|}{\|p_{1,0} - p_{2,0}\|}, \quad
+\theta = \arctan\frac{y_{1,t}-y_{2,t}}{x_{1,t}-x_{2,t}}
+$$
 
-其中 $d_0$ 是觸控開始時兩指距離， $d_t$ 是當前距離； $\theta$ 可同時用於雙指旋轉。
+其中 $`d_0`$ 是觸控開始時兩指距離， $`d_t`$ 是當前距離； $`\theta`$ 可同時用於雙指旋轉。
 
 ### Python：觸控座標與手勢判別
 以下示範如何從一串觸控事件座標判別手勢型態（簡化的狀態機）：
@@ -63,16 +65,20 @@ print(round(pinch_scale([(50,300),(150,300)], [(25,300),(175,300)]), 2))  # 1.6
 ### ARM 晶片與行動 SoC
 iPhone 1 代採用 Samsung S5L8900（ARM1176JZF-S 核心，約 412 MHz），整合 CPU、GPU（PowerVR MBX）、記憶體控制器於單晶片（SoC）。ARM 的 RISC 設計以「每瓦效能」取勝——其能效比可粗略表示為：
 
-$$\eta = \frac{\text{MIPS}}{\text{Watt}} \approx \frac{f \cdot \text{IPC}}{C V^2 f} = \frac{\text{IPC}}{C V^2}$$
+$$
+\eta = \frac{\text{MIPS}}{\text{Watt}} \approx \frac{f \cdot \text{IPC}}{C V^2 f} = \frac{\text{IPC}}{C V^2}
+$$
 
-降低電壓 $V$ 對功耗是平方級的改善，這正是行動裝置選擇 ARM 而非 x86 的數學理由。（2010 年起 Apple 自研 A 系列 SoC，延續此路線。）
+降低電壓 $`V`$ 對功耗是平方級的改善，這正是行動裝置選擇 ARM 而非 x86 的數學理由。（2010 年起 Apple 自研 A 系列 SoC，延續此路線。）
 
 ### App Store（2008）與應用生態
 iPhone 初期只有內建 App 與 Web App；2008 年 7 月 App Store 上線，以 SDK + 審核 + 70/30 分成模式創造雙邊市場。開發者數與應用數相互增強，形成網路效應：
 
-$$V(n) \approx k \cdot n^2$$
+$$
+V(n) \approx k \cdot n^2
+$$
 
-$n$ 為應用（或用戶）數量，價值隨平方成長——這是 Nokia Symbian 碎片化生態被擊潰的結構性原因。
+$`n`$ 為應用（或用戶）數量，價值隨平方成長——這是 Nokia Symbian 碎片化生態被擊潰的結構性原因。
 
 ## 結案 -- 後果與影響
 - **Nokia 衰亡**：2007 年 Nokia 市值約 1,100 億美元，2013 年手機部門賣給微軟；霸主十年內消失。

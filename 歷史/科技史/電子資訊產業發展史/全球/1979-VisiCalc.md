@@ -22,11 +22,15 @@
 ## 理論
 VisiCalc 的核心資料結構可抽象為一張有向依賴圖：
 
-$$G = (V, E),\quad V = \{\text{儲存格}\},\; E = \{(u,v) \mid v \text{ 的公式引用 } u\}$$
+$$
+G = (V, E),\quad V = \{\text{儲存格}\},\; E = \{(u,v) \mid v \text{ 的公式引用 } u\}
+$$
 
 重算即對 G 做拓撲排序後逐一求值：
 
-$$\text{recalc}(v) = f_v\big(\text{recalc}(u_1), \dots, \text{recalc}(u_k)\big),\quad \forall (u_i, v) \in E$$
+$$
+\text{recalc}(v) = f_v\big(\text{recalc}(u_1), \dots, \text{recalc}(u_k)\big),\quad \forall (u_i, v) \in E
+$$
 
 循環參照即 G 中存在環，需偵測並報錯。現代 Excel 仍是這套模型的直系後裔。
 

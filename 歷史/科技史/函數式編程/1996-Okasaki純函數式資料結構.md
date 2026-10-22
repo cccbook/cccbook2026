@@ -16,7 +16,7 @@
 
 ### 線索一：持久化與結構共享
 
-持久化資料結構的定義：每次修改返回新版本，舊版本仍然可用。關鍵在於新舊版本共享未改變的部分，因此單次修改的成本不必是整份結構的拷貝。若結構大小為 $n$ 、共享後只需改動路徑長度 $d$ ，則更新成本為 $O(d)$ 而非 $O(n)$ ：
+持久化資料結構的定義：每次修改返回新版本，舊版本仍然可用。關鍵在於新舊版本共享未改變的部分，因此單次修改的成本不必是整份結構的拷貝。若結構大小為 $`n`$ 、共享後只需改動路徑長度 $`d`$ ，則更新成本為 $`O(d)`$ 而非 $`O(n)`$ ：
 
 $$
 \text{update}: \; v \mapsto v' \quad \text{其中 } |v' \setminus v| = O(d), \; |v' \cap v| = n - d
@@ -36,7 +36,7 @@ $$
 
 ### 線索三：兩個堆疊反轉的佇列與 real-time queue
 
-Okasaki 的 lazy queue 用兩個堆疊（front、rear）實作佇列：入隊 push 進 rear，出隊從 front 取；front 空了就把 rear 反轉接上。攤還 $O(1)$ 。Hood-Melville 的 real-time queue（Okasaki 1995 年以惰性技術重新推導）更進一步做到最壞情況 $O(1)$ ：
+Okasaki 的 lazy queue 用兩個堆疊（front、rear）實作佇列：入隊 push 進 rear，出隊從 front 取；front 空了就把 rear 反轉接上。攤還 $`O(1)`$ 。Hood-Melville 的 real-time queue（Okasaki 1995 年以惰性技術重新推導）更進一步做到最壞情況 $`O(1)`$ ：
 
 $$
 \text{queue} = (\text{front}, \text{rear}) \quad \text{invariant: } |\text{front}| \ge |\text{rear}|

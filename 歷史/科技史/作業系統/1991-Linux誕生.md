@@ -19,18 +19,33 @@ GNU 工具鏈（見「1983-GNU計畫.md」）+ Linux 核心 = **GNU/Linux**—�
 
 ### 第一條線索：宏核心 + 386 保護模式
 Torvalds 的取捨（與 Tanenbaum 相反，見「1987-MINIX微核心.md」）：
-$$\text{宏核心（性能）} + \text{386 分頁保護} \quad \text{vs} \quad \text{微核心（隔離但慢）}.$$
+
+$$
+\text{宏核心（性能）} + \text{386 分頁保護} \quad \text{vs} \quad \text{微核心（隔離但慢）}.
+$$
+
 386 的關鍵硬體：
-- **分頁**（ $4\text{KB}$ 頁）：虛擬記憶體的硬體基礎。
+- **分頁**（ $`4\text{KB}`$ 頁）：虛擬記憶體的硬體基礎。
 - **保護環**：Ring 0（核心）/ Ring 3（用戶）——特權隔離。
 
 ### 第二條線索：GPL + 網路 = 協作的數學
 Linux 以 **GPL** 釋出（1992 年 0.12 版起）：
-$$\text{任何人} \xrightarrow{\text{GPL + 網路}} \text{修改 → 發布 → 再修改} \quad \text{（滾雪球）}.$$
+
+$$
+\text{任何人} \xrightarrow{\text{GPL + 網路}} \text{修改 → 發布 → 再修改} \quad \text{（滾雪球）}.
+$$
+
 貢獻者的增長：
-$$\text{貢獻者數} \sim \text{指數增長} \quad \text{（1991: 1 人 → 2020s: 每版數千貢獻者、數千萬行）}.$$
+
+$$
+\text{貢獻者數} \sim \text{指數增長} \quad \text{（1991: 1 人 → 2020s: 每版數千貢獻者、數千萬行）}.
+$$
+
 **Bazaar vs Cathedral**（Raymond, 1997）：Linux 證明「市集式」的鬆散協作勝過「教堂式」的集中開發——
-$$\text{給足夠多的眼睛，所有缺陷都淺顯} \quad \text{（Linus 定律）}.$$
+
+$$
+\text{給足夠多的眼睛，所有缺陷都淺顯} \quad \text{（Linus 定律）}.
+$$
 
 ### 第三條線索：版本控制的進化
 協作逼出工具進化：BitKeeper（2002）→ **Git**（2005，Torvalds 親寫）——

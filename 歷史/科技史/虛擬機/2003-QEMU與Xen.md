@@ -6,7 +6,7 @@
 ## 前因 -- 為什麼會有這個案子
 - **VMware 的封閉與昂貴**：1999–2003 年 VMware 是 x86 虛擬化唯一成熟方案，閉源且商用授權昂貴；學界與開源社群需要自由的替代品。
 - **跨 ISA 模擬的需求**：嵌入式開發（ARM/PowerPC）、作業系統研究、legacy 系統（Old Mac、SPARC）都需在 x86 上模擬其他架構——現有模擬器（Bochs 純直譯）慢到不可用。
-- **Bellard 的前科**：Fabrice Bellard 曾贏得 FFmpeg（2000）的作者聲望；2003 年發表 QEMU 論文，其 TCG 動態二進位轉譯比 Bochos 快 $10\times$ 以上。
+- **Bellard 的前科**：Fabrice Bellard 曾贏得 FFmpeg（2000）的作者聲望；2003 年發表 QEMU 論文，其 TCG 動態二進位轉譯比 Bochos 快 $`10\times`$ 以上。
 - **x86 仍不可虛擬化（2003）**：VT-x 尚未問世，敏感非特權指令的破口仍在；劍橋開發者選擇另一條路——**修改 Guest OS 原始碼**，讓它主動配合 hypervisor（paravirtualization）。
 
 ## 線索與推理 -- 數學式、程式、理論
@@ -28,7 +28,7 @@ $$
 T_{\text{TCG}} \;=\; n \cdot c \cdot t_{\text{exec}} + \frac{C_{\text{gen}}}{k}, \qquad c \approx 1.1\text{–}2 \;(\text{相對原生})
 $$
 
-其中 $c$ 為 code quality factor， $k$ 為 TB 重複執行次數。對比純直譯的 $c \approx 10$ ，TCG 快一個數量級。
+其中 $`c`$ 為 code quality factor， $`k`$ 為 TB 重複執行次數。對比純直譯的 $`c \approx 10`$ ，TCG 快一個數量級。
 
 ### 全系統模擬：跨 ISA 互模擬
 QEMU 的核心設計是**guest 與 host ISA 解耦**：CPU 狀態（暫存器、PC、flags）用架構無關的 `CPUState` 結構表示，TCG 把 guest ISA 翻成 host ISA：
@@ -37,7 +37,7 @@ $$
 \text{guest } (\text{ARM, PPC, SPARC, x86, \dots}) \;\xrightarrow{\;\text{TCG}\;}\; \text{host } (\text{x86, ARM, \dots})
 $$
 
-這使得**任意組合**的 $n \times m$ 模擬只需 $n + m$ 個前端/後端——與 1995 年 JVM 的 Write Once Run Anywhere 數學結構完全同構，只是這次模擬的是完整電腦（CPU + 裝置 + 中斷 + MMU）而非單一語言。
+這使得**任意組合**的 $`n \times m`$ 模擬只需 $`n + m`$ 個前端/後端——與 1995 年 JVM 的 Write Once Run Anywhere 數學結構完全同構，只是這次模擬的是完整電腦（CPU + 裝置 + 中斷 + MMU）而非單一語言。
 
 ### Xen 的半虛擬化（paravirtualization）
 Xen 的策略：**修改 Guest OS 原始碼**，把敏感指令改為**顯式的 hypercall**（類似系統呼叫但呼叫 hypervisor）：
@@ -127,7 +127,7 @@ for _ in range(3):         # 執行 3 次，只編譯 1 次
 - **QEMU** 成為開源虛擬化的基石：模擬幾乎所有 ISA（ARM、RISC-V、PowerPC、s390x），是作業系統教學、嵌入式開發、跨架構測試的標準工具；2008 年起與 KVM 合流成為 Linux 雲端生態的標準配備。
 - **Xen** 成為 2006 年 Amazon EC2 的底座，撑起第一代公有雲；後來逐步讓位給 KVM（AWS 部分轉向 Nitro/KVM）。
 - **VT-x/AMD-V** 使硬體輔助虛擬化成為所有現代 CPU 的標準配備，也催生了容器與 microVM（Firecracker 2018）。
-- Bellard 的傳奇延續：FFmpeg、TCC、計算 $\pi$ 的世界紀錄——一人之力改寫多個領域。
+- Bellard 的傳奇延續：FFmpeg、TCC、計算 $`\pi`$ 的世界紀錄——一人之力改寫多個領域。
 
 ## 關鍵人物與文獻
 - **Fabrice Bellard**：QEMU、FFmpeg、TCC 的作者。

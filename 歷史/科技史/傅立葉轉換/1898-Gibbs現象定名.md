@@ -15,22 +15,42 @@
 
 ### 論戰的焦點：機器 vs 數學
 Michelson 的分析儀用 80 個諧波機械疊加：
-$$S_{80}(x) = \frac{4}{\pi}\sum_{k=0}^{39}\frac{\sin\big((2k+1)x\big)}{2k+1}.$$
-機械疊加精確無誤，過衝依舊 $\approx 9\%$ 。Gibbs 的推理：
-$$\lim_{N\to\infty} \max_x S_N(x) = \frac{2}{\pi}\operatorname{Si}(\pi) \approx 1.17898 > 1.$$
+
+$$
+S_{80}(x) = \frac{4}{\pi}\sum_{k=0}^{39}\frac{\sin\big((2k+1)x\big)}{2k+1}.
+$$
+
+機械疊加精確無誤，過衝依舊 $`\approx 9\%`$ 。Gibbs 的推理：
+
+$$
+\lim_{N\to\infty} \max_x S_N(x) = \frac{2}{\pi}\operatorname{Si}(\pi) \approx 1.17898 > 1.
+$$
+
 極限中的最大值 > 原函數最大值——**極限與極大值不可交換**：
-$$\lim_{N\to\infty}\max_x S_N(x) \neq \max_x \lim_{N\to\infty} S_N(x).$$
+
+$$
+\lim_{N\to\infty}\max_x S_N(x) \neq \max_x \lim_{N\to\infty} S_N(x).
+$$
+
 這正是一致收斂缺席的徵兆。點收斂成立（Dirichlet 定理），但過衝「逃逸」到越來越窄的區間裡，測量儀器恰好「看見」了它。
 
 ### Gibbs 的關鍵補正（1899）
 Gibbs 第一封信誤以為極限函數「在躍變處連接兩點」，1899 年他畫出極限函數的正確圖像：
-躍變附近的部分和曲線隨 $N$ 增大而**變陡但始終超越**——極限過程是一個「壓縮的 S 形」：
-$$S_N(x) \approx \frac{2}{\pi}\operatorname{Si}\big((N+1)x\big) \quad \text{（躍變附近）。}$$
-$N\to\infty$ 時 S 形被壓縮成垂直跳躍，但峰高恆為 $1.17898$ 。
+躍變附近的部分和曲線隨 $`N`$ 增大而**變陡但始終超越**——極限過程是一個「壓縮的 S 形」：
+
+$$
+S_N(x) \approx \frac{2}{\pi}\operatorname{Si}\big((N+1)x\big) \quad \text{（躍變附近）。}
+$$
+
+$`N\to\infty`$ 時 S 形被壓縮成垂直跳躍，但峰高恆為 $`1.17898`$ 。
 
 ### 工程解藥：窗函數
 要用有限項逼近方波而不過衝，必須放棄完美銳利——對係數加窗（如 Fejér 平均）：
-$$\sigma_N(x) = \frac{1}{N}\sum_{m=0}^{N-1} S_m(x), \qquad \text{Fejér 證明 } \sigma_N \rightrightarrows f \text{（一致收斂，無過衝）}.$$
+
+$$
+\sigma_N(x) = \frac{1}{N}\sum_{m=0}^{N-1} S_m(x), \qquad \text{Fejér 證明 } \sigma_N \rightrightarrows f \text{（一致收斂，無過衝）}.
+$$
+
 代價是躍變處變「鈍」。這就是 FIR 濾波器設計中 Hamming/Hanning 窗的數學本質。
 
 ### Python 重現 1898 年論戰
@@ -58,7 +78,7 @@ N=  80 過衝峰高 = 1.17916
 N= 200 過衝峰高 = 1.17925
 Fejér 平均過衝: 1.0 (≤ 1，一致收斂)
 ```
-過衝恆定 $\approx 1.179$ ，Fejér 平均則完全貼服——1898 年論戰的完整答案。
+過衝恆定 $`\approx 1.179`$ ，Fejér 平均則完全貼服——1898 年論戰的完整答案。
 
 ## 結案 -- 後果與影響
 - 「Gibbs 現象」定名（1899，Bôcher 命名）；Wilbraham 的 1848 年首度目擊要到 20 世紀才被史家翻案。

@@ -8,7 +8,7 @@
 
 - Backus 是 Fortran（1957）與 BNF（Backus-Naur Form, 1959）的發明人，貢獻無人能否認；但他自己承認 Fortran 是「一次性」的成功——靠大量的即興 hack 壓榨 von Neumann 機器，無法成為長遠的程式設計典範。
 - von Neumann 架構的暴政：CPU 與記憶體之間「一個字一個字搬運」，傳統語言把這個瓶頸直接搬進語言設計——程式被迫以變數與賦值的方式一個一個更新狀態。
-- 傳統語言無法用代數推理：一段含賦值的程式碼，你無法像對付 $f \circ g$ 那樣對付它——沒有等式、沒有變換律、沒有組合性。
+- 傳統語言無法用代數推理：一段含賦值的程式碼，你無法像對付 $`f \circ g`$ 那樣對付它——沒有等式、沒有變換律、沒有組合性。
 - APL 的啟發：Iverson 的 APL 語言用陣列運算子取代迴圈，讓 Backus 看到「不用變數也能寫程式」的可能性。
 - 於是 1977 年，他在圖靈獎演說上發表宣言：程式設計應該從 von Neumann 風格中解放，改用函數式風格。
 
@@ -28,9 +28,11 @@ memory[addr] ← word     ; 搬回去
 
 ### 線索二：FP 系統 -- 無變數無賦值
 
-Backus 的解法：FP 系統中程式只由**combining forms**（組合形式）建構——如 $\circ$ （組合）、 $[f, g]$ （tuple）、 $\alpha f$ （apply-to-all，即 map）、 $/f$ （insert，即 reduce）。沒有變數、沒有賦值：
+Backus 的解法：FP 系統中程式只由**combining forms**（組合形式）建構——如 $`\circ`$ （組合）、 $`[f, g]`$ （tuple）、 $`\alpha f`$ （apply-to-all，即 map）、 $`/f`$ （insert，即 reduce）。沒有變數、沒有賦值：
 
-$$\text{wordcount} = \text{length} \circ \text{tokens}$$
+$$
+\text{wordcount} = \text{length} \circ \text{tokens}
+$$
 
 這是 dot-free 記法：程式就是函數的組合式，像代數式一樣。對照命令式版本：
 
@@ -56,11 +58,15 @@ def wordcount_fp(text):
 
 FP 的核心主張：程式滿足代數律，因此可以「程式變換」做優化。基本律如：
 
-$$(f \circ g) \circ h = f \circ (g \circ h) \qquad \text{（結合律）}$$
+$$
+(f \circ g) \circ h = f \circ (g \circ h) \qquad \text{（結合律）}
+$$
 
-$$\alpha f \circ \alpha g = \alpha (f \circ g) \qquad \text{（map 融合律）}$$
+$$
+\alpha f \circ \alpha g = \alpha (f \circ g) \qquad \text{（map 融合律）}
+$$
 
-融合律說：先 map $g$ 再 map $f$ ，等於一次 map 完 $f \circ g$ 。這意味著中間結構可以被消滅——Deforest（stream fusion）的先聲。
+融合律說：先 map $`g`$ 再 map $`f`$ ，等於一次 map 完 $`f \circ g`$ 。這意味著中間結構可以被消滅——Deforest（stream fusion）的先聲。
 
 ### 線索四：融合優化實作 -- 破案時刻
 
@@ -92,7 +98,9 @@ print(result[:5])                       # [1, 3, 5, 7, 9]
 
 融合律可以反覆套用、鏈式消滅：
 
-$$\alpha f \circ \alpha g \circ \alpha h = \alpha(f \circ g) \circ \alpha h = \alpha(f \circ g \circ h)$$
+$$
+\alpha f \circ \alpha g \circ \alpha h = \alpha(f \circ g) \circ \alpha h = \alpha(f \circ g \circ h)
+$$
 
 一串 n 個 map 可以融合成 1 個。在串流（stream）場景下，這就是 deforestation：中間結構從未完整存在，逐元素流水線處理。
 

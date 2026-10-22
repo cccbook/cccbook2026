@@ -13,19 +13,23 @@
 ### 線索一：Gates 的防禦策略
 Gates 的策略可用平台理論寫成不等式。設平台的價值為：
 
-$$V_{\text{platform}} = V \cdot N^2 \quad (\text{Metcalfe 定律：價值與節點數平方成正比})$$
+$$
+V_{\text{platform}} = V \cdot N^2 \quad (\text{Metcalfe 定律：價值與節點數平方成正比})
+$$
 
-- Mac 路線： $N$ 小（僅蘋果硬體）， $V$ 高（整合體驗佳）。
-- Windows 路線： $N$ 巨大（所有 PC 相容機）， $V$ 低（體驗粗糙）。
+- Mac 路線： $`N`$ 小（僅蘋果硬體）， $`V`$ 高（整合體驗佳）。
+- Windows 路線： $`N`$ 巨大（所有 PC 相容機）， $`V`$ 低（體驗粗糙）。
 
-當 clone 產業讓 $N_{\text{Win}} \gg N_{\text{Mac}}$ ，即使 $V_{\text{Win}} < V_{\text{Mac}}$ ，仍可使 $V_{\text{platform,Win}} \gg V_{\text{platform,Mac}}$ 。**以量取勝、以生態鎖定**——這是 Gates 一貫的棋譜。
+當 clone 產業讓 $`N_{\text{Win}} \gg N_{\text{Mac}}`$ ，即使 $`V_{\text{Win}} < V_{\text{Mac}}`$ ，仍可使 $`V_{\text{platform,Win}} \gg V_{\text{platform,Mac}}`$ 。**以量取勝、以生態鎖定**——這是 Gates 一貫的棋譜。
 
 ### 線索二：Windows 1.0 的侷限
 1985 年的 Windows 1.0 三大硬傷：
 1. **平鋪視窗（tiling windows）**：視窗不可重疊（據說是怕 IBM 的 TopView 抱怨侵權），與 Mac 的重疊視窗相比體驗倒退。
 2. **需 DOS**：Windows 只是 DOS 上的殼（shell），不是作業系統。開機流程為：
 
-$$\text{BIOS} \rightarrow \text{DOS（command.com）} \rightarrow \text{win.com} \rightarrow \text{Windows}$$
+$$
+\text{BIOS} \rightarrow \text{DOS（command.com）} \rightarrow \text{win.com} \rightarrow \text{Windows}
+$$
 
 3. **又慢又吃記憶體**：640KB 的 DOS 記憶體限制下，跑 GUI 捉襟見肘。
 
@@ -35,14 +39,18 @@ Windows 1.0 內附的簡單工具（Notepad、Paint、Clock、Reversi 遊戲）�
 - **Windows 3.0（1990）**：突破 1MB 記憶體限制（保護模式、虛擬記憶體），配合 386 CPU，首次真正流暢。1992 年的 3.1 搭配文書處理與試算表，PC 端殺手級應用到位——VisiCalc 劇本重演，只是舞台換成 Windows。
 - **Windows 95**：不再需要先開 DOS（DOS 7.0 整合進來），並以 **Start 選單**解決 GUI 的導航難題：所有程式一鍵可達。它的抽象意義是「單一根入口」：
 
-$$\text{導航成本} = O(\text{搜尋深度}) \quad \Rightarrow \quad \text{Start 選單把搜尋深度壓縮為 } O(1)$$
+$$
+\text{導航成本} = O(\text{搜尋深度}) \quad \Rightarrow \quad \text{Start 選單把搜尋深度壓縮為 } O(1)
+$$
 
 - 「Start me up」（滾石樂團）廣告曲、午夜排隊搶購——作業系統第一次成為大眾文化事件。
 
 ### 線索四：API 壟斷與反壟斷訴訟（1998）
 Win32 API 成為事實標準後，微軟的壟斷武器是**應用程式進入障礙（applications barrier to entry）**：
 
-$$\text{新 OS 的存活條件} = \frac{\text{其上可用應用數}}{\text{Windows 應用數}} \to 1 \text{ 才可能存活}$$
+$$
+\text{新 OS 的存活條件} = \frac{\text{其上可用應用數}}{\text{Windows 應用數}} \to 1 \text{ 才可能存活}
+$$
 
 開發者只為市占最大的平台寫程式 → 新平台沒有應用 → 使用者不換 → 開發者更不寫。這個正回饋迴圈鎖死了競爭。
 - 1995 年 Netscape 瀏覽器威脅此迴圈（瀏覽器可承載跨平台應用），微軟以「綑綁 IE + 打壓 OEM」反擊。

@@ -14,35 +14,45 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：卡方統計量的誕生
-設 $k$ 個類別，觀察頻率 $O_i$ ，理論期望頻率 $E_i = n p_i$ ，Pearson 定義：
+設 $`k`$ 個類別，觀察頻率 $`O_i`$ ，理論期望頻率 $`E_i = n p_i`$ ，Pearson 定義：
 
-$$\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}$$
+$$
+\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}
+$$
 
-**Pearson 的重大定理（1900）**：當 $n \to \infty$ 且 H0 成立時， $\chi^2$ 收斂到自由度 $k-1$ 的卡方分佈。因此可計算 p 值：
+**Pearson 的重大定理（1900）**：當 $`n \to \infty`$ 且 H0 成立時， $`\chi^2`$ 收斂到自由度 $`k-1`$ 的卡方分佈。因此可計算 p 值：
 
-$$p = P(\chi^2_{k-1} \ge \chi^2_{obs}) = 1 - F_{\chi^2_{k-1}}(\chi^2_{obs})$$
+$$
+p = P(\chi^2_{k-1} \ge \chi^2_{obs}) = 1 - F_{\chi^2_{k-1}}(\chi^2_{obs})
+$$
 
-### 線索二：卡方分佈 $\chi^2_k$ 的性質
-若 $Z_1,\dots,Z_k \overset{iid}{\sim} N(0,1)$ ，則
+### 線索二：卡方分佈 $`\chi^2_k`$ 的性質
+若 $`Z_1,\dots,Z_k \overset{iid}{\sim} N(0,1)`$ ，則
 
-$$\chi^2_k = \sum_{i=1}^k Z_i^2$$
+$$
+\chi^2_k = \sum_{i=1}^k Z_i^2
+$$
 
-服從自由度為 $k$ 的卡方分佈，密度函數：
+服從自由度為 $`k`$ 的卡方分佈，密度函數：
 
-$$f(x;k) = \frac{x^{k/2-1} e^{-x/2}}{2^{k/2}\,\Gamma(k/2)}, \quad x > 0$$
+$$
+f(x;k) = \frac{x^{k/2-1} e^{-x/2}}{2^{k/2}\,\Gamma(k/2)}, \quad x > 0
+$$
 
-- 均值 $E[\chi^2_k] = k$ ，變異數 $\text{Var}[\chi^2_k] = 2k$ 。
+- 均值 $`E[\chi^2_k] = k`$ ，變異數 $`\text{Var}[\chi^2_k] = 2k`$ 。
 - 卡方分佈由 Hermert (1875) 與 Pearson 在常態理論中分別出現，但 Pearson 首次將其用於**任意頻率數據的檢定**。
 
 ### 線索三：自由度的概念
-自由度 $df = k - 1 - (\text{被估計參數數})$ 。Pearson 最初誤認為永遠是 $k-1$ ；後來 **Fisher (1922/1924)** 糾正：當 $E_i$ 中的機率是從數據估計出來時，每估計一個參數要扣掉 1 個自由度。這場「Pearson–Fisher 爭論」也是統計史名案。
+自由度 $`df = k - 1 - (\text{被估計參數數})`$ 。Pearson 最初誤認為永遠是 $`k-1`$ ；後來 **Fisher (1922/1924)** 糾正：當 $`E_i`$ 中的機率是從數據估計出來時，每估計一個參數要扣掉 1 個自由度。這場「Pearson–Fisher 爭論」也是統計史名案。
 
 ### 線索四：孟德爾數據的懸案
-孟德爾豌豆雜交實驗預期顯性:隱性 $= 3:1$ 。Pearson 對孟德爾的 F2 比例數據計算卡方，發現：
+孟德爾豌豆雜交實驗預期顯性:隱性 $`= 3:1`$ 。Pearson 對孟德爾的 F2 比例數據計算卡方，發現：
 
-$$\chi^2 \text{ 過小} \;\Rightarrow\; p \text{ 過高（趨近 1）}$$
+$$
+\chi^2 \text{ 過小} \;\Rightarrow\; p \text{ 過高（趨近 1）}
+$$
 
-**偏差比隨機波動還小**——數據「太完美」。1936 年 Fisher 計算孟德爾全部實驗的聯合 p 值約為 $10^{-8}$ ，即若孟德爾造假，他可能是整理數據時「讓結果朝期望值修飾」。至今無定論，但成為「數據不應完美」的統計偵辦經典。
+**偏差比隨機波動還小**——數據「太完美」。1936 年 Fisher 計算孟德爾全部實驗的聯合 p 值約為 $`10^{-8}`$ ，即若孟德爾造假，他可能是整理數據時「讓結果朝期望值修飾」。至今無定論，但成為「數據不應完美」的統計偵辦經典。
 
 ### Python 實作：卡方檢定
 ```python
@@ -84,6 +94,6 @@ plt.savefig("chi2.png", dpi=100)
 - **Karl Pearson (1857–1936)**：卡方檢定發明人，Biometrika 創辦人。
 - **R. A. Fisher (1890–1962)**：修正自由度，並對孟德爾數據提出「太完美」質疑。
 - Pearson, K. (1900). *On the criterion that a given system of deviations...*. Phil. Mag. 50.
-- Fisher, R. A. (1922). *On the interpretation of $\chi^2$ from contingency tables...*. JRSS 85.
+- Fisher, R. A. (1922). *On the interpretation of $`\chi^2`$ from contingency tables...*. JRSS 85.
 - Fisher, R. A. (1936). *Has Mendel's work been rediscovered?* Annals of Science 1.
 - Hermert, F. (1875). 多項分佈的卡方極限（先驅工作）。

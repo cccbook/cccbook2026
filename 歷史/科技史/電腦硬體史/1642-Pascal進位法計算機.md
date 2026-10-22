@@ -3,7 +3,11 @@
 ## 案件摘要
 1642 年，19 歲的 Blaise Pascal 造出 **Pascaline**：
 第一台能**自動進位**的計算機，用五位數輪盤做加法、減法：
-$$\text{十進位} \quad \text{滿 } 10 \ \text{進 1} \quad\Longrightarrow\quad \text{加法不必再靠人腦}.$$
+
+$$
+\text{十進位} \quad \text{滿 } 10 \ \text{進 1} \quad\Longrightarrow\quad \text{加法不必再靠人腦}.
+$$
+
 他發明的不是機器，而是**進位制的機械化**——此後所有計算機的核心，
 從 Pascaline 到 5 奈米晶片，都是這條進位邏輯的直系後裔。
 
@@ -23,16 +27,28 @@ $$\text{十進位} \quad \text{滿 } 10 \ \text{進 1} \quad\Longrightarrow\quad
 
 ### 第一條線索：進位制的數學
 十進位加法：
-$$3 + 7 = 10 = 1\times10 + 0\times1.$$
-若用 **mod 10 計數器**，低位輪只能表示 $\{0,\dots,9\}$ ：
-$$\text{counter}(n) = n \bmod 10,\qquad \text{carry}(n) = \lfloor n/10 \rfloor.$$
+
+$$
+3 + 7 = 10 = 1\times10 + 0\times1.
+$$
+
+若用 **mod 10 計數器**，低位輪只能表示 $`\{0,\dots,9\}`$ ：
+
+$$
+\text{counter}(n) = n \bmod 10,\qquad \text{carry}(n) = \lfloor n/10 \rfloor.
+$$
+
 Pascaline 的每個齒輪就是一個 **mod 10 的計數器** + 一個**進位傳遞機構**。
 
 ### 第二條線索：輪的數學結構（进制自動提升）
 五個輪 = 一個 5 維 mod-10 向量的硬體實現：
-$$\text{Pascaline} = \left(\mathbb{Z}_{10}\right)^5, \qquad \text{值} = \sum_{i=0}^{4} d_i \times 10^i.$$
+
+$$
+\text{Pascaline} = \left(\mathbb{Z}_{10}\right)^5, \qquad \text{值} = \sum_{i=0}^{4} d_i \times 10^i.
+$$
+
 - 個位輪（d0）：轉 10 次 → 進位；
-- 進位傳遞： $d_i = 9$ 且 $d_{i+1}$ 旋轉時， $d_{i+1}$ 轉 1 格——**餘數制動器**在低位為 0（回歸點）時鬆開高位。
+- 進位傳遞： $`d_i = 9`$ 且 $`d_{i+1}`$ 旋轉時， $`d_{i+1}`$ 轉 1 格——**餘數制動器**在低位為 0（回歸點）時鬆開高位。
 
 ### 第三條線索：Pascal 的驗算（1645 年梅里茲證據）
 Pascal 將 Pascaline 的運算結果與官方公證人核對，並設計「檢驗程序」驗證每一步——
@@ -86,7 +102,7 @@ print("74 + 39 =", p2, "(手算 113 ✓)")
 - **Pascaline（1642，5 位）與 1644 的 10 位版**：商業化銷售（僅車削輪版本共 12 台留存至今）——
   **第一台計算機產品**。
 - **進位制的機械化從此確立**：所有後續計算機（Leibniz 的二進位、British 的十進位）都用進位邏輯。
-- **Pascal 的另一貢獻**（1647–1654）：建立機率理論（ $p(x) = \binom{F}}{f}\cdot\frac{f}{2^F}$ ）——
+- **Pascal 的另一貢獻**（1647–1654）：建立機率理論（ $`p(x) = \binom{F}}{f}\cdot\frac{f}{2^F}`$ ）——
   機率計算機與 Pascal 三角（Pascaline 的另一發明）——**資料科學的起點**。
 - **Leibniz 的立即接棒**：Pascaline 的進位思想 → Leibniz 的二進位計數器（見「1673-Leibniz階乘計算機.md」）。
 - 歷史定位：**從 Pascaline 起，「計算」= 「把數字放進方孔、轉輪子」**——

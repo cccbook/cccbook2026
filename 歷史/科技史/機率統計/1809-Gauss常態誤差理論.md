@@ -14,7 +14,7 @@
 
 前人的線索：
 
-1. **de Moivre**（1733）：在二項分佈 $n \to \infty$ 的極限中已導出鐘形曲線 $\exp(-x^2/2)$ 作為近似。
+1. **de Moivre**（1733）：在二項分佈 $`n \to \infty`$ 的極限中已導出鐘形曲線 $`\exp(-x^2/2)`$ 作為近似。
 2. **Laplace**（1780s）：研究誤差理論，但偏好的誤差分佈不夠優美。
 3. **Legendre**（1805）：已發表最小平方法，但只有「平方和最小」的計算原則，沒有機率辯護。
 4. Simpson（1755）等人嘗試過各種誤差分佈（三角形、二次曲線形），但都缺乏原理性根據。
@@ -25,31 +25,41 @@ Gauss 的破案策略反其道而行：**先假設一個誤差分佈，再由估
 
 ### Gauss 的反推推理
 
-Gauss 設誤差密度為 $\phi(x)$ ，採用「最大概似」原則：給定觀測 $x_1, \dots, x_n$ ，選擇位置參數使
+Gauss 設誤差密度為 $`\phi(x)`$ ，採用「最大概似」原則：給定觀測 $`x_1, \dots, x_n`$ ，選擇位置參數使
 
-$$L(\theta) = \prod_{i=1}^{n} \phi(x_i - \theta) \quad \text{最大}$$
+$$
+L(\theta) = \prod_{i=1}^{n} \phi(x_i - \theta) \quad \text{最大}
+$$
 
-Gauss 要求此原則對**任何樣本**都給出算術平均 $\bar{x}$ 作為估計（他認為平均是「自然」的估計量）。在這個約束下，唯一滿足條件的密度函數是：
+Gauss 要求此原則對**任何樣本**都給出算術平均 $`\bar{x}`$ 作為估計（他認為平均是「自然」的估計量）。在這個約束下，唯一滿足條件的密度函數是：
 
-$$\boxed{f(x) = \frac{1}{\sigma\sqrt{2\pi}}\; e^{-\frac{(x-\mu)^2}{2\sigma^2}}}$$
+$$
+\boxed{f(x) = \frac{1}{\sigma\sqrt{2\pi}}\; e^{-\frac{(x-\mu)^2}{2\sigma^2}}}
+$$
 
-證明梗概：令 $g = \ln \phi$ ，最大概似條件為 $\sum g'(x_i - \theta) = 0$ ；取 $\theta = \bar{x}$ 時恆成立，意味 $g'(x)/x$ 必為常數 $c$ ，故 $g(x) = \frac{c}{2}x^2 + b$ ，即 $\phi$ 為指數二次型。再由 $\int \phi = 1$ 與 $\sigma^2 = \int x^2\phi(x)dx$ 定出常數，得 $c = -1/\sigma^2$ 。
+證明梗概：令 $`g = \ln \phi`$ ，最大概似條件為 $`\sum g'(x_i - \theta) = 0`$ ；取 $`\theta = \bar{x}`$ 時恆成立，意味 $`g'(x)/x`$ 必為常數 $`c`$ ，故 $`g(x) = \frac{c}{2}x^2 + b`$ ，即 $`\phi`$ 為指數二次型。再由 $`\int \phi = 1`$ 與 $`\sigma^2 = \int x^2\phi(x)dx`$ 定出常數，得 $`c = -1/\sigma^2`$ 。
 
 ### 誤差理論
 
 Gauss 的完整體系：
 
-1. **誤差分佈**：觀測誤差 $\varepsilon \sim N(0, \sigma^2)$ ， $\sigma$ 稱為「平均誤差」的尺度參數。
+1. **誤差分佈**：觀測誤差 $`\varepsilon \sim N(0, \sigma^2)`$ ， $`\sigma`$ 稱為「平均誤差」的尺度參數。
 2. **最小平方 = 最大概似**：常態誤差下，
-$$\max_\beta \prod_i \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(y_i - X_i\beta)^2}{2\sigma^2}} \iff \min_\beta \sum_i (y_i - X_i\beta)^2$$
-   Legendre 的計算原則獲得了機率基礎。
-3. **精確度**：Gauss 用 $\sigma/\sqrt{n}$ 估計平均的不確定度——標準誤的先聲。
+
+$$
+\max_\beta \prod_i \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(y_i - X_i\beta)^2}{2\sigma^2}} \iff \min_\beta \sum_i (y_i - X_i\beta)^2
+$$
+
+Legendre 的計算原則獲得了機率基礎。
+3. **精確度**：Gauss 用 $`\sigma/\sqrt{n}`$ 估計平均的不確定度——標準誤的先聲。
 
 ### 高斯–馬可夫定理的先聲
 
 Gauss 在 1821–23 年《Theoria combinationis》中進一步證明：**不需要常態假設**，只要誤差期望為 0 且同變異數，最小平方估計式就在線性無偏估計中變異數最小（BLUE）。Markov 1912 年重新發現，合稱高斯–馬可夫定理：
 
-$$\operatorname{Var}(\hat{\beta}_{OLS}) = \sigma^2 (X^TX)^{-1} \le \operatorname{Var}(\tilde{\beta}) \quad \text{對一切線性無偏 } \tilde{\beta}$$
+$$
+\operatorname{Var}(\hat{\beta}_{OLS}) = \sigma^2 (X^TX)^{-1} \le \operatorname{Var}(\tilde{\beta}) \quad \text{對一切線性無偏 } \tilde{\beta}
+$$
 
 ### 命名的由來
 

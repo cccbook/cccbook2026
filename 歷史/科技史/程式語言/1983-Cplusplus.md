@@ -29,7 +29,9 @@ vtable[Circle] = [&Circle::draw, &Circle::area]   // 覆寫的槽位指向 Circl
 
 每個物件多一個隱藏欄位 `vptr` 指向其類別的 vtable。呼叫 `p->draw()` 被編譯為：
 
-$$\text{call}\ \ vptr[0](p)$$
+$$
+\text{call}\ \ vptr[0](p)
+$$
 
 這是兩次間接定址，對比 Smalltalk 的執行期方法查找（字串/符號比對）或 Lisp 的泛型函數派發，vtable 幾乎免費——而且可以被 CPU 分支預測優化。**這就是「零成本抽象化」的第一個範例。**
 

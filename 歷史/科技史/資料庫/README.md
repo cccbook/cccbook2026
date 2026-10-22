@@ -53,7 +53,9 @@ Stonebraker（2014）——每一屆得主都改寫了這門學科的一章。
 
 ## 圖靈獎主線
 
-$$\text{Bachman（1969，網路模型）} \to \text{Codd（1970，關聯式）} \to \text{Gray（1981，交易 ACID）} \to \text{Stonebraker（1974/1986/2005，Ingres/Postgres/列存）}$$
+$$
+\text{Bachman（1969，網路模型）} \to \text{Codd（1970，關聯式）} \to \text{Gray（1981，交易 ACID）} \to \text{Stonebraker（1974/1986/2005，Ingres/Postgres/列存）}
+$$
 
 ## 關鍵人物年表
 

@@ -20,11 +20,15 @@
 ## 理論
 相容性平台的經濟學可用網絡外部性與切換成本描述。客戶留在 IBM 的價值：
 
-$$V_{stay} = v_{hardware} + S - C_{switch}, \quad C_{switch} = \alpha \cdot \text{(程式資產)}$$
+$$
+V_{stay} = v_{hardware} + S - C_{switch}, \quad C_{switch} = \alpha \cdot \text{(程式資產)}
+$$
 
-$S$ 為生態網絡價值（隨同 ISA 的程式、人才、維護體系成長， $S \propto n$ ， $n$ 為使用戶數）。當 $S$ 隨用戶數上升，平台形成正回饋：
+$`S`$ 為生態網絡價值（隨同 ISA 的程式、人才、維護體系成長， $`S \propto n`$ ， $`n`$ 為使用戶數）。當 $`S`$ 隨用戶數上升，平台形成正回饋：
 
-$$\dot{n} = \beta n (N - n)$$
+$$
+\dot{n} = \beta n (N - n)
+$$
 
 即 logistic 成長。S/360 的 ISA 之長壽（z/Architecture 至今向下相容）證明：ISA 凍結的成本是一次性的，而相容性的收益是指數複利的。
 

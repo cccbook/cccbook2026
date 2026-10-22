@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
-# format.sh — 將資料夾下所有 .md 的 TeX 數學式修正為 GitHub 可正確渲染的格式
+# format.sh — 將資料夾下所有 .md 的公式修正：
+#   1. 區塊公式: 統一拆成獨立行 $$ ... $$ 並留空行
+#   2. 行內公式: 一律轉為 GitHub 專用 $`...`$（徹底防止 Markdown 語法干擾）
 #
 # 用法:
-#   ./format.sh          # 處理當前資料夾（含子資料夾）
-#   ./format.sh docs/    # 處理指定資料夾
-#
-# 處理規則:
-#   1. 行內公式 $...$ 前後補上空格（行首、行尾不補）
-#   2. 移除 $ 內側多餘空白：$ x $ -> $x$（GitHub 要求 $ 內側不可有空白）
-#   3. \( ... \) 轉成 $...$
-#   4. 不動程式碼區塊（``` / ~~~）、行內程式碼（`...`）、$$ 區塊公式
-#
-# 建議先 git commit，處理完用 git diff 檢查。
+#   ./format.sh
+#   ./format.sh docs/
 
 set -euo pipefail
 
@@ -24,39 +18,72 @@ fi
 
 count=0
 while IFS= read -r -d '' f; do
-  perl -i -CSD -ne '
-    BEGIN { $fence = 0; $blk = 0; }
+  perl -i -CSD -0777 -pe '
+    # 1. 保護 Code Block (``` 或 ~~~)
+    my @codeblocks;
+    s{(```|~~~)[^\n]*\n.*?\n\s*\1}{
+      push @codeblocks, $&;
+      "__CODE_BLOCK_" . $#codeblocks . "__"
+    }gse;
 
-    # 程式碼區塊
-    if (/^\s*(?:```|~~~)/) { $fence = !$fence; print; next; }
-    if ($fence)            { print; next; }
-
-    # 獨立成行的 $$ 區塊公式
-    if (/^\s*\$\$\s*$/)    { $blk = !$blk; print; next; }
-    if ($blk)              { print; next; }
-
-    # \( ... \) -> $...$
-    s/\\\((.+?)\\\)/\$$1\$/g;
-
-    # 保護行內程式碼與單行 $$...$$
-    my @keep;
-    s/`[^`]*`|\$\$.+?\$\$/push @keep, $&; "\x00" . $#keep . "\x00"/ge;
-
-    # 找出行內公式，去除內側空白，用暫時標記包起來
-    s{(?<![\\\$])\$(?!\$)((?:\\.|[^\$\\])+?)\$(?!\$)}{
-      my $m = $1; $m =~ s/^\s+|\s+$//g;
-      ($m eq "") ? $& : "\x01$m\x02";
+    # 2. 保護原本已經是 $`...`$ 的內容（避免重複包覆）
+    my @gh_math;
+    s{\$`([^`\n]+)`\$}{
+      push @gh_math, $&;
+      "__GH_MATH_" . $#gh_math . "__"
     }ge;
 
-    # 前後補空格（行首、行尾不補）
+    # 3. 保護一般行內程式碼 (`...`)
+    my @inline_codes;
+    s{`[^`\n]+`}{
+      push @inline_codes, $&;
+      "__INLINE_CODE_" . $#inline_codes . "__"
+    }ge;
+
+    # 4. 將 \( ... \) 先轉為 $...$
+    s/\\\((.+?)\\\)/\$$1\$/gs;
+
+    # 5. 處理 $$...$$ 區塊公式：
+    #    - 確保前後有空行隔開
+    #    - 確保 $$ 各自獨立成行
+    #    - 吸收外側黏著的標點符號至公式內
+    s{(?:\n\s*)?\$\$\s*(.+?)\s*\$\$\s*([.,;!?，。！？])?}{
+      my $content = $1;
+      my $punct = $2 // "";
+      $content =~ s/^\s+|\s+$//g;
+      $content =~ s/&amp;/&/g; # 消除錯誤轉義
+      if ($punct ne "") {
+        $content .= " " . $punct;
+      }
+      "\n\n\$\$\n" . $content . "\n\$\$\n\n"
+    }gse;
+
+    # 6. 其餘所有的行內公式 $...$ 一律改為 $`...`$
+    s{(?<![\\\$])\$(?!\$)((?:\\.|[^\$\n\\])+?)\$(?!\$)}{
+      my $m = $1;
+      $m =~ s/^\s+|\s+$//g;
+      $m =~ s/&amp;/&/g; # 消除錯誤轉義
+
+      if ($m eq "") {
+        "\$"
+      } else {
+        # 標記成 GitHub 的 $`...`$
+        "\x01`" . $m . "`\x02"
+      }
+    }ge;
+
+    # 7. 行內公式外側補空格（避免中文字與公式直接黏在一起造成解析困擾）
     s/(?<=\S)\x01/ \x01/g;
     s/\x02(?=\S)/\x02 /g;
     s/[\x01\x02]/\$/g;
 
-    # 還原被保護的內容
-    s/\x00(\d+)\x00/$keep[$1]/g;
+    # 8. 清理多餘連續空行（超過2行縮成1行）
+    s/\n{3,}/\n\n/g;
 
-    print;
+    # 9. 還原保護內容
+    s/__INLINE_CODE_(\d+)__/$inline_codes[$1]/ge;
+    s/__GH_MATH_(\d+)__/$gh_math[$1]/ge;
+    s/__CODE_BLOCK_(\d+)__/$codeblocks[$1]/ge;
   ' "$f"
   echo "已處理: $f"
   count=$((count + 1))

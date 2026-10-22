@@ -14,11 +14,15 @@
 
 **為什麼先進封裝成為瓶頸？** 看算力方程式：
 
-$$\text{AI 晶片有效性能} = \min\left( FLOPs_{計算}, \frac{BW_{記憶體}}{\text{位元組/FLOP}} \right)$$
+$$
+\text{AI 晶片有效性能} = \min\left( FLOPs_{計算}, \frac{BW_{記憶體}}{\text{位元組/FLOP}} \right)
+$$
 
 大模型訓練的「運算強度」低（每次 FLOP 只用 1–2 bytes 記憶體），所以**記憶體頻寬**才是瓶頸。而 HBM 的頻寬由「與 GPU 的距離」決定——封裝越近，頻寬越高：
 
-$$BW \propto \frac{1}{d_{記憶體-晶片}} \quad (\text{線越短，頻寬越高})$$
+$$
+BW \propto \frac{1}{d_{記憶體-晶片}} \quad (\text{線越短，頻寬越高})
+$$
 
 CoWoS 把 HBM 堆疊在 GPU 旁邊 1mm 內——**封裝成為「架構」的一部分**。
 
@@ -31,7 +35,9 @@ CoWoS 把 HBM 堆疊在 GPU 旁邊 1mm 內——**封裝成為「架構」的一
 
 摩爾定律（電晶體縮小）放緩後，產業轉向「**超越摩爾（More-than-Moore）**」：
 
-$$\text{系統性能} = \underbrace{\text{電晶體密度}}_{\text{More Moore}} \times \underbrace{\text{異質整合度}}_{\text{More than Moore}}$$
+$$
+\text{系統性能} = \underbrace{\text{電晶體密度}}_{\text{More Moore}} \times \underbrace{\text{異質整合度}}_{\text{More than Moore}}
+$$
 
 | 封裝層級 | 技術 | 台灣領導者 |
 |---------|------|-----------|

@@ -22,17 +22,21 @@
 
 Sklar 定理（1959）：任何聯合分配都可以拆成「邊際分配 + 相依結構（copula）」：
 
-$$F(x_1, \dots, x_n) = C(F_1(x_1), \dots, F_n(x_n))$$
+$$
+F(x_1, \dots, x_n) = C(F_1(x_1), \dots, F_n(x_n))
+$$
 
-其中 $C$ 是 copula——純粹描述「相關結構」的函數。Li 的洞察：**既然違約的邊際容易估、聯合觀測不到，那就假設一個 copula**。
+其中 $`C`$ 是 copula——純粹描述「相關結構」的函數。Li 的洞察：**既然違約的邊際容易估、聯合觀測不到，那就假設一個 copula**。
 
 ### 線索二：高斯 Copula 的具體形式
 
-Li 的模型：違約時間 $\tau_i$ 的邊際用風險中立下的生存函數（由 CDS 價差推出），相關結構用**單因子高斯 Copula**：
+Li 的模型：違約時間 $`\tau_i`$ 的邊際用風險中立下的生存函數（由 CDS 價差推出），相關結構用**單因子高斯 Copula**：
 
-$$\tau_i = \Phi^{-1}\left(F_i(\tau_i)\right) = a_i Z + \sqrt{1-a_i^2}\, \varepsilon_i, \quad Z, \varepsilon_i \sim N(0,1)$$
+$$
+\tau_i = \Phi^{-1}\left(F_i(\tau_i)\right) = a_i Z + \sqrt{1-a_i^2}\, \varepsilon_i, \quad Z, \varepsilon_i \sim N(0,1)
+$$
 
-其中 $Z$ 是共同因子（經濟體質）、 $\varepsilon_i$ 是個別風險、 $a_i$ 是相關係數。
+其中 $`Z`$ 是共同因子（經濟體質）、 $`\varepsilon_i`$ 是個別風險、 $`a_i`$ 是相關係數。
 
 **實務簡潔性**：整個 CDO 的分層定價只需要**一個相關係數**——業界很快把「base correlation」變成標準報價。一個數字決定數兆美元的定價。
 
@@ -40,7 +44,9 @@ $$\tau_i = \Phi^{-1}\left(F_i(\tau_i)\right) = a_i Z + \sqrt{1-a_i^2}\, \varepsi
 
 高斯 Copula 的隱含性質：**尾部相關太弱**。
 
-$$P(\tau_1 > t \mid \tau_2 > t) \to \text{常數} \quad (\text{as } t \to \infty)$$
+$$
+P(\tau_1 > t \mid \tau_2 > t) \to \text{常數} \quad (\text{as } t \to \infty)
+$$
 
 高斯分配的尾部是「指數衰減」的——它說：**極端事件（大量借款人同時違約）幾乎不可能同時發生**。這在 2008 年被證明是致命錯誤：
 

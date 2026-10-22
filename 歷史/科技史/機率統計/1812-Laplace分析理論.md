@@ -19,30 +19,38 @@
 
 ### 一、生成函數（Generating Functions）
 
-Laplace 的核心武器是**機率生成函數**與**矩母函數**——繼承 de Moivre 而發揚光大。對非負整數值隨機變數 $X$ ：
+Laplace 的核心武器是**機率生成函數**與**矩母函數**——繼承 de Moivre 而發揚光大。對非負整數值隨機變數 $`X`$ ：
 
-$$G(s) = E[s^X] = \sum_{k} p_k s^k$$
+$$
+G(s) = E[s^X] = \sum_{k} p_k s^k
+$$
 
 性質（Laplace 用來把卷積變乘法、把遞迴變微分方程）：
 
-$$G_{X+Y}(s) = G_X(s)\, G_Y(s), \qquad E[X] = G'(1), \qquad \operatorname{Var}(X) = G''(1) + G'(1) - G'(1)^2$$
+$$
+G_{X+Y}(s) = G_X(s)\, G_Y(s), \qquad E[X] = G'(1), \qquad \operatorname{Var}(X) = G''(1) + G'(1) - G'(1)^2
+$$
 
 **矩母函數**（Laplace 變換的機率版）：
 
-$$M(t) = E[e^{tX}], \qquad E[X^n] = M^{(n)}(0)$$
+$$
+M(t) = E[e^{tX}], \qquad E[X^n] = M^{(n)}(0)
+$$
 
-這使得獨立和的分佈計算從「複雜的卷積」變成「簡單的乘法」，是處理 $n$ 次重複試驗的關鍵。
+這使得獨立和的分佈計算從「複雜的卷積」變成「簡單的乘法」，是處理 $`n`$ 次重複試驗的關鍵。
 
 ### 二、中央極限定理的早期形式
 
-Laplace 在 1810 年的論文與 1812 年書中，用特徵函數（現代記號）證明：獨立同分佈隨機變數 $X_1, \dots, X_n$ （期望 $\mu$ 、變異數 $\sigma^2$ ）的和，經標準化後趨於常態：
+Laplace 在 1810 年的論文與 1812 年書中，用特徵函數（現代記號）證明：獨立同分佈隨機變數 $`X_1, \dots, X_n`$ （期望 $`\mu`$ 、變異數 $`\sigma^2`$ ）的和，經標準化後趨於常態：
 
-$$\frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \;\xrightarrow{d}\; N(0, 1), \qquad \text{即 } P\left(a \le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \le b\right) \to \Phi(b) - \Phi(a)$$
+$$
+\frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \;\xrightarrow{d}\; N(0, 1), \qquad \text{即 } P\left(a \le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \le b\right) \to \Phi(b) - \Phi(a)
+$$
 
 這是繼 de Moivre（二項特例）之後的一般化版本，Laplace 特別用於：
 
-1. **證明誤差常態性**：觀測誤差是大量微小獨立擾動之和 $\Rightarrow$ 服從常態 $\Rightarrow$ Gauss 的誤差理論有了根據 $\Rightarrow$ 最小平方法有了機率基礎。
-2. **二項抽樣的常態近似**： $\frac{\hat{p} - p}{\sqrt{p(1-p)/n}} \approx N(0,1)$ ，用於估計法國人口與出生率的精確度。
+1. **證明誤差常態性**：觀測誤差是大量微小獨立擾動之和 $`\Rightarrow`$ 服從常態 $`\Rightarrow`$ Gauss 的誤差理論有了根據 $`\Rightarrow`$ 最小平方法有了機率基礎。
+2. **二項抽樣的常態近似**： $`\frac{\hat{p} - p}{\sqrt{p(1-p)/n}} \approx N(0,1)`$ ，用於估計法國人口與出生率的精確度。
 
 （「中央極限定理」一名由 Pólya 於 1920 年提出；嚴格的一般證明由 Lyapunov 1901、Lindeberg 1922 完成。）
 
@@ -64,7 +72,9 @@ $$\frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \;\xrightarrow{d}\; N(0, 1), \q
 
 **Laplace 之魔**的邏輯：宇宙是決定論的，機率只是「人類無知」的度量——
 
-$$P(\text{事件}) = \frac{\text{對我們有利的已知情況數}}{\text{全部可能情況數}}$$
+$$
+P(\text{事件}) = \frac{\text{對我們有利的已知情況數}}{\text{全部可能情況數}}
+$$
 
 機率是「相對於我們知識狀態」的信念程度，而非自然界的內在隨機性。
 
@@ -73,7 +83,7 @@ $$P(\text{事件}) = \frac{\text{對我們有利的已知情況數}}{\text{全�
 Laplace 的立場是**混合體**，埋下日後百年論戰的種子：
 
 1. **頻率面向**：他用大數法則與 CLT 分析出生率、死亡率等長期頻率——經驗貝葉斯的先聲（用資料估先驗）。
-2. **信念面向**：他主張逆向機率（Bayes 定理）配合「無充分理由原則」（均勻先驗）是理性推理的工具，甚至用它計算「太陽明天升起的機率」 $\frac{n+1}{n+2}$ （ $n$ 為已觀察日數）——此推論至今仍被批評為均勻先驗的濫用。
+2. **信念面向**：他主張逆向機率（Bayes 定理）配合「無充分理由原則」（均勻先驗）是理性推理的工具，甚至用它計算「太陽明天升起的機率」 $`\frac{n+1}{n+2}`$ （ $`n`$ 為已觀察日數）——此推論至今仍被批評為均勻先驗的濫用。
 3. 矛盾在於：若宇宙完全決定論，機率作為「信念」的客觀性何在？這正是 20 世紀頻率學派（Fisher、Neyman）攻擊的主觀機率之靶。
 
 ### Python：CLT 演示

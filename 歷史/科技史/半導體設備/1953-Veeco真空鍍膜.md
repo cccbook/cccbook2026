@@ -4,7 +4,11 @@
 1953 年，**Veeco（Vacuum Electronics Manufacturing Company）**在紐約長島成立，
 把戰後的真空技術變成**商品化蒸鍍設備**——「泵浦 + 鐘罩 + 鎢絲」的組合，
 成為剛誕生的半導體工業的**第一代薄膜設備供應商**。
-$$\text{真空腔（10}^{-5}\text{ Torr）} + \text{蒸發源} \xrightarrow{\text{加熱}} \text{薄膜（Al 金屬層）}$$
+
+$$
+\text{真空腔（10}^{-5}\text{ Torr）} + \text{蒸發源} \xrightarrow{\text{加熱}} \text{薄膜（Al 金屬層）}
+$$
+
 晶片的**金屬接觸層、電極互連**——1960–70 年代全部靠蒸鍍設備完成。
 
 ## 前因 -- 為什麼會有這個案子
@@ -21,7 +25,10 @@ $$\text{真空腔（10}^{-5}\text{ Torr）} + \text{蒸發源} \xrightarrow{\tex
 
 ### 第一條線索：蒸氣壓與蒸發（物理基礎）
 蒸發速率由**蒸氣壓**決定（Clausius–Clapeyron）：
-$$\log P = A - \frac{B}{T}$$
+
+$$
+\log P = A - \frac{B}{T}
+$$
 
 | 材料 | 熔點 (°C) | 可用蒸發溫度 (°C) | 蒸發源 |
 |------|-----------|-------------------|--------|
@@ -31,17 +38,29 @@ $$\log P = A - \frac{B}{T}$$
 | 鎢 W | 3422 | 昇華（難） | 射頻濺鍍（後來） |
 
 ### 第二條線索：平均自由徑（為什麼必須抽真空）
-$$\lambda = \frac{kT}{\sqrt{2}\,\pi d^2 p}$$
-- 大氣壓下 $\lambda \approx 70$ nm——蒸發原子全被空氣分子撞散。
-- **10⁻⁵ Torr 時 $\lambda \approx$ 數米** ≫ 蒸發源-基板距離（~30 cm）——直線飛行，膜層均勻。
+
+$$
+\lambda = \frac{kT}{\sqrt{2}\,\pi d^2 p}
+$$
+
+- 大氣壓下 $`\lambda \approx 70`$ nm——蒸發原子全被空氣分子撞散。
+- **10⁻⁵ Torr 時 $`\lambda \approx`$ 數米** ≫ 蒸發源-基板距離（~30 cm）——直線飛行，膜層均勻。
 
 ### 第三條線索：Knudsen 餘弦定律（膜的厚度分布）
 點蒸發源在基板上的厚度分布：
-$$t(\theta) = t_0 \cos^2\theta \quad (\theta = \text{偏離法線角度})$$
+
+$$
+t(\theta) = t_0 \cos^2\theta \quad (\theta = \text{偏離法線角度})
+$$
+
 - **旋轉基板**（行星轉盤）平均化分布——均勻性 ±5% 的由來。
 
 ### 第四條線索：石英晶體膜厚監測（Sauerbrey 方程，1959）
-$$\Delta f = -\frac{2 f_0^2}{A\sqrt{\rho_q \mu_q}}\,\Delta m$$
+
+$$
+\Delta f = -\frac{2 f_0^2}{A\sqrt{\rho_q \mu_q}}\,\Delta m
+$$
+
 - 石英振盪器上積膜 → 頻率下降 → **即時膜厚回饋**——
   這是第一代「量測內建於設備」（in-situ metrology）的偵探證據。
 

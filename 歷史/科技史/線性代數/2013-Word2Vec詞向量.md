@@ -1,14 +1,16 @@
 # 2013 — Word2Vec 詞向量
 
 ## 案件摘要
-2013 年，Google 的 Tomáš Mikolov 等人發表 word2vec：把每個詞 $w$ 映射成一個向量 $v_w \in \mathbb{R}^d$ （ $d$ 約 100–600），用海量文本以淺層神經網路訓練，竟浮現出驚人的**線性代數結構**：
+2013 年，Google 的 Tomáš Mikolov 等人發表 word2vec：把每個詞 $`w`$ 映射成一個向量 $`v_w \in \mathbb{R}^d`$ （ $`d`$ 約 100–600），用海量文本以淺層神經網路訓練，竟浮現出驚人的**線性代數結構**：
 
-$$v_{king} - v_{man} + v_{woman} \approx v_{queen}$$
+$$
+v_{king} - v_{man} + v_{woman} \approx v_{queen}
+$$
 
 詞義第一次被表示成可加減、可比較餘弦的向量——語義偵探學從此改用向量運算辦案。
 
 ## 前因 -- 為什麼會有這個案子
-- 1990 年 Deerwester 等人的 LSA/LSI（Latent Semantic Analysis/Indexing）：對「詞–文件」矩陣做 SVD，取前 $k$ 個奇異向量當語義空間。SVD 證明線性代數能捕捉文字的潛藏結構，但 LSA 的空間難解釋、更新成本高。
+- 1990 年 Deerwester 等人的 LSA/LSI（Latent Semantic Analysis/Indexing）：對「詞–文件」矩陣做 SVD，取前 $`k`$ 個奇異向量當語義空間。SVD 證明線性代數能捕捉文字的潛藏結構，但 LSA 的空間難解釋、更新成本高。
 - 2003 年 Bengio 等人的神經網路語言模型：用前文預測下一詞，順帶學到詞向量。效果好但每步要對整個詞表做 softmax，訓練極慢。
 - 2010–2011 年 Mikolov 的 RNN 語言模型刷新紀錄，但他不滿意：太慢、太深、不實用。
 - Mikolov 的策略反轉：不要「預測下一詞」的複雜模型，改做**極簡目標 + 大資料**——用「詞預測鄰居」（skip-gram）或「鄰居預測詞」（CBOW），配上層次 softmax / 負取樣把訓練加速百倍。語義結構不需要深網，浮在淺層就夠。
@@ -16,34 +18,42 @@ $$v_{king} - v_{man} + v_{woman} \approx v_{queen}$$
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：skip-gram 的目標函數
-給定中心詞 $w_t$ ，skip-gram 最大化其上下文詞 $w_{t+j}$ 的條件機率：
+給定中心詞 $`w_t`$ ，skip-gram 最大化其上下文詞 $`w_{t+j}`$ 的條件機率：
 
-$$\max_\theta \; \frac{1}{T}\sum_{t=1}^{T}\sum_{-c \leq j \leq c,\, j\neq 0} \log p(w_{t+j} \mid w_t; \theta), \qquad p(w_c \mid w) = \frac{\exp(v_{w_c}^\top v_w)}{\sum_{w'}\exp(v_{w'}^\top v_w)}$$
+$$
+\max_\theta \; \frac{1}{T}\sum_{t=1}^{T}\sum_{-c \leq j \leq c,\, j\neq 0} \log p(w_{t+j} \mid w_t; \theta), \qquad p(w_c \mid w) = \frac{\exp(v_{w_c}^\top v_w)}{\sum_{w'}\exp(v_{w'}^\top v_w)}
+$$
 
 softmax 分母遍歷整個詞表太貴，故用**負取樣**近似：把問題改成二分類「這個 (詞, 鄰居) 對是真的嗎？」
 
-$$\log \sigma(v_{w_c}^\top v_w) + \sum_{k=1}^{K} \mathbb{E}_{w_k \sim P_n}[\log \sigma(-v_{w_k}^\top v_w)]$$
+$$
+\log \sigma(v_{w_c}^\top v_w) + \sum_{k=1}^{K} \mathbb{E}_{w_k \sim P_n}[\log \sigma(-v_{w_k}^\top v_w)]
+$$
 
-只需 $K \approx 5$ 個負樣本，訓練從天文數字降為線性成本。
+只需 $`K \approx 5`$ 個負樣本，訓練從天文數字降為線性成本。
 
 ### 線索二：餘弦相似度——語義的量角器
 兩詞的語義距離用夾角衡量：
 
-$$\text{sim}(u, v) = \cos\theta = \frac{u^\top v}{\|u\|\|v\|}$$
+$$
+\text{sim}(u, v) = \cos\theta = \frac{u^\top v}{\|u\|\|v\|}
+$$
 
 「貓」與「狗」的餘弦相似度遠高於「貓」與「引擎」——因為它們在語料中的上下文分布相似，向量被推到同一片區域。這是分布假說（distributional hypothesis，Harris 1954）的向量版。
 
 ### 線索三：線性關係——向量算術
 最震撼的案發現場：語義關係在向量空間中近乎線性平行：
 
-$$v_{king} - v_{man} + v_{woman} \approx v_{queen}, \quad v_{Paris} - v_{France} + v_{Italy} \approx v_{Rome}$$
+$$
+v_{king} - v_{man} + v_{woman} \approx v_{queen}, \quad v_{Paris} - v_{France} + v_{Italy} \approx v_{Rome}
+$$
 
-Mikolov 用「3CosAdd」方法解類比題：固定 $v_{king}$ 、 $v_{man}$ 、 $v_{woman}$ ，在詞表中找使餘弦相似度最大的 $x$ 。理論解釋（Levy & Goldberg 2014、Arora et al. 2016）：skip-gram 目標隱含對 PMI 矩陣的隱式分解，而 PMI 的線性結構使關係向量近似平行。
+Mikolov 用「3CosAdd」方法解類比題：固定 $`v_{king}`$ 、 $`v_{man}`$ 、 $`v_{woman}`$ ，在詞表中找使餘弦相似度最大的 $`x`$ 。理論解釋（Levy & Goldberg 2014、Arora et al. 2016）：skip-gram 目標隱含對 PMI 矩陣的隱式分解，而 PMI 的線性結構使關係向量近似平行。
 
 ### 線索四：與 LSA 的對決
-LSA 對詞–文件矩陣做 SVD： $X = U\Sigma V^\top$ ，取 $U_k$ 當詞向量。LSA 是**全域**線性代數（一次分解），word2vec 是**局部**隨機梯度（逐對更新）。後者在語義類比、詞相似度任務上大幅勝出，且訓練可增量、可擴展到數十億詞——SVD 開了門，word2vec 把路走寬。
+LSA 對詞–文件矩陣做 SVD： $`X = U\Sigma V^\top`$ ，取 $`U_k`$ 當詞向量。LSA 是**全域**線性代數（一次分解），word2vec 是**局部**隨機梯度（逐對更新）。後者在語義類比、詞相似度任務上大幅勝出，且訓練可增量、可擴展到數十億詞——SVD 開了門，word2vec 把路走寬。
 
-## 程式碼範例： $v_{king} - v_{man} + v_{woman}$ 餘弦相似度
+## 程式碼範例： $`v_{king} - v_{man} + v_{woman}`$ 餘弦相似度
 ```python
 import numpy as np
 

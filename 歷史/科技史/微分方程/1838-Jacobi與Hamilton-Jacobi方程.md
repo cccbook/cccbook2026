@@ -2,7 +2,7 @@
 
 ## 案發現場
 
-Hamilton 在 1834 年的正則方程（參見 [1834-Hamilton正則方程.md](1834-Hamilton正則方程.md)）把力學變成了 $2n$ 個一階 ODE，但他留下一個未竟之業：他的「特徵函數」理論中有一個關鍵方程，形式還很笨拙，處理「帶時間的演化」時尤其彆扭。而且 Hamilton 的理論雖然統一了光學與力學，卻沒有真正回答：**怎樣的力學系統是「可解」的？怎樣用「一個函數」就把整個系統的軌道全部求出來？**
+Hamilton 在 1834 年的正則方程（參見 [1834-Hamilton正則方程.md](1834-Hamilton正則方程.md)）把力學變成了 $`2n`$ 個一階 ODE，但他留下一個未竟之業：他的「特徵函數」理論中有一個關鍵方程，形式還很笨拙，處理「帶時間的演化」時尤其彆扭。而且 Hamilton 的理論雖然統一了光學與力學，卻沒有真正回答：**怎樣的力學系統是「可解」的？怎樣用「一個函數」就把整個系統的軌道全部求出來？**
 
 接案的，是德國數學家 Carl Gustav Jacob Jacobi（1804–1851）。Jacobi 是當時最會「算」的數學家之一——橢圓函數論、行列式（Jacobian）、變分法都是他的戰場。1837 年 Jacobi 讀到 Hamilton 的論文後驚為天人，隨即在 1838 年前後發表一系列論文，把 Hamilton 的理論改造成今天所稱的 **Hamilton-Jacobi 方程**，並發展出「完整積分」的求解方法。
 
@@ -10,44 +10,44 @@ Hamilton 在 1834 年的正則方程（參見 [1834-Hamilton正則方程.md](183
 
 ### 第一步：從正則方程到主函數
 
-Jacobi 的核心思想：**找一個「主函數」 $S(q, t)$ ，它同時編碼了系統的全部運動資訊**。考慮一個機械系統，其 Hamiltonian 為 $H(q, p)$ 。Jacobi 主張：若能找到一個函數 $S$ 滿足
+Jacobi 的核心思想：**找一個「主函數」 $`S(q, t)`$ ，它同時編碼了系統的全部運動資訊**。考慮一個機械系統，其 Hamiltonian 為 $`H(q, p)`$ 。Jacobi 主張：若能找到一個函數 $`S`$ 滿足
 
 $$
 \frac{\partial S}{\partial t} + H\!\left(q, \frac{\partial S}{\partial q}\right) = 0,
 $$
 
-這就是 **Hamilton-Jacobi 方程**——一個關於 $S$ 的**一階偏微分方程**，其中動量 $p$ 被 $\partial S/\partial q$ 取代。
+這就是 **Hamilton-Jacobi 方程**——一個關於 $`S`$ 的**一階偏微分方程**，其中動量 $`p`$ 被 $`\partial S/\partial q`$ 取代。
 
-它從哪裡來？從正則變換的思想：Hamilton 力學允許「正則變換」——保持正則方程形式的變數替換。若做一個由「生成函數」 $S(q, P, t)$ 生成的正則變換（ $P$ 是新動量），並要求新 Hamiltonian 恆為 $0$ （新座標「靜止不動」——這是最極端的簡化），生成函數必須滿足：
+它從哪裡來？從正則變換的思想：Hamilton 力學允許「正則變換」——保持正則方程形式的變數替換。若做一個由「生成函數」 $`S(q, P, t)`$ 生成的正則變換（ $`P`$ 是新動量），並要求新 Hamiltonian 恆為 $`0`$ （新座標「靜止不動」——這是最極端的簡化），生成函數必須滿足：
 
 $$
 H\!\left(q, \frac{\partial S}{\partial q}, t\right) + \frac{\partial S}{\partial t} = 0.
 $$
 
-新 Hamiltonian 為零意味著：在新變數下，正則方程是 $\dot Q = 0, \dot P = 0$ ——**座標全部變成常數**。於是「解力學系統」化約為「解一個 PDE」。
+新 Hamiltonian 為零意味著：在新變數下，正則方程是 $`\dot Q = 0, \dot P = 0`$ ——**座標全部變成常數**。於是「解力學系統」化約為「解一個 PDE」。
 
 ### 第二步：分離變數——完整積分
 
-怎麼解 HJ 方程？Jacobi 的方法：找「**完整積分**」——一個包含 $n$ 個（比變數少一）任意常數的解族
+怎麼解 HJ 方程？Jacobi 的方法：找「**完整積分**」——一個包含 $`n`$ 個（比變數少一）任意常數的解族
 
 $$
 S = S(q_1, \ldots, q_n, \alpha_1, \ldots, \alpha_n, t) + \beta,
 $$
 
-其中 $\alpha_i$ 是任意常數。一旦有了完整積分，軌道由隱式方程給出：
+其中 $`\alpha_i`$ 是任意常數。一旦有了完整積分，軌道由隱式方程給出：
 
 $$
 \frac{\partial S}{\partial \alpha_i} = \beta_i \quad (\text{求出 } q_i(t)), \qquad
 \frac{\partial S}{\partial q_i} = p_i(t).
 $$
 
-**驗證範例：一維自由粒子**。 $H = \dfrac{p^2}{2m}$ ，HJ 方程：
+**驗證範例：一維自由粒子**。 $`H = \dfrac{p^2}{2m}`$ ，HJ 方程：
 
 $$
 \frac{\partial S}{\partial t} + \frac{1}{2m}\left(\frac{\partial S}{\partial q}\right)^2 = 0.
 $$
 
-用分離變數：令 $S = W(q) - Et$ （ $E$ 是分離常數），代入：
+用分離變數：令 $`S = W(q) - Et`$ （ $`E`$ 是分離常數），代入：
 
 $$
 -E + \frac{1}{2m}\left(\frac{dW}{dq}\right)^2 = 0
@@ -57,7 +57,7 @@ $$
 W = \pm\sqrt{2mE}\,q.
 $$
 
-完整積分為 $S = \pm\sqrt{2mE}\,q - Et$ 。由 $\partial S/\partial E = \beta$ ：
+完整積分為 $`S = \pm\sqrt{2mE}\,q - Et`$ 。由 $`\partial S/\partial E = \beta`$ ：
 
 $$
 \pm\frac{m q}{\sqrt{2mE}} - t = \beta
@@ -69,7 +69,7 @@ $$
 
 ### 第三步：驗證——諧振子與可積系統
 
-一維諧振子： $H = \dfrac{p^2}{2m} + \dfrac{1}{2}m\omega^2 q^2$ 。同樣令 $S = W(q) - Et$ ：
+一維諧振子： $`H = \dfrac{p^2}{2m} + \dfrac{1}{2}m\omega^2 q^2`$ 。同樣令 $`S = W(q) - Et`$ ：
 
 $$
 \frac{1}{2m}\left(\frac{dW}{dq}\right)^2 + \frac{1}{2}m\omega^2 q^2 = E
@@ -83,13 +83,13 @@ $$
 W(q) = \int \sqrt{2mE - m^2\omega^2 q^2}\,dq,
 $$
 
-這是橢圓型積分，可積出（代換 $q = \sqrt{2E/(m\omega^2)}\sin\theta$ ）：
+這是橢圓型積分，可積出（代換 $`q = \sqrt{2E/(m\omega^2)}\sin\theta`$ ）：
 
 $$
 W(q) = \frac{E}{\omega}\arcsin\!\left(\sqrt{\frac{m\omega^2}{2E}}\,q\right) + \frac{q}{2}\sqrt{2mE - m^2\omega^2 q^2}.
 $$
 
-由 $\partial S/\partial E = \beta$ 隱式解出 $q(t)$ ，化簡後正是
+由 $`\partial S/\partial E = \beta`$ 隱式解出 $`q(t)`$ ，化簡後正是
 
 $$
 q(t) = A\cos(\omega t + \varphi).
@@ -97,11 +97,11 @@ $$
 
 ✓ 與正則方程、Lagrange 力學的解完全一致。
 
-一般 $n$ 維系統若 HJ 方程**可完全分離變數**，系統就是**可積系統**： $n$ 個分離常數 $\alpha_i$ 就是 $n$ 個獨立的守恆量（運動積分）。這給出了「可積性」的判據——而這個判據正是 Liouville 可積性理論（參見 [1841-Liouville可積性之謎.md](1841-Liouville可積性之謎.md)）與 Poincaré 三體問題分析（參見 [1886-Poincare三體問題.md](1886-Poincare三體問題.md)）的關鍵。
+一般 $`n`$ 維系統若 HJ 方程**可完全分離變數**，系統就是**可積系統**： $`n`$ 個分離常數 $`\alpha_i`$ 就是 $`n`$ 個獨立的守恆量（運動積分）。這給出了「可積性」的判據——而這個判據正是 Liouville 可積性理論（參見 [1841-Liouville可積性之謎.md](1841-Liouville可積性之謎.md)）與 Poincaré 三體問題分析（參見 [1886-Poincare三體問題.md](1886-Poincare三體問題.md)）的關鍵。
 
 ### 第四步：光學與力學統一的完成
 
-Jacobi 指出 HJ 方程與光學的深層聯繫：若把時間 $t$ 固定， $S(q, t)$ 的等值面 $S = \text{const}$ 就像「波前」，而 $\nabla S = p$ 是垂直波前的「光線方向」。粒子軌道與波前正交——**粒子的軌跡正如光線垂直於波前傳播**。這個幾何圖像在一百年後被 Schrödinger 拿來類比：經典力學之於波動力學，正如幾何光學之於波動光學。
+Jacobi 指出 HJ 方程與光學的深層聯繫：若把時間 $`t`$ 固定， $`S(q, t)`$ 的等值面 $`S = \text{const}`$ 就像「波前」，而 $`\nabla S = p`$ 是垂直波前的「光線方向」。粒子軌道與波前正交——**粒子的軌跡正如光線垂直於波前傳播**。這個幾何圖像在一百年後被 Schrödinger 拿來類比：經典力學之於波動力學，正如幾何光學之於波動光學。
 
 ### 第五步：通往 WKB——半經典的橋樑
 
@@ -111,7 +111,7 @@ $$
 -\frac{\hbar^2}{2m}\psi'' + V(q)\psi = E\psi
 $$
 
-若令 $\psi = e^{iS/\hbar}$ 並在 $\hbar \to 0$ 時做展開，最低階（比較 $1/\hbar^2$ 項）正是：
+若令 $`\psi = e^{iS/\hbar}`$ 並在 $`\hbar \to 0`$ 時做展開，最低階（比較 $`1/\hbar^2`$ 項）正是：
 
 $$
 \frac{1}{2m}\left(\frac{dS}{dq}\right)^2 + V(q) = E,
@@ -121,12 +121,12 @@ $$
 
 ## 結案報告
 
-Jacobi 解開了「一個函數統治整個系統」之謎：HJ 方程的完整積分給出全部軌道；可分離變數 = 可積系統 = 有 $n$ 個守恆量。
+Jacobi 解開了「一個函數統治整個系統」之謎：HJ 方程的完整積分給出全部軌道；可分離變數 = 可積系統 = 有 $`n`$ 個守恆量。
 
 遺產：
 
 1. **可積系統理論**：Liouville 的可積性定理、Kolmogorov-Arnold-Moser（KAM）定理都以 HJ 理論為基礎。
-2. **量子力學**：Schrödinger 方程在 $\hbar \to 0$ 時退化為 HJ 方程；WKB 近似、半經典量子化全是 HJ 理論的後代。
+2. **量子力學**：Schrödinger 方程在 $`\hbar \to 0`$ 時退化為 HJ 方程；WKB 近似、半經典量子化全是 HJ 理論的後代。
 3. **光波統一**：Hamilton-Jacobi 的「波前—光線」圖像預示了 de Broglie 物質波與波動力學的誕生。
 4. **PDE 理論**：HJ 方程是一階非線性偏微分方程的典範，其特徵線法（method of characteristics）成為解這類 PDE 的標準工具。
 5. **混沌的反面教材**：正因為 HJ 分離變數極少成功（三體問題就是著名的失敗案例），人們才意識到「大多數力學系統不可積」——通往混沌的大門。

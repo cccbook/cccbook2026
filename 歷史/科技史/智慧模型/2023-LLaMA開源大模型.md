@@ -4,9 +4,11 @@
 
 2023 年 2 月，Meta 發表 **LLaMA**：7B 至 65B 的基礎語言模型，並（最初僅限研究申請、後因權重外洩而事實開源）公開權重。核心貢獻是**用更小的規模、更乾淨的資料與現代化零件，達到 GPT-3/Gopher 級的品質**：
 
-$$\text{LLaMA-65B} \approx \text{Chinchilla-70B} > \text{GPT-3-175B}, \qquad \text{零件：RMSNorm + SwiGLU + RoPE}$$
+$$
+\text{LLaMA-65B} \approx \text{Chinchilla-70B} > \text{GPT-3-175B}, \qquad \text{零件：RMSNorm + SwiGLU + RoPE}
+$$
 
-其中旋轉位置編碼的角度為 $\theta_i = 10000^{-2i/d}$ 。兇手不是更大的模型，而是**「開源權重」這個分發決策**——LLaMA 是 Alpaca、Vicuna、Mistral、DeepSeek 等開源生態的源頭，改寫了大模型的權力結構。
+其中旋轉位置編碼的角度為 $`\theta_i = 10000^{-2i/d}`$ 。兇手不是更大的模型，而是**「開源權重」這個分發決策**——LLaMA 是 Alpaca、Vicuna、Mistral、DeepSeek 等開源生態的源頭，改寫了大模型的權力結構。
 
 ## 前因 -- 為什麼會有這個案子
 
@@ -25,13 +27,15 @@ LLaMA 的配方是「舊架構 + 三個新零件」：
 
 | 零件 | 公式/機制 | 取代 |
 |---|---|---|
-| RMSNorm | $\text{RMSNorm}(x) = \dfrac{x}{\sqrt{\frac{1}{d}\sum_i x_i^2 + \epsilon}} \odot g$ | LayerNorm（去掉均值中心化，省算力） |
-| SwiGLU | $\text{SwiGLU}(x) = (\text{Swish}(xW_1) \odot xW_2)W_3$ | ReLU 前饋層 |
-| RoPE | $\theta_i = 10000^{-2i/d}$ 旋轉位置編碼 | 絕對位置編碼 |
+| RMSNorm | $`\text{RMSNorm}(x) = \dfrac{x}{\sqrt{\frac{1}{d}\sum_i x_i^2 + \epsilon}} \odot g`$ | LayerNorm（去掉均值中心化，省算力） |
+| SwiGLU | $`\text{SwiGLU}(x) = (\text{Swish}(xW_1) \odot xW_2)W_3`$ | ReLU 前饋層 |
+| RoPE | $`\theta_i = 10000^{-2i/d}`$ 旋轉位置編碼 | 絕對位置編碼 |
 
 RoPE 的本質：把 query 與 key 的每個二維子空間**旋轉**位置相關的角度，使注意力分數只依賴**相對位置**：
 
-$$\langle R_m q,\ R_n k \rangle = \langle q,\ R_{n-m} k \rangle$$
+$$
+\langle R_m q,\ R_n k \rangle = \langle q,\ R_{n-m} k \rangle
+$$
 
 **相對位置內建於注意力，外推更自然**——這成為此後幾乎所有開源模型的標準配備。
 
@@ -70,9 +74,11 @@ LLaMA 權重以「研究申請」名義發布，兩週內即被外洩至 4chan �
 
 LLaMA 2 70B 版本導入**分組查詢注意力**（Grouped-Query Attention）：多個 query 頭共享一組 key/value 頭：
 
-$$\text{MHA：} H_q = H_{kv} = H \qquad \to \qquad \text{GQA：} H_q = H,\ H_{kv} = H/g$$
+$$
+\text{MHA：} H_q = H_{kv} = H \qquad \to \qquad \text{GQA：} H_q = H,\ H_{kv} = H/g
+$$
 
-KV cache 的記憶體占用下降 $g$ 倍，**推論吞吐量大幅提升**——這是 Chinchilla 忽略推論成本之後的補償設計：訓練可以只顧最優，部署必須顧帳單。GQA 從此成為開源長上下文模型的標準配備。
+KV cache 的記憶體占用下降 $`g`$ 倍，**推論吞吐量大幅提升**——這是 Chinchilla 忽略推論成本之後的補償設計：訓練可以只顧最優，部署必須顧帳單。GQA 從此成為開源長上下文模型的標準配備。
 
 ## 結案 -- 後果與影響
 

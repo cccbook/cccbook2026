@@ -4,7 +4,9 @@
 
 2025 年 1 月，中國的 DeepSeek 團隊發表 R1，用**純強化學習**（不靠人工標註的思維鏈）讓開源模型湧現出推理能力，並以 MIT 授權開源權重。核心演算法是 GRPO（Group Relative Policy Optimization）：
 
-$$\hat A_i = \frac{r_i - \mathrm{mean}(r_1, \dots, r_G)}{\mathrm{std}(r_1, \dots, r_G)}$$
+$$
+\hat A_i = \frac{r_i - \mathrm{mean}(r_1, \dots, r_G)}{\mathrm{std}(r_1, \dots, r_G)}
+$$
 
 一句話：**不請評審（獎勵模型），讓一群考生互相排名**。R1 的 MoE 架構總參數 671B、每次推論只啟用 37B，訓練成本據報遠低於西方旗艦——2025 年 1 月 27 日，Nvidia 單日市值蒸發近 6000 億美元，這是推理模型民主化擊出的第一記重拳。
 
@@ -20,24 +22,28 @@ $$\hat A_i = \frac{r_i - \mathrm{mean}(r_1, \dots, r_G)}{\mathrm{std}(r_1, \dots
 
 ### 第一條線索：GRPO——免 critic 的政策梯度
 
-PPO（見 `科學與歷史/強化學習/`）需要訓練一個價值網路（critic）來估計優勢函數。GRPO 的洞見：**對同一問題採樣 $G$ 個回答，用它們自己的排名當基準**：
+PPO（見 `科學與歷史/強化學習/`）需要訓練一個價值網路（critic）來估計優勢函數。GRPO 的洞見：**對同一問題採樣 $`G`$ 個回答，用它們自己的排名當基準**：
 
-$$\hat A_i = \frac{r_i - \mathrm{mean}(r)}{\mathrm{std}(r)}$$
+$$
+\hat A_i = \frac{r_i - \mathrm{mean}(r)}{\mathrm{std}(r)}
+$$
 
 | | PPO | GRPO |
 |---|---|---|
-| 基準線 | 學出來的價值網路 $V(s)$ | 同組回答的平均獎勵 |
+| 基準線 | 學出來的價值網路 $`V(s)`$ | 同組回答的平均獎勵 |
 | 額外模型 | 需 critic（與政策同量級） | **不需要** |
 | 訓練成本 | 高（兩個大模型並行） | 低（只訓政策） |
 | 風險 | critic 估不準 | 組內全對/全錯時訊號為零 |
 
-獎勵 $r$ 完全來自**可程式化驗證**（RLVR）：數學答案核對、程式碼跑測試、格式檢查——沒有人工標註、沒有神經網路評審。獎勵訊號乾淨，GRPO 才敢省掉 critic。
+獎勵 $`r`$ 完全來自**可程式化驗證**（RLVR）：數學答案核對、程式碼跑測試、格式檢查——沒有人工標註、沒有神經網路評審。獎勵訊號乾淨，GRPO 才敢省掉 critic。
 
 ### 第二條線索：純 RL 的湧現——「啊哈時刻」
 
 R1-Zero（純 RL，不做任何 SFT 冷啟動）的訓練曲線上出現一個戲劇性現象：模型**自發地**學會在回答中寫出「等等，我重新想一下」（self-reflection）與「啊哈時刻」（aha moment）——沒有人教它這樣做。推理長度隨訓練自行增長：
 
-$$\text{思考長度}(t) \uparrow \quad \text{且} \quad \text{準確率}(t) \uparrow$$
+$$
+\text{思考長度}(t) \uparrow \quad \text{且} \quad \text{準確率}(t) \uparrow
+$$
 
 這證明了 o1 路線的一個理論主張：**思維鏈不是提示詞的產物，而是高獎勵行為的自然演化**。R1-Zero 的問題是可讀性差（中英混雜），所以正式版 R1 加了少量冷啟動 SFT 資料，再走 RL。
 
@@ -53,7 +59,9 @@ R1 基於 V3 的 Mixture-of-Experts 架構：
 
 路由器（router）為每個 token 選擇少數專家：
 
-$$y = \sum_{i \in \text{top-}k} g_i(x)\, E_i(x), \quad k \approx 8 \text{（共 256 個專家）}$$
+$$
+y = \sum_{i \in \text{top-}k} g_i(x)\, E_i(x), \quad k \approx 8 \text{（共 256 個專家）}
+$$
 
 再加上 FP8 低精度訓練與多頭潛在注意力（MLA），V3 的訓練成本據報約 557 萬美元 GPU 時數——R1 的 RL 階段更省。**成本結構被重寫**：推理能力不再是億萬美元俱樂部的專利。
 

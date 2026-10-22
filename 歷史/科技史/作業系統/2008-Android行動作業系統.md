@@ -2,7 +2,11 @@
 
 ## 案件摘要
 2008 年，Google 發布 **Android**——以 **Linux 為核心**的開源行動作業系統：
-$$\text{Linux 核心（1991）} + \text{Java 應用層 + 開源授權} \quad\Longrightarrow\quad \text{行動 OS 的開放陣營}.$$
+
+$$
+\text{Linux 核心（1991）} + \text{Java 應用層 + 開源授權} \quad\Longrightarrow\quad \text{行動 OS 的開放陣營}.
+$$
+
 對抗當時封閉的 iPhone OS（2007）——
 15 年後 Android 裝機量超過 **30 億台**，成為史上裝機量最大的作業系統。
 Linux 核心（見「1991-Linux誕生.md」）從伺服器佔領了全人類的口袋。
@@ -11,27 +15,46 @@ Linux 核心（見「1991-Linux誕生.md」）從伺服器佔領了全人類的�
 - **行動時代的門票**：2007 年 iPhone 重新發明手機——**觸控 + 應用商店**成為行動 OS 的標準。封閉陣營（Apple 獨佔）vs 開放陣營（誰能抗衡？）。
 - **Andy Rubin 的先驅**：Rubin 的 Android 公司（2003）原本為相機設計 OS，2005 年被 Google 收購轉向手機——**比 iPhone 更早起步**。
 - **Google 的偵探直覺**：與其自建封閉系統，不如**開源 + 免費授權**：
-  $$\text{免費 + 開源} \quad \Longrightarrow \quad \text{所有手機廠商（HTC、Samsung、Motorola）結盟對抗 Apple}.$$
-  當時 Apple 獨大、微軟 Windows Mobile 老化、Nokia Symbian 衰退——**開源是結盟的武器**。
+
+$$
+\text{免費 + 開源} \quad \Longrightarrow \quad \text{所有手機廠商（HTC、Samsung、Motorola）結盟對抗 Apple}.
+$$
+
+當時 Apple 獨大、微軟 Windows Mobile 老化、Nokia Symbian 衰退——**開源是結盟的武器**。
 - **Java 的應用層**：應用程式用 Java 寫（後為 Kotlin），Dalvik VM 執行——**跨硬體**的應用層 + Linux 核心的硬體層。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：架構分層
-$$\text{Linux 核心（驅動、記憶體、行程）} \leftarrow \text{HAL} \leftarrow \text{Native 層（C/C++）} \leftarrow \text{ART/Dalvik（Java/Kotlin）} \leftarrow \text{應用}.$$
+
+$$
+\text{Linux 核心（驅動、記憶體、行程）} \leftarrow \text{HAL} \leftarrow \text{Native 層（C/C++）} \leftarrow \text{ART/Dalvik（Java/Kotlin）} \leftarrow \text{應用}.
+$$
+
 - **核心不變、應用層進化**：Linux 核心的成熟生態（驅動、電源管理、安全）直接繼承——**1991 年的破案在 2008 年兌現**。
 - **ART（2014，取代 Dalvik）**：AOT/JIT 編譯——應用執行效率大幅提升。
 
 ### 第二條線索：開源授權的結盟數學
 Android 採 **Apache 2.0**（而非 GPL）：
-$$\text{Apache 2.0} = \text{可修改、可封閉衍生} \quad \text{（廠商可加私有層）}.$$
+
+$$
+\text{Apache 2.0} = \text{可修改、可封閉衍生} \quad \text{（廠商可加私有層）}.
+$$
+
 - 廠商（Samsung 等）可以客製化（TouchWiz、One UI）——**結盟的誘因**。
 - 對比 iOS：完全封閉——**開放陣營以「數量」對抗「體驗」**：
-  $$\text{市佔} = f(\text{廠商數量} \times \text{價格帶覆蓋}) \quad \Longrightarrow\quad \text{Android 覆蓋所有價格帶}.$$
+
+$$
+\text{市佔} = f(\text{廠商數量} \times \text{價格帶覆蓋}) \quad \Longrightarrow\quad \text{Android 覆蓋所有價格帶}.
+$$
 
 ### 第三條線索：行程管理與電源（行動 OS 的獨特難題）
 行動裝置的核心約束是**電池**：
-$$\text{續航} = \frac{\text{電池容量}}{\text{平均功耗}}.$$
+
+$$
+\text{續航} = \frac{\text{電池容量}}{\text{平均功耗}}.
+$$
+
 Android 的行動特化：
 - **活動生命週期**：App 在背景被「凍結/殺死」——記憶體與電源的權衡。
 - **Wake lock 與 Doze 模式（2015）**：控制喚醒，降低待機功耗。

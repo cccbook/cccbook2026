@@ -4,7 +4,11 @@
 1987 年，荷蘭 Vrije Universiteit 的 Andrew Tanenbaum 出版《Operating Systems: Design and Implementation》，
 隨書附上 **MINIX**——一個為教學設計、可在 IBM PC 上執行的**完整 Unix 相容系統**，原始碼全書公開。
 同時 MINIX 採用**微核心** (microkernel) 架構：
-$$\text{核心只做最小的事（行程、記憶體、IPC）} \quad \text{驅動程式與檔案系統全部成為用戶程式}.$$
+
+$$
+\text{核心只做最小的事（行程、記憶體、IPC）} \quad \text{驅動程式與檔案系統全部成為用戶程式}.
+$$
+
 Unix 的宏核心傳統（見「1969-Unix誕生.md」）遭遇第一個系統性挑戰——
 而 MINIX 的學生讀者中，有一位芬蘭人寫出了 Linux。
 
@@ -12,30 +16,60 @@ Unix 的宏核心傳統（見「1969-Unix誕生.md」）遭遇第一個系統性
 - **Unix 源碼的封閉**：1984 年 AT&T 解體後開始**商業化 Unix**——大學不能再拿 Unix 原始碼教學（授權費昂貴）——**教學命案**：作業系統課程沒有可讀的原始碼。
 - **Tanenbaum 的偵探手法**：與其買授權，不如**自己寫一個**——從零寫出 Unix 相容系統，原始碼印在書裡（約 12,000 行）——「教科書 + 原始碼 + 可執行」的三合一。
 - **微核心的學術路線**：與 Multics/Unix 的宏核心（所有功能在核心態）相反——Tanenbaum 主張核心越小越好：
-  $$\text{宏核心：失敗即當機} \quad \text{vs} \quad \text{微核心：驅動當機可重啟}.$$
+
+$$
+\text{宏核心：失敗即當機} \quad \text{vs} \quad \text{微核心：驅動當機可重啟}.
+$$
+
 - **Mach 的並行路線**：CMU 的 Mach（1985）同樣是微核心——成為 macOS (Darwin) 的基礎——微核心思想在學術界成為主流。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：微核心的架構
 宏核心（Unix/Linux）：
-$$\text{核心態} = \text{排程 + 記憶體 + 檔案系統 + 驅動 + 網路} \quad (\text{全部}).$$
+
+$$
+\text{核心態} = \text{排程 + 記憶體 + 檔案系統 + 驅動 + 網路} \quad (\text{全部}).
+$$
+
 微核心（MINIX）：
-$$\text{核心態} = \text{排程 + IPC + 基本記憶體} \quad \text{（最小）},$$
-$$\text{用戶態行程} = \text{檔案系統、驅動程式、網路伺服器} \quad (\text{各為獨立行程}).$$
+
+$$
+\text{核心態} = \text{排程 + IPC + 基本記憶體} \quad \text{（最小）},
+$$
+
+$$
+\text{用戶態行程} = \text{檔案系統、驅動程式、網路伺服器} \quad (\text{各為獨立行程}).
+$$
+
 - **訊息傳遞 (IPC)** 取代系統呼叫直達核心：
-  $$\text{用戶行程} \xrightarrow{\text{message}} \text{FS 伺服器} \xrightarrow{\text{message}} \text{磁碟驅動}.$$
+
+$$
+\text{用戶行程} \xrightarrow{\text{message}} \text{FS 伺服器} \xrightarrow{\text{message}} \text{磁碟驅動}.
+$$
+
 - **故障隔離**：驅動程式當機 → 只重啟該行程，核心不受影響——**可靠性的誕生**。
 
 ### 第二條線索：微核心的性能代價
 訊息傳遞比系統呼叫直達多一次跨行程通訊：
-$$\text{一次檔案讀取（微核心）} = 3\text{ 次行程切換} + 2\text{ 次訊息拷貝} \quad \text{vs（宏核心）} = 1\text{ 次系統呼叫}.$$
-$$\text{微核心開銷} \approx 2\text{–}5\times \text{（當年的 IPC 成本）}.$$
+
+$$
+\text{一次檔案讀取（微核心）} = 3\text{ 次行程切換} + 2\text{ 次訊息拷貝} \quad \text{vs（宏核心）} = 1\text{ 次系統呼叫}.
+$$
+
+$$
+\text{微核心開銷} \approx 2\text{–}5\times \text{（當年的 IPC 成本）}.
+$$
+
 這是宏核心 vs 微核心的百年辯論核心——**可靠性 vs 性能**。
 
 ### 第三條線索：教學的勝利
 MINIX 原始碼 12,000 行、全書註解——**一個學生一學期可讀完**：
-$$\text{Unix（數十萬行）} \quad \text{vs} \quad \text{MINIX（1.2 萬行，可讀）}.$$
+
+$$
+\text{Unix（數十萬行）} \quad \text{vs} \quad \text{MINIX（1.2 萬行，可讀）}.
+$$
+
 1991 年，芬蘭學生 Linus Torvalds 用 MINIX 為開發平台寫出 Linux——見「1991-Linux誕生.md」。
 
 ### Python：微核心 vs 宏核心的 IPC 開銷模擬

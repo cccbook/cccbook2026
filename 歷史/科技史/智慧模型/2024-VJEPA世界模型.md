@@ -4,9 +4,11 @@
 
 2024 年 2 月，Yann LeCun 領導的 Meta AI 團隊發表 V-JEPA（Video Joint Embedding Predictive Architecture），提出一條與生成式 AI 分庭抗禮的路線：**不在像素空間預測未來，而在抽象表徵空間預測未來**。核心損失函數：
 
-$$L = \big\| \mathrm{enc}_y(y) - \mathrm{pred}(\mathrm{enc}_x(x)) \big\|^2$$
+$$
+L = \big\| \mathrm{enc}_y(y) - \mathrm{pred}(\mathrm{enc}_x(x)) \big\|^2
+$$
 
-其中 $x$ 是影片的前段， $y$ 是後段， $y$ **永遠不會被還原成像素**。一句話：**嬰兒看世界不是在腦中渲染像素，而是在預測抽象狀態**——這是 LeCun 通往 AGI 世界模型路線的第一塊實測磚。
+其中 $`x`$ 是影片的前段， $`y`$ 是後段， $`y`$ **永遠不會被還原成像素**。一句話：**嬰兒看世界不是在腦中渲染像素，而是在預測抽象狀態**——這是 LeCun 通往 AGI 世界模型路線的第一塊實測磚。
 
 ## 前因 -- 為什麼會有這個案子
 
@@ -23,7 +25,7 @@ $$L = \big\| \mathrm{enc}_y(y) - \mathrm{pred}(\mathrm{enc}_x(x)) \big\|^2$$
 | | 生成式（Sora / 擴散） | 非生成式（V-JEPA） |
 |---|---|---|
 | 預測空間 | 像素空間（每一幀都渲染） | 表徵空間（抽象狀態向量） |
-| 損失 | 去噪重建 $L = \|x_0 - \hat x_0\|^2$ | 表徵距離 $\|\mathrm{enc}(y) - \mathrm{pred}(\mathrm{enc}(x))\|^2$ |
+| 損失 | 去噪重建 $`L = \|x_0 - \hat x_0\|^2`$ | 表徵距離 $`\|\mathrm{enc}(y) - \mathrm{pred}(\mathrm{enc}(x))\|^2`$ |
 | 預測樹上的樹葉的樹枝 | 大量算力花在不可預測的細節（風中樹葉） | 算力只花在可預測的結構（樹幹、物體軌跡） |
 | 產出 | 影片（可看） | 表徵（供下游任務使用） |
 
@@ -31,10 +33,14 @@ LeCun 的算術：影片中大部分細節（樹葉晃動、光影噪聲）是**
 
 ### 第二條線索：防坍縮——JEPA 的中心難題
 
-直接最小化 $L = \|\mathrm{enc}_y(y) - \mathrm{pred}(\mathrm{enc}_x(x))\|^2$ 有一個致命漏洞：**編碼器坍縮**（representation collapse）——兩個編碼器都輸出常向量，損失歸零但什麼都沒學到。V-JEPA 的解法：
+直接最小化 $`L = \|\mathrm{enc}_y(y) - \mathrm{pred}(\mathrm{enc}_x(x))\|^2`$ 有一個致命漏洞：**編碼器坍縮**（representation collapse）——兩個編碼器都輸出常向量，損失歸零但什麼都沒學到。V-JEPA 的解法：
 
-- 目標編碼器 $\mathrm{enc}_y$ 用**指數移動平均**（EMA）凍結：
-$$\theta_y \leftarrow m\,\theta_y + (1-m)\,\theta_x, \quad m \approx 0.996$$
+- 目標編碼器 $`\mathrm{enc}_y`$ 用**指數移動平均**（EMA）凍結：
+
+$$
+\theta_y \leftarrow m\,\theta_y + (1-m)\,\theta_x, \quad m \approx 0.996
+$$
+
 - 加上**遮罩預測**（masking）：隨機遮住影片時空的 75–90% 區塊，只對被遮區域的表徵做預測——強迫模型學出真正的世界結構。
 
 這套「EMA + 遮罩」組合承襲自 I-JEPA（2023，圖像版）與 2020 年的 BYOL——而 BYOL 的防坍縮思想可追溯到 **1985-Boltzmann機器.md** 的能量函數：好的表徵 = 能量曲面上的穀底，而不是常數平原。

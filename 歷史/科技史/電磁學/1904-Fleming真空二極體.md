@@ -12,20 +12,26 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：愛迪生效應的原理——熱電子發射
-金屬中的自由電子要逸出表面，需克服功函數 $\phi$ （work function）。溫度 $T$ 時，具有足夠能量的電子數服從 Richardson–Dushman 定律（1911 年 Richardson 完成理論）：
+金屬中的自由電子要逸出表面，需克服功函數 $`\phi`$ （work function）。溫度 $`T`$ 時，具有足夠能量的電子數服從 Richardson–Dushman 定律（1911 年 Richardson 完成理論）：
 
-$$J = A T^2 e^{-\phi/k_B T} \quad \left(A \approx 1.2\times10^6\ \mathrm{A\,m^{-2}K^{-2}}\right)$$
+$$
+J = A T^2 e^{-\phi/k_B T} \quad \left(A \approx 1.2\times10^6\ \mathrm{A\,m^{-2}K^{-2}}\right)
+$$
 
 **推理**：燈絲加熱到 2,000 K 以上，熱電子大量逸出，在燈絲附近形成「電子雲」。此時若附近板極為**正**電位，電子被吸引形成電流；若板極為**負**，電子被排斥、無電流——**單向導電**的物理根源。這也解釋了為何只有電子（負電荷）從燈絲流向板極：愛迪生效應的謎底是**電子的熱發射**（1897 年 Thomson 剛發現電子，見 [1897-Thomson電子發現](1897-Thomson電子發現.md)）。
 
 ### 線索二：二極體整流原理（單向導電）
 真空二極體的電流-電壓特性：
 
-$$I(V) = \begin{cases} I_s\,V^{3/2} & V > 0 \quad(\text{空間電荷限制區, Child–Langmuir 定律})\\ 0 & V \le 0 \quad(\text{截止})\end{cases}$$
+$$
+I(V) = \begin{cases} I_s\,V^{3/2} & V > 0 \quad(\text{空間電荷限制區, Child–Langmuir 定律})\\ 0 & V \le 0 \quad(\text{截止})\end{cases}
+$$
 
 Child–Langmuir 定律（1911）：
 
-$$I = \frac{4}{9}\epsilon_0\sqrt{\frac{2e}{m}}\,\frac{A\,V^{3/2}}{d^2}$$
+$$
+I = \frac{4}{9}\epsilon_0\sqrt{\frac{2e}{m}}\,\frac{A\,V^{3/2}}{d^2}
+$$
 
 **推理（檢波應用）**：無線電波是高頻振盪（射頻載波），天線感應的電壓正負對稱、平均為零，無法直接驅動耳機。把射頻訊號加在二極體上，只有正半波導通——**輸出變成單向脈衝，其平均值（包絡）就是調變訊號**。這就是**整流與檢波**：從射頻中「摘出」音訊或電報滴答聲。
 

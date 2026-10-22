@@ -3,14 +3,18 @@
 ## 案件摘要
 2023 年 12 月，**ASML** 交付第一台 **High-NA EUV scanner EXE:5000** 給 **Intel**——
 **NA 0.55、8x 縮小、單價 ~$3.8 億**：
-$$\text{EUV 0.33 NA（單次曝光極限）} \xrightarrow{\text{NA 0.55}} \text{解析度再進一程}$$
+
+$$
+\text{EUV 0.33 NA（單次曝光極限）} \xrightarrow{\text{NA 0.55}} \text{解析度再進一程}
+$$
+
 同年，**美日荷出口管制**全面收網：荷蘭限制 NXT:2000i 以上（2023.9）、
 日本管制 DUV 設備（2023.7）——**設備正式成為地緣政治武器**；
 中國以 **DUV 多重曝光做出 7 nm**（華為 Mate 60，2023.8）回應——
 **設備史第一次成為大國博弈的主戰場**。
 
 ## 前因 -- 為什麼會有這個案子
-- **0.33 NA 的單次曝光極限**：線寬 $W = k_1 \lambda / NA$ ——
+- **0.33 NA 的單次曝光極限**：線寬 $`W = k_1 \lambda / NA`$ ——
   0.33 NA 的單次曝光解析度 ~13–16 nm 節距——**再小要雙重曝光**（成本）；
 - **High-NA 的解法**：NA 0.55 → 單次曝光解析度 ~8 nm；
 - **地緣政治的背景**：2022 年 10 月美國出口管制（先進邏輯/記憶體設備）——
@@ -21,7 +25,11 @@ $$\text{EUV 0.33 NA（單次曝光極限）} \xrightarrow{\text{NA 0.55}} \text{
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：High-NA 的光學（0.55 的物理）
-$$W = \frac{k_1 \lambda}{NA} = \frac{0.55 \times 13.5}{0.55} \approx 13.5\ \text{nm（k}_1=0.55\text{）}$$
+
+$$
+W = \frac{k_1 \lambda}{NA} = \frac{0.55 \times 13.5}{0.55} \approx 13.5\ \text{nm（k}_1=0.55\text{）}
+$$
+
 - 實務：NA 0.33（k₁=0.4）→ ~16 nm 節距；NA 0.55（k₁=0.4）→ **~10 nm 節距**；
 - **像散式（anamorphic）光學**：8x/4x 縮放（兩軸不同倍率）——
   Zeiss 的新鏡頭（每片鏡面形誤差 < 0.05 nm）；
@@ -30,7 +38,11 @@ $$W = \frac{k_1 \lambda}{NA} = \frac{0.55 \times 13.5}{0.55} \approx 13.5\ \text
 
 ### 第二條線索：隨機效應的惡化（High-NA 的代價）
 NA 越高 → 每像素光子數越少 → **散粒雜訊越惡化**：
-$$\sigma_{CD} \propto \frac{1}{\sqrt{N_{photons}}}, \qquad N_{photons} \propto \frac{P}{\text{面積}}$$
+
+$$
+\sigma_{CD} \propto \frac{1}{\sqrt{N_{photons}}}, \qquad N_{photons} \propto \frac{P}{\text{面積}}
+$$
+
 - **偵推**：解析度的進步 = **隨機效應的退步**——
   High-NA 把良率的球踢給**光阻與檢測**（見 `2020-電子束檢測.md`）。
 

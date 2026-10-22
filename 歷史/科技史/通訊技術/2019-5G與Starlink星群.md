@@ -2,12 +2,16 @@
 
 ## 案件摘要
 2019 年，3GPP 發布 **5G NR**（New Radio）標準；同年 5 月，SpaceX 發射首批 60 顆 Starlink 衛星：
-$$\text{5G: massive MIMO} \xrightarrow{} \text{容量躍升 10×};\quad \text{Starlink: LEO 星座} \xrightarrow{} \text{全球無死角覆蓋}.$$
+
+$$
+\text{5G: massive MIMO} \xrightarrow{} \text{容量躍升 10×};\quad \text{Starlink: LEO 星座} \xrightarrow{} \text{全球無死角覆蓋}.
+$$
+
 兩個案子都在 2019 年——**通訊的最後一塊拼圖：地表（5G）與太空（LEO 衛星）同時到位**。
-今日全球 $5\times10^8$ 個 5G 連線 + 約 6,000 顆低軌衛星在運作——**地球被通訊網包圍兩層**。
+今日全球 $`5\times10^8`$ 個 5G 連線 + 約 6,000 顆低軌衛星在運作——**地球被通訊網包圍兩層**。
 
 ## 前因 -- 為什麼會有這個案子
-- **4G 的容量天花板（2018）**：LTE 頻譜效率接近 **Shannon 界**（ $6\ \text{bps/Hz}$ 已達 LTE 上限，見「2009-4GLTE.md」）——
+- **4G 的容量天花板（2018）**：LTE 頻譜效率接近 **Shannon 界**（ $`6\ \text{bps/Hz}`$ 已達 LTE 上限，見「2009-4GLTE.md」）——
   **要再提升容量，只能用新頻段 + 空間多工**。
 - **三大應用需求的兇手（2015–2018）**：
   1. **虛擬實境 AR/VR**：延遲需 **< 1 ms**（4G 20–50 ms）——**eMBB（增強型移動寬頻）不足以支撐 AR**。
@@ -21,30 +25,50 @@ $$\text{5G: massive MIMO} \xrightarrow{} \text{容量躍升 10×};\quad \text{St
 ### 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：massive MIMO 與波束賦形
-LTE MIMO： $N_t \leq 4$ 天線。5G massive MIMO：** $N_t = 64\text{–}256$ 天線**：
-$$\text{容量} \sim \log\det\!\left(I + \frac{\rho}{N_t}\mathbf{H}\mathbf{H}^\dagger\right) \sim N_t \log_2(1+\rho).$$
+LTE MIMO： $`N_t \leq 4`$ 天線。5G massive MIMO：** $`N_t = 64\text{–}256`$ 天線**：
+
+$$
+\text{容量} \sim \log\det\!\left(I + \frac{\rho}{N_t}\mathbf{H}\mathbf{H}^\dagger\right) \sim N_t \log_2(1+\rho).
+$$
+
 - **天線數 = 空間多工的通道數** → 容量隨天線數近線性增長。
-- **窄波束賦形**： $N_t = 64$ 的天線可產生數十個窄波束，**同時服務數十用戶**（massive MIMO）→ 頻譜效率躍升 3–10 倍。
+- **窄波束賦形**： $`N_t = 64`$ 的天線可產生數十個窄波束，**同時服務數十用戶**（massive MIMO）→ 頻譜效率躍升 3–10 倍。
 
 ### 第二條線索：OFDM 家族的極致（SC-FDMA → OFDMA → Numerology）
 5G 引入 **可擴展 OFDM 參數集 (numerology)**：
-$$\Delta f = 15\ \text{kHz} \times 2^{\mu}.$$
-- $\mu=0$ ：15 kHz（標準手機，蜂窩式覆蓋，見「1991-GSM數位行動通訊.md」）。
-- $\mu=5$ ：480 kHz（mmWave 短距離，邊緣伺服器，極低延遲）。
+
+$$
+\Delta f = 15\ \text{kHz} \times 2^{\mu}.
+$$
+
+- $`\mu=0`$ ：15 kHz（標準手機，蜂窩式覆蓋，見「1991-GSM數位行動通訊.md」）。
+- $`\mu=5`$ ：480 kHz（mmWave 短距離，邊緣伺服器，極低延遲）。
 **同一種 OFDM 家族，不同的參數化**——無線技術的模組化長期一貫。
 
 ### 第三條線索：Network Slicing（切片）
 5G 承諾在同一物理網路上「切出」多個**虛擬獨立網路**：
-$$\text{同一 5G 核心網} = \text{自駕切片 (uRLLC)} + \text{智慧家庭切片 (mMTC)} + \text{Fixed Wireless Access (eMBB)}.$$
+
+$$
+\text{同一 5G 核心網} = \text{自駕切片 (uRLLC)} + \text{智慧家庭切片 (mMTC)} + \text{Fixed Wireless Access (eMBB)}.
+$$
+
 這是「**軟體定義網路 (SDN) + NFV（網路功能虛擬化）**」的行動化——**雲端思維落地到無線**。
 
 ### 第四條線索：LEO 衛星與 Starlink
 LEO 星鏈的幾何與鏈路：
-- **Starlink 軌道**：550 km（VLEO），每星可見地面圓半徑 ~1000 km → 需數千顆覆蓋全球（ $O(N)$ 擴展）：
-  $$N_{\text{needed}} \approx 4\pi R^2_{\text{earth}} \times \frac{\theta_{\text{coverage}}}{\text{area/plane}}\ \text{（量級 } 10^3\text{–}10^4 \text{顆）}.$$
+- **Starlink 軌道**：550 km（VLEO），每星可見地面圓半徑 ~1000 km → 需數千顆覆蓋全球（ $`O(N)`$ 擴展）：
+
+$$
+N_{\text{needed}} \approx 4\pi R^2_{\text{earth}} \times \frac{\theta_{\text{coverage}}}{\text{area/plane}}\ \text{（量級 } 10^3\text{–}10^4 \text{顆）}.
+$$
+
 - **極低延遲**：550 km 高度，propagation 延遲：
-  $$t = \frac{d}{c} = \frac{550 \times 10^3}{3\times10^8} \approx 1.8\ \text{ms} \quad (\text{單程})\quad +\text{天線波束對準、調制} \approx 5\ \text{ms 總延遲}.$$
-  **對比 GEO 衛星的 240 ms——快 48 倍**。
+
+$$
+t = \frac{d}{c} = \frac{550 \times 10^3}{3\times10^8} \approx 1.8\ \text{ms} \quad (\text{單程})\quad +\text{天線波束對準、調制} \approx 5\ \text{ms 總延遲}.
+$$
+
+**對比 GEO 衛星的 240 ms——快 48 倍**。
 - **Inter-satellite links (ISL)**：衛星間雷射互連，全球網路**「在軌」**，不需地面中繼。
 
 ### Python：Shannon 界下 5G 與 LEO 延遲的對比
@@ -84,7 +108,7 @@ MEO (20,000 km): 94.3 ms
 GEO (35,786 km): 168.7 ms
 → LEO 比 GEO 快約 20 倍（Starlink 網關的關鍵）
 ```
-（註：massive MIMO 增益主要體現在**容量**（天線數× 頻寬）與**空間複用**；頻譜效率指數公式需加入天線數 $N_t$ 修正，天線數更多是容量更高）。
+（註：massive MIMO 增益主要體現在**容量**（天線數× 頻寬）與**空間複用**；頻譜效率指數公式需加入天線數 $`N_t`$ 修正，天線數更多是容量更高）。
 
 ## 結案 -- 後果與影響
 - **5G 的全球部署（2019–2025）**：全球 5G 連線已超 20 億（2020s），**覆蓋約 40% 人口**；
@@ -95,7 +119,10 @@ GEO (35,786 km): 168.7 ms
   - **天文書的革命**：Starlink 曾嚴重干擾射電天文觀測（暗減光學）——**通訊擴張 vs 科學的衝突**（與 Skrubble 1927 發現 radio interference 類比）。
   - **Kuiper（Amazon, 2020s）**、**OneWeb** 等跟進——**低軌星座已成為國家級通訊基建競賽**。
 - **歷史定位**：**從 1838 摩斯電報到 2019 Starlink——181 年間，通訊從「每秒數字元」到「全球兆 bits/s + 全球衛星覆蓋」**。
-  $$\text{1838: } 1\ \text{bit/s（人工）} \quad\Longrightarrow\quad \text{2019: } 10^{12}\ \text{bit/s（全球總容量）} \quad\Longrightarrow\quad \text{光纖 } 10^{15}\ \text{bit/s}.$$
+
+$$
+\text{1838: } 1\ \text{bit/s（人工）} \quad\Longrightarrow\quad \text{2019: } 10^{12}\ \text{bit/s（全球總容量）} \quad\Longrightarrow\quad \text{光纖 } 10^{15}\ \text{bit/s}.
+$$
 
 ## 關鍵人物與文獻
 - **3GPP**：5G NR Rel-15 (2017)、Rel-16 (2018)。

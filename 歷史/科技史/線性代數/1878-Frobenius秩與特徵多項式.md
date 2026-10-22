@@ -1,46 +1,58 @@
 # 1878 — Frobenius 秩與特徵多項式
 
 ## 案件摘要
-1878 年，德國數學家 Ferdinand Georg Frobenius 發表長篇論文〈Über homogene Substitutionen und lineare Transformationen〉（論齊次代換與線性變換），為線性代數補上了最關鍵的兩塊拼圖：**矩陣秩（rank）的一般理論**與**特徵多項式 $\chi_A(\lambda) = \det(\lambda I - A)$ 的嚴格框架**，並首次給出 Cayley-Hamilton 定理的完全嚴格證明。Cayley 留下的骨架、Sylvester 留下的線索，在這一年被整合成一套嚴密體系——線性代數從此從「計算技巧集」升級為「數學結構理論」。
+1878 年，德國數學家 Ferdinand Georg Frobenius 發表長篇論文〈Über homogene Substitutionen und lineare Transformationen〉（論齊次代換與線性變換），為線性代數補上了最關鍵的兩塊拼圖：**矩陣秩（rank）的一般理論**與**特徵多項式 $`\chi_A(\lambda) = \det(\lambda I - A)`$ 的嚴格框架**，並首次給出 Cayley-Hamilton 定理的完全嚴格證明。Cayley 留下的骨架、Sylvester 留下的線索，在這一年被整合成一套嚴密體系——線性代數從此從「計算技巧集」升級為「數學結構理論」。
 
 ## 前因 -- 為什麼會有這個案子
-- Sylvester（1851）已提出「rank」的直覺（矩陣中不為零的最大子行列式階數），並證明對 $n$ 個未知數、 $m$ 條方程的相容性判別；但秩在運算下如何變化、為何是相似不變量，缺乏系統論述。
-- Cayley（1858）定義矩陣代數並猜想 Cayley-Hamilton 定理，但只驗證了 $3 \times 3$ 以下，一般證明缺席。
+- Sylvester（1851）已提出「rank」的直覺（矩陣中不為零的最大子行列式階數），並證明對 $`n`$ 個未知數、 $`m`$ 條方程的相容性判別；但秩在運算下如何變化、為何是相似不變量，缺乏系統論述。
+- Cayley（1858）定義矩陣代數並猜想 Cayley-Hamilton 定理，但只驗證了 $`3 \times 3`$ 以下，一般證明缺席。
 - Weierstrass（1868）的初等因子理論以雙線性型為載體，語言繁複；矩陣本身的「內在維度」仍無清晰定義。
 - 當時「線性變換」與「矩陣」的關係曖昧：同一個變換在不同基底下對應不同矩陣——什麼量不隨基底改變？這是本案要追查的「不變量」。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：秩的一般理論
-Frobenius 將矩陣 $A$ 的秩定義為**最大非零子行列式的階數**（Sylvester 的線索），並證明其等價刻畫：
+Frobenius 將矩陣 $`A`$ 的秩定義為**最大非零子行列式的階數**（Sylvester 的線索），並證明其等價刻畫：
 
-$$\mathrm{rank}(A) = \dim \mathrm{im}(A) = n - \dim\ker(A)$$
+$$
+\mathrm{rank}(A) = \dim \mathrm{im}(A) = n - \dim\ker(A)
+$$
 
-（像空間的維度 = 列空間維度 = 行空間維度 = $n$ 減核空間維度）。他還證明了秩的基本不等式鏈：
+（像空間的維度 = 列空間維度 = 行空間維度 = $`n`$ 減核空間維度）。他還證明了秩的基本不等式鏈：
 
-$$\mathrm{rank}(AB) \le \min\{\mathrm{rank}(A),\ \mathrm{rank}(B)\}$$
+$$
+\mathrm{rank}(AB) \le \min\{\mathrm{rank}(A),\ \mathrm{rank}(B)\}
+$$
 
-以及 **Sylvester 不等式** $\mathrm{rank}(A) + \mathrm{rank}(B) - n \le \mathrm{rank}(AB)$ 。秩在乘法下的衰減規律，成為判定線性方程組相容性與解空間維度的標準工具（Rouché–Capelli 定理的矩陣版本）。
+以及 **Sylvester 不等式** $`\mathrm{rank}(A) + \mathrm{rank}(B) - n \le \mathrm{rank}(AB)`$ 。秩在乘法下的衰減規律，成為判定線性方程組相容性與解空間維度的標準工具（Rouché–Capelli 定理的矩陣版本）。
 
 ### 線索二：特徵多項式的一般理論與相似不變量
 Frobenius 系統化定義特徵多項式
 
-$$\chi_A(\lambda) = \det(\lambda I - A) = \lambda^n - (\mathrm{tr}\,A)\lambda^{n-1} + \cdots + (-1)^n \det(A)$$
+$$
+\chi_A(\lambda) = \det(\lambda I - A) = \lambda^n - (\mathrm{tr}\,A)\lambda^{n-1} + \cdots + (-1)^n \det(A)
+$$
 
-並證明它是**相似不變量**：若 $B = PAP^{-1}$ ，則
+並證明它是**相似不變量**：若 $`B = PAP^{-1}`$ ，則
 
-$$\chi_B(\lambda) = \det(\lambda I - PAP^{-1}) = \det\big(P(\lambda I - A)P^{-1}\big) = \det(\lambda I - A) = \chi_A(\lambda)$$
+$$
+\chi_B(\lambda) = \det(\lambda I - PAP^{-1}) = \det\big(P(\lambda I - A)P^{-1}\big) = \det(\lambda I - A) = \chi_A(\lambda)
+$$
 
-同理 $\mathrm{tr}(B) = \mathrm{tr}(A)$ 、 $\det(B) = \det(A)$ 、各階係數皆不變。這回答了前因中的問題：**特徵多項式（及其根——特徵值）是線性變換的內在屬性，與座標選擇無關。** Frobenius 也用初等因子理論證明：特徵多項式被最小多項式整除，且兩者有相同的根集合。
+同理 $`\mathrm{tr}(B) = \mathrm{tr}(A)`$ 、 $`\det(B) = \det(A)`$ 、各階係數皆不變。這回答了前因中的問題：**特徵多項式（及其根——特徵值）是線性變換的內在屬性，與座標選擇無關。** Frobenius 也用初等因子理論證明：特徵多項式被最小多項式整除，且兩者有相同的根集合。
 
 ### 線索三：Cayley-Hamilton 定理的嚴格證明
-Frobenius 給出 Cayley-Hamilton 定理第一個完全證明：對任意 $n \times n$ 矩陣 $A$ ，
+Frobenius 給出 Cayley-Hamilton 定理第一個完全證明：對任意 $`n \times n`$ 矩陣 $`A`$ ，
 
-$$p_A(A) = A^n - (\mathrm{tr}\,A)A^{n-1} + \cdots + (-1)^n \det(A)\,I = 0$$
+$$
+p_A(A) = A^n - (\mathrm{tr}\,A)A^{n-1} + \cdots + (-1)^n \det(A)\,I = 0
+$$
 
-證明思路：先在 $A$ 可對角化（或用擾動 $\mathrm{tr}$ 的一般技巧）時直接驗證，再以**多項式恆等式的稠密性論證**（或用伴隨矩陣 $\mathrm{adj}(\lambda I - A)$ 的多項式恆等式 $\det(\lambda I - A)I = (\lambda I - A)\,\mathrm{adj}(\lambda I - A)$ ，令 $\lambda = A$ ）過渡到一般情形。附帶收穫：當 $\det(A) \neq 0$ 時可從 $p_A(A) = 0$ 解出
+證明思路：先在 $`A`$ 可對角化（或用擾動 $`\mathrm{tr}`$ 的一般技巧）時直接驗證，再以**多項式恆等式的稠密性論證**（或用伴隨矩陣 $`\mathrm{adj}(\lambda I - A)`$ 的多項式恆等式 $`\det(\lambda I - A)I = (\lambda I - A)\,\mathrm{adj}(\lambda I - A)`$ ，令 $`\lambda = A`$ ）過渡到一般情形。附帶收穫：當 $`\det(A) \neq 0`$ 時可從 $`p_A(A) = 0`$ 解出
 
-$$A^{-1} = -\frac{1}{\det(A)}\left(A^{n-1} - (\mathrm{tr}\,A)A^{n-2} + \cdots\right)$$
+$$
+A^{-1} = -\frac{1}{\det(A)}\left(A^{n-1} - (\mathrm{tr}\,A)A^{n-2} + \cdots\right)
+$$
 
 ——只乘矩陣、不除，對手工與機器計算都極重要。
 
@@ -85,7 +97,7 @@ Ainv_manual = -(A*A - (-c2)*A + c1*Matrix.eye(3)) / (-c0)  # 展開式簡化版
 print("A^{-1} 手算正確？", Ainv_manual == A.inv())
 ```
 
-程式重審結果：秩不等式成立、相似矩陣的特徵多項式／跡／行列式完全相同、含不可對角化塊的 $p_A(A) = 0$ 精確成立，且由 Cayley-Hamilton 反解出的 $A^{-1}$ 與直接求逆一致。
+程式重審結果：秩不等式成立、相似矩陣的特徵多項式／跡／行列式完全相同、含不可對角化塊的 $`p_A(A) = 0`$ 精確成立，且由 Cayley-Hamilton 反解出的 $`A^{-1}`$ 與直接求逆一致。
 
 ## 結案 -- 後果與影響
 - 線性代數獲得**嚴格基礎**：秩、特徵多項式、相似不變量三件套，把 Cayley 的代數骨架與 Sylvester 的判別技巧熔為一爐。

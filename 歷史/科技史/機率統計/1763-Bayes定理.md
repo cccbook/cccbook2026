@@ -18,37 +18,47 @@
 
 ### 核心定理
 
-設 $H$ 為假設（原因）， $D$ 為資料（結果），則：
+設 $`H`$ 為假設（原因）， $`D`$ 為資料（結果），則：
 
-$$P(H|D) = \frac{P(D|H)\,P(H)}{P(D)} = \frac{P(D|H)\,P(H)}{\sum_{H'} P(D|H')\,P(H')}$$
+$$
+P(H|D) = \frac{P(D|H)\,P(H)}{P(D)} = \frac{P(D|H)\,P(H)}{\sum_{H'} P(D|H')\,P(H')}
+$$
 
 三個組成部分的偵探式解讀：
 
 | 術語 | 符號 | 偵探角色 |
 |------|------|----------|
-| 先驗機率 | $P(H)$ | 開案前的「嫌疑程度」 |
-| 概似度 | $P(D\|H)$ | 若嫌疑為真，看到這些「線索」的可能性 |
-| 後驗機率 | $P(H\|D)$ | 看完線索後更新的嫌疑程度 |
-| 證據 | $P(D)$ | 線索本身的整體出現機率（歸一化常數） |
+| 先驗機率 | $`P(H)`$ | 開案前的「嫌疑程度」 |
+| 概似度 | $`P(D\|H)`$ | 若嫌疑為真，看到這些「線索」的可能性 |
+| 後驗機率 | $`P(H\|D)`$ | 看完線索後更新的嫌疑程度 |
+| 證據 | $`P(D)`$ | 線索本身的整體出現機率（歸一化常數） |
 
 ### Bayes 的原始推理
 
-Bayes 用一張「桌子」與連續丟球的幾何論證：球 $W$ 均勻落在長度 1 的桌面上，之後再丟 $n$ 顆球，設落在 $[0, x]$ 區間的有 $p$ 顆。他推得（現代記號）：
+Bayes 用一張「桌子」與連續丟球的幾何論證：球 $`W`$ 均勻落在長度 1 的桌面上，之後再丟 $`n`$ 顆球，設落在 $`[0, x]`$ 區間的有 $`p`$ 顆。他推得（現代記號）：
 
-$$P\left(\frac{p}{n} \le x \;\middle|\; \text{觀察}\right) = \frac{(n+1)!}{p!\,(n-p-p)!}\int_0^x z^p (1-z)^{n-p}\, dz$$
+$$
+P\left(\frac{p}{n} \le x \;\middle|\; \text{觀察}\right) = \frac{(n+1)!}{p!\,(n-p-p)!}\int_0^x z^p (1-z)^{n-p}\, dz
+$$
 
 這正是 Beta 分佈的累積機率——現代「Beta-Binomial 共軛」的先聲：
 
-$$P(\theta \mid k) \propto \theta^{k}(1-\theta)^{n-k} \cdot \underbrace{\theta^{a-1}(1-\theta)^{b-1}}_{\text{先驗 Beta}(a,b)}$$
+$$
+P(\theta \mid k) \propto \theta^{k}(1-\theta)^{n-k} \cdot \underbrace{\theta^{a-1}(1-\theta)^{b-1}}_{\text{先驗 Beta}(a,b)}
+$$
 
-即先驗 $\text{Beta}(a,b)$ + 觀察 $(k, n-k)$ $\Rightarrow$ 後驗 $\text{Beta}(a+k,\; b+n-k)$ 。
+即先驗 $`\text{Beta}(a,b)`$ + 觀察 $`(k, n-k)`$ $`\Rightarrow`$ 後驗 $`\text{Beta}(a+k,\; b+n-k)`$ 。
 
 ### Laplace 的推廣
 
 Laplace 獨立重新發現並大幅推廣了此定理（1774 年起）：
 
-1. **逆向機率的通用解法**：對任意離散假設 $H_1, \dots, H_n$ ，
-$$P(H_i \mid D) = \frac{P(D \mid H_i) P(H_i)}{\sum_j P(D \mid H_j) P(H_j)}$$
+1. **逆向機率的通用解法**：對任意離散假設 $`H_1, \dots, H_n`$ ，
+
+$$
+P(H_i \mid D) = \frac{P(D \mid H_i) P(H_i)}{\sum_j P(D \mid H_j) P(H_j)}
+$$
+
 2. **「機率的因果論」（Principle of Insufficient Reason）**：無資訊時給各原因相同先驗（均勻先驗），用後驗比較原因。
 3. 實際應用：估計法國男嬰出生比例（1781）、分析巴黎天文台的觀測誤差、推導最小平方法的機率基礎（1810）。
 
@@ -56,7 +66,9 @@ $$P(H_i \mid D) = \frac{P(D \mid H_i) P(H_i)}{\sum_j P(D \mid H_j) P(H_j)}$$
 
 某疾病盛行率 1%，檢測靈敏度 99%（有病者陽性機率），偽陽性率 5%。檢測陽性，真的有病的機率是多少？
 
-$$P(\text{病}\mid +) = \frac{0.99 \times 0.01}{0.99 \times 0.01 + 0.05 \times 0.99} = \frac{0.0099}{0.0594} \approx 0.1667$$
+$$
+P(\text{病}\mid +) = \frac{0.99 \times 0.01}{0.99 \times 0.01 + 0.05 \times 0.99} = \frac{0.0099}{0.0594} \approx 0.1667
+$$
 
 直覺答案 99% 大錯特錯——只有約 16.7%！因為健康人遠多於病人，偽陽性總數壓過真陽性。
 

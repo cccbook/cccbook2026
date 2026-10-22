@@ -7,7 +7,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 - **Hilbert 綱領**（1917–1930）：Hilbert 主張用有限、機械的方法為整個數學建立一致且完備的公理系統，並期望判定問題（Entscheidungsproblem）有解。
-- **邏輯主義**：Russell 與 Whitehead 在《Principia Mathematica》中嘗試把數學還原為邏輯，但其「還原函數」記法 $\hat{x}.M$ 繁瑣、且需要複雜的類型論。
+- **邏輯主義**：Russell 與 Whitehead 在《Principia Mathematica》中嘗試把數學還原為邏輯，但其「還原函數」記法 $`\hat{x}.M`$ 繁瑣、且需要複雜的類型論。
 - Church 的野心更大：不只還原數學，而是把**邏輯本身**也變成函數 —— 命題就是某種 λ 項，推理就是 β-歸約。若成功，「數學即計算」。
 - 當時 Gödel 的不完備定理（1931）剛剛擊碎 Hilbert 綱領的「完備」部分，但「一致 + 可判定」的希望尚未熄滅，Church 想接手這個案子。
 
@@ -17,30 +17,36 @@
 Church 的系統（發表於 *A set of postulates for the foundation of logic*, Annals of Math., 1932/1933）是一個**無類型的 λ 演算**，再加上一組邏輯常數與公設（postulates）。
 
 基本體系：
-- **底層**：無類型 λ 演算，項由 $x \mid \lambda x.\, M \mid M\ N$ 構成，計算靠 β-歸約
-  $$
-  (\lambda x.\, M)\, N \to_\beta M\,[N/x]
-  $$
+- **底層**：無類型 λ 演算，項由 $`x \mid \lambda x.\, M \mid M\ N`$ 構成，計算靠 β-歸約
+
+$$
+(\lambda x.\, M)\, N \to_\beta M\,[N/x]
+$$
+
 - **邏輯常數**（以組合子形式引入），例如：
-  - 否定 $\mathcal{N}$ 、蘊含 $\mathcal{I}$ 、全稱量詞 $\Sigma$ （即「對所有」的函數式版本）
+  - 否定 $`\mathcal{N}`$ 、蘊含 $`\mathcal{I}`$ 、全稱量詞 $`\Sigma`$ （即「對所有」的函數式版本）
   - 等詞：Church 以 Leibniz 律定義相等：
-    $$
-    E = \lambda x.\, \lambda y.\, \forall f.\, (f\ x \Rightarrow f\ y)
-    $$
-    「 $x$ 與 $y$ 相等，若且唯若 $x$ 的所有性質 $f$ ， $y$ 都有。」
+
+$$
+E = \lambda x.\, \lambda y.\, \forall f.\, (f\ x \Rightarrow f\ y)
+$$
+
+「 $`x`$ 與 $`y`$ 相等，若且唯若 $`x`$ 的所有性質 $`f`$ ， $`y`$ 都有。」
 
 ### 2. 公設的形式（概述）
 Church 的公設分為兩類：
-1. **形式規則**：如 $\beta$ -歸約、替換規則、以及「若 $M$ 可證且 $M \to_\beta N$ 則 $N$ 可證」（歸約保持可證性）。
+1. **形式規則**：如 $`\beta`$ -歸約、替換規則、以及「若 $`M`$ 可證且 $`M \to_\beta N`$ 則 $`N`$ 可證」（歸約保持可證性）。
 2. **邏輯公設**：如
-   $$
-   \mathcal{I}\ M\ (\mathcal{I}\ M\ N)\ \vdash\ \mathcal{I}\ M\ N \quad \text{（蘊含的傳遞式公設之一）}
-   $$
-   以及全稱量詞的引入/消去規則，形式上類似現代自然演繹，但一切寫成 λ 項的函數應用。
+
+$$
+\mathcal{I}\ M\ (\mathcal{I}\ M\ N)\ \vdash\ \mathcal{I}\ M\ N \quad \text{（蘊含的傳遞式公設之一）}
+$$
+
+以及全稱量詞的引入/消去規則，形式上類似現代自然演繹，但一切寫成 λ 項的函數應用。
 
 ### 3. 系統的特性
 - **萬能函數**：系統中允許「對所有項」做量化，等價於允許不限制的全稱抽象 —— 這正是它能表達 Richard 悖論式推理的漏洞所在。
-- **無類型**：不設類型檢查， $\lambda x.\, x\ x$ 是合法項（今日稱為 untyped lambda calculus 的特徵）。
+- **無類型**：不設類型檢查， $`\lambda x.\, x\ x`$ 是合法項（今日稱為 untyped lambda calculus 的特徵）。
 - **一致的期望**：Church 起初相信系統一致，並在論文中宣稱「若不一致，修改公設即可」—— 這句話不久就被現實打臉。
 - Church 也嘗試用它定義自然數與算術（後由 Kleene 發展成 Church 數字），證明原則上「數學可內建於此邏輯系統」。
 
@@ -69,7 +75,7 @@ assert AND(TRUE)(FALSE) is FALSE
 ## 結案 -- 後果與影響
 - 1935 年，Church 自己的學生 Kleene 與 Rosser 證明這個系統**矛盾**（見〈1935 - Kleene–Rosser 矛盾〉一案）。
 - Church 的回應：**放棄邏輯部分，保留純計算部分**。他把公設全數撤除，只留下無類型 λ 演算 —— 這個「殘骸」反而成為 20 世紀最重要的計算模型之一。
-- 教訓深刻：**在無類型系統中，把「對所有函數」量化，等於允許自我指涉，等於擁抱悖論。** 後來的解藥是**類型論**：Church 於 1940 年提出簡單類型 λ 演算（simply typed lambda calculus），以類型分層阻絕 $\lambda x.\, x\ x$ ，這正是 Russell 類型論的函數式轉世，也是今日 Haskell、ML 型別系統的祖先。
+- 教訓深刻：**在無類型系統中，把「對所有函數」量化，等於允許自我指涉，等於擁抱悖論。** 後來的解藥是**類型論**：Church 於 1940 年提出簡單類型 λ 演算（simply typed lambda calculus），以類型分層阻絕 $`\lambda x.\, x\ x`$ ，這正是 Russell 類型論的函數式轉世，也是今日 Haskell、ML 型別系統的祖先。
 - Curry–Howard 對應（1958 後）最終實現了 Church 的夢想（命題即類型、證明即程式）—— 但那是在「有類型」的世界裡。
 
 ## 關鍵人物與文獻

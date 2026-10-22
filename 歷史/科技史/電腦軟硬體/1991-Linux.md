@@ -60,12 +60,16 @@ print(schedule(tasks))  # gcc 先被排程，counter 遞補機制運作
 ### GPL 與開源開發模式
 - **GPL（1989, GPL v1；1991, v2）**：Copyleft 授權——可以自由使用、修改、散布，但衍生作品必須同樣以 GPL 釋出。數學化表達：GPL 對軟體定義了一個「閉包」運算
 
-$$GPL(S) = \{ \text{所有 } S \text{ 的衍生作品} \} \subseteq GPL\text{-授權軟體集}$$
+$$
+GPL(S) = \{ \text{所有 } S \text{ 的衍生作品} \} \subseteq GPL\text{-授權軟體集}
+$$
 
 - **Linux + GNU 的合流**：Linus 決定以 GPL 釋出 Linux 核心，GNU 的工具鏈填補了使用者空間。1992 年 Tanenbaum 與 Torvalds 著名的「Monolithic vs microkernel」筆戰中，Tanenbaum 批評 Linux 是「過時設計」——歷史卻證明單體核心（monolithic kernel）+ GPL 的組合贏了效能與生態。
 - **Bazaar vs Cathedral**：1997 年 Eric Raymond 發表〈The Cathedral and the Bazaar〉，指出 Linux 的開發模式（人人可改、快速釋出、群體除錯）優於傳統封閉團隊。其背後是 Linus' Law：
 
-$$\text{「給予足夠多的眼睛，所有臭蟲都淺顯易見」} \implies E[\text{bug 發現率}] \propto N_{\text{開發者}}$$
+$$
+\text{「給予足夠多的眼睛，所有臭蟲都淺顯易見」} \implies E[\text{bug 發現率}] \propto N_{\text{開發者}}
+$$
 
 分散式協作的除錯能力隨人數近線性增長——這是開源模式的數學優勢。
 

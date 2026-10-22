@@ -6,7 +6,7 @@
 ## 前因 -- 為什麼會有這個案子
 在 Fisher 之前，估計方法百花齊放卻缺乏統一標準：
 
-- **動差法**（Pearson）：令樣本動差 $=$ 母體動差，解方程得估計。
+- **動差法**（Pearson）：令樣本動差 $`=`$ 母體動差，解方程得估計。
 - **最小平方法**（Gauss/Legendre）：只適用於線性模型，缺乏一般性。
 - **逆機率法**（Bayes 學派）：需要先驗分佈，Fisher 認為這是「任意主觀」的。
 
@@ -18,46 +18,58 @@ Fisher 同時發現當時的統計學者（包括 Pearson）**混淆了母體與
 
 ### 線索一：母體 vs 樣本的觀念革命
 Fisher 嚴格區分：
-- **母體（population）**：一個無限大的假想集合，由參數 $\theta$ 的機率分佈 $f(x;\theta)$ 刻劃。
-- **樣本（sample）**：從母體抽出、可觀測的有限數據 $x_1,\dots,x_n$ 。
-- **統計量（statistic）**：樣本的函數 $T(x_1,\dots,x_n)$ ，不包含未知參數。
+- **母體（population）**：一個無限大的假想集合，由參數 $`\theta`$ 的機率分佈 $`f(x;\theta)`$ 刻劃。
+- **樣本（sample）**：從母體抽出、可觀測的有限數據 $`x_1,\dots,x_n`$ 。
+- **統計量（statistic）**：樣本的函數 $`T(x_1,\dots,x_n)`$ ，不包含未知參數。
 
-統計推論的方向是**單向**的： $f(x;\theta) \Rightarrow$ 樣本 $\Rightarrow$ 統計量 $\Rightarrow$ 推斷 $\theta$ 。這個框架至今仍是現代統計學的骨架。
+統計推論的方向是**單向**的： $`f(x;\theta) \Rightarrow`$ 樣本 $`\Rightarrow`$ 統計量 $`\Rightarrow`$ 推斷 $`\theta`$ 。這個框架至今仍是現代統計學的骨架。
 
 ### 線索二：最大概似估計（MLE）
 定義**概似函數**（likelihood）：
 
-$$L(\theta) = \prod_{i=1}^{n} f(x_i;\theta)$$
+$$
+L(\theta) = \prod_{i=1}^{n} f(x_i;\theta)
+$$
 
 MLE 即選擇使概似最大的參數：
 
-$$\hat{\theta} = \arg\max_\theta L(\theta) = \arg\max_\theta \prod_{i=1}^n f(x_i;\theta)$$
+$$
+\hat{\theta} = \arg\max_\theta L(\theta) = \arg\max_\theta \prod_{i=1}^n f(x_i;\theta)
+$$
 
 實務上取對數概似（log-likelihood）較方便：
 
-$$\ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log f(x_i;\theta), \qquad \hat{\theta} = \arg\max_\theta \ell(\theta)$$
+$$
+\ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log f(x_i;\theta), \qquad \hat{\theta} = \arg\max_\theta \ell(\theta)
+$$
 
-求解條件： $\ell'(\hat{\theta}) = 0$ （得分方程，score equation），其中 score 定義為
+求解條件： $`\ell'(\hat{\theta}) = 0`$ （得分方程，score equation），其中 score 定義為
 
-$$S(\theta) = \frac{\partial \ell}{\partial \theta}, \qquad I(\theta) = -E\!\left[\frac{\partial^2 \ell}{\partial \theta^2}\right] \;\;(\text{Fisher 資訊})$$
+$$
+S(\theta) = \frac{\partial \ell}{\partial \theta}, \qquad I(\theta) = -E\!\left[\frac{\partial^2 \ell}{\partial \theta^2}\right] \;\;(\text{Fisher 資訊})
+$$
 
 ### 線索三：三大性質（Fisher 的證明）
 Fisher 證明 MLE 具有：
 
-1. **一致性（consistency）**： $\hat{\theta}_n \xrightarrow{p} \theta$ ，樣本越大估計越準。
+1. **一致性（consistency）**： $`\hat{\theta}_n \xrightarrow{p} \theta`$ ，樣本越大估計越準。
 2. **有效性（efficiency）**：漸近變異數達到 **Cramér–Rao 下界**：
 
-   $$\text{Var}(\hat{\theta}) \ge \frac{1}{n I(\theta)}, \qquad \text{MLE 漸近達到} \;\; \text{Var}(\hat\theta_n) \approx \frac{1}{nI(\theta)}$$
+$$
+\text{Var}(\hat{\theta}) \ge \frac{1}{n I(\theta)}, \qquad \text{MLE 漸近達到} \;\; \text{Var}(\hat\theta_n) \approx \frac{1}{nI(\theta)}
+$$
 
-3. **充分性（sufficiency）**：當存在充分統計量 $T$ 時（如常態的 $\bar{X}, s^2$ ），MLE 是 $T$ 的函數，不損失資訊。
+3. **充分性（sufficiency）**：當存在充分統計量 $`T`$ 時（如常態的 $`\bar{X}, s^2`$ ），MLE 是 $`T`$ 的函數，不損失資訊。
 
 漸近常態性：
 
-$$\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d} N(0,\; 1/I(\theta))$$
+$$
+\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d} N(0,\; 1/I(\theta))
+$$
 
 ### 推理重點
 1. MLE 是「一致 + 有效 + 充分」的**同時達成者**，在 Fisher 的框架下沒有更好的通用方法。
-2. Fisher 資訊 $I(\theta)$ 是 MLE 變異數的下界，也是日後 Fisher 資訊幾何的起點。
+2. Fisher 資訊 $`I(\theta)`$ 是 MLE 變異數的下界，也是日後 Fisher 資訊幾何的起點。
 3. 貝葉斯學派後來證明：若使用正確先驗，貝葉斯估計也可達到同樣效率——兩派自此開始長達百年的競爭與融合。
 
 ### Python 實作：MLE 估計常態分佈參數
@@ -100,7 +112,7 @@ plt.title("Log-likelihood surface"); plt.savefig("mle.png", dpi=100)
 
 ## 結案 -- 後果與影響
 - MLE 成為**統計推論的支柱**：從迴歸（ML 版本）、廣義線性模型、混合模型到機器學習中的最大概似訓練（如 softmax + cross-entropy 即 MLE），無所不在。
-- Fisher 資訊 $I(\theta)$ 開啟了資訊幾何（information geometry）與漸近理論。
+- Fisher 資訊 $`I(\theta)`$ 開啟了資訊幾何（information geometry）與漸近理論。
 - 充分性概念促成指數族（exponential family）與充分統計量的完整理論。
 - Fisher 與 Pearson 學派的觀念之爭（母體 vs 樣本、Bayes vs likelihood）塑造了 20 世紀統計學的版圖。
 - 1925 年 Fisher 的《Statistical Methods for Research Workers》將 MLE 與檢定方法打包成「研究者工具箱」，是本案的直接續集。

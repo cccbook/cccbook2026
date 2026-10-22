@@ -3,7 +3,10 @@
 ## 案件摘要
 1988–89 年，IEEE 發布 **POSIX.1（IEEE Std 1003.1-1988）**——第一個 Unix 系統呼叫介面的正式標準。
 同年 Berkeley 發布 **BSD 授權（4.3BSD-Tahoe 附帶的授權條款，1989 年 6 月正式定案）**——與 GNU GPL 分庭抗禮的自由授權。
-$$\text{POSIX（介面標準）} \;+\; \text{BSD/GPL（自由授權）} \;=\; \text{戰國 Unix 的統一基礎}.$$
+
+$$
+\text{POSIX（介面標準）} \;+\; \text{BSD/GPL（自由授權）} \;=\; \text{戰國 Unix 的統一基礎}.
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **戰國 Unix 的混亂**：1980 年代末，System V、BSD、Xenix、SunOS、HP-UX……各廠商的 Unix 介面互不相容——同一支程式在 A 廠可編譯、B 廠失敗。**彌補的缺陷：介面碎片化**。
@@ -13,7 +16,11 @@ $$\text{POSIX（介面標準）} \;+\; \text{BSD/GPL（自由授權）} \;=\; \t
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：POSIX——介面即合約
-$$\text{POSIX} = \{\text{open, read, write, fork, exec, signal, ...}\} \quad \text{——形式化的介面集合}.$$
+
+$$
+\text{POSIX} = \{\text{open, read, write, fork, exec, signal, ...}\} \quad \text{——形式化的介面集合}.
+$$
+
 - **理論基礎**：Liskov 代換原則的實踐——任何「POSIX 相容系統」都必須能執行任何 POSIX 程式。**介面標準讓程式與系統解耦**。
 - **彌補的缺陷**：1980 年代 Unix 之間的差異讓移植成本高漲；POSIX 把「可移植」從美德變成**合約義務**。
 
@@ -24,8 +31,15 @@ $$\text{POSIX} = \{\text{open, read, write, fork, exec, signal, ...}\} \quad \te
 4. **termios**：終端機 I/O 的標準介面。
 
 ### 第三條線索：BSD 授權 vs GPL
-$$\text{BSD 授權} = \text{保留版權聲明即可自由使用（含商業閉源）}.$$
-$$\text{GPL} = \text{衍生品必須同樣自由（copyleft 傳染）}.$$
+
+$$
+\text{BSD 授權} = \text{保留版權聲明即可自由使用（含商業閉源）}.
+$$
+
+$$
+\text{GPL} = \text{衍生品必須同樣自由（copyleft 傳染）}.
+$$
+
 - **彌補的缺陷**：GPL 的「傳染性」讓商業公司卻步；BSD 授權讓企業（如 Sun、後來的 Apple）可以閉源使用——**兩種授權補足自由軟體光譜的兩端**。
 
 ### C 範例：POSIX 相容的移植性

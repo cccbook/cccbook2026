@@ -5,7 +5,11 @@
 **同時、獨立**在《Nature》發表：**反轉錄酶 (reverse transcriptase)** 的發現——
 **RNA 腫瘤病毒攜帶一種能把 RNA 反轉錄成 DNA 的酶**。
 **中心法則（DNA → RNA → 蛋白質，Crick 1958）被修正**：
-$$\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質}， \qquad \text{RNA 也能變回 DNA！}$$
+
+$$
+\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質}， \qquad \text{RNA 也能變回 DNA！}
+$$
+
 **這是分子生物學的最大修正**——病毒可以把自己的 RNA **寫進宿主的基因組**，
 變成永久居民。**癌症、HIV、基因工程的工具箱全部由此改寫。**
 （Temin 與 Baltimore 獲 1975 年諾貝爾生理醫學獎，與 Dulbecco 同獲。）
@@ -30,22 +34,37 @@ $$\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質}， \qquad \text{RN
 
 ### 核心推理：反轉錄酶的檢測
 Baltimore 的偵破（酶活性的直接檢測）：
-$$\text{病毒粒子} + \text{dNTP（放射性標記）} \xrightarrow{\text{RNA 模板}} \text{DNA 合成}.$$
+
+$$
+\text{病毒粒子} + \text{dNTP（放射性標記）} \xrightarrow{\text{RNA 模板}} \text{DNA 合成}.
+$$
+
 - **對照 1**：加 **RNase**（破壞 RNA 模板）→ 合成停止——**模板是 RNA**
 - **對照 2**：加 **放線菌素 D**（抑制 DNA 模板）→ 合照常——**不依賴 DNA**
 - **對照 3**：正常病毒粒子 → 合成照常——**酶在粒子裡**
 
-$$\text{RNA 模板} + \text{酶在粒子中} \Longrightarrow \text{反轉錄酶（RNA 依賴的 DNA 聚合酶）}.$$
+$$
+\text{RNA 模板} + \text{酶在粒子中} \Longrightarrow \text{反轉錄酶（RNA 依賴的 DNA 聚合酶）}.
+$$
+
 **Avery 1944 的酶消解迴響**：排除法的偵破——逐一排除其他模板，
 **最後站著的只有 RNA**。
 
 ### 核心推理二：前病毒假說的確認
 Temin 的假說（1964）在 1970 年後被逐步確認：
-$$\text{RNA 病毒} \xrightarrow{\text{反轉錄酶}} \text{DNA} \xrightarrow{\text{整合酶}} \text{宿主基因組（原病毒）} \to \text{子細胞攜帶}.$$
+
+$$
+\text{RNA 病毒} \xrightarrow{\text{反轉錄酶}} \text{DNA} \xrightarrow{\text{整合酶}} \text{宿主基因組（原病毒）} \to \text{子細胞攜帶}.
+$$
+
 - **整合酶**：病毒 DNA 整合進宿主染色體——**病毒成為基因組的一部分**
 - **原病毒**：可傳給子細胞——**致癌資訊永續**（Rous 1911 的懸案閉合）
 **中心法則的修正版**（Crick 1970 年親自修正自己的教條）：
-$$\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質} \qquad \text{（RNA 也能變回 DNA）}.$$
+
+$$
+\text{DNA} \rightleftarrows \text{RNA} \to \text{蛋白質} \qquad \text{（RNA 也能變回 DNA）}.
+$$
+
 **教條的制定者自己修正了教條**——科學的自我修正精神。
 
 ### 反轉錄酶的接力

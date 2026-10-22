@@ -17,9 +17,9 @@
 
 第一條線索是 InstructGPT 的三階段配方，ChatGPT 正是其對話版：
 
-1. **SFT（監督微調）**：人類標註員撰寫高品質示範回應，對預訓練模型做監督微調，得到初步「聽話」的策略 $\pi^{\text{SFT}}$ 。
-2. **獎勵模型訓練**：標註員對模型的多個輸出做偏好排名，訓練獎勵模型 $r_\phi(x, y)$ ，讓人類偏好可被自動計算。
-3. **PPO 強化學習**：以 $r_\phi$ 為獎勵，用 PPO 優化策略；同時加 KL 懲罰防止模型偏離原模型太遠（否則獎勵模型會被「攻破」）。
+1. **SFT（監督微調）**：人類標註員撰寫高品質示範回應，對預訓練模型做監督微調，得到初步「聽話」的策略 $`\pi^{\text{SFT}}`$ 。
+2. **獎勵模型訓練**：標註員對模型的多個輸出做偏好排名，訓練獎勵模型 $`r_\phi(x, y)`$ ，讓人類偏好可被自動計算。
+3. **PPO 強化學習**：以 $`r_\phi`$ 為獎勵，用 PPO 優化策略；同時加 KL 懲罰防止模型偏離原模型太遠（否則獎勵模型會被「攻破」）。
 
 ### Bradley-Terry 偏好模型
 
@@ -39,7 +39,7 @@ $$
 
 ### PPO 目標函數與 KL 懲罰
 
-第三條線索：強化學習階段的實際目標。純粹最大化 $r_\phi$ 會導致 reward hacking（模型鑽獎勵模型的漏洞，生成獎勵高但品質差的文本），因此加入對參考策略 $\pi^{\text{ref}}$ （通常是 SFT 模型）的 KL 懲罰：
+第三條線索：強化學習階段的實際目標。純粹最大化 $`r_\phi`$ 會導致 reward hacking（模型鑽獎勵模型的漏洞，生成獎勵高但品質差的文本），因此加入對參考策略 $`\pi^{\text{ref}}`$ （通常是 SFT 模型）的 KL 懲罰：
 
 $$
 \max_\theta \; \mathbb{E}_{y \sim \pi_\theta} \left[ r_\phi(x, y) \right] - \beta \, \mathrm{KL}\left( \pi_\theta(\cdot \mid x) \,\|\, \pi^{\text{ref}}(\cdot \mid x) \right)
@@ -51,11 +51,11 @@ $$
 L^{\text{CLIP}}(\theta) = \mathbb{E} \left[ \min\left( \rho_t A_t, \; \mathrm{clip}(\rho_t, 1-\epsilon, 1+\epsilon) A_t \right) \right], \quad \rho_t = \frac{\pi_\theta(y_t \mid x, y_{<t})}{\pi^{\text{old}}(y_t \mid x, y_{<t})}
 $$
 
-$\beta$ 是對齊的鬆緊旋鈕：太大則模型退回原樣，太小則獎勵模型被攻破。
+$`\beta`$ 是對齊的鬆緊旋鈕：太大則模型退回原樣，太小則獎勵模型被攻破。
 
 ### DPO：跳過獎勵模型的捷徑
 
-第四條線索由 Rafailov 等人（2023）指出：Bradley-Terry 的最優策略與獎勵之間有閉式解 $r(x,y) = \beta \log \frac{\pi(y|x)}{\pi^{\text{ref}}(y|x)} + \text{const}$ ，代入偏好損失後，獎勵模型可以被消去，直接對偏好資料做簡單的分類式損失：
+第四條線索由 Rafailov 等人（2023）指出：Bradley-Terry 的最優策略與獎勵之間有閉式解 $`r(x,y) = \beta \log \frac{\pi(y|x)}{\pi^{\text{ref}}(y|x)} + \text{const}`$ ，代入偏好損失後，獎勵模型可以被消去，直接對偏好資料做簡單的分類式損失：
 
 $$
 L_{\text{DPO}}(\theta) = -\mathbb{E}_{(x, y_w \succ y_l)} \left[ \log \sigma\left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi^{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi^{\text{ref}}(y_l|x)} \right) \right]

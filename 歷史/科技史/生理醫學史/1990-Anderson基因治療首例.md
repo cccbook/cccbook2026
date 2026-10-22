@@ -29,7 +29,11 @@
 
 ### 核心推理：離體基因治療的程序
 Anderson 的方案（ex vivo 基因治療）：
-$$\text{病人白血球} \xrightarrow{\text{取出}} \text{反轉錄病毒載體（ADA 基因）} \to \text{轉型} \xrightarrow{\text{篩選}} \text{基因修正的細胞} \xrightarrow{\text{輸回}} \text{免疫恢復}.$$
+
+$$
+\text{病人白血球} \xrightarrow{\text{取出}} \text{反轉錄病毒載體（ADA 基因）} \to \text{轉型} \xrightarrow{\text{篩選}} \text{基因修正的細胞} \xrightarrow{\text{輸回}} \text{免疫恢復}.
+$$
+
 - **反轉錄病毒載體**：把 ADA 基因**插入** T 細胞的基因組（Temin 1970 的機制——
   **反轉錄病毒 = 天生的基因插入器**）
 - **ADA 酶表達**：修正的細胞產生 ADA 酶——**毒性代謝物被分解**——**T 細胞存活**

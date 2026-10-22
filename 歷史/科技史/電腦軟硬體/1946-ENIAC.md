@@ -10,9 +10,11 @@
 
 彈道微分方程（忽略阻力的簡化形式）：
 
-$$\frac{d^2 y}{dt^2} = -g, \qquad \frac{d^2 x}{dt^2} = 0$$
+$$
+\frac{d^2 y}{dt^2} = -g, \qquad \frac{d^2 x}{dt^2} = 0
+$$
 
-完整版還要考慮空氣阻力 $F_d = \tfrac{1}{2}\rho v^2 C_d A$ ，是非線性 ODE，無法查表求解，只能數值積分。
+完整版還要考慮空氣阻力 $`F_d = \tfrac{1}{2}\rho v^2 C_d A`$ ，是非線性 ODE，無法查表求解，只能數值積分。
 
 ## 線索與推理 -- 數學式、程式、理論
 
@@ -29,19 +31,25 @@ $$\frac{d^2 y}{dt^2} = -g, \qquad \frac{d^2 x}{dt^2} = 0$$
 
 ENIAC 用十進位而非二進位（以 10 個位元的觸發器環表示一個十進位數字），加法本質上是環計數：
 
-$$x + y \Rightarrow \text{pulse}(x) \text{ 驅動 accumulator 從 } y \text{ 計數 } x \text{ 次}$$
+$$
+x + y \Rightarrow \text{pulse}(x) \text{ 驅動 accumulator 從 } y \text{ 計數 } x \text{ 次}
+$$
 
 ### 插線程式與打孔卡
 - 程式「寫」在實體接線板上：用纜線把單元（累加器、乘法器、函數表）連接成資料流，再用開關與旋鈕設定。
 - 資料與部分常數由 IBM 打孔卡輸入。
 - 程式設計師（Kathleen McNulty、Jean Jennings Bartik 等六位女性）要修改程式得重新配線，設定一次可花一至數天。
 
-$$T_{\text{設定程式}} \approx 1\text{–}3\ \text{天} \gg T_{\text{執行程式}} \approx \text{秒}\text{–}分鐘$$
+$$
+T_{\text{設定程式}} \approx 1\text{–}3\ \text{天} \gg T_{\text{執行程式}} \approx \text{秒}\text{–}分鐘
+$$
 
 ### 每秒 5000 次加法 vs 人類計算員
 人類計算員用機械計算器約每秒 0.5 次加法，ENIAC 快 10,000 倍：
 
-$$\frac{5000\ \text{add/s}}{0.5\ \text{add/s}} = 10^4\times$$
+$$
+\frac{5000\ \text{add/s}}{0.5\ \text{add/s}} = 10^4\times
+$$
 
 一條彈道從 30 小時縮短到約 30 秒——快 3600 倍。
 

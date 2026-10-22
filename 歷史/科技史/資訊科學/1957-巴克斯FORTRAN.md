@@ -3,10 +3,18 @@
 ## 案件摘要
 1957 年 4 月，**John Backus（1924–2007）** 帶領 IBM 的 13 人團隊，
 發布了 **FORTRAN**（FORmula TRANslation）——**第一個成功的編譯器**：
-$$\boxed{\text{高階語言的程式碼} \xrightarrow{\text{編譯器}} \text{機器碼（效率接近手工）}}$$
+
+$$
+\boxed{\text{高階語言的程式碼} \xrightarrow{\text{編譯器}} \text{機器碼（效率接近手工）}}
+$$
+
 在 FORTRAN 之前，所有人都用**組合語言**（assembly）寫程式——
 一行人類指令對應一行機器碼，**程式設計是苦役**。
-$$\text{組合語言（機器思維）} \xrightarrow{\text{FORTRAN 1957}} \text{高階語言（人類思維）}.$$
+
+$$
+\text{組合語言（機器思維）} \xrightarrow{\text{FORTRAN 1957}} \text{高階語言（人類思維）}.
+$$
+
 **FORTRAN I 編譯器**產生的機器碼**效率接近手工最佳化的組合語言**——
 這說服了懷疑者：**「程式設計師不需要懂機器」**。
 **1977 年，Backus 獲得圖靈獎**。
@@ -17,17 +25,29 @@ $$\text{組合語言（機器思維）} \xrightarrow{\text{FORTRAN 1957}} \text{
   - **儲存程式電腦（1948–）**：程式用組合語言寫——
     每一行都是機器碼的助記符（`ADD R1, R2`）；
     **寫一個 1000 行的程式需要數週**。
-  $$\text{程式設計} = \text{苦役（機器碼的一行行翻譯）}.$$
+
+$$
+\text{程式設計} = \text{苦役（機器碼的一行行翻譯）}.
+$$
+
 - **Backus 的背景**：
   Backus 是 IBM 的程式設計師，負責 **IBM 701** 的程式庫。
   他發現：**大部分時間都在寫「同樣的」程式碼**（迴圈、矩陣運算）——
-  $$\text{「為什麼不能讓機器自己翻譯？」}$$
+
+$$
+\text{「為什麼不能讓機器自己翻譯？」}
+$$
+
 - **IBM 的支持（1954）**：
   IBM 當時面臨 **Univac**（競爭對手）的壓力——
   Univac 已有 **A-0 編譯器**（Grace Hopper 的作品）但效率低。
   IBM 投資 Backus 的團隊，目標：
-  $$\boxed{\text{「編譯器的機器碼效率要接近手工組合語言」}}$$
-  （**這個目標是 FORTRAN 成功的關鍵**——之前的編譯器都因效率低而被拒用。）
+
+$$
+\boxed{\text{「編譯器的機器碼效率要接近手工組合語言」}}
+$$
+
+（**這個目標是 FORTRAN 成功的關鍵**——之前的編譯器都因效率低而被拒用。）
 - **13 人的團隊（1954–1957）**：
   Backus 帶領 13 人（包括 **Irving Ziller、Robert Nelson、Lois Haibt**），
   花了 **2.5 年、228 人年**寫出 FORTRAN I 編譯器——
@@ -51,7 +71,10 @@ LOAD  T1
 MUL   C        ; 乘 C
 STORE  X       ; 存到 X
 ```
-$$\text{1 行高階} \approx 6 \text{ 行組合語言}.$$
+
+$$
+\text{1 行高階} \approx 6 \text{ 行組合語言}.
+$$
 
 ### 第二條線索：編譯器的技術（最佳化的誕生）
 **FORTRAN I 編譯器的技術**（1957，當時最先進）：
@@ -60,18 +83,33 @@ $$\text{1 行高階} \approx 6 \text{ 行組合語言}.$$
 3. **暫存器分配**：把變數分配到 CPU 暫存器（**效率的關鍵**）；
 4. **迴圈最佳化**：把不變的計算移出迴圈；
 5. **程式碼生成**：產生機器碼。
-$$\text{詞法} \to \text{語法} \to \text{最佳化} \to \text{生成} \quad\text{（編譯器的四段式管線）}.$$
+
+$$
+\text{詞法} \to \text{語法} \to \text{最佳化} \to \text{生成} \quad\text{（編譯器的四段式管線）}.
+$$
+
 **BNF 范式（Backus Normal Form, 1959/1960）**：
 Backus 在 1959 年發明了**語法描述的形式語言**：
-$$\langle \text{expr} \rangle ::= \langle \text{term} \rangle \mid \langle \text{expr} \rangle + \langle \text{term} \rangle$$
+
+$$
+\langle \text{expr} \rangle ::= \langle \text{term} \rangle \mid \langle \text{expr} \rangle + \langle \text{term} \rangle
+$$
+
 **這是程式語言理論的基礎**——所有語言的規格書都用 BNF 寫。
 
 ### 第三條線索：效率的證明（1957 的說服力）
 **FORTRAN I 的效率**（IBM 704）：
-$$\text{編譯器產生的機器碼效率} \approx \text{手工組合語言的 } 50\% \sim 100\%.$$
+
+$$
+\text{編譯器產生的機器碼效率} \approx \text{手工組合語言的 } 50\% \sim 100\%.
+$$
+
 **結果（1958）**：FORTRAN 迅速被接受——
 **到 1958 年，超過一半的 IBM 704 程式用 FORTRAN 寫**。
-$$\text{「程式設計師不需要懂機器」} \xrightarrow{\text{FORTRAN 1957}} \text{軟體工業的誕生}.$$
+
+$$
+\text{「程式設計師不需要懂機器」} \xrightarrow{\text{FORTRAN 1957}} \text{軟體工業的誕生}.
+$$
 
 ### Python：編譯器管線的簡化示範
 
@@ -195,8 +233,12 @@ BNF 范式（Backus Normal Form, 1959）：
 
 ## 結案 -- 後果與影響
 - **軟體工業的誕生（1957）**：
-  $$\boxed{\text{FORTRAN 是「軟體」成為工業的起點}}$$
-  - 1958 年：IBM 704 的一半程式用 FORTRAN；
+
+$$
+\boxed{\text{FORTRAN 是「軟體」成為工業的起點}}
+$$
+
+- 1958 年：IBM 704 的一半程式用 FORTRAN；
   - 1960 年代：FORTRAN 成為科學計算的標準（**至今仍在用**——
     天氣預報、流體力學、核模擬的超級電腦程式用 FORTRAN）；
   - **FORTRAN 的版本**：FORTRAN II（1958）、FORTRAN 66（標準化）、
@@ -211,8 +253,12 @@ BNF 范式（Backus Normal Form, 1959）：
   Backus 獲 1977 年圖靈獎，演講題為《程式設計能從 von Neumann 風格中解放嗎？》
   （*Can Programming Be Liberated from the von Neumann Style?*）——
   他**批評自己發明的命令式語言**，提倡**函數式程式設計**（FP）：
-  $$\text{命令式（FORTRAN）} \xrightarrow{\text{Backus 的自我批判（1977）}} \text{函數式（Haskell、F\#）}.$$
-  **函數式語言（Haskell 1990、Erlang 1986、Scala 2004）**的興起，
+
+$$
+\text{命令式（FORTRAN）} \xrightarrow{\text{Backus 的自我批判（1977）}} \text{函數式（Haskell、F\#）}.
+$$
+
+**函數式語言（Haskell 1990、Erlang 1986、Scala 2004）**的興起，
   以及**Python 的高階函數、JS 的 arrow function**——
   **Backus 1977 的批判影響了整個現代程式設計**。
 - **Hopper 的先驅地位（1952）**：
@@ -224,10 +270,18 @@ BNF 范式（Backus Normal Form, 1959）：
     Swift、Rust、Julia 的後端；
   - **JIT 編譯（Java 1995、V8 2008）**：執行時編譯；
   - **MLIR（2019）**：機器學習的編譯器——**AI 時代的編譯器**。
-  $$\text{FORTRAN（1957）} \xrightarrow{} \text{LLVM（2003）} \xrightarrow{} \text{AI 編譯器（2019）}.$$
+
+$$
+\text{FORTRAN（1957）} \xrightarrow{} \text{LLVM（2003）} \xrightarrow{} \text{AI 編譯器（2019）}.
+$$
+
 - 歷史定位：**Backus 是「讓程式設計師解脫」的人**——
-  $$\text{苦役（組合語言）} \xrightarrow{\text{FORTRAN 1957}} \text{創造（高階語言）} \xrightarrow{} \text{軟體工業（1960s）}.$$
-  **現在的每一行程式碼，都是 FORTRAN 的後代**。
+
+$$
+\text{苦役（組合語言）} \xrightarrow{\text{FORTRAN 1957}} \text{創造（高階語言）} \xrightarrow{} \text{軟體工業（1960s）}.
+$$
+
+**現在的每一行程式碼，都是 FORTRAN 的後代**。
 
 ## 關鍵人物與文獻
 - **J. Backus**：*The FORTRAN Automatic Coding System*（1957，與 Ziller 等）；BNF（1959）；1977 圖靈獎演講。

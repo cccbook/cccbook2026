@@ -36,18 +36,25 @@ Landsteiner 的偵破只有兩步：
 
 ### 核心推理二：孟德爾遺傳的確認（後續偵破）
 1908–1910 年，Bernstein 與 von Dungern 證明血型是**孟德爾遺傳**：
-三個對偶基因 $I^A, I^B, i$ （共顯性），六種基因型：
-$$I^AI^A, I^Ai \to A; \quad I^BI^B, I^Bi \to B; \quad I^AI^B \to AB; \quad ii \to O.$$
+三個對偶基因 $`I^A, I^B, i`$ （共顯性），六種基因型：
+
+$$
+I^AI^A, I^Ai \to A; \quad I^BI^B, I^Bi \to B; \quad I^AI^B \to AB; \quad ii \to O.
+$$
+
 **血型 = 第一個在人類中確認的孟德爾性狀**——法醫學（親子鑑定）與
 族群遺傳學（Hardy–Weinberg 平衡）的應用對象。
 
 ### 血型遺傳與族群分佈（Hardy–Weinberg 平衡）
 
-三個對偶基因 $I^A, I^B, i$ 的頻率 $p, q, r$ （ $p+q+r=1$ ）下，Hardy–Weinberg 平衡給出：
-$$P(A) = p^2 + 2pr, \qquad P(B) = q^2 + 2qr, \qquad P(AB) = 2pq, \qquad P(O) = r^2.$$
+三個對偶基因 $`I^A, I^B, i`$ 的頻率 $`p, q, r`$ （ $`p+q+r=1`$ ）下，Hardy–Weinberg 平衡給出：
 
-**親子鑑定的邏輯**： $O \times O$ 的孩子只能是 $O$ （ $ii \times ii \to ii$ ）；
-$A \times B$ 的孩子四種血型都可能（ $I^Ai \times I^Bi$ ）——
+$$
+P(A) = p^2 + 2pr, \qquad P(B) = q^2 + 2qr, \qquad P(AB) = 2pq, \qquad P(O) = r^2.
+$$
+
+**親子鑑定的邏輯**： $`O \times O`$ 的孩子只能是 $`O`$ （ $`ii \times ii \to ii`$ ）；
+$`A \times B`$ 的孩子四種血型都可能（ $`I^Ai \times I^Bi`$ ）——
 **血型不符即排除親子關係，血型相符不能確認**。
 
 | 父母組合 | 可能的孩子血型 |

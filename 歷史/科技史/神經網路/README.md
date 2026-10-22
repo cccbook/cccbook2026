@@ -62,8 +62,13 @@
 
 ## 榮譽主線
 
-$$\text{Hopfield/Hinton（1982/2006，神經網路）} \xrightarrow{2024} \text{諾貝爾物理學獎}$$
-$$\text{Hinton/LeCun/Bengio（1986/1989/2018，深度學習）} \xrightarrow{2018} \text{圖靈獎（見 } \texttt{資訊科學/2018-深度學習三巨頭.md}\text{）}$$
+$$
+\text{Hopfield/Hinton（1982/2006，神經網路）} \xrightarrow{2024} \text{諾貝爾物理學獎}
+$$
+
+$$
+\text{Hinton/LeCun/Bengio（1986/1989/2018，深度學習）} \xrightarrow{2018} \text{圖靈獎（見 } \texttt{資訊科學/2018-深度學習三巨頭.md}\text{）}
+$$
 
 ## 關鍵人物年表
 

@@ -3,7 +3,11 @@
 ## 案件摘要
 1987 年，**Andrew Tanenbaum**（Vrije Universiteit Amsterdam）為教學寫出 **MINIX**——一個 12,000 行的 Unix 相容系統，隨《Operating Systems: Design and Implementation》教科書出版。
 MINIX 採用**微核心（microkernel）架構**：驅動程式與檔案系統跑在使用者空間——
-$$\text{Monolithic（巨核心，Unix/Linux）} \quad \text{vs} \quad \text{Microkernel（微核心，MINIX）}.$$
+
+$$
+\text{Monolithic（巨核心，Unix/Linux）} \quad \text{vs} \quad \text{Microkernel（微核心，MINIX）}.
+$$
+
 16 年後（2003–），MINIX 3 更成為 **Intel 晶片內建的隱藏作業系統**——教科書的終極逆襲。
 
 ## 前因 -- 為什麼會有這個案子
@@ -14,14 +18,25 @@ $$\text{Monolithic（巨核心，Unix/Linux）} \quad \text{vs} \quad \text{Micr
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：微核心的架構
-$$\text{微核心} = \text{行程排班} + \text{IPC} + \text{基本記憶體管理} \quad (\text{僅此三項})$$
-$$\text{檔案系統、驅動、網路} \; \in \; \text{使用者空間行程}.$$
+
+$$
+\text{微核心} = \text{行程排班} + \text{IPC} + \text{基本記憶體管理} \quad (\text{僅此三項})
+$$
+
+$$
+\text{檔案系統、驅動、網路} \; \in \; \text{使用者空間行程}.
+$$
+
 - **理論基礎**：最小特權原則（least privilege）——核心只做必須特權的事，其餘全部降級。
 - **彌補的缺陷**：巨核心一個驅動 bug = 全機當機（kernel panic）；微核心的隔離讓故障半徑縮小。
 
 ### 第二條線索：IPC 訊息傳遞
 微核心的行程間通訊用**訊息傳遞（message passing）**而非共享記憶體：
-$$\text{send/receive} \quad \text{取代} \quad \text{共用記憶體}.$$
+
+$$
+\text{send/receive} \quad \text{取代} \quad \text{共用記憶體}.
+$$
+
 - **彌補的缺陷**：共享記憶體有競態條件（race condition）風險；訊息傳遞天然序列化，較易證明正確。
 
 ### 第三條線索：與 Linux 的歷史公案（1992）

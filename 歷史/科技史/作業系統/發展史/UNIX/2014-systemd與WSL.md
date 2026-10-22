@@ -4,7 +4,10 @@
 2014 年，兩件大事代表 Unix 的現代演進：
 1. **systemd** 成為主流 Linux 發行版的 init 系統（Debian 8、RHEL 7、Ubuntu 15.04）——init 系統 30 年來的最大革命。
 2. Microsoft 發布 **WSL（Windows Subsystem for Linux）**——Windows 第一次內建**真正的 Linux 系統呼叫層**。
-$$\text{systemd（init 革命）} \;+\; \text{WSL（Unix 全面相容）} = \text{Unix 思想的完全勝利}.$$
+
+$$
+\text{systemd（init 革命）} \;+\; \text{WSL（Unix 全面相容）} = \text{Unix 思想的完全勝利}.
+$$
 
 ## 前因 -- 為什麼會有這個案子
 - **SysV init 的缺陷**：1970 年代以來的 init（執行等級 + 序列啟動腳本）——**序列啟動慢**（大伺服器開機數分鐘）、**不監督服務**（服務當掉無人知）、**無依賴管理**（腳本編號硬编码 S01、S02）。
@@ -14,12 +17,23 @@ $$\text{systemd（init 革命）} \;+\; \text{WSL（Unix 全面相容）} = \tex
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 第一條線索：並行啟動與依賴圖
-$$\text{SysV init：} \; S_{01} \to S_{02} \to \cdots \to S_{99} \quad (\text{序列，} O(n))$$
-$$\text{systemd：} \; \text{依賴圖 + 拓撲排序} \quad (\text{並行，無依賴者同時啟動})$$
+
+$$
+\text{SysV init：} \; S_{01} \to S_{02} \to \cdots \to S_{99} \quad (\text{序列，} O(n))
+$$
+
+$$
+\text{systemd：} \; \text{依賴圖 + 拓撲排序} \quad (\text{並行，無依賴者同時啟動})
+$$
+
 - **彌補的缺陷**：序列啟動的 O(n) 等待；systemd 把啟動時間從分鐘級降到秒級。
 
 ### 第二條線索：socket 激活（socket activation）
-$$\text{先建 socket（常駐）} \;\xrightarrow{\text{第一個連線}}\; \text{才啟動服務行程}.$$
+
+$$
+\text{先建 socket（常駐）} \;\xrightarrow{\text{第一個連線}}\; \text{才啟動服務行程}.
+$$
+
 - **理論基礎**：把「依賴」變成「排隊」——服務 A 不用等服務 B 起來，只要 B 的 socket 已在排隊——**依賴順序問題的數學消解**。
 - **彌補的缺陷**：服務啟動順序的脆弱性（B 沒起來 A 就失敗）。
 

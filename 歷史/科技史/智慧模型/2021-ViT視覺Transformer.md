@@ -4,7 +4,9 @@
 
 2020 年 10 月（ICML 2021 發表），Google 的 Dosovitskiy 等人發表 **ViT（Vision Transformer）**：把影像切成 16×16 的 patch、攤平當 token，直接用 **2017-Transformer注意力機制.md** 的編碼器處理——**完全捨棄卷積**：
 
-$$\mathbf{z}_0 = [\,\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \mathbf{x}_p^2 \mathbf{E};\; \dots;\; \mathbf{x}_p^N \mathbf{E}\,] + \mathbf{E}_{pos}$$
+$$
+\mathbf{z}_0 = [\,\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \mathbf{x}_p^2 \mathbf{E};\; \dots;\; \mathbf{x}_p^N \mathbf{E}\,] + \mathbf{E}_{pos}
+$$
 
 核心主張只有一句話：**「在影像上，CNN 的歸納偏置（inductive bias）不是必需品——資料夠大，純注意力就贏」**。JFT-300M 上預訓練的 ViT-H 在 ImageNet 達 88.5%，超越所有卷積系統。這是影像的「Transformer 化」判決書：捲積不是被更好的卷積殺死，而是被「不捲」殺死。
 
@@ -20,11 +22,13 @@ $$\mathbf{z}_0 = [\,\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \m
 
 ### 第一條線索：patch 即 token——影像的序列化
 
-影像 $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ 被切成 $\frac{H}{P} \times \frac{W}{P}$ 個 patch（ $P = 16$ ），每個 patch 攤平成一個向量，經線性投影 $\mathbf{E}$ 成 token：
+影像 $`\mathbf{x} \in \mathbb{R}^{H \times W \times C}`$ 被切成 $`\frac{H}{P} \times \frac{W}{P}`$ 個 patch（ $`P = 16`$ ），每個 patch 攤平成一個向量，經線性投影 $`\mathbf{E}`$ 成 token：
 
-$$N = \frac{H \cdot W}{P^2}, \qquad \mathbf{z}_0 = [\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \dots;\; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{pos}$$
+$$
+N = \frac{H \cdot W}{P^2}, \qquad \mathbf{z}_0 = [\mathbf{x}_{\text{class}};\; \mathbf{x}_p^1 \mathbf{E};\; \dots;\; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{pos}
+$$
 
-$224 \times 224$ 影像、 $P=16$ → 196 個 token + 1 個分類 token——與 NLP 的序列長度相當。實作上，patch 投影就是一個 **stride = P 的卷積**（唯一的卷積殘跡）。`[CLS]` token 與位置編碼 $\mathbf{E}_{pos}$ （一維可學式）直接沿用 BERT 的設計。
+$`224 \times 224`$ 影像、 $`P=16`$ → 196 個 token + 1 個分類 token——與 NLP 的序列長度相當。實作上，patch 投影就是一個 **stride = P 的卷積**（唯一的卷積殘跡）。`[CLS]` token 與位置編碼 $`\mathbf{E}_{pos}`$ （一維可學式）直接沿用 BERT 的設計。
 
 ### 第二條線索：歸納偏置的捨棄——兩個假說的對決
 
@@ -32,7 +36,7 @@ CNN 的歸納偏置：
 
 | 偏置 | CNN 的做法 | ViT 的做法 |
 |---|---|---|
-| 局部性 | 每層只看 $3 \times 3$ 鄰域 | 第一層起就是全域注意力 |
+| 局部性 | 每層只看 $`3 \times 3`$ 鄰域 | 第一層起就是全域注意力 |
 | 平移不變 | 權重共享 + 池化 | 無（靠位置編碼與資料學習） |
 | 層次結構 | 池化逐步降解析度 | 全程同解析度，靠深層聚合 |
 
@@ -64,7 +68,7 @@ ViT-H/14 的訓練算力約為 BiT-L 的 4 倍，但：
 
 ViT 用一維位置編碼卻學到二維幾何——但這不是偶然，而是有條件的：
 
-| 影像大小 $P=16$ | token 數 | 訓練資料 | 二維結構是否學到 |
+| 影像大小 $`P=16`$ | token 數 | 訓練資料 | 二維結構是否學到 |
 |---|---|---|---|
 | 224×224 | 196 | ImageNet 1.28M | 弱 |
 | 224×224 | 196 | **JFT-300M** | **強（鄰近性顯著）** |

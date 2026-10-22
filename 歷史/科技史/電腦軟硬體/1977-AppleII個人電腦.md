@@ -12,18 +12,22 @@
 ## 線索與推理 -- 數學式、程式、理論
 ### 線索一：Wozniak 的工程天才
 Wozniak 以極少晶片做出驚人功能：
-- **彩色圖形**：Apple II 用一顆 NTSC 視訊產生器，巧妙利用像素與色載波相位差產生彩色。若視訊頻率為 $f_{sc} \approx 3.579545\,\text{MHz}$ （NTSC 色副載波），像素位移半個週期，色相偏移：
+- **彩色圖形**：Apple II 用一顆 NTSC 視訊產生器，巧妙利用像素與色載波相位差產生彩色。若視訊頻率為 $`f_{sc} \approx 3.579545\,\text{MHz}`$ （NTSC 色副載波），像素位移半個週期，色相偏移：
 
-$$\Delta\phi = 2\pi f_{sc} \cdot \Delta t$$
+$$
+\Delta\phi = 2\pi f_{sc} \cdot \Delta t
+$$
 
-  不同的水平位元排列模式 → 不同相位 → 不同顏色。這是「用數學騙出彩色」的經典案例。
+不同的水平位元排列模式 → 不同相位 → 不同顏色。這是「用數學騙出彩色」的經典案例。
 - **軟碟機控制**：Wozniak 不用昂貴的磁碟控制器晶片，改用軟體精準編碼讀寫時序（Disk II，1978），成本僅為同業的幾分之一。
 - 整台主機板晶片數遠少於競品：PET 與 TRS-80 的工程師看到 Apple II 主機板都自嘆不如。
 
 ### 線索二：ROM BASIC——開機即用
 三傑共同的關鍵決策：**把 BASIC 燒進 ROM**。電腦一開機就進入 BASIC 直譯器，不需要先載入作業系統。這符合「零使用門檻」的產品哲學：
 
-$$\text{可用性} = \frac{1}{1 + \text{學習成本} + \text{設定成本}}$$
+$$
+\text{可用性} = \frac{1}{1 + \text{學習成本} + \text{設定成本}}
+$$
 
 Apple II 的 Integer BASIC（後為 Applesoft BASIC，授權自 Microsoft）就駐留在 12KB ROM 中。
 
@@ -43,7 +47,7 @@ Apple II 的 Integer BASIC（後為 Applesoft BASIC，授權自 Microsoft）就�
 100 END
 ```
 
-前三行清螢幕、進入高解析度繪圖模式（ $280 \times 160$ 像素）、設白色；畫出直線;最後列印問候語。用今天 Python 對照：
+前三行清螢幕、進入高解析度繪圖模式（ $`280 \times 160`$ 像素）、設白色；畫出直線;最後列印問候語。用今天 Python 對照：
 
 ```python
 # 同樣概念：畫直線 + 列印文字（Python, 2020s）
@@ -55,7 +59,9 @@ print("HELLO, WORLD! " * 10)
 ### 線索四：VisiCalc——殺手級應用
 1979 年 Dan Bricklin 與 Bob Frankston 為 Apple II 寫出 VisiCalc，第一套試算表。其核心抽象是「儲存格依賴圖」：改一格，全部重算。
 
-$$\text{cell}_{i} = f(\text{cell}_{j_1}, \text{cell}_{j_2}, \dots), \quad j_k < i \text{（拓撲序）}$$
+$$
+\text{cell}_{i} = f(\text{cell}_{j_1}, \text{cell}_{j_2}, \dots), \quad j_k < i \text{（拓撲序）}
+$$
 
 商務人士為了買 VisiCalc 而買 Apple II——軟體第一次反過來賣硬體。這證明了「殺手級應用（killer app）」理論：平台成敗取決於其上最好的軟體。
 

@@ -11,37 +11,46 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 核心定義：幾何 = 群作用下的不變量
-設 $X$ 為一空間（點集）， $G$ 為 $X$ 上的變換群：
+設 $`X`$ 為一空間（點集）， $`G`$ 為 $`X`$ 上的變換群：
 
-$$g: X \to X,\qquad g \in G,\quad \mathrm{id} \in G,\quad g_1, g_2 \in G \Rightarrow g_1 g_2 \in G,\quad g^{-1} \in G$$
+$$
+g: X \to X,\qquad g \in G,\quad \mathrm{id} \in G,\quad g_1, g_2 \in G \Rightarrow g_1 g_2 \in G,\quad g^{-1} \in G
+$$
 
-**Erlangen 綱領**：一門幾何即研究 $(X, G)$ 中在所有 $g \in G$ 下不變的性質（不變量）：
+**Erlangen 綱領**：一門幾何即研究 $`(X, G)`$ 中在所有 $`g \in G`$ 下不變的性質（不變量）：
 
-$$P \text{ 是幾何性質} \iff P(x_1, \dots, x_n) = P(gx_1, \dots, gx_n),\ \forall g \in G$$
+$$
+P \text{ 是幾何性質} \iff P(x_1, \dots, x_n) = P(gx_1, \dots, gx_n),\ \forall g \in G
+$$
 
-兩圖形等價 $\iff$ 存在 $g \in G$ 把一個映成另一個（同一 $G$ -軌道）。
+兩圖形等價 $`\iff`$ 存在 $`g \in G`$ 把一個映成另一個（同一 $`G`$ -軌道）。
 
 ### 2. 各幾何對應的群
 | 幾何 | 空間 | 群 | 典型不變量 |
 |------|------|-----|-----------|
-| 歐氏幾何 | $\mathbb{E}^2$ | $\mathrm{E}(2) = \mathrm{O}(2) \ltimes \mathbb{R}^2$ | 長度、角度、面積 |
-| 相似幾何 | $\mathbb{E}^2$ | $\mathrm{Sim}(2)$ | 角度、比例 |
-| 仿射幾何 | $\mathbb{R}^2$ | $\mathrm{A}(2) = \mathrm{GL}(2) \ltimes \mathbb{R}^2$ | 平行性、共線性、面積比 |
-| 射影幾何 | $\mathbb{RP}^2$ | $\mathrm{PGL}(3)$ | 共線性、交比 (cross-ratio) |
+| 歐氏幾何 | $`\mathbb{E}^2`$ | $`\mathrm{E}(2) = \mathrm{O}(2) \ltimes \mathbb{R}^2`$ | 長度、角度、面積 |
+| 相似幾何 | $`\mathbb{E}^2`$ | $`\mathrm{Sim}(2)`$ | 角度、比例 |
+| 仿射幾何 | $`\mathbb{R}^2`$ | $`\mathrm{A}(2) = \mathrm{GL}(2) \ltimes \mathbb{R}^2`$ | 平行性、共線性、面積比 |
+| 射影幾何 | $`\mathbb{RP}^2`$ | $`\mathrm{PGL}(3)`$ | 共線性、交比 (cross-ratio) |
 
-- 歐氏群： $\begin{pmatrix} x' \\ y \end{pmatrix} = R_\theta \begin{pmatrix} x \\ y \end{pmatrix} + t$ ，其中 $R_\theta^T R_\theta = I$
-- 仿射變換： $x' = Ax + t$ ， $A \in \mathrm{GL}(2)$ 任意可逆
-- 射影變換：齊次坐標 $\tilde{x}' = H\tilde{x}$ ， $H \in \mathrm{GL}(3)$ ， $\tilde{x} = (x, y, 1)^T$
+- 歐氏群： $`\begin{pmatrix} x' \\ y \end{pmatrix} = R_\theta \begin{pmatrix} x \\ y \end{pmatrix} + t`$ ，其中 $`R_\theta^T R_\theta = I`$
+- 仿射變換： $`x' = Ax + t`$ ， $`A \in \mathrm{GL}(2)`$ 任意可逆
+- 射影變換：齊次坐標 $`\tilde{x}' = H\tilde{x}`$ ， $`H \in \mathrm{GL}(3)`$ ， $`\tilde{x} = (x, y, 1)^T`$
 
 ### 3. 幾何學的層級：群越大，不變量越少
-$$\mathrm{O}(2) \subset \mathrm{Sim}(2) \subset \mathrm{A}(2) \subset \mathrm{PGL}(3)$$
+
+$$
+\mathrm{O}(2) \subset \mathrm{Sim}(2) \subset \mathrm{A}(2) \subset \mathrm{PGL}(3)
+$$
 
 群包含關係決定幾何層級：
 
-$$\text{歐氏幾何} \subset \text{相似幾何} \subset \text{仿射幾何} \subset \text{射影幾何}$$
+$$
+\text{歐氏幾何} \subset \text{相似幾何} \subset \text{仿射幾何} \subset \text{射影幾何}
+$$
 
-- $G$ 越小 → 保留的不變量越多 → 幾何越「精細」
-- $G$ 越大 → 不變量越少 → 幾何越「粗略」
+- $`G`$ 越小 → 保留的不變量越多 → 幾何越「精細」
+- $`G`$ 越大 → 不變量越少 → 幾何越「粗略」
 - 射影幾何是最粗略的骨架；歐氏度量是射影幾何加上「絕對形」（absolute / 無窮遠圓）後的細化。
 
 ### 4. Python 演示：旋轉/仿射/射影變換下的不變量
@@ -80,12 +89,12 @@ print("射影後四點:\n", np.round(Q,3))
 print("原為矩形(對邊平行)，射影後對邊向量:", Q[1]-Q[0], Q[3]-Q[2])
 ```
 
-輸出顯示：旋轉下長度、面積皆不變；仿射下長度改變但面積比（ $|\det A|$ ）不變；射影下連平行性都喪失，只剩共線性與交比——正是 Erlangen 層級的實證。
+輸出顯示：旋轉下長度、面積皆不變；仿射下長度改變但面積比（ $`|\det A|`$ ）不變；射影下連平行性都喪失，只剩共線性與交比——正是 Erlangen 層級的實證。
 
 ## 結案 -- 後果與影響
 - **幾何學的統一**：分裂的各幾何體系被安置在同一張「群譜系表」上，幾何教學與研究獲得明確地圖。
 - **催生 Lie 群**：Klein 的好友 Lie 把「連續變換群」發展成 Lie 群與 Lie 代數理論（1888–1893）；兩人 1870 年代在巴黎的合作是直接淵源。
-- **現代物理的對稱性語言**：Noether 定理（1918，對稱群 $\leftrightarrow$ 守恆律）、狹義相對論的 Lorentz 群、廣義相對論的微分同胚群、粒子物理的規範群，全是 Erlangen 思想的延伸。
+- **現代物理的對稱性語言**：Noether 定理（1918，對稱群 $`\leftrightarrow`$ 守恆律）、狹義相對論的 Lorentz 群、廣義相對論的微分同胚群、粒子物理的規範群，全是 Erlangen 思想的延伸。
 - **Felix Klein（ Klein bottle 的 Klein）**：此綱領使他成為哥廷根學派掌門人，延攬 Hilbert，塑造了 20 世紀數學中心。
 
 ## 關鍵人物與文獻

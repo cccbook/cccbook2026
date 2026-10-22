@@ -5,12 +5,12 @@
 
 Lean 的核心，是「證明」與「程式」合而為一：
 
-- **判斷**： $\Gamma \vdash e : \alpha$ ，在上下文 $\Gamma$ 中項 $e$ 具型別 $\alpha$ 。
-- **命題即型別**： $Proof(p) \simeq p$ ，證明就是住在命題型別裡的程式。
-- **依賴函數**： $\Pi (x : A), B(x)$ ，值域可依賴參數，謂詞與全稱量詞的本體。
-- **歸納**： $Nat = zero \mid succ(Nat)$ ，遞迴定義與歸納證明同一枚硬幣。
-- **重寫**： $rw[h] : Goal[a] \to Goal[b]$ ，等式是最常用的證明變換。
-- **tactic 狀態**： $Goals \xrightarrow{tactic} Goals'$ ，互動證明的每一步都是目標轉換。
+- **判斷**： $`\Gamma \vdash e : \alpha`$ ，在上下文 $`\Gamma`$ 中項 $`e`$ 具型別 $`\alpha`$ 。
+- **命題即型別**： $`Proof(p) \simeq p`$ ，證明就是住在命題型別裡的程式。
+- **依賴函數**： $`\Pi (x : A), B(x)`$ ，值域可依賴參數，謂詞與全稱量詞的本體。
+- **歸納**： $`Nat = zero \mid succ(Nat)`$ ，遞迴定義與歸納證明同一枚硬幣。
+- **重寫**： $`rw[h] : Goal[a] \to Goal[b]`$ ，等式是最常用的證明變換。
+- **tactic 狀態**： $`Goals \xrightarrow{tactic} Goals'`$ ，互動證明的每一步都是目標轉換。
 
 ## 目錄
 
@@ -18,36 +18,36 @@ Lean 的核心，是「證明」與「程式」合而為一：
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 01.1 | [第一個證明與 tactic 塊](01.1-第一個證明與tactic塊.md) | VS Code＋Lake、 $by$ 塊、 $intro$ ／ $exact$ 、證明狀態閱讀 |
-| 01.2 | [項、表達式與型別宇宙](01.2-項表達式與型別宇宙.md) | $\Gamma \vdash e : \alpha$ 、 $Type_{0} : Type_{1}$ 、 $Prop$ 、 $def$ ／ $theorem$ |
+| 01.1 | [第一個證明與 tactic 塊](01.1-第一個證明與tactic塊.md) | VS Code＋Lake、 $`by`$ 塊、 $`intro`$ ／ $`exact`$ 、證明狀態閱讀 |
+| 01.2 | [項、表達式與型別宇宙](01.2-項表達式與型別宇宙.md) | $`\Gamma \vdash e : \alpha`$ 、 $`Type_{0} : Type_{1}`$ 、 $`Prop`$ 、 $`def`$ ／ $`theorem`$ |
 
 ### 第 2 章：命題邏輯——Gentzen 在 Lean 裡復活
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 02.1 | [蘊涵：intro 與 apply](02.1-蘊涵intro與apply.md) | $p \to q$ 、引入／消去規則、前向與後向推理 |
-| 02.2 | [合取與析取：cases 與 constructor](02.2-合取析取cases與constructor.md) | $p \land q$ 、 $p \lor q$ 、 $cases$ 、 $\langle , \rangle$ 、 $left$ ／ $right$ |
-| 02.3 | [否定、假與古典邏輯](02.3-否定假與古典邏輯.md) | $\lnot p := p \to False$ 、 $False.elim$ 、排中律、 $byContradiction$ |
+| 02.1 | [蘊涵：intro 與 apply](02.1-蘊涵intro與apply.md) | $`p \to q`$ 、引入／消去規則、前向與後向推理 |
+| 02.2 | [合取與析取：cases 與 constructor](02.2-合取析取cases與constructor.md) | $`p \land q`$ 、 $`p \lor q`$ 、 $`cases`$ 、 $`\langle , \rangle`$ 、 $`left`$ ／ $`right`$ |
+| 02.3 | [否定、假與古典邏輯](02.3-否定假與古典邏輯.md) | $`\lnot p := p \to False`$ 、 $`False.elim`$ 、排中律、 $`byContradiction`$ |
 
 ### 第 3 章：量詞——從語句到謂詞
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 03.1 | [全稱量詞 forall](03.1-全稱量詞forall.md) | $\forall x, P(x)$ 即 $\Pi$ 型、 $intro$ ／ $apply$ 、實例化 |
-| 03.2 | [存在量詞 exists](03.2-存在量詞exists.md) | $\exists x, P(x)$ 即 $\Sigma$ 型、 $use$ 見證、 $cases$ 消去 |
+| 03.1 | [全稱量詞 forall](03.1-全稱量詞forall.md) | $`\forall x, P(x)`$ 即 $`\Pi`$ 型、 $`intro`$ ／ $`apply`$ 、實例化 |
+| 03.2 | [存在量詞 exists](03.2-存在量詞exists.md) | $`\exists x, P(x)`$ 即 $`\Sigma`$ 型、 $`use`$ 見證、 $`cases`$ 消去 |
 
 ### 第 4 章：相等與歸納——證明的兩隻腳
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 04.1 | [相等、重寫與 simp](04.1-相等重寫與simp.md) | $Eq$ 、 $rfl$ 、 $rw$ 、 $simp$ 集、外延性 |
-| 04.2 | [自然數與數學歸納法](04.2-自然數與數學歸納法.md) | $Nat$ 歸納子、 $induction$ 、加法交換律實戰 |
+| 04.1 | [相等、重寫與 simp](04.1-相等重寫與simp.md) | $`Eq`$ 、 $`rfl`$ 、 $`rw`$ 、 $`simp`$ 集、外延性 |
+| 04.2 | [自然數與數學歸納法](04.2-自然數與數學歸納法.md) | $`Nat`$ 歸納子、 $`induction`$ 、加法交換律實戰 |
 
 ### 第 5 章：歸納型別——自訂資料即自訂邏輯
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 05.1 | [歸納型別與模式匹配](05.1-歸納型別與模式匹配.md) | $inductive$ 、構造子、 $match$ 、串列與樹 |
+| 05.1 | [歸納型別與模式匹配](05.1-歸納型別與模式匹配.md) | $`inductive`$ 、構造子、 $`match`$ 、串列與樹 |
 | 05.2 | [結構歸納與遞迴函數](05.2-結構歸納與遞迴函數.md) | 終止性、結構遞減、歸納證明的瀑布 |
 
 ### 第 6 章：依賴型別——Curry–Howard 的應許之地
@@ -55,20 +55,20 @@ Lean 的核心，是「證明」與「程式」合而為一：
 | 節 | 標題 | 重點 |
 |----|------|------|
 | 06.1 | [命題即型別、證明即程式](06.1-命題即型別證明即程式.md) | 三對照表、化簡即求值、項式證明 vs tactic 證明 |
-| 06.2 | [宇宙、公理與古典相容](06.2-宇宙公理與古典相容.md) | $Type$ 階層、 $propext$ ／ $funext$ ／ $choice$ 、商型別 |
+| 06.2 | [宇宙、公理與古典相容](06.2-宇宙公理與古典相容.md) | $`Type`$ 階層、 $`propext`$ ／ $`funext`$ ／ $`choice`$ 、商型別 |
 
 ### 第 7 章：mathlib 之旅——百萬行函式庫的使用法
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 07.1 | [代數結構與型別類](07.1-代數結構與型別類.md) | $Group$ ／ $Ring$ 、 $instance$ 、 $inferInstance$ 、tabled 消解 |
-| 07.2 | [決策程序：ring、omega、simp](07.2-決策程序ring omega simp.md) | 正規形判定、線性算術、 $simp$ 集管理 |
+| 07.1 | [代數結構與型別類](07.1-代數結構與型別類.md) | $`Group`$ ／ $`Ring`$ 、 $`instance`$ 、 $`inferInstance`$ 、tabled 消解 |
+| 07.2 | [決策程序：ring、omega、simp](07.2-決策程序ring omega simp.md) | 正規形判定、線性算術、 $`simp`$ 集管理 |
 
 ### 第 8 章：自動化與未來——自寫 tactic 到 AI 證明
 
 | 節 | 標題 | 重點 |
 |----|------|------|
-| 08.1 | [自寫 tactic 與元程式](08.1-自寫tactic與元程式.md) | $syntax$ ／ $macro$ ／ $elab$ 、衛生性、簡單實戰 |
+| 08.1 | [自寫 tactic 與元程式](08.1-自寫tactic與元程式.md) | $`syntax`$ ／ $`macro`$ ／ $`elab`$ 、衛生性、簡單實戰 |
 | 08.2 | [從 Lean 到 AI 證明](08.2-從Lean到AI證明.md) | Sledgehammer 式錘子、AlphaProof 管線、規格導向開發 |
 
 ## 附錄

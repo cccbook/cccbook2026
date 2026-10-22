@@ -7,8 +7,8 @@
 **沒有特徵工程、沒有遊戲規則、沒有模型——Q-learning + 深度網路 + 兩項關鍵工程，直接引爆。**
 
 ## 前因 -- 為什麼會有這個案子
-- **表格型方法的絕望**：Watkins 的 Q-learning（1989）需要一張 Q 表，每個 $(s,a)$ 一格。
-  Atari 的狀態是 $210 \times 160$ 像素 = $3.4\times10^5$ 維（還是連續的！），表格根本寫不下。
+- **表格型方法的絕望**：Watkins 的 Q-learning（1989）需要一張 Q 表，每個 $`(s,a)`$ 一格。
+  Atari 的狀態是 $`210 \times 160`$ 像素 = $`3.4\times10^5`$ 維（還是連續的！），表格根本寫不下。
   **表格是兇手，函數近似是唯一的出路。**
 - **致命的不穩定**：直接把 Q-learning 套上神經網路會**發散**——
   TD 的 bootstrap 目標本身含網路權重，更新時資料又高度相關（連續幀幾乎一樣），
@@ -19,19 +19,30 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 核心推理一：CNN 取代 Q 表
-DQN 用卷積神經網路 $Q_\theta(s, a)$ 直接從像素估動作價值：
-$$Q_\theta(s, a) \approx Q^*(s, a), \qquad s = \text{最近 4 幀的灰階像素}.$$
-決策： $\epsilon$ -greedy， $a^* = \arg\max_a Q_\theta(s, a)$ 。
+DQN 用卷積神經網路 $`Q_\theta(s, a)`$ 直接從像素估動作價值：
+
+$$
+Q_\theta(s, a) \approx Q^*(s, a), \qquad s = \text{最近 4 幀的灰階像素}.
+$$
+
+決策： $`\epsilon`$ -greedy， $`a^* = \arg\max_a Q_\theta(s, a)`$ 。
 **特徵自動學出**——CNN 自己發現「球的位置」「擋板的速度」這些特徵，
 不需要任何人類設計。
 
 ### 核心推理二：兩項工程破解不穩定
-**經驗回放 (experience replay)**：把轉移 $(s, a, r, s')$ 存進一個大緩衝池（ $10^6$ 筆），
+**經驗回放 (experience replay)**：把轉移 $`(s, a, r, s')`$ 存進一個大緩衝池（ $`10^6`$ 筆），
 訓練時**隨機抽樣**——打散時間相關性，且每筆資料可重複使用（樣本效率）。
-$$\mathcal{D} = \{(s_i, a_i, r_i, s'_i)\}_{i=1}^{N}, \qquad \text{mini-batch} \sim \text{Uniform}(\mathcal{D}).$$
 
-**目標網路 (target network)**：用一份**凍結的舊權重** $\theta^-$ 計算 TD 目標：
-$$y = r + \gamma \max_{a'} Q_{\theta^-}(s', a'), \qquad \theta^- \text{ 每 } C \text{ 步才同步一次}.$$
+$$
+\mathcal{D} = \{(s_i, a_i, r_i, s'_i)\}_{i=1}^{N}, \qquad \text{mini-batch} \sim \text{Uniform}(\mathcal{D}).
+$$
+
+**目標網路 (target network)**：用一份**凍結的舊權重** $`\theta^-`$ 計算 TD 目標：
+
+$$
+y = r + \gamma \max_{a'} Q_{\theta^-}(s', a'), \qquad \theta^- \text{ 每 } C \text{ 步才同步一次}.
+$$
+
 這切斷了「目標隨權重即時跳動」的正回饋迴路——**訓練從震盪變成平滑收斂**。
 
 ### Python：DQN 骨架（CartPole 簡化版）

@@ -15,7 +15,7 @@
 | 1913 | Bohr 提出半經典原子模型，解釋氫原子光譜 | [1913-Bohr原子模型.md](1913-Bohr原子模型.md) |
 | 1922 | Stern–Gerlach 實驗發現空間量子化 | [1922-SternGerlach實驗.md](1922-SternGerlach實驗.md) |
 | 1923 | Compton 以光子-電子散射證實光的粒子性 | [1923-Compton效應.md](1923-Compton效應.md) |
-| 1924 | de Broglie 提出物質波假說 $\\lambda = h/p$ | [1924-DeBroglie物質波.md](1924-DeBroglie物質波.md) |
+| 1924 | de Broglie 提出物質波假說 $`\\lambda = h/p`$ | [1924-DeBroglie物質波.md](1924-DeBroglie物質波.md) |
 | 1924 | Bose–Einstein 統計與 Bose–Einstein 凝聚 | [1924-BoseEinstein統計.md](1924-BoseEinstein統計.md) |
 
 ### 量子力學誕生（1925–1928）
@@ -24,9 +24,9 @@
 |------|------|------|
 | 1925 | Heisenberg 提出矩陣力學 | [1925-Heisenberg矩陣力學.md](1925-Heisenberg矩陣力學.md) |
 | 1925 | Pauli 提出不相容原理與電子自旋 | [1925-Pauli不相容原理.md](1925-Pauli不相容原理.md) |
-| 1926 | Schrödinger 提出波動力學 $i\\hbar\\partial_t\\psi = \\hat{H}\\psi$ | [1926-Schrodinger波動力學.md](1926-Schrodinger波動力學.md) |
-| 1926 | Born 提出波函數的機率詮釋 $\\|\\psi\\|^2$ | [1926-Born機率詮釋.md](1926-Born機率詮釋.md) |
-| 1927 | Heisenberg 提出測不準原理 $\\Delta x \\Delta p \\geq \\hbar/2$ | [1927-Heisenberg測不準原理.md](1927-Heisenberg測不準原理.md) |
+| 1926 | Schrödinger 提出波動力學 $`i\\hbar\\partial_t\\psi = \\hat{H}\\psi`$ | [1926-Schrodinger波動力學.md](1926-Schrodinger波動力學.md) |
+| 1926 | Born 提出波函數的機率詮釋 $`\\|\\psi\\|^2`$ | [1926-Born機率詮釋.md](1926-Born機率詮釋.md) |
+| 1927 | Heisenberg 提出測不準原理 $`\\Delta x \\Delta p \\geq \\hbar/2`$ | [1927-Heisenberg測不準原理.md](1927-Heisenberg測不準原理.md) |
 | 1927 | 第五屆 Solvay 會議，哥本哈根詮釋確立 | [1927-Solvay會議與哥本哈根詮釋.md](1927-Solvay會議與哥本哈根詮釋.md) |
 | 1928 | Dirac 提出相對論性波動方程，預言反物質 | [1928-Dirac方程.md](1928-Dirac方程.md) |
 
@@ -37,7 +37,7 @@
 | 1932 | von Neumann 出版《Mathematical Foundations of Quantum Mechanics》，以 Hilbert 空間形式化量子力學 | [1932-VonNeumann數學基礎.md](1932-VonNeumann數學基礎.md) |
 | 1935 | Einstein–Podolsky–Rosen 提出 EPR 悖論，質疑量子力學完備性 | [1935-EPR悖論.md](1935-EPR悖論.md) |
 | 1935 | Schrödinger 提出「貓」思想實驗 | [1935-Schrodinger的貓.md](1935-Schrodinger的貓.md) |
-| 1948 | Feynman 提出路徑積分形式 $Z = \\int \\mathcal{D}[x]\\, e^{iS[x]/\\hbar}$ | [1948-Feynman路徑積分.md](1948-Feynman路徑積分.md) |
+| 1948 | Feynman 提出路徑積分形式 $`Z = \\int \\mathcal{D}[x]\\, e^{iS[x]/\\hbar}`$ | [1948-Feynman路徑積分.md](1948-Feynman路徑積分.md) |
 | 1954 | Yang–Mills 規範場論，量子場論的骨幹 | [1954-YangMills規範場論.md](1954-YangMills規範場論.md) |
 
 ### 量子資訊與驗證（1960s–1990s）

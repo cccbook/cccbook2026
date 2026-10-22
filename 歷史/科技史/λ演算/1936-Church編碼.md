@@ -7,15 +7,15 @@ Church 編碼（Church Encoding）展示了驚人的偵探式推理：
 資料即函數，控制流即函數，一切都是函數。
 
 ## 前因 -- 為什麼會有這個案子
-- 無類型 λ 演算的文法只有三條： $x \mid \lambda x.\, M \mid M\ N$ ，計算只有 β-歸約 $(\lambda x.\, M)\,N \to M\,[N/x]$ 。
-- 問題：這麼貧瘠的系統，能表達「資料」嗎？能算術嗎？能遞迴嗎？（λ 演算中不能直接遞迴 —— $\lambda x.\, M$ 裡無法引用 $M$ 自己的名字。）
+- 無類型 λ 演算的文法只有三條： $`x \mid \lambda x.\, M \mid M\ N`$ ，計算只有 β-歸約 $`(\lambda x.\, M)\,N \to M\,[N/x]`$ 。
+- 問題：這麼貧瘠的系統，能表達「資料」嗎？能算術嗎？能遞迴嗎？（λ 演算中不能直接遞迴 —— $`\lambda x.\, M`$ 裡無法引用 $`M`$ 自己的名字。）
 - Church、Kleene、Curry 等人在 1930 年代系統性構造出這些編碼，證明 λ 演算的表達力足以覆蓋全部原始遞迴函數（見〈1934 - Kleene λ 可定義函數〉一案）。
 - 動機既有理論面（證明 Church 命題），也有實用面：Lisp（1958）的「一切皆串列」與函數式語言的「一切皆函數」都源於此。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 1. 自然數：Church 數字
-自然數 $n$ 編碼為「把 $f$ 應用 $n$ 次到 $x$ 」：
+自然數 $`n`$ 編碼為「把 $`f`$ 應用 $`n`$ 次到 $`x`$ 」：
 
 $$
 \bar{0} = \lambda f.\, \lambda x.\, x, \qquad
@@ -24,28 +24,31 @@ $$
 \bar{n} = \lambda f.\, \lambda x.\, f^n\ x
 $$
 
-**解碼**： $toInt(\bar{n}) = \bar{n}\ (\lambda y.\, y+1)\ 0 = n$ 。
-**關鍵直覺**：數字本身就是迭代器 —— $\bar{n}$ 的語義就是「迭代 $n$ 次」。
+**解碼**： $`toInt(\bar{n}) = \bar{n}\ (\lambda y.\, y+1)\ 0 = n`$ 。
+**關鍵直覺**：數字本身就是迭代器 —— $`\bar{n}`$ 的語義就是「迭代 $`n`$ 次」。
 
 ### 2. 後繼與算術
+
 $$
 SUCC = \lambda n.\, \lambda f.\, \lambda x.\, f\ (n\ f\ x)
 $$
+
 $$
 ADD = \lambda m.\, \lambda n.\, m\ SUCC\ n
 \qquad\text{或}\qquad
 ADD = \lambda m.\, \lambda n.\, \lambda f.\, \lambda x.\, m\ f\ (n\ f\ x)
 $$
+
 $$
 MULT = \lambda m.\, \lambda n.\, \lambda f.\, m\ (n\ f)
 $$
 
 **推理**：
-- $SUCC\ \bar{n}$ ：對 $x$ 迭代 $n$ 次後再套一層 $f$ → 迭代 $n+1$ 次。
-- $ADD\ \bar{m}\ \bar{n}$ ：對 $\bar{n}$ 迭代 $m$ 次 $SUCC$ 。
-- $MULT\ \bar{m}\ \bar{n}$ ：把「 $n$ 次迭代」這件事本身再迭代 $m$ 次。
+- $`SUCC\ \bar{n}`$ ：對 $`x`$ 迭代 $`n`$ 次後再套一層 $`f`$ → 迭代 $`n+1`$ 次。
+- $`ADD\ \bar{m}\ \bar{n}`$ ：對 $`\bar{n}`$ 迭代 $`m`$ 次 $`SUCC`$ 。
+- $`MULT\ \bar{m}\ \bar{n}`$ ：把「 $`n`$ 次迭代」這件事本身再迭代 $`m`$ 次。
 
-驗證： $MULT\ \bar{2}\ \bar{3} = \lambda f.\, \bar{2}\,(\bar{3}\,f) = \lambda f.\, (\bar{3}f) \circ (\bar{3}f)$ ，即 $f$ 複合 6 次 $= \bar{6}$ $\checkmark$
+驗證： $`MULT\ \bar{2}\ \bar{3} = \lambda f.\, \bar{2}\,(\bar{3}\,f) = \lambda f.\, (\bar{3}f) \circ (\bar{3}f)`$ ，即 $`f`$ 複合 6 次 $`= \bar{6}`$ $`\checkmark`$
 
 ### 3. 布林值與條件
 布林值編碼為「二選一的選擇器」：
@@ -55,22 +58,26 @@ TRUE = \lambda a.\, \lambda b.\, a, \qquad FALSE = \lambda a.\, \lambda b.\, b
 $$
 
 條件（if）根本不用另外定義 —— 布林值本身就是 if：
+
 $$
 b\ X\ Y = \begin{cases} X & \text{若 } b = TRUE \\ Y & \text{若 } b = FALSE \end{cases}
 $$
 
 邏輯運算：
+
 $$
 AND = \lambda p.\, \lambda q.\, p\ q\ FALSE, \qquad
 OR = \lambda p.\, \lambda q.\, p\ TRUE\ q, \qquad
 NOT = \lambda p.\, p\ FALSE\ TRUE
 $$
 
-**測試**： $ISZERO$ （判斷是否為零）巧妙地結合數字與布林：
+**測試**： $`ISZERO`$ （判斷是否為零）巧妙地結合數字與布林：
+
 $$
 ISZERO = \lambda n.\, n\ (\lambda x.\, FALSE)\ TRUE
 $$
-若 $n = \bar{0}$ ，迭代 0 次，結果是 $TRUE$ ；否則每次迭代都把結果變成 $FALSE$ 。 $\checkmark$
+
+若 $`n = \bar{0}`$ ，迭代 0 次，結果是 $`TRUE`$ ；否則每次迭代都把結果變成 $`FALSE`$ 。 $`\checkmark`$
 
 ### 4. 配對（Pair）與選擇
 配對 = 一個「帶著兩個值、等待被問要哪個」的函數：
@@ -78,16 +85,18 @@ $$
 $$
 PAIR = \lambda a.\, \lambda b.\, \lambda s.\, s\ a\ b
 $$
+
 $$
 FST = \lambda p.\, p\ TRUE, \qquad SND = \lambda p.\, p\ FALSE
 $$
 
 **測試**：
+
 $$
 FST\ (PAIR\ \bar{1}\ \bar{2}) = (PAIR\ \bar{1}\ \bar{2})\ TRUE = TRUE\ \bar{1}\ \bar{2} = \bar{1} \quad\checkmark
 $$
 
-有了配對，就能用「 $\bar{n} = (n, n-1)$ 配對串列」模擬鏈結串列（Lisp 的 cons/car/cdr 正是此法）。
+有了配對，就能用「 $`\bar{n} = (n, n-1)`$ 配對串列」模擬鏈結串列（Lisp 的 cons/car/cdr 正是此法）。
 
 ### 5. Y 組合子：遞迴的解答
 λ 演算中不能直接遞迴（函數體內無法引用自己）。Curry 提出的解法 —— **Y 組合子**：
@@ -96,7 +105,8 @@ $$
 Y = \lambda g.\, (\lambda x.\, g\ (x\ x))\,(\lambda x.\, g\ (x\ x))
 $$
 
-**推理**：對任意 $g$ ，
+**推理**：對任意 $`g`$ ，
+
 $$
 \begin{aligned}
 Y\ g &\to_\beta (\lambda x.\, g\ (x\ x))\,(\lambda x.\, g\ (x\ x)) \\
@@ -105,16 +115,20 @@ Y\ g &\to_\beta (\lambda x.\, g\ (x\ x))\,(\lambda x.\, g\ (x\ x)) \\
 \end{aligned}
 $$
 
-即 $Y\ g = g\ (Y\ g)$ —— **不動點方程式**： $Y$ 能為任何函數 $g$ 找到不動點 $Y\,g$ 。遞迴函數 $f$ 滿足 $f = F\ f$ （ $F$ 是「f 的一步」），所以 $f = Y\,F$ 。
+即 $`Y\ g = g\ (Y\ g)`$ —— **不動點方程式**： $`Y`$ 能為任何函數 $`g`$ 找到不動點 $`Y\,g`$ 。遞迴函數 $`f`$ 滿足 $`f = F\ f`$ （ $`F`$ 是「f 的一步」），所以 $`f = Y\,F`$ 。
 
 以階乘為例：定義「一步」
+
 $$
 F = \lambda self.\, \lambda n.\, ISZERO\ n\ \bar{1}\ (MULT\ n\ (self\ (PRED\ n)))
 $$
+
 則
+
 $$
 FACTORIAL = Y\ F
 $$
+
 $$
 FACTORIAL\ \bar{3} = Y\ F\ \bar{3} \to F\ (Y\ F)\ \bar{3} \to MULT\ \bar{3}\ (FACTORIAL\ \bar{2}) \to \cdots \to \bar{6} \quad\checkmark
 $$

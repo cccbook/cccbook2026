@@ -3,7 +3,9 @@
 ## 案件摘要
 1933 年，30 歲的俄國數學家 Andrey Kolmogorov 出版《機率論的基礎》（Grundbegriffe der Wahrscheinlichkeitsrechnung）：用**測度論**公理化機率——機率是「事件的集合函數」，滿足三條公理：
 
-$$P(\Omega) = 1, \quad P(A) \ge 0, \quad P(A \cup B) = P(A) + P(B) \text{（互斥時）}$$
+$$
+P(\Omega) = 1, \quad P(A) \ge 0, \quad P(A \cup B) = P(A) + P(B) \text{（互斥時）}
+$$
 
 **機率論從賭徒的經驗法則（Pascal–Fermat，1654）變成嚴格的數學**——與歐幾里得的公理化（見 `-0300-Euclid幾何原本.md`）、Hilbert 的公理化（1899）同一範式。Kolmogorov 的公理使**連續機率、大數法則、中央極限定理**全部嚴格化——機率統計（見 `../機率統計/README.md`）與隨機過程的數學基礎。
 
@@ -26,26 +28,32 @@ $$P(\Omega) = 1, \quad P(A) \ge 0, \quad P(A \cup B) = P(A) + P(B) \text{（互�
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 三條公理
-**Kolmogorov 公理**：樣本空間 $\Omega$ 、事件 σ-代數 $\mathcal{F}$ 、機率測度 $P: \mathcal{F} \to \mathbb{R}$ ：
+**Kolmogorov 公理**：樣本空間 $`\Omega`$ 、事件 σ-代數 $`\mathcal{F}`$ 、機率測度 $`P: \mathcal{F} \to \mathbb{R}`$ ：
 
-1. **非負性**： $P(A) \ge 0$
-2. **規範性**： $P(\Omega) = 1$
-3. **可數可加性**：互斥事件 $A_1, A_2, \dots$ ：
+1. **非負性**： $`P(A) \ge 0`$
+2. **規範性**： $`P(\Omega) = 1`$
+3. **可數可加性**：互斥事件 $`A_1, A_2, \dots`$ ：
 
-$$P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$$
+$$
+P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)
+$$
 
 **就這三條**——全部機率論從三條公理演繹。
 
-**機率 = 測度**： $P$ 是測度（ $\Omega$ 的總測度為 1）——**隨機變數 = 可測函數**、期望 = Lebesgue 積分：
+**機率 = 測度**： $`P`$ 是測度（ $`\Omega`$ 的總測度為 1）——**隨機變數 = 可測函數**、期望 = Lebesgue 積分：
 
-$$E[X] = \int_\Omega X \, dP$$
+$$
+E[X] = \int_\Omega X \, dP
+$$
 
 **Bertrand 悖論的解決**：「等可能」=「均勻測度」——**選不同的測度就是不同的機率模型**（弦的端點均勻 vs 弦心距均勻 vs 弦方向均勻是**三個不同的模型**）——悖論不是矛盾，是**模型選擇的歧義**。
 
 ### 大數法則的嚴格化
 **Bernoulli（1713）**的直覺——頻率收斂到機率——Kolmogorov 的**強大數法則**：
 
-$$\frac{X_1 + X_2 + \dots + X_n}{n} \xrightarrow{a.s.} E[X_1]$$
+$$
+\frac{X_1 + X_2 + \dots + X_n}{n} \xrightarrow{a.s.} E[X_1]
+$$
 
 （幾乎必然收斂——不僅機率收斂，是**樣本路徑**的收斂。）
 
@@ -54,7 +62,9 @@ $$\frac{X_1 + X_2 + \dots + X_n}{n} \xrightarrow{a.s.} E[X_1]$$
 ### 中央極限定理的嚴格化
 **CLT**：獨立同分佈變數的和收斂到高斯：
 
-$$\frac{X_1 + \dots + X_n - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1)$$
+$$
+\frac{X_1 + \dots + X_n - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1)
+$$
 
 **Lindeberg 條件**（1922）與 Kolmogorov 的嚴格化——**高斯分佈的普遍性**（見 `../機率統計/README.md`）成為定理。
 

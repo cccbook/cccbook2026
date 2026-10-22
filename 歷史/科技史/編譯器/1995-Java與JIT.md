@@ -24,9 +24,11 @@ istore_0     // pop -> x        （存入區域變數槽 0）
 
 堆疊機的指令碼短（不需要指定位址欄位），適合網路傳輸與驗證（JVM 的 bytecode verifier 可靜態檢查型別安全），但直譯時每條指令都有分派開銷：
 
-$$T_{interp} = N_{instr} \times (t_{fetch} + t_{decode} + t_{dispatch} + t_{exec})$$
+$$
+T_{interp} = N_{instr} \times (t_{fetch} + t_{decode} + t_{dispatch} + t_{exec})
+$$
 
-其中 $t_{dispatch}$ 往往比 $t_{exec}$ 還大——這就是純直譯慢的數學根源。
+其中 $`t_{dispatch}`$ 往往比 $`t_{exec}`$ 還大——這就是純直譯慢的數學根源。
 
 ### 核心推理：直譯器免費擁有的情報
 靜態編譯器（C/C++）在編譯期只能看到原始碼，看不到執行期事實：
@@ -36,11 +38,13 @@ $$T_{interp} = N_{instr} \times (t_{fetch} + t_{decode} + t_{dispatch} + t_{exec
 但直譯器在執行時**免費擁有**這些資訊——它親眼看到每個物件的型別、每個分支的走向。HotSpot 的推理：**何不先直譯來觀察，收集 profile，再對熱點做投機性編譯？**而且投機是可逆的：若假設（如「這個呼叫點只出現過型別 A」）被違反，就**去優化（deoptimization）**退回直譯器重新觀察。這個「觀察 → 投機 → 退回」的閉環，是靜態編譯永遠做不到的。
 
 ### 熱點偵測的計數器模型
-HotSpot 以方法呼叫計數器與回邊計數器偵測熱點。方法 $m$ 的觸發條件：
+HotSpot 以方法呼叫計數器與回邊計數器偵測熱點。方法 $`m`$ 的觸發條件：
 
-$$C_{invoke}(m) + C_{backedge}(m) \geq \Theta$$
+$$
+C_{invoke}(m) + C_{backedge}(m) \geq \Theta
+$$
 
-其中 $\Theta$ 是編譯門檻（client 模式約 1500，server 模式約 10000）。計數器每到達門檻，方法進入編譯佇列，由背景執行緒編譯——**編譯不阻塞執行**。OSR（On-Stack Replacement）則讓「正在執行的長迴圈」也能中途換成編譯後版本。
+其中 $`\Theta`$ 是編譯門檻（client 模式約 1500，server 模式約 10000）。計數器每到達門檻，方法進入編譯佇列，由背景執行緒編譯——**編譯不阻塞執行**。OSR（On-Stack Replacement）則讓「正在執行的長迴圈」也能中途換成編譯後版本。
 
 ### 編譯層級對照表
 

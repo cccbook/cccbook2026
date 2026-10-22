@@ -1,38 +1,41 @@
 # 1854-Cayley 抽象群
 
 ## 案件摘要
-1854 年，Cayley 在《On the theory of groups, as depending on the symbolic equation $\theta^n = 1$ 》中首次給出**抽象群**的定義——不再問「群是什麼東西的變形」，而只問「它滿足什麼公理」。這是一樁超前的懸案：定義提出後近 20 年乏人問津，直到 1870 年代才被數學界正式接受，最終成為現代代數的基石。
+1854 年，Cayley 在《On the theory of groups, as depending on the symbolic equation $`\theta^n = 1`$ 》中首次給出**抽象群**的定義——不再問「群是什麼東西的變形」，而只問「它滿足什麼公理」。這是一樁超前的懸案：定義提出後近 20 年乏人問津，直到 1870 年代才被數學界正式接受，最終成為現代代數的基石。
 
 ## 前因 -- 為什麼會有這個案子
-- 19 世紀上半葉，「群」以三種偽裝分頭出現：Galois 的置換群（permutation groups）、Gauss 以來的數論同餘類（如 $(\mathbb{Z}/p)^\times$ ）、以及幾何變換（如 Möbius 的變換群）。
+- 19 世紀上半葉，「群」以三種偽裝分頭出現：Galois 的置換群（permutation groups）、Gauss 以來的數論同餘類（如 $`(\mathbb{Z}/p)^\times`$ ）、以及幾何變換（如 Möbius 的變換群）。
 - 這三個「嫌犯」行為相似（都有結合的合成運算、有單位、可逆），但當時的「群」一詞總是綁定在「置換」上。
-- Cayley 沿著 Lagrange 的路線研究符號方程 $\theta^n = 1$ （ $\theta$ 為一個變換），意識到：真正重要的不是置換的外衣，而是**運算的公理性質**。
+- Cayley 沿著 Lagrange 的路線研究符號方程 $`\theta^n = 1`$ （ $`\theta`$ 為一個變換），意識到：真正重要的不是置換的外衣，而是**運算的公理性質**。
 - 偵查目標：把群的「本質特徵」從具體實例中剝離出來，寫成一套公理。
 
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 線索一：Cayley 的抽象群公理
-Cayley 1854 年的定義（以現代語言重述）：一個群是符號的集合 $\{1, \alpha, \beta, \ldots\}$ ，滿足：
+Cayley 1854 年的定義（以現代語言重述）：一個群是符號的集合 $`\{1, \alpha, \beta, \ldots\}`$ ，滿足：
 
 1. **封閉性**：任兩個符號的乘積仍在集合中；
-2. **結合律**： $(\alpha\beta)\gamma = \alpha(\beta\gamma)$ ；
-3. **單位元素**：存在 $1$ 使 $\alpha \cdot 1 = 1 \cdot \alpha = \alpha$ ；
-4. **逆元素**：每個 $\alpha$ 有逆 $\alpha^{-1}$ 使 $\alpha\alpha^{-1} = 1$ 。
+2. **結合律**： $`(\alpha\beta)\gamma = \alpha(\beta\gamma)`$ ；
+3. **單位元素**：存在 $`1`$ 使 $`\alpha \cdot 1 = 1 \cdot \alpha = \alpha`$ ；
+4. **逆元素**：每個 $`\alpha`$ 有逆 $`\alpha^{-1}`$ 使 $`\alpha\alpha^{-1} = 1`$ 。
 
 注意：Cayley 早於 Weber（1893）近 40 年給出抽象定義，且他的版本（有限群）甚至隱含消去律可推出逆元素。他並證明了第一個抽象定理：
 
-> **Cayley 定理（1854/1878）**：每個 $n$ 階群同構於對稱群 $S_n$ 的一個子群。
+> **Cayley 定理（1854/1878）**：每個 $`n`$ 階群同構於對稱群 $`S_n`$ 的一個子群。
 
 ### 線索二：Cayley 表（群乘法表）
 Cayley 用「乘法表」呈現有限群的完整結構——今日稱為 Cayley 表。表中的每一列（每一行）都是群元素的**置換**（Latin square 性質），這正是 Lagrange 置換思想的延續。
 
-以四階群為例，恰有兩個互不同構的群：循環群 $\mathbb{Z}_4$ 與 Klein 四元群 $\mathbb{Z}_2 \times \mathbb{Z}_2$ （後者 1884 年由 Klein 命名）。
+以四階群為例，恰有兩個互不同構的群：循環群 $`\mathbb{Z}_4`$ 與 Klein 四元群 $`\mathbb{Z}_2 \times \mathbb{Z}_2`$ （後者 1884 年由 Klein 命名）。
 
 ### 線索三：群同構的現代觀念
 Cayley 的定義使我們能問：**兩個看起來不同的對象，是否「本質上是同一個群」？**
-$$\varphi: G \to H,\quad \varphi(ab) = \varphi(a)\varphi(b),\quad \varphi \text{ 為雙射}$$
 
-例如 $(\mathbb{Z}/4, +) \cong \langle i \rangle \subset \{1, i, -1, -i\}$ （複數的四次單位根群），而 $\mathbb{Z}_2 \times \mathbb{Z}_2 \cong \{(\pm1, \pm1)\} \subset (\mathbb{R}^\times)^2$ 。「同構」成了偵探的比對工具：剝掉外衣，看骨架。
+$$
+\varphi: G \to H,\quad \varphi(ab) = \varphi(a)\varphi(b),\quad \varphi \text{ 為雙射}
+$$
+
+例如 $`(\mathbb{Z}/4, +) \cong \langle i \rangle \subset \{1, i, -1, -i\}`$ （複數的四次單位根群），而 $`\mathbb{Z}_2 \times \mathbb{Z}_2 \cong \{(\pm1, \pm1)\} \subset (\mathbb{R}^\times)^2`$ 。「同構」成了偵探的比對工具：剝掉外衣，看骨架。
 
 ### 程式碼：Python 生成並檢驗 Cayley 表
 
@@ -87,4 +90,4 @@ print("單位根群 Cayley 表：\n", R4)   # 與 Z4 同構（調換 1j 與 -1 �
 - **Arthur Cayley（1821–1895）**：劍橋數學家，多產的代數學與幾何學家，矩陣論、不變量論的開創者。
 - **Heinrich Weber（1842–1913）**：1893 年給出廣為接受的抽象群公理。
 - **Camille Jordan（1838–1922）**：《Traité des substitutions et des équations algébriques》(1870)，置換群理論的集大成。
-- 文獻：A. Cayley, "On the theory of groups, as depending on the symbolic equation $\theta^n = 1$ ", *Philosophical Magazine*, 1854；以及其 1878 年的續作 "The theory of groups"。
+- 文獻：A. Cayley, "On the theory of groups, as depending on the symbolic equation $`\theta^n = 1`$ ", *Philosophical Magazine*, 1854；以及其 1878 年的續作 "The theory of groups"。

@@ -4,7 +4,11 @@
 1983 年，兩件看似無關的大事同年發生：
 1. **AT&T 發布 System V**——Unix 商業化的旗艦版本（1982 年 System III 後的正式版）。
 2. **Richard Stallman 發起 GNU 計畫**——「GNU's Not Unix」：一個完全自由的 Unix 相容系統。
-$$\text{System V（封閉商業）} \quad \text{vs} \quad \text{GNU（自由開放）}.$$
+
+$$
+\text{System V（封閉商業）} \quad \text{vs} \quad \text{GNU（自由開放）}.
+$$
+
 **Unix 史上的大分岔：商業授權 vs 自由軟體**——這條裂縫延續至今 40 年。
 
 ## 前因 -- 為什麼會有這個案子
@@ -21,14 +25,22 @@ $$\text{System V（封閉商業）} \quad \text{vs} \quad \text{GNU（自由開�
 
 ### 第二條線索：GNU 的三大武器
 1. **GPL 授權（1989 定型）**：copyleft——衍生作品必須同樣自由。
-   $$\text{GPL} = \text{自由} \;\xrightarrow{\text{傳染}}\; \text{所有衍生品都自由}.$$
+
+$$
+\text{GPL} = \text{自由} \;\xrightarrow{\text{傳染}}\; \text{所有衍生品都自由}.
+$$
+
 2. **Emacs（1985）**：可程式化的編輯器，用 Lisp 擴充一切。
 3. **GCC（1987）**：自由 C 編譯器——**取代 Unix 廠商的專用編譯器**，是自由系統的關鍵拼圖。
 - **理論基礎**：Stallman 1985 年發表《GNU 宣言》——軟體自由是使用者權利，不是商業策略問題。
 
 ### 第三條線索：GNU 工具的「Unix 複刻戰略」
 Stallman 的策略不是發明新系統，而是**逐一複刻 Unix 工具**（ls、grep、awk、bash……全部自由版）——
-$$\text{GNU 工具} \;\approx\; \text{Unix 工具（介面相容）} + \text{自由（實作全新）}.$$
+
+$$
+\text{GNU 工具} \;\approx\; \text{Unix 工具（介面相容）} + \text{自由（實作全新）}.
+$$
+
 - **彌補的缺陷**：介面相容讓使用者無痛遷移；全新實作讓授權乾淨無爭議。
 
 ### Shell 範例：System V IPC 的號誌

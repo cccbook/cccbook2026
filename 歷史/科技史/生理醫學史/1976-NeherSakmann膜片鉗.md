@@ -10,7 +10,7 @@
 （1991 年諾貝爾生理醫學獎。）
 
 ## 前因 -- 為什麼會有這個案子
-- **HH 方程的懸案**：Hodgkin–Huxley 1952 年用 $m^3h$ 、 $n^4$ 的閘門動力學
+- **HH 方程的懸案**：Hodgkin–Huxley 1952 年用 $`m^3h`$ 、 $`n^4`$ 的閘門動力學
   完美重現動作電位——但**閘門粒子是數學的虛構**——
   **離子流的量子化（單通道）從未被直接觀察**——**假說是兇手的藏身處。**
 - **電壓鉗的極限**：HH 的電壓鉗測量的是**整個細胞**的電流（微安級）——
@@ -26,14 +26,21 @@
 
 ### 核心推理：gigaseal = 量子化的窗口
 膜片鉗的偵查原理：
-$$\text{噪聲} \propto \sqrt{\frac{R_{\text{seal}}}{R_{\text{通道}}}}， \qquad \text{gigaseal}（10^9 \Omega）\Rightarrow \text{噪聲} < 1 \text{ pA}.$$
-- **單通道電流**： $i = \gamma (V - E)$ ，電導 $\gamma \approx 10–30$ pS——
-  $i \approx 1–3$ pA（皮安級）——**gigaseal 之下可辨**
+
+$$
+\text{噪聲} \propto \sqrt{\frac{R_{\text{seal}}}{R_{\text{通道}}}}， \qquad \text{gigaseal}（10^9 \Omega）\Rightarrow \text{噪聲} < 1 \text{ pA}.
+$$
+
+- **單通道電流**： $`i = \gamma (V - E)`$ ，電導 $`\gamma \approx 10–30`$ pS——
+  $`i \approx 1–3`$ pA（皮安級）——**gigaseal 之下可辨**
 - **開關的動力學**：通道的開/合是**全有全無**（all-or-none）——
   **電流跡線 = 方波的跳動**（開 = 方波、關 = 基線）——
-  **HH 的 $m^3h$ （3 個閘門串聯）在單通道層面 = 多個全有全無開關的乘積**
+  **HH 的 $`m^3h`$ （3 個閘門串聯）在單通道層面 = 多個全有全無開關的乘積**
 
-$$\text{宏觀電導} = \bar{g} \times P_{\text{open}}， \qquad P_{\text{open}} = \prod_i P_i（\text{閘門的開機率}）.$$
+$$
+\text{宏觀電導} = \bar{g} \times P_{\text{open}}， \qquad P_{\text{open}} = \prod_i P_i（\text{閘門的開機率}）.
+$$
+
 **數學的虛構 → 實體的顆粒**：HH 的閘門動力學在單通道層面被精確驗證——
 **通道是蛋白質、開合是構象變化**。
 

@@ -12,40 +12,50 @@
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 指數爆炸：經典模擬的天文數字
-$n$ 個自旋 1/2 粒子的態空間維度為
+$`n`$ 個自旋 1/2 粒子的態空間維度為
 
-$$\dim = 2^n$$
+$$
+\dim = 2^n
+$$
 
-$n$ 個電子的 Hilbert 空間維度更以場模數成長。描述一般量子態需要 $2^n$ 個複數振幅： $n=50$ 時 $2^{50} \approx 10^{15}$ （petabyte 級）， $n=300$ 時 $2^{300}$ 已超過可觀測宇宙的原子數（ $\approx 10^{80}$ ）。跟蹤量子演化的時間複雜度同樣指數級。
+$`n`$ 個電子的 Hilbert 空間維度更以場模數成長。描述一般量子態需要 $`2^n`$ 個複數振幅： $`n=50`$ 時 $`2^{50} \approx 10^{15}`$ （petabyte 級）， $`n=300`$ 時 $`2^{300}`$ 已超過可觀測宇宙的原子數（ $`\approx 10^{80}`$ ）。跟蹤量子演化的時間複雜度同樣指數級。
 
 Feynman 的觀察：**大自然不是經典的，硬要用經典方式模擬它，代價是指數爆炸。**
 
 ### Feynman 論證：用量子模擬量子
 他的提案：建造一台本身服從量子力學的機器，讓它的 Hilbert 空間直接「扮演」目標系統的 Hilbert 空間：
 
-$$\text{模擬器狀態 } |\psi_{sim}(t)\rangle = U_{sim}(t)|\psi_{sim}(0)\rangle \longleftrightarrow \text{目標系統 } |\psi_{target}(t)\rangle$$
+$$
+\text{模擬器狀態 } |\psi_{sim}(t)\rangle = U_{sim}(t)|\psi_{sim}(0)\rangle \longleftrightarrow \text{目標系統 } |\psi_{target}(t)\rangle
+$$
 
-資源需求從指數降為多項式：模擬 $n$ 個自旋只需 $n$ 個（或 $O(n)$ 個）量子位元。Feynman 進一步論證：通用量子系統可以有效率地模擬**任何**局域交互作用的量子系統。
+資源需求從指數降為多項式：模擬 $`n`$ 個自旋只需 $`n`$ 個（或 $`O(n)`$ 個）量子位元。Feynman 進一步論證：通用量子系統可以有效率地模擬**任何**局域交互作用的量子系統。
 
 ### 量子位元與 Hilbert 空間
 單一量子位元：
 
-$$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \quad |\alpha|^2 + |\beta|^2 = 1$$
+$$
+|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \quad |\alpha|^2 + |\beta|^2 = 1
+$$
 
-$n$ 個量子位元的疊加態：
+$`n`$ 個量子位元的疊加態：
 
-$$|\Psi\rangle = \sum_{x \in \{0,1\}^n} c_x |x\rangle, \quad \sum_x |c_x|^2 = 1$$
+$$
+|\Psi\rangle = \sum_{x \in \{0,1\}^n} c_x |x\rangle, \quad \sum_x |c_x|^2 = 1
+$$
 
-一般態的參數量 $\sim 2^{n+1}$ ，量子硬體「天然」存在於這個 $2^n$ 維 Hilbert 空間中——這正是模擬力的來源。
+一般態的參數量 $`\sim 2^{n+1}`$ ，量子硬體「天然」存在於這個 $`2^n`$ 維 Hilbert 空間中——這正是模擬力的來源。
 
 ### 現代發展：量子模擬的落地
-- **VQE（Variational Quantum Eigensolver, 2014）**：量子電腦製備試探態 $|\psi(\theta)\rangle$ 、測量能量 $\langle\psi(\theta)|H|\psi(\theta)\rangle$ ，古典最佳化器更新 $\theta$ ，逼近分子基態能量：
+- **VQE（Variational Quantum Eigensolver, 2014）**：量子電腦製備試探態 $`|\psi(\theta)\rangle`$ 、測量能量 $`\langle\psi(\theta)|H|\psi(\theta)\rangle`$ ，古典最佳化器更新 $`\theta`$ ，逼近分子基態能量：
 
-$$E_0 \leq \min_\theta \langle\psi(\theta)| H |\psi(\theta)\rangle$$
+$$
+E_0 \leq \min_\theta \langle\psi(\theta)| H |\psi(\theta)\rangle
+$$
 
-- **量子化學**：模擬 $\mathrm{H}_2$ 、 $\mathrm{LiH}$ 、 $\mathrm{BeH}_2$ 等分子；未來目標包括固氮酶（FeMoco）與高溫超導機制。
+- **量子化學**：模擬 $`\mathrm{H}_2`$ 、 $`\mathrm{LiH}`$ 、 $`\mathrm{BeH}_2`$ 等分子；未來目標包括固氮酶（FeMoco）與高溫超導機制。
 - **類比量子模擬器**：冷原子光晶格、離子阱直接仿真自旋/Hubbard 模型，是 Feynman 原始構想最直接的實現。
-- qiskit 風格偽碼（單自旋演化 $\exp(-i Z t)$ ）：
+- qiskit 風格偽碼（單自旋演化 $`\exp(-i Z t)`$ ）：
 
 ```python
 from qiskit import QuantumCircuit

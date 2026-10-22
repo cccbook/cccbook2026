@@ -13,10 +13,12 @@
 
 ### 惰性求值（call-by-need）
 λ 演算有兩種求值策略：
-- **急切求值（call-by-value）**：先求值參數再應用 $(\lambda x.\,M)\,N \to (\lambda x.\,M)\,V \to M[V/x]$
+- **急切求值（call-by-value）**：先求值參數再應用 $`(\lambda x.\,M)\,N \to (\lambda x.\,M)\,V \to M[V/x]`$
 - **惰性求值（call-by-need）**：不先求值參數，直到真的需要時才求值一次（以 thunk 快取）：
 
-  $$(\lambda x.\,M)\,N \to M[N/x] \text{（N 以未求值的形式傳遞）}$$
+$$
+(\lambda x.\,M)\,N \to M[N/x] \text{（N 以未求值的形式傳遞）}
+$$
 
 Church–Rosser 定理保證：**兩種策略最終結果相同**（若都停機）。但惰性求值可以處理無限資料結構：
 
@@ -31,7 +33,9 @@ take 10 fibs  -- [0,1,1,2,3,5,8,13,21,34]
 ### typeclass（型別類）
 Haskell 的 typeclass 是 **System F 多型的推廣**——對型別做「條件約束」：
 
-$$\frac{\text{型別 } a \text{ 必須屬於類 } Eq}{\text{函數 } (==) :: a \to a \to Bool \text{ 可以用於 } a}$$
+$$
+\frac{\text{型別 } a \text{ 必須屬於類 } Eq}{\text{函數 } (==) :: a \to a \to Bool \text{ 可以用於 } a}
+$$
 
 ```haskell
 class Eq a where
@@ -41,7 +45,7 @@ class Eq a where
 sort :: Ord a => [a] -> [a]
 ```
 
-這在 λ 演算的型別系統中對應 **受限量詞（bounded quantification）** $\forall a <: Eq.\, [a] \to \ldots$ ——System F 的推廣（Cardelli-Wegner 1985）。
+這在 λ 演算的型別系統中對應 **受限量詞（bounded quantification）** $`\forall a <: Eq.\, [a] \to \ldots`$ ——System F 的推廣（Cardelli-Wegner 1985）。
 
 ### Monad（Wadler 1992 引入）
 Haskell 是**純函數式**語言——沒有副作用。但列印、狀態、例外、I/O 都需要副作用！Philip Wadler 於 1992 年將範疇論的 **monad** 引入 Haskell，以「型別化副作用」解決這個懸案：
@@ -61,7 +65,7 @@ m >>= return     ==  m             -- right identity
 (m >>= f) >>= g  ==  m >>= (\x -> f x >>= g)  -- associativity
 ```
 
-**關鍵推理**：副作用被「封裝」在 monad 型別中——`IO a` 表示「會產生型別為 `a` 的結果的動作」，型別系統強制所有副作用被明確標記。這在 λ 演算中對應 **Moggi 的 monadic metalanguage（1989）** $\lambda_{ml}$ ：計算型 $T A$ 與值型 $A$ 的分離。
+**關鍵推理**：副作用被「封裝」在 monad 型別中——`IO a` 表示「會產生型別為 `a` 的結果的動作」，型別系統強制所有副作用被明確標記。這在 λ 演算中對應 **Moggi 的 monadic metalanguage（1989）** $`\lambda_{ml}`$ ：計算型 $`T A`$ 與值型 $`A`$ 的分離。
 
 ### 一個 Haskell 範例（含 lambda 與 monad）
 ```haskell
@@ -84,7 +88,9 @@ main = do
 
 `foldr` 直接對應 λ 演算的自然數歸納原理（Church numeral 的推廣）：
 
-$$\mathsf{foldr}\,f\,z\,[x_1,\ldots,x_n] = f\,x_1\,(f\,x_2\,(\cdots(f\,x_n\,z)))$$
+$$
+\mathsf{foldr}\,f\,z\,[x_1,\ldots,x_n] = f\,x_1\,(f\,x_2\,(\cdots(f\,x_n\,z)))
+$$
 
 ### Haskell 2010 / 2020 標準
 - **Haskell 98**（1999）：第一個穩定標準，教科書的基礎。

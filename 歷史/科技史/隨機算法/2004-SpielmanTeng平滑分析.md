@@ -6,9 +6,11 @@
 ## 前因 -- 為什麼會有這個案子
 線性規劃的單純形法：Dantzig 1947 發明，實務飛快（幾萬變數瞬間解決）。但 1972 年 Klee–Minty 構造出指數時間的反例：
 
-$$\max \sum_{i=1}^d 10^{d-i} x_i, \quad 0 \le x_1 \le 100, \quad 0 \le x_i \le 100 x_{i-1}$$
+$$
+\max \sum_{i=1}^d 10^{d-i} x_i, \quad 0 \le x_1 \le 100, \quad 0 \le x_i \le 100 x_{i-1}
+$$
 
-這個「扭曲的立方體」讓 Dantzig 規則走遍 $2^d$ 個頂點。**矛盾**：理論指數、實務多項式——為什麼？
+這個「扭曲的立方體」讓 Dantzig 規則走遍 $`2^d`$ 個頂點。**矛盾**：理論指數、實務多項式——為什麼？
 
 兩種舊解釋都不滿意：
 1. **最壞情況分析**：太悲觀（Klee–Minty 是精心構造的病態例子，現實不會出現）
@@ -17,32 +19,38 @@ $$\max \sum_{i=1}^d 10^{d-i} x_i, \quad 0 \le x_1 \le 100, \quad 0 \le x_i \le 1
 ## 線索與推理 -- 數學式、程式、理論
 
 ### 平滑分析的定義
-**定義**：演算法 $A$ 的平滑複雜度：
+**定義**：演算法 $`A`$ 的平滑複雜度：
 
-$$\mathrm{Smoothed}(A, n) = \max_{\bar{x} \in [0,1]^N} \mathrm{E}_{\substack{x = \bar{x} + g \\ g \sim N(0, \sigma^2)}} [\mathrm{cost}(A, x)]$$
+$$
+\mathrm{Smoothed}(A, n) = \max_{\bar{x} \in [0,1]^N} \mathrm{E}_{\substack{x = \bar{x} + g \\ g \sim N(0, \sigma^2)}} [\mathrm{cost}(A, x)]
+$$
 
-**白話**：對**每個**可能的「中心」 $\bar{x}$ （取最壞），加上標準差 $\sigma$ 的高斯擾動，問期望執行時間。
+**白話**：對**每個**可能的「中心」 $`\bar{x}`$ （取最壞），加上標準差 $`\sigma`$ 的高斯擾動，問期望執行時間。
 
 三種分析的對照：
 
 | 分析 | 定義 | 特點 |
 |------|------|------|
-| 最壞情況 | $\max_x \mathrm{cost}(A, x)$ | 太悲觀 |
-| 平均情況 | $\mathrm{E}_{x \sim D}[\mathrm{cost}(A, x)]$ | 依賴分佈 $D$ |
-| **平滑分析** | $\max_{\bar{x}} \mathrm{E}_{x=\bar{x}+g}[\mathrm{cost}]$ | 最壞 + 隨機擾動 |
+| 最壞情況 | $`\max_x \mathrm{cost}(A, x)`$ | 太悲觀 |
+| 平均情況 | $`\mathrm{E}_{x \sim D}[\mathrm{cost}(A, x)]`$ | 依賴分佈 $`D`$ |
+| **平滑分析** | $`\max_{\bar{x}} \mathrm{E}_{x=\bar{x}+g}[\mathrm{cost}]`$ | 最壞 + 隨機擾動 |
 
 **哲學**：平滑分析是「敵人構造最壞輸入，但大自然加上雜訊」——**敵人無法精確控制輸入，病態就被擾動破壞**。
 
 ### 單純形法的平滑分析
 **定理（Spielman–Teng 2004）**：Dantzig 規則的單純形法，平滑複雜度為：
 
-$$\mathrm{Smoothed} = O\left(\mathrm{poly}(n, d, \frac{1}{\sigma})\right)$$
+$$
+\mathrm{Smoothed} = O\left(\mathrm{poly}(n, d, \frac{1}{\sigma})\right)
+$$
 
-即多項式時間（擾動大小 $\sigma$ 進入多項式）。
+即多項式時間（擾動大小 $`\sigma`$ 進入多項式）。
 
-**證明骨架**：單純形法的時間 $\propto$ 頂點間的「影子頂點數」（shadow vertex path length）。Klee–Minty 反例的時間之所以指數，是因為某些頂點對的**條件數**（condition number）極端病態。高斯擾動使條件數以高機率良好：
+**證明骨架**：單純形法的時間 $`\propto`$ 頂點間的「影子頂點數」（shadow vertex path length）。Klee–Minty 反例的時間之所以指數，是因為某些頂點對的**條件數**（condition number）極端病態。高斯擾動使條件數以高機率良好：
 
-$$P(\text{病態條件數}) \le \mathrm{poly}(\sigma)$$
+$$
+P(\text{病態條件數}) \le \mathrm{poly}(\sigma)
+$$
 
 （由隨機矩陣的集中不等式——與 Johnson–Lindenstrauss 引理（見 `1984-JohnsonLindenstrauss引理.md`）同源的技術。）
 

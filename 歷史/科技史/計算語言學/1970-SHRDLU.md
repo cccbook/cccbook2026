@@ -25,7 +25,9 @@ SHRDLU 的偵探手法是「三層分工、即時對話」：
 
 形式化地，理解句子 u 可以寫成三步合成：
 
-$$\text{Semantics} = \llbracket \text{Syntax}(u) \rrbracket, \qquad \text{Answer} = \text{Inference}\big(\llbracket \text{Syntax}(u) \rrbracket, \; \text{WorldState}\big)$$
+$$
+\text{Semantics} = \llbracket \text{Syntax}(u) \rrbracket, \qquad \text{Answer} = \text{Inference}\big(\llbracket \text{Syntax}(u) \rrbracket, \; \text{WorldState}\big)
+$$
 
 ### 指稱消解與語境追蹤
 
@@ -41,7 +43,9 @@ SHRDLU 最精彩的線索是指稱消解（reference resolution）：當使用�
 
 Winograd 的論文標題就是線索：資料的表示法是「程序」。積木的性質（紅色、在箱子上方）不是存在資料庫裡的布林值，而是可以呼叫的 LISP 函式。這呼應了 LISP 的 homoiconicity：
 
-$$\text{program} \equiv \text{data}$$
+$$
+\text{program} \equiv \text{data}
+$$
 
 知識與行動在語言層面上是同一種東西——這是 1970 年知識表示（KR）最有哲學野心的主張。
 

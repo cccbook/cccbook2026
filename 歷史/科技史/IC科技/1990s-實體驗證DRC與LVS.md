@@ -5,7 +5,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 - 微微縮（micron → submicron → deep submicron）使製程規則從幾十條暴增到上千條，人工檢查已不可能。
-- 1980 年代初 Mead–Conway 的《Introduction to VLSI Systems》提出可參數化的設計規則（以 $\lambda$ 為單位），為自動化檢查鋪路。
+- 1980 年代初 Mead–Conway 的《Introduction to VLSI Systems》提出可參數化的設計規則（以 $`\lambda`$ 為單位），為自動化檢查鋪路。
 - 佈局由人工改為自動/半自動工具後，「畫出來的圖」與「設計者心中的電路」可能不一致，需要機械式比對。
 - 掩膜（mask）成本隨世代攀升，一次流片失敗動輒數十萬美元以上，產業需要「簽名保證」的品質閘門。
 
@@ -16,18 +16,18 @@ DRC 只看幾何，不看電氣意義。典型規則：
 
 | 規則 | 定義 | 典型值（0.35μm） |
 |------|------|------------------|
-| 最小線寬 | $W \geq W_{\min}$ | 0.4 μm |
-| 最小間距 | $S \geq S_{\min}$ | 0.5 μm |
-| 最小包覆（enclosure / overlap） | via 周圍金屬至少包覆 $E$ | 0.1 μm |
-| 最小面積 | $A \geq A_{\min}$ | 0.16 μm² |
+| 最小線寬 | $`W \geq W_{\min}`$ | 0.4 μm |
+| 最小間距 | $`S \geq S_{\min}`$ | 0.5 μm |
+| 最小包覆（enclosure / overlap） | via 周圍金屬至少包覆 $`E`$ | 0.1 μm |
+| 最小面積 | $`A \geq A_{\min}`$ | 0.16 μm² |
 
-形式化：對圖層 $L$ 上所有圖形對 $(g_i, g_j)$ ，若兩者不同網路且距離 $d(g_i, g_j) < S_{\min}$ ，則違規。間距檢測若用兩兩暴力法是 $O(n^2)$ ；實務用**掃描線（sweep line）演算法**降到約 $O(n \log n)$ 。
+形式化：對圖層 $`L`$ 上所有圖形對 $`(g_i, g_j)`$ ，若兩者不同網路且距離 $`d(g_i, g_j) < S_{\min}`$ ，則違規。間距檢測若用兩兩暴力法是 $`O(n^2)`$ ；實務用**掃描線（sweep line）演算法**降到約 $`O(n \log n)`$ 。
 
 ### 2. LVS（Layout vs Schematic）：圖形與網表的比對
 LVS 是「對照筆錄」：從佈局萃取（extract）出電路網表，再與 schematic 網表做**圖同構（graph isomorphism）**比對：
 
 - 節點 = 電路節點（net），邊 = 元件端點連接。
-- 兩網表同構且元件參數（ $W/L$ 、電容值）在容差內 → LVS clean。
+- 兩網表同構且元件參數（ $`W/L`$ 、電容值）在容差內 → LVS clean。
 - 圖同構一般問題複雜度未知，但電路網表因有高度規則結構與分割（partitioning by hierarchy）而可實用求解。
 
 ### 3. ERC（Electrical Rule Check）
@@ -39,13 +39,17 @@ DRC 管幾何、LVS 管連接，ERC 管電氣常識：
 ### 4. 天線效應（Antenna Effect）與 DFM
 蝕刻時金屬線累積電荷，若連接到閘極面積過大，比例超限會擊穿閘氧化層。天線比值規則：
 
-$$\text{ANT} = \frac{A_{\text{metal}}}{A_{\text{gate}}} \leq R_{\max}$$
+$$
+\text{ANT} = \frac{A_{\text{metal}}}{A_{\text{gate}}} \leq R_{\max}
+$$
 
 修復方式：跳層（jump up a layer）、加保護二極體。DFM（Design for Manufacturability）則在 DRC 之上加入良率導向規則：冗余 via、金屬填充（fill）、關鍵面積分析（CAA），良率模型可用 Poisson 近似：
 
-$$Y \approx e^{-A \cdot D_0}$$
+$$
+Y \approx e^{-A \cdot D_0}
+$$
 
-其中 $A$ 為關鍵面積、 $D_0$ 為缺陷密度。
+其中 $`A`$ 為關鍵面積、 $`D_0`$ 為缺陷密度。
 
 ### 5. Signoff 概念
 Signoff = 「結案簽名」：DRC clean + LVS clean + ERC clean + 天線 clean +（後期）timing/IR-drop 全數通過，才允許 tape-out。1990s 後期 Calibre 成為 de facto signoff 標準，foundry（台積電、聯電）只認可特定工具版本簽出的結果。
@@ -93,7 +97,7 @@ print(min_spacing_drc([r1, r2], 0.5))   # 印出違規對與間距 0.3
 - Signoff 制度使「無晶圓設計公司（fabless）＋專業代工（foundry）」的分工模式可行——雙方靠同一套驗證規則互信。
 
 ## 關鍵人物與文獻
-- Carver Mead、Lynn Conway：《Introduction to VLSI Systems》(1980)， $\lambda$ 設計規則的起源。
+- Carver Mead、Lynn Conway：《Introduction to VLSI Systems》(1980)， $`\lambda`$ 設計規則的起源。
 - Mentor Graphics：Calibre（1990s 推出，至今仍是 DRC/LVS signoff 主流）。
 - IBM：內部驗證工具與 hierarchical LVS 演算法先驅。
 - A. Sangiovanni-Vincentelli 等：EDA 演算法與驗證方法學的學術奠基者。

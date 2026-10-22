@@ -16,47 +16,63 @@ Jacob Bernoulli 的偵查思路可以概括為四步：把物理情境翻譯成�
 
 ### 第一步：把滑落時間寫成積分
 
-設珠子從曲線上高度為 $y$ 的位置（以最低點為原點， $y$ 向上為正）出發。由能量守恆，珠子滑到高度 $h$ 時的速度滿足：
+設珠子從曲線上高度為 $`y`$ 的位置（以最低點為原點， $`y`$ 向上為正）出發。由能量守恆，珠子滑到高度 $`h`$ 時的速度滿足：
 
-$$\frac{1}{2} m v^2 = m g (y - h) \quad\Rightarrow\quad v = \sqrt{2g(y-h)}$$
+$$
+\frac{1}{2} m v^2 = m g (y - h) \quad\Rightarrow\quad v = \sqrt{2g(y-h)}
+$$
 
-沿曲線的弧長微元是 $ds = \sqrt{1 + (x')^2}\, dy$ （把 $x$ 視為 $y$ 的函數），因此從 $y$ 滑到最低點所需的總時間為：
+沿曲線的弧長微元是 $`ds = \sqrt{1 + (x')^2}\, dy`$ （把 $`x`$ 視為 $`y`$ 的函數），因此從 $`y`$ 滑到最低點所需的總時間為：
 
-$$T(y) = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh$$
+$$
+T(y) = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh
+$$
 
-等時的要求是： $T(y)$ 與出發點 $y$ **無關**，恆為常數 $T_0$ 。
+等時的要求是： $`T(y)`$ 與出發點 $`y`$ **無關**，恆為常數 $`T_0`$ 。
 
 ### 第二步：對時間式求導，誕生微分方程
 
 Jacob 的關鍵靈感是：與其直接處理這個難看的積分，不如對它求導。利用微積分基本定理（將積分上限換元處理），他推得：
 
-$$T_0 = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh$$
+$$
+T_0 = \int_0^y \frac{\sqrt{1 + (x')^2}}{\sqrt{2g(y-h)}}\, dh
+$$
 
-經過變數代換與求導，可將其化為（以現代記號，令 $y$ 為縱座標、時間為參數）一個關於運動的二階微分方程。設珠子沿曲線運動，速度的鉛直分量為 $\dot{y}$ ，由能量守恆 $\dot{y}^2 \propto y$ 。再對時間求導：
+經過變數代換與求導，可將其化為（以現代記號，令 $`y`$ 為縱座標、時間為參數）一個關於運動的二階微分方程。設珠子沿曲線運動，速度的鉛直分量為 $`\dot{y}`$ ，由能量守恆 $`\dot{y}^2 \propto y`$ 。再對時間求導：
 
-$$\dot{y}^2 = 2g(y_0 - y) \cdot k \quad\Rightarrow\quad 2\dot{y}\ddot{y} = -2gk\,\dot{y} \quad\Rightarrow\quad \ddot{y} = -gk$$
+$$
+\dot{y}^2 = 2g(y_0 - y) \cdot k \quad\Rightarrow\quad 2\dot{y}\ddot{y} = -2gk\,\dot{y} \quad\Rightarrow\quad \ddot{y} = -gk
+$$
 
-更一般地，沿擺線運動時弧長參數 $s$ 滿足：
+更一般地，沿擺線運動時弧長參數 $`s`$ 滿足：
 
-$$\ddot{s} = -\omega^2 s$$
+$$
+\ddot{s} = -\omega^2 s
+$$
 
-這正是**簡諧運動方程**：加速度與位移成正比、方向相反。等時性一下子變得顯而易見——簡諧運動的週期 $T = 2\pi/\omega$ 只由系統參數決定，與振幅（也就是出發點）完全無關！
+這正是**簡諧運動方程**：加速度與位移成正比、方向相反。等時性一下子變得顯而易見——簡諧運動的週期 $`T = 2\pi/\omega`$ 只由系統參數決定，與振幅（也就是出發點）完全無關！
 
 ### 第三步：解微分方程，找出曲線
 
-現在問題反轉：什麼樣的曲線能讓沿線滑動的弧長 $s$ 服從 $\ddot{s} = -\omega^2 s$ ？Jacob 透過曲率的分析指出：曲線在每一點的曲率半徑 $\rho$ 必須滿足：
+現在問題反轉：什麼樣的曲線能讓沿線滑動的弧長 $`s`$ 服從 $`\ddot{s} = -\omega^2 s`$ ？Jacob 透過曲率的分析指出：曲線在每一點的曲率半徑 $`\rho`$ 必須滿足：
 
-$$\rho \propto \frac{ds}{dy} \cdot s \quad\Rightarrow\quad \rho \propto s$$
+$$
+\rho \propto \frac{ds}{dy} \cdot s \quad\Rightarrow\quad \rho \propto s
+$$
 
 即**曲率半徑與弧長成正比**。解這個幾何微分條件，設曲線參數式為：
 
-$$x = a(\theta - \sin\theta), \qquad y = a(1 - \cos\theta)$$
+$$
+x = a(\theta - \sin\theta), \qquad y = a(1 - \cos\theta)
+$$
 
-驗證：對 $\theta$ 求導得 $dx = a(1-\cos\theta)d\theta$ ， $dy = a\sin\theta\, d\theta$ ，故
+驗證：對 $`\theta`$ 求導得 $`dx = a(1-\cos\theta)d\theta`$ ， $`dy = a\sin\theta\, d\theta`$ ，故
 
-$$ds = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = a\sqrt{2 - 2\cos\theta}\, d\theta = 2a\sin\frac{\theta}{2}\, d\theta$$
+$$
+ds = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = a\sqrt{2 - 2\cos\theta}\, d\theta = 2a\sin\frac{\theta}{2}\, d\theta
+$$
 
-積分得弧長 $s = 4a\left(1 - \cos\frac{\theta}{2}\right) = 2(y_0 - y)/1 \cdot (\cdots)$ ，代入運動方程後確實得到 $\ddot{s} = -\omega^2 s$ ，其中 $\omega^2 = g/(4a)$ 。
+積分得弧長 $`s = 4a\left(1 - \cos\frac{\theta}{2}\right) = 2(y_0 - y)/1 \cdot (\cdots)`$ ，代入運動方程後確實得到 $`\ddot{s} = -\omega^2 s`$ ，其中 $`\omega^2 = g/(4a)`$ 。
 
 ### 第四步：辦案結論——就是擺線
 
@@ -67,7 +83,7 @@ $$ds = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = a\sqrt{2 - 2\cos\thet
 | 面向 | Huygens (1659) | Jacob Bernoulli (1690) |
 |------|----------------|------------------------|
 | 方法 | 純幾何：輔助線、比例、運動合成分解 | 微積分：積分、求導、微分方程 |
-| 表述 | 曲線的幾何性質 | 運動的微分方程 $\ddot{s} = -\omega^2 s$ |
+| 表述 | 曲線的幾何性質 | 運動的微分方程 $`\ddot{s} = -\omega^2 s`$ |
 | 可讀性 | 繁瑣難懂 | 程序化、可推廣 |
 | 歷史意義 | 等時性的首次證明 | 微分方程首次用於力學 |
 
@@ -80,7 +96,7 @@ Huygens 證明的是「這條曲線有等時性」；Jacob 證明的是「等時
 這一案的遺產極為深遠：
 
 1. **微分方程正式成為力學的語言**。從此，「列方程、解方程」成為數學物理的標準作業流程，直達 Newton《Principia》之後的整個理性力學傳統。
-2. **簡諧運動 $\ddot{y} \propto -y$ 的典範地位**確立。日後從聲學、電路到量子諧振子，這個方程無所不在，而其「週期與振幅無關」的等時性正是線性系統的標誌。
+2. **簡諧運動 $`\ddot{y} \propto -y`$ 的典範地位**確立。日後從聲學、電路到量子諧振子，這個方程無所不在，而其「週期與振幅無關」的等時性正是線性系統的標誌。
 3. **解題反轉的思想**：Jacob 先寫出積分式再求導得微分方程，這種「從積分方程到微分方程」的手法，是後世積分方程理論（Abel、Fredholm）的遠祖——事實上 Abel 在 1826 年解廣義等時曲線問題時，正是沿著 Jacob 的路徑寫出了歷史上第一個積分方程。
 4. **伯努利家族的競爭文化**：Jacob 在文末發出的挑戰，點燃了 Johann 與變分法的誕生（見 [1696-最速降線問題.md](1696-最速降線問題.md)），也預示了家族內部、乃至歐洲數學界以「公開挑戰」推動進步的獨特生態。
 
@@ -123,4 +139,4 @@ for theta0 in [0.2, 0.8, 1.6, 1.4*np.pi, 1.9*np.pi]:
 # 觀察：無論 theta0 為何，滑落時間都等於理論值 → 等時性成立
 ```
 
-執行後可見：不管珠子從擺線上哪一點出發，抵達最低點的時間都收斂到同一個值 $\pi\sqrt{a/g} \cdot (\text{修正因子})$ ——這正是 Jacob Bernoulli 在 1690 年用微分方程揭曉的答案。
+執行後可見：不管珠子從擺線上哪一點出發，抵達最低點的時間都收斂到同一個值 $`\pi\sqrt{a/g} \cdot (\text{修正因子})`$ ——這正是 Jacob Bernoulli 在 1690 年用微分方程揭曉的答案。

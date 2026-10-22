@@ -13,27 +13,35 @@
 
 ### PageRank 演算法
 
-$$PR(p) = \frac{1-d}{N} + d\sum_{q \in M(p)} \frac{PR(q)}{L(q)}$$
+$$
+PR(p) = \frac{1-d}{N} + d\sum_{q \in M(p)} \frac{PR(q)}{L(q)}
+$$
 
 其中：
-- $N$ ：全網網頁總數
-- $d$ ：阻尼因子（damping factor），通常 $d = 0.85$ ，表示隨機跳轉者有 $d$ 機率沿連結走、 $1-d$ 機率隨機跳到任一頁
-- $M(p)$ ：所有連結到 $p$ 的網頁集合
-- $L(q)$ ：網頁 $q$ 的出鏈總數（把 $PR(q)$ 平分給它推薦的每頁）
+- $`N`$ ：全網網頁總數
+- $`d`$ ：阻尼因子（damping factor），通常 $`d = 0.85`$ ，表示隨機跳轉者有 $`d`$ 機率沿連結走、 $`1-d`$ 機率隨機跳到任一頁
+- $`M(p)`$ ：所有連結到 $`p`$ 的網頁集合
+- $`L(q)`$ ：網頁 $`q`$ 的出鏈總數（把 $`PR(q)`$ 平分給它推薦的每頁）
 
-這是自指方程組，可改寫成矩陣形式的不動點問題。設 $M$ 為列隨機轉移矩陣（ $M_{ij}$ = 從頁 $j$ 走到頁 $i$ 的機率），則：
+這是自指方程組，可改寫成矩陣形式的不動點問題。設 $`M`$ 為列隨機轉移矩陣（ $`M_{ij}`$ = 從頁 $`j`$ 走到頁 $`i`$ 的機率），則：
 
-$$PR = dM \cdot PR + \frac{1-d}{N}\mathbf{1}$$
+$$
+PR = dM \cdot PR + \frac{1-d}{N}\mathbf{1}
+$$
 
 整理得：
 
-$$(I - dM)\,PR = \frac{1-d}{N}\mathbf{1}$$
+$$
+(I - dM)\,PR = \frac{1-d}{N}\mathbf{1}
+$$
 
-由 Perron–Frobenius 定理，隨機矩陣 $G = dM + \frac{1-d}{N}\mathbf{1}\mathbf{1}^T$ 存在唯一的最大特徵值 $\lambda_1 = 1$ ，對應的特徵向量即為 PageRank：
+由 Perron–Frobenius 定理，隨機矩陣 $`G = dM + \frac{1-d}{N}\mathbf{1}\mathbf{1}^T`$ 存在唯一的最大特徵值 $`\lambda_1 = 1`$ ，對應的特徵向量即為 PageRank：
 
-$$G \cdot PR = \lambda_1 \cdot PR = 1 \cdot PR$$
+$$
+G \cdot PR = \lambda_1 \cdot PR = 1 \cdot PR
+$$
 
-阻尼因子 $d$ 的妙用：它保證 $G$ 是正矩陣（每個元素 $> 0$ ），使鏈路圖強連通、特徵向量唯一且疮度收斂——純數學保證了演算法不會發散、不會陷入「蜘蛛網孤島」。
+阻尼因子 $`d`$ 的妙用：它保證 $`G`$ 是正矩陣（每個元素 $`> 0`$ ），使鏈路圖強連通、特徵向量唯一且疮度收斂——純數學保證了演算法不會發散、不會陷入「蜘蛛網孤島」。
 
 ### Python numpy 實作 PageRank 疊代
 
@@ -77,15 +85,19 @@ for p, r in sorted(ranks.items(), key=lambda x: -x[1]):
 
 疊代收斂速度由第二大特徵值決定：
 
-$$\|PR_{k+1} - PR^*\| \leq d \cdot \|PR_k - PR^*\|$$
+$$
+\|PR_{k+1} - PR^*\| \leq d \cdot \|PR_k - PR^*\|
+$$
 
-誤差每輪至少衰減 $d = 0.85$ 倍，約 100 輪內收斂——1998 年的網路僅數千萬頁，數台電腦即可算完全網排名。
+誤差每輪至少衰減 $`d = 0.85`$ 倍，約 100 輪內收斂——1998 年的網路僅數千萬頁，數台電腦即可算完全網排名。
 
 ### Backlink 哲學與商業模式
 - **backlink 哲學**：搜尋排名不由廣告費決定，而由「網路民主投票」決定——每條超連結是一票，重要網頁的票更重。垃圾關鍵字堆砌瞬間失效，因為垃圾站得不到 backlink。
 - **AdWords（2000 年 10 月）**：商業模式的破格——廣告與搜尋結果嚴格分離，用競價（CPC）排序廣告。數學化：廣告排序分數 = 競價 × 點擊率預估值
 
-$$\text{AdRank} = \text{bid} \times E[\text{CTR} \mid \text{query}]$$
+$$
+\text{AdRank} = \text{bid} \times E[\text{CTR} \mid \text{query}]
+$$
 
 「不干擾搜尋結果」反而贏得信任，成就史上最賺錢的廣告機器。
 

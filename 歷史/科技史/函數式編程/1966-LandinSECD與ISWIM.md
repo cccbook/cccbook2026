@@ -33,11 +33,11 @@ $$
 ([], E, (\text{id}) :: C, D) \longrightarrow (E(\text{id}) :: [], E, C, D)
 $$
 
-函數應用則把 dump 當作返回地址：保存舊的 $(S, E, C)$ ，建立新環境求值函數體，結束後從 dump 回復。
+函數應用則把 dump 當作返回地址：保存舊的 $`(S, E, C)`$ ，建立新環境求值函數體，結束後從 dump 回復。
 
 ### 線索二：closure 的誕生
 
-Landin 定義了 closure 這個詞：函數值不只是 $\lambda x.M$ ，還必須攜帶定義時的環境 $\rho$ ：
+Landin 定義了 closure 這個詞：函數值不只是 $`\lambda x.M`$ ，還必須攜帶定義時的環境 $`\rho`$ ：
 
 $$
 \text{closure} = (\lambda x.\, M,\; \rho)
@@ -51,7 +51,7 @@ ISWIM（If you See What I Mean）以 M-expression 為基礎，加上兩項發明
 
 - where 子句：`x = a where f = ...` 把定義放在使用之後，呼應數學寫作習慣。
 - offside rule（縮排規則）：以縮排取代括號——「有東西在右邊突出就是運算元」。此規則後進入 Haskell 與 Python 的語法。
-- letrec：遞迴綁定， $\text{letrec}\; f = e \;\text{in}\; b$ 的語義由 SECD 機器中的循環環境實現。
+- letrec：遞迴綁定， $`\text{letrec}\; f = e \;\text{in}\; b`$ 的語義由 SECD 機器中的循環環境實現。
 
 ### 破案時刻：Python 實作 mini-SECD 機器
 
@@ -100,7 +100,7 @@ print(secd_run(code2))  # 11
 
 ### 補充線索
 
-- Church-Rosser 性質： $\beta$ -歸約的順序不影響最終結果（合流性），保證 SECD 的小步求值語義一致：
+- Church-Rosser 性質： $`\beta`$ -歸約的順序不影響最終結果（合流性），保證 SECD 的小步求值語義一致：
 
 $$
 \text{若 } M \to^* P \text{ 且 } M \to^* Q,\ \text{則存在 } N \text{ 使 } P \to^* N \text{ 且 } Q \to^* N

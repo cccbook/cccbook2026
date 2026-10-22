@@ -11,7 +11,7 @@
 ## 線索與推理 -- 數學式、程式、理論（本體）
 
 ### 線索一：佈局是組合爆炸的遊戲
-Floorplanning 可視為「把 $n$ 個方塊放進棋盤」的問題。若每個方塊有 $k$ 個候選位置，狀態空間為 $k^n$ 。以 $n=10^7$ 、 $k=10^3$ 計：
+Floorplanning 可視為「把 $`n`$ 個方塊放進棋盤」的問題。若每個方塊有 $`k`$ 個候選位置，狀態空間為 $`k^n`$ 。以 $`n=10^7`$ 、 $`k=10^3`$ 計：
 
 $$
 |\text{states}| = k^n = (10^3)^{10^7} = 10^{3\times 10^7}
@@ -22,9 +22,9 @@ $$
 ### 線索二：強化學習公式（Q-learning / Bellman 更新）
 Google 2021 Nature 論文《A graph placement methodology for fast chip design using a deep RL algorithm》將 floorplanning 視為馬可夫決策過程（MDP）：
 
-- **狀態 $s$ **：當前版圖（已放置的巨集與 netlist 特徵，以圖神經網路 GNN 編碼）
-- **動作 $a$ **：把下一個巨集放到某個座標
-- **獎勵 $r$ **：線長（wirelength）、擁塞（congestion）、密度（density）的加權負值
+- **狀態 $`s`$ **：當前版圖（已放置的巨集與 netlist 特徵，以圖神經網路 GNN 編碼）
+- **動作 $`a`$ **：把下一個巨集放到某個座標
+- **獎勵 $`r`$ **：線長（wirelength）、擁塞（congestion）、密度（density）的加權負值
 
 Q-learning 更新式：
 
@@ -32,7 +32,7 @@ $$
 Q(s,a) \leftarrow Q(s,a) + \alpha\left[r + \gamma\max_{a'} Q(s',a') - Q(s,a)\right]
 $$
 
-其中 $\alpha$ 為學習率、 $\gamma$ 為折扣因子。理論定義：**MDP** $= (S, A, P, R, \gamma)$ ，最佳策略 $\pi^*(s) = \arg\max_a Q^*(s,a)$ 。Google 用 RL 在 6 小時內產出與人類工程師數週成果相當、甚至更優的 TPU 佈局。
+其中 $`\alpha`$ 為學習率、 $`\gamma`$ 為折扣因子。理論定義：**MDP** $`= (S, A, P, R, \gamma)`$ ，最佳策略 $`\pi^*(s) = \arg\max_a Q^*(s,a)`$ 。Google 用 RL 在 6 小時內產出與人類工程師數週成果相當、甚至更優的 TPU 佈局。
 
 ### 線索三：Surrogate Model —— AI 加速模擬
 精確模擬（如 SPICE 電晶體級分析）太慢，可用代理模型（surrogate model）近似：
