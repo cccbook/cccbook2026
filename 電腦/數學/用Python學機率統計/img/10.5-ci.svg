@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="648.000pt" height="396.000pt" viewBox="0 0 648.000 396.000">
+<rect x="0" y="0" width="648.000" height="396.000" fill="white"/>
+<text x="338.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">平均重量差（日班 − 夜班）的 95% 信賴區間</text>
+<path d="M 59.040 322.560 M 112.067 322.560 L 112.067 329.760 M 241.400 322.560 L 241.400 329.760 M 370.733 322.560 L 370.733 329.760 M 500.067 322.560 L 500.067 329.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="112.067" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-6</text>
+<text x="241.400" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-4</text>
+<text x="370.733" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="500.067" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<path d="M 59.040 59.040 M 59.040 312.800 L 66.240 312.800 M 59.040 68.800 L 66.240 68.800" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="317.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end"></text>
+<text x="44.640" y="73.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<path d="M 59.040 322.560 L 617.760 322.560 L 617.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 500.067 312.800 L 500.067 68.800" fill="none" stroke="gray" stroke-width="0.750"/>
+<path d="M 190.130 210.320 L 476.720 210.320" fill="none" stroke="black" stroke-width="1.875"/>
+<path d="M 190.130 232.280 L 190.130 188.360" fill="none" stroke="black" stroke-width="1.875"/>
+<path d="M 476.720 232.280 L 476.720 188.360" fill="none" stroke="black" stroke-width="1.875"/>
+<path d="M 333.425 259.120 L 333.425 161.520" fill="none" stroke="red" stroke-width="2.625"/>
+<text x="99.133" y="112.720" font-family="sans-serif" font-size="12.000" fill="red" text-anchor="middle" dominant-baseline="alphabetic">點估計 = -2.577（紅線）</text>
+<text x="99.133" y="146.880" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">95% CI = [-4.793, -0.361]（黑線）</text>
+<text x="99.133" y="176.160" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">SE = 1.1187   t = -2.3034   df = 115.44</text>
+<text x="99.133" y="205.440" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">p = 0.02304 &lt; 0.05</text>
+<text x="99.133" y="278.640" font-family="sans-serif" font-size="12.000" fill="gray" text-anchor="middle" dominant-baseline="alphabetic">灰線 = 0（無差異的虛無假設）</text>
+<text x="338.400" y="394.560" font-family="sans-serif" font-size="10.200" fill="black" text-anchor="middle">信賴區間不包含 0，故拒絕 H0: 平均差 = 0</text>
+</svg>

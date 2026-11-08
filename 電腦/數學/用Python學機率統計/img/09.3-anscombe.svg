@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="540.000pt" height="504.000pt" viewBox="0 0 540.000 504.000">
+<rect x="0" y="0" width="540.000" height="504.000" fill="white"/>
+<text x="149.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">Anscombe 組 1</text>
+<text x="149.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="15.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 118.800)">y</text>
+<path d="M 59.040 178.560 M 104.349 178.560 L 104.349 185.760 M 168.708 178.560 L 168.708 185.760 M 233.067 178.560 L 233.067 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="104.349" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="168.708" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="233.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<path d="M 59.040 59.040 M 59.040 148.595 L 66.240 148.595 M 59.040 106.031 L 66.240 106.031 M 59.040 63.467 L 66.240 63.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="152.795" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="110.231" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="44.640" y="67.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 59.040 178.560 L 239.760 178.560 L 239.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="168.708" cy="122.716" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="142.964" cy="131.995" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="207.323" cy="126.632" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="155.836" cy="116.161" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="181.579" cy="120.247" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="220.195" cy="106.371" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="117.221" cy="129.526" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="91.477" cy="154.894" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="194.451" cy="98.880" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="130.092" cy="150.127" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="104.349" cy="142.806" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 65.733 157.105 L 69.917 155.722 L 74.100 154.338 L 78.283 152.955 L 82.467 151.571 L 86.650 150.187 L 90.833 148.804 L 95.017 147.420 L 99.200 146.037 L 103.383 144.653 L 107.567 143.270 L 111.750 141.886 L 115.933 140.502 L 120.117 139.119 L 124.300 137.735 L 128.483 136.352 L 132.667 134.968 L 136.850 133.584 L 141.033 132.201 L 145.217 130.817 L 149.400 129.434 L 153.583 128.050 L 157.767 126.667 L 161.950 125.283 L 166.133 123.899 L 170.317 122.516 L 174.500 121.132 L 178.683 119.749 L 182.867 118.365 L 187.050 116.981 L 191.233 115.598 L 195.417 114.214 L 199.600 112.831 L 203.783 111.447 L 207.967 110.063 L 212.150 108.680 L 216.333 107.296 L 220.517 105.913 L 224.700 104.529 L 228.883 103.146 L 233.067 101.762" fill="none" stroke="red" stroke-width="1.500"/>
+<text x="419.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">Anscombe 組 2</text>
+<text x="419.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="285.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 285.840 118.800)">y</text>
+<path d="M 329.040 178.560 M 374.349 178.560 L 374.349 185.760 M 438.708 178.560 L 438.708 185.760 M 503.067 178.560 L 503.067 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="374.349" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="438.708" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="503.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<path d="M 329.040 59.040 M 329.040 148.595 L 336.240 148.595 M 329.040 106.031 L 336.240 106.031 M 329.040 63.467 L 336.240 63.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="314.640" y="152.795" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="314.640" y="110.231" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="314.640" y="67.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 329.040 178.560 L 509.760 178.560 L 509.760 59.040 L 329.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="438.708" cy="113.352" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="121.865" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="477.323" cy="116.757" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="425.836" cy="116.502" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="451.579" cy="112.330" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="490.195" cy="122.205" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="387.221" cy="138.975" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="361.477" cy="164.769" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="464.451" cy="113.437" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="400.092" cy="129.356" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="374.349" cy="150.808" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 335.733 157.100 L 339.917 155.717 L 344.100 154.333 L 348.283 152.950 L 352.467 151.567 L 356.650 150.183 L 360.833 148.800 L 365.017 147.417 L 369.200 146.033 L 373.383 144.650 L 377.567 143.267 L 381.750 141.883 L 385.933 140.500 L 390.117 139.117 L 394.300 137.733 L 398.483 136.350 L 402.667 134.967 L 406.850 133.583 L 411.033 132.200 L 415.217 130.817 L 419.400 129.433 L 423.583 128.050 L 427.767 126.667 L 431.950 125.283 L 436.133 123.900 L 440.317 122.517 L 444.500 121.133 L 448.683 119.750 L 452.867 118.367 L 457.050 116.983 L 461.233 115.600 L 465.417 114.217 L 469.600 112.833 L 473.783 111.450 L 477.967 110.067 L 482.150 108.683 L 486.333 107.300 L 490.517 105.917 L 494.700 104.533 L 498.883 103.150 L 503.067 101.767" fill="none" stroke="red" stroke-width="1.500"/>
+<text x="149.400" y="303.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">Anscombe 組 3</text>
+<text x="149.400" y="473.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="15.840" y="370.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 370.800)">y</text>
+<path d="M 59.040 430.560 M 104.349 430.560 L 104.349 437.760 M 168.708 430.560 L 168.708 437.760 M 233.067 430.560 L 233.067 437.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="104.349" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="168.708" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="233.067" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<path d="M 59.040 311.040 M 59.040 400.595 L 66.240 400.595 M 59.040 358.031 L 66.240 358.031 M 59.040 315.467 L 66.240 315.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="404.795" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="362.231" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="44.640" y="319.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 59.040 430.560 L 239.760 430.560 L 239.760 311.040 L 59.040 311.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="168.708" cy="379.653" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="142.964" cy="385.527" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="207.323" cy="334.706" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="155.836" cy="382.633" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="181.579" cy="376.674" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="220.195" cy="367.906" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="117.221" cy="391.401" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="91.477" cy="397.275" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="194.451" cy="373.779" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="130.092" cy="388.507" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="104.349" cy="394.381" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 65.733 409.091 L 69.917 407.709 L 74.100 406.326 L 78.283 404.944 L 82.467 403.561 L 86.650 402.179 L 90.833 400.796 L 95.017 399.413 L 99.200 398.031 L 103.383 396.648 L 107.567 395.266 L 111.750 393.883 L 115.933 392.500 L 120.117 391.118 L 124.300 389.735 L 128.483 388.353 L 132.667 386.970 L 136.850 385.588 L 141.033 384.205 L 145.217 382.822 L 149.400 381.440 L 153.583 380.057 L 157.767 378.675 L 161.950 377.292 L 166.133 375.910 L 170.317 374.527 L 174.500 373.144 L 178.683 371.762 L 182.867 370.379 L 187.050 368.997 L 191.233 367.614 L 195.417 366.231 L 199.600 364.849 L 203.783 363.466 L 207.967 362.084 L 212.150 360.701 L 216.333 359.319 L 220.517 357.936 L 224.700 356.553 L 228.883 355.171 L 233.067 353.788" fill="none" stroke="red" stroke-width="1.500"/>
+<text x="419.400" y="303.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">Anscombe 組 4</text>
+<text x="419.400" y="473.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="285.840" y="370.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 285.840 370.800)">y</text>
+<path d="M 329.040 430.560 M 374.349 430.560 L 374.349 437.760 M 438.708 430.560 L 438.708 437.760 M 503.067 430.560 L 503.067 437.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="374.349" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="438.708" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="503.067" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<path d="M 329.040 311.040 M 329.040 400.595 L 336.240 400.595 M 329.040 358.031 L 336.240 358.031 M 329.040 315.467 L 336.240 315.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="314.640" y="404.795" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="314.640" y="362.231" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="314.640" y="319.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 329.040 430.560 L 509.760 430.560 L 509.760 311.040 L 329.040 311.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="387.145" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="394.125" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="377.525" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="367.906" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="371.055" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="383.229" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="398.467" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="554.554" cy="336.749" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="395.828" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="375.823" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="412.964" cy="384.506" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 335.733 409.095 L 339.917 407.711 L 344.100 406.328 L 348.283 404.945 L 352.467 403.562 L 356.650 402.179 L 360.833 400.796 L 365.017 399.413 L 369.200 398.030 L 373.383 396.647 L 377.567 395.264 L 381.750 393.881 L 385.933 392.498 L 390.117 391.114 L 394.300 389.731 L 398.483 388.348 L 402.667 386.965 L 406.850 385.582 L 411.033 384.199 L 415.217 382.816 L 419.400 381.433 L 423.583 380.050 L 427.767 378.667 L 431.950 377.284 L 436.133 375.901 L 440.317 374.517 L 444.500 373.134 L 448.683 371.751 L 452.867 370.368 L 457.050 368.985 L 461.233 367.602 L 465.417 366.219 L 469.600 364.836 L 473.783 363.453 L 477.967 362.070 L 482.150 360.687 L 486.333 359.304 L 490.517 357.921 L 494.700 356.537 L 498.883 355.154 L 503.067 353.771" fill="none" stroke="red" stroke-width="1.500"/>
+</svg>

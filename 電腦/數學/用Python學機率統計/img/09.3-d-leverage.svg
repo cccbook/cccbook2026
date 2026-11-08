@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360.000pt" height="302.400pt" viewBox="0 0 360.000 302.400">
+<rect x="0" y="0" width="360.000" height="302.400" fill="white"/>
+<text x="194.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">槓桿點（x 極端）</text>
+<text x="194.400" y="272.160" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">擬合值 fitted</text>
+<text x="15.840" y="144.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 144.000)">殘差 residual</text>
+<path d="M 59.040 228.960 M 106.646 228.960 L 106.646 236.160 M 155.203 228.960 L 155.203 236.160 M 203.761 228.960 L 203.761 236.160 M 252.319 228.960 L 252.319 236.160 M 300.877 228.960 L 300.877 236.160" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="106.646" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="155.203" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">20</text>
+<text x="203.761" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">30</text>
+<text x="252.319" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">40</text>
+<text x="300.877" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">50</text>
+<path d="M 59.040 59.040 M 59.040 228.068 L 66.240 228.068 M 59.040 188.027 L 66.240 188.027 M 59.040 147.985 L 66.240 147.985 M 59.040 107.943 L 66.240 107.943 M 59.040 67.901 L 66.240 67.901" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="232.268" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-2</text>
+<text x="44.640" y="192.227" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-1</text>
+<text x="44.640" y="152.185" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="112.143" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<text x="44.640" y="72.101" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">2</text>
+<path d="M 59.040 228.960 L 329.760 228.960 L 329.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="71.495" cy="180.184" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="81.327" cy="143.023" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="91.159" cy="115.442" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="100.992" cy="179.586" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="110.824" cy="164.138" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="120.657" cy="120.134" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="130.489" cy="113.636" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="140.322" cy="126.821" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="150.154" cy="181.856" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="159.986" cy="191.422" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="169.819" cy="87.810" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="179.651" cy="139.050" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="189.484" cy="146.833" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="199.316" cy="156.212" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="209.149" cy="200.190" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="218.981" cy="128.858" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="228.814" cy="163.055" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="238.646" cy="162.675" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="248.478" cy="118.981" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="258.311" cy="124.445" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="317.305" cy="163.329" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

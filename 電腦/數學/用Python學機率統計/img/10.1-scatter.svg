@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="360.000pt" viewBox="0 0 504.000 360.000">
+<rect x="0" y="0" width="504.000" height="360.000" fill="white"/>
+<text x="266.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">手動組裝的散佈圖</text>
+<text x="266.400" y="329.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">X</text>
+<text x="15.840" y="172.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 172.800)">Y</text>
+<path d="M 59.040 286.560 M 74.400 286.560 L 74.400 293.760 M 170.400 286.560 L 170.400 293.760 M 266.400 286.560 L 266.400 293.760 M 362.400 286.560 L 362.400 293.760 M 458.400 286.560 L 458.400 293.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="74.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">30</text>
+<text x="170.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">40</text>
+<text x="266.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">50</text>
+<text x="362.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">60</text>
+<text x="458.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">70</text>
+<path d="M 59.040 59.040 M 59.040 278.133 L 66.240 278.133 M 59.040 225.467 L 66.240 225.467 M 59.040 172.800 L 66.240 172.800 M 59.040 120.133 L 66.240 120.133 M 59.040 67.467 L 66.240 67.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="282.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">30</text>
+<text x="44.640" y="229.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">40</text>
+<text x="44.640" y="177.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">50</text>
+<text x="44.640" y="124.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">60</text>
+<text x="44.640" y="71.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">70</text>
+<path d="M 59.040 286.560 L 473.760 286.560 L 473.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="332.208" cy="148.173" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="239.299" cy="159.444" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="283.834" cy="142.190" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="296.774" cy="183.007" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="285.802" cy="155.778" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="261.302" cy="218.994" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="338.957" cy="179.526" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="261.859" cy="196.084" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="363.283" cy="217.772" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="263.386" cy="172.426" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="329.030" cy="155.352" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="376.157" cy="161.229" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="199.738" cy="165.632" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="253.018" cy="194.509" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="259.997" cy="210.056" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="296.928" cy="155.541" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="252.758" cy="196.784" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="138.893" cy="159.254" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="149.261" cy="206.654" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="329.770" cy="143.370" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="251.683" cy="167.149" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="180.893" cy="209.856" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="258.144" cy="132.889" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="324.701" cy="144.676" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="357.370" cy="152.966" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="245.741" cy="169.482" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="254.054" cy="157.284" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="181.766" cy="186.688" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="288.480" cy="247.376" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="235.680" cy="171.199" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 59.040 172.800 L 473.760 172.800" fill="none" stroke="gray" stroke-width="0.750"/>
+<path d="M 266.400 59.040 L 266.400 286.560" fill="none" stroke="gray" stroke-width="0.750"/>
+<rect x="93.600" y="49.200" width="57.600" height="28.800" fill="white" stroke="black" stroke-width="0.75"/>
+<circle cx="111.600" cy="63.600" r="2.700" fill="black"/>
+<text x="123.600" y="67.800" font-family="sans-serif" font-size="12.000" fill="black">樣本點</text>
+</svg>

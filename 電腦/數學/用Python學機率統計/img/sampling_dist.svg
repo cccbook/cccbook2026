@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="324.000pt" viewBox="0 0 504.000 324.000">
+<rect x="0" y="0" width="504.000" height="324.000" fill="white"/>
+<text x="266.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1000 個樣本平均數的分布</text>
+<text x="266.400" y="293.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">樣本平均數 (cm)</text>
+<text x="15.840" y="154.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 154.800)">Frequency</text>
+<path d="M 59.040 250.560 M 112.800 250.560 L 112.800 257.760 M 189.600 250.560 L 189.600 257.760 M 266.400 250.560 L 266.400 257.760 M 343.200 250.560 L 343.200 257.760 M 420.000 250.560 L 420.000 257.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="112.800" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">166</text>
+<text x="189.600" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">168</text>
+<text x="266.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">170</text>
+<text x="343.200" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">172</text>
+<text x="420.000" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">174</text>
+<path d="M 59.040 59.040 M 59.040 243.467 L 66.240 243.467 M 59.040 211.686 L 66.240 211.686 M 59.040 179.906 L 66.240 179.906 M 59.040 148.126 L 66.240 148.126 M 59.040 116.346 L 66.240 116.346 M 59.040 84.566 L 66.240 84.566" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="247.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="215.886" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">50</text>
+<text x="44.640" y="184.106" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">100</text>
+<text x="44.640" y="152.326" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">150</text>
+<text x="44.640" y="120.546" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">200</text>
+<text x="44.640" y="88.766" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">250</text>
+<rect x="74.400" y="242.831" width="38.400" height="0.636" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="112.800" y="236.475" width="38.400" height="6.992" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="151.200" y="214.865" width="38.400" height="28.602" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="189.600" y="131.600" width="38.400" height="111.866" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="228.000" y="66.133" width="38.400" height="177.333" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="266.400" y="82.023" width="38.400" height="161.443" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="304.800" y="143.677" width="38.400" height="99.790" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="343.200" y="202.788" width="38.400" height="40.679" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="381.600" y="235.839" width="38.400" height="7.627" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="420.000" y="242.831" width="38.400" height="0.636" fill="none" stroke="lightgray" stroke-width="0.750"/>
+</svg>

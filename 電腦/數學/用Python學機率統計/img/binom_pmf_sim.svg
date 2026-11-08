@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="324.000pt" viewBox="0 0 504.000 324.000">
+<rect x="0" y="0" width="504.000" height="324.000" fill="white"/>
+<path d="M 59.040 250.560 M 74.400 250.560 L 74.400 257.760 M 138.400 250.560 L 138.400 257.760 M 202.400 250.560 L 202.400 257.760 M 266.400 250.560 L 266.400 257.760 M 330.400 250.560 L 330.400 257.760 M 394.400 250.560 L 394.400 257.760 M 458.400 250.560 L 458.400 257.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="74.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="138.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<text x="202.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">4</text>
+<text x="266.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">6</text>
+<text x="330.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">8</text>
+<text x="394.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="458.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">12</text>
+<path d="M 59.040 59.040 M 59.040 243.467 L 66.240 243.467 M 59.040 207.437 L 66.240 207.437 M 59.040 171.407 L 66.240 171.407 M 59.040 135.378 L 66.240 135.378 M 59.040 99.348 L 66.240 99.348 M 59.040 63.319 L 66.240 63.319" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="247.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="211.637" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.05</text>
+<text x="44.640" y="175.607" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.1</text>
+<text x="44.640" y="139.578" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.15</text>
+<text x="44.640" y="103.548" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.2</text>
+<text x="44.640" y="67.519" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.25</text>
+<path d="M 59.040 250.560 L 473.760 250.560 L 473.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="90.400" y="242.763" width="32.000" height="0.704" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="122.400" y="236.430" width="32.000" height="7.037" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="154.400" y="211.800" width="32.000" height="31.667" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="186.400" y="159.022" width="32.000" height="84.444" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="218.400" y="95.689" width="32.000" height="147.778" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="250.400" y="66.133" width="32.000" height="177.333" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="282.400" y="95.689" width="32.000" height="147.778" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="314.400" y="159.022" width="32.000" height="84.444" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="346.400" y="211.800" width="32.000" height="31.667" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="378.400" y="236.430" width="32.000" height="7.037" fill="black" stroke="black" stroke-width="0.750"/>
+<rect x="410.400" y="242.763" width="32.000" height="0.704" fill="black" stroke="black" stroke-width="0.750"/>
+<text x="106.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 106.400 243.467)">0</text>
+<text x="138.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 138.400 243.467)">1</text>
+<text x="170.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 170.400 243.467)">2</text>
+<text x="202.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 202.400 243.467)">3</text>
+<text x="234.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 234.400 243.467)">4</text>
+<text x="266.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 266.400 243.467)">5</text>
+<text x="298.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 298.400 243.467)">6</text>
+<text x="330.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 330.400 243.467)">7</text>
+<text x="362.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 362.400 243.467)">8</text>
+<text x="394.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 394.400 243.467)">9</text>
+<text x="426.400" y="243.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic" transform="rotate(-90.000 426.400 243.467)">10</text>
+<rect x="93.600" y="242.688" width="6.400" height="0.778" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="236.441" width="25.600" height="7.026" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="211.624" width="57.600" height="31.843" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="157.731" width="89.600" height="85.736" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="98.584" width="121.600" height="144.882" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="65.451" width="153.600" height="178.015" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="96.567" width="185.600" height="146.900" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="158.192" width="217.600" height="85.275" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="211.249" width="249.600" height="32.218" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="236.218" width="281.600" height="7.249" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="100.000" y="242.797" width="313.600" height="0.670" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

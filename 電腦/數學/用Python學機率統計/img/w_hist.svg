@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="324.000pt" viewBox="0 0 504.000 324.000">
+<rect x="0" y="0" width="504.000" height="324.000" fill="white"/>
+<text x="266.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">班上體重分布</text>
+<text x="266.400" y="293.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">體重 (kg)</text>
+<text x="15.840" y="154.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 154.800)">Frequency</text>
+<path d="M 59.040 250.560 M 74.400 250.560 L 74.400 257.760 M 170.400 250.560 L 170.400 257.760 M 266.400 250.560 L 266.400 257.760 M 362.400 250.560 L 362.400 257.760 M 458.400 250.560 L 458.400 257.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="74.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">40</text>
+<text x="170.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">50</text>
+<text x="266.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">60</text>
+<text x="362.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">70</text>
+<text x="458.400" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">80</text>
+<path d="M 59.040 59.040 M 59.040 243.467 L 66.240 243.467 M 59.040 204.059 L 66.240 204.059 M 59.040 164.652 L 66.240 164.652 M 59.040 125.244 L 66.240 125.244 M 59.040 85.837 L 66.240 85.837" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="247.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="208.259" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">2</text>
+<text x="44.640" y="168.852" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">4</text>
+<text x="44.640" y="129.444" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">6</text>
+<text x="44.640" y="90.037" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">8</text>
+<rect x="74.400" y="204.059" width="48.000" height="39.407" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="122.400" y="243.467" width="48.000" height="0.000" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="170.400" y="184.356" width="48.000" height="59.111" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="218.400" y="105.541" width="48.000" height="137.926" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="266.400" y="66.133" width="48.000" height="177.333" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="314.400" y="184.356" width="48.000" height="59.111" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="362.400" y="204.059" width="48.000" height="39.407" fill="none" stroke="lightgray" stroke-width="0.750"/>
+<rect x="410.400" y="204.059" width="48.000" height="39.407" fill="none" stroke="lightgray" stroke-width="0.750"/>
+</svg>

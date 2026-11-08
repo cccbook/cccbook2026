@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="576.000pt" height="396.000pt" viewBox="0 0 576.000 396.000">
+<rect x="0" y="0" width="576.000" height="396.000" fill="white"/>
+<text x="302.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">兩班組產品重量的並排箱型圖</text>
+<text x="15.840" y="190.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 190.800)">產品重量 (公克)</text>
+<path d="M 59.040 322.560 M 199.976 322.560 L 199.976 329.760 M 404.824 322.560 L 404.824 329.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="199.976" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">日班</text>
+<text x="404.824" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">夜班</text>
+<path d="M 59.040 59.040 M 59.040 310.675 L 66.240 310.675 M 59.040 272.867 L 66.240 272.867 M 59.040 235.058 L 66.240 235.058 M 59.040 197.250 L 66.240 197.250 M 59.040 159.442 L 66.240 159.442 M 59.040 121.633 L 66.240 121.633 M 59.040 83.825 L 66.240 83.825" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="314.875" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">85</text>
+<text x="44.640" y="277.067" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">90</text>
+<text x="44.640" y="239.258" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">95</text>
+<text x="44.640" y="201.450" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">100</text>
+<text x="44.640" y="163.642" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">105</text>
+<text x="44.640" y="125.833" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">110</text>
+<text x="44.640" y="88.025" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">115</text>
+<path d="M 59.040 322.560 L 545.760 322.560 L 545.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 199.976 312.800 L 199.976 234.215" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 199.976 172.342 L 199.976 110.677" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 175.394 312.800 L 224.558 312.800" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 175.394 110.677 L 224.558 110.677" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="175.394" y="172.342" width="49.164" height="61.873" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 175.394 205.662 L 224.558 205.662" fill="none" stroke="black" stroke-width="1.500"/>
+<path d="M 234.800 218.283 L 234.800 193.042" fill="none" stroke="red" stroke-width="1.125"/>
+<path d="M 404.824 267.203 L 404.824 224.971" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 404.824 144.935 L 404.824 68.800" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 380.242 267.203 L 429.406 267.203" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 380.242 68.800 L 429.406 68.800" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="380.242" y="144.935" width="49.164" height="80.037" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 380.242 189.428 L 429.406 189.428" fill="none" stroke="black" stroke-width="1.500"/>
+<path d="M 439.648 205.753 L 439.648 173.102" fill="none" stroke="red" stroke-width="1.125"/>
+<text x="107.794" y="99.047" font-family="sans-serif" font-size="12.000" fill="red" text-anchor="middle" dominant-baseline="alphabetic">紅線：中位數的 95% 信賴區間</text>
+<text x="302.400" y="394.560" font-family="sans-serif" font-size="9.600" fill="black" text-anchor="middle">n = 60 / 班；資料為模擬產生</text>
+</svg>

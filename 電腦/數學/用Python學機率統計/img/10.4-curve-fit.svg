@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="792.000pt" height="360.000pt" viewBox="0 0 792.000 360.000">
+<rect x="0" y="0" width="792.000" height="360.000" fill="white"/>
+<text x="212.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">離散型：B(20, 0.25) 理論機率 vs 模擬長條</text>
+<text x="212.400" y="329.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">k</text>
+<text x="15.840" y="172.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 172.800)">P(X = k)</text>
+<path d="M 59.040 286.560 M 85.576 286.560 L 85.576 293.760 M 128.934 286.560 L 128.934 293.760 M 172.293 286.560 L 172.293 293.760 M 215.652 286.560 L 215.652 293.760 M 259.011 286.560 L 259.011 293.760 M 302.369 286.560 L 302.369 293.760 M 345.728 286.560 L 345.728 293.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="85.576" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="128.934" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<text x="172.293" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">4</text>
+<text x="215.652" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">6</text>
+<text x="259.011" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">8</text>
+<text x="302.369" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="345.728" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">12</text>
+<path d="M 59.040 59.040 M 59.040 278.133 L 66.240 278.133 M 59.040 233.311 L 66.240 233.311 M 59.040 188.488 L 66.240 188.488 M 59.040 143.665 L 66.240 143.665 M 59.040 98.843 L 66.240 98.843" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="282.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="237.511" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.05</text>
+<text x="44.640" y="192.688" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.1</text>
+<text x="44.640" y="147.865" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.15</text>
+<text x="44.640" y="103.043" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.2</text>
+<path d="M 59.040 286.560 L 365.760 286.560 L 365.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="76.904" y="275.892" width="17.344" height="2.241" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="98.583" y="258.860" width="17.344" height="19.274" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="120.263" y="226.139" width="17.344" height="51.994" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="141.942" y="166.973" width="17.344" height="111.160" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="163.621" y="106.014" width="17.344" height="172.119" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="185.301" y="102.877" width="17.344" height="175.257" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="206.980" y="120.357" width="17.344" height="157.776" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="228.660" y="172.352" width="17.344" height="105.782" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="250.339" y="224.346" width="17.344" height="53.787" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="272.018" y="245.413" width="17.344" height="32.721" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="293.698" y="266.928" width="17.344" height="11.206" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="315.377" y="274.996" width="17.344" height="3.138" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 85.576 278.133 L 85.576 275.290M 107.255 278.133 L 107.255 259.181M 128.934 278.133 L 128.934 218.118M 150.614 278.133 L 150.614 158.102M 172.293 278.133 L 172.293 108.089M 193.973 278.133 L 193.973 96.753M 215.652 278.133 L 215.652 126.983M 237.331 278.133 L 237.331 177.366M 259.011 278.133 L 259.011 223.551M 280.690 278.133 L 280.690 253.875M 302.369 278.133 L 302.369 269.238M 324.049 278.133 L 324.049 275.438" fill="none" stroke="red" stroke-width="1.125"/>
+<circle cx="85.576" cy="275.290" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="107.255" cy="259.181" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="128.934" cy="218.118" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="150.614" cy="158.102" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="172.293" cy="108.089" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="193.973" cy="96.753" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="215.652" cy="126.983" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="237.331" cy="177.366" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="259.011" cy="223.551" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="280.690" cy="253.875" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="302.369" cy="269.238" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<circle cx="324.049" cy="275.438" r="2.700" fill="red" stroke="red" stroke-width="0.750"/>
+<text x="350.064" y="85.396" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end" dominant-baseline="alphabetic">長條 = 模擬相對頻率</text>
+<text x="350.064" y="106.014" font-family="sans-serif" font-size="12.000" fill="red" text-anchor="end" dominant-baseline="alphabetic">紅點 = 理論機率 P(X=k)</text>
+<text x="608.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">連續型：N(0,1) 理論密度 vs 模擬直方圖</text>
+<text x="608.400" y="329.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="411.840" y="172.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 411.840 172.800)">密度</text>
+<path d="M 455.040 286.560 M 486.686 286.560 L 486.686 293.760 M 527.257 286.560 L 527.257 293.760 M 567.829 286.560 L 567.829 293.760 M 608.400 286.560 L 608.400 293.760 M 648.971 286.560 L 648.971 293.760 M 689.543 286.560 L 689.543 293.760 M 730.114 286.560 L 730.114 293.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="486.686" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-3</text>
+<text x="527.257" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="567.829" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="608.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="648.971" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="689.543" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<text x="730.114" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">3</text>
+<path d="M 455.040 59.040 M 455.040 278.133 L 462.240 278.133 M 455.040 233.311 L 462.240 233.311 M 455.040 188.488 L 462.240 188.488 M 455.040 143.665 L 462.240 143.665 M 455.040 98.843 L 462.240 98.843" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="440.640" y="282.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="440.640" y="237.511" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.1</text>
+<text x="440.640" y="192.688" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.2</text>
+<text x="440.640" y="147.865" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.3</text>
+<text x="440.640" y="103.043" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.4</text>
+<path d="M 455.040 286.560 L 761.760 286.560 L 761.760 59.040 L 455.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="466.400" y="277.237" width="20.286" height="0.896" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="486.686" y="272.755" width="20.286" height="5.379" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="506.971" y="266.031" width="20.286" height="12.102" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="527.257" y="239.586" width="20.286" height="38.548" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="547.543" y="204.176" width="20.286" height="73.957" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="567.829" y="149.940" width="20.286" height="128.193" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="588.114" y="93.464" width="20.286" height="184.670" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="608.400" y="106.911" width="20.286" height="171.223" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="628.686" y="142.321" width="20.286" height="135.813" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="648.971" y="192.522" width="20.286" height="85.611" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="669.257" y="240.482" width="20.286" height="37.651" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="689.543" y="261.101" width="20.286" height="17.033" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="709.829" y="273.203" width="20.286" height="4.930" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="730.114" y="277.685" width="20.286" height="0.448" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 466.400 277.742 L 467.820 277.691 L 469.240 277.635 L 470.660 277.572 L 472.080 277.501 L 473.500 277.423 L 474.920 277.335 L 476.340 277.239 L 477.760 277.131 L 479.180 277.012 L 480.600 276.881 L 482.020 276.736 L 483.440 276.576 L 484.860 276.399 L 486.280 276.206 L 487.700 275.993 L 489.120 275.759 L 490.540 275.504 L 491.960 275.224 L 493.380 274.919 L 494.800 274.585 L 496.220 274.223 L 497.640 273.828 L 499.060 273.399 L 500.480 272.934 L 501.900 272.430 L 503.320 271.885 L 504.740 271.296 L 506.160 270.661 L 507.580 269.977 L 509.000 269.242 L 510.420 268.452 L 511.840 267.604 L 513.260 266.696 L 514.680 265.726 L 516.100 264.689 L 517.520 263.584 L 518.940 262.407 L 520.360 261.155 L 521.780 259.827 L 523.200 258.419 L 524.620 256.928 L 526.040 255.353 L 527.460 253.690 L 528.880 251.939 L 530.300 250.096 L 531.720 248.160 L 533.140 246.130 L 534.560 244.004 L 535.980 241.781 L 537.400 239.462 L 538.820 237.044 L 540.240 234.529 L 541.660 231.916 L 543.080 229.207 L 544.500 226.403 L 545.920 223.505 L 547.340 220.515 L 548.760 217.435 L 550.180 214.270 L 551.600 211.021 L 553.020 207.694 L 554.440 204.293 L 555.860 200.821 L 557.280 197.286 L 558.700 193.693 L 560.120 190.048 L 561.540 186.358 L 562.960 182.630 L 564.380 178.873 L 565.800 175.094 L 567.220 171.302 L 568.640 167.507 L 570.060 163.716 L 571.480 159.941 L 572.900 156.191 L 574.320 152.476 L 575.740 148.806 L 577.160 145.192 L 578.580 141.644 L 580.000 138.173 L 581.420 134.789 L 582.840 131.504 L 584.260 128.326 L 585.680 125.267 L 587.100 122.337 L 588.520 119.545 L 589.940 116.901 L 591.360 114.413 L 592.780 112.090 L 594.200 109.940 L 595.620 107.972 L 597.040 106.191 L 598.460 104.604 L 599.880 103.216 L 601.300 102.034 L 602.720 101.060 L 604.140 100.300 L 605.560 99.754 L 606.980 99.426 L 608.400 99.317 L 609.820 99.426 L 611.240 99.754 L 612.660 100.300 L 614.080 101.060 L 615.500 102.034 L 616.920 103.216 L 618.340 104.604 L 619.760 106.191 L 621.180 107.972 L 622.600 109.940 L 624.020 112.090 L 625.440 114.413 L 626.860 116.901 L 628.280 119.545 L 629.700 122.337 L 631.120 125.267 L 632.540 128.326 L 633.960 131.504 L 635.380 134.789 L 636.800 138.173 L 638.220 141.644 L 639.640 145.192 L 641.060 148.806 L 642.480 152.476 L 643.900 156.191 L 645.320 159.941 L 646.740 163.716 L 648.160 167.507 L 649.580 171.302 L 651.000 175.094 L 652.420 178.873 L 653.840 182.630 L 655.260 186.358 L 656.680 190.048 L 658.100 193.693 L 659.520 197.286 L 660.940 200.821 L 662.360 204.293 L 663.780 207.694 L 665.200 211.021 L 666.620 214.270 L 668.040 217.435 L 669.460 220.515 L 670.880 223.505 L 672.300 226.403 L 673.720 229.207 L 675.140 231.916 L 676.560 234.529 L 677.980 237.044 L 679.400 239.462 L 680.820 241.781 L 682.240 244.004 L 683.660 246.130 L 685.080 248.160 L 686.500 250.096 L 687.920 251.939 L 689.340 253.690 L 690.760 255.353 L 692.180 256.928 L 693.600 258.419 L 695.020 259.827 L 696.440 261.155 L 697.860 262.407 L 699.280 263.584 L 700.700 264.689 L 702.120 265.726 L 703.540 266.696 L 704.960 267.604 L 706.380 268.452 L 707.800 269.242 L 709.220 269.977 L 710.640 270.661 L 712.060 271.296 L 713.480 271.885 L 714.900 272.430 L 716.320 272.934 L 717.740 273.399 L 719.160 273.828 L 720.580 274.223 L 722.000 274.585 L 723.420 274.919 L 724.840 275.224 L 726.260 275.504 L 727.680 275.759 L 729.100 275.993 L 730.520 276.206 L 731.940 276.399 L 733.360 276.576 L 734.780 276.736 L 736.200 276.881 L 737.620 277.012 L 739.040 277.131 L 740.460 277.239 L 741.880 277.335 L 743.300 277.423 L 744.720 277.501 L 746.140 277.572 L 747.560 277.635 L 748.980 277.691 L 750.400 277.742" fill="none" stroke="red" stroke-width="1.125"/>
+<text x="746.343" y="80.913" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end" dominant-baseline="alphabetic">長條 = 模擬直方圖</text>
+<text x="746.343" y="92.119" font-family="sans-serif" font-size="12.000" fill="red" text-anchor="end" dominant-baseline="alphabetic">紅線 = 理論密度 f(x)</text>
+</svg>

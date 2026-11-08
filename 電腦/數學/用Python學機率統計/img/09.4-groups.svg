@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="576.000pt" height="259.200pt" viewBox="0 0 576.000 259.200">
+<rect x="0" y="0" width="576.000" height="259.200" fill="white"/>
+<text x="110.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">劑量 0.5</text>
+<text x="110.400" y="228.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">牙齒生長長度</text>
+<text x="15.840" y="122.400" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 122.400)">len</text>
+<path d="M 59.040 185.760 M 67.243 185.760 L 67.243 192.960 M 94.731 185.760 L 94.731 192.960 M 122.220 185.760 L 122.220 192.960 M 149.709 185.760 L 149.709 192.960" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="67.243" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="94.731" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="122.220" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<text x="149.709" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">20</text>
+<path d="M 59.040 59.040 M 59.040 175.641 L 66.240 175.641 M 59.040 141.729 L 66.240 141.729 M 59.040 107.818 L 66.240 107.818 M 59.040 73.907 L 66.240 73.907" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="179.841" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="145.929" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="44.640" y="112.018" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<text x="44.640" y="78.107" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">20</text>
+<path d="M 59.040 185.760 L 161.760 185.760 L 161.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 79.063 142.747 L 79.063 142.747M 111.225 142.747 L 111.225 142.747" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 79.063 161.059 L 79.063 121.383M 111.225 161.059 L 111.225 121.383" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="79.063" y="121.383" width="32.162" height="39.676" fill="white" stroke="black" stroke-width="0.750"/>
+<path d="M 79.063 142.747 L 79.063 142.747M 111.225 142.747 L 111.225 142.747" fill="none" stroke="black" stroke-width="0.750"/>
+<text x="302.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">劑量 1.0</text>
+<text x="302.400" y="228.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">牙齒生長長度</text>
+<text x="207.840" y="122.400" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 207.840 122.400)">len</text>
+<path d="M 251.040 185.760 M 264.564 185.760 L 264.564 192.960 M 299.276 185.760 L 299.276 192.960 M 333.988 185.760 L 333.988 192.960" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="264.564" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">15</text>
+<text x="299.276" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">20</text>
+<text x="333.988" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">25</text>
+<path d="M 251.040 59.040 M 251.040 169.076 L 258.240 169.076 M 251.040 126.254 L 258.240 126.254 M 251.040 83.432 L 258.240 83.432" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="236.640" y="173.276" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<text x="236.640" y="130.454" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">20</text>
+<text x="236.640" y="87.632" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">25</text>
+<path d="M 251.040 185.760 L 353.760 185.760 L 353.760 59.040 L 251.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 271.506 132.677 L 271.506 132.677M 323.227 132.677 L 323.227 132.677" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 271.506 160.512 L 271.506 96.707M 323.227 160.512 L 323.227 96.707" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="271.506" y="96.707" width="51.721" height="63.805" fill="white" stroke="black" stroke-width="0.750"/>
+<path d="M 271.506 132.677 L 271.506 132.677M 323.227 132.677 L 323.227 132.677" fill="none" stroke="black" stroke-width="0.750"/>
+<text x="494.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">劑量 2.0</text>
+<text x="494.400" y="228.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">牙齒生長長度</text>
+<text x="399.840" y="122.400" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 399.840 122.400)">len</text>
+<path d="M 443.040 185.760 M 456.109 185.760 L 456.109 192.960 M 486.989 185.760 L 486.989 192.960 M 517.869 185.760 L 517.869 192.960" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="456.109" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">20</text>
+<text x="486.989" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">25</text>
+<text x="517.869" y="202.560" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">30</text>
+<path d="M 443.040 59.040 M 443.040 169.638 L 450.240 169.638 M 443.040 131.543 L 450.240 131.543 M 443.040 93.448 L 450.240 93.448" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="428.640" y="173.838" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">20</text>
+<text x="428.640" y="135.743" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">25</text>
+<text x="428.640" y="97.648" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">30</text>
+<path d="M 443.040 185.760 L 545.760 185.760 L 545.760 59.040 L 443.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 477.416 124.305 L 477.416 124.305M 507.678 124.305 L 507.678 124.305" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 477.416 143.352 L 477.416 106.019M 507.678 143.352 L 507.678 106.019" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="477.416" y="106.019" width="30.263" height="37.333" fill="white" stroke="black" stroke-width="0.750"/>
+<path d="M 477.416 124.305 L 477.416 124.305M 507.678 124.305 L 507.678 124.305" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

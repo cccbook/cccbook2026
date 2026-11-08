@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="252.000pt" viewBox="0 0 504.000 252.000">
+<rect x="0" y="0" width="504.000" height="252.000" fill="white"/>
+<text x="140.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">dunif(x, 0, 1)</text>
+<text x="140.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="15.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 118.800)">密度</text>
+<path d="M 59.040 178.560 M 65.067 178.560 L 65.067 185.760 M 102.733 178.560 L 102.733 185.760 M 140.400 178.560 L 140.400 185.760 M 178.067 178.560 L 178.067 185.760 M 215.733 178.560 L 215.733 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="65.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="102.733" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0.5</text>
+<text x="140.400" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="178.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1.5</text>
+<text x="215.733" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 59.040 59.040 M 59.040 174.133 L 66.240 174.133 M 59.040 155.689 L 66.240 155.689 M 59.040 137.244 L 66.240 137.244 M 59.040 118.800 L 66.240 118.800 M 59.040 100.356 L 66.240 100.356 M 59.040 81.911 L 66.240 81.911 M 59.040 63.467 L 66.240 63.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="178.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="159.889" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.2</text>
+<text x="44.640" y="141.444" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.4</text>
+<text x="44.640" y="123.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.6</text>
+<text x="44.640" y="104.556" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.8</text>
+<text x="44.640" y="86.111" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<text x="44.640" y="67.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1.2</text>
+<path d="M 59.040 178.560 L 221.760 178.560 L 221.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 34.933 174.133 L 65.067 174.133 L 65.067 81.911 L 140.400 81.911 L 140.400 174.133 L 170.533 174.133" fill="none" stroke="steelblue" stroke-width="1.500"/>
+<text x="392.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">punif(x, 0, 1)</text>
+<text x="392.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="267.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 267.840 118.800)">F(x)</text>
+<path d="M 311.040 178.560 M 317.067 178.560 L 317.067 185.760 M 354.733 178.560 L 354.733 185.760 M 392.400 178.560 L 392.400 185.760 M 430.067 178.560 L 430.067 185.760 M 467.733 178.560 L 467.733 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="317.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="354.733" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0.5</text>
+<text x="392.400" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="430.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1.5</text>
+<text x="467.733" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 311.040 59.040 M 311.040 174.133 L 318.240 174.133 M 311.040 154.012 L 318.240 154.012 M 311.040 133.891 L 318.240 133.891 M 311.040 113.770 L 318.240 113.770 M 311.040 93.648 L 318.240 93.648 M 311.040 73.527 L 318.240 73.527" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="296.640" y="178.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="296.640" y="158.212" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.2</text>
+<text x="296.640" y="138.091" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.4</text>
+<text x="296.640" y="117.970" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.6</text>
+<text x="296.640" y="97.848" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0.8</text>
+<text x="296.640" y="77.727" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<path d="M 311.040 178.560 L 473.760 178.560 L 473.760 59.040 L 311.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 286.933 174.133 L 317.067 174.133" fill="none" stroke="darkred" stroke-width="1.500"/>
+<path d="M 317.067 174.133 L 392.400 73.527" fill="none" stroke="darkred" stroke-width="1.500"/>
+<path d="M 392.400 73.527 L 422.533 73.527" fill="none" stroke="darkred" stroke-width="1.500"/>
+</svg>

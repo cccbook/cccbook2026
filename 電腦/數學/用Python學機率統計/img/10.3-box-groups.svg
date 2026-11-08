@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="612.000pt" height="396.000pt" viewBox="0 0 612.000 396.000">
+<rect x="0" y="0" width="612.000" height="396.000" fill="white"/>
+<text x="320.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">三組產量的並排箱型圖</text>
+<text x="15.840" y="190.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 190.800)">產品重量 (公克)</text>
+<path d="M 59.040 322.560 M 169.150 322.560 L 169.150 329.760 M 320.400 322.560 L 320.400 329.760 M 471.650 322.560 L 471.650 329.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="169.150" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">A 早班</text>
+<text x="320.400" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">B 晚班</text>
+<text x="471.650" y="339.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">C 混合</text>
+<path d="M 59.040 59.040 M 59.040 281.521 L 66.240 281.521 M 59.040 243.305 L 66.240 243.305 M 59.040 205.089 L 66.240 205.089 M 59.040 166.872 L 66.240 166.872 M 59.040 128.656 L 66.240 128.656 M 59.040 90.440 L 66.240 90.440" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="285.721" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">80</text>
+<text x="44.640" y="247.505" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">90</text>
+<text x="44.640" y="209.289" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">100</text>
+<text x="44.640" y="171.072" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">110</text>
+<text x="44.640" y="132.856" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">120</text>
+<text x="44.640" y="94.640" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">130</text>
+<path d="M 59.040 322.560 L 581.760 322.560 L 581.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 169.150 253.318 L 169.150 232.667" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 169.150 204.494 L 169.150 164.622" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 152.512 253.318 L 185.787 253.318" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 152.512 164.622 L 185.787 164.622" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="152.512" y="204.494" width="33.275" height="28.173" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 152.512 215.730 L 185.787 215.730" fill="none" stroke="black" stroke-width="1.500"/>
+<circle cx="169.150" cy="157.837" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 191.838 222.768 L 191.838 208.692" fill="none" stroke="red" stroke-width="1.125"/>
+<path d="M 320.400 241.372 L 320.400 196.710" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 320.400 155.156 L 320.400 102.984" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 303.762 241.372 L 337.037 241.372" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 303.762 102.984 L 337.037 102.984" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="303.762" y="155.156" width="33.275" height="41.554" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 303.762 169.689 L 337.037 169.689" fill="none" stroke="black" stroke-width="1.500"/>
+<path d="M 343.087 180.070 L 343.087 159.308" fill="none" stroke="red" stroke-width="1.125"/>
+<path d="M 471.650 312.800 L 471.650 222.142" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 471.650 158.171 L 471.650 68.800" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 455.013 312.800 L 488.288 312.800" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 455.013 68.800 L 488.288 68.800" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="455.013" y="158.171" width="33.275" height="63.971" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<path d="M 455.013 192.374 L 488.288 192.374" fill="none" stroke="black" stroke-width="1.500"/>
+<path d="M 494.337 208.355 L 494.337 176.393" fill="none" stroke="red" stroke-width="1.125"/>
+</svg>

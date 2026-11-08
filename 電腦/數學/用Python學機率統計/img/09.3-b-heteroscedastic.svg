@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360.000pt" height="302.400pt" viewBox="0 0 360.000 302.400">
+<rect x="0" y="0" width="360.000" height="302.400" fill="white"/>
+<text x="194.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">異方差（變異數不齊）</text>
+<text x="194.400" y="272.160" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">擬合值 fitted</text>
+<text x="15.840" y="144.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 144.000)">殘差 residual</text>
+<path d="M 59.040 228.960 M 64.741 228.960 L 64.741 236.160 M 107.540 228.960 L 107.540 236.160 M 150.339 228.960 L 150.339 236.160 M 193.137 228.960 L 193.137 236.160 M 235.936 228.960 L 235.936 236.160 M 278.735 228.960 L 278.735 236.160 M 321.534 228.960 L 321.534 236.160" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="64.741" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="107.540" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">10</text>
+<text x="150.339" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">20</text>
+<text x="193.137" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">30</text>
+<text x="235.936" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">40</text>
+<text x="278.735" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">50</text>
+<text x="321.534" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">60</text>
+<path d="M 59.040 59.040 M 59.040 201.626 L 66.240 201.626 M 59.040 170.919 L 66.240 170.919 M 59.040 140.211 L 66.240 140.211 M 59.040 109.504 L 66.240 109.504 M 59.040 78.796 L 66.240 78.796" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="205.826" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-10</text>
+<text x="44.640" y="175.119" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-5</text>
+<text x="44.640" y="144.411" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="113.704" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="82.996" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<path d="M 59.040 228.960 L 329.760 228.960 L 329.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="71.207" cy="139.089" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="79.703" cy="152.586" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="88.199" cy="138.852" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="96.695" cy="122.012" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="105.191" cy="110.814" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="113.687" cy="143.225" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="122.183" cy="140.838" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="130.679" cy="167.194" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="139.175" cy="127.998" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="147.671" cy="148.813" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="156.168" cy="127.015" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="164.664" cy="121.206" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="173.160" cy="113.189" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="181.656" cy="150.011" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="190.152" cy="123.916" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="198.648" cy="178.016" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="207.144" cy="155.609" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="215.640" cy="157.824" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="224.136" cy="200.190" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="232.632" cy="134.478" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="241.129" cy="129.581" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="249.625" cy="145.688" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="258.121" cy="112.866" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="266.617" cy="156.969" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="275.113" cy="177.030" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="283.609" cy="121.368" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="292.105" cy="160.724" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="300.601" cy="87.810" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="309.097" cy="148.917" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="317.593" cy="112.502" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

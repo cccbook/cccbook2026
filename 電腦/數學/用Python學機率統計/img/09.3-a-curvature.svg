@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360.000pt" height="302.400pt" viewBox="0 0 360.000 302.400">
+<rect x="0" y="0" width="360.000" height="302.400" fill="white"/>
+<text x="194.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">曲線（模型形式錯誤）</text>
+<text x="194.400" y="272.160" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">擬合值 fitted</text>
+<text x="15.840" y="144.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 144.000)">殘差 residual</text>
+<path d="M 59.040 228.960 M 121.892 228.960 L 121.892 236.160 M 186.309 228.960 L 186.309 236.160 M 250.725 228.960 L 250.725 236.160 M 315.141 228.960 L 315.141 236.160" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="121.892" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5</text>
+<text x="186.309" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">5.5</text>
+<text x="250.725" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">6</text>
+<text x="315.141" y="245.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">6.5</text>
+<path d="M 59.040 59.040 M 59.040 193.145 L 66.240 193.145 M 59.040 154.060 L 66.240 154.060 M 59.040 114.974 L 66.240 114.974 M 59.040 75.889 L 66.240 75.889" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="197.345" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-5</text>
+<text x="44.640" y="158.260" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="119.174" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="80.089" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<path d="M 59.040 228.960 L 329.760 228.960 L 329.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="255.317" cy="171.269" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="248.905" cy="168.446" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="242.492" cy="146.431" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="236.080" cy="133.906" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="229.668" cy="130.294" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="223.255" cy="134.025" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="216.843" cy="125.816" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="210.431" cy="146.542" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="204.018" cy="140.554" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="197.606" cy="168.082" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="191.194" cy="167.667" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="184.782" cy="167.679" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="178.369" cy="200.190" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="171.957" cy="190.496" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="165.545" cy="183.183" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="159.132" cy="166.044" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="152.720" cy="157.911" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="146.308" cy="158.144" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="139.895" cy="136.701" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="133.483" cy="87.810" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

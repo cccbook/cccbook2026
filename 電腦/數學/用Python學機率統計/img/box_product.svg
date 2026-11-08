@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="432.000pt" height="288.000pt" viewBox="0 0 432.000 288.000">
+<rect x="0" y="0" width="432.000" height="288.000" fill="white"/>
+<text x="230.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">產品尺寸 (mm)</text>
+<text x="15.840" y="136.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 136.800)">mm</text>
+<path d="M 59.040 214.560 M 131.649 214.560 L 131.649 221.760 M 242.605 214.560 L 242.605 221.760 M 353.561 214.560 L 353.561 221.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="131.649" y="231.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">95</text>
+<text x="242.605" y="231.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">100</text>
+<text x="353.561" y="231.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">105</text>
+<path d="M 59.040 59.040 M 59.040 181.611 L 66.240 181.611 M 59.040 131.262 L 66.240 131.262 M 59.040 80.912 L 66.240 80.912" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="185.811" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">95</text>
+<text x="44.640" y="135.462" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">100</text>
+<text x="44.640" y="85.112" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">105</text>
+<path d="M 59.040 214.560 L 401.760 214.560 L 401.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 116.116 161.471 L 116.116 161.471M 244.824 161.471 L 244.824 161.471" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 116.116 188.660 L 116.116 130.255M 244.824 188.660 L 244.824 130.255" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="116.116" y="130.255" width="128.709" height="58.406" fill="white" stroke="black" stroke-width="0.750"/>
+<path d="M 116.116 161.471 L 116.116 161.471M 244.824 161.471 L 244.824 161.471" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="1130.251" cy="161.471" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="-600.658" cy="161.471" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

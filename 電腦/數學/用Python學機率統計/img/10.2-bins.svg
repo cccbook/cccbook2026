@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="648.000pt" height="504.000pt" viewBox="0 0 648.000 504.000">
+<rect x="0" y="0" width="648.000" height="504.000" fill="white"/>
+<text x="176.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">6 箱（寬 1.00）</text>
+<text x="176.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="15.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 118.800)">頻數</text>
+<path d="M 59.040 178.560 M 67.733 178.560 L 67.733 185.760 M 103.956 178.560 L 103.956 185.760 M 140.178 178.560 L 140.178 185.760 M 176.400 178.560 L 176.400 185.760 M 212.622 178.560 L 212.622 185.760 M 248.844 178.560 L 248.844 185.760 M 285.067 178.560 L 285.067 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="67.733" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-3</text>
+<text x="103.956" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="140.178" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="176.400" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="212.622" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="248.844" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<text x="285.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">3</text>
+<path d="M 59.040 59.040 M 59.040 174.133 L 66.240 174.133 M 59.040 146.808 L 66.240 146.808 M 59.040 119.483 L 66.240 119.483 M 59.040 92.158 L 66.240 92.158 M 59.040 64.833 L 66.240 64.833" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="178.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="151.008" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">20</text>
+<text x="44.640" y="123.683" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">40</text>
+<text x="44.640" y="96.358" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">60</text>
+<text x="44.640" y="69.033" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">80</text>
+<path d="M 59.040 178.560 L 293.760 178.560 L 293.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="67.733" y="172.767" width="36.222" height="1.366" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="103.956" y="144.076" width="36.222" height="30.058" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="140.178" y="90.792" width="36.222" height="83.342" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="176.400" y="63.467" width="36.222" height="110.667" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="212.622" y="135.878" width="36.222" height="38.255" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="248.844" y="164.570" width="36.222" height="9.564" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<text x="500.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">11 箱（寬 0.50）</text>
+<text x="500.400" y="221.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="339.840" y="118.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 339.840 118.800)">頻數</text>
+<path d="M 383.040 178.560 M 411.491 178.560 L 411.491 185.760 M 451.006 178.560 L 451.006 185.760 M 490.521 178.560 L 490.521 185.760 M 530.036 178.560 L 530.036 185.760 M 569.552 178.560 L 569.552 185.760 M 609.067 178.560 L 609.067 185.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="411.491" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="451.006" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="490.521" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="530.036" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="569.552" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<text x="609.067" y="195.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">3</text>
+<path d="M 383.040 59.040 M 383.040 174.133 L 390.240 174.133 M 383.040 148.982 L 390.240 148.982 M 383.040 123.830 L 390.240 123.830 M 383.040 98.679 L 390.240 98.679 M 383.040 73.527 L 390.240 73.527" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="368.640" y="178.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="368.640" y="153.182" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="368.640" y="128.030" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">20</text>
+<text x="368.640" y="102.879" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">30</text>
+<text x="368.640" y="77.727" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">40</text>
+<path d="M 383.040 178.560 L 617.760 178.560 L 617.760 59.040 L 383.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="391.733" y="171.618" width="19.758" height="2.515" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="411.491" y="148.982" width="19.758" height="25.152" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="431.248" y="143.952" width="19.758" height="30.182" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="451.006" y="101.194" width="19.758" height="72.939" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="470.764" y="93.648" width="19.758" height="80.485" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="490.521" y="63.467" width="19.758" height="110.667" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="510.279" y="81.073" width="19.758" height="93.061" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="530.036" y="118.800" width="19.758" height="55.333" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="549.794" y="159.042" width="19.758" height="15.091" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="569.552" y="159.042" width="19.758" height="15.091" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="589.309" y="171.618" width="19.758" height="2.515" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<text x="176.400" y="303.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">26 箱（寬 0.20）</text>
+<text x="176.400" y="473.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="15.840" y="370.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 370.800)">頻數</text>
+<path d="M 59.040 430.560 M 84.451 430.560 L 84.451 437.760 M 126.246 430.560 L 126.246 437.760 M 168.041 430.560 L 168.041 437.760 M 209.836 430.560 L 209.836 437.760 M 251.631 430.560 L 251.631 437.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="84.451" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="126.246" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="168.041" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="209.836" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="251.631" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 59.040 311.040 M 59.040 426.133 L 66.240 426.133 M 59.040 397.011 L 66.240 397.011 M 59.040 367.888 L 66.240 367.888 M 59.040 338.765 L 66.240 338.765" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="430.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="401.211" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="44.640" y="372.088" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="44.640" y="342.965" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 59.040 430.560 L 293.760 430.560 L 293.760 311.040 L 59.040 311.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="67.733" y="420.309" width="8.359" height="5.825" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="76.092" y="426.133" width="8.359" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="84.451" y="408.660" width="8.359" height="17.474" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="92.810" y="408.660" width="8.359" height="17.474" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="101.169" y="391.186" width="8.359" height="34.947" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="109.528" y="397.011" width="8.359" height="29.123" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="117.887" y="397.011" width="8.359" height="29.123" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="126.246" y="344.589" width="8.359" height="81.544" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="134.605" y="379.537" width="8.359" height="46.596" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="142.964" y="356.239" width="8.359" height="69.895" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="151.323" y="350.414" width="8.359" height="75.719" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="159.682" y="344.589" width="8.359" height="81.544" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="168.041" y="338.765" width="8.359" height="87.368" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="176.400" y="315.467" width="8.359" height="110.667" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="184.759" y="327.116" width="8.359" height="99.018" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="193.118" y="315.467" width="8.359" height="110.667" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="201.477" y="362.063" width="8.359" height="64.070" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="209.836" y="344.589" width="8.359" height="81.544" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="218.195" y="379.537" width="8.359" height="46.596" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="226.554" y="408.660" width="8.359" height="17.474" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="234.913" y="414.484" width="8.359" height="11.649" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="243.272" y="420.309" width="8.359" height="5.825" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="251.631" y="414.484" width="8.359" height="11.649" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="259.990" y="408.660" width="8.359" height="17.474" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="268.349" y="420.309" width="8.359" height="5.825" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="276.708" y="420.309" width="8.359" height="5.825" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<text x="500.400" y="303.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">52 箱（寬 0.10）</text>
+<text x="500.400" y="473.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">x</text>
+<text x="339.840" y="370.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 339.840 370.800)">頻數</text>
+<path d="M 383.040 430.560 M 408.451 430.560 L 408.451 437.760 M 450.246 430.560 L 450.246 437.760 M 492.041 430.560 L 492.041 437.760 M 533.836 430.560 L 533.836 437.760 M 575.631 430.560 L 575.631 437.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="408.451" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="450.246" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="492.041" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="533.836" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="575.631" y="447.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 383.040 311.040 M 383.040 426.133 L 390.240 426.133 M 383.040 389.244 L 390.240 389.244 M 383.040 352.356 L 390.240 352.356 M 383.040 315.467 L 390.240 315.467" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="368.640" y="430.333" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="368.640" y="393.444" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">5</text>
+<text x="368.640" y="356.556" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">10</text>
+<text x="368.640" y="319.667" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">15</text>
+<path d="M 383.040 430.560 L 617.760 430.560 L 617.760 311.040 L 383.040 311.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="391.733" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="395.913" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="400.092" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="404.272" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="408.451" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="412.631" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="416.810" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="420.990" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="425.169" y="396.622" width="4.179" height="29.511" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="429.349" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="433.528" y="404.000" width="4.179" height="22.133" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="437.708" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="441.887" y="404.000" width="4.179" height="22.133" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="446.067" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="450.246" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="454.426" y="359.733" width="4.179" height="66.400" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="458.605" y="404.000" width="4.179" height="22.133" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="462.785" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="466.964" y="374.489" width="4.179" height="51.644" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="471.144" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="475.323" y="367.111" width="4.179" height="59.022" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="479.503" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="483.682" y="381.867" width="4.179" height="44.267" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="487.862" y="367.111" width="4.179" height="59.022" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="492.041" y="381.867" width="4.179" height="44.267" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="496.221" y="359.733" width="4.179" height="66.400" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="500.400" y="396.622" width="4.179" height="29.511" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="504.579" y="315.467" width="4.179" height="110.667" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="508.759" y="352.356" width="4.179" height="73.778" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="512.938" y="374.489" width="4.179" height="51.644" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="517.118" y="367.111" width="4.179" height="59.022" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="521.297" y="344.978" width="4.179" height="81.156" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="525.477" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="529.656" y="381.867" width="4.179" height="44.267" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="533.836" y="381.867" width="4.179" height="44.267" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="538.015" y="367.111" width="4.179" height="59.022" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="542.195" y="389.244" width="4.179" height="36.889" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="546.374" y="404.000" width="4.179" height="22.133" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="550.554" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="554.733" y="404.000" width="4.179" height="22.133" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="558.913" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="563.092" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="567.272" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="571.451" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="575.631" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="579.810" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="583.990" y="411.378" width="4.179" height="14.756" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="588.169" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="592.349" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="596.528" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="600.708" y="426.133" width="4.179" height="0.000" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="604.887" y="418.756" width="4.179" height="7.378" fill="lightgray" stroke="black" stroke-width="0.750"/>
+</svg>

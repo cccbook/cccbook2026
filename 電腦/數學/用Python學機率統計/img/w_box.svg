@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="504.000pt" height="324.000pt" viewBox="0 0 504.000 324.000">
+<rect x="0" y="0" width="504.000" height="324.000" fill="white"/>
+<text x="266.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">班上體重箱型圖</text>
+<text x="15.840" y="154.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 154.800)">kg</text>
+<path d="M 59.040 250.560 M 61.309 250.560 L 61.309 257.760 M 134.036 250.560 L 134.036 257.760 M 206.764 250.560 L 206.764 257.760 M 279.491 250.560 L 279.491 257.760 M 352.218 250.560 L 352.218 257.760 M 424.945 250.560 L 424.945 257.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="61.309" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">50</text>
+<text x="134.036" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">55</text>
+<text x="206.764" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">60</text>
+<text x="279.491" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">65</text>
+<text x="352.218" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">70</text>
+<text x="424.945" y="267.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">75</text>
+<path d="M 59.040 59.040 M 59.040 249.512 L 66.240 249.512 M 59.040 215.926 L 66.240 215.926 M 59.040 182.340 L 66.240 182.340 M 59.040 148.755 L 66.240 148.755 M 59.040 115.169 L 66.240 115.169 M 59.040 81.583 L 66.240 81.583" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="253.712" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">50</text>
+<text x="44.640" y="220.126" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">55</text>
+<text x="44.640" y="186.540" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">60</text>
+<text x="44.640" y="152.955" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">65</text>
+<text x="44.640" y="119.369" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">70</text>
+<text x="44.640" y="85.783" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">75</text>
+<path d="M 59.040 250.560 L 473.760 250.560 L 473.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 150.764 179.318 L 150.764 179.318M 278.764 179.318 L 278.764 179.318" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 150.764 208.202 L 150.764 149.090M 278.764 208.202 L 278.764 149.090" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="150.764" y="149.090" width="128.000" height="59.111" fill="white" stroke="black" stroke-width="0.750"/>
+<path d="M 150.764 179.318 L 150.764 179.318M 278.764 179.318 L 278.764 179.318" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="-56.509" cy="179.318" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="-60.873" cy="179.318" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+</svg>

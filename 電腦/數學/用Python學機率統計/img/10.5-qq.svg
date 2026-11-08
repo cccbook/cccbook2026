@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="720.000pt" height="360.000pt" viewBox="0 0 720.000 360.000">
+<rect x="0" y="0" width="720.000" height="360.000" fill="white"/>
+<text x="194.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">日班的標準化 Q-Q 圖</text>
+<text x="194.400" y="329.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">理論分位數（標準常態）</text>
+<text x="15.840" y="172.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 172.800)">樣本分位數</text>
+<path d="M 59.040 286.560 M 98.572 286.560 L 98.572 293.760 M 148.905 286.560 L 148.905 293.760 M 199.238 286.560 L 199.238 293.760 M 249.570 286.560 L 249.570 293.760 M 299.903 286.560 L 299.903 293.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="98.572" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="148.905" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="199.238" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="249.570" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="299.903" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 59.040 59.040 M 59.040 253.336 L 66.240 253.336 M 59.040 211.035 L 66.240 211.035 M 59.040 168.734 L 66.240 168.734 M 59.040 126.433 L 66.240 126.433 M 59.040 84.132 L 66.240 84.132" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="257.536" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-2</text>
+<text x="44.640" y="215.235" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-1</text>
+<text x="44.640" y="172.934" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="44.640" y="130.633" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<text x="44.640" y="88.332" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">2</text>
+<path d="M 59.040 286.560 L 329.760 286.560 L 329.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 69.067 278.133 L 319.733 67.467" fill="none" stroke="red" stroke-width="0.750"/>
+<circle cx="78.742" cy="278.133" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="100.587" cy="276.756" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="112.078" cy="226.285" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="120.269" cy="219.296" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="126.782" cy="217.852" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="132.267" cy="216.311" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="137.054" cy="215.749" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="141.337" cy="212.262" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="145.237" cy="209.591" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="148.838" cy="208.641" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="152.197" cy="206.935" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="155.359" cy="205.573" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="158.356" cy="203.829" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="161.215" cy="201.218" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="163.957" cy="200.821" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="166.597" cy="199.916" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="169.151" cy="196.795" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="171.629" cy="196.586" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="174.042" cy="193.720" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="176.398" cy="192.740" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="178.706" cy="187.539" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="180.971" cy="185.062" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="183.200" cy="182.114" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="185.397" cy="181.860" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="187.569" cy="178.545" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="189.719" cy="175.222" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="191.851" cy="174.182" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="193.971" cy="173.928" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="196.081" cy="173.733" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="198.186" cy="173.045" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="200.289" cy="171.182" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="202.394" cy="167.590" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="204.504" cy="161.626" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="206.624" cy="161.177" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="208.756" cy="158.693" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="210.906" cy="157.773" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="213.078" cy="157.541" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="215.276" cy="156.321" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="217.504" cy="155.595" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="219.769" cy="154.024" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="222.077" cy="150.020" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="224.433" cy="148.846" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="226.846" cy="144.640" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="229.325" cy="143.615" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="231.878" cy="140.413" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="234.518" cy="137.868" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="237.260" cy="137.143" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="240.119" cy="136.117" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="243.116" cy="134.815" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="246.278" cy="132.825" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="249.637" cy="131.830" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="253.238" cy="128.859" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="257.138" cy="127.901" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="261.421" cy="111.499" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="266.208" cy="103.313" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="271.693" cy="100.118" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="278.206" cy="97.978" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="286.397" cy="86.312" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="297.888" cy="86.072" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="319.733" cy="78.118" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<text x="206.787" y="251.221" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">Shapiro-Wilk: W = 0.9789</text>
+<text x="206.787" y="263.912" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">p = 0.383 &gt; 0.05（不拒絕常態）</text>
+<text x="554.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">夜班的標準化 Q-Q 圖</text>
+<text x="554.400" y="329.760" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">理論分位數（標準常態）</text>
+<text x="375.840" y="172.800" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 375.840 172.800)">樣本分位數</text>
+<path d="M 419.040 286.560 M 449.693 286.560 L 449.693 293.760 M 502.046 286.560 L 502.046 293.760 M 554.400 286.560 L 554.400 293.760 M 606.754 286.560 L 606.754 293.760 M 659.107 286.560 L 659.107 293.760" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="449.693" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-2</text>
+<text x="502.046" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">-1</text>
+<text x="554.400" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">0</text>
+<text x="606.754" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">1</text>
+<text x="659.107" y="303.360" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">2</text>
+<path d="M 419.040 59.040 M 419.040 260.799 L 426.240 260.799 M 419.040 216.799 L 426.240 216.799 M 419.040 172.800 L 426.240 172.800 M 419.040 128.801 L 426.240 128.801 M 419.040 84.801 L 426.240 84.801" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="404.640" y="264.999" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-2</text>
+<text x="404.640" y="220.999" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">-1</text>
+<text x="404.640" y="177.000" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="404.640" y="133.001" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">1</text>
+<text x="404.640" y="89.001" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">2</text>
+<path d="M 419.040 286.560 L 689.760 286.560 L 689.760 59.040 L 419.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<path d="M 429.067 278.133 L 679.733 67.467" fill="none" stroke="red" stroke-width="0.750"/>
+<circle cx="429.067" cy="247.610" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="451.789" cy="242.217" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="463.741" cy="241.239" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="472.261" cy="238.600" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="479.035" cy="231.766" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="484.740" cy="231.465" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="489.720" cy="228.048" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="494.175" cy="216.861" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="498.232" cy="215.883" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="501.977" cy="215.333" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="505.471" cy="215.333" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="508.760" cy="213.571" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="511.878" cy="212.191" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="514.851" cy="211.850" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="517.703" cy="211.173" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="520.449" cy="209.217" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="523.105" cy="208.165" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="525.683" cy="207.428" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="528.193" cy="202.933" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="530.644" cy="199.449" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="533.044" cy="197.467" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="535.400" cy="188.737" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="537.718" cy="188.597" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="540.004" cy="187.974" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="542.263" cy="182.876" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="544.499" cy="182.688" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="546.717" cy="180.591" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="548.922" cy="180.196" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="551.117" cy="179.848" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="553.306" cy="179.365" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="555.494" cy="178.045" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="557.683" cy="176.887" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="559.878" cy="176.880" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="562.083" cy="174.575" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="564.301" cy="171.105" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="566.537" cy="169.337" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="568.796" cy="168.667" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="571.082" cy="162.932" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="573.400" cy="162.162" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="575.756" cy="154.036" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="578.156" cy="151.068" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="580.607" cy="148.006" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="583.117" cy="147.470" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="585.695" cy="146.305" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="588.351" cy="141.247" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="591.097" cy="137.328" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="593.949" cy="134.755" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="596.922" cy="129.449" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="600.040" cy="128.860" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="603.329" cy="122.556" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="606.823" cy="121.819" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="610.568" cy="121.625" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="614.625" cy="119.997" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="619.080" cy="114.745" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="624.060" cy="109.653" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="629.765" cy="109.358" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="636.539" cy="108.240" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="645.059" cy="83.493" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="657.011" cy="76.894" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<circle cx="679.733" cy="71.836" r="2.700" fill="none" stroke="black" stroke-width="0.750"/>
+<text x="562.253" y="258.599" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">Shapiro-Wilk: W = 0.9690</text>
+<text x="562.253" y="271.798" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">p = 0.131 &gt; 0.05（不拒絕常態）</text>
+</svg>

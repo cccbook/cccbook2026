@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="720.000pt" height="345.600pt" viewBox="0 0 720.000 345.600">
+<rect x="0" y="0" width="720.000" height="345.600" fill="white"/>
+<text x="194.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">(a) 截斷 y 軸：差異被誇大</text>
+<text x="15.840" y="165.600" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 15.840 165.600)">值</text>
+<path d="M 59.040 272.160 M 137.430 272.160 L 137.430 279.360 M 251.370 272.160 L 251.370 279.360" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="137.430" y="288.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">A</text>
+<text x="251.370" y="288.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">B</text>
+<path d="M 59.040 59.040 M 59.040 264.267 L 66.240 264.267 M 59.040 207.886 L 66.240 207.886 M 59.040 151.505 L 66.240 151.505 M 59.040 95.124 L 66.240 95.124" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="44.640" y="268.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">97</text>
+<text x="44.640" y="212.086" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">99</text>
+<text x="44.640" y="155.705" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">101</text>
+<text x="44.640" y="99.324" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">103</text>
+<path d="M 59.040 272.160 L 329.760 272.160 L 329.760 59.040 L 59.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="108.945" y="176.876" width="56.970" height="87.390" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="222.885" y="89.486" width="56.970" height="174.781" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<text x="137.430" y="258.629" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">A = 100.1</text>
+<text x="251.370" y="258.629" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">B = 103.2</text>
+<text x="194.400" y="83.848" font-family="sans-serif" font-size="12.000" fill="red" text-anchor="middle" dominant-baseline="alphabetic">差距只有 3.1，卻佔了半個畫面</text>
+<text x="554.400" y="51.840" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">(b) 正確：y 軸從 0 開始</text>
+<text x="375.840" y="165.600" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" transform="rotate(-90 375.840 165.600)">值</text>
+<path d="M 419.040 272.160 M 497.430 272.160 L 497.430 279.360 M 611.370 272.160 L 611.370 279.360" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="497.430" y="288.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">A</text>
+<text x="611.370" y="288.960" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle">B</text>
+<path d="M 419.040 59.040 M 419.040 264.267 L 426.240 264.267 M 419.040 219.418 L 426.240 219.418 M 419.040 174.570 L 426.240 174.570 M 419.040 129.721 L 426.240 129.721 M 419.040 84.873 L 426.240 84.873" fill="none" stroke="black" stroke-width="0.75"/>
+<text x="404.640" y="268.467" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">0</text>
+<text x="404.640" y="223.618" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">25</text>
+<text x="404.640" y="178.770" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">50</text>
+<text x="404.640" y="133.921" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">75</text>
+<text x="404.640" y="89.073" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="end">100</text>
+<path d="M 419.040 272.160 L 689.760 272.160 L 689.760 59.040 L 419.040 59.040 Z" fill="none" stroke="black" stroke-width="0.750"/>
+<rect x="468.945" y="84.693" width="56.970" height="179.573" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<rect x="582.885" y="79.132" width="56.970" height="185.135" fill="lightgray" stroke="black" stroke-width="0.750"/>
+<text x="497.430" y="255.297" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">A = 100.1</text>
+<text x="611.370" y="255.297" font-family="sans-serif" font-size="12.000" fill="black" text-anchor="middle" dominant-baseline="alphabetic">B = 103.2</text>
+</svg>
