@@ -70,8 +70,6 @@ plugins:
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
-  - javascripts/mermaid.js
 
 markdown_extensions:
   - admonition
