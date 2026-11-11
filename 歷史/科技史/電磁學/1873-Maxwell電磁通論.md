@@ -5,7 +5,7 @@
 
 ## 前因 -- 為什麼會有這個案子
 - 1860 年代，電與磁的實驗定律已經齊備：Coulomb 定律、Ampère 定律、Faraday 電磁感應（1831），但彼此仍是零散的經驗公式。
-- Maxwell 在 1861–1862 的論文〈On Physical Lines of Force〉與 1865 的論文〈A Dynamical Theory of the Electromagnetic Field〉（詳見本書《相對論》冊 [1865-Maxwell電磁理論](../../相對論/1865-Maxwell電磁理論.md)）已經引入「位移電流」概念，並導出波動方程，算出波速等於光速。
+- Maxwell 在 1861–1862 的論文〈On Physical Lines of Force〉與 1865 的論文〈A Dynamical Theory of the Electromagnetic Field〉（詳見本書《相對論》冊 [1865-Maxwell電磁理論](../相對論/1865-Maxwell電磁理論.md)）已經引入「位移電流」概念，並導出波動方程，算出波速等於光速。
 - 但 1865 論文極為精簡難懂，且以「分子渦旋」的力學模型包裹數學。Maxwell 決心寫一部完整巨著，把整個理論以純粹的數學形式、連同所有實驗證據系統地呈現——這就是 1873 年的《電磁通論》。
 - 案子的動機：**用數學統一電、磁、光三個看似不同的領域。**
 
@@ -114,7 +114,7 @@ print(f"相對誤差 = {abs(c_sim-c_theory)/c_theory*100:.3f}%")  # < 1%
 - **J.C. Maxwell** (1831–1879)：蘇格蘭物理學家，劍橋大學第一任 Cavendish 教授。
 - 文獻：
   - Maxwell, J.C., *A Treatise on Electricity and Magnetism*, Clarendon Press, Oxford, 1873（兩卷本）。
-  - Maxwell, J.C., "A Dynamical Theory of the Electromagnetic Field", *Phil. Trans. R. Soc.* 155, 1865（交叉參照：[1865-Maxwell電磁理論](../../相對論/1865-Maxwell電磁理論.md)）。
+  - Maxwell, J.C., "A Dynamical Theory of the Electromagnetic Field", *Phil. Trans. R. Soc.* 155, 1865（交叉參照：[1865-Maxwell電磁理論](../相對論/1865-Maxwell電磁理論.md)）。
   - Heaviside, O., *Electromagnetic Theory*, 1893（向量形式化簡）。
   - Einstein, A., "Zur Elektrodynamik bewegter Körper", *Ann. Phys.* 17, 1905。
 - 軼事：Maxwell 生前書初版滯銷；劍橋 1871 年為他設立 Cavendish 講座時，他同時整理了 Cavendish 的遺稿，其嚴謹作風奠定該實驗室日後的輝煌（Thomson 發現電子即在該室）。

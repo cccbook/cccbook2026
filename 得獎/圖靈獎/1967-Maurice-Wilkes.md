@@ -60,4 +60,4 @@ Liskov 的資料抽象（2008 案）一脈相承。
 
 ## 關聯案件
 
-→ [1966-Alan-Perlis](1966-Alan-Perlis.md)、[1999-Frederick-Brooks](1999-Frederick-Brooks.md)、[2009-Charles-Thacker](2009-Charles-Thacker.md)
+→ [1966-Alan-Perlis](1966-Alan-Perlis.md)、[1999-Frederick-Brooks](1999-Frederick-Brooks.md)、2009-Charles-Thacker

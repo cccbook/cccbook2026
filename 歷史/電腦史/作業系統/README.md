@@ -18,7 +18,7 @@
 | 年份 | 事件 | 檔案 |
 |------|------|------|
 | 1964 | IBM System/360 與 OS/360——相容性家族與《人月神話》的誕生 | [1964-System360與OS360.md](1964-System360與OS360.md) |
-| 1965 | Multics——MIT/GE/Bell 的「公用電腦」雄心，虛擬記憶體與階層保護 | [1965-Multics公用電腦.md](1965-Multics公用電腦.md) |
+| 1965 | Multics——MIT/GE/Bell 的「公用電腦」雄心，虛擬記憶體與階層保護 | 1965-Multics公用電腦.md |
 | 1969 | Unix 誕生——Thompson 在 PDP-7 上寫出極簡作業系統 | [1969-Unix誕生.md](1969-Unix誕生.md) |
 | 1973 | Unix 以 C 語言重寫——作業系統第一次可移植 | [1973-Unix以C重寫.md](1973-Unix以C重寫.md) |
 

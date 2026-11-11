@@ -8,41 +8,41 @@
 文化  | [音樂史] / [舞蹈史] / [戲劇史] / [藝術史]
 
 
-[世界簡史]:./世界簡史/README.md
-[世界發展史]:./世界發展史/README.md
-[東亞史]:./東亞史/README.md
-[美洲史]:./美洲史/README.md
-[拉丁美洲史]:./拉丁美洲史/README.md
-[歐亞交界史]:./歐亞交界史/README.md
+[世界簡史]: 世界簡史/README.md
+[世界發展史]: 世界發展史/README.md
+[東亞史]: 東亞史/README.md
+[美洲史]: 美洲史/README.md
+[拉丁美洲史]: 拉丁美洲史/README.md
+[歐亞交界史]: 歐亞交界史/README.md
 
 
-[宗教史]:./宗教史/README.md
-[教育史]:./教育史/README.md
-[金融經濟史]:./金融經濟史/README.md
-[法律與制度史]:./法律與制度史/README.md
-[社會結構史]:./社會結構史/README.md
-[武器與戰法]:./武器與戰法/README.md
+[宗教史]: ../文化史/宗教史/README.md
+[教育史]: ../文化史/教育史/README.md
+[金融經濟史]: 金融經濟史/README.md
+[法律與制度史]: 法律與制度史/README.md
+[社會結構史]: 社會結構史/README.md
+[武器與戰法]: 武器與戰法/README.md
 
-[音樂史]:./音樂史/README.md
-[舞蹈史]:./舞蹈史/README.md
-[戲劇史]:./戲劇史/README.md
-[藝術史]:./藝術史/README.md
+[音樂史]: ../文化史/音樂史/README.md
+[舞蹈史]: ../文化史/舞蹈史/README.md
+[戲劇史]: ../文化史/戲劇史/README.md
+[藝術史]: ../文化史/藝術史/README.md
 
-[未來史]:./未來史/README.md
-[歐洲史]:./歐洲史/README.md
-[亞洲史]:./亞洲史/README.md
-[北亞史]:./北亞史/README.md
-[中亞史]:./中亞史/README.md
-[東南亞史]:./東南亞史/README.md
-[大航海時代]:./大航海時代/README.md
-[工業革命史]:./工業革命史/README.md
-[英國史]:./英國史/README.md
-[希臘史]:./希臘史/README.md
-[美國史]:./美國史/README.md
-[俄羅斯史]:./俄羅斯史/README.md
-[伊斯蘭史]:./伊斯蘭史/README.md
-[台灣史]:./台灣史/README.md
-[日本史]:./日本史/README.md
-[韓國史]:./韓國史/README.md
-[香港史]:./香港史/README.md
-[金門廈門史]:./金門廈門史/README.md
+[未來史]: 未來史/README.md
+[歐洲史]: 歐洲史/README.md
+[亞洲史]: 亞洲史/README.md
+[北亞史]: 北亞史/README.md
+[中亞史]: 中亞史/README.md
+[東南亞史]: 東南亞史/README.md
+[大航海時代]: 大航海時代/README.md
+[工業革命史]: 工業革命史/README.md
+[英國史]: 英國史/README.md
+[希臘史]: 希臘史/README.md
+[美國史]: README.md
+[俄羅斯史]: 俄羅斯史/README.md
+[伊斯蘭史]: README.md
+[台灣史]: 台灣史/README.md
+[日本史]: 日本史/README.md
+[韓國史]: 韓國史/README.md
+[香港史]: 香港史/README.md
+[金門廈門史]: 金門廈門史/README.md

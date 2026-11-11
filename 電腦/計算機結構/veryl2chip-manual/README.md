@@ -28,9 +28,9 @@ veryl2chip 是給 [Veryl](https://veryl-lang.org/) 硬體描述語言用的一�
 
 ## 其他文件
 
-- 從零開始的教學（給第一次寫硬體的人）：[`tutorial/README.tw.md`](../tutorial/README.tw.md)
-- 虛擬實驗課講義（不用買板子）：[`tutorial/labs.tw.md`](../tutorial/labs.tw.md)
-- 各版本的歷史：[`history.md`](../history.md)
-- 實作細節：[`veryl-sim/README.tw.md`](../veryl-sim/README.tw.md)、[`veryl-eda/README.tw.md`](../veryl-eda/README.tw.md)
+- 從零開始的教學（給第一次寫硬體的人）：`tutorial/README.tw.md`
+- 虛擬實驗課講義（不用買板子）：`tutorial/labs.tw.md`
+- 各版本的歷史：`history.md`
+- 實作細節：`veryl-sim/README.tw.md`、`veryl-eda/README.tw.md`
 
 本手冊對應 veryl2chip 2.1 起（有 `v2c` 指令的版本）。

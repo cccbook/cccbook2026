@@ -100,5 +100,5 @@
 
 ### 交錯參照
 - 計算理論史：[../計算理論/README.md](../計算理論/README.md)
-- 隨機算法史（PRG、Miller–Rabin）：[../隨機算法/README.md](../隨機算法/README.md)
-- 機率統計史：[../機率統計/README.md](../機率統計/README.md)
+- 隨機算法史（PRG、Miller–Rabin）：[../隨機算法/README.md](../../數學史/隨機算法/README.md)
+- 機率統計史：[../機率統計/README.md](../../../數學/機率統計/README.md)

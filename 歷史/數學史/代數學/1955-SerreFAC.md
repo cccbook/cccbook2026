@@ -98,7 +98,7 @@ print(f"dim H^0 = {H0}, dim H^1 = {H1}")
 ## 結案 -- 後果與影響
 - **上同調成為幾何工具**： $`H^i(X, \mathcal{F})`$ 從此是代數幾何的日常語言；代數曲線的分類（ $`g`$ 、虧格）、Hodge 理論、Weil 猜想全部上同調化。
 - **GAGA（1956）**：Serre 隨後證明代數幾何與解析幾何的範疇等價（FAC 的姊妹篇），凝聚層在兩個世界間自由穿梭。
-- **為 Grothendieck 鋪路**：Grothendieck（1957 Tohoku 論文）將層上同調公理化，1960 年代進一步建立**概形（scheme）**理論與 Étale 上同調（見 [1960-Grothendieck概形](./1960-Grothendieck概形.md) 交叉參照）—— FAC 是這場革命的直接前身。
+- **為 Grothendieck 鋪路**：Grothendieck（1957 Tohoku 論文）將層上同調公理化，1960 年代進一步建立**概形（scheme）**理論與 Étale 上同調（見 [1960-Grothendieck概形](1960-Grothendieck概形.md) 交叉參照）—— FAC 是這場革命的直接前身。
 - **菲爾茲 + 阿貝爾**：Serre 因 FAC 時期的工作獲 1954 年菲爾茲獎（史上最年輕，28 歲），2000 年獲首屆沃爾夫獎，2003 年獲首屆阿貝爾獎 —— 三大獎全收。
 
 ## 關鍵人物與文獻

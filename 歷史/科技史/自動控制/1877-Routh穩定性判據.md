@@ -114,7 +114,7 @@ Routh 的手法是**繞過根、直接從係數提取符號資訊**——
 ## 後果
 
 - Routh 判據成為經典控制的標準工具，至今仍在教科書中。
-- Hurwitz（1893）獨立導出等價的矩陣形式（Hurwitz 矩陣），更適合代數證明——見 [1893-Hurwitz判據.md](1893-Hurwitz判據.md)。
+- Hurwitz（1893）獨立導出等價的矩陣形式（Hurwitz 矩陣），更適合代數證明——見 1893-Hurwitz判據.md。
 - 「不求解的判據」思想延續：Nyquist 判據（1932，頻域版，見 [1932-Nyquist判據.md](1932-Nyquist判據.md)）。
 - 限制：Routh 判據只適用**線性定常系統**；非線性系統要等 Lyapunov（見 [1892-Lyapunov穩定性.md](1892-Lyapunov穩定性.md)）。
 

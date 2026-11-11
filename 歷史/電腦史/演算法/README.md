@@ -28,9 +28,9 @@
 | 1971 | Cook 提出 NP 完備性理論（Cook-Levin 定理）：SAT 是 NP-complete，「P vs NP」的第一個錨點 | [1971-NP完備性與CookLevin](1971-NP完備性與CookLevin.md) |
 | 1972 | Karp 發表《Reducibility Among Combinatorial Problems》：21 個經典問題皆 NP-complete，歸約（reduction）成為標準武器 | [1972-Karp21題](1972-Karp21題.md) |
 | 1975 | Tarjan 分析並查集（union-find）：路徑壓縮＋按秩合併的攤還複雜度 O(α(n))——反 Ackermann 函數，攤還分析的誕生 | [1975-Tarjan並查集與攤還分析](1975-Tarjan並查集與攤還分析.md) |
-| 1977 | Knuth、Morris、Pratt 發表 KMP 字串匹配演算法：O(n+m) 的線性時間匹配，失配表的智慧 | [1977-KMP字串匹配](1977-KMP字串匹配.md) |
+| 1977 | Knuth、Morris、Pratt 發表 KMP 字串匹配演算法：O(n+m) 的線性時間匹配，失配表的智慧 | 1977-KMP字串匹配 |
 | 1977 | Boyer 與 Moore 發表 Boyer-Moore 搜尋：從右往左＋壞字元規則，實務亞線性 | [1977-BoyerMoore](1977-BoyerMoore.md) |
-| 1979 | Khachiyan 發明椭球法（ellipsoid method）：線性規劃首次被證明是多項式時間可解，Klee-Minty 立方體的反擊 | [1979-椭球法與線性規劃](1979-椭球法與線性規劃.md) |
+| 1979 | Khachiyan 發明椭球法（ellipsoid method）：線性規劃首次被證明是多項式時間可解，Klee-Minty 立方體的反擊 | 1979-椭球法與線性規劃 |
 
 ## 第三幕：演算法進入工業與網路時代（1973–2010s）
 

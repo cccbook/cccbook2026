@@ -44,7 +44,7 @@
 |---|---|---|
 | 1987 | FPCA 會議上，25 餘位研究者決議統一「太多惰性語言」的亂象，成立 Haskell 委員會；命名致敬 Haskell Curry | [1987-Haskell誕生會議](1987-Haskell誕生會議.md) |
 | 1990 | 《Haskell 1.0 報告》發表：純函數、惰性求值、型別類別（type class，由 Phil Wadler 與 Stephen Blott 提出）、monadic I/O 雛形；1997 年 Haskell 98 成為穩定標準 | [1990-Haskell報告與型別類別](1990-Haskell報告與型別類別.md) |
-| 1993 | Ericsson 的 Joe Armstrong 等人發表 Erlang：為電信九個九（99.9999999%）可用性而生，以函數式語法＋Actor 行程模型證明「FP 能扛得住真實世界的錯誤」 | [1993-ERLANG電信級函數式](1993-ERLANG電信級函數式.md) |
+| 1993 | Ericsson 的 Joe Armstrong 等人發表 Erlang：為電信九個九（99.9999999%）可用性而生，以函數式語法＋Actor 行程模型證明「FP 能扛得住真實世界的錯誤」 | 1993-ERLANG電信級函數式 |
 | 1996 | Chris Okasaki 的博士論文《Purely Functional Data Structures》：證明「不可變也有高效結構」，結構共享＋惰性攤還分析 | [1996-Okasaki純函數式資料結構](1996-Okasaki純函數式資料結構.md) |
 | 1997 | Conal Elliott 發表 Fran（Functional Reactive Animation）：Behavior = time -> a，響應式程式（FRP）的數學 | [1997-FRP與響應式程式](1997-FRP與響應式程式.md) |
 
@@ -54,7 +54,7 @@
 |---|---|---|
 | 2004 | Google 發表 MapReduce：以 Backus 式的 map/reduce 高階函數重寫分散式計算，數千台機器如同一次函數呼叫；同年 OCaml 系企業（Jane Street）以 FP 做高頻交易 | [2004-MapReduce函數式大數據](2004-MapReduce函數式大數據.md) |
 | 2005 | Don Syme（Microsoft Research）發表 F#：OCaml 的 .NET 變體，async workflow（monad 包裝非同步）比 C# await 早兩年 | [2005-FSharp與.NET函數式](2005-FSharp與.NET函數式.md) |
-| 2007 | Rich Hickey 發表 Clojure：JVM 上的現代 Lisp，不可變資料結構＋持久化向量（RRB/persistent vector），證明「不可變」在多核時代反而更快 | [2007-Clojure不可變資料結構](2007-Clojure不可變資料結構.md) |
+| 2007 | Rich Hickey 發表 Clojure：JVM 上的現代 Lisp，不可變資料結構＋持久化向量（RRB/persistent vector），證明「不可變」在多核時代反而更快 | 2007-Clojure不可變資料結構 |
 | 2012 | Matei Zaharia 發表 Spark 與 RDD：不可變分散式資料集＋血緣圖，容錯靠重算——純函數可重試的數學 | [2012-SparkRDD](2012-SparkRDD.md) |
 | 2014 | Java 8 正式引入 lambda 與 Stream API：全球最大語言群體第一次在日常用上 λ-Calculus 語法 | [2014-Java8Lambda](2014-Java8Lambda.md) |
 | 2015 | Rust 1.0 發布：ownership/borrowing 是線性型別 λ-Calculus 的工程變體，無 GC 的記憶體安全 | [2015-Rust與線性型別](2015-Rust與線性型別.md) |

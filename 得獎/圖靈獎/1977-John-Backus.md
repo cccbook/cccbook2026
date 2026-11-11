@@ -72,4 +72,4 @@ reasoning）。此理想部分實現：Haskell（1990）、SQL 的查詢
 
 ## 關聯案件
 
-→ [2005-Peter-Naur](2005-Peter-Naur.md)、[1990-Fernando-Corbato](1990-Fernando-Corbato.md)、[λ演算史 1958-LISP](../科技史/λ演算/1958-LISP.md)
+→ [2005-Peter-Naur](2005-Peter-Naur.md)、[1990-Fernando-Corbato](1990-Fernando-Corbato.md)、[λ演算史 1958-LISP](../../歷史/電腦史/λ演算/1958-LISP.md)

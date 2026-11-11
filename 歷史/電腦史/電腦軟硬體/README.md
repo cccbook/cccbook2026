@@ -28,7 +28,7 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 1971 | Intel 4004 微處理器（見 [科學史/電磁學](../電磁學/1971-Intel4004.md)） | -- |
+| 1971 | Intel 4004 微處理器（見 [科學史/電磁學](../../科技史/電磁學/1971-Intel4004.md)） | -- |
 | 1977 | Apple II 問世，個人電腦進入家庭 | [1977-AppleII個人電腦.md](1977-AppleII個人電腦.md) |
 | 1981 | IBM PC 問世，相容機與 Wintel 聯盟 | [1981-IBMPC.md](1981-IBMPC.md) |
 | 1984 | Macintosh 與 GUI 時代（Xerox Alto 前驅） | [1984-Macintosh與GUI.md](1984-Macintosh與GUI.md) |

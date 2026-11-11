@@ -70,7 +70,7 @@
 | 2006 | Frances Allen | 編譯器最佳化、自動並行化 | [2006-Frances-Allen](2006-Frances-Allen.md) |
 | 2007 | Clarke, Emerson, Sifakis | 模型檢查 | [2007-Clarke-Emerson-Sifakis](2007-Clarke-Emerson-Sifakis.md) |
 | 2008 | Barbara Liskov | 資料抽象、Liskov 替換原則 | [2008-Barbara-Liskov](2008-Barbara-Liskov.md) |
-| 2009 | Charles Thacker | Alto 硬體、個人電腦原型 | [2009-Charles-Thacker](2009-Charles-Thacker.md) |
+| 2009 | Charles Thacker | Alto 硬體、個人電腦原型 | 2009-Charles-Thacker |
 | 2010 | Leslie Valiant | PAC 學習、#P | [2010-Leslie-Valiant](2010-Leslie-Valiant.md) |
 
 ### 智慧與規模期（2011–2024）

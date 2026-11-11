@@ -95,4 +95,4 @@ CSMA/CD：以「偶爾碰撞 + 指數退避」換取零協調成本
 
 ## 關聯案件
 
-→ [1992-Butler-Lampson](1992-Butler-Lampson.md)、[2009-Charles-Thacker](2009-Charles-Thacker.md)、[2004-Cerf-Kahn](2004-Cerf-Kahn.md)
+→ [1992-Butler-Lampson](1992-Butler-Lampson.md)、2009-Charles-Thacker、[2004-Cerf-Kahn](2004-Cerf-Kahn.md)

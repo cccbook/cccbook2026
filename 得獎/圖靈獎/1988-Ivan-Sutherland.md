@@ -68,4 +68,4 @@ Sketchpad 的深層洞見：**人機介面是「對話」而非「提交」**。
 
 ## 關聯案件
 
-→ [2009-Charles-Thacker](2009-Charles-Thacker.md)、[2019-Catmull-Hanrahan](2019-Catmull-Hanrahan.md)、[2001-Dahl-Nygaard](2001-Dahl-Nygaard.md)
+→ 2009-Charles-Thacker、[2019-Catmull-Hanrahan](2019-Catmull-Hanrahan.md)、[2001-Dahl-Nygaard](2001-Dahl-Nygaard.md)

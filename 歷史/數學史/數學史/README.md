@@ -51,10 +51,10 @@
 
 | 年份 | 事件 | 檔案 |
 |------|------|------|
-| 1900 | Hilbert 23 問題（交叉參照計算理論史） | [../計算理論/1900-Hilbert23問題.md](../計算理論/1900-Hilbert23問題.md) |
+| 1900 | Hilbert 23 問題（交叉參照計算理論史） | [../計算理論/1900-Hilbert23問題.md](../../電腦史/計算理論/1900-Hilbert23問題.md) |
 | 1902 | 羅素悖論：數學基礎危機的引爆點 | [1902-Russell悖論.md](1902-Russell悖論.md) |
 | 1930 | Ramsey 定理：混亂中必然有秩序 | [1930-Ramsey理論.md](1930-Ramsey理論.md) |
-| 1931 | Gödel 不完備定理（交叉參照計算理論史） | [../計算理論/1931-Godel不完備定理.md](../計算理論/1931-Godel不完備定理.md) |
+| 1931 | Gödel 不完備定理（交叉參照計算理論史） | [../計算理論/1931-Godel不完備定理.md](../../電腦史/計算理論/1931-Godel不完備定理.md) |
 | 1933 | Kolmogorov 公理化機率：機率論成為數學 | [1933-Kolmogorov公理化.md](1933-Kolmogorov公理化.md) |
 | 1935 | Bourbaki：結構革命與整個數學的重建 | [1935-Bourbaki結構革命.md](1935-Bourbaki結構革命.md) |
 | 1963 | Cohen 力迫法：連續統假設獨立於 ZFC | [1963-Cohen力迫法.md](1963-Cohen力迫法.md) |
@@ -146,9 +146,9 @@
 | 現代 | 結構與證明（structure & proof） | Galois、Cantor、Kolmogorov |
 
 ### 交錯參照
-- 計算理論史（Hilbert 綱領、Gödel）：[../計算理論/README.md](../計算理論/README.md)
+- 計算理論史（Hilbert 綱領、Gödel）：[../計算理論/README.md](../../電腦史/計算理論/README.md)
 - 機率統計史：[../機率統計/README.md](../機率統計/README.md)
 - 隨機算法史：[../隨機算法/README.md](../隨機算法/README.md)
-- 密碼學史：[../密碼學/README.md](../密碼學/README.md)
+- 密碼學史：[../密碼學/README.md](../../電腦史/密碼學/README.md)
 - 微積分史：[../微積分/README.md](../微積分/README.md)
 - 線性代數史：[../線性代數/README.md](../線性代數/README.md)

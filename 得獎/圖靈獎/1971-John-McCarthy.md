@@ -71,4 +71,4 @@ McCarthy 求諸數學邏輯。前者靈活、後者嚴格，AI 至今仍在兩�
 
 ## 關聯案件
 
-→ [1969-Marvin-Minsky](1969-Marvin-Minsky.md)、[1958-LISP（λ演算史）](../科技史/λ演算/1958-LISP.md)、[1990-Fernando-Corbato](1990-Fernando-Corbato.md)
+→ [1969-Marvin-Minsky](1969-Marvin-Minsky.md)、[1958-LISP（λ演算史）](../../歷史/電腦史/λ演算/1958-LISP.md)、[1990-Fernando-Corbato](1990-Fernando-Corbato.md)

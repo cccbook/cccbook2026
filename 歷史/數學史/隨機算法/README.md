@@ -34,7 +34,7 @@
 |------|------|------|
 | 1987 | Karp–Rabin 字串匹配：隨機化雜湊找子字串 | [1987-KarpRabin字串匹配.md](1987-KarpRabin字串匹配.md) |
 | 1989 | Karger 的全域最小割收縮算法：簡單隨機化擊敗複雜確定性算法 | [1989-Karger最小割.md](1989-Karger最小割.md) |
-| 1990 | PCP 定理（隨機化驗證的極致，交叉參照計算理論史） | [1990-PCP定理.md](../計算理論/1990-PCP定理.md) |
+| 1990 | PCP 定理（隨機化驗證的極致，交叉參照計算理論史） | [1990-PCP定理.md](../../電腦史/計算理論/1990-PCP定理.md) |
 | 1995 | Karger–Klein–Tarjan 隨機線性時間最小生成樹 | [1995-KargerKleinTarjan隨機MST.md](1995-KargerKleinTarjan隨機MST.md) |
 | 1997 | Broder 的 MinHash：用隨機雜湊估計集合相似度 | [1997-BroderMinHash.md](1997-BroderMinHash.md) |
 | 1997 | Impagliazzo–Wigderson：P = BPP 若單向函數夠硬（去隨機化） | [1997-ImpagliazzoWigderson去隨機化.md](1997-ImpagliazzoWigderson去隨機化.md) |
@@ -91,5 +91,5 @@
 | ZPP | Las Vegas：期望多項式時間，總是正確 |
 
 ### 交錯參照
-- 計算理論史（BPP 與 P vs NP）：[../計算理論/README.md](../計算理論/README.md)
+- 計算理論史（BPP 與 P vs NP）：[../計算理論/README.md](../../電腦史/計算理論/README.md)
 - 機率統計史（機率論基礎）：[../機率統計/README.md](../機率統計/README.md)

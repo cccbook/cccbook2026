@@ -7,57 +7,57 @@
 電機  | [電子電機] / [電磁學] / [半導體IC] / [半導體設備] <br/> [通訊網路] / [EDA] / [機器史] / [影音技術]
 科學 | [科技發展史] / [物理史] / [化學史] / [生理醫學史] <br/> [相對論] / [量子力學] / [哈密頓物理學]
 
-[科技發展史]:./科技發展史/README.md
-[神經網路]:./神經網路/README.md
-[強化學習]:./強化學習/README.md
-[資訊科學]:./資訊科學/README.md
-[資料庫]:./資料庫/README.md
-[計算語言學]:./計算語言學/README.md
+[科技發展史]: 科技發展史/README.md
+[神經網路]: ../電腦史/神經網路/README.md
+[強化學習]: ../電腦史/強化學習/README.md
+[資訊科學]: ../電腦史/資訊科學/README.md
+[資料庫]: ../電腦史/資料庫/README.md
+[計算語言學]: ../電腦史/計算語言學/README.md
 
-[數學補充]:./複變函數/README.md
-[複變函數]:./複變函數/README.md
+[數學補充]: ../../數學/複變函數/README.md
+[複變函數]: ../../數學/複變函數/README.md
 
-[機器史]:./機器史/README.md
-[未來史]:./未來史/README.md
+[機器史]: 機器史/README.md
+[未來史]: ../世界史/未來史/README.md
 
-[數學史]:./數學史/README.md
-[代數學]:./代數學/README.md
-[幾何學]:./幾何學/README.md
-[微積分]:./微積分/README.md
-[機率統計]:./機率統計/README.md
-[線性代數]:./線性代數/README.md
-[傅立葉轉換]:./傅立葉轉換/README.md
-[微分方程]:./微分方程/README.md
-[金融計算]:./金融計算/README.md
+[數學史]: ../數學史/數學史/README.md
+[代數學]: ../../數學/代數學/README.md
+[幾何學]: ../../數學/幾何學/README.md
+[微積分]: ../../數學/微積分/README.md
+[機率統計]: ../../數學/機率統計/README.md
+[線性代數]: ../../數學/線性代數/README.md
+[傅立葉轉換]: ../數學史/傅立葉轉換/README.md
+[微分方程]: ../../數學/微分方程/README.md
+[金融計算]: 金融計算/README.md
 
-[電腦硬體史]:./電腦硬體史/README.md
-[演算法]:./演算法/README.md
-[隨機算法]:./隨機算法/README.md
-[密碼學]:./密碼學/README.md
-[計算理論]:./計算理論/README.md
-[人工智慧]:./人工智慧/README.md
-[智慧模型]:./智慧模型/README.md
-[軟體工程]:./軟體工程/README.md
-[影音技術]:./影音技術/README.md
-[程式語言]:./程式語言/README.md
-[虛擬機]:./虛擬機/README.md
-[編譯器]:./編譯器/README.md
-[作業系統]:./作業系統/README.md
-[λ演算]:./λ演算/README.md
+[電腦硬體史]: ../電腦史/電腦硬體史/README.md
+[演算法]: ../電腦史/演算法/README.md
+[隨機算法]: ../數學史/隨機算法/README.md
+[密碼學]: ../電腦史/密碼學/README.md
+[計算理論]: ../電腦史/計算理論/README.md
+[人工智慧]: ../電腦史/人工智慧/README.md
+[智慧模型]: ../../電腦/人工智慧/智慧模型/README.md
+[軟體工程]: ../../電腦/軟體工程/README.md
+[影音技術]: 影音技術/README.md
+[程式語言]: ../電腦史/程式語言/README.md
+[虛擬機]: ../電腦史/虛擬機/README.md
+[編譯器]: ../電腦史/編譯器/README.md
+[作業系統]: ../電腦史/作業系統/README.md
+[λ演算]: ../電腦史/λ演算/README.md
 
-[電子電機]:./電腦軟硬體/README.md
-[電磁學]:./電磁學/README.md
-[半導體IC]:./IC科技/README.md
-[半導體設備]:./半導體設備/README.md
-[通訊網路]:./通訊技術/README.md
-[EDA]:./EDA算法史/README.md
-[影音技術]:./影音技術/README.md
+[電子電機]: ../電腦史/電腦軟硬體/README.md
+[電磁學]: 電磁學/README.md
+[半導體IC]: IC科技/README.md
+[半導體設備]: 半導體設備/README.md
+[通訊網路]: 通訊技術/README.md
+[EDA]: ../電腦史/EDA算法史/README.md
+[影音技術]: 影音技術/README.md
 
-[物理史]:./物理史/README.md
-[相對論]:./相對論/README.md
-[量子力學]:./量子力學/README.md
-[哈密頓物理學]:./哈密頓物理學/README.md
+[物理史]: README.md
+[相對論]: 相對論/README.md
+[量子力學]: 量子力學/README.md
+[哈密頓物理學]: 哈密頓物理學/README.md
 
-[化學史]:./化學史/README.md
+[化學史]: 化學史/README.md
 
-[生理醫學史]:./生理醫學史/README.md
+[生理醫學史]: ../醫學史/生理醫學史/README.md

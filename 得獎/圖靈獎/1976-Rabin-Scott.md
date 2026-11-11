@@ -74,4 +74,4 @@ f : D → D  遞迴程式的語義 = f 的最小不動点 lfp(f)
 
 ## 關聯案件
 
-→ [1985-Richard-Karp](1985-Richard-Karp.md)、[2000-Andrew-Yao](2000-Andrew-Yao.md)、[1972-指稱語義（λ演算史）](../科技史/λ演算/1972-指稱語義.md)
+→ [1985-Richard-Karp](1985-Richard-Karp.md)、[2000-Andrew-Yao](2000-Andrew-Yao.md)、[1972-指稱語義（λ演算史）](../../歷史/電腦史/λ演算/1972-指稱語義.md)

@@ -39,7 +39,7 @@
 | 1841 | Liouville 證明 Riccati 方程一般情況無初等解，開啟「可積性」研究 | [1841-Liouville可積性之謎.md](1841-Liouville可積性之謎.md) |
 | 1858 | Dedekind/Weierstrass 時代的 Sturm-Liouville 理論與本徵值問題成形 | [1858-SturmLiouville理論.md](1858-SturmLiouville理論.md) |
 | 1886 | Poincaré 研究三體問題，發現積分不變量不足，無法求解 | [1886-Poincare三體問題.md](1886-Poincare三體問題.md) |
-| 1890 | Poincaré 發現同宿軌道與混沌，開創微分方程定性理論（動態系統） | [1890-Poincare定性理論與混沌.md](1890-Poincare定性理論與混沌.md) |
+| 1890 | Poincaré 發現同宿軌道與混沌，開創微分方程定性理論（動態系統） | 1890-Poincare定性理論與混沌.md |
 
 ### 第四幕：二十世紀與計算時代（1900–至今）
 

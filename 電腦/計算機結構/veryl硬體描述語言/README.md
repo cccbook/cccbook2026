@@ -27,34 +27,34 @@
     * [2.2-三大支柱：語法最佳化、互操作與生產力（2022-2026）](02.2-三大支柱：語法最佳化、互操作與生產力（2022-2026）.md)
     * [2.3-為什麼不是Chisel：與替代硬體語言的設計取捨（2015-2026）](02.3-為什麼不是Chisel：與替代硬體語言的設計取捨（2015-2026）.md)
 * 第3章-模組、介面與專案組織
-    * [3.1-模組定義與埠宣告語法](3.1-模組定義與埠宣告語法.md)
-    * [3.2-介面、modport與connect操作符](3.2-介面、modport與connect操作符.md)
-    * [3.3-package、別名與可視性控制](3.3-package、別名與可視性控制.md)
+    * [3.1-模組定義與埠宣告語法](03.1-模組定義與埠宣告語法.md)
+    * [3.2-介面、modport與connect操作符](03.2-介面、modport與connect操作符.md)
+    * [3.3-package、別名與可視性控制](03.3-package、別名與可視性控制.md)
 * 第4章-時序邏輯與時鐘重置抽象
-    * [4.1-always_ff與always_comb：賦值語意的統一](4.1-always_ff與always_comb：賦值語意的統一.md)
-    * [4.2-clock與reset型別：抽象掉極性與同步性](4.2-clock與reset型別：抽象掉極性與同步性.md)
-    * [4.3-if_reset、重置值常值與default_clock](4.3-if_reset、重置值常值與default clock.md)
+    * [4.1-always_ff與always_comb：賦值語意的統一](04.1-always_ff與always_comb：賦值語意的統一.md)
+    * [4.2-clock與reset型別：抽象掉極性與同步性](04.2-clock與reset型別：抽象掉極性與同步性.md)
+    * [4.3-if_reset、重置值常值與default_clock](04.3-if_reset、重置值常值與default clock.md)
 * 第5章-資料型別、泛型與表達式
-    * [5.1-資料型別系統：logic、bit、u32、p32與複合型別](5.1-資料型別系統：logic、bit、u32、p32與複合型別.md)
-    * [5.2-泛型與gen：超越參數覆寫的程式碼生成](5.2-泛型與gen：超越參數覆寫的程式碼生成.md)
-    * [5.3-表達式：if、case、switch、for、inside、outside與msb、repeat](5.3-表達式：if、case、switch、for、inside、outside與msb、repeat.md)
+    * [5.1-資料型別系統：logic、bit、u32、p32與複合型別](05.1-資料型別系統：logic、bit、u32、p32與複合型別.md)
+    * [5.2-泛型與gen：超越參數覆寫的程式碼生成](05.2-泛型與gen：超越參數覆寫的程式碼生成.md)
+    * [5.3-表達式：if、case、switch、for、inside、outside與msb、repeat](05.3-表達式：if、case、switch、for、inside、outside與msb、repeat.md)
 * 第6章-時鐘域與跨時鐘域安全（2024-2026）
-    * [6.1-為什麼跨時鐘域是最難的硬體bug](6.1-為什麼跨時鐘域是最難的硬體bug.md)
-    * [6.2-時鐘域標註與unsafe(cdc)檢查](6.2-時鐘域標註與unsafe(cdc)檢查.md)
-    * [6.3-同步器的實作、驗證與協議（MTBF）](6.3-同步器的實作、驗證與協議（MTBF）.md)
+    * [6.1-為什麼跨時鐘域是最難的硬體bug](06.1-為什麼跨時鐘域是最難的硬體bug.md)
+    * [6.2-時鐘域標註與unsafe(cdc)檢查](<06.2-時鐘域標註與unsafe(cdc)檢查.md>)
+    * [6.3-同步器的實作、驗證與協議（MTBF）](06.3-同步器的實作、驗證與協議（MTBF）.md)
 * 第7章-工具鏈、專案管理與持續整合
-    * [7.1-verylup：工具鏈安裝與版本管理（2024-2026）](7.1-verylup：工具鏈安裝與版本管理（2024-2026）.md)
-    * [7.2-build、fmt、lint、doc與CI整合](7.2-build、fmt、lint、doc與CI整合.md)
-    * [7.3-相依性管理、套件註冊表與版本治理](7.3-相依性管理、套件註冊表與版本治理.md)
+    * [7.1-verylup：工具鏈安裝與版本管理（2024-2026）](07.1-verylup：工具鏈安裝與版本管理（2024-2026）.md)
+    * [7.2-build、fmt、lint、doc與CI整合](07.2-build、fmt、lint、doc與CI整合.md)
+    * [7.3-相依性管理、套件註冊表與版本治理](07.3-相依性管理、套件註冊表與版本治理.md)
 * 第8章-驗證流程：原生測試與內建模擬器
-    * [8.1-原生測試框架：clock_gen、reset_gen與斷言](8.1-原生測試框架：clock_gen、reset_gen與斷言.md)
-    * [8.2-內建模擬器：IR、兩階段編譯與效能量測（2026）](8.2-內建模擬器：IR、兩階段編譯與效能量測（2026）.md)
-    * [8.3-隨機測試、記分板與cocotb嵌入](8.3-隨機測試、記分板與cocotb嵌入.md)
+    * [8.1-原生測試框架：clock_gen、reset_gen與斷言](08.1-原生測試框架：clock_gen、reset_gen與斷言.md)
+    * [8.2-內建模擬器：IR、兩階段編譯與效能量測（2026）](08.2-內建模擬器：IR、兩階段編譯與效能量測（2026）.md)
+    * [8.3-隨機測試、記分板與cocotb嵌入](08.3-隨機測試、記分板與cocotb嵌入.md)
 * 第9章-與SystemVerilog的互操作與遷移
-    * [9.1-sv命名空間、embed與include：混合語言設計](9.1-sv命名空間、embed與include：混合語言設計.md)
-    * [9.2-translate：從SystemVerilog到Veryl的自動轉換（2024-2026）](9.2-translate：從SystemVerilog到Veryl的自動轉換（2024-2026）.md)
-    * [9.3-漸進式遷移策略與標準函式庫（AXI3、AXI4、AXI4-Lite、AXI-Stream）](9.3-漸進式遷移策略與標準函式庫（AXI3、AXI4、AXI4-Lite、AXI-Stream）.md)
+    * [9.1-sv命名空間、embed與include：混合語言設計](09.1-sv命名空間、embed與include：混合語言設計.md)
+    * [9.2-translate：從SystemVerilog到Veryl的自動轉換（2024-2026）](09.2-translate：從SystemVerilog到Veryl的自動轉換（2024-2026）.md)
+    * [9.3-漸進式遷移策略與標準函式庫（AXI3、AXI4、AXI4-Lite、AXI-Stream）](09.3-漸進式遷移策略與標準函式庫（AXI3、AXI4、AXI4-Lite、AXI-Stream）.md)
 * 第10章-生態、實戰與未來方向
     * [10.1-Heliodor：以Veryl實作的RISC-V多核處理器（2026）](10.1-Heliodor：以Veryl實作的RISC-V多核處理器（2026）.md)
-    * [10.2-周邊生態：RgGen、Rust元件與社群實踐](10.2-周邊生態：RgGen、Rust元件與社群實踐.md)
-    * [10.3-語言設計的未解問題與演進方向（2026-）](10.3-語言設計的未解問題與演進方向（2026-）.md)
+    * 10.2-周邊生態：RgGen、Rust元件與社群實踐
+    * 10.3-語言設計的未解問題與演進方向（2026-）

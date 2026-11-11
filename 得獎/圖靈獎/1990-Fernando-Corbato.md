@@ -73,4 +73,4 @@ Amdahl 式利用率：批次模式 CPU 忙碌於算術的比率低
 
 ## 關聯案件
 
-→ [1971-John-McCarthy](1971-John-McCarthy.md)、[1983-Ritchie-Thompson](1983-Ritchie-Thompson.md)、[2009-Charles-Thacker](2009-Charles-Thacker.md)
+→ [1971-John-McCarthy](1971-John-McCarthy.md)、[1983-Ritchie-Thompson](1983-Ritchie-Thompson.md)、2009-Charles-Thacker

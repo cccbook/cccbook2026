@@ -53,7 +53,7 @@
 6. **全面滲透** —— Rust 的 ownership、Java 的 records、C++ 的 ranges/expected：函數式已是所有語言的基本配備。
 
 ## 相關書冊
-- [C 程式語言發展史](../C/)
-- [C++ 程式語言發展史](../C%2B%2B/)
-- [JavaScript 程式語言發展史](../JavaScript/)
-- [Rust 程式語言發展史](../Rust/)
+- [C 程式語言發展史](../C/README.md)
+- [C++ 程式語言發展史](../C++/README.md)
+- [JavaScript 程式語言發展史](../JavaScript/README.md)
+- [Rust 程式語言發展史](../Rust/README.md)

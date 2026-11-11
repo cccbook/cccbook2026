@@ -77,4 +77,4 @@ Lampson 案的主線索：**端到端論證（end-to-end argument）**
 
 ## 關聯案件
 
-→ [2009-Charles-Thacker](2009-Charles-Thacker.md)、[1998-Jim-Gray](1998-Jim-Gray.md)、[2013-Leslie-Lamport](2013-Leslie-Lamport.md)
+→ 2009-Charles-Thacker、[1998-Jim-Gray](1998-Jim-Gray.md)、[2013-Leslie-Lamport](2013-Leslie-Lamport.md)
