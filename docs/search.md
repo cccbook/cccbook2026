@@ -6,23 +6,30 @@
 <div id="pagefind-search"></div>
 
 <script>
-window.addEventListener('DOMContentLoaded', () => {
-  new PagefindUI({
-    element: '#pagefind-search',
-    showSubResults: true,
-    showImages: false,
-    translations: {
-      placeholder: '搜尋全站書籍內容…',
-      clear_search: '清除',
-      load_more: '載入更多結果',
-      search_label: '搜尋本站',
-      zero_results: '找不到「[SEARCH_TERM]」相關內容',
-      many_results: '找到 [COUNT] 筆「[SEARCH_TERM]」結果',
-      one_result: '找到 [COUNT] 筆「[SEARCH_TERM]」結果',
-      searching: '正在搜尋「[SEARCH_TERM]」…'
-    }
-  });
-});
+(function () {
+  function init() {
+    const el = document.querySelector('#pagefind-search');
+    if (!el || typeof PagefindUI === 'undefined' || el.firstElementChild) return;
+    new PagefindUI({
+      element: '#pagefind-search',
+      showSubResults: true,
+      showImages: false,
+      translations: {
+        placeholder: '搜尋全站書籍內容…',
+        clear_search: '清除',
+        load_more: '載入更多結果',
+        search_label: '搜尋本站',
+        zero_results: '找不到「[SEARCH_TERM]」相關內容',
+        many_results: '找到 [COUNT] 筆「[SEARCH_TERM]」結果',
+        one_result: '找到 [COUNT] 筆「[SEARCH_TERM]」結果',
+        searching: '正在搜尋「[SEARCH_TERM]」…'
+      }
+    });
+  }
+  if (window.document$) document$.subscribe(init);
+  else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
 </script>
 
 !!! tip "快速鍵"
