@@ -98,8 +98,6 @@ def write_catalog(category: Path, category_name: str):
             rel = posixpath.relpath(readme.as_posix(), "catalog")
             desc = description(readme)
             f.write(f"- [{book_dir.name}]({rel})")
-            if n_chapters:
-                f.write(f"（{n_chapters} 章）")
             if desc:
                 f.write(f"\n  > {desc}")
             f.write("\n")
