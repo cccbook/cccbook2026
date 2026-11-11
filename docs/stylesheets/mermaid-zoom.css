@@ -59,3 +59,16 @@
 .mz-src {
   display: none;
 }
+
+.mz-error {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid var(--md-danger-fg-color, #f44336);
+  border-radius: 0.3rem;
+  color: var(--md-danger-fg-color, #f44336);
+  font: 0.75rem/1.5 var(--md-code-font, monospace);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
