@@ -18,7 +18,6 @@ exclude_docs: |
   **/session-*.md
   **/.DS_Store
   **/.gitignore
-  **/*.py
   **/*.ipynb
   **/*.gz
   **/*.sample
