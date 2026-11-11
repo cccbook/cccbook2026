@@ -38,28 +38,40 @@ def description(readme: Path) -> str:
     return ""
 
 
+def write_generated_index(item: Path, children: list[Path]):
+    """為沒有 README.md 的目錄生成虛擬 index.md，避免站內連結 404"""
+    index_path = item / "index.md"
+    with mkdocs_gen_files.open(index_path, "w", encoding="utf-8") as f:
+        f.write(f"# {item.name}\n\n")
+        if not children:
+            f.write("（本目錄尚無內容）\n")
+            return
+        for child in children:
+            if child.is_dir():
+                child_index = "README.md" if (child / "README.md").exists() else "index.md"
+                f.write(f"- [{child.name}]({child.name}/{child_index})\n")
+            else:
+                f.write(f"- [{child.stem}]({child.name})\n")
+
+
 def write_nav_item(nav_file, item: Path, depth: int):
     indent = "    " * depth
     if item.is_dir():
         readme = item / "README.md"
         label = item.name
-        link = posixpath.join(item.as_posix(), "README.md") if readme.exists() else None
+        has_readme = readme.exists()
+        link = posixpath.join(item.as_posix(), "README.md") if has_readme else posixpath.join(item.as_posix(), "index.md")
         children = sorted(
             [p for p in item.iterdir() if keep(p) and p.is_dir()], key=lambda p: natural_key(p.name)
         ) + sorted(
             [p for p in item.iterdir() if keep(p) and p.is_file() and p.suffix == ".md"],
             key=lambda p: natural_key(p.name),
         )
-        if link and not children:
-            nav_file.write(f"{indent}- [{label}]({link})\n")
-        elif link:
-            nav_file.write(f"{indent}- [{label}]({link})\n")
-            for child in children:
-                write_nav_item(nav_file, child, depth + 1)
-        elif children:
-            nav_file.write(f"{indent}- {label}\n")
-            for child in children:
-                write_nav_item(nav_file, child, depth + 1)
+        if not has_readme:
+            write_generated_index(item, children)
+        nav_file.write(f"{indent}- [{label}]({link})\n")
+        for child in children:
+            write_nav_item(nav_file, child, depth + 1)
     else:
         label = item.stem
         nav_file.write(f"{indent}- [{label}]({item.as_posix()})\n")
@@ -111,6 +123,8 @@ def main():
                 [p for p in category.iterdir() if keep(p) and p.is_file() and p.suffix == ".md"],
                 key=lambda p: natural_key(p.name),
             )
+            if not (category / "README.md").exists():
+                write_generated_index(category, children)
             for child in children:
                 write_nav_item(nav_file, child, 1)
 
