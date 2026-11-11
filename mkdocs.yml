@@ -1,0 +1,81 @@
+site_name: ccc 個人百科全書
+site_url: https://cccbook.github.io/cccbook2026/
+repo_url: https://github.com/cccbook/cccbook2026
+edit_uri: blob/main/
+site_description: 用 AI 寫的個人百科全書，AI 生成，未驗證，閱讀時請留意。
+
+docs_dir: docs
+site_dir: site
+
+exclude_docs: |
+  /_more/bak/
+  /_more/todo.md
+  /_more/format0.sh
+  **/todo.md
+  **/prompts.md
+  **/prompt.md
+  **/list.md
+  **/session-*.md
+  **/.DS_Store
+  **/.gitignore
+  **/*.py
+  **/*.ipynb
+  **/*.gz
+  **/*.sample
+  **/data/
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至淺色模式
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.prune
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.tooltips
+
+plugins:
+  - gen-files:
+      scripts:
+        - gen_catalog.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      cache_safe: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: "#"
