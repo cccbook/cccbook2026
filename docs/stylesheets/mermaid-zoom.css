@@ -40,9 +40,7 @@
 }
 
 .mz-canvas {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   overflow: auto;
   max-height: 75vh;
   padding: 0.6rem;
@@ -52,12 +50,18 @@
 }
 
 .mz-canvas svg {
+  display: block;
+  /* 用 margin auto 置中而非 flex center：放大超出寬度時才能向左捲動到圖的左半部 */
+  margin: 0 auto;
   max-width: 100%;
   height: auto;
 }
 
+/* Material 的 .md-typeset pre { display: flow-root } 權重較高，
+   會蓋掉 [hidden]，讓原始碼與圖同時出現 */
+.md-typeset pre.mz-src,
 .mz-src {
-  display: none;
+  display: none !important;
 }
 
 .mz-error {

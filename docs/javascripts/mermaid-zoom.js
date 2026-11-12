@@ -39,36 +39,38 @@
       .then(mzRunNext);
   }
 
+  // 以 px 寬度縮放（svg 有 viewBox，高度隨 height:auto 等比例變化），
+  // 不用 CSS zoom：各瀏覽器對 zoom 的捲動範圍與座標計算不一致。
   function mzApplyZoom(view, z) {
     var svg = view.querySelector(".mz-canvas svg");
     if (!svg) return;
-    z = Math.min(8, Math.max(0.5, z));
-    var cur = parseFloat(svg.style.zoom) || 1;
-    // mermaid 的 svg 寬度是 100% / max-width 限制，CSS zoom 會被抵銷；
-    // 先凍結基準寬度為 px，讓 zoom 真正改變視覺大小。
-    if (svg.style.width === "") {
-      var w = svg.getBoundingClientRect().width / cur;
-      if (w > 0) svg.style.width = w + "px";
-    }
-    if (svg.dataset.mzMaxWidth === undefined) {
+    z = Math.min(8, Math.max(0.25, z));
+    if (!svg.dataset.mzBase) {
+      // mermaid 的 svg 是 width=100% + max-width，先記下目前顯示寬度當基準
+      var w = svg.getBoundingClientRect().width;
+      if (!(w > 0)) return;
+      svg.dataset.mzBase = w;
       svg.dataset.mzMaxWidth = svg.style.maxWidth || "";
     }
     svg.style.maxWidth = "none";
-    svg.style.zoom = z;
+    svg.style.width = parseFloat(svg.dataset.mzBase) * z + "px";
+    svg.dataset.mzZoom = z;
   }
 
   function mzScale(view, factor) {
     var svg = view.querySelector(".mz-canvas svg");
     if (!svg) return;
-    mzApplyZoom(view, (parseFloat(svg.style.zoom) || 1) * factor);
+    mzApplyZoom(view, (parseFloat(svg.dataset.mzZoom) || 1) * factor);
   }
 
   function mzReset(view) {
     var svg = view.querySelector(".mz-canvas svg");
-    if (!svg) return;
-    svg.style.zoom = 1;
-    svg.style.maxWidth = svg.dataset.mzMaxWidth || "";
+    if (!svg || !svg.dataset.mzBase) return;
     svg.style.width = "";
+    svg.style.maxWidth = svg.dataset.mzMaxWidth || "";
+    delete svg.dataset.mzBase;
+    delete svg.dataset.mzMaxWidth;
+    delete svg.dataset.mzZoom;
   }
 
   function mzRender(view) {
@@ -107,10 +109,7 @@
           var holder = document.createElement("div");
           holder.innerHTML = result.svg;
           var el = holder.firstElementChild;
-          if (el) {
-            el.style.zoom = 1;
-            canvas.appendChild(el);
-          }
+          if (el) canvas.appendChild(el);
           view.dataset.mzState = "done";
           view.dataset.mzTheme = dark ? "dark" : "default";
           if (view.dataset.mzDirty) {
