@@ -36,7 +36,7 @@
 ## 理論裁決
 
 - **「混沌中有統計」**：這些系統都是「**部分雙曲**」的——雖無馬蹄形 chaos 的個別預測性，但**平均量（計數、體積、遍歷平均）服從精確漸近**。Mirzakhani 的貢獻是**把這個「平均律」搬到最抽象的空間**。
-- 與數論的對仗：Eskin–Mirzakhani 定理被稱為「**Teichmüller 幾何的 Margulis 定理**」——同樣以 Lie 群作用與格子（lattice）的遍歷理論為骨架（[2010-Lindenstrauss](README.md) 同屬此路線）。
+- 與數論的對仗：Eskin–Mirzakhani 定理被稱為「**Teichmüller 幾何的 Margulis 定理**」——同樣以 Lie 群作用與格子（lattice）的遍歷理論為骨架（[2010-Ngô與基本引理](2010-Ngô與基本引理.md) 同屆的 Lindenstrauss 亦屬遍歷理論路線）。
 
 ## 後果
 

@@ -16,28 +16,30 @@
 
 ## 歷屆得主全表（1936–2022）
 
-| 屆（ICM 城市） | 得主（獲獎理由關鍵詞） |
-|---|---|
-| 1936（奧斯陸） | Ahlfors（黎曼面的覆蓋理論）、Douglas（極小曲面 Plateau 問題） |
-| 1950（劍橋·美） | Schwartz（分布理論）、Selberg（篩法與素數定理的初等證明） |
-| 1954（阿姆斯特丹） | Kodaira（小平邦彥：調和積分）、**Serre（25 歲，最年輕得主）** |
-| 1958（愛丁堡） | Roth（有理逼近的 Roth 定理）、Thom（協邊界理論） |
-| 1962（斯德哥爾摩） | Hörmander（偏微分方程）、Milnor（怪球） |
-| 1966（莫斯科） | Atiyah（指標定理）、Cohen（連續統假設的獨立性）、**Grothendieck（未出席，抗議）**、Smale（高維龐加萊猜想的 h-協邊界定理，因 HUAC 聽證缺席） |
-| 1970（尼斯） | Baker（超越數論）、Hironaka（廣田信忠：奇點消解）、Novikov（拓撲）、Thompson（有限群） |
-| 1974（溫哥華） | Bombieri（解析數論）、Mumford（代數幾何模空間） |
-| 1978（赫爾辛基） | Deligne（Weil 猜想）、Fefferman（實分析）、Margulis（超剛性）、Quillen（K-理論） |
-| 1982（華沙·1983 頒發，因波蘭戒嚴延期） | Connes（算子代數）、Thurston（三維幾何化）、**丘成桐（卡拉比猜想；首位華人得主）** |
-| 1986（柏克萊） | Donaldson（四維流形）、Faltings（Mordell 猜想）、Freedman（四維龐加萊猜想） |
-| 1990（京都） | Drinfeld（Langlands 綱領）、Jones（紐結不變量）、Mori（森重文：極小模型）、**Witten（首位物理學家得主）** |
-| 1994（蘇黎世） | Bourgain（分析）、Lions（PDE）、Yoccoz（動力系統）、Zelmanov（狹義 Burnside 問題） |
-| 1998（柏林） | Borcherds（魔群月光）、Gowers（巴拿赫空間）、Kontsevich（量子化）、McMullen（雙曲動力系統）；**Wiles 獲首枚（也是唯一）特別銀質獎章**（費馬最後定理，逾齡） |
-| 2002（北京） | Lafforgue（函數域 Langlands）、Voevodsky（motivic 上同調） |
-| 2006（馬德里） | Okounkov（隨機曲面）、**Perelman（拒領；龐加萊猜想）**、Tao（陶哲軒：Green–Tao 定理）、Werner（隨機共形映射） |
-| 2010（海得拉巴） | Lindenstrauss（遍歷理論數論應用）、Ngo（吳寶珠：基本引理）、Smirnov（共形不變性）、Villani（最優輸運） |
-| 2014（首爾） | Avila（混沌動力系統）、Bhargava（高斯類數與數論）、Hairer（正則結構理論）、**Mirzakhani（首位女性得主，2017 逝）** |
-| 2018（里約） | Birkar（Fano 代數簇；**領獎數分鐘後獎章被竊，大會補發**）、Figalli（最優輸運）、Scholze（perfectoid 空間）、Venkatesh（數論與表示論） |
-| 2022（聖彼得堡·線上） | Duminil-Copin（統計力學相變）、Huh（霍奇理論與組合學）、Maynard（孿生質數間距）、**Viazovska（24 維球堆積；第二位女性得主）** |
+> 「wiki」欄指向該屆的**主案**；同屆其他得主的重要工作，多在該篇的「後果／理論裁決」段落中被提及。
+
+| 屆（ICM 城市） | 得主（獲獎理由關鍵詞） | wiki |
+|---|---|---|
+| 1936（奧斯陸） | Ahlfors（黎曼面的覆蓋理論）、Douglas（極小曲面 Plateau 問題） | [首屆費爾茲獎](1936-首屆費爾茲獎.md) |
+| 1950（劍橋·美） | Schwartz（分布理論）、Selberg（篩法與素數定理的初等證明） | [施瓦茨分布理論](1950-施瓦茨分布理論.md) |
+| 1954（阿姆斯特丹） | Kodaira（小平邦彥：調和積分）、**Serre（25 歲，最年輕得主）** | [Serre與譜序列](1954-Serre與譜序列.md) |
+| 1958（愛丁堡） | Roth（有理逼近的 Roth 定理）、Thom（協邊界理論） | [Roth定理](1958-Roth定理.md) |
+| 1962（斯德哥爾摩） | Hörmander（偏微分方程）、Milnor（怪球） | [Milnor與怪球流形](1962-Milnor與怪球流形.md) |
+| 1966（莫斯科） | Atiyah（指標定理）、Cohen（連續統假設的獨立性）、**Grothendieck（未出席，抗議）**、Smale（高維龐加萊猜想的 h-協邊界定理，因 HUAC 聽證缺席） | [Grothendieck概形革命](1966-Grothendieck概形革命.md)、[Cohen與連續統假設](1966-Cohen與連續統假設.md) |
+| 1970（尼斯） | Baker（超越數論）、Hironaka（廣田信忠：奇點消解）、Novikov（拓撲）、Thompson（有限群） | [Hironaka與奇點消解](1970-Hironaka與奇點消解.md) |
+| 1974（溫哥華） | Bombieri（解析數論）、Mumford（代數幾何模空間） | [Mumford與模空間](1974-Mumford與模空間.md) |
+| 1978（赫爾辛基） | Deligne（Weil 猜想）、Fefferman（實分析）、Margulis（超剛性）、Quillen（K-理論） | [Deligne與Weil猜想](1978-Deligne與Weil猜想.md) |
+| 1982（華沙·1983 頒發，因波蘭戒嚴延期） | Connes（算子代數）、Thurston（三維幾何化）、**丘成桐（卡拉比猜想；首位華人得主）** | [丘成桐與卡拉比猜想](1982-丘成桐與卡拉比猜想.md) |
+| 1986（柏克萊） | Donaldson（四維流形）、Faltings（Mordell 猜想）、Freedman（四維龐加萊猜想） | [Faltings與Mordell猜想](1986-Faltings與Mordell猜想.md) |
+| 1990（京都） | Drinfeld（Langlands 綱領）、Jones（紐結不變量）、Mori（森重文：極小模型）、**Witten（首位物理學家得主）** | [Witten與拓撲量子場論](1990-Witten與拓撲量子場論.md) |
+| 1994（蘇黎世） | Bourgain（分析）、Lions（PDE）、Yoccoz（動力系統）、Zelmanov（狹義 Burnside 問題） | [Bourgain與卡凱亞集合](1994-Bourgain與卡凱亞集合.md) |
+| 1998（柏林） | Borcherds（魔群月光）、Gowers（巴拿赫空間）、Kontsevich（量子化）、McMullen（雙曲動力系統）；**Wiles 獲首枚（也是唯一）特別銀質獎章**（費馬最後定理，逾齡） | [懷爾斯與費馬最後定理](1998-懷爾斯與費馬最後定理.md) |
+| 2002（北京） | Lafforgue（函數域 Langlands）、Voevodsky（motivic 上同調） | [Voevodsky與動機同調](2002-Voevodsky與動機同調.md) |
+| 2006（馬德里） | Okounkov（隨機曲面）、**Perelman（拒領；龐加萊猜想）**、Tao（陶哲軒：Green–Tao 定理）、Werner（隨機共形映射） | [Perelman與龐加萊猜想](2006-Perelman與龐加萊猜想.md) |
+| 2010（海得拉巴） | Lindenstrauss（遍歷理論數論應用）、Ngo（吳寶珠：基本引理）、Smirnov（共形不變性）、Villani（最優輸運） | [Ngô與基本引理](2010-Ngô與基本引理.md) |
+| 2014（首爾） | Avila（混沌動力系統）、Bhargava（高斯類數與數論）、Hairer（正則結構理論）、**Mirzakhani（首位女性得主，2017 逝）** | [Mirzakhani與模空間動力學](2014-Mirzakhani與模空間動力學.md) |
+| 2018（里約） | Birkar（Fano 代數簇；**領獎數分鐘後獎章被竊，大會補發**）、Figalli（最優輸運）、Scholze（perfectoid 空間）、Venkatesh（數論與表示論） | [Scholze與完美疊加空間](2018-Scholze與完美疊加空間.md) |
+| 2022（聖彼得堡·線上） | Duminil-Copin（統計力學相變）、Huh（霍奇理論與組合學）、Maynard（孿生質數間距）、**Viazovska（24 維球堆積；第二位女性得主）** | [Viazovska與球堆積](2022-Viazovska與球堆積.md) |
 
 ## 著名插曲（「案件旁註」）
 
@@ -45,24 +47,49 @@
 |---|---|
 | 1966 | Grothendieck 為抗議蘇聯拘捕異議人士，**缺席頒獎**，把獎章託人於莫斯科會場外轉交越南科學家 |
 | 1966 | Smale 因 HUAC（眾院非美活動委員會）聽證被迫缺席——一位得主因政治缺席、另一位為政治抗議缺席 |
-| 1970 | Grigory Margulis 因蘇聯不批准出境，**缺席自己的頒獎禮**（Jacques Tits 代讀講稿） |
-| 1978 | Margulis 再次受阻；Deligne 代其出席 |
+| 1970 | **Novikov** 因蘇聯不批准出境，**缺席自己的頒獎禮**（Jacques Tits 代讀講稿） |
+| 1978 | Margulis 再次受阻（蘇聯不放行）；Deligne 代其出席並朗讀講稿 |
 | 2006 | **Perelman 拒領**（「如果證明正確，其他人的認可無關緊要」）——史上唯一拒領者，並同時拒絕克雷研究所百萬美元千禧獎 |
 | 2018 | Birkar 領獎當天獎章在會場遭竊——大會以新獎章補發，刻上「CN」（庫爾德語其名縮寫） |
 | 2022 | 因俄烏戰爭，原定聖彼得堡的 ICM 改為線上舉行 |
 
 ## 相關 wiki 檔案（推理探案式）
 
+> 費爾茲獎每四年一屆；下列 **21 篇**涵蓋 1936–2022 **全部 20 屆**（1966 屆因有兩樁獨立大案而拆成兩篇）。
+
 - [1936-首屆費爾茲獎](1936-首屆費爾茲獎.md)
 - [1950-施瓦茨分布理論](1950-施瓦茨分布理論.md)
 - [1954-Serre與譜序列](1954-Serre與譜序列.md)
 - [1958-Roth定理](1958-Roth定理.md)
+- [1962-Milnor與怪球流形](1962-Milnor與怪球流形.md)
 - [1966-Grothendieck概形革命](1966-Grothendieck概形革命.md)
 - [1966-Cohen與連續統假設](1966-Cohen與連續統假設.md)
+- [1970-Hironaka與奇點消解](1970-Hironaka與奇點消解.md)
+- [1974-Mumford與模空間](1974-Mumford與模空間.md)
+- [1978-Deligne與Weil猜想](1978-Deligne與Weil猜想.md)
 - [1982-丘成桐與卡拉比猜想](1982-丘成桐與卡拉比猜想.md)
 - [1986-Faltings與Mordell猜想](1986-Faltings與Mordell猜想.md)
 - [1990-Witten與拓撲量子場論](1990-Witten與拓撲量子場論.md)
+- [1994-Bourgain與卡凱亞集合](1994-Bourgain與卡凱亞集合.md)
 - [1998-懷爾斯與費馬最後定理](1998-懷爾斯與費馬最後定理.md)
+- [2002-Voevodsky與動機同調](2002-Voevodsky與動機同調.md)
 - [2006-Perelman與龐加萊猜想](2006-Perelman與龐加萊猜想.md)
+- [2010-Ngô與基本引理](2010-Ngô與基本引理.md)
 - [2014-Mirzakhani與模空間動力學](2014-Mirzakhani與模空間動力學.md)
+- [2018-Scholze與完美疊加空間](2018-Scholze與完美疊加空間.md)
 - [2022-Viazovska與球堆積](2022-Viazovska與球堆積.md)
+
+## 案件主線：二十屆的暗線
+
+```
+1. 把「不可算」變成「可算」：Schwartz(1950) 分布 → Roth(1958) 最優指數
+   → Baker(1970) 有效超越數論 → Deligne(1978) Weil 猜想
+   → Ngô(2010) 基本引理 → Scholze(2018) perfectoid
+2. 抽象的層層加蓋：Serre(1954) 譜序列 → Grothendieck(1966) 概形
+   → Hironaka(1970) 消解 → Mumford(1974) 模空間 → Voevodsky(2002) motive
+   → Scholze(2018) diamonds
+3. 拓撲的戰爭：Milnor(1962) 怪球 → Faltings(1986) 有限性
+   → Perelman(2006) 熵流 → Viazovska(2022) 完美堆積
+4. 缺席與拒絕：Grothendieck(1966) 抗議、Novikov(1970) 放行受阻、
+   Perelman(2006) 拒領、Birkar(2018) 獎章失竊——費爾茲獎的「政治性」
+```
