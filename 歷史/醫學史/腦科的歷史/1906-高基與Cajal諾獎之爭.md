@@ -32,7 +32,7 @@ graph TD
     A[1906 斯德哥爾摩對質] --> B[1910s Bartelmez/Held 等<br/>仍見「融合」爭議]
     B --> C[1930s 电子顯微鏡問世]
     C --> D[1954-55 Palade/Palay/Fatt:<br/>突觸間隙 20nm + 突觸囊泡影像]
-    D --> E[1958 del Castillo-Katz:<br/>量子式釋放(囊泡=單位)]
+    D --> E["1958 del Castillo-Katz:<br/>量子式釋放(囊泡=單位)"]
     E --> F[神經元論+化學突觸 完全定讞]
     A --> G[例外分支: 電突觸 gap junction<br/>1960s 真正的「融合式」連接<br/>少數特例而非通則]
 ```

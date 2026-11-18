@@ -89,13 +89,13 @@
 
 ```mermaid
 graph LR
-    subgraph 物理→數學
+    subgraph 物理數學["物理→數學"]
     A1[力學→微積分/變分法] 
     A2[熱與波→傅立葉/PDE]
     A3[三體→混沌]
     A4[規範場→Donaldson/SW]
     end
-    subgraph 數學→物理
+    subgraph 數學物理["數學→物理"]
     B1[黎曼幾何→廣義相對論]
     B2[群表示論→粒子分類]
     B3[纖維叢/陳類→規範場]

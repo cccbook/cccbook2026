@@ -10,7 +10,7 @@ graph TD
     B --> C[分子力學 MM<br>牛頓力學 + 經驗力場]
     B --> D[半經驗法<br>Hückel / AM1]
     B --> E[HF / DFT<br>自洽場迭代]
-    B --> F[後 HF<br>MP2 / CCSD(T)]
+    B --> F["後 HF<br>MP2 / CCSD(T)"]
     C --> G[能量・優化・光譜]
     D --> G
     E --> G

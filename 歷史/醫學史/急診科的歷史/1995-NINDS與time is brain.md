@@ -39,7 +39,7 @@ graph TD
     C --> D[1996 FDA 核准]
     D --> E[急診改造:<br/>door-to-needle 60 分鐘]
     E --> F[2008 ECASS-III 擴窗至 4.5 小時]
-    F --> G[2015 MR CLEAN 等:<br/>取栓 (thrombectomy) 革命]
+    F --> G["2015 MR CLEAN 等:<br/>取栓 (thrombectomy) 革命"]
     G --> H[中風中心網絡與院前分流向<br/>見 2006-門球時間聯盟 的同構模式]
 ```
 

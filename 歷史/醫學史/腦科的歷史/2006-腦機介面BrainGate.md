@@ -40,12 +40,12 @@ while True:
 
 ```mermaid
 graph TD
-    A[1960s-70s 運動編碼研究<br/>Evarts/Georgopoulos] --> B[1998-2002 動物實驗:<br/>猴以腦訊號控游標(Nicolelis等)]
+    A[1960s-70s 運動編碼研究<br/>Evarts/Georgopoulos] --> B["1998-2002 動物實驗:<br/>猴以腦訊號控游標(Nicolelis等)"]
     B --> C[2004 首例人體植入<br/>2006 Nature BrainGate 報告]
     C --> D[2008 機械手臂抓握<br/>2012 高速觸物]
     D --> E[2014 巴西世界盃開幕式<br/>癱瘓青年以 BCI 外骨骼開球]
     E --> F[2016-2021 感覺回饋閉環:<br/>觸覺編碼回腦. 雙向 BCI]
-    F --> G[2020s 植入式語言 BCI:<br/>失語病人以意念打字/說話(斯坦福. UCSF)]
+    F --> G["2020s 植入式語言 BCI:<br/>失語病人以意念打字/說話(斯坦福. UCSF)"]
     G --> H[2024 Neuralink 人體首植<br/>無線全植入時代]
 ```
 

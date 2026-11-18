@@ -145,7 +145,7 @@ python todo.py list
 ```mermaid
 graph TD
     A[建立專案目錄] --> B[啟動 OpenCode Desktop]
-    B --> C[/init 初始化 AGENTS.md]
+    B --> C["/init 初始化 AGENTS.md"]
     C --> D[切換 Plan Mode<br/>規劃實作方案]
     D --> E{方案是否滿意?}
     E -->|否| F[提供回饋<br/>修改方案]

@@ -100,7 +100,8 @@ flowchart TD
     C3 -- 否 --> C4[降 utilization / 調 CTS<br>回到 place 階段]
     C4 --> A
     D3 -- 否 --> D4[調整 hold margin / CTS skew] --> A
-    C3 -- 是 & D3 -- 是 --> E[signoff: report_drc 無違規<br>report_checks 無違規]
+    C3 -- 是 --> E[signoff: report_drc 無違規<br>report_checks 無違規]
+    D3 -- 是 --> E
 ```
 
 ## 收尾檢查
